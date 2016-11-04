@@ -2563,6 +2563,20 @@ h6 {
   width: 62px;
   height: 62px;
 }
+.operation-buttons{
+  margin-bottom: 7px;
+}
+.operation-buttons .delete{
+  float: right;
+}
+.panel-tools{
+  display: none;
+}
+.operation-buttons .delete-desk{
+  margin-bottom: 5px;
+  float: right;
+}
+
 @media (max-width: 768px) {
   .navbar-form-custom,
   .navbar-right,
