@@ -9,7 +9,7 @@
     <nav role="navigation">
         <div class="header-link hide-menu"><i class="fa fa-bars"></i></div>
         <div class="small-logo">
-            <span class="text-primary">Case-Manager</span>
+            <span class="text-primary">HOMER APP</span>
         </div>
         <form role="search" class="navbar-form-custom" method="post" action="#">
             <div class="form-group">
@@ -131,7 +131,7 @@
                     </a>
                 </li>
                 <li class="dropdown">
-                    <a href="<?php echo base_url();?>login_controller">
+                    <a href="<?php echo base_url();?>login_controller/logout">
                         <i class="pe-7s-upload pe-rotate-90"></i>
                     </a>
                 </li>
