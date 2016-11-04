@@ -1,14 +1,14 @@
 <?php
 session_cache_limiter('private_no_expire');
 session_start();
-	class Login_controller extends CI_Controller{
+	class Admin extends CI_Controller{
 		
 	 public function index(){
 		//session_destroy(); 
 	  $this->load->view('pages/login');
 	  
 	 }
-	 public function getData()
+	 public function dashboard()
 	 { 
 	 
 		$this->load->model('login_model');
@@ -51,6 +51,7 @@ session_start();
 		 session_destroy();
 		 $this->load->view('pages/login');
 	 }
+	 
 	 public function contacts(){
 		 $this->load->view('pages/contacts');
 	 }

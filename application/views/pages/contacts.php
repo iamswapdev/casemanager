@@ -2,7 +2,7 @@
 	session_cache_limiter('private_no_expire');
 	if( !isset($_SESSION["username"]) && !isset($_SESSION["password"])){
 		
-		header('Location: login_controller');
+		header('Location: admin');
 	}
 ?>
 <!DOCTYPE html>
@@ -307,6 +307,7 @@
                 <div class="panel-footer contact-footer">
                     <div class="row">
                         <div class="col-md-4 border-right"> <div class="contact-stat"><span>Projects: </span> <strong>200</strong></div> </div>
+
                         <div class="col-md-4 border-right"> <div class="contact-stat"><span>Messages: </span> <strong>300</strong></div> </div>
                         <div class="col-md-4"> <div class="contact-stat"><span>Views: </span> <strong>400</strong></div> </div>
                     </div>

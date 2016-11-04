@@ -1,7 +1,7 @@
 <aside id="menu">
     <div id="navigation">
         <div class="profile-picture">
-            <a href="<?php echo base_url();?>index">
+            <a href="<?php echo base_url();?>admin/dashboard">
                 <img src="<?php echo base_url();?>assets/images/profile.jpg" class="img-circle m-b" alt="logo">
             </a>
 
@@ -17,7 +17,7 @@
                         <li><a href="profile.html">Profile</a></li>
                         <li><a href="analytics.html">Analytics</a></li>
                         <li class="divider"></li>
-                        <li><a href="<?php echo base_url();?>login_controller/destroy">Logout</a></li>
+                        <li><a href="<?php echo base_url();?>admin/destroy">Logout</a></li>
                     </ul>
                 </div>--><?php */?>
 
@@ -36,51 +36,51 @@
             <li>
                 <a href="#"><span class="nav-label">Admin</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>login_controller/adminprivilege">Admin Privileges</a></li>
+                    <li><a href="<?php echo base_url();?>admin/adminprivilege">Admin Privileges</a></li>
                 </ul>
             </li>
             <li>
                 <a href="#"><span class="nav-label">Master</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>login_controller/dataentry">Data Entry</a></li>
+                    <li><a href="<?php echo base_url();?>admin/dataentry">Data Entry</a></li>
                 </ul>
             </li>
             <li>
                 <a href="#"><span class="nav-label">Search</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>login_controller/search">Search</a></li>
-                    <li><a href="<?php echo base_url();?>login_controller/advancedsearch">Advanced Search</a></li>
+                    <li><a href="<?php echo base_url();?>admin/search">Search</a></li>
+                    <li><a href="<?php echo base_url();?>admin/advancedsearch">Advanced Search</a></li>
                 </ul>
             </li>
              <li>
                 <a href="#"><span class="nav-label">Work Area</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>login_controller/caseinformation">Case Information</a></li>
-                    <li><a href="<?php echo base_url();?>login_controller/dataentry_workarea">Data Entry(Case Entry Only)</a></li>
-                    <li><a href="<?php echo base_url();?>login_controller/fileinsert">File Insert</a></li>
-                    <li><a href="<?php echo base_url();?>login_controller/workflowreport">WorkFlow Report</a></li>
-                    <li><a href="<?php echo base_url();?>login_controller/calendar">Calendar</a></li>
+                    <li><a href="<?php echo base_url();?>admin/caseinformation">Case Information</a></li>
+                    <li><a href="<?php echo base_url();?>admin/dataentry_workarea">Data Entry(Case Entry Only)</a></li>
+                    <li><a href="<?php echo base_url();?>admin/fileinsert">File Insert</a></li>
+                    <li><a href="<?php echo base_url();?>admin/workflowreport">WorkFlow Report</a></li>
+                    <li><a href="<?php echo base_url();?>admin/calendar">Calendar</a></li>
                 </ul>
             </li>
             <li>
                 <a href="#"><span class="nav-label">WorkDesk</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>login_controller/workdesk">WorkDesk</a></li>
+                    <li><a href="<?php echo base_url();?>admin/workdesk">WorkDesk</a></li>
                 </ul>
             </li>
              <li>
                 <a href="#"><span class="nav-label">Financials</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>login_controller/financials">Financials</a></li>
-                    <li><a href="<?php echo base_url();?>login_controller/reports">Reports</a></li>
-                    <li><a href="<?php echo base_url();?>login_controller/rapidfunds">Rapid Funds</a></li>
+                    <li><a href="<?php echo base_url();?>admin/financials">Financials</a></li>
+                    <li><a href="<?php echo base_url();?>admin/reports">Reports</a></li>
+                    <li><a href="<?php echo base_url();?>admin/rapidfunds">Rapid Funds</a></li>
                 </ul>
             </li>
              <li>
-                <a href="<?php echo base_url();?>login_controller/contacts"><span class="nav-label">Contacts</span><span class="fa arrow"></span> </a>
+                	<a href="<?php echo base_url();?>admin/contacts"><span class="nav-label">Contacts</span><span class="fa arrow"></span> </a> 
             </li>   
             <li>
-                <a href="<?php echo base_url();?>login_controller/logout"><span class="nav-label">Logoff</span><span class="fa arrow"></span> </a>
+                <a href="<?php echo base_url();?>admin/logout"><span class="nav-label">Logoff</span><span class="fa arrow"></span> </a>
             </li>        
       
         </ul>

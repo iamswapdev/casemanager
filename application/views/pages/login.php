@@ -47,7 +47,7 @@
             </div>
             <div class="hpanel">
                 <div class="panel-body">
-                        <form action="<?php echo base_url() ?>login_controller/getdata" method="post">
+                        <form action="<?php echo base_url() ?>admin/dashboard" method="post">
                             <div class="form-group">
                                 <label class="control-label" for="username">Username</label>
                                 <input type="text" placeholder="example@gmail.com" title="Please enter you username" required value="" name="username" id="username" class="form-control">
@@ -64,7 +64,7 @@
                                 <p class="help-block small">(if this is a private computer)</p>
                             </div>
                             <button class="btn btn-success btn-block">Login</button>
-                            <a class="btn btn-default btn-block" href="<?php echo base_url();?>login_controller/forgotPassword">Forgot Password</a>
+                            <a class="btn btn-default btn-block" href="<?php echo base_url();?>admin/forgotPassword">Forgot Password</a>
                         </form>
                 </div>
             </div>

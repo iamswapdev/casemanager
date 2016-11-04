@@ -131,7 +131,7 @@
                     </a>
                 </li>
                 <li class="dropdown">
-                    <a href="<?php echo base_url();?>login_controller/logout">
+                    <a href="<?php echo base_url();?>admin/logout">
                         <i class="pe-7s-upload pe-rotate-90"></i>
                     </a>
                 </li>
