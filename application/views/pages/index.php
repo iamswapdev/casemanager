@@ -173,7 +173,7 @@
                     </a>
                 </li>
                 <li class="dropdown">
-                    <a href="<?php echo base_url();?>login_controller">
+                    <a href="<?php echo base_url();?>login_controller/logout">
                         <i class="pe-7s-upload pe-rotate-90"></i>
                     </a>
                 </li>
