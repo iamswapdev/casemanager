@@ -5,8 +5,7 @@
 			$this->load->database();
 		}
 		public function autho($data){
-			
-		 $query=$this->db->query('select * from admin where username="'.$data['username'].'" and password="'.$data['password'].'"');
+		 $query=$this->db->query('select * from admin where user="'.$data['username'].'" and password="'.$data['password'].'"');
 		 $rows = $query->num_rows();
 		 if($rows > 0){
 			 return true;
