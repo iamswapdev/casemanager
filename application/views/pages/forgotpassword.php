@@ -47,7 +47,7 @@
             </div>
             <div class="hpanel">
                 <div class="panel-body">
-                        <form action="emailAuth" method="post">
+                        <form action="emailauth" method="post">
                             <div class="form-group">
                                 <label class="control-label" for="username">Email</label>
                                 <input type="text" placeholder="example@gmail.com" title="Please enter you Email Address" required value="" name="email" id="email" class="form-control">

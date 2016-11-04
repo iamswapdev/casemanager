@@ -32,7 +32,7 @@ session_start();
 	 public function emailAuth(){
 		$this->load->model('login_model');
 		$data=array(
-			'email'=>$this->input->post('email')
+			'email_address'=>$this->input->post('email')
 		); 
 		$check=$this->login_model->forgot_pass($data);
 		if($check){
