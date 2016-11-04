@@ -36,7 +36,7 @@
             <li>
                 <a href="#"><span class="nav-label">Admin</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>admin/adminprivilege">Admin Privileges</a></li>
+                    <li><a href="<?php echo base_url();?>adminprivilege">Admin Privileges</a></li>
                 </ul>
             </li>
             <li>

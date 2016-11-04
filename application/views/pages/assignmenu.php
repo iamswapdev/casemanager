@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- Page title -->
-    <title>CaseSettelments</title>
+    <title>CaseSettelments</title> 
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!--<link rel="shortcut icon" type="image/ico" href="favicon.ico" />-->
@@ -46,14 +46,46 @@
 <?php include 'sidebar.php';?>
 <!-- Main Wrapper -->
 <div id="wrapper">
+
 <?php include 'adminpri_header.php';?>
 
 <div class="content animate-panel">
+	<div class="form-group"><label class="col-sm-2 control-label">Select Role Name :</label>
+        <div class="col-sm-10"><select class="form-control m-b" name="account">
+            <option>Administrator</option>
+            <option>Adv-Staff</option>
+            <option>Insurer</option>
+            <option>OffCounsel</option>
+            <option>OutSource-Staff</option>
+            <option>Provider</option>
+            <option>Staff</option>
+            <option>Stefan Only</option>
+            <option>OffCounsel</option>
+            <option>Test</option>
+            <option>test 1</option>
+            </select>
+        </div>
+	</div>
+    <div class="form-group"><label class="col-sm-2 control-label">Select Main Menu Name:</label>
+        <div class="col-sm-10"><select class="form-control m-b" name="account">
+            <option>Admin</option>
+            <option>Master</option>
+            <option>Search</option>
+            <option>WorkArea</option>
+            <option>WorkDesk</option>
+            <option>Financials</option>
+            </select>
+        </div>
+	</div>
+    <br><br><br>
     <div class="row"> 
     	<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
         
         	<div class="col-sm-10">List of Menus for selected role and main menu.<select class="form-control m-b" name="account" multiple>
                 <option>option 1</option>
+                <option>option 2</option>
+                <option>option 3</option>
+                <option>option 4</option>
                 </select>
             </div>
         </div>
@@ -63,44 +95,12 @@
          	 
             <div class="col-sm-10">List Assigned Menus To A Role<select class="form-control m-b" name="account" multiple>
                     <option>Admin</option>
-                    </select>
-             </div>
-        </div>
-    </div>
-    
-    <div class="row"> 
-    	<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-        
-        	<div class="col-sm-10">List of Menus for selected role and main menu.<select class="form-control m-b" name="account" multiple>
-                <option>option 1</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-        </div>
-        <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.4s;">
-         	 
-            <div class="col-sm-10">List Assigned Menus To A Role<select class="form-control m-b" name="account" multiple>
-                    <option>Admin</option>
-                    </select>
-             </div>
-        </div>
-    </div>
-    
-    <div class="row"> 
-    	<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-        
-        	<div class="col-sm-10">List of Menus for selected role and main menu.<select class="form-control m-b" name="account" multiple>
-                <option>option 1</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-        </div>
-        <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.4s;">
-         	 
-            <div class="col-sm-10">List Assigned Menus To A Role<select class="form-control m-b" name="account" multiple>
-                    <option>Admin</option>
+                    <option>Master</option>
+                    <option>Search</option>
+                    <option>WorkArea</option>
+                    <option>WorkDesk</option>
+                    <option>Financials</option>
+                    <option>Contacts</option>
                     </select>
              </div>
         </div>
@@ -133,6 +133,23 @@
 
 <!-- App scripts -->
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
+<script>
+	var preventClick = false;
+
+	$('#ThisLink').click(function(e) {
+		$(this)
+		   .css('cursor', 'default')
+		   .css('text-decoration', 'none')
+	
+		if (!preventClick) {
+			$(this).html($(this).html() + ' lalala');
+		}
+	
+		preventClick = true;
+	
+		return false;
+	});
+</script>
 
 </body>
 </html>

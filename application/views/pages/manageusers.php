@@ -46,7 +46,7 @@
 <?php include 'sidebar.php';?>
 <!-- Main Wrapper -->
 <div id="wrapper">
-
+<?php include 'adminpri_header.php';?>
 <div class="content animate-panel">
 
 
