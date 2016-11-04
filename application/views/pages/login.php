@@ -64,7 +64,7 @@
                                 <p class="help-block small">(if this is a private computer)</p>
                             </div>
                             <button class="btn btn-success btn-block">Login</button>
-                            <a class="btn btn-default btn-block" href="forgotPassword">Forgot Password</a>
+                            <a class="btn btn-default btn-block" href="<?php echo base_url();?>login_controller/forgotPassword">Forgot Password</a>
                         </form>
                 </div>
             </div>
