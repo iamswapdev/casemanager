@@ -56,9 +56,7 @@
         	<div class="panel-body">
                 <form method="get" class="form-horizontal">
                     <div class="form-group"><label class="col-sm-2 control-label">Role Name</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" style="background-image: background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
-                        </div>
+                        <div class="col-sm-10"><input type="text" class="form-control"></div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-8 col-sm-offset-2">
