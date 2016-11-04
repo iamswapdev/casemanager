@@ -40,16 +40,16 @@
                 </ul>
             </li>
             <li>
-                <a href="#"><span class="nav-label">Master</span><span class="fa arrow"></span> </a>
-                <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>admin/dataentry">Data Entry</a></li>
-                </ul>
-            </li>
-            <li>
                 <a href="#"><span class="nav-label">Search</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
                     <li><a href="<?php echo base_url();?>admin/search">Search</a></li>
                     <li><a href="<?php echo base_url();?>admin/advancedsearch">Advanced Search</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><span class="nav-label">Master</span><span class="fa arrow"></span> </a>
+                <ul class="nav nav-second-level">
+                    <li><a href="<?php echo base_url();?>admin/dataentry">Data Entry</a></li>
                 </ul>
             </li>
              <li>
