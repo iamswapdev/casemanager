@@ -93,12 +93,12 @@
                         <tr>
                             <td>Abraham</td>
                             <td>076 9477 4896</td>
-                            <td><div class="col-sm-10"><label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> a </label></div></td>
+                            <td><div class="form-group"><div class="col-sm-10"><label class="checkbox-inline"> <div class="icheckbox_square-green checked" style="position: relative;"><input type="checkbox" class="i-checks" style="position: absolute; opacity: 0;"></div>  </label></div></div></td>
                         </tr>
                         <tr>
                             <td>Abraham</td>
                             <td>076 9477 4896</td>
-                            <td><div class="col-sm-10"><label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> a </label></div></td>
+                            <td><div class="form-group"><div class="col-sm-10"><label class="checkbox-inline"> <div class="icheckbox_square-green checked" style="position: relative;"><input type="checkbox" class="i-checks" style="position: absolute; opacity: 0;"></div>  </label></div></div></td>
                         </tr>
                         </tbody>
                     </table>
