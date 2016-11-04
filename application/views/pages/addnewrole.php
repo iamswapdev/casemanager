@@ -63,7 +63,7 @@
                     <div class="form-group">
                         <div class="col-sm-8 col-sm-offset-2">
                             <button class="btn btn-default" type="submit">Cancel</button>
-                            <button class="btn btn-primary" type="submit">Add</button>
+                            <button type="button" class="btn w-xs btn-info create">Add</button>
                         </div>
                     </div>
                 </form>
@@ -95,19 +95,19 @@
                         <tr>
                             <td>Abraham</td>
                             <td>076 9477 4896</td>
-                            <td><label class="checkbox-inline"> <div class="icheckbox_square-green" style="position: relative;"><input name="rollname" type="checkbox" class="i-checks" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>  </label></td>
+                            <td><label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> a </label></td>
                         </tr>
                         <tr>
                             <td>Abraham</td>
                             <td>076 9477 4896</td>
-                            <td><label class="checkbox-inline"> <div class="icheckbox_square-green" style="position: relative;"><input name="rollname" type="checkbox" class="i-checks" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>  </label></td>
+                            <td><label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> a </label></td>
                         </tr>
                         </tbody>
                     </table>
                 
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary" type="submit">Delete Checked</button>
+                    <button type="button" class="btn w-xs btn-info create">Delete Checked</button>
                 </div>
             </form>
             </div>

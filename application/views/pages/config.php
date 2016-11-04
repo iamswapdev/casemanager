@@ -49,62 +49,56 @@
 <?php include 'adminpri_header.php';?>
 
 <div class="content animate-panel">
-    <div class="row"> 
-    	<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-        
-        	<div class="col-sm-10">List of Menus for selected role and main menu.<select class="form-control m-b" name="account" multiple>
-                <option>option 1</option>
-                </select>
+
+	 <div class="row">
+     	<div class="col-lg-12 animated-panel zoomIn" style="animation-delay: 0.4s;">
+        <div class="hpanel">
+            <div class="panel-heading">
+                <div class="panel-tools">
+                    <a class="showhide"><i class="fa fa-chevron-up"></i></a>
+                </div>
+                Desk Assign Configuration
+            </div>
+            <div class="panel-body">
+                <form method="post" action="#">
+                    <div class="table-responsive">                
+                        <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+                            
+                            <tbody>
+                            <tr>
+                                <td>
+                                	<div class="col-sm-10">Select Users.<select class="form-control m-b" name="account" multiple>
+                                        <option>option 1</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td style="text-align:center;">
+                                	<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.4s;">         	 
+                                        <div class="col-sm-10"><button type="button" class="btn w-xs btn-info create">Create Desk</button>
+                                         </div>
+                                    </div>
+                                </td>
+                                <td>
+                                	<div class="col-sm-10">Select Provider<select class="form-control m-b" name="account" multiple>
+                                    	<option>Admin</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn w-xs btn-info create">Delete Checked</button>
+                    </div>
+                </form>
             </div>
         </div>
-        <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-        </div>
-        <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.4s;">
-         	 
-            <div class="col-sm-10">List Assigned Menus To A Role<select class="form-control m-b" name="account" multiple>
-                    <option>Admin</option>
-                    </select>
-             </div>
-        </div>
-    </div>
+     </div>
     
-    <div class="row"> 
-    	<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-        
-        	<div class="col-sm-10">List of Menus for selected role and main menu.<select class="form-control m-b" name="account" multiple>
-                <option>option 1</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-        </div>
-        <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.4s;">
-         	 
-            <div class="col-sm-10">List Assigned Menus To A Role<select class="form-control m-b" name="account" multiple>
-                    <option>Admin</option>
-                    </select>
-             </div>
-        </div>
-    </div>
     
-    <div class="row"> 
-    	<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-        
-        	<div class="col-sm-10">List of Menus for selected role and main menu.<select class="form-control m-b" name="account" multiple>
-                <option>option 1</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-        </div>
-        <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.4s;">
-         	 
-            <div class="col-sm-10">List Assigned Menus To A Role<select class="form-control m-b" name="account" multiple>
-                    <option>Admin</option>
-                    </select>
-             </div>
-        </div>
-    </div>
+   
 </div>
 
     <!-- Right sidebar -->
