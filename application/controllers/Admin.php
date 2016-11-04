@@ -34,13 +34,12 @@ session_start();
 		$data=array(
 			'email_address'=>$this->input->post('email')
 		); 
-		print_r($data);
 		$check=$this->login_model->forgot_pass($data);
 		if($check){
 			$this->load->view('pages/sendpasslink');
 		}
 		else{ 
-			echo "email address not match";
+			$this->load->view('pages/errorpasslink');
 		}
 	 }
 	 public function passAuth(){
@@ -51,6 +50,45 @@ session_start();
 		 $this->load->view('pages/login');
 	 }
 	 
+	 public function adminprivilege(){
+		 $this->load->view('pages/adminprivilege');
+	 }
+	 public function dataentry(){
+		 $this->load->view('pages/dataentry');
+	 }
+	 public function search(){
+		 $this->load->view('pages/search');
+	 }
+	 public function advancedsearch(){
+		 $this->load->view('pages/advancedsearch');
+	 }
+	 public function caseinformation(){
+		 $this->load->view('pages/caseinformation');
+	 }
+	 public function dataentry_workarea(){
+		 $this->load->view('pages/dataentry_workarea');
+	 }
+	 public function fileinsert(){
+		 $this->load->view('pages/fileinsert');
+	 }
+	 public function workflowreport(){
+		 $this->load->view('pages/workflowreport');
+	 }
+	 public function calendar(){
+		 $this->load->view('pages/calendar');
+	 }
+	 public function workdesk(){
+		 $this->load->view('pages/workdesk');
+	 }
+	 public function financials(){
+		 $this->load->view('pages/financials');
+	 }
+	 public function reports(){
+		 $this->load->view('pages/reports');
+	 }
+	 public function rapidfunds(){
+		 $this->load->view('pages/rapidfunds');
+	 }
 	 public function contacts(){
 		 $this->load->view('pages/contacts');
 	 }

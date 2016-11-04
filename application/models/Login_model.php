@@ -18,10 +18,10 @@
 		 }
 	    }
 		public function forgot_pass($data){
-		 $this->db->where('email_address',$data['email']);
+		  $this->db->where('email_address',$data['email_address']);
 		 $data=$this->db->get('admin');
 		 
-		  $rows = $data->num_rows();
+		 $rows = $data->num_rows();
 		 if($rows == 1){
 			 return true;
 		 }else
