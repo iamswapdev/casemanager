@@ -11,7 +11,7 @@
                 <ol class="hbreadcrumb breadcrumb">
                     <li><a href="<?php echo base_url();?>adminprivilege/config">Config</a></li>
                     
-                    <li><a class="active" href="<?php echo base_url();?>adminprivilege/manageusers">Manage Users</a></li>
+                    <li><a href="<?php echo base_url();?>adminprivilege/manageusers">Manage Users</a></li>
                     
                     <li><a href="<?php echo base_url();?>adminprivilege/addnewrole">Add New Role</a></li>
                     

@@ -66,7 +66,7 @@
                             
                             <tbody>
                             <tr>
-                                <td>
+                                <td style="border:none;">
                                 	<div class="col-sm-10">Select Users.<select class="form-control m-b" name="account" multiple>
                                         <option>option 1</option>
                                         </select>
