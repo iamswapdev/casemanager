@@ -34,11 +34,10 @@ session_start();
 		$data=array(
 			'email_address'=>$this->input->post('email')
 		); 
+		print_r($data);
 		$check=$this->login_model->forgot_pass($data);
 		if($check){
-			$link = base_url().'recovry/recover';
-			email($data['email'], $link);
-		 $this->load->view('pages/sendpasslink');
+			$this->load->view('pages/sendpasslink');
 		}
 		else{ 
 			echo "email address not match";
