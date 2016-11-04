@@ -72,12 +72,7 @@
     <div class="row">
     <div class="col-lg-12 animated-panel zoomIn" style="animation-delay: 0.4s;">
         <div class="hpanel">
-            <div class="panel-heading">
-                <div class="panel-tools">
-                    <a class="showhide"><i class="fa fa-chevron-up"></i></a>
-                </div>
-                This is a bordered striped and responsive table
-            </div>
+            
             <div class="panel-body">
             <form method="post" action="#">
             	<div class="table-responsive">                
