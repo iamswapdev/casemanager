@@ -40,9 +40,6 @@
 <![endif]-->
 
 <!-- Header -->
-<<<<<<< HEAD
-<?php include 'sidebar.php';?>
-=======
 <div id="header">
     <div class="color-line">
     </div>
@@ -185,7 +182,6 @@
     </nav>
 </div>
 
->>>>>>> origin/master
 <!-- Navigation -->
 <?php include 'sidebar.php';?>
 
