@@ -55,11 +55,11 @@
         <div class="col-lg-5 animated-panel zoomIn" style="animation-delay: 0.2s;">
         	<div class="panel-body">
                 <form method="get" class="form-horizontal">
-                    <div class="form-group"><label class="col-sm-2 control-label">Role Name</label>
-                        <div class="col-sm-10"><input type="text" class="form-control"></div>
+                    <div class="form-group"><label class="col-sm-3 control-label">Role Name</label>
+                        <div class="col-sm-9"><input type="text" class="form-control"></div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-8 col-sm-offset-2">
+                        <div class="col-sm-8 col-sm-offset-3">
                             <button class="btn btn-default" type="submit">Cancel</button>
                             <button type="button" class="btn w-xs btn-info create">Add</button>
                         </div>
