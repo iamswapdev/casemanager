@@ -49,7 +49,7 @@
             <li>
                 <a href="#"><span class="nav-label">Master</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>admin/dataentry">Data Entry</a></li>
+                    <li><a href="<?php echo base_url();?>dataentry">Data Entry</a></li>
                 </ul>
             </li>
              <li>

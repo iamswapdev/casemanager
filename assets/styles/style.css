@@ -2576,6 +2576,17 @@ h6 {
   margin-bottom: 5px;
   float: right;
 }
+/*.show-nav:hover{
+  visibility: visible; 
+  display: block; 
+  top: 80px; 
+  height: 21px; 
+  clip: rect(auto, auto, auto, auto); 
+  left: 189px; z-index: 1;
+}
+.show-nav .hide{
+	display:none;
+}*/
 
 @media (max-width: 768px) {
   .navbar-form-custom,
