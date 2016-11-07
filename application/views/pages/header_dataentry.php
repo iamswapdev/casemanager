@@ -14,11 +14,19 @@
                           <li class="nav nav-second-level hide"> Add case info</li>
                           <li class="nav nav-second-level hide"> Edit case info</li>
                         </ul></li>
-                    <li><a href="<?php echo base_url();?>dataentry/manageusers">Manage Users</a></li>
+                    <li><a href="<?php echo base_url();?>dataentry/provider">Provider</a></li>
                     
-                    <li><a href="<?php echo base_url();?>dataentry/addnewrole">Add New Role</a></li>
+                    <li><a href="<?php echo base_url();?>dataentry/insurancecompany">Insurance Company</a></li>
                     
-                    <li><a id="ThisLink" href="<?php echo base_url();?>adminprivilege/assignmenu">Assign Menus to Role</a></li>
+                    <li><a id="ThisLink" href="<?php echo base_url();?>dataentry/defendant">Defendant</a></li>
+                    
+                    <li><a id="ThisLink" href="<?php echo base_url();?>dataentry/adjuster">Adjuster</a></li>
+                    
+                    <li><a id="ThisLink" href="<?php echo base_url();?>dataentry/attorney">Attorney</a></li>
+                    
+                    <li><a id="ThisLink" href="<?php echo base_url();?>dataentry/plantiffattorney">Plantiff Attorney</a></li>
+                    
+                    <li><a id="ThisLink" href="<?php echo base_url();?>dataentry/otherentries">Other Entries</a></li>
                     <!--<li class="active">
                         <span>Contacts</span>
                     </li>-->

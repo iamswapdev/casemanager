@@ -8,17 +8,26 @@ session_start();
 			//session_destroy(); 
 			$this->load->view('pages/addcase');	
 		}
-		public function config(){
-			$this->load->view('pages/config');
+		public function provider(){
+			$this->load->view('pages/provider');
 		}
-		public function manageusers(){
-			$this->load->view('pages/manageusers');
+		public function insurancecompany(){
+			$this->load->view('pages/insurancecompany');
 		}
-		public function addnewrole(){
-			$this->load->view('pages/addnewrole');
+		public function defendant(){
+			$this->load->view('pages/defendant');
 		}
-		public function assignmenu(){
-			$this->load->view('pages/assignmenu');
+		public function adjuster(){
+			$this->load->view('pages/adjuster');
+		}
+		public function attorney(){
+			$this->load->view('pages/attorney');
+		}
+		public function plantiffattorney(){
+			$this->load->view('pages/plantiffattorney');
+		}
+		public function otherentries(){
+			$this->load->view('pages/otherentries');
 		}	
 	} 	
 ?>
