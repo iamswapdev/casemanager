@@ -42,7 +42,7 @@
             <li>
                 <a href="#"><span class="nav-label">Search</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>admin/search">Search</a></li>
+                    <li><a href="<?php echo base_url();?>search">Search</a></li>
                     <li><a href="<?php echo base_url();?>admin/advancedsearch">Advanced Search</a></li>
                 </ul>
             </li>

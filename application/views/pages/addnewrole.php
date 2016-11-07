@@ -46,7 +46,7 @@
 <?php include 'sidebar.php';?>
 <!-- Main Wrapper -->
 <div id="wrapper">
-<?php include 'adminpri_header.php';?>
+<?php include 'header_adminprivilege.php';?>
 
 <div class="content animate-panel">
 	<h4>Add New Role</h4>

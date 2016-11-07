@@ -7,7 +7,7 @@
                 </div>
             </a>
 
-            <div id="hbreadcrumb" class="pull-right m-t-lg">
+            <div id="hbreadcrumb" style="margin-top:-10px;" class="pull-right">
                 <ol class="hbreadcrumb breadcrumb">
                     <li><a href="<?php echo base_url();?>adminprivilege/config">Config</a></li>
                     

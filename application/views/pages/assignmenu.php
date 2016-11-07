@@ -47,7 +47,7 @@
 <!-- Main Wrapper -->
 <div id="wrapper">
 
-<?php include 'adminpri_header.php';?>
+<?php include 'header_adminprivilege.php';?>
 
 <div class="content animate-panel">
 	<div class="form-group"><label class="col-sm-2 control-label">Select Role Name :</label>

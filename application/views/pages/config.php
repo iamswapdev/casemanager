@@ -46,7 +46,7 @@
 <?php include 'sidebar.php';?>
 <!-- Main Wrapper -->
 <div id="wrapper">
-<?php include 'adminpri_header.php';?>
+<?php include 'header_adminprivilege.php';?>
 
 <div class="content animate-panel">
 
@@ -62,9 +62,39 @@
             <div class="panel-body">
                 <form method="post" action="#">
                     <div class="table-responsive">                
-                        <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+                        <table cellpadding="1" cellspacing="1" class="table">
                             
                             <tbody>
+                            <tr>
+                            	<th style="border:none;">
+                                	<div class="col-sm-10">Select Users</div>
+                                </th>
+                                <th style="border:none;">
+                                	<div class="col-sm-10"></div>
+                                </th>
+                                <th style="border:none;">
+                                	<div class="col-sm-10">Select Provider</div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td style="border:none;">
+                                	<div class="col-sm-10"><select class="form-control m-b" name="account" multiple>
+                                        <option>option 1</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td style="border:none;">
+                                	<button type="button" class="btn w-xs btn-info create">Create Desk</button>
+                                    
+                                </td>
+                                <td style="border:none;">
+                                	<div class="col-sm-10"><select class="form-control m-b" name="account" multiple>
+                                    	<option>Admin</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            
                             <tr>
                                 <td style="border:none;">
                                 	<div class="col-sm-10">Select Users.<select class="form-control m-b" name="account" multiple>
@@ -72,13 +102,30 @@
                                         </select>
                                     </div>
                                 </td>
-                                <td style="text-align:center;">
-                                	<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.4s;">         	 
-                                        <div class="col-sm-10"><button type="button" class="btn w-xs btn-info create">Create Desk</button>
-                                         </div>
+                                <td style="border:none;">
+                                	<button type="button" class="btn w-xs btn-info create">Create Desk</button>
+                                    
+                                </td>
+                                <td style="border:none;">
+                                	<div class="col-sm-10">Select Provider<select class="form-control m-b" name="account" multiple>
+                                    	<option>Admin</option>
+                                        </select>
                                     </div>
                                 </td>
-                                <td>
+                            </tr>
+                            
+                            <tr>
+                                <td style="border:none;">
+                                	<div class="col-sm-10">Select Users.<select class="form-control m-b" name="account" multiple>
+                                        <option>option 1</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td style="border:none;">
+                                	<button type="button" class="btn w-xs btn-info create">Create Desk</button>
+                                    
+                                </td>
+                                <td style="border:none;">
                                 	<div class="col-sm-10">Select Provider<select class="form-control m-b" name="account" multiple>
                                     	<option>Admin</option>
                                         </select>
@@ -88,9 +135,6 @@
                             </tbody>
                         </table>
                     
-                    </div>
-                    <div class="form-group">
-                        <button type="button" class="btn w-xs btn-info create">Delete Checked</button>
                     </div>
                 </form>
             </div>

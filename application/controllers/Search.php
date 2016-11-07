@@ -1,10 +1,14 @@
 <?php
-class Login_controller extends CI_Controller{
-		
-	 public function index(){
-		//session_destroy(); 
-	  $this->load->view('pages/login');
-	  
-	 }
- }
+session_cache_limiter('private_no_expire');
+session_start();
+
+class Search extends CI_Controller{
+
+	public function index(){
+		$this->load->view('pages/search');
+	}
+	public function advancedsearch(){
+		$this->load->view('pages/advancedsearch');
+	}
+}
 ?>
