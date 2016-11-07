@@ -72,8 +72,7 @@
                 <option>option 4</option>
               </select>
             </div>
-          </div> 
-                      
+          </div>          
       </div>
     </div>     
   </div> 
@@ -84,7 +83,7 @@
       <div class="hpanel"> 
         <div class="panel-body">
           <h4>Injured Party Information </h4>
-          <div class="form-group"><label class="col-sm-2 control-label">Name</label>
+          <div class="form-group form-horizontal"><label class="col-sm-2 control-label">Name</label>
             <div class="col-sm-2">
                 <input type="text" placeholder="Last Name" class="form-control m-b"> 
                 <!--<input type="text" placeholder=".input-sm" class="form-control input-sm">-->
@@ -104,8 +103,8 @@
       <div class="hpanel"> 
         <div class="panel-body">
           <h4>Insured Party Information</h4>
-          <div class="checkbox"><label> <input type="checkbox" class="i-checks">Check here if same as Patient Information.</label></div>
-          <div class="form-group"><label class="col-sm-2 control-label">Name</label>
+          <div class="checkbox"><label> <input type="checkbox" class="i-checks">Check here if same as Patient Information.</label>          </div>
+          <div class="form-group form-horizontal"><label class="col-sm-2 control-label">Name</label>
             <div class="col-sm-2">
               <input type="text" placeholder="Last Name" class="form-control m-b"> 
                 <!--<input type="text" placeholder=".input-sm" class="form-control input-sm">-->
@@ -115,12 +114,154 @@
                 <!--<input type="text" placeholder=".input-sm" class="form-control input-sm">-->
             </div>
           </div>
-          </form>
         </div>  
       </div>
     </div>
   </div>   
 
+  <div class="row">
+    <div class="col-lg-12 animated-panel zoomIn" style="animation-delay: 0.4s;">
+      <div class="hpanel"> 
+        <div class="panel-body form-horizontal">
+          <h4>Insurance Information</h4>
+          <div class="form-group form-horizontal"><label class="col-sm-2 control-label">Provider Name</label>
+             <div class="col-sm-10"><input type="text" class="form-control"></div>
+          </div>           
+          <div class="form-group form-horizontal"><label class="col-sm-2 control-label"></label>
+            <div class="col-sm-10"><select class="form-control m-b" name="account">
+                <option>option 1</option>
+                <option>option 2</option>
+                <option>option 3</option>
+                <option>option 4</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group form-horizontal"><label class="col-sm-2 control-label">Policy #</label>
+            <div class="col-sm-2">
+              <input type="text" placeholder="Policy" class="form-control m-b"> 
+                <!--<input type="text" placeholder=".input-sm" class="form-control input-sm">-->
+            </div>
+            <label class="col-sm-2 control-label">Claim #</label>
+            <div class="col-sm-2">
+                <input type="text" placeholder="Claim" class="form-control m-b"> 
+                <!--<input type="text" placeholder=".input-sm" class="form-control input-sm">-->
+            </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>  
+  
+    <div class="row">
+    <div class="col-lg-12 animated-panel zoomIn" style="animation-delay: 0.4s;">
+      <div class="hpanel"> 
+        <div class="panel-body">
+          <h4>Accident Information</h4>
+          <div class="form-group form-horizontal"><label class="col-sm-2 control-label">D.O.B</label>
+           <div class="col-sm-2 input-group date">
+             <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+           </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div> 
+  
+  <div class="row">
+    <div class="col-lg-12 animated-panel zoomIn" style="animation-delay: 0.4s;">
+      <div class="hpanel"> 
+        <div class="panel-body form-horizontal">
+          <h4>Other Information </h4>          
+          <div class="form-group form-horizontal"><label class="col-sm-2 control-label">Status</label>
+            <div class="col-sm-2"><select class="form-control m-b" name="account">
+                <option>option 1</option>
+                <option>option 2</option>
+                <option>option 3</option>
+                <option>option 4</option>
+              </select>
+            </div>
+            <label class="col-sm-2 control-label"> Index/AAA #</label>
+            <div class="col-sm-2"><select class="form-control m-b" name="account">
+                <option>option 1</option>
+                <option>option 2</option>
+                <option>option 3</option>
+                <option>option 4</option>
+              </select>
+            </div>
+             <label class="col-sm-2 control-label">Court Name</label>
+            <div class="col-sm-2"><select class="form-control m-b" name="account">
+                <option>option 1</option>
+                <option>option 2</option>
+                <option>option 3</option>
+                <option>option 4</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group form-horizontal set-bg">
+            <div class="col-sm-1 ">
+            <label class="control-label">D.O.S-Start</label>
+             <input id="datapicker2" type="text" value="02/16/2012" class="form-control">
+            </div>
+            <div class="col-sm-1 ">
+            <label class="control-label">D.O.S.-End</label>
+             <input id="datapicker3" type="text" value="02/16/2012" class="form-control">
+            </div>
+            <div class="col-sm-1">
+            <label class="control-label">Claim Amt.</label>
+            <input type="text" class="form-control">
+            </div>
+            <div class="col-sm-1">
+            <label class="control-label">Paid Amt.</label>
+            <input type="text" class="form-control">
+            </div>
+            <div class="col-sm-2">
+            <label class="control-label">Date Bill Sent</label>
+             <input id="datapicker4" type="text" value="02/16/2012" class="form-control">
+            </div>
+            <div class="col-sm-2 ">
+            <label class="control-label">Service Type</label>
+               <div><select class="form-control m-b" name="account">
+                 <option>option 1</option>
+                 <option>option 2</option>
+                 <option>option 3</option>
+                 <option>option 4</option>
+               </select>
+              </div>
+            </div>
+            <div class="col-sm-2">
+            <label class="control-label">Denial Reason</label>
+              <div><select class="form-control m-b" name="account">
+                  <option>option 1</option>
+                  <option>option 2</option>
+                  <option>option 3</option>
+                  <option>option 4</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-1" style="text-align:center">
+            <label class="control-label col-sm-12">Delete</label>
+             <span><a href="#">Add</a></span>
+            </div>
+          </div>
+          <div class="form-group form-horizontal">
+            <div class="col-sm-2">
+              <button type="button" class="btn w-xs btn-info create">Delete Checked</button>
+            </div>
+          </div>
+          <div class="form-group form-horizontal"><label class="col-sm-2 control-label">Memo</label>
+            <div class="col-sm-6">
+              <textarea rows="5" id="" class="form-control" name=""></textarea>
+                <!--<input type="text" placeholder=".input-sm" class="form-control input-sm">-->
+            </div>
+            <div class="col-sm-12">
+            <button type="button" class="btn w-xs btn-info create">Save</button>
+          </div>
+      
+          </form>
+        </div>  
+      </div>
+    </div>
+  </div>     
 
     <!-- Right sidebar -->
     <div id="right-sidebar" class="animated fadeInRight">
@@ -145,9 +286,19 @@
 <script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
+<script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
 
 <!-- App scripts -->
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
-
+<script>
+$(function(){
+$('#datapicker2').datepicker();
+$('#datapicker3').datepicker();
+$('#datapicker4').datepicker();
+$('#datapicker5').datepicker();
+  $('.input-group.date').datepicker({ });
+  $('.input-daterange').datepicker({ });
+});
+</script>
 </body>
 </html>

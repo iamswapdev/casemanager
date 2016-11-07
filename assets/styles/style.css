@@ -2587,6 +2587,12 @@ h6 {
 .show-nav .hide{
 	display:none;
 }*/
+.form-group .manage-top{
+	top:16px;
+}
+.set-bg{
+	background-color:#ccc;
+}
 
 @media (max-width: 768px) {
   .navbar-form-custom,
