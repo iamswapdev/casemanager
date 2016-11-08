@@ -12,19 +12,19 @@ session_start();
 			$this->load->view('pages/provider');
 		}
 		public function insurancecompany(){
-			$this->load->view('pages/insurancecompany');
+			$this->load->view('pages/addinc_company');
 		}
 		public function defendant(){
-			$this->load->view('pages/defendant');
+			$this->load->view('pages/add_defendant_info');
 		}
 		public function adjuster(){
-			$this->load->view('pages/adjuster');
+			$this->load->view('pages/add_adjuster_info');
 		}
 		public function attorney(){
-			$this->load->view('pages/attorney');
+			$this->load->view('pages/add_attorney');
 		}
 		public function plantiffattorney(){
-			$this->load->view('pages/plantiffattorney');
+			$this->load->view('pages/add_laintiff_attorney'); 
 		}
 		public function otherentries(){
 			$this->load->view('pages/otherentries');
