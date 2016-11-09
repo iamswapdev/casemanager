@@ -8,6 +8,9 @@ session_start();
 			//session_destroy(); 
 			$this->load->view('pages/addcase');	
 		}
+		public function addcase(){
+			$this->load->view('pages/addcase');
+		}
 		public function provider(){
 			$this->load->view('pages/provider');
 		}

@@ -217,7 +217,7 @@
 <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
-
+<script src="<?php echo base_url();?>assets/vendor/addactive/addactive.js"></script>
 
 <!-- App scripts -->
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>

@@ -264,6 +264,10 @@
                         </form>
                       </div>
                     </div>
+					<div class="col-sm-12">
+                        <button type="button" class="btn w-xs btn-info create">Submit</button>
+                    </div>
+                    
                   </div>
                 </div>
               </div>
@@ -317,7 +321,8 @@
 <script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script> 
 <script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script> 
 <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script> 
+<script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
+<script src="<?php echo base_url();?>assets/vendor/addactive/addactive.js"></script> 
 
 <!-- App scripts --> 
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>

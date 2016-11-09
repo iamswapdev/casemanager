@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/helper.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/styles/style.css">
+    
 
 </head>
 <body>
@@ -64,7 +65,7 @@
             </ul>
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane active">
-                    <div class="panel-body col-sm-6">
+                    <div class="panel-body">
                     <span><h4>Denial Types Add/Edit</h4></span>
                          <table id="example2" class="display table table-bordered align-table ">
                          <thead>
@@ -174,7 +175,7 @@
                     </div>
                 
                 <div id="tab-4" class="tab-pane">
-                    <div class="panel-body col-sm-8">
+                    <div class="panel-body">
                       <span><h4>Status Types Add/Edit</h4></span>
                          <table id="example4" class="display table table-bordered align-table ">
                          <thead>
@@ -208,7 +209,7 @@
                     </div>
                 </div>
 				 <div id="tab-5" class="tab-pane">
-                    <div class="panel-body col-sm-10">
+                    <div class="panel-body">
                       <span><h4>Document Types Add/Edit</h4></span>
                          <table id="example4" class="display table table-bordered align-table ">
                          <thead>
@@ -277,7 +278,7 @@
 <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
-
+<script src="<?php echo base_url();?>assets/vendor/addactive/addactive.js"></script>
 <!-- App scripts -->
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 </body>

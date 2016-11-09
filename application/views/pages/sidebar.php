@@ -33,47 +33,47 @@
         </div>
 
         <ul class="nav" id="side-menu">
-            <li>
+            <li class="adminprivilege">
                 <a href="#"><span class="nav-label">Admin</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>adminprivilege">Admin Privileges</a></li>
+                    <li><a href="<?php echo base_url();?>adminprivilege/config" onclick="addactive(this);">Admin Privileges</a></li>
                 </ul>
             </li>
-            <li>
+            <li class="search">
                 <a href="#"><span class="nav-label">Search</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>search">Search</a></li>
-                    <li><a href="<?php echo base_url();?>admin/advancedsearch">Advanced Search</a></li>
+                    <li><a href="<?php echo base_url();?>search/searchs">Search</a></li>
+                    <li><a href="<?php echo base_url();?>search/advancedsearch">Advanced Search</a></li>
                 </ul>
             </li>
-            <li>
+            <li class="dataentry">
                 <a href="#"><span class="nav-label">Master</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>dataentry">Data Entry</a></li>
+                    <li><a href="<?php echo base_url();?>dataentry/addcase">Data Entry</a></li>
                 </ul>
             </li>
-             <li>
+             <li class="workarea">
                 <a href="#"><span class="nav-label">Work Area</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>admin/caseinformation">Case Information</a></li>
-                    <li><a href="<?php echo base_url();?>admin/dataentry_workarea">Data Entry(Case Entry Only)</a></li>
-                    <li><a href="<?php echo base_url();?>admin/fileinsert">File Insert</a></li>
-                    <li><a href="<?php echo base_url();?>admin/workflowreport">WorkFlow Report</a></li>
-                    <li><a href="<?php echo base_url();?>admin/calendar">Calendar</a></li>
+                    <li><a href="<?php echo base_url();?>workarea/caseinformation">Case Information</a></li>
+                    <li><a href="<?php echo base_url();?>workarea/dataentry_workarea">Data Entry(Case Entry Only)</a></li>
+                    <li><a href="<?php echo base_url();?>workarea/fileinsert">File Insert</a></li>
+                    <li><a href="<?php echo base_url();?>workarea/workflowreport">WorkFlow Report</a></li>
+                    <li><a href="<?php echo base_url();?>workarea/calendar">Calendar</a></li>
                 </ul>
             </li>
-            <li>
+            <li class="workdesk">
                 <a href="#"><span class="nav-label">WorkDesk</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>admin/workdesk">WorkDesk</a></li>
+                    <li><a href="<?php echo base_url();?>workdesk/workdesks">WorkDesk</a></li>
                 </ul>
             </li>
-             <li>
+             <li class="financials">
                 <a href="#"><span class="nav-label">Financials</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>admin/financials">Financials</a></li>
-                    <li><a href="<?php echo base_url();?>admin/reports">Reports</a></li>
-                    <li><a href="<?php echo base_url();?>admin/rapidfunds">Rapid Funds</a></li>
+                    <li><a href="<?php echo base_url();?>financials/financial">Financials</a></li>
+                    <li><a href="<?php echo base_url();?>financials/reports">Reports</a></li>
+                    <li><a href="<?php echo base_url();?>financials/rapidfunds">Rapid Funds</a></li>
                 </ul>
             </li>
              <li>

@@ -9,7 +9,7 @@
 
             <div id="hbreadcrumb" style="margin-top:-10px;" class="pull-right">
                 <ol class="hbreadcrumb breadcrumb">
-                    <li class="show-nav"><a href="<?php echo base_url();?>dataentry">Add case info</a>
+                    <li class="show-nav"><a href="<?php echo base_url();?>dataentry/addcase">Add case info</a>
                     	<ul>
                           <li class="nav nav-second-level hide"> Add case info</li>
                           <li class="nav nav-second-level hide"> Edit case info</li>
