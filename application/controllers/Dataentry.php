@@ -27,7 +27,7 @@ session_start();
 			$this->load->view('pages/add_laintiff_attorney'); 
 		}
 		public function otherentries(){
-			$this->load->view('pages/otherentries');
+			$this->load->view('pages/other_entries');
 		}	
 	} 	
 ?>

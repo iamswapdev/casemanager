@@ -2593,6 +2593,12 @@ h6 {
 .set-bg{
 	background-color:#ccc;
 }
+.tab-panel{
+	border: 1px solid #e4e5e7!important;
+}
+.align-table th, .align-table tr td{
+	text-align:center;	
+}
 
 @media (max-width: 768px) {
   .navbar-form-custom,
