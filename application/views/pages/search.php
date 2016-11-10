@@ -61,11 +61,11 @@
                 <div class="col-sm-2">
                   <input type="text" class="form-control input-sm">
                 </div>
-                <label class="col-sm-2 control-label">Old Case ID</label>
+                <label class="col-sm-2 control-label">Injured Last Name</label>
                 <div class="col-sm-2">
                   <input type="text" class="form-control input-sm">
                 </div>
-                <label class="col-sm-2 control-label">Injured Last Name</label>
+                 <label class="col-sm-2 control-label">Insured First Name</label>
                 <div class="col-sm-2">
                   <input type="text" class="form-control input-sm">
                 </div>
@@ -80,10 +80,11 @@
                 <div class="col-sm-2">
                   <input type="text" class="form-control input-sm">
                 </div>
-                <label class="col-sm-2 control-label">Insured First Name</label>
+                 <label class="col-sm-2 control-label">Index/AAA Number</label>
                 <div class="col-sm-2">
                   <input type="text" class="form-control input-sm">
                 </div>
+               
               </div>
               
               <div class="form-group form-horizontal">
@@ -95,15 +96,19 @@
                 <div class="col-sm-2">
                   <input type="text" class="form-control input-sm">
                 </div>
-                <label class="col-sm-2 control-label">Index/AAA Number</label>
+                 <label class="col-sm-2 control-label">Exclude ID's</label>
                 <div class="col-sm-2">
                   <input type="text" class="form-control input-sm">
                 </div>
+               
               </div>
               
               <div class="form-group form-horizontal">
                 <label class="col-sm-2 control-label">ID Range</label>
-                <div class="col-sm-2">
+                <div class="col-sm-1">
+                  <input type="text" class="form-control input-sm">
+                </div>  
+                <div class="col-sm-1">  
                   <input type="text" class="form-control input-sm">
                 </div>
                 <label class="col-sm-2 control-label">Status</label>
@@ -113,10 +118,7 @@
                     <option>No</option>
                   </select>
                 </div>
-                <label class="col-sm-2 control-label">Exclude ID's</label>
-                <div class="col-sm-2">
-                  <input type="text" class="form-control input-sm">
-                </div>
+               
               </div>
               
               <div class="form-group form-horizontal">

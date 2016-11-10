@@ -61,7 +61,9 @@
             </div>
             <div class="panel-body">
                 <form method="post" action="#">
-                    <div class="table-responsive">                
+                    <div class="table-responsive">  
+                   
+              
                         <table cellpadding="1" cellspacing="1" class="table">
                             
                             <tbody>
@@ -78,8 +80,35 @@
                             </tr>
                             <tr>
                                 <td style="border:none;">
+                                
                                 	<div class="col-sm-10"><select class="form-control m-b" name="account" multiple>
-                                        <option>option 1</option>
+                                       <?php foreach($result  as $r): ?>
+                                        <option> <?php echo $r['UserName']; ?></option>
+                                       <?php endforeach; ?>
+                                        </select>
+                                     
+                                    </div>
+                                </td>
+                                <td style="border:none;">
+                                	<button type="button" class="btn w-xs btn-info create">Create Desk</button>
+                                    
+                                </td>
+                                <td style="border:none;">
+                                    <div class="col-sm-10"><select class="form-control m-b" name="account" multiple>
+                                   <?php /*?> <?php foreach($result1  as $r): ?>
+                                        <option> <?php echo $r['Provider_Name']; ?></option>
+                                    <?php endforeach; ?><?php */?>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td style="border:none;">
+                                	<div class="col-sm-10">Select Users.<select class="form-control m-b" name="account" multiple>
+                                        <?php foreach($result  as $r): ?>
+                                        <option> <?php echo $r['UserName']; ?></option>
+                                       <?php endforeach; ?>
                                         </select>
                                     </div>
                                 </td>
@@ -88,7 +117,7 @@
                                     
                                 </td>
                                 <td style="border:none;">
-                                	<div class="col-sm-10"><select class="form-control m-b" name="account" multiple>
+                                	<div class="col-sm-10">Select Insurance Company<select class="form-control m-b" name="account" multiple>
                                     	<option>Admin</option>
                                         </select>
                                     </div>
@@ -98,7 +127,9 @@
                             <tr>
                                 <td style="border:none;">
                                 	<div class="col-sm-10">Select Users.<select class="form-control m-b" name="account" multiple>
-                                        <option>option 1</option>
+                                        <?php foreach($result  as $r): ?>
+                                        <option> <?php echo $r['UserName']; ?></option>
+                                       <?php endforeach; ?>
                                         </select>
                                     </div>
                                 </td>
@@ -107,26 +138,7 @@
                                     
                                 </td>
                                 <td style="border:none;">
-                                	<div class="col-sm-10">Select Provider<select class="form-control m-b" name="account" multiple>
-                                    	<option>Admin</option>
-                                        </select>
-                                    </div>
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td style="border:none;">
-                                	<div class="col-sm-10">Select Users.<select class="form-control m-b" name="account" multiple>
-                                        <option>option 1</option>
-                                        </select>
-                                    </div>
-                                </td>
-                                <td style="border:none;">
-                                	<button type="button" class="btn w-xs btn-info create">Create Desk</button>
-                                    
-                                </td>
-                                <td style="border:none;">
-                                	<div class="col-sm-10">Select Provider<select class="form-control m-b" name="account" multiple>
+                                	<div class="col-sm-10">Select Status<select class="form-control m-b" name="account" multiple>
                                     	<option>Admin</option>
                                         </select>
                                     </div>
@@ -134,6 +146,7 @@
                             </tr>
                             </tbody>
                         </table>
+                        
                     
                     </div>
                 </form>

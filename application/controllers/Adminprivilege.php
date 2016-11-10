@@ -9,7 +9,23 @@ session_start();
 			$this->load->view('pages/config');	
 		}
 		public function config(){
-			$this->load->view('pages/config');
+			$data = array();
+			$user_data = array();
+			$this->load->model('admin_privilege_model');
+			
+			$data['result']=$this->admin_privilege_model->get_provider();
+			if($data){
+				$this->load->view('pages/config',$data);
+			}else{
+			}
+			
+			$user_data['result']=$this->admin_privilege_model->get_user();
+			if($user_data){
+				$this->load->view('pages/config',$user_data);
+			}else{
+			}
+			
+			
 		}
 		public function manageusers(){
 			$this->load->view('pages/manageusers');

@@ -63,7 +63,7 @@
                 </div>
                 <div class="panel-body">
                   <div class="operation-buttons">
-                    <button type="button" class="btn w-xs btn-info create">Create User</button>
+                    <button type="button" class="btn w-xs btn-info create" data-toggle="modal" data-target="#myModal">Create User</button>
                     <button type="button" class="btn w-xs btn-info delete">Delete User</button>
                   </div>
                     <table id="example2" class="display table table-bordered">
@@ -172,7 +172,22 @@
 
                 </div>
             </div>
-
+            <div class="modal fade" id="myModal" role="dialog">
+    			<div class="modal-dialog model-popup">
+                
+                <div class="modal-content receiving-coin-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"> &times;</button>
+          <h4 class="modal-title">Create User</h4>
+        </div>
+          <div class="modal-body">
+        	<div class="row">
+               aslvgkdhnnnnnnnnnnrfvauihsbdbvfaswuyebvfuaeswbvfucvobayu
+            </div>
+          </div>
+       </div>
+	 </div>
+   </div>    	    
             <div class="hpanel">
                 <div class="panel-heading">
                     <div class="panel-tools">
