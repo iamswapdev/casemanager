@@ -1,9 +1,9 @@
 <?php
-	session_cache_limiter('private_no_expire');
+	/*session_cache_limiter('private_no_expire');
 	if( !isset($_SESSION["username"]) && !isset($_SESSION["password"])){
 		
 		header('Location: admin');
-	}
+	}*/
 ?>
 <!DOCTYPE html>
 <html>
