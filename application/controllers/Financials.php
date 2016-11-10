@@ -1,24 +1,51 @@
 <?php
 session_cache_limiter('private_no_expire');
-session_start();
 
 	class Financials extends CI_Controller{
 	
+		Public function __construct(){
+			parent::__construct();
+			$this->load->library('session');
+		}
 		public function index(){
-			//session_destroy(); 
-			$this->load->view('pages/financials');	
+			$this->session->all_userdata();
+			if(isset($this->session->userdata['logged_in'])){
+				$this->load->view('pages/financials');
+			}else{
+				$this->load->view('pages/login');
+			} 		
 		}
 		public function financial(){
-			$this->load->view('pages/financials');
+			$this->session->all_userdata();
+			if(isset($this->session->userdata['logged_in'])){
+				$this->load->view('pages/financials');
+			}else{
+				$this->load->view('pages/login');
+			}
 		}
 		public function reports(){
-			$this->load->view('pages/reports');
+			$this->session->all_userdata();
+			if(isset($this->session->userdata['logged_in'])){
+				$this->load->view('pages/reports');
+			}else{
+				$this->load->view('pages/login');
+			}
 		}
 		public function rapidfunds(){
-			$this->load->view('pages/rapidfunds');
+			$this->session->all_userdata();
+			if(isset($this->session->userdata['logged_in'])){
+				$this->load->view('pages/rapidfunds');
+			}else{
+				$this->load->view('pages/login');
+			}
 		}
 		public function defendant(){
-			$this->load->view('pages/add_defendant_info');
+			$this->session->all_userdata();
+			if(isset($this->session->userdata['logged_in'])){
+				$this->load->view('pages/add_defendant_info');
+			}else{
+				$this->load->view('pages/login');
+			}
 		}	
 	} 	
 ?>

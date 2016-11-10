@@ -1,27 +1,59 @@
 <?php
 session_cache_limiter('private_no_expire');
-session_start();
 
 	class Workarea extends CI_Controller{
 	
+		Public function __construct(){
+			parent::__construct();
+			$this->load->library('session');
+		}
 		public function index(){
-			//session_destroy(); 
-			$this->load->view('pages/caseinformation');	
+			$this->session->all_userdata();
+			if(isset($this->session->userdata['logged_in'])){
+				$this->load->view('pages/caseinformation');	
+			}else{
+				$this->load->view('pages/login');
+			}
 		}
 		public function caseinformation(){
-			$this->load->view('pages/caseinformation');
+			$this->session->all_userdata();
+			if(isset($this->session->userdata['logged_in'])){
+				$this->load->view('pages/caseinformation');
+			}else{
+				$this->load->view('pages/login');
+			}
 		}
 		public function dataentry_workarea(){
-			$this->load->view('pages/dataentry_workarea');
+			$this->session->all_userdata();
+			if(isset($this->session->userdata['logged_in'])){
+				$this->load->view('pages/dataentry_workarea');
+			}else{
+				$this->load->view('pages/login');
+			}
 		}
 		public function fileinsert(){
-			$this->load->view('pages/fileinsert');
+			$this->session->all_userdata();
+			if(isset($this->session->userdata['logged_in'])){
+				$this->load->view('pages/fileinsert');	
+			}else{
+				$this->load->view('pages/login');
+			}
 		}
 		public function workflowreport(){
-			$this->load->view('pages/workflowreport');
+			$this->session->all_userdata();
+			if(isset($this->session->userdata['logged_in'])){
+				$this->load->view('pages/workflowreport');
+			}else{
+				$this->load->view('pages/login');
+			}
 		}
 		public function calendar(){
-			$this->load->view('pages/calendar');
+			$this->session->all_userdata();
+			if(isset($this->session->userdata['logged_in'])){
+				$this->load->view('pages/calendar');
+			}else{
+				$this->load->view('pages/login');
+			}
 		}	
 	} 	
 ?>

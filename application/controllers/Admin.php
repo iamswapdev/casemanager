@@ -1,99 +1,180 @@
 <?php
 session_cache_limiter('private_no_expire');
-session_start();
 	class Admin extends CI_Controller{
 		
-	 public function index(){
-		//session_destroy(); 
-	  $this->load->view('pages/login');
-	  
-	 }
-	 public function dashboard()
-	 { 
-	 
+	Public function __construct(){
+		parent::__construct();
+		$this->load->library('session');
+	}
+	public function index(){
+		//$this->load->library('session');
+		$this->load->view('pages/login');
+	}
+	public function dashboard()
+	{ 	
 		$this->load->model('login_model');
 		$data=array(
 			'username'=>$this->input->post('username'),
 			'password'=>$this->input->post('password'),
 		); 
-	    $check=$this->login_model->autho($data);
-	    if($check){
-			$_SESSION["username"] = $data['username'] ;
-			$_SESSION["password"] = $data['password'];
+		
+		$check=$this->login_model->autho($data);
+		if($check){
+			$session_data = array(
+				'username'  => $data['username'],
+				'password'     => $data['password'],
+				'logged_in' => TRUE
+			);
 			
+			$session_set=$this->session->set_userdata('logged_in', $session_data);
 			$this->load->view('pages/index');
-	   }else{
+		}else{
 			$this->load->view('pages/error_one');
-	   }		
-	 }
-	 public function forgotPassword(){
-		 $this->load->view('pages/forgotpassword');
-	 }
-	 public function emailAuth(){
+		}		
+	}
+	public function forgotPassword(){
+		$this->load->view('pages/forgotpassword');
+	}
+	public function emailAuth(){
 		$this->load->model('login_model');
 		$data=array(
 			'email_address'=>$this->input->post('email')
 		); 
+		
 		$check=$this->login_model->forgot_pass($data);
+		
 		if($check){
 			$this->load->view('pages/sendpasslink');
 		}
 		else{ 
 			$this->load->view('pages/errorpasslink');
 		}
-	 }
-	 public function passAuth(){
-		 echo "Password is successfully created...";
-	 }
-	 public function logout(){
-		 session_destroy();
-		 $this->load->view('pages/login');
-	 }
+	}
+	public function passAuth(){
+		echo "Password is successfully created...";
+	}
+	public function logout(){
+		$this->session->sess_destroy();
+		$this->load->view('pages/login');
+	}
+	
+	public function adminprivilege(){
+		$this->session->all_userdata();
+		if(isset($this->session->userdata['logged_in'])){
+			$this->load->view('pages/adminprivilege');
+		}else{
+			$this->load->view('pages/login');
+		}
+		
+	}
+	public function dataentry(){
+		$this->session->all_userdata();
+		if(isset($this->session->userdata['logged_in'])){
+			$this->load->view('pages/dataentry');
+		}else{
+			$this->load->view('admin');
+		}
+		
+	}
+	public function search(){
+		$this->session->all_userdata();
+		if(isset($this->session->userdata['logged_in'])){
+			$this->load->view('pages/search');
+		}else{
+			$this->load->view('admin');
+		}
+	}
+	public function advancedsearch(){
+		$this->session->all_userdata();
+		if(isset($this->session->userdata['logged_in'])){
+			$this->load->view('pages/advancedsearch');
+		}else{
+			$this->load->view('admin');
+		}
+	}
+	public function caseinformation(){
+		$this->session->all_userdata();
+		if(isset($this->session->userdata['logged_in'])){
+			$this->load->view('pages/caseinformation');
+		}else{
+			$this->load->view('admin');
+		}
+	}
+	public function dataentry_workarea(){
+		$this->session->all_userdata();
+		if(isset($this->session->userdata['logged_in'])){
+			$this->load->view('pages/dataentry_workarea');
+		}else{
+			$this->load->view('admin');
+		}
+	}
+	public function fileinsert(){
+		$this->session->all_userdata();
+		if(isset($this->session->userdata['logged_in'])){
+			$this->load->view('pages/fileinsert');
+		}else{
+			$this->load->view('admin');
+		}
+	}
+	public function workflowreport(){
+		$this->session->all_userdata();
+		if(isset($this->session->userdata['logged_in'])){
+			$this->load->view('pages/workflowreport');
+		}else{
+			$this->load->view('admin');
+		}
+	}
+	public function calendar(){
+		$this->session->all_userdata();
+		if(isset($this->session->userdata['logged_in'])){
+			$this->load->view('pages/calendar');
+		}else{
+			$this->load->view('admin');
+		}
+	}
+	public function workdesk(){
+		$this->session->all_userdata();
+		if(isset($this->session->userdata['logged_in'])){
+			$this->load->view('pages/workdesk');
+		}else{
+			$this->load->view('admin');
+		}
+	}
+	public function financials(){
+		$this->session->all_userdata();
+		if(isset($this->session->userdata['logged_in'])){
+			$this->load->view('pages/financials');
+		}else{
+			$this->load->view('admin');
+		}
+	}
+	public function reports(){
+		$this->session->all_userdata();
+		if(isset($this->session->userdata['logged_in'])){
+			$this->load->view('pages/reports');
+		}else{
+			$this->load->view('admin');
+		}
+	}
+	public function rapidfunds(){
+		$this->session->all_userdata();
+		if(isset($this->session->userdata['logged_in'])){
+			$this->load->view('pages/rapidfunds');
+		}else{
+			$this->load->view('admin');
+		}
+		
+	}
+	public function contacts(){
+		$this->session->all_userdata();
+		if(isset($this->session->userdata['logged_in'])){
+			$this->load->view('pages/contacts');
+		}else{
+			$this->load->view('admin');
+		}
+	}
 	 
-	 public function adminprivilege(){
-		 $this->load->view('pages/adminprivilege');
-	 }
-	 public function dataentry(){
-		 $this->load->view('pages/dataentry');
-	 }
-	 public function search(){
-		 $this->load->view('pages/search');
-	 }
-	 public function advancedsearch(){
-		 $this->load->view('pages/advancedsearch');
-	 }
-	 public function caseinformation(){
-		 $this->load->view('pages/caseinformation');
-	 }
-	 public function dataentry_workarea(){
-		 $this->load->view('pages/dataentry_workarea');
-	 }
-	 public function fileinsert(){
-		 $this->load->view('pages/fileinsert');
-	 }
-	 public function workflowreport(){
-		 $this->load->view('pages/workflowreport');
-	 }
-	 public function calendar(){
-		 $this->load->view('pages/calendar');
-	 }
-	 public function workdesk(){
-		 $this->load->view('pages/workdesk');
-	 }
-	 public function financials(){
-		 $this->load->view('pages/financials');
-	 }
-	 public function reports(){
-		 $this->load->view('pages/reports');
-	 }
-	 public function rapidfunds(){
-		 $this->load->view('pages/rapidfunds');
-	 }
-	 public function contacts(){
-		 $this->load->view('pages/contacts');
-	 }
-	 
-  } 
+} 
 	 
 	
 ?>
