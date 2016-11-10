@@ -50,21 +50,87 @@
 <div class="content animate-panel">
 
 	<div class="row">
-    	<div class="col-lg-12">
-        	<div class="hpanel">
-            	<div class="panel-heading">
-                    <div class="panel-tools">
-                        <a class="showhide"><i class="fa fa-chevron-up"></i></a>
-                        <a class="closebox"><i class="fa fa-times"></i></a>
-                    </div>
-                   <h2>Search Results</h2>
+      <div class="col-lg-12">
+        <div class="hpanel">
+          <div class="panel-body tab-panel">
+            <h4>Search</h4>
+            <form method="get" class="form-horizontal">
+              
+              <div class="form-group form-horizontal">
+                <label class="col-sm-2 control-label">Case ID</label>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control input-sm">
                 </div>
-                
-                <div class="panel-body">
-                	hello
+                <label class="col-sm-2 control-label">Old Case ID</label>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control input-sm">
                 </div>
-            </div>
+                <label class="col-sm-2 control-label">Injured Last Name</label>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control input-sm">
+                </div>
+              </div>
+              
+              <div class="form-group form-horizontal">
+                <label class="col-sm-2 control-label">Injured First Name</label>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control input-sm">
+                </div>
+                <label class="col-sm-2 control-label">Insured Last Name</label>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control input-sm">
+                </div>
+                <label class="col-sm-2 control-label">Insured First Name</label>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control input-sm">
+                </div>
+              </div>
+              
+              <div class="form-group form-horizontal">
+                <label class="col-sm-2 control-label">Policy Number</label>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control input-sm">
+                </div>
+                <label class="col-sm-2 control-label">Insurance Claim </label>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control input-sm">
+                </div>
+                <label class="col-sm-2 control-label">Index/AAA Number</label>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control input-sm">
+                </div>
+              </div>
+              
+              <div class="form-group form-horizontal">
+                <label class="col-sm-2 control-label">ID Range</label>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control input-sm">
+                </div>
+                <label class="col-sm-2 control-label">Status</label>
+                <div class="col-sm-2">
+                  <select class="form-control m-b input-sm" name="account">
+                    <option>Yes</option>
+                    <option>No</option>
+                  </select>
+                </div>
+                <label class="col-sm-2 control-label">Exclude ID's</label>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control input-sm">
+                </div>
+              </div>
+              
+              <div class="form-group form-horizontal">
+              	<div class="col-sm-8 col-sm-offset-3">
+                  <button type="button" class="btn w-xs btn-info create">Search</button>
+                  <button class="btn btn-default" type="submit">Reset</button>   
+               </div>
+              </div>
+              
+              
+            </form>
+          </div>
         </div>
+      </div>
     </div>
 	
     <div class="row">
