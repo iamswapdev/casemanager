@@ -2,11 +2,11 @@
     <div id="navigation">
         <div class="profile-picture">
             <a href="<?php echo base_url();?>admin/dashboard">
-                <img src="<?php echo base_url();?>assets/images/profile.jpg" class="img-circle m-b" alt="logo">
+                <img src="<?php echo base_url();?>assets/images/profile1.jpg" class="img-circle m-b" alt="logo">
             </a>
 
             <div class="stats-label text-color">
-                <span class="font-extra-bold font-uppercase">Robert Razer</span>
+                <span class="font-extra-bold font-uppercase"></span>
 
                 <?php /*?><!--<div class="dropdown">
                     <a class="dropdown-toggle" href="#" data-toggle="dropdown">

@@ -52,7 +52,7 @@
   <?php include 'header_dataentry.php';?>
   <div class="content animate-panel">
     <div class="row">
-      <div class="col-lg-10">
+      <div class="col-lg-12">
         <div class="hpanel">
           <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#tab-1">Add Plaintiff Attorney</a></li>
@@ -86,7 +86,7 @@
                   <span>Address</span>
                   <div class="form-group form-horizontal col-sm-12 ">
                     <label class="col-sm-2 control-label">Address</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-8">
                       <textarea rows="5" id="" class="form-control" name=""></textarea>
                     </div>
                   </div>
@@ -97,7 +97,7 @@
                       <!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
                     </div>
                     <label class="col-sm-1 control-label">City</label>
-                    <div class="col-sm-1">
+                    <div class="col-sm-2">
                       <select class="form-control m-b" name="account">
                         <option>option 1</option>
                         <option>option 2</option>
@@ -106,7 +106,7 @@
                       </select>
                     </div>
                     <label class="col-sm-1 control-label">State</label>
-                    <div class="col-sm-1">
+                    <div class="col-sm-2">
                       <select class="form-control m-b" name="account">
                         <option>option 1</option>
                         <option>option 2</option>
@@ -121,11 +121,11 @@
                       <input type="text" placeholder="Ex.abc@pqr.com" class="form-control m-b">
                     </div>
                     <label class="col-sm-1 control-label">Phone</label>
-                    <div class="col-sm-1">
+                    <div class="col-sm-2">
                       <input type="text" placeholder="Ex.000000" class="form-control m-b">
                     </div>
                     <label class="col-sm-1 control-label">Fax</label>
-                    <div class="col-sm-1">
+                    <div class="col-sm-2">
                       <input type="text" placeholder="Ex.11111" class="form-control m-b">
                     </div>
                   </div>

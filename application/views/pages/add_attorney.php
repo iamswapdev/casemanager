@@ -52,7 +52,7 @@
 <?php include 'header_dataentry.php';?>
   <div class="content animate-panel">
     <div class="row">
-      <div class="col-lg-10">
+      <div class="col-lg-12">
         <div class="hpanel">
           <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#tab-1">Add Case Info</a></li>

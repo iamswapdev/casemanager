@@ -53,7 +53,7 @@
 <?php include 'header_dataentry.php';?>
   <div class="content animate-panel">
     <div class="row">
-      <div class="col-lg-10">
+      <div class="col-lg-12">
         <div class="hpanel">
           <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#tab-1">Add Case Info</a></li>
@@ -236,7 +236,7 @@
                     </div>
                   </div>
                   <div class="form-group form-horizontal set-bg">
-                    <div class="col-sm-1 ">
+                    <div class="col-sm-1 align-dostart">
                       <label class="control-label">D.O.S-Start</label>
                       <input id="datapicker2" type="text" value="02/16/2012" class="form-control">
                     </div>

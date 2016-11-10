@@ -468,6 +468,9 @@ body.blank {
   margin-left: -30em;
   height: auto;
 }
+.align-dostart{
+  margin-left:65px
+}
 
 @media (max-width: 420px) {
   .login-container,
