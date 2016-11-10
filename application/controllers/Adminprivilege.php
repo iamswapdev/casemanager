@@ -11,21 +11,16 @@ session_start();
 		public function config(){
 			$data = array();
 			$user_data = array();
+			$all_data = array();
 			$this->load->model('admin_privilege_model');
 			
 			$data['result']=$this->admin_privilege_model->get_provider();
-			if($data){
-				$this->load->view('pages/config',$data);
-			}else{
-			}
+				
+			$data['user_result']=$this->admin_privilege_model->get_user();
 			
-			$user_data['result']=$this->admin_privilege_model->get_user();
-			if($user_data){
-				$this->load->view('pages/config',$user_data);
-			}else{
-			}
-			
-			
+			$data['company_result']=$this->admin_privilege_model->get_company();
+	
+			$this->load->view('pages/config',$data);
 		}
 		public function manageusers(){
 			$this->load->view('pages/manageusers');
