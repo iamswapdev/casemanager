@@ -12,10 +12,17 @@
 			return $data;
 			//($row!=0)? $data: false;
 		}
-			public function get_user()
+		public function get_user()
 		{
 			//echo "get_providerergrt";
 			$query = $this->db->get('dbo_issuetracker_users'); 
+			$data=$query->result_array();
+			return $data;
+		}
+		public function get_company()
+		{
+			//echo "get_providerergrt";
+			$query = $this->db->get('dbo_tblinsurancecompany'); 
 			$data=$query->result_array();
 			return $data;
 		}

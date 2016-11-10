@@ -69,71 +69,73 @@
                             <tbody>
                             <tr>
                             	<th style="border:none;">
-                                	<div class="col-sm-10">Select Users</div>
+                                	<div class="col-sm-4">Select Users</div>
                                 </th>
                                 <th style="border:none;">
-                                	<div class="col-sm-10"></div>
+                                	<div class="col-sm-4"></div>
                                 </th>
                                 <th style="border:none;">
-                                	<div class="col-sm-10">Select Provider</div>
+                                	<div class="col-sm-4">Select Provider</div>
                                 </th>
                             </tr>
                             <tr>
-                                <td style="border:none;">
+                                <td  class="col-sm-4" style="border:none;">
                                 
-                                	<div class="col-sm-10"><select class="form-control m-b" name="account" multiple>
-                                       <?php foreach($result  as $r): ?>
+                                	<div class="col-sm-12"><select class="form-control m-b" name="account" multiple>
+                                       <?php foreach($user_result  as $r): ?>
                                         <option> <?php echo $r['UserName']; ?></option>
                                        <?php endforeach; ?>
                                         </select>
                                      
                                     </div>
                                 </td>
-                                <td style="border:none;">
+                                <td class="col-sm-4" style="border:none; text-align:center">
                                 	<button type="button" class="btn w-xs btn-info create">Create Desk</button>
                                     
                                 </td>
-                                <td style="border:none;">
-                                    <div class="col-sm-10"><select class="form-control m-b" name="account" multiple>
-                                   <?php /*?> <?php foreach($result1  as $r): ?>
+                                <td  class="col-sm-4" style="border:none;">
+                                    <div class="col-sm-12"><select class="form-control m-b" name="account" multiple>
+                                    <?php foreach($result  as $r): ?>
                                         <option> <?php echo $r['Provider_Name']; ?></option>
-                                    <?php endforeach; ?><?php */?>
+                                    <?php endforeach; ?>
                                         </select>
                                     </div>
                                 </td>
                             </tr>
                             
                             <tr>
-                                <td style="border:none;">
-                                	<div class="col-sm-10">Select Users.<select class="form-control m-b" name="account" multiple>
-                                        <?php foreach($result  as $r): ?>
+                                <td  class="col-sm-4" style="border:none;">
+                                	<div class="col-sm-12">Select Users.<select class="form-control m-b" name="account" multiple>
+                                        <?php foreach($user_result as $r): ?>
                                         <option> <?php echo $r['UserName']; ?></option>
                                        <?php endforeach; ?>
                                         </select>
                                     </div>
                                 </td>
-                                <td style="border:none;">
+                                <td class="col-sm-4" style="border:none;text-align:center">
                                 	<button type="button" class="btn w-xs btn-info create">Create Desk</button>
                                     
                                 </td>
-                                <td style="border:none;">
+                                <td class="col-sm-4" style="border:none;">
                                 	<div class="col-sm-10">Select Insurance Company<select class="form-control m-b" name="account" multiple>
-                                    	<option>Admin</option>
+                                    	<?php foreach($company_result as $r): ?>
+                                        <option> <?php echo $r['InsuranceCompany_Name']; ?></option>
+                                       <?php endforeach; ?>
                                         </select>
                                     </div>
                                 </td>
                             </tr>
                             
                             <tr>
-                                <td style="border:none;">
-                                	<div class="col-sm-10">Select Users.<select class="form-control m-b" name="account" multiple>
-                                        <?php foreach($result  as $r): ?>
+                                <td  class="col-sm-4" style="border:none;">
+                                	<div class="col-sm-12">Select Users.<select class="form-control m-b" name="account" multiple>
+                                        <?php foreach($user_result as $r): ?>
                                         <option> <?php echo $r['UserName']; ?></option>
                                        <?php endforeach; ?>
                                         </select>
                                     </div>
                                 </td>
-                                <td style="border:none;">
+                                <td style="border:none;text-align:center">
                                 	<button type="button" class="btn w-xs btn-info create">Create Desk</button>
                                     
                                 </td>

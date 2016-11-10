@@ -172,22 +172,7 @@
 
                 </div>
             </div>
-            <div class="modal fade" id="myModal" role="dialog">
-    			<div class="modal-dialog model-popup">
-                
-                <div class="modal-content receiving-coin-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"> &times;</button>
-          <h4 class="modal-title">Create User</h4>
-        </div>
-          <div class="modal-body">
-        	<div class="row">
-               aslvgkdhnnnnnnnnnnrfvauihsbdbvfaswuyebvfuaeswbvfucvobayu
-            </div>
-          </div>
-       </div>
-	 </div>
-   </div>    	    
+                 
             <div class="hpanel">
                 <div class="panel-heading">
                     <div class="panel-tools">
@@ -555,9 +540,99 @@
                 </div>
             </div>
         </div>
+        
 
     </div>
-    </div>
+       <div class="modal fade" id="myModal" role="dialog">
+    			   <div class="modal-dialog model-popup">
+           		     <div class="modal-content ">
+       			       <div class="modal-header model-design">
+          			      <button type="button" class="close close-tab" data-dismiss="modal"> &times;</button>
+         				  <h4 class="modal-title">Create User</h4>
+       				   </div>
+          			     <div class="modal-body">
+        				   <div class="row">
+              			     <div class="form-design">
+                                
+               	  			   <div class="form-group form-horizontal col-md-12">
+                                <div class="col-md-2"></div>
+                               	 <div class="col-md-3 form-horizontal">
+                     		     	<label class="control-label" style="width:100%;">User Name</label>
+                                 </div>   
+                     			 <div class="col-md-5">
+                     			   <input type="text" name="username" class="form-control input-sm">
+                 			     </div>
+                                 <div class="col-md-2"></div>
+                                </div>
+                                 
+                               <div class="form-group form-horizontal col-md-12">
+                                  <div class="col-md-2"></div>
+                                  <div class="col-md-3 form-horizontal"> 
+                                     <label class="control-label" style="width:100%;">Role</label>
+                                  </div>
+                                  <div class="col-md-5">
+                                     <select class="form-control " name="account">
+                                       <option>option 1</option>
+                                       <option>option 2</option>
+                                       <option>option 3</option>
+                                       <option>option 4</option>
+                                     </select>
+                                  </div>
+                                  <div class="col-md-2"></div>
+                                </div>  
+                                 
+                               <div class="form-group form-horizontal col-md-12">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-3 form-horizontal">
+                                  <label class="control-label" style="width:100%;">Email</label>
+                                  </div>
+                     			  <div class="col-md-5">
+                     			    <input type="text" name="username" class="form-control input-sm">
+                 			      </div>
+                                  <div class="col-md-2"></div>
+                               </div> 
+                               <div class="form-group form-horizontal col-md-12">
+                                  <div class="col-md-2"></div>
+                                  <div class="col-md-3 form-horizontal"> 
+                                     <label class="control-label" style="width:100%;">Password</label>
+                                  </div>
+                                  <div class="col-md-5">
+                                    <input type="text" name="password" class="form-control input-sm">
+                                  </div>
+                                  <div class="col-md-2"></div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                  <div class="col-md-1"></div>
+                                  <div class="col-md-4 form-horizontal"> 
+                                     <label class="control-label" style="width:100%;">Confirm Password </label>
+                                  </div>
+                                  <div class="col-md-5">
+                                    <input type="text" name="confirm_password" class="form-control input-sm">
+                                  </div>
+                                  <div class="col-md-2"></div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                  <div class="col-md-2"></div>
+                                  <div class="col-md-3 form-horizontal"> 
+                                     <button type="button" class="btn w-xs btn-info create">Save</button>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <button type="button" class="btn w-xs btn-info create">Cancel</button>
+                                  </div>
+                                  <div class="col-md-3"></div>
+                                </div>
+                                  
+                                  
+               				    </div>
+            			     </div>
+                           </div>
+                         </div>
+	                   </div>
+                     </div>
+                   	    
+   
+    
+</div>
     <!-- Footer-->
     <footer class="footer">
         <span class="pull-right">

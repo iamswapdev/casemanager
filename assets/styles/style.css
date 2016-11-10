@@ -451,6 +451,24 @@ body.blank {
   width: 100%;
   margin: 10px;
 }
+.model-design{
+  padding: 5px 20px;
+  border-radius: 6px;
+}
+.close-tab{
+  margin-top: 10px!important;
+}
+.model-popup {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  width: 48.5em;
+  min-height: 17em;
+  margin-top: -9em; /*set to a negative number 1/2 of your height*/
+  margin-left: -30em;
+  height: auto;
+}
+
 @media (max-width: 420px) {
   .login-container,
   .lock-container {
