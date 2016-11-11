@@ -117,7 +117,7 @@
                                     
                                 </td>
                                 <td class="col-sm-4" style="border:none;">
-                                	<div class="col-sm-10">Select Insurance Company<select class="form-control m-b" name="account" multiple>
+                                	<div class="col-sm-12">Select Insurance Company<select class="form-control m-b" name="account" multiple>
                                     	<?php foreach($company_result as $r): ?>
                                         <option> <?php echo $r['InsuranceCompany_Name']; ?></option>
                                        <?php endforeach; ?>
@@ -140,7 +140,7 @@
                                     
                                 </td>
                                 <td style="border:none;">
-                                	<div class="col-sm-10">Select Status<select class="form-control m-b" name="account" multiple>
+                                	<div class="col-sm-12">Select Status<select class="form-control m-b" name="account" multiple>
                                     	<option>Admin</option>
                                         </select>
                                     </div>

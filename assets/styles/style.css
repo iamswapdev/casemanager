@@ -2703,7 +2703,7 @@ h6 {
 }
 .normalheader {
   min-width: 320px;
-  padding: 40px 40px 0px 40px;
+  padding: 10px 10px 0px 10px;
 }
 @media (max-width: 768px) {
   .normalheader {
