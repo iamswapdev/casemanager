@@ -46,26 +46,30 @@
 <?php include 'sidebar.php';?>
 <!-- Main Wrapper -->
 <div id="wrapper">
-<?php include 'header_search.php';?>
+<?php include 'header_workarea.php';?>
 <div class="content animate-panel">
 
+	<h4>File Insert Module</h4>
 	<div class="row">
-    	<div class="col-lg-12">
-        	<div class="hpanel">
-            	<div class="panel-heading">
-                    <div class="panel-tools">
-                        <a class="showhide"><i class="fa fa-chevron-up"></i></a>
-                        <a class="closebox"><i class="fa fa-times"></i></a>
+        <div class="col-lg-5 animated-panel zoomIn" style="animation-delay: 0.2s;">
+        	<div class="panel-body">
+                <form method="get" class="form-horizontal">
+                    <div class="form-group"><label class="col-sm-3 control-label"></label>
+                        <div class="col-sm-9"><input type="text" class="form-control"></div>
                     </div>
-                   <h2>Search Results</h2>
-                </div>
-                
-                <div class="panel-body">
-                	hello
-                </div>
+                    <div class="form-group"><label class="col-sm-3 control-label"></label>
+                        <div class="col-sm-9"><input type="text" class="form-control"></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-3">
+                        	<button type="button" class="btn w-xs btn-info create">Submit</button>
+                            <button class="btn btn-default" type="submit">Cancel</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
+	</div>
 	
 </div>
                 

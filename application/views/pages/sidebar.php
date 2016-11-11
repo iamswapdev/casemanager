@@ -71,7 +71,7 @@
              <li class="financials">
                 <a href="#"><span class="nav-label">Financials</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>financials/financial">Financials</a></li>
+                    <li><a href="<?php echo base_url();?>financials/financial">Financial</a></li>
                     <li><a href="<?php echo base_url();?>financials/reports">Reports</a></li>
                     <li><a href="<?php echo base_url();?>financials/rapidfunds">Rapid Funds</a></li>
                 </ul>

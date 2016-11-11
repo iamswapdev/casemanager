@@ -46,7 +46,7 @@
 <?php include 'sidebar.php';?>
 <!-- Main Wrapper -->
 <div id="wrapper">
-<?php include 'header_search.php';?>
+<?php include 'header_financials.php';?>
 <div class="content animate-panel">
 
 	<div class="row">
