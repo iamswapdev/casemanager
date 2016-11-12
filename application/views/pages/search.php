@@ -143,7 +143,7 @@
                         <a class="showhide"><i class="fa fa-chevron-up"></i></a>
                         <a class="closebox"><i class="fa fa-times"></i></a>
                     </div>
-                   <h2>Search Results</h2>
+                   <h4>Search Results</h4>
                 </div>
                 <div class="panel-body">
                   <div class="operation-buttons">
@@ -261,7 +261,7 @@
         </div>
 
     </div>
-</div>
+    </div>
                 
     <!-- Footer-->
     <footer class="footer">

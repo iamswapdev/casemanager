@@ -2,7 +2,7 @@
     <div class="color-line">
     </div>
     <div id="logo" class="light-version">
-        <span>
+        <span class="logo-span">
             Case-Manager
         </span>
     </div>

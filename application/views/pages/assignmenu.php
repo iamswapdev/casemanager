@@ -79,21 +79,21 @@
 	</div>
     <br><br><br>
     <div class="row"> 
-    	<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-        
-        	<div class="col-sm-10">List of Menus for selected role and main menu.<select class="form-control m-b" name="account" multiple>
+    	<div class="col-md-12 col-md-offset-2 animated-panel zoomIn" style="animation-delay: 0.2s;">
+         	
+        	<div class="col-md-4">List of Menus for selected role and main menu.<select class="form-control m-b" name="account" multiple>
                 <option>option 1</option>
                 <option>option 2</option>
                 <option>option 3</option>
                 <option>option 4</option>
                 </select>
             </div>
-        </div>
-        <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-        </div>
-        <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.4s;">
+        
+        
+        
+        
          	 
-            <div class="col-sm-10">List Assigned Menus To A Role<select class="form-control m-b" name="account" multiple>
+            <div class="col-sm-4">List Assigned Menus To A Role<select class="form-control m-b" name="account" multiple>
                     <option>Admin</option>
                     <option>Master</option>
                     <option>Search</option>
@@ -103,9 +103,9 @@
                     <option>Contacts</option>
                     </select>
              </div>
-        </div>
+        
+   		</div>
     </div>
-</div>
 
     <!-- Right sidebar -->
     <div id="right-sidebar" class="animated fadeInRight">

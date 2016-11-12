@@ -471,6 +471,17 @@ body.blank {
 .align-dostart{
   margin-left:65px
 }
+.hpanel .panel-body #hbreadcrumb{
+  float:left!important;	
+}
+.panel-body #hbreadcrumb .style-menu li{
+  font-weight:700;	
+}
+#logo.light-version .logo-span{
+  color:#fff;	
+}
+
+
 
 @media (max-width: 420px) {
   .login-container,
@@ -610,6 +621,13 @@ body.blank {
   margin-top: -11px;
 }
 @media only screen and (min-width: 768px) {
+  .table-cell-area{
+	  min-width: 330px;
+    }
+  .td-padding{
+	  padding: 0 27px!important;
+	  vertical-align: middle!important;
+	}
   .vertical-timeline-content h2 {
     font-size: 18px;
   }
@@ -1526,7 +1544,7 @@ body {
   height: 100%;
 }
 #header {
-  background-color: #fff;
+  background-color: #34495e;
   display: block;
   height: 62px;
   margin: 0;
@@ -1553,7 +1571,7 @@ body {
   min-height: 100%;
 }
 .content {
-  padding: 25px 40px 40px 40px;
+  padding: 0px 10px 10px 10px;
   min-width: 320px;
 }
 .footer {
@@ -1742,10 +1760,10 @@ body {
   border-radius: 2px;
 }
 .hpanel .panel-body {
-  background: #fff;
+  background-color: rgb(199, 205, 212);
   border: 1px solid #e4e5e7;
   border-radius: 2px;
-  padding: 20px;
+  padding: 12px;
   position: relative;
 }
 .panel-collapse .panel-body {
@@ -1755,7 +1773,7 @@ body {
   background-color: none;
   border: none;
   box-shadow: none;
-  margin-bottom: 25px;
+  margin-bottom: 5px;
 }
 .panel-tools {
   display: inline-block;
@@ -1873,7 +1891,7 @@ body {
   margin-top: 6px;
   margin-bottom: 0px;
   list-style: none;
-  background-color: #fff;
+  background-color: #c7cdd4;
   border-radius: #fff;
   font-size: 11px;
 }
@@ -2183,7 +2201,7 @@ body {
   font-size: 14px;
 }
 #logo.light-version {
-  background-color: #f7f9fa;
+  background-color: #34495e;
   border-bottom: 1px solid #e4e5e7;
   text-align: left;
 }
@@ -2226,10 +2244,10 @@ body {
 }
 /* Menu */
 #side-menu {
-  background: #f7f9fa;
+  background: #34495e;
 }
 #side-menu li a {
-  color: #6a6c6f;
+  color: #fff;
   text-transform: uppercase;
   font-weight: 700;
   padding: 15px 20px;
@@ -2289,11 +2307,11 @@ body {
   border-right: 1px solid #e4e5e7;
   border-left: 1px solid #e4e5e7;
   margin-right: 15px;
-  background: #f7f9fa;
+  background: #34495e;
   cursor: pointer;
 }
 .header-link:hover {
-  background: #f1f4f6;
+  background: #f7f9fa;
 }
 .navbar-nav > li,
 .navbar-nav > li > a {
@@ -2757,8 +2775,8 @@ h6 {
 .pagination > .active > span:hover,
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
-  background-color: #3498db;
-  border-color: #258cd1;
+  background-color: #34495e;
+  border-color: #34495e;
   color: #fff;
   cursor: default;
   z-index: 2;

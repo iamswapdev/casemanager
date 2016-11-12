@@ -57,11 +57,13 @@
                 <div class="panel-tools">
                     <a class="showhide"><i class="fa fa-chevron-up"></i></a>
                 </div>
-                Desk Assign Configuration
+                <h4>Desk Assign Configuration</h4>
             </div>
             <div class="panel-body">
                 <form method="post" action="#">
-                    <div class="table-responsive">  
+                 <div class="col-md-8 col-md-offset-2"
+                  <div class="table-responsive"	
+                    <div class="table">  
                    
               
                         <table cellpadding="1" cellspacing="1" class="table">
@@ -69,19 +71,19 @@
                             <tbody>
                             <tr>
                             	<th style="border:none;">
-                                	<div class="col-sm-4">Select Users</div>
+                                	<div class="">Select Users</div>
                                 </th>
                                 <th style="border:none;">
-                                	<div class="col-sm-4"></div>
+                                	<div class=""></div>
                                 </th>
                                 <th style="border:none;">
-                                	<div class="col-sm-4">Select Provider</div>
+                                	<div class="">Select Provider</div>
                                 </th>
                             </tr>
                             <tr>
-                                <td  class="col-sm-4" style="border:none;">
+                                <td style="border:none;">
                                 
-                                	<div class="col-sm-12"><select class="form-control m-b" name="account" multiple>
+                                	<div class="table-cell-area"><select class="form-control m-b" name="account" multiple>
                                        <?php foreach($user_result  as $r): ?>
                                         <option> <?php echo $r['UserName']; ?></option>
                                        <?php endforeach; ?>
@@ -89,12 +91,12 @@
                                      
                                     </div>
                                 </td>
-                                <td class="col-sm-4" style="border:none; text-align:center">
-                                	<button type="button" class="btn w-xs btn-info create">Create Desk</button>
+                                <td class="td-padding" style="border:none; text-align:center">
+                                	<button type="button" class="btn w-xs btn-primary">Create Desk</button>
                                     
                                 </td>
-                                <td  class="col-sm-4" style="border:none;">
-                                    <div class="col-sm-12"><select class="form-control m-b" name="account" multiple>
+                                <td style="border:none;">
+                                    <div class="table-cell-area"><select class="form-control m-b" name="account" multiple>
                                     <?php foreach($result  as $r): ?>
                                         <option> <?php echo $r['Provider_Name']; ?></option>
                                     <?php endforeach; ?>
@@ -104,20 +106,20 @@
                             </tr>
                             
                             <tr>
-                                <td  class="col-sm-4" style="border:none;">
-                                	<div class="col-sm-12">Select Users.<select class="form-control m-b" name="account" multiple>
+                                <td style="border:none;">
+                                	<div class="table-cell-area"><b>Select Users.</b><select class="form-control m-b" name="account" multiple>
                                         <?php foreach($user_result as $r): ?>
                                         <option> <?php echo $r['UserName']; ?></option>
                                        <?php endforeach; ?>
                                         </select>
                                     </div>
                                 </td>
-                                <td class="col-sm-4" style="border:none;text-align:center">
-                                	<button type="button" class="btn w-xs btn-info create">Create Desk</button>
+                                <td class="td-padding" style="border:none;text-align:center">
+                                	<button type="button" class="btn w-xs btn-primary">Create Desk</button>
                                     
                                 </td>
-                                <td class="col-sm-4" style="border:none;">
-                                	<div class="col-sm-12">Select Insurance Company<select class="form-control m-b" name="account" multiple>
+                                <td  style="border:none;">
+                                	<div class="table-cell-area"><b>Select Insurance Company</b><select class="form-control m-b" name="account" multiple>
                                     	<?php foreach($company_result as $r): ?>
                                         <option> <?php echo $r['InsuranceCompany_Name']; ?></option>
                                        <?php endforeach; ?>
@@ -127,20 +129,20 @@
                             </tr>
                             
                             <tr>
-                                <td  class="col-sm-4" style="border:none;">
-                                	<div class="col-sm-12">Select Users.<select class="form-control m-b" name="account" multiple>
+                                <td style="border:none;">
+                                	<div class="table-cell-area"><b>Select Users.</b><select class="form-control m-b" name="account" multiple>
                                         <?php foreach($user_result as $r): ?>
                                         <option> <?php echo $r['UserName']; ?></option>
                                        <?php endforeach; ?>
                                         </select>
                                     </div>
                                 </td>
-                                <td style="border:none;text-align:center">
-                                	<button type="button" class="btn w-xs btn-info create">Create Desk</button>
+                                <td class="td-padding" style="border:none;text-align:center">
+                                	<button type="button" class="btn w-xs btn-primary">Create Desk</button>
                                     
                                 </td>
                                 <td style="border:none;">
-                                	<div class="col-sm-12">Select Status<select class="form-control m-b" name="account" multiple>
+                                	<div class=""><b>Select Status</b><select class="form-control m-b" name="account" multiple>
                                     	<option>Admin</option>
                                         </select>
                                     </div>
@@ -150,7 +152,9 @@
                         </table>
                         
                     
-                    </div>
+                     </div>
+                  </div>  
+                 
                 </form>
             </div>
         </div>
