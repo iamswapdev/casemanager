@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/animate.css/animate.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.css" />
+	<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.min.css" />
 
     <!-- App styles -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
@@ -52,149 +53,159 @@
 		<div class="col-lg-12">
 			<div class="hpanel">
 				<ul class="nav nav-tabs">
-				<li class="active"><a data-toggle="tab" href="#tab-1">Daily Settlement Reports</a></li>
-				<li class=""><a data-toggle="tab" href="#tab-2">Discontinuance Reports</a></li>
-				<li class=""><a data-toggle="tab" href="#tab-3">Client Reports</a></li>
+					<li class="active"><a data-toggle="tab" href="#tab-1">Daily Settlement Reports</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-2">Discontinuance Reports</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-3">Client Reports</a></li>
 				</ul>
 				
 				<div class="tab-content">
 					<div id="tab-1" class="tab-pane active">
 						<div class="panel-body">
-
-							<div class="row">
-							<div class="col-lg-12">
-							<div class="hpanel">
-							<div class="panel-body tab-panel">
-								<h4>Daily Settlement Reports</h4>
-								<form method="get" class="form-horizontal">
-									<div class="form-group form-horizontal">
-										<label class="col-sm-2 control-label">End Date</label>
-										<div class="col-sm-2 input-group date">
-											<input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+							<div class="col-lg-12 panel-body tab-panel">
+								<form>
+									<h4>Select Date Range for Settlements</h4>
+									<div class="form-group form-horizontal col-md-12">
+										<label class="col-md-1 control-label">Start Date</label>										
+										<div class="col-md-2">
+											<input id="datapicker1" type="text" class="form-control input-sm">
 										</div>
-										<label class="col-sm-2 control-label">Start Date</label>
-										<div class="col-sm-2 input-group date">
-											<input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+										
+										<label class="col-md-1 control-label">End Date</label>										
+										<div class="col-md-2">
+											<input id="datapicker2" type="text" class="form-control input-sm">
 										</div>
-									</div>
-                                    
-                                    <div class="form-group form-horizontal"><label class="col-sm-2 control-label"></label>
-                                        <div class="col-sm-2"><select class="form-control m-b" name="account">
-                                            <option>All</option>
-                                            <option>0%</option>
-                                            <option>Between 0% and 70%</option>
-                                            <option>70% and above</option>
-                                            </select>
-                                        </div>
-                                    </div>
-									
-									<div class="form-group form-horizontal"><div class="col-sm-4">
-									<button type="button" class="btn w-xs btn-info create">Get</button>
-									</div>
+										<div class="col-md-2">
+												
+											<select class="form-control input-sm" name="account">
+												<option>All</option>
+												<option>0%</option>
+												<option>Between 0% and 70%</option>
+												<option>70% and above</option>
+											</select>
+										</div>
+										<div class="col-md-2">
+											<button type="button" class="btn w-xs btn-primary">Get</button>
+										</div>
+										
 									</div>
 								</form>
 							</div>
-							</div>
-							</div>
-							</div>
-
 						</div>
-						<!--tab-pane--> 
-					</div><!--tab 1 close-->
-					<!--tab1panel-->
+					</div>
 					
 					<div id="tab-2" class="tab-pane">
 						<div class="panel-body">
-
-							<div class="row">
-							<div class="col-lg-12">
-							<div class="hpanel">
-							<div class="panel-body tab-panel">
-								<h4>Discontinuance Reports</h4>
-								<div class="form-group form-horizontal">
-                                	<form method="get">
-                                        <div class="form-group"><label class="col-sm-2 control-label">Select Insurance Company Name : </label>
-                                            <div class="col-sm-2"><select class="form-control m-b" name="account">
-                                                <option>All</option>
-                                                <option>0%</option>
-                                                <option>Between 0% and 70%</option>
-                                                <option>70% and above</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-horizontal"><div class="col-sm-4">
-                                        <button type="button" class="btn w-xs btn-info create">Get</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="form-group form-horizontal">
-                                	<form method="get">
-                                        <div class="form-group"><label class="col-sm-2 control-label">Select Insurance Company Name : </label>
-                                            <div class="col-sm-2"><select class="form-control m-b" name="account">
-                                                <option>All</option>
-                                                <option>0%</option>
-                                                <option>Between 0% and 70%</option>
-                                                <option>70% and above</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-horizontal"><div class="col-sm-4">
-                                        <button type="button" class="btn w-xs btn-info create">Get</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="form-group form-horizontal">
-                                	<form method="get">
-                                    <h4>Cases for 0 Settlement Amount</h4>
-                                        <div class="form-group form-horizontal">
-                                            <label class="col-sm-2 control-label">End Date</label>
-                                            <div class="col-sm-2 input-group date">
-                                                <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-                                            </div>
-                                            <label class="col-sm-2 control-label">Start Date</label>
-                                            <div class="col-sm-2 input-group date">
-                                                <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="form-group form-horizontal"><div class="col-sm-4">
-                                        <button type="button" class="btn w-xs btn-info create">Get</button>
-                                        </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="form-group form-horizontal">
-                                	<form method="get">
-                                    <h4>Overdue Settlement Report</h4>
-                                        <div class="form-group form-horizontal">
-                                            <label class="col-sm-2 control-label">End Date</label>
-                                            <div class="col-sm-2 input-group date">
-                                                <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-                                            </div>
-                                            <label class="col-sm-2 control-label">Start Date</label>
-                                            <div class="col-sm-2 input-group date">
-                                                <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="form-group form-horizontal"><div class="col-sm-4">
-                                        <button type="button" class="btn w-xs btn-info create">Get</button>
-                                        </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                
+							<div class="col-lg-12 panel-body tab-panel">
+								<form>
+									<h4>Select Insurance Company Name</h4>
+									<div class="form-group form-horizontal col-md-12">										
+										<div class="col-md-2">
+												
+											<select class="form-control input-sm" name="account">
+												<option>All</option>
+												<option>0%</option>
+												<option>Between 0% and 70%</option>
+												<option>70% and above</option>
+											</select>
+										</div>
+										
+										<div class="col-md-2">
+											<button type="button" class="btn w-xs btn-primary">Get</button>
+										</div>
+									</div>
+								</form>
+								
+								<h5>OR</h5><div class="hr-line-dashed"></div>
+								<form>
+									<h4>Select Provider Name</h4>
+									<div class="form-group form-horizontal col-md-12">										
+										<div class="col-md-2">
+												
+											<select class="form-control input-sm" name="account">
+												<option>All</option>
+												<option>0%</option>
+												<option>Between 0% and 70%</option>
+												<option>70% and above</option>
+											</select>
+										</div>
+										
+										<div class="col-md-2">
+											<button type="button" class="btn w-xs btn-primary">Get</button>
+										</div>
+									</div>
+								</form>
+								
+								<h5>OR</h5><div class="hr-line-dashed"></div>
+								<form>
+									<h4>Cases for 0 Settlement Amount</h4>
+									<div class="form-group form-horizontal col-md-12">										
+										<label class="col-md-1 control-label">Start Date</label>										
+										<div class="col-md-2">
+											<input id="datapicker3" type="text" class="form-control input-sm">
+										</div>
+										<label class="col-md-1 control-label">End Date</label>										
+										<div class="col-md-2">
+											<input id="datapicker4" type="text" class="form-control input-sm">
+										</div>
+										
+										<div class="col-md-2">
+											<button type="button" class="btn w-xs btn-primary">Get</button>
+										</div>
+									</div>
+								</form>
+								
+								<h5>OR</h5><div class="hr-line-dashed"></div>
+								<form>
+									<h4>Overdue Settlement Report</h4>
+									<div class="form-group form-horizontal col-md-12">										
+										<label class="col-md-1 control-label">Start Date</label>										
+										<div class="col-md-2">
+											<input id="datapicker5" type="text" class="form-control input-sm">
+										</div>
+										<label class="col-md-1 control-label">End Date</label>										
+										<div class="col-md-2">
+											<input id="datapicker6" type="text" class="form-control input-sm">
+										</div>
+										
+										<div class="col-md-2">
+											<button type="button" class="btn w-xs btn-primary">Get</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					
+					<div id="tab-3" class="tab-pane">
+						<div class="panel-body">
+							<div class="col-lg-12 panel-body tab-panel">
+								<form>
+									<h4>Client Reports</h4>
+									<div class="form-group form-horizontal col-md-12">
+										<label class="col-md-2 control-label">Select provider name:</label>
+										<div class="col-md-2">
+												
+											<select class="form-control input-sm" name="account">
+												<option>All</option>
+												<option>0%</option>
+												<option>Between 0% and 70%</option>
+												<option>70% and above</option>
+											</select>
+										</div>
+										<label class="col-md-2 control-label">Enter date range in month:</label>
+										<div class="col-md-2">
+											<input type="number" class="form-control input-sm">
+										</div>
+										<div class="col-md-2">
+											<button type="button" class="btn w-xs btn-primary">Get</button>
+										</div>
+									</div>
+								</form>
 								
 							</div>
-							</div>
-							</div>
-							</div>
-
 						</div>
-					</div><!--tab 2 close--> 
-					
-					 
-				</div><!--tab content close-->
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -224,6 +235,7 @@
 <script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/addactive/addactive.js"></script>
+<script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
 
 <!-- App scripts -->
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
@@ -242,6 +254,18 @@
 
     });
 
+</script>
+<script>
+$(function(){
+	$('#datapicker1').datepicker();
+	$('#datapicker2').datepicker();
+	$('#datapicker3').datepicker();
+	$('#datapicker4').datepicker();
+	$('#datapicker5').datepicker();
+	$('#datapicker6').datepicker();
+	$('.input-group.date').datepicker({ });
+	$('.input-daterange').datepicker({ });
+});
 </script>
 
 </body>

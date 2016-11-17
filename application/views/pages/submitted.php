@@ -54,69 +54,8 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="hpanel">
-          <ul class="nav nav-tabs">
-            <li class="active"><a href="">Add Adjuster Info</a></li>
-            <li class=""><a href="<?php echo base_url();?>dataentry/updateadjuster">Edit Adjuster Info</a></li>
-          </ul>
-          <div class="tab-content">
-            <div id="tab-1" class="tab-pane active">
-				<div class="panel-body">
-					<div class="col-lg-12 panel-body tab-panel">
-						<form action="add_AdjusterInfo" method="post" class="form-horizontal">
-							<h4>Adjuster Information </h4>
-							<div class="form-group">
-								<label class="col-sm-2 control-label">Insurer</label>
-								<div class="col-md-6">
-									<select class="form-control input-sm" id="insuranceId" name="insuranceId" >
-										<?php foreach($InsuranceCompany_Name as $row){?>
-                                        <option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option>
-                                        <?php }?>
-									</select>
-								</div>
-							</div>
-							<div class="form-group form-horizontal col-smd-12">
-								<label class="col-sm-2 control-label">Last Name</label>
-								<div class="col-sm-2">
-									<input type="text" id="lastName" name="lastName" placeholder="Last Name" class="form-control input-sm">
-								</div>
-								<label class="col-sm-1 control-label">First Name</label>
-								<div class="col-sm-2">
-									<input type="text" id="firstName" name="firstName" placeholder="First Name" class="form-control input-sm">
-								</div>
-							</div>
-							<div class="form-group form-horizontal col-smd-12">
-								<label class="col-sm-2 control-label">Phone</label>
-								<div class="col-sm-2">
-									<input type="text" id="phone" name="phone" placeholder="Ex.000000" class="form-control input-sm">
-								</div>
-								<label class="col-sm-1 control-label align-sec">Ext.</label>
-								<div class="col-sm-1">
-									<input type="text" id="ext" name="ext" placeholder="" class="form-control input-sm">
-								</div>
-							</div>
-							<div class="form-group form-horizontal col-smd-12">
-								<label class="col-sm-2 control-label">Email</label>
-								<div class="col-sm-2">
-									<input type="text" id="email" name="email" placeholder="Ex.abc@pqr.com" class="form-control input-sm">
-								</div>
-								<label class="col-sm-1 control-label">Fax</label>
-								<div class="col-sm-1">
-									<input type="text" id="fax" name="fax" placeholder="Ex.000000" class="form-control input-sm">
-								</div>
-							</div>
-							<div class="form-group form-horizontal col-sm-12">
-								<div class="col-sm-2"> </div>
-								<div class="col-sm-2">
-									<button type="submit" class="btn w-xs btn-primary">Save</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-			
-        </div>
-          <!--tab content close--> 
+          
+			Data successfully submitted....
         </div>
       </div>
     </div>

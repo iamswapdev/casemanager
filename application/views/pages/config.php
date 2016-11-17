@@ -55,11 +55,10 @@
         <div class="hpanel">
             <div class="panel-heading">
                 <div class="panel-tools">
-                    <a class="showhide"><i class="fa fa-chevron-up"></i></a>
                 </div>
-                <h4>Desk Assign Configuration</h4>
             </div>
             <div class="panel-body">
+            <h4>Desk Assign Configuration</h4>
                 <form method="post" action="#">
                  <div class="col-md-8 col-md-offset-2"
                   <div class="table-responsive"	
@@ -143,7 +142,9 @@
                                 </td>
                                 <td style="border:none;">
                                 	<div class=""><b>Select Status</b><select class="form-control m-b" name="account" multiple>
-                                    	<option>Admin</option>
+                                    	<?php foreach($Status_Type as $row): ?>
+                                        <option> <?php echo $row['Status_Type']; ?></option>
+                                       <?php endforeach; ?>
                                         </select>
                                     </div>
                                 </td>

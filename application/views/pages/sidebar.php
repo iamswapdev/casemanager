@@ -56,7 +56,7 @@
                 <a href="#"><span class="nav-label">Work Area</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
                     <li><a href="<?php echo base_url();?>workarea/caseinformation">Case Information</a></li>
-                    <li><a href="<?php echo base_url();?>workarea/dataentry_workarea">Data Entry(Case Entry Only)</a></li>
+                    <li><a href="<?php echo base_url();?>workarea/dataentryworkarea">Data Entry(Case Entry Only)</a></li>
                     <li><a href="<?php echo base_url();?>workarea/fileinsert">File Insert</a></li>
                     <li><a href="<?php echo base_url();?>workarea/workflowreport">WorkFlow Report</a></li>
                     <li><a href="<?php echo base_url();?>workarea/calendar">Calendar</a></li>

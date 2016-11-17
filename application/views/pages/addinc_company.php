@@ -56,182 +56,137 @@
       <div class="col-lg-12">
         <div class="hpanel">
           <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#tab-1">Add Ins. Company</a></li>
-            <li class=""><a data-toggle="tab" href="#tab-2">Edit Ins. Company</a></li>
+            <li class="active"><a href="#tab-1">Add Ins. Company</a></li>
+            <li class=""><a href="<?php echo base_url();?>dataentry/updateinsurance">Edit Ins. Company</a></li>
           </ul>
-          <div class="tab-content">
+        <div class="tab-content">
             <div id="tab-1" class="tab-pane active">
-              <div class="panel-body">
-                <div class="row">
-                <div class="col-lg-12">
-                <div class="hpanel">
-                <div class="panel-body tab-panel">
-                <form method="get" class="form-horizontal">
-                  <h4>Insurance Company </h4>
-                  <span>Information</span>
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label">Name</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control input-sm">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label">Suit</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control input-sm">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label">Type</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control input-sm">
-                    </div>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div class="hpanel">
-                        <div class="panel-body tab-panel">
-                          <h4>Insurance Company Local </h4>
-                          <span>Address</span>
-                          <div class="form-group form-horizontal col-sm-12 ">
-                            <label class="col-sm-2 control-label">Address</label>
-                            <div class="col-sm-8">
-                              <textarea rows="5" id="" class="form-control" name=""></textarea>
-                            </div>
-                          </div>
-                          <div class="form-group form-horizontal col-sm-12">
-                            <label class="col-sm-2 control-label">Zip</label>
-                            <div class="col-sm-2">
-                              <input type="text" placeholder="Ex.11111" class="form-control m-b">
-                              <!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
-                            </div>
-                            <label class="col-sm-1 control-label">City</label>
-                            <div class="col-sm-2">
-                              <select class="form-control m-b" name="account">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                              </select>
-                            </div>
-                            <label class="col-sm-1 control-label">State</label>
-                            <div class="col-sm-2">
-                              <select class="form-control m-b" name="account">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="form-group form-horizontal col-sm-12">
-                            <label class="col-sm-2 control-label">Phone</label>
-                            <div class="col-sm-2">
-                              <input type="text" placeholder="Ex.000000" class="form-control m-b">
-                            </div>
-                            <label class="col-sm-1 control-label">Fax</label>
-                            <div class="col-sm-2">
-                              <input type="text" placeholder="Ex.11111" class="form-control m-b">
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                  <div class="col-lg-12">
-                  <div class="hpanel">
-                  <div class="panel-body tab-panel">
-                  <h4>Insurance Company Perm.</h4>
-                  <span>Address</span>
-                  <div class="form-group form-horizontal col-sm-12 ">
-                    <label class="col-sm-2 control-label">Address</label>
-                    <div class="col-sm-8">
-                      <textarea rows="5" id="" class="form-control" name=""></textarea>
-                    </div>
-                  </div>
-                  <div class="form-group form-horizontal col-sm-12">
-                    <label class="col-sm-2 control-label">Zip</label>
-                    <div class="col-sm-2">
-                      <input type="text" placeholder="Ex.12345" class="form-control m-b">
-                      <!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
-                    </div>
-                    <label class="col-sm-1 control-label">City</label>
-                    <div class="col-sm-2">
-                      <select class="form-control m-b" name="account">
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                      </select>
-                    </div>
-                    <label class="col-sm-1 control-label">State</label>
-                    <div class="col-sm-2">
-                      <select class="form-control m-b" name="account">
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group form-horizontal col-sm-12">
-                    <label class="col-sm-2 control-label">Phone</label>
-                    <div class="col-sm-2">
-                      <input type="text" placeholder="Ex.12345" class="form-control m-b">
-                    </div>
-                    <label class="col-sm-1 control-label">Fax</label>
-                    <div class="col-sm-2">
-                      <input type="text" placeholder="Ex.12345" class="form-control m-b">
-                    </div>
-                    <div class="col-sm-12">
-                      <button type="button" class="btn w-xs btn-info create">Save</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
+				<div class="panel-body">
+					<div class="col-lg-12 panel-body tab-panel">
+						
+						<form action="add_InsuranceInfo" method="post" class="form-horizontal">
+							<h4>Insurance Company Information</h4>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Name</label>
+								<div class="col-sm-6">
+									<input type="text" id="name" name="name" class="form-control input-sm">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Suit</label>
+								<div class="col-sm-6">
+									<input type="text" id="suit" name="suit" class="form-control input-sm">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Type</label>
+								<div class="col-sm-6">
+									<input type="text" id="type" name="type" class="form-control input-sm">
+								</div>
+							</div>
+							
+							<h4>Insurance Company Local Address</h4>
+							<div class="form-group form-horizontal col-sm-12 ">
+								<label class="col-sm-2 control-label">Address</label>
+								<div class="col-sm-6">
+									<textarea rows="5" id="addressLocal" name="addressLocal" class="form-control"></textarea>
+								</div>
+							</div>
+							<div class="form-group form-horizontal col-sm-12">
+								<label class="col-sm-2 control-label">Zip</label>
+								<div class="col-sm-2">
+									<input type="text" id="zipLocal" name="zipLocal" placeholder="Ex.11111" class="form-control input-sm">
+									<!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
+								</div>
+								<label class="col-sm-1 control-label">City</label>
+								<div class="col-sm-2">
+									<select class="form-control input-sm" id="cityLocal" name="cityLocal" >
+									<option>option 1</option>
+									<option>option 2</option>
+									<option>option 3</option>
+									<option>option 4</option>
+									</select>
+								</div>
+								<label class="col-sm-1 control-label">State</label>
+								<div class="col-sm-2">
+									<select class="form-control input-sm"  id="stateLocal" name="stateLocal">
+										<option>-- Select State --</option>
+										<?php foreach($State_Name as $row){?>
+                                        <option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
+                                        <?php }?>
+									</select>
+								</div>
+							</div>
+							<div class="form-group form-horizontal col-sm-12">
+								<label class="col-sm-2 control-label">Phone</label>
+								<div class="col-sm-2">
+									<input type="text" id="phoneLocal" name="phoneLocal" placeholder="Ex.000000" class="form-control input-sm">
+								</div>
+								<label class="col-sm-1 control-label">Fax</label>
+								<div class="col-sm-2">
+									<input type="text" id="faxLocal" name="faxLocal" placeholder="Ex.11111" class="form-control input-sm">
+								</div>
+							</div>
+							
+							<h4>Insurance Company Perm.Address</h4>
+							<div class="form-group form-horizontal col-sm-12 ">
+								<label class="col-sm-2 control-label">Address</label>
+								<div class="col-sm-6">
+									<textarea rows="5" id="addressPermanent" name="addressPermanent" class="form-control" ></textarea>
+								</div>
+							</div>
+							<div class="form-group form-horizontal col-sm-12">
+								<label class="col-sm-2 control-label">Zip</label>
+								<div class="col-sm-2">
+									<input type="text" id="zipPermanent" name="zipPermanent" placeholder="Ex.12345" class="form-control input-sm">
+								</div>
+								<label class="col-sm-1 control-label">City</label>
+								<div class="col-sm-2">
+									<select class="form-control input-sm" id="cityPermanent" name="cityPermanent" name="account">
+									<option>option 1</option>
+									<option>option 2</option>
+									<option>option 3</option>
+									<option>option 4</option>
+									</select>
+								</div>
+								<label class="col-sm-1 control-label">State</label>
+								<div class="col-sm-2">
+									<select class="form-control input-sm" id="statePermanent" name="statePermanent" >
+										<option>-- Select State --</option>
+										<?php foreach($State_Name as $row){?>
+                                        <option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
+                                        <?php }?>
+									</select>
+								</div>
+							</div>
+							<div class="form-group form-horizontal col-sm-12">
+								<label class="col-sm-2 control-label">Phone</label>
+								<div class="col-sm-2">
+									<input type="text" id="phonePermanent" name="phonePermanent" placeholder="Ex.12345" class="form-control input-sm">
+								</div>
+								<label class="col-sm-1 control-label">Fax</label>
+								<div class="col-sm-2">
+									<input type="text" id="faxPermanent" name="faxPermanent" placeholder="Ex.12345" class="form-control input-sm">
+								</div>
+							</div>
+							<div class="form-group form-horizontal col-sm-12">
+								<div class="col-sm-2"> </div>
+								<div class="col-sm-2">
+									<button type="submit" class="btn w-xs btn-primary">Save</button>
+								</div>
+							</div>
+						</form>
+						
+					</div>
+				</div>
+			</div>
+			
+			
         </div>
       </div>
     </div>
-    <div id="tab-2" class="tab-pane">
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="hpanel">
-              <div class="panel-body tab-panel">
-                <form method="get" class="form-horizontal">
-                  <h4>Select Insurer To Edit</h4>
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label">Name</label>
-                    <div class="col-sm-10">
-                      <select class="form-control m-b" name="account">
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-sm-12">
-                    <button type="button" class="btn w-xs btn-info create">Submit</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
   </div>
-</div>
-</div>
-</div>
 </div>
 
 <!-- Right sidebar -->

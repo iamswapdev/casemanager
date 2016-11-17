@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/animate.css/animate.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.min.css" />
 
     <!-- App styles -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
@@ -48,25 +49,130 @@
 <div id="wrapper">
 <?php include 'header_financials.php';?>
 <div class="content animate-panel">
-
 	<div class="row">
-    	<div class="col-lg-12">
-        	<div class="hpanel">
-            	<div class="panel-heading">
-                    <div class="panel-tools">
-                        <a class="showhide"><i class="fa fa-chevron-up"></i></a>
-                        <a class="closebox"><i class="fa fa-times"></i></a>
-                    </div>
-                   <h2>Search Results</h2>
-                </div>
-                
-                <div class="panel-body">
-                	hello
-                </div>
-            </div>
-        </div>
-    </div>
-	
+		<div class="col-lg-12">
+			<div class="hpanel">
+				<ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" href="#tab-1">Rapid Fund Search</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-2">Unconfirmed Deposits</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-3">Confirmed Deposits</a></li>
+				</ul>
+				
+				<div class="tab-content">
+					<div id="tab-1" class="tab-pane active">
+						<div class="panel-body">
+							<div class="col-lg-12">
+								<div class="panel-body tab-panel">
+								<form>
+									<h4>Provider Local Address</h4>
+									<div class="form-group form-horizontal col-md-12">
+										<label class="col-md-1 control-label">Start Date</label>
+										<div class="col-md-2"> <input id="datapicker1" type="text" class="form-control input-sm"> </div>
+										<label class="col-md-1 control-label">End Date</label>
+										<div class="col-md-2"> <input id="datapicker2" type="text" class="form-control input-sm"> </div>	
+									</div>
+									
+									<div class="form-group form-horizontal col-md-12">
+										<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
+											Select Provider<select class="form-control input-sm" name="account" multiple>
+											<option>option 1</option>
+											<option>option 2</option>
+											<option>option 3</option>
+											<option>option 4</option>
+											</select>
+										</div>
+										<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
+											Select Insurance Company<select class="form-control input-sm" name="account" multiple>
+											<option>option 1</option>
+											<option>option 2</option>
+											<option>option 3</option>
+											<option>option 4</option>
+											</select>
+										</div>	
+									</div>
+									<div class="form-group form-horizontal col-md-12">
+										<div class="col-md-4">
+											<button type="button" class="btn w-xs btn-primary">Submit</button>
+										</div>
+									</div>
+								</form>
+								</div>
+							</div>
+
+						</div>
+						<!--tab-pane--> 
+					</div><!--tab 1 close-->
+					<!--tab1panel-->
+					
+					<div id="tab-2" class="tab-pane">
+						<div class="panel-body">
+
+							<div class="row">
+							<div class="col-lg-12 animated-panel zoomIn" style="animation-delay: 0.4s;">
+							<div class="hpanel">
+							<div class="panel-body tab-panel">
+								<h4>Rapid Fund Deposits</h4>
+								<div class="form-group form-horizontal">
+									<form method="get" class="form-horizontal">
+                                    	<div class="form-group">
+                                        	<div class="col-sm-10">
+												<div class="radio">
+													<label> <input type="radio" name="Radios-ucd">Confirmed</label>
+													<label> <input type="radio" name="Radios-ucd">Unconfirmed</label>
+												</div>
+											</div>
+                                        </div>
+                                        <div class="form-group">
+                                        	<div class="col-sm-12">
+                                                <button type="button" class="btn w-xs btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+								</div>
+							</div>
+							</div>
+							</div>
+							</div>
+
+						</div>
+					</div><!--tab 2 close--> 
+					
+					<div id="tab-3" class="tab-pane">
+						<div class="panel-body">
+
+							<div class="row">
+							<div class="col-lg-12 animated-panel zoomIn" style="animation-delay: 0.4s;">
+							<div class="hpanel">
+							<div class="panel-body tab-panel">
+								<h4>Rapid Fund Deposits</h4>
+								<div class="form-group form-horizontal">
+									<form method="get" class="form-horizontal">
+                                    	<div class="form-group">
+                                        	<div class="col-sm-10">
+												<div class="radio">
+													<label> <input type="radio" name="Radios-cd">Confirmed</label>
+													<label> <input type="radio" name="Radios-cd">Unconfirmed</label>
+												</div>
+											</div>
+                                        </div>
+                                        <div class="form-group">
+                                        	<div class="col-sm-12">
+                                                <button type="button" class="btn w-xs btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+								</div>
+							</div>
+							</div>
+							</div>
+							</div>
+
+						</div>
+					</div><!--tab 3 close--> 
+				</div><!--tab content close-->
+			</div>
+		</div>
+	</div>
 </div>
                 
     <!-- Footer-->
@@ -92,6 +198,7 @@
 <script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/addactive/addactive.js"></script>
+<script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
 
 <!-- App scripts -->
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
@@ -110,6 +217,12 @@
 
     });
 
+</script>
+<script>
+$(function(){
+	$('#datapicker1').datepicker();
+	$('#datapicker2').datepicker();
+});
 </script>
 
 </body>

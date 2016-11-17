@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/animate.css/animate.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.css" />
+	<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.min.css" />
 
     <!-- App styles -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
@@ -50,22 +51,212 @@
 <div class="content animate-panel">
 
 	<div class="row">
-    	<div class="col-lg-12">
-        	<div class="hpanel">
-            	<div class="panel-heading">
-                    <div class="panel-tools">
-                        <a class="showhide"><i class="fa fa-chevron-up"></i></a>
-                        <a class="closebox"><i class="fa fa-times"></i></a>
-                    </div>
-                   <h2>Search Results</h2>
-                </div>
-                
-                <div class="panel-body">
-                	hello
-                </div>
-            </div>
-        </div>
-    </div>
+		<div class="col-lg-12">
+			<div class="hpanel">
+				<ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" href="#tab-1">Calendar Reports</a></li>					
+					<li class=""><a data-toggle="tab" href="#tab-2">Service Reports</a></li>					
+					<li class=""><a data-toggle="tab" href="#tab-3">Summons Printed Report</a></li>					
+					<li class=""><a data-toggle="tab" href="#tab-4">CloseOut Cases</a></li>				
+					<li class=""><a data-toggle="tab" href="#tab-5">Case DeadLines</a></li>
+					<li class=""><a data-toggle="tab" href="#tab-6">Pending Resons</a></li>
+				</ul>
+			
+				<div class="tab-content">
+					<div id="tab-1" class="tab-pane active">
+						<div class="panel-body">
+							<div class="col-lg-12 panel-body tab-panel">
+								<form>
+									<div class="form-group form-horizontal col-md-12">
+										<label class="col-md-1 control-label">Start Date</label>										
+										<div class="col-md-2">
+											<input id="datapicker1" type="text" class="form-control">
+										</div>
+										
+										<label class="col-md-1 control-label">End Date</label>										
+										<div class="col-md-2">
+											<input id="datapicker2" type="text" class="form-control">
+										</div>
+										
+										<label class="col-md-2 control-label">Calendar type</label>	
+										<div class="col-md-2">											
+											<select class="form-control m-b" name="account">
+												<option>All</option>
+												<option>Motion</option>
+												<option>Trial</option>
+												<option>Opposition Due Date</option>
+												<option>Reply DueDate</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group form-horizontal col-md-12">
+										<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
+											Select Provider<select class="form-control m-b" name="account" multiple>
+											<option>option 1</option>
+											<option>option 2</option>
+											<option>option 3</option>
+											<option>option 4</option>
+											</select>
+										</div>
+										<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
+											Select Insurance Company<select class="form-control m-b" name="account" multiple>
+											<option>option 1</option>
+											<option>option 2</option>
+											<option>option 3</option>
+											<option>option 4</option>
+											</select>
+										</div>	
+									</div>
+									<div class="form-group form-horizontal col-md-12">
+										<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
+											Select Defendant<select class="form-control m-b" name="account" multiple>
+											<option>option 1</option>
+											<option>option 2</option>
+											<option>option 3</option>
+											<option>option 4</option>
+											</select>
+										</div>
+										<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
+											Select Venue<select class="form-control m-b" name="account" multiple>
+											<option>option 1</option>
+											<option>option 2</option>
+											<option>option 3</option>
+											<option>option 4</option>
+											</select>
+										</div>	
+									</div>
+									
+									
+									<div class="form-group form-horizontal col-md-12">
+										<div class="col-md-4">
+											<button type="button" class="btn w-xs btn-info create">Submit</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					
+					<div id="tab-2" class="tab-pane">
+						<div class="panel-body">
+							<div class="col-lg-12 panel-body tab-panel">
+								<form>
+									<h4>Select Date Range for Summons Sent to Court</h4>
+									<div class="form-group form-horizontal col-md-12">
+										<label class="col-md-1 control-label">Start Date</label>										
+										<div class="col-md-2">
+											<input id="datapicker3" type="text" class="form-control">
+										</div>
+										
+										<label class="col-md-1 control-label">End Date</label>										
+										<div class="col-md-2">
+											<input id="datapicker4" type="text" class="form-control">
+										</div>
+										<div class="col-md-2">
+											<button type="button" class="btn w-xs btn-info create">Get</button>
+										</div>
+										
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					
+					<div id="tab-3" class="tab-pane">
+						<div class="panel-body">
+							<div class="col-lg-12 panel-body tab-panel">
+								<form>
+									<h4>Select Date Range for Print</h4>
+									<div class="form-group form-horizontal col-md-12">
+										<label class="col-md-1 control-label">Start Date</label>										
+										<div class="col-md-2">
+											<input id="datapicker5" type="text" class="form-control">
+										</div>
+										
+										<label class="col-md-1 control-label">End Date</label>										
+										<div class="col-md-2">
+											<input id="datapicker6" type="text" class="form-control">
+										</div>
+										<div class="col-md-2">
+												
+											<select class="form-control m-b" name="account">
+												<option>Date_Opened</option>
+												<option>Date_Summons_Printed</option>
+												<option>Date_Summons_Sent_Court</option>
+												<option>Date_Summons_Served</option>
+												<option>Date_Index_Number_Purchased</option>
+												<option>Date_Afidavit_Filed</option>
+												<option>Date_Answer_Received</option>
+												<option>Date_Closed</option>
+											</select>
+										</div>
+										<div class="col-md-2">
+												
+											<select class="form-control m-b" name="account">
+												<option>All</option>
+												<option>0%</option>
+												<option>Between 0% and 70%</option>
+												<option>70% and above</option>
+											</select>
+										</div>
+										<div class="col-md-2">
+											<button type="button" class="btn w-xs btn-info create">Get</button>
+										</div>
+										
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					
+					<div id="tab-4" class="tab-pane">
+						<div class="panel-body">
+							<div class="col-lg-12 panel-body tab-panel">
+								
+								
+							</div>
+						</div>
+					</div>
+					<div id="tab-5" class="tab-pane">
+						<div class="panel-body">
+							<div class="col-lg-12 panel-body tab-panel">
+								<ul>
+									<li><a href="#">All Cases Index Numbered 100 days and over and not Served</a></li>
+									<li><a href="#">All Cases Printed 30 days and over and not filed</a></li>
+									<li><a href="#">All Affidavits Printed 30 days and over and not filed</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+					<div id="tab-6" class="tab-pane">
+						<div class="panel-body">
+							<div class="col-lg-12 panel-body tab-panel">
+								<form>
+									<h4>Select Date Range for Pending Resons</h4>
+									<div class="form-group form-horizontal col-md-12">
+										<label class="col-md-1 control-label">Start Date</label>										
+										<div class="col-md-2">
+											<input id="datapicker7" type="text" class="form-control">
+										</div>
+										
+										<label class="col-md-1 control-label">End Date</label>										
+										<div class="col-md-2">
+											<input id="datapicker8" type="text" class="form-control">
+										</div>
+										<div class="col-md-2">
+											<button type="button" class="btn w-xs btn-info create">Submit</button>
+										</div>
+										
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	
 </div>
                 
@@ -92,6 +283,7 @@
 <script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/addactive/addactive.js"></script>
+<script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
 
 <!-- App scripts -->
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
@@ -110,6 +302,18 @@
 
     });
 
+</script>
+<script>
+$(function(){
+	$('#datapicker1').datepicker();
+	$('#datapicker2').datepicker();
+	$('#datapicker3').datepicker();
+	$('#datapicker4').datepicker();
+	$('#datapicker5').datepicker();
+	$('#datapicker6').datepicker();
+	$('#datapicker7').datepicker();
+	$('#datapicker8').datepicker();
+});
 </script>
 
 </body>

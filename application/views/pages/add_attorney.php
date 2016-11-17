@@ -50,108 +50,104 @@
 <!-- Main Wrapper -->
 <div id="wrapper">
 <?php include 'header_dataentry.php';?>
-  <div class="content animate-panel">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="hpanel">
-          <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#tab-1">Add Case Info</a></li>
-            <li class=""><a data-toggle="tab" href="#tab-2">Edit Case Info</a></li>
-          </ul>
-          <div class="tab-content">
-            <div id="tab-1" class="tab-pane active">
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="hpanel">
-                      <div class="panel-body tab-panel">
-                        <form method="get" class="form-horizontal">
-                          <h4>Attorney Information</h4>
-                          <div class="form-group">
-                            <label class="col-sm-2 control-label">Def. Name</label>
-                            <div class="col-sm-10">
-                              <select class="form-control m-b" name="account">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="form-group form-horizontal">
-                            <label class="col-sm-2 control-label">Name</label>
-                            <div class="col-sm-2">
-                              <input type="text" placeholder="Last Name" class="form-control">
-                            </div>
-                            <div class="col-sm-2">
-                              <input type="text" placeholder="First Name" class="form-control m-b">
-                            </div>
-                          </div>
-                          <div class="form-group form-horizontal">
-                            <label class="col-sm-2 control-label">Phone</label>
-                            <div class="col-sm-2">
-                              <input type="text" placeholder="Ex.000000" class="form-control m-b">
-                            </div>
-                            <label class="col-sm-1 control-label align-sec">Ext.</label>
-                            <div class="col-sm-1">
-                              <input type="text" placeholder="" class="form-control m-b">
-                            </div>
-                          </div>
-                          <div class="form-group form-horizontal">
-                            <label class="col-sm-2 control-label">Email</label>
-                            <div class="col-sm-2">
-                              <input type="text" placeholder="Ex.abc@pqr.com" class="form-control m-b">
-                            </div>
-                            <label class="col-sm-1 control-label">Fax</label>
-                            <div class="col-sm-1">
-                              <input type="text" placeholder="Ex.000000" class="form-control m-b">
-                            </div>
-                          </div>
-                          <div class="form-group form-horizontal col-sm-12">
-                            <button type="button" class="btn w-xs btn-info create">Save</button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div id="tab-2" class="tab-pane">
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="hpanel">
-                      <div class="panel-body tab-panel">
-                        <form method="get" class="form-horizontal">
-                          <h4>Select Attorney To Edit</h4>
-                          <div class="form-group">
-                            <label class="col-sm-2 control-label">Name</label>
-                            <div class="col-sm-10">
-                              <select class="form-control m-b" name="account">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="col-sm-12">
-                            <button type="button" class="btn w-xs btn-info create">Submit</button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--tab content close--> 
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="content animate-panel">
+	<div class="row">
+		<div class="col-lg-12">
+		<div class="hpanel">
+		<div class="panel-heading"></div>
+		<div class="panel-body tab-panel">
+			
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="">Add Ins. Company</a></li>
+				<li class=""><a href="<?php echo base_url();?>dataentry/updateattorney">Edit Ins. Company</a></li>
+			  </ul>
+			  
+			<div class="tab-content">
+				<div id="tab-1" class="tab-pane active">
+					<div class="panel-body">
+						<div class="col-lg-12 panel-body tab-panel">
+							
+							<form action="add_AttorneyInfo" method="post" class="form-horizontal">
+							<h4>Attorney Information </h4>
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Defendant</label>
+								<div class="col-md-6">
+									<select class="form-control input-sm" id="defendantId" name="defendantId" >
+										<?php foreach($Defendant_Name as $row){?>
+                                        <option value="<?php echo $row['Defendant_id']; ?>"><?php echo $row['Defendant_Name'];?></option>
+                                        <?php }?>
+									</select>
+								</div>
+							</div>
+							<div class="form-group form-horizontal col-smd-12">
+								<label class="col-sm-2 control-label">Last Name</label>
+								<div class="col-sm-2">
+									<input type="text" id="lastName" name="lastName" placeholder="Last Name" class="form-control input-sm">
+								</div>
+								<label class="col-sm-1 control-label">First Name</label>
+								<div class="col-sm-2">
+									<input type="text" id="firstName" name="firstName" placeholder="First Name" class="form-control input-sm">
+								</div>
+							</div>
+							<div class="form-group form-horizontal col-smd-12">
+								<label class="col-sm-2 control-label">Zip</label>
+								<div class="col-sm-2">
+									<input type="text" id="zip" name="zip" placeholder="Ex.000000" class="form-control input-sm">
+								</div>
+								<label class="col-sm-1 control-label">City</label>
+                                <div class="col-sm-2">
+                                    <select class="form-control m-b" id="city" name="city" >
+                                        <option>option 1</option>
+                                        <option>option 2</option>
+                                        <option>option 3</option>
+                                        <option>option 4</option>
+                                    </select>
+                                </div>
+                                <label class="col-sm-1 control-label">State</label>
+                                <div class="col-sm-2">
+                                    <select class="form-control m-b"  id="state" name="state" >
+                                        <?php foreach($State_Name as $row){?>
+                                        <option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
+                                        <?php }?>
+                                    </select>
+                                </div>
+							</div>
+							<div class="form-group form-horizontal col-smd-12">
+                            	<label class="col-sm-2 control-label">Phone</label>
+								<div class="col-sm-2">
+									<input type="text" id="phone" name="phone" placeholder="Ex.000000" class="form-control input-sm">
+								</div>
+                                <label class="col-sm-1 control-label">Fax</label>
+								<div class="col-sm-1">
+									<input type="text" id="fax" name="fax" placeholder="Ex.000000" class="form-control input-sm">
+								</div>
+								<label class="col-sm-2 control-label">Email</label>
+								<div class="col-sm-2">
+									<input type="text" id="email" name="email" placeholder="Ex.abc@pqr.com" class="form-control input-sm">
+								</div>
+								
+							</div>
+							<div class="form-group form-horizontal col-sm-12">
+								<div class="col-sm-2"> </div>
+								<div class="col-sm-2">
+									<button type="submit" class="btn w-xs btn-primary">Save</button>
+								</div>
+							</div>
+						</form>
+							
+						</div>
+					</div>
+				</div>
+				
+				
+			</div>
+			
+		</div><!-- End of panel-body tab-panel-->
+		</div><!-- End hpanel -->
+		</div><!-- End col-lg-12-->
+	</div><!-- End row-->
+				   
+</div>
   
   <!-- Right sidebar -->
   <div id="right-sidebar" class="animated fadeInRight"> </div>

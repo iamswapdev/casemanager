@@ -68,10 +68,9 @@
           </ul>
           <div class="tab-content">
             <div id="tab-1" class="tab-pane active">
-              <div class="panel-body"> <span>
-                <h4>Denial Types Add/Edit</h4>
-                </span>
-                <table id="example2" class="display table table-bordered align-table ">
+              <div class="panel-body"> 
+				<div><h4>Denial Types Add/Edit</h4>
+				<table id="example2" class="display table table-bordered align-table ">
                   <thead>
                     <tr>
                       <th class="col-sm-1"></th>
@@ -95,6 +94,8 @@
                 <div>
                   <button type="button" class="btn w-xs btn-info create">Deleted checked</button>
                 </div>
+				</div>
+                
               </div>
             </div>
             <div id="tab-2" class="tab-pane">

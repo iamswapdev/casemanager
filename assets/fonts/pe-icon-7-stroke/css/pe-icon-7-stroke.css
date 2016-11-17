@@ -22,6 +22,7 @@
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	color:#FFF;
 }
 
 .pe-7s-cloud-upload:before {

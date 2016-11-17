@@ -20,7 +20,7 @@
 
 <!-- Vendor styles -->
 <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/fontawesome/css/font-awesome.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.css" />
+<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/metimdenu/dist/metimdenu.css" />
 <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/animate.css/animate.css" />
 <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
 
@@ -55,37 +55,62 @@
       <div class="col-lg-12">
         <div class="hpanel">
           <ul class="nav nav-tabs">
-            <li class="active"><a href="">Add Defendant Info</a></li>
-            <li class=""><a href="<?php echo base_url();?>dataentry/updatedefendant">Edit Defendant Info</a></li>
+            <li class=""><a href="<?php echo base_url();?>dataentry/defendant">Add Defendant Info</a></li>
+            <li class="active"><a href="">Edit Defendant Info</a></li>
           </ul>
           <div class="tab-content">
-            <div id="tab-1" class="tab-pane active">
+			
+			
+			<div id="tab-2" class="tab-pane active">
 				<div class="panel-body">
 					<div class="col-lg-12 panel-body tab-panel">
 						<form action="updatedefendant" method="post" class="form-horizontal">
+							<h4>Select Defendant To Edit</h4>
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-label">Name</label>
+								<div class="col-md-6">
+									<select class="form-control m-b" id="defendantId" name="defendantId">
+										<?php foreach($Defendant_Name as $row){?>
+                                        <option value="<?php echo $row['Defendant_id']; ?>"><?php echo $row['Defendant_Name'];?></option>
+                                        <?php }?>
+									</select>
+								</div>
+							</div>
+							<div class="form-group form-horizontal col-md-12">
+								<div class="col-md-2"> </div>
+								<div class="col-md-2">
+									<button type="submit" class="btn w-xs btn-primary">Save</button>
+								</div>
+							</div>
+						</form>
+                        
+                        <?php if($DefendantInfoById != ""){ /*echo "<pre>"; print_r($DefendantInfoById);*/ ?>
+						<?php foreach($DefendantInfoById as $row){?>
+                        <form action="updatedefendant" method="post" class="form-horizontal" style=" <?php if($display_form != 1){ ?> display: none; <?php }?>" >
                             <h4>Defendant Information Information</h4>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Name</label>
-                                <div class="col-sm-6">
-                                <input type="text" id="name" name="name" class="form-control input-sm">
+                            <div class= "form-group form-horizontal col-md-12">
+                            	<input type="hidden" id="defendantIdHidden" name="defendantId" value="<?php echo $row['Defendant_id']; ?>" >
+                                <label class="col-md-2 control-label">Name</label>
+                                <div class="col-md-6">
+                                <input type="text" id="name" name="name" class="form-control input-md" value="<?php echo $row['Defendant_Name']; ?>" >
                                 </div>
                             </div>
                             
                             <h4>Defendant Contact Details Address</h4>
-                            <div class="form-group form-horizontal col-sm-12 ">
-                            <label class="col-sm-2 control-label">Address</label>
-                            <div class="col-sm-6">
-                            <textarea rows="5" id="address" name="address"  class="form-control" ></textarea>
+                            <div class="form-group form-horizontal col-md-12 ">
+                            <label class="col-md-2 control-label">Address</label>
+                            <div class="col-md-6">
+                            <textarea rows="5" id="address" name="address"  class="form-control" > <?php echo $row['Defendant_Address']; ?> </textarea>
                             </div>
                             </div>
-                            <div class="form-group form-horizontal col-sm-12">
-                                <label class="col-sm-2 control-label">Zip</label>
-                                <div class="col-sm-2">
-                                    <input type="text" id="zip" name="zip"  placeholder="Ex.11111" class="form-control m-b">
-                                    <!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
+                            <div class="form-group form-horizontal col-md-12">
+                                <label class="col-md-2 control-label">Zip</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="zip" name="zip"  placeholder="Ex.11111" class="form-control m-b" value="<?php echo $row['Defendant_Zip']; ?>" >
+                                    <!--<input type="text" placeholder=".input-md" class="form-control input-md">--> 
                                 </div>
-                                <label class="col-sm-1 control-label">City</label>
-                                <div class="col-sm-2">
+                                <label class="col-md-1 control-label">City</label>
+                                <div class="col-md-2">
                                     <select class="form-control m-b" id="city" name="city" >
                                         <option>option 1</option>
                                         <option>option 2</option>
@@ -93,64 +118,40 @@
                                         <option>option 4</option>
                                     </select>
                                 </div>
-                                <label class="col-sm-1 control-label">State</label>
-                                <div class="col-sm-2">
+                                <label class="col-md-1 control-label">State</label>
+                                <div class="col-md-2">
                                     <select class="form-control m-b"  id="state" name="state" >
-                                        <?php foreach($State_Name as $row){?>
-                                        <option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
-                                        <?php }?>
+                                        <option>option 1</option>
+                                        <option>option 2</option>
+                                        <option>option 3</option>
+                                        <option>option 4</option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group form-horizontal col-sm-12">
-                                <label class="col-sm-2 control-label">Email</label>
-                                <div class="col-sm-2">
-                                    <input type="text" id="email" name="email"  placeholder="Ex.abc@pqr.com" class="form-control m-b">
+                            <div class="form-group form-horizontal col-md-12">
+                                <label class="col-md-2 control-label">Email</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="email" name="email"  placeholder="Ex.abc@pqr.com" class="form-control m-b" value="<?php echo $row['Defendant_Email']; ?>" >
                                 </div>
-                                <label class="col-sm-1 control-label">Phone</label>
-                                <div class="col-sm-2">
-                                    <input type="text" id="phone" name="phone"  placeholder="Ex.000000" class="form-control m-b">
+                                <label class="col-md-1 control-label">Phone</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="phone" name="phone"  placeholder="Ex.000000" class="form-control m-b" value="<?php echo $row['Defendant_Phone']; ?>" >
                                 </div>
-                                <label class="col-sm-1 control-label">Fax</label>
-                                <div class="col-sm-2">
-                                    <input type="text" id="fax" name="fax"  placeholder="Ex.11111" class="form-control m-b">
+                                <label class="col-md-1 control-label">Fax</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="fax" name="fax"  placeholder="Ex.11111" class="form-control m-b" value="<?php echo $row['Defendant_Fax']; ?>" >
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
-                                <div class="col-sm-2"> </div>
-                                <div class="col-sm-2">
+                                <div class="col-md-2"> </div>
+                                <div class="col-md-2">
                                     <button type="submit" class="btn w-xs btn-primary">Save</button>
                                 </div>
                             </div>
-                        </form>
-					</div>
-				</div>
-			</div>
-			
-			
-			<div id="tab-2" class="tab-pane">
-				<div class="panel-body">
-					<div class="col-lg-12 panel-body tab-panel">
-						<form method="get" class="form-horizontal">
-							<h4>Select Defendant To Edit</h4>
-							<div class="form-group col-md-12">
-								<label class="col-sm-2 control-label">Name</label>
-								<div class="col-md-6">
-									<select class="form-control m-b" name="account">
-										<option>option 1</option>
-										<option>option 2</option>
-										<option>option 3</option>
-										<option>option 4</option>
-									</select>
-								</div>
-							</div>
-							<div class="form-group form-horizontal col-md-12">
-								<div class="col-sm-2"> </div>
-								<div class="col-sm-2">
-									<button type="button" class="btn w-xs btn-primary">Save</button>
-								</div>
-							</div>
-						</form>
+                        </form> <?php }?>
+                        <?php }?>
+                        
+                        
 					</div>
 				</div>
 			</div>
@@ -173,7 +174,7 @@
 <script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script> 
 <script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script> 
 <script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script> 
+<script src="<?php echo base_url();?>assets/vendor/metimdenu/dist/metimdenu.min.js"></script> 
 <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script> 
 <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script> 
 <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script> 

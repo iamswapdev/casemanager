@@ -49,75 +49,75 @@
 <?php include 'header_adminprivilege.php';?>
 
 <div class="content animate-panel">
-	<h4>Add New Role</h4>
-     
+
     <div class="row">
-        <div class="col-lg-5 animated-panel zoomIn" style="animation-delay: 0.2s;">
-        	<div class="panel-body">
-                <form method="get" class="form-horizontal">
-                    <div class="form-group"><label class="col-sm-3 control-label">Role Name</label>
-                        <div class="col-sm-9"><input type="text" class="form-control"></div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-8 col-sm-offset-3">
-                            <button class="btn btn-default" type="submit">Cancel</button>
-                            <button type="button" class="btn w-xs btn-info create">Add</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-	</div>   
+		<div class="col-lg-12">
+		<div class="hpanel">
+		<div class="panel-heading">
+			<div class="panel-tools">
+			</div>
+		</div>
+		<div class="panel-body tab-panel">
+			
+			<h4>Add New Role</h4>
+			<form id="addRoleForm" role="form" action="insert_Roles" method="post">
+				<div class="form-group form-horizontal col-md-12">
+					<label class="col-sm-2 control-label">Role Name</label>
+					<div class="col-sm-4">
+						<input type="text" name="RoleName" id="RoleName" class="form-control input-sm" required>
+					</div>
+				</div>
+				<div class="form-group form-horizontal col-md-12">
+					<div class="col-md-2"></div>
+					<div class="col-md-1">
+						<button type="submit" class="btn w-xs btn-primary">Add</button>
+					</div>
+					<div class="col-md-2">
+						<button class="btn btn-primary" >Cancel</button>
+					</div> 
+				</div>
+			</form>
+			
+			<div class="form-group form-horizontal col-md-12">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<table id="example2" class="table table-striped table-bordered table-hover">
+					<thead>
+						<tr>
+						<th>Roll Name</th>
+						<th>Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+                    <?php foreach($RoleName as $row){?>
+						<tr>
+							<td><?php echo $row['RoleName']?></td>
+							<td><input type="checkbox" class="i-checks"></td>
+						</tr>
+                    <?php }?>
+					</tbody>
+					</table>
+				</div>
+				
+			</div>
+			<div class="form-group form-horizontal col-md-12">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<button type="button" class="btn w-xs btn-primary">Delete Checked</button>
+				</div>
+			</div>
+			
+			
+			
+		</div><!-- End of panel-body tab-panel-->
+		</div><!-- End hpanel -->
+		</div><!-- End col-lg-12-->
+	</div><!-- End row-->   
+      
     
-    <div class="row">
-    <div class="col-lg-12 animated-panel zoomIn" style="animation-delay: 0.4s;">
-        <div class="hpanel">
-            
-            <div class="panel-body">
-            <form method="post" action="#">
-            	<div class="table-responsive">                
-                    <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Roll Name</th>
-                            <th>Delete</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Abraham</td>
-                            <td>076 9477 4896</td>
-                            <td><div class="form-group"><div class="col-sm-10"><label class="checkbox-inline"> <div class="icheckbox_square-green" style="position: relative;"><input type="checkbox" class="i-checks" style="position: absolute; opacity: 0;"></div>  </label></div></div></td>
-                        </tr>
-                        <tr>
-                            <td>Abraham</td>
-                            <td>076 9477 4896</td>
-                            <td><div class="form-group"><div class="col-sm-10"><label class="checkbox-inline"> <div class="icheckbox_square-green" style="position: relative;"><input type="checkbox" class="i-checks" style="position: absolute; opacity: 0;"></div>  </label></div></div></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                
-                </div>
-                <div class="form-group">
-                    <button type="button" class="btn w-xs btn-info create">Delete Checked</button>
-                </div>
-            </form>
-            </div>
-            
-        </div>
-    </div>
-</div>   
     
     
-    
-    
-    
-    
-    
-    
-    
-    
+	
 </div>
 
     <!-- Right sidebar -->
@@ -144,8 +144,30 @@
 <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/addactive/addactive.js"></script>
+<script src="vendor/jquery-validation/jquery.validate.min.js"></script>
 <!-- App scripts -->
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
+
+<script>
+
+	$(function(){
+	
+		
+         $("#addRoleForm").validate({
+            rules: {
+                RoleName: {
+                    required: true,
+                    minlength: 3
+                }
+            },
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+	
+	
+	});
+</script>
 
 </body>
 </html>

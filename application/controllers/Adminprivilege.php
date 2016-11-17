@@ -6,6 +6,7 @@ session_cache_limiter('private_no_expire');
 		Public function __construct(){
 			parent::__construct();
 			$this->load->library('session');
+			$this->load->model('admin_privilege_model');
 		}
 		public function index(){
 			$this->session->all_userdata();
@@ -22,15 +23,15 @@ session_cache_limiter('private_no_expire');
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
 				$data = array();
-				$user_data = array();
-				$all_data = array();
-				$this->load->model('admin_privilege_model');
+				//$this->load->model('admin_privilege_model');
 				
 				$data['result']=$this->admin_privilege_model->get_provider();
 					
 				$data['user_result']=$this->admin_privilege_model->get_user();
 				
 				$data['company_result']=$this->admin_privilege_model->get_company();
+				
+				$data['Status_Type']=$this->admin_privilege_model->get_StatusType();
 		
 				$this->load->view('pages/config',$data);
 			}else{
@@ -42,7 +43,10 @@ session_cache_limiter('private_no_expire');
 		public function manageusers(){
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
-				$this->load->view('pages/manageusers');
+				//$this->load->model('admin_privilege_model');
+				$data['UserName']=$this->admin_privilege_model->get_ManageUserData();
+				//print_r($data); exit();
+				$this->load->view('pages/manageusers',$data);
 			}else{
 				//echo "session deleted";
 				$this->load->view('pages/login');
@@ -52,7 +56,24 @@ session_cache_limiter('private_no_expire');
 		public function addnewrole(){
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
-				$this->load->view('pages/addnewrole');
+				
+				$data['RoleName']=$this->admin_privilege_model->get_AllRoles();
+				$this->load->view('pages/addnewrole',$data);
+			}else{
+				//echo "session deleted";
+				$this->load->view('pages/login');
+			}
+		
+		}
+		public function insert_Roles(){
+			$this->session->all_userdata();
+			if(isset($this->session->userdata['logged_in'])){
+				$data=array(
+					'RoleName' => $this->input->post('RoleName'),
+				); 
+				$insert_success = $this->admin_privilege_model->insert_Roles($data);
+				if($insert_success){$this->addnewrole();}
+				
 			}else{
 				//echo "session deleted";
 				$this->load->view('pages/login');
@@ -62,7 +83,8 @@ session_cache_limiter('private_no_expire');
 		public function assignmenu(){
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
-				$this->load->view('pages/assignmenu');
+				$data['RoleName']=$this->admin_privilege_model->get_AllRoles();
+				$this->load->view('pages/assignmenu',$data);
 			}else{
 				//echo "session deleted";
 				$this->load->view('pages/login');

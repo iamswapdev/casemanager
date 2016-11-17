@@ -23,7 +23,7 @@ session_cache_limiter('private_no_expire');
 				$this->load->view('pages/login');
 			}
 		}
-		public function dataentry_workarea(){
+		public function dataentryworkarea(){
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
 				$this->load->view('pages/dataentry_workarea');

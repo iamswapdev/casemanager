@@ -50,62 +50,70 @@
 <?php include 'header_adminprivilege.php';?>
 
 <div class="content animate-panel">
-	<div class="form-group"><label class="col-sm-2 control-label">Select Role Name :</label>
-        <div class="col-sm-10"><select class="form-control m-b" name="account">
-            <option>Administrator</option>
-            <option>Adv-Staff</option>
-            <option>Insurer</option>
-            <option>OffCounsel</option>
-            <option>OutSource-Staff</option>
-            <option>Provider</option>
-            <option>Staff</option>
-            <option>Stefan Only</option>
-            <option>OffCounsel</option>
-            <option>Test</option>
-            <option>test 1</option>
-            </select>
-        </div>
-	</div>
-    <div class="form-group"><label class="col-sm-2 control-label">Select Main Menu Name:</label>
-        <div class="col-sm-10"><select class="form-control m-b" name="account">
-            <option>Admin</option>
-            <option>Master</option>
-            <option>Search</option>
-            <option>WorkArea</option>
-            <option>WorkDesk</option>
-            <option>Financials</option>
-            </select>
-        </div>
-	</div>
-    <br><br><br>
-    <div class="row"> 
-    	<div class="col-md-12 col-md-offset-2 animated-panel zoomIn" style="animation-delay: 0.2s;">
-         	
-        	<div class="col-md-4">List of Menus for selected role and main menu.<select class="form-control m-b" name="account" multiple>
-                <option>option 1</option>
-                <option>option 2</option>
-                <option>option 3</option>
-                <option>option 4</option>
-                </select>
-            </div>
-        
-        
-        
-        
-         	 
-            <div class="col-sm-4">List Assigned Menus To A Role<select class="form-control m-b" name="account" multiple>
-                    <option>Admin</option>
-                    <option>Master</option>
-                    <option>Search</option>
-                    <option>WorkArea</option>
-                    <option>WorkDesk</option>
-                    <option>Financials</option>
-                    <option>Contacts</option>
-                    </select>
-             </div>
-        
-   		</div>
-    </div>
+	<div class="row">
+		<div class="col-lg-12">
+		<div class="hpanel">
+		<div class="panel-heading">
+		</div>
+		<div class="panel-body tab-panel">
+			
+			<div class="form-group form-horizontal col-md-12">
+				<label class="col-sm-2 control-label">Select Role Name :</label>
+				<div class="col-sm-4">
+					<select class="form-control m-b" name="account">
+					
+                    <?php foreach($RoleName as $row){?>
+						<tr>
+							<option><?php echo $row['RoleName']?></option>
+                    <?php }?>
+					</select>
+				</div>
+			</div>
+			<div class="form-group form-horizontal col-md-12">
+				<label class="col-sm-2 control-label">Select Main Menu Name:</label>
+				<div class="col-sm-4">
+					<select class="form-control m-b" name="account">
+					<option>Admin</option>
+					<option>Master</option>
+					<option>Search</option>
+					<option>WorkArea</option>
+					<option>WorkDesk</option>
+					<option>Financials</option>
+					</select>
+				</div>
+			</div>
+			
+			<div class="form-group form-horizontal col-md-12">
+				<div class="col-md-4">List of Menus for selected role and main menu.<select class="form-control m-b" name="account" multiple>
+					<option>option 1</option>
+					<option>option 2</option>
+					<option>option 3</option>
+					<option>option 4</option>
+					</select>
+				</div>
+			
+				<div class="col-sm-4">List Assigned Menus To A Role<select class="form-control m-b" name="account" multiple>
+						<option>Admin</option>
+						<option>Master</option>
+						<option>Search</option>
+						<option>WorkArea</option>
+						<option>WorkDesk</option>
+						<option>Financials</option>
+						<option>Contacts</option>
+						</select>
+				 </div>
+			</div>
+			
+			<div class="form-group form-horizontal col-md-12">
+				<div class="col-sm-4">
+                    <button type="button" class="btn w-xs btn-primary">Save Assigned Menus</button>
+                </div>
+			</div>
+			
+		</div><!-- End of panel-body tab-panel-->
+		</div><!-- End hpanel -->
+		</div><!-- End col-lg-12-->
+	</div><!-- End row-->
 
     <!-- Right sidebar -->
     <div id="right-sidebar" class="animated fadeInRight">
