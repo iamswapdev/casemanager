@@ -1545,9 +1545,9 @@ body {
   height: 100%;
 }
 #header {
-  background-color: #055286;
+  background-color: #4ea4de;
   display: block;
-  height: 62px;
+  height: 40px;
   margin: 0;
   padding: 0;
   position: relative;
@@ -1738,7 +1738,7 @@ body {
 .hpanel > .panel-heading {
   color: inherit;
   font-weight: 600;
-  padding: 10px 4px;
+  padding: 2px 4px;
   transition: all .3s;
   border: 1px solid transparent;
 }
@@ -1764,7 +1764,7 @@ body {
   background-color: #e4e4e4;
   border: 1px solid #e4e5e7;
   border-radius: 2px;
-  padding: 12px;
+  padding: 5px 5px 10px 2px;
   position: relative;
 }
 .panel-collapse .panel-body {
@@ -1892,7 +1892,7 @@ body {
   margin-top: 6px;
   margin-bottom: 0px;
   list-style: none;
-  background-color: #c7cdd4;
+  background-color: #e4e4e4;
   border-radius: #fff;
   font-size: 11px;
 }
@@ -2048,11 +2048,11 @@ body {
   height: 300px;
 }
 .hr-line-dashed {
-  background-color: transparent;
+  background-color: #000;
   border-top: 1px dotted #f1f3f6;
   color: transparent;
   height: 1px;
-  margin: 20px 0;
+  margin: 0px -15px;
 }
 /* Mixin */
 .animated-panel {
@@ -2192,8 +2192,8 @@ body {
   float: left;
   width: 180px;
   background-color: #34495e;
-  padding: 18px 10px 18px 18px;
-  height: 56px;
+  padding: 10px 30px 10px 30px;
+  height: 40px;
   text-align: center;
 }
 #logo span {
@@ -2202,7 +2202,7 @@ body {
   font-size: 14px;
 }
 #logo.light-version {
-  background-color: #055286;
+  background-color: #4ea4de;
   border-bottom: 1px solid #e4e5e7;
   text-align: left;
 }
@@ -2245,7 +2245,7 @@ body {
 }
 /* Menu */
 #side-menu {
-  background: #055286;
+  background: #4ea4de;
 }
 #side-menu li a {
   color: #fff;
@@ -2303,14 +2303,15 @@ body {
 }
 .header-link {
   color: #fff;
-  padding: 18px 26px 17px 26px;
+  padding: 10px 20px 10px 20px;
   font-size: 14px;
   float: left;
   border-right: 1px solid #e4e5e7;
   border-left: 1px solid #e4e5e7;
   margin-right: 15px;
-  background: #055286;
+  background: #4ea4de;
   cursor: pointer;
+  height:38px;
 }
 .header-link:hover {
   background: #f7f9fa;
@@ -2632,8 +2633,9 @@ h6 {
 	top:16px;
 }
 .set-bg{
-	background-color:#34495e;
+	background-color:#4ea4de;
 	color:#fff;
+	padding-bottom: 6px;
 }
 .tab-panel{
 	border: 1px solid #e4e5e7!important;
@@ -2936,7 +2938,7 @@ h6 {
 /* Tables */
 .table > thead > tr > th {
   border-bottom: none;
-  background-color:#055286;
+  background-color:#4ea4de;
   color: #fff;
   text-align: center;
 }
@@ -3546,3 +3548,55 @@ ul.h-list li:hover a {
 input[name="search"]::-webkit-input-placeholder, input[name="search"] {
 	color: #fff; !important;
 }
+.h4-title{
+	margin-top:-5px !important;
+	margin-bottom:5px !important;
+	font-size:15px !important;
+}
+.table-icons{
+	padding:0px 10px !important;
+	font-size: 10px !important;
+}
+.table-input{
+	margin:2px;
+}
+.login-form-btn{
+	width: 75%;
+    margin: 15px auto;
+    padding: 8px;
+    font-size: 15px;
+}
+.hpanel .login-page{
+	background-color: #fff !important;
+    border: 1px solid #e4e5e7 !important;
+    border-radius: 2px;
+    padding: 30px !important;
+    position: relative;
+    border-radius: 10px !important;
+    box-shadow: 1px 1px 9px 0px #000;
+}
+.forgot-btn{
+	width: 75%;
+    margin: 15px auto;
+    clear: both;
+    padding: 10px;
+    font-size: 15px;
+}
+.welcome-text h2, .welcome-text h4, .welcome-text p{
+	color:#fff !important;
+}
+.inputt{
+	padding: 5px 5px;
+}
+.input-height{
+	height:20px !important;
+}
+select[multiple].input-rows{
+	height:101px;
+}
+.required-field{
+	color:#F00;
+}
+	
+	
+	

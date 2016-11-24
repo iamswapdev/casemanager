@@ -1,6 +1,6 @@
 <div id="header">
-    <div class="color-line">
-    </div>
+    <!--<div class="color-line">
+    </div>-->
     <div id="logo" class="light-version">
         <span class="logo-span">
             Case-Manager
@@ -11,12 +11,12 @@
         <div class="small-logo">
             <span class="text-primary">HOMER APP</span>
         </div>
-        <form role="search" class="navbar-form-custom" method="post" action="#">
+        <!--<form role="search" class="navbar-form-custom" method="post" action="#">
             <div class="form-group">
                 <input type="text" placeholder="Search something special" class="form-control" name="search">
             </div>
-        </form>
-        <div class="navbar-right">
+        </form>-->
+        <!--<div class="navbar-right">
             <ul class="nav navbar-nav no-borders">
                 <li class="dropdown">
                     <a class="dropdown-toggle" href="#" data-toggle="dropdown">
@@ -136,6 +136,6 @@
                     </a>
                 </li>
             </ul>
-        </div>
+        </div>-->
     </nav>
 </div>

@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- Page title -->
-    <title>Manage User</title>
+    <title>CaseSettelments</title>
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!--<link rel="shortcut icon" type="image/ico" href="favicon.ico" />-->
@@ -37,7 +37,7 @@
 <body>
 
 <!-- Simple splash screen-->
-<div class="splash"> <div class="color-line"></div><div class="splash-title"><h1>Homer - Responsive Admin Theme</h1><p>Special AngularJS Admin Theme for small and medium webapp with very clean and aesthetic style and feel. </p><img src="images/loading-bars.svg" width="64" height="64" /> </div> </div>
+<!--<div class="splash"> <div class="color-line"></div><div class="splash-title"><h1>Homer - Responsive Admin Theme</h1><p>Special AngularJS Admin Theme for small and medium webapp with very clean and aesthetic style and feel. </p><img src="images/loading-bars.svg" width="64" height="64" /> </div> </div>-->
 <!--[if lt IE 7]>
 <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
@@ -68,24 +68,25 @@
 						<div class="panel-body">
 							<div class="col-lg-12 panel-body tab-panel">
 								<form>
-									
-									<h4>Select Date Range for Processed Invoices</h4>
+									<h4 class="h4-title">Select Date Range for Processed Invoices</h4>
 									<div class="form-group form-horizontal col-md-12">
 										<label class="col-md-1 control-label">Start Date</label>										
-										<div class="col-md-2">
+										<div class="col-md-1">
 											<input id="datapicker1" type="text" class="form-control input-sm">
 										</div>
 										
 										<label class="col-md-1 control-label">End Date</label>										
-										<div class="col-md-2">
+										<div class="col-md-1">
 											<input id="datapicker2" type="text" class="form-control input-sm">
 										</div>
 										<div class="col-md-2">
-											<button type="button" class="btn w-xs btn-primary">Get</button>
+											<button type="button" class="btn btn-primary">Get</button>
 										</div>
 										
 									</div>
-									<p> Click <a href="#">here</a> to set Check Date </p>
+									<div class="form-group form-horizontal col-md-12">
+										<label class="col-md-2 control-label">Click <a href="#">here</a> to set Check Date</label>
+									</div>
 								</form>
 							</div>
 						</div>
@@ -95,7 +96,7 @@
 						<div class="panel-body">
 							<div class="col-lg-12 panel-body tab-panel">
 								<form>
-									<h4>Select Date Range for Summons Sent to Court</h4>
+									<h4 class="h4-title"> <<< <a href="<?php echo base_url();?>search/advancedsearch">Advanced Search</a></h4>
 									<div class="panel-heading">
 										<div class="panel-tools">
 											<a class="showhide"><i class="fa fa-chevron-up"></i></a>
@@ -104,22 +105,22 @@
 									</div>
 									<table id="example2" class="table table-striped table-bordered table-hover">
 										<thead>
-										<tr>
-											<th>PROVIDER ID</th>
-											<th>PROVIDER NAME</th>
-											<th>NUMBER OF CHECKS</th>
-											<th>TOTAL AMOUNT</th>
-											<th>PROCESS INVOICE</th>
-										</tr>
+											<tr>
+												<th>PROVIDER ID</th>
+												<th>PROVIDER NAME</th>
+												<th>NUMBER OF CHECKS</th>
+												<th>TOTAL AMOUNT</th>
+												<th>PROCESS INVOICE</th>
+											</tr>
 										</thead>
 										<tbody>
-										<tr>
-											<td>Abraham</td>
-											<td>076 9477 4896</td>
-											<td>076 9477 4896</td>
-											<td>076 9477 4896</td>
-											<td><button type="button" class="btn w-xs btn-primary">View Report</button></td>
-										</tr>
+											<tr>
+												<td>Abraham</td>
+												<td>076 9477 4896</td>
+												<td>076 9477 4896</td>
+												<td>076 9477 4896</td>
+												<td><button type="button" class="btn w-xs btn-primary">View Report</button></td>
+											</tr>
 										</tbody>
 									</table>
 								</form>
@@ -131,19 +132,19 @@
 						<div class="panel-body">
 							<div class="col-lg-12 panel-body tab-panel">
 								<form>
-									<h4>Select Date Range for Firm Fees</h4>
+									<h4 class="h4-title">Select Date Range for Firm Fees</h4>
 									<div class="form-group form-horizontal col-md-12">
 										<label class="col-md-1 control-label">Start Date</label>										
-										<div class="col-md-2">
+										<div class="col-md-1">
 											<input id="datapicker3" type="text" class="form-control input-sm">
 										</div>
 										
 										<label class="col-md-1 control-label">End Date</label>										
-										<div class="col-md-2">
+										<div class="col-md-1">
 											<input id="datapicker4" type="text" class="form-control input-sm">
 										</div>
 										<div class="col-md-2">
-											<button type="button" class="btn w-xs btn-primary">Get</button>
+											<button type="button" class="btn btn-primary">Get</button>
 										</div>
 										
 									</div>
@@ -155,16 +156,16 @@
 					<div id="tab-4" class="tab-pane">
 						<div class="panel-body">
 							<div class="col-lg-12 panel-body tab-panel">
-								<h4>Client Cost Balance</h4>
-								<p><a href="#">All</a>|<a href="#">A</a>|<a href="#">B</a>|<a href="#">C</a>|<a href="#">D</a>|<a href="#">E</a>|<a href="#">F</a>|<a href="#">G</a>|<a href="#">H</a>|<a href="#">I</a>|<a href="#">J</a>|<a href="#">K</a>|<a href="#">L</a>|<a href="#">M</a>|<a href="#">N</a>|<a href="#">O</a>|<a href="#">P</a>|<a href="#">Q</a>|<a href="#">R</a>|<a href="#">S</a>|<a href="#">T</a>|<a href="#">U</a>|<a href="#">V</a>|<a href="#">W</a>|<a href="#">X</a>|<a href="#">Y</a>|<a href="#">Z</a>|</p>
 								
-								<div class="panel-heading">
+								<!-- <p><a href="#">All</a>|<a href="#">A</a>|<a href="#">B</a>|<a href="#">C</a>|<a href="#">D</a>|<a href="#">E</a>|<a href="#">F</a>|<a href="#">G</a>|<a href="#">H</a>|<a href="#">I</a>|<a href="#">J</a>|<a href="#">K</a>|<a href="#">L</a>|<a href="#">M</a>|<a href="#">N</a>|<a href="#">O</a>|<a href="#">P</a>|<a href="#">Q</a>|<a href="#">R</a>|<a href="#">S</a>|<a href="#">T</a>|<a href="#">U</a>|<a href="#">V</a>|<a href="#">W</a>|<a href="#">X</a>|<a href="#">Y</a>|<a href="#">Z</a>|</p> -->
+								
+								<div class="panel-heading"><h4 class="h4-title">Client Cost Balance</h4>
 									<div class="panel-tools">
 										<a class="showhide"><i class="fa fa-chevron-up"></i></a>
 										<a class="closebox"><i class="fa fa-times"></i></a>
 									</div>
 								</div>
-								<table id="example2" class="table table-striped table-bordered table-hover">
+								<table id="example3" class="table table-striped table-bordered table-hover">
 									<thead>
 									<tr>
 										<th>PROVIDER ID</th>
@@ -176,62 +177,36 @@
 									<tr>
 										<td>Abraham</td>
 										<td>076 9477 4896</td>
-										<td><input type="text" class="form-control input-sm"></td>
+										<td><div class="form-horizontal col-md-5 table-input"> <input type="text" class="form-control input-sm input-height"> </div></td>
 									</tr>
 									<tr>
 										<td>Abraham</td>
 										<td>076 9477 4896</td>
-										<td><input type="text" class="form-control input-sm"></td>
+										<td><div class="form-horizontal col-md-5 table-input"> <input type="text" class="form-control input-sm input-height"> </div></td>
 									</tr>
 									<tr>
 										<td>Abraham</td>
 										<td>076 9477 4896</td>
-										<td><input type="text" class="form-control input-sm"></td>
+										<td><div class="form-horizontal col-md-5 table-input"> <input type="text" class="form-control input-sm input-height"> </div></td>
+									<tr>
+										<td>Abraham</td>
+										<td>076 9477 4896</td>
+										<td><div class="form-horizontal col-md-5 table-input"> <input type="text" class="form-control input-sm input-height"> </div></td>
 									</tr>
 									<tr>
 										<td>Abraham</td>
 										<td>076 9477 4896</td>
-										<td><input type="text" class="form-control input-sm"></td>
+										<td><div class="form-horizontal col-md-5 table-input"> <input type="text" class="form-control input-sm input-height"> </div></td>
 									</tr>
 									<tr>
 										<td>Abraham</td>
 										<td>076 9477 4896</td>
-										<td><input type="text" class="form-control input-sm"></td>
+										<td><div class="form-horizontal col-md-5 table-input"> <input type="text" class="form-control input-sm input-height"> </div></td>
 									</tr>
 									<tr>
 										<td>Abraham</td>
 										<td>076 9477 4896</td>
-										<td><input type="text" class="form-control input-sm"></td>
-									</tr>
-									<tr>
-										<td>Abraham</td>
-										<td>076 9477 4896</td>
-										<td><input type="text" class="form-control input-sm"></td>
-									</tr>
-									<tr>
-										<td>Abraham</td>
-										<td>076 9477 4896</td>
-										<td><input type="text" class="form-control input-sm"></td>
-									</tr>
-									<tr>
-										<td>Abraham</td>
-										<td>076 9477 4896</td>
-										<td><input type="text" class="form-control input-sm"></td>
-									</tr>
-									<tr>
-										<td>Abraham</td>
-										<td>076 9477 4896</td>
-										<td><input type="text" class="form-control input-sm"></td>
-									</tr>
-									<tr>
-										<td>Abraham</td>
-										<td>076 9477 4896</td>
-										<td><input type="text" class="form-control input-sm"></td>
-									</tr>
-									<tr>
-										<td>Abraham</td>
-										<td>076 9477 4896</td>
-										<td><input type="text" class="form-control input-sm"></td>
+										<td><div class="form-horizontal col-md-5 table-input"> <input type="text" class="form-control input-sm input-height"> </div></td>
 									</tr>
 									</tbody>
 								</table>
@@ -266,126 +241,36 @@
 										<td>System Architect</td>
 										<td>Edinburgh</td>
 										<td>61</td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
+										<td class="inputt"><input type="text" class="form-control input-sm"></td>
+										<td class="inputt"><input type="text" class="form-control input-sm"></td>
+										<td class="inputt"><input type="text" class="form-control input-sm"></td>
+										<td class="inputt"><input type="text" class="form-control input-sm"></td>
 									</tr>
 									<tr>
 										<td>Garrett Winters</td>
 										<td>Accountant</td>
 										<td>Tokyo</td>
 										<td>63</td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-									</tr>
-									<tr>
-										<td>Ashton Cox</td>
-										<td>Junior Technical Author</td>
-										<td>San Francisco</td>
-										<td>66</td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-									</tr>
-									<tr>
-										<td>Cedric Kelly</td>
-										<td>Senior Javascript Developer</td>
-										<td>Edinburgh</td>
-										<td>22</td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-									</tr>
-									<tr>
-										<td>Airi Satou</td>
-										<td>Accountant</td>
-										<td>Tokyo</td>
-										<td>33</td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-									</tr>
-									<tr>
-										<td>Brielle Williamson</td>
-										<td>Integration Specialist</td>
-										<td>New York</td>
-										<td>61</td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-									</tr>
-									<tr>
-										<td>Herrod Chandler</td>
-										<td>Sales Assistant</td>
-										<td>San Francisco</td>
-										<td>59</td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-									</tr>
-									<tr>
-										<td>Rhona Davidson</td>
-										<td>Integration Specialist</td>
-										<td>Tokyo</td>
-										<td>55</td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-									</tr>
-									<tr>
-										<td>Colleen Hurst</td>
-										<td>Javascript Developer</td>
-										<td>San Francisco</td>
-										<td>39</td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
+										<td class="inputt"><input type="text" class="form-control input-sm"></td>
+										<td class="inputt"><input type="text" class="form-control input-sm"></td>
+										<td class="inputt"><input type="text" class="form-control input-sm"></td>
+										<td class="inputt"><input type="text" class="form-control input-sm"></td>
 									</tr>
 									<tr>
 										<td>Sonya Frost</td>
 										<td>Software Engineer</td>
 										<td>Edinburgh</td>
 										<td>23</td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-									</tr>
-									<tr>
-										<td>Sonya Frost</td>
-										<td>Software Engineer</td>
-										<td>Edinburgh</td>
-										<td>23</td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-									</tr>
-									<tr>
-										<td>Sonya Frost</td>
-										<td>Software Engineer</td>
-										<td>Edinburgh</td>
-										<td>23</td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
-										<td><input type="text" class="form-control input-sm"></td>
+										<td class="inputt"><input type="text" class="form-control input-sm"></td>
+										<td class="inputt"><input type="text" class="form-control input-sm"></td>
+										<td class="inputt"><input type="text" class="form-control input-sm"></td>
+										<td class="inputt"><input type="text" class="form-control input-sm"></td>
 									</tr>
 									
 									</tbody>
 									</table>
 									<div class="col-md-2">
-										<button type="button" class="btn w-xs btn-primary">Submit</button>
+										<button class="btn btn-primary " type="submit" data-toggle="modal" data-target="#myModal"><i class="fa fa-check"></i> Submit</button>
 									</div>
 							</div>
 						</div>
@@ -394,10 +279,32 @@
 					<div id="tab-6" class="tab-pane">
 						<div class="panel-body">
 							<div class="col-lg-12 panel-body tab-panel">
-								<form>
-									<h4>Select Date Range for Pending Resons</h4>
+								<table id="example2" class="table table-striped table-bordered table-hover">
+									<thead>	 	 		 	 	 	
+									<tr>
+										<th>Select</th>
+										<th>CASE ID</th>
+										<th>INSURER NAME</th>
+										<th>PROVIDER NAME</th>
+										<th>INSURANCE COMPANY NAME</th>
+										<th>VENUE</th>
+										<th>DATE OPENED </th>
+										<th>DATE PRINTED</th>
+										<th>STATUS</th>
+										<th>COST</th>
+										<th>AWAITING PROVIDER VERIFICATION</th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr>
+										<td colspan="8"><button class="btn btn-primary " type="submit" data-toggle="modal" data-target="#myModal"><i class="fa fa-check"></i>Process</button></td>
+										<td>Checkcount <input type="text" class="form-control input-sm"></td>
+										<td>Total=0 <br> Count=0</td>
+										<td></td>
+									</tr>
 									
-								</form>
+									</tbody>
+									</table>
 							</div>
 						</div>
 					</div>
@@ -430,7 +337,6 @@
 <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/addactive/addactive.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
 
 <!-- App scripts -->
@@ -458,6 +364,8 @@ $(function(){
 	$('#datapicker4').datepicker();
 });
 </script>
-
+<script>
+	$('.financials').addClass('active');
+</script>
 </body>
 </html>

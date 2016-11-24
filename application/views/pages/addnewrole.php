@@ -1,10 +1,3 @@
-<?php
-	/*session_cache_limiter('private_no_expire');
-	if( !isset($_SESSION["username"]) && !isset($_SESSION["password"])){
-		
-		header('Location: admin');
-	}*/
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +27,7 @@
 <body>
 
 <!-- Simple splash screen-->
-<div class="splash"> <div class="color-line"></div><div class="splash-title"><h1>Homer - Responsive Admin Theme</h1><p>Special AngularJS Admin Theme for small and medium webapp with very clean and aesthetic style and feel. </p><img src="images/loading-bars.svg" width="64" height="64" /> </div> </div>
+<!--<div class="splash"> <div class="color-line"></div><div class="splash-title"><h1>Homer - Responsive Admin Theme</h1><p>Special AngularJS Admin Theme for small and medium webapp with very clean and aesthetic style and feel. </p><img src="images/loading-bars.svg" width="64" height="64" /> </div> </div>-->
 <!--[if lt IE 7]>
 <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
@@ -59,7 +52,7 @@
 		</div>
 		<div class="panel-body tab-panel">
 			
-			<h4>Add New Role</h4>
+			<h4 class="h4-title">Add New Role</h4>
 			<form id="addRoleForm" role="form" action="insert_Roles" method="post">
 				<div class="form-group form-horizontal col-md-12">
 					<label class="col-sm-2 control-label">Role Name</label>
@@ -70,9 +63,9 @@
 				<div class="form-group form-horizontal col-md-12">
 					<div class="col-md-2"></div>
 					<div class="col-md-1">
-						<button type="submit" class="btn w-xs btn-primary">Add</button>
+						<button type="submit" class="btn btn-primary">Add</button>
 					</div>
-					<div class="col-md-2">
+					<div class="col-md-1">
 						<button class="btn btn-primary" >Cancel</button>
 					</div> 
 				</div>
@@ -80,7 +73,7 @@
 			
 			<div class="form-group form-horizontal col-md-12">
 				<div class="col-md-2"></div>
-				<div class="col-md-8">
+				<div class="col-md-4">
 					<table id="example2" class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
@@ -143,16 +136,12 @@
 <script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/addactive/addactive.js"></script>
-<script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+<script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
 <!-- App scripts -->
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 
 <script>
-
 	$(function(){
-	
-		
          $("#addRoleForm").validate({
             rules: {
                 RoleName: {
@@ -164,10 +153,10 @@
                 form.submit();
             }
         });
-	
-	
 	});
 </script>
-
+<script>
+	$('.adminprivilege').addClass('active');
+</script>
 </body>
 </html>

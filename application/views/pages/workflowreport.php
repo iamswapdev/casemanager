@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- Page title -->
-    <title>Manage User</title>
+    <title>CaseSettelments</title>
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!--<link rel="shortcut icon" type="image/ico" href="favicon.ico" />-->
@@ -36,7 +36,7 @@
 <body>
 
 <!-- Simple splash screen-->
-<div class="splash"> <div class="color-line"></div><div class="splash-title"><h1>Homer - Responsive Admin Theme</h1><p>Special AngularJS Admin Theme for small and medium webapp with very clean and aesthetic style and feel. </p><img src="images/loading-bars.svg" width="64" height="64" /> </div> </div>
+<!--<div class="splash"> <div class="color-line"></div><div class="splash-title"><h1>Homer - Responsive Admin Theme</h1><p>Special AngularJS Admin Theme for small and medium webapp with very clean and aesthetic style and feel. </p><img src="images/loading-bars.svg" width="64" height="64" /> </div> </div>-->
 <!--[if lt IE 7]>
 <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
@@ -69,18 +69,18 @@
 								<form>
 									<div class="form-group form-horizontal col-md-12">
 										<label class="col-md-1 control-label">Start Date</label>										
-										<div class="col-md-2">
-											<input id="datapicker1" type="text" class="form-control">
+										<div class="col-md-1">
+											<input id="datapicker1" type="text" class="form-control input-sm">
 										</div>
 										
 										<label class="col-md-1 control-label">End Date</label>										
-										<div class="col-md-2">
-											<input id="datapicker2" type="text" class="form-control">
+										<div class="col-md-1">
+											<input id="datapicker2" type="text" class="form-control input-sm">
 										</div>
 										
-										<label class="col-md-2 control-label">Calendar type</label>	
-										<div class="col-md-2">											
-											<select class="form-control m-b" name="account">
+										<label class="col-md-1 control-label">Calendar type</label>	
+										<div class="col-md-1">											
+											<select class="form-control input-sm" name="account">
 												<option>All</option>
 												<option>Motion</option>
 												<option>Trial</option>
@@ -91,7 +91,7 @@
 									</div>
 									<div class="form-group form-horizontal col-md-12">
 										<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-											Select Provider<select class="form-control m-b" name="account" multiple>
+											Select Provider<select class="form-control input-sm input-rows" name="account" multiple>
 											<option>option 1</option>
 											<option>option 2</option>
 											<option>option 3</option>
@@ -99,7 +99,7 @@
 											</select>
 										</div>
 										<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-											Select Insurance Company<select class="form-control m-b" name="account" multiple>
+											Select Insurance Company<select class="form-control input-sm input-rows" name="account" multiple>
 											<option>option 1</option>
 											<option>option 2</option>
 											<option>option 3</option>
@@ -109,7 +109,7 @@
 									</div>
 									<div class="form-group form-horizontal col-md-12">
 										<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-											Select Defendant<select class="form-control m-b" name="account" multiple>
+											Select Defendant<select class="form-control input-sm input-rows" name="account" multiple>
 											<option>option 1</option>
 											<option>option 2</option>
 											<option>option 3</option>
@@ -117,7 +117,7 @@
 											</select>
 										</div>
 										<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-											Select Venue<select class="form-control m-b" name="account" multiple>
+											Select Venue<select class="form-control input-sm input-rows" name="account" multiple>
 											<option>option 1</option>
 											<option>option 2</option>
 											<option>option 3</option>
@@ -129,7 +129,7 @@
 									
 									<div class="form-group form-horizontal col-md-12">
 										<div class="col-md-4">
-											<button type="button" class="btn w-xs btn-info create">Submit</button>
+											<button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
 										</div>
 									</div>
 								</form>
@@ -141,19 +141,19 @@
 						<div class="panel-body">
 							<div class="col-lg-12 panel-body tab-panel">
 								<form>
-									<h4>Select Date Range for Summons Sent to Court</h4>
+									<h5>Select Date Range for Summons Sent to Court</h5>
 									<div class="form-group form-horizontal col-md-12">
 										<label class="col-md-1 control-label">Start Date</label>										
-										<div class="col-md-2">
-											<input id="datapicker3" type="text" class="form-control">
+										<div class="col-md-1">
+											<input id="datapicker3" type="text" class="form-control input-sm">
 										</div>
 										
 										<label class="col-md-1 control-label">End Date</label>										
-										<div class="col-md-2">
-											<input id="datapicker4" type="text" class="form-control">
+										<div class="col-md-1">
+											<input id="datapicker4" type="text" class="form-control input-sm">
 										</div>
 										<div class="col-md-2">
-											<button type="button" class="btn w-xs btn-info create">Get</button>
+											<button type="button" class="btn btn-primary">Get</button>
 										</div>
 										
 									</div>
@@ -166,20 +166,20 @@
 						<div class="panel-body">
 							<div class="col-lg-12 panel-body tab-panel">
 								<form>
-									<h4>Select Date Range for Print</h4>
+									<h5>Select Date Range for Print</h5>
 									<div class="form-group form-horizontal col-md-12">
 										<label class="col-md-1 control-label">Start Date</label>										
-										<div class="col-md-2">
-											<input id="datapicker5" type="text" class="form-control">
+										<div class="col-md-1">
+											<input id="datapicker5" type="text" class="form-control input-sm">
 										</div>
 										
 										<label class="col-md-1 control-label">End Date</label>										
-										<div class="col-md-2">
-											<input id="datapicker6" type="text" class="form-control">
+										<div class="col-md-1">
+											<input id="datapicker6" type="text" class="form-control input-sm">
 										</div>
 										<div class="col-md-2">
 												
-											<select class="form-control m-b" name="account">
+											<select class="form-control input-sm" name="account">
 												<option>Date_Opened</option>
 												<option>Date_Summons_Printed</option>
 												<option>Date_Summons_Sent_Court</option>
@@ -192,7 +192,7 @@
 										</div>
 										<div class="col-md-2">
 												
-											<select class="form-control m-b" name="account">
+											<select class="form-control input-sm" name="account">
 												<option>All</option>
 												<option>0%</option>
 												<option>Between 0% and 70%</option>
@@ -200,7 +200,7 @@
 											</select>
 										</div>
 										<div class="col-md-2">
-											<button type="button" class="btn w-xs btn-info create">Get</button>
+											<button type="button" class="btn btn-primary">Get</button>
 										</div>
 										
 									</div>
@@ -233,19 +233,19 @@
 						<div class="panel-body">
 							<div class="col-lg-12 panel-body tab-panel">
 								<form>
-									<h4>Select Date Range for Pending Resons</h4>
+									<h5>Select Date Range for Pending Resons</h5>
 									<div class="form-group form-horizontal col-md-12">
 										<label class="col-md-1 control-label">Start Date</label>										
-										<div class="col-md-2">
-											<input id="datapicker7" type="text" class="form-control">
+										<div class="col-md-1">
+											<input id="datapicker7" type="text" class="form-control input-sm">
 										</div>
 										
 										<label class="col-md-1 control-label">End Date</label>										
-										<div class="col-md-2">
-											<input id="datapicker8" type="text" class="form-control">
+										<div class="col-md-1">
+											<input id="datapicker8" type="text" class="form-control input-sm">
 										</div>
 										<div class="col-md-2">
-											<button type="button" class="btn w-xs btn-info create">Submit</button>
+											<button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
 										</div>
 										
 									</div>
@@ -282,7 +282,6 @@
 <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/addactive/addactive.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
 
 <!-- App scripts -->
@@ -315,6 +314,8 @@ $(function(){
 	$('#datapicker8').datepicker();
 });
 </script>
-
+<script>
+	$('.workarea').addClass('active');
+</script>
 </body>
 </html>

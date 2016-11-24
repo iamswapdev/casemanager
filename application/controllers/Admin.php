@@ -27,7 +27,7 @@ session_cache_limiter('private_no_expire');
 			);
 			
 			$session_set=$this->session->set_userdata('logged_in', $session_data);
-			$this->load->view('pages/index');
+			$this->load->view('pages/advancedsearch');
 		}else{
 			$this->load->view('pages/error_one');
 		}		

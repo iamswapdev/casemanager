@@ -32,13 +32,13 @@
 <body>
 
 <!-- Simple splash screen-->
-<div class="splash">
+<!--<div class="splash">
   <div class="color-line"></div>
   <div class="splash-title">
     <h1>Homer - Responsive Admin Theme</h1>
     <p>Special AngularJS Admin Theme for small and medium webapp with very clean and aesthetic style and feel. </p>
     <img src="images/loading-bars.svg" width="64" height="64" /> </div>
-</div>
+</div>-->
 <!--[if lt IE 7]>
 <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]--> 
@@ -52,215 +52,200 @@
 <div id="wrapper">
 <?php include 'header_dataentry.php';?>
 <div class="content animate-panel">
-    <div class="row">
+    
+	<div class="row">
 		<div class="col-lg-12">
-			<div class="hpanel">
-				<ul class="nav nav-tabs">
-					<li class="active"><a data-toggle="tab" href="#tab-1">Add Case Info</a></li>
-					<li class=""><a data-toggle="tab" href="#tab-2">Edit Case Info</a></li>
-				</ul>
+		<div class="hpanel">
+		<div class="panel-heading"></div>
+		<div class="panel-body tab-panel">
 			
-				<div class="tab-content">
-					<div id="tab-1" class="tab-pane active">
-						<div class="panel-body">
-							<div class="col-lg-12 panel-body tab-panel">
-								<form method="get" >
-									<h4>CASE INFORMATION</h4>
-									<div class="form-group form-horizontal col-md-12">
-										<p>(Note: All amounts are in USD wherever applicable.)</p>
-										<label class="col-md-2 control-label">Initial Status:</label>
-										<div class="col-md-4 radio">
-											<label><input type="radio" value="option1" id="optionsRadios1" name="optionsRadios">ARBITRATION</label>
-											<label><input type="radio" value="option2" id="optionsRadios2" name="optionsRadios">LITIGATION</label>
-										</div>
-									</div>
-									<div class="form-group form-horizontal col-md-12">
-										<label class="col-md-2 control-label">Provider Name</label>
-										<div class="col-md-2">	
-											<input type="text" class="form-control input-sm">
-										</div>
-										<label class="col-md-2 control-label">Select Provider</label>
-										<div class="col-md-2">	
-											<select class="form-control input-sm" name="account">
-												<option>-- Select Provider --</option>
-                                                <?php foreach($Provider_Name as $row){?>
-                                                <option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option>
-                                                <?php }?>
-											</select>
-										</div>
-										<div class="form-horizontal col-md-12 hr-line-dashed"></div>
-									</div>
-
-									<h4>Injured Party Information</h4>
-									<div class="form-group form-horizontal col-md-12">
-										<label class="col-md-2 control-label">Last Name</label>
-										<div class="col-md-2">
-											<input type="text" placeholder="Last Name" class="form-control input-sm"> 
-										</div>
-										<label class="col-md-2 control-label">First Name</label>
-										<div class="col-md-2">
-											<input type="text" placeholder="First Name" class="form-control input-sm">
-										</div>
-										<div class="form-horizontal col-md-12 hr-line-dashed"></div>
-									</div>
-
-									<h4>Insured Party Information </h4>
-									<div class="form-group form-horizontal col-md-12">
-										<div class="col-md-2">
-										</div>
-										<div class="col-md-6 checkbox">
-											<label><input type="checkbox" >Check here if same as Patient Information.</label>
-										</div>
-									</div>
-									<div class="form-group form-horizontal col-md-12">
-										<label class="col-md-2 control-label">Last Name</label>
-										<div class="col-md-2">
-											<input type="text" placeholder="Last Name" class="form-control input-sm"> 
-										</div>
-										<label class="col-md-2 control-label">First Name</label>
-										<div class="col-md-2">
-											<input type="text" placeholder="First Name" class="form-control input-sm">
-										</div>
-										<div class="form-horizontal col-md-12 hr-line-dashed"></div>
-									</div>
-
-									<h4>Insurance Information</h4>
-									<div class="form-group form-horizontal col-md-12">
-										<label class="col-md-2 control-label">Name</label>
-										<div class="col-md-2">	
-											<input type="text" class="form-control input-sm">
-										</div>
-										<label class="col-md-2 control-label">Select Insurance comp.</label>
-										<div class="col-md-2">	
-											<select class="form-control input-sm" name="account">
-												<option>--Select Insurance comp. --</option>
-												
-                                                <?php foreach($InsuranceCompany_Name as $row){?>
-                                                <option value="<?php echo $row['InsuranceCompany_Id']; ?>"> <?php echo $row['InsuranceCompany_Name']; ?> </option>
-                                                <?php }?>
-											</select>
-										</div>
-									</div>
-									<div class="form-group form-horizontal col-md-12">
-										<label class="col-md-2 control-label">Policy#</label>
-										<div class="col-md-2">	
-											<input type="text" class="form-control input-sm">
-										</div>
-										<label class="col-md-2 control-label">Claim#</label>
-										<div class="col-md-2">	
-											<input type="text" class="form-control input-sm">
-										</div>
-										<div class="form-horizontal col-md-12 hr-line-dashed"></div>
-									</div>
-
-									<h4>Accident Information</h4>
-									<div class="form-group form-horizontal col-md-12">
-										<label class="col-md-2 control-label">D.O.B</label>
-										<div class="col-md-2"> <input id="datapicker1" type="text" class="form-control input-sm"> </div>
-										<div class="form-horizontal col-md-12 hr-line-dashed"></div>
-									</div>
-
-									<h4>Other Information </h4>
-									<div class="form-group form-horizontal col-lg-12">
-										<label class="col-md-2 control-label">Status</label>
-										<div class="col-md-2">
-											<select class="form-control input-sm" name="account">
-												<option>--Select status--</option>
-												
-												<?php foreach($Status_Type as $row){?>
-                                                <option value="<?php echo $row['Status_Id']; ?>"> <?php echo $row['Status_Type']; ?> </option>
-                                                <?php }?>
-											</select>
-										</div>
-										<label class="col-md-2 control-label"> Index/AAA #</label>
-										<div class="col-md-2">	
-											<input type="text" class="form-control input-sm">
-										</div>
-										<label class="col-md-2 control-label">Court Name</label>
-										<div class="col-md-2">
-											<select class="form-control input-sm" name="account">
-												<option>--Select Court Name--</option>
-												
-                                                <?php foreach($Court_Name as $row){?>
-                                                <option value="<?php echo $row['Court_Id']; ?>"> <?php echo $row['Court_Name']; ?> </option>
-                                                <?php }?>
-                                                
-											</select>
-										</div>
-									</div>
-									<div class="form-group form-horizontal col-lg-12 set-bg">
-										<div class="col-md-1 align-dostart">
-											<label class="control-label">D.O.S-Start</label>
-											<input id="datapicker2" type="text" value="02/16/2012" class="form-control input-sm">
-										</div>
-										<div class="col-md-1 ">
-											<label class="control-label">D.O.S.-End</label>
-											<input id="datapicker3" type="text" value="02/16/2012" class="form-control input-sm">
-										</div>
-										<div class="col-md-1">
-											<label class="control-label">Claim Amt.</label>
-											<input type="text" class="form-control input-sm">
-										</div>
-										<div class="col-md-1">
-											<label class="control-label">Paid Amt.</label>
-											<input type="text" class="form-control input-sm">
-										</div>
-										<div class="col-md-2">
-											<label class="control-label">Date Bill Sent</label>
-											<input id="datapicker4" type="text" value="02/16/2012" class="form-control input-sm">
-										</div>
-										<div class="col-md-2 ">
-											<label class="control-label">Service Type</label>
-											<div>
-												<select class="form-control input-sm" name="account">
-													<option>--Select Service Type--</option>
-													
-                                                    <?php foreach($ServiceType as $row){?>
-                                                    <option value="<?php echo $row['ServiceType_ID']; ?>"> <?php echo $row['ServiceType']; ?> </option>
-                                                    <?php }?>
-												</select>
-											</div>
-										</div>
-										<div class="col-md-2">
-											<label class="control-label">Denial Reason</label>
-											<div>
-											<select class="form-control input-sm" name="account">
-												<option>--Select Denial Reason--</option>
-													
-                                                    <?php foreach($DenialReasons_Type as $row){?>
-                                                    <option value="<?php echo $row['DenialReasons_Id']; ?>"> <?php echo $row['DenialReasons_Type']; ?> </option>
-                                                    <?php }?>
-											</select>
-											</div>
-										</div>
-										<div class="col-md-1" style="text-align:center">
-											<label class="control-label col-md-12">Delete</label>
-											<span><button type="button" class="btn w-xs btn-info create">Add</button></span> 
-										</div>
-									</div>
-									<div class="form-group form-horizontal col-lg-12">
-										<div class="col-md-2">
-											<button type="button" class="btn w-xs btn-primary">Delete Checked</button>
-										</div>
-									</div>
-									<div class="form-group form-horizontal col-lg-12">
-										<label class="col-md-2 control-label">Memo</label>
-										<div class="col-md-6">
-											<textarea rows="5" id="" class="form-control" name=""></textarea>
-										</div>
-										<div class="col-md-12">
-											<button type="button" class="btn w-xs btn-primary">Save</button>
-										</div>
-									</div>
-								</form><!--form end -->
-
-							</div>
-						</div><!--tab panel end -->
-					</div><!--tab1 end -->
+			<form id="addCaseForm" role="form" action="addCaseInfo" method="post" >
+				<h4 class="h4-title">CASE INFORMATION</h4>
+				<div class="form-group form-horizontal col-md-12">
+					<p>(Note: All amounts are in USD wherever applicable.)</p>
+					<label class="col-md-2 control-label">Initial Status <span class="required-field">*</span></label>
+					<div class="col-md-4 radio">
+						<label><input type="radio" value="option1" id="arbitration" name="initialStatus">ARBITRATION</label>
+						<label><input type="radio" value="option2" id="litigation" name="initialStatus">LITIGATION</label>
+					</div>
 				</div>
-			</div>
-		</div>
-	</div>
+				<div class="form-group form-horizontal col-md-12">
+					<label class="col-md-2 control-label">Provider Name <span class="required-field">*</span></label>
+					<div class="col-md-2">	
+						<input type="text" id="providerName" name="providerName" class="form-control input-sm" required>
+					</div>
+					<label class="col-md-2 control-label">Select Provider <span class="required-field">*</span></label>
+					<div class="col-md-2">	
+						<select class="form-control input-sm" id="providerId" name="providerId" required>
+                            <option>-- Select Provider --</option>
+                            <?php foreach($Provider_Name as $row){?>
+                            <option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option>
+                            <?php }?>
+                        </select>
+					</div>
+					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
+				</div>
+
+				<h4 class="h4-title">Injured Party Information</h4>
+				<div class="form-group form-horizontal col-md-12">
+					<label class="col-md-2 control-label">Last Name <span class="required-field">*</span></label>
+					<div class="col-md-2">
+						<input type="text" id="lastNameInjured" name="lastNameInjured" placeholder="Last Name" class="form-control input-sm" required> 
+					</div>
+					<label class="col-md-2 control-label">First Name <span class="required-field">*</span></label>
+					<div class="col-md-2">
+						<input type="text" id="firstNameInjured" name="firstNameInjured" placeholder="First Name" class="form-control input-sm" required>
+					</div>
+					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
+				</div>
+
+				<h4 class="h4-title">Insured Party Information </h4>
+				<div class="form-group form-horizontal col-md-12">
+					<div class="col-md-2">
+					</div>
+					<div class="col-md-6 checkbox">
+						<label><input type="checkbox" id="checkbox1" >Check here if same as Patient Information.</label>
+					</div>
+				</div>
+				<div class="form-group form-horizontal col-md-12">
+					<label class="col-md-2 control-label">Last Name <span class="required-field">*</span></label>
+					<div class="col-md-2">
+						<input type="text" id="lastNameInsured" name="lastNameInsured" placeholder="Last Name" class="form-control input-sm" required> 
+					</div>
+					<label class="col-md-2 control-label">First Name <span class="required-field">*</span></label>
+					<div class="col-md-2">
+						<input type="text" id="firstNameInsured" name="firstNameInsured" placeholder="First Name" class="form-control input-sm" required>
+					</div>
+					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
+				</div>
+
+				<h4 class="h4-title">Insurance Information</h4>
+				<div class="form-group form-horizontal col-md-12">
+					<label class="col-md-2 control-label">Name <span class="required-field">*</span></label>
+					<div class="col-md-2">	
+						<input type="text" id="insuranceName" name="insuranceName" class="form-control input-sm" required>
+					</div>
+					<label class="col-md-2 control-label">Select Insurance comp. <span class="required-field">*</span></label>
+					<div class="col-md-2">	
+						<select class="form-control input-sm" id="insuranceId" name="insuranceId" required>
+                       	 	<option>--Select Insurance comp.--</option>
+                            <?php foreach($InsuranceCompany_Name as $row){?>
+                            <option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option>
+                            <?php }?>
+                        </select>
+					</div>
+				</div>
+				<div class="form-group form-horizontal col-md-12">
+					<label class="col-md-2 control-label">Policy#</label>
+					<div class="col-md-2">	
+						<input type="text" id="policyInsurance" name="policyInsurance" class="form-control input-sm">
+					</div>
+					<label class="col-md-2 control-label">Claim#</label>
+					<div class="col-md-2">	
+						<input type="text" id="cliamInsurance" name="cliamInsurance" class="form-control input-sm">
+					</div>
+					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
+				</div>
+
+				<h4 class="h4-title">Accident Information</h4>
+				<div class="form-group form-horizontal col-md-12">
+					<label class="col-md-2 control-label">D.O.B <span class="required-field">*</span></label>
+					<div class="col-md-2"> <input id="doBirth" name="doBirth" type="text" class="form-control input-sm" > </div>
+					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
+				</div>
+
+				<h4 class="h4-title">Other Information </h4>
+				<div class="form-group form-horizontal col-lg-12">
+					<label class="col-md-2 control-label">Status</label>
+					<div class="col-md-2">
+						<select class="form-control input-sm" id="status" name="status">
+                            <option>-- Select Status --</option>
+                            <?php foreach($Status as $row){?>
+                            <option value="<?php echo $row['Status_Id']; ?>"> <?php echo $row['Status_Type']; ?> </option>
+                            <?php }?>
+                        </select>
+					</div>
+					<label class="col-md-2 control-label"> Index/AAA #</label>
+					<div class="col-md-2">
+						<input id="indexA"  name="indexA" type="text" class="form-control input-sm">
+					</div>
+					<label class="col-md-2 control-label">Court Name</label>
+					<div class="col-md-2">
+						<select class="form-control input-sm" id="court" name="court">
+                            <option>-- Select Court --</option>
+                            <?php foreach($Court as $row){?>
+                            <option value="<?php echo $row['Court_Id']; ?>"> <?php echo $row['Court_Name']; ?> </option>
+                            <?php }?>
+                        </select>
+					</div>
+				</div>
+				<div class="form-group form-horizontal col-lg-12 set-bg">
+					<div class="col-md-1 align-dostart">
+						<label class="control-label">D.O.S-Start</label>
+						<input id="dosStart" name="dosStart" type="text" value="02/16/2012" class="form-control input-sm">
+					</div>
+					<div class="col-md-1 ">
+						<label class="control-label">D.O.S.-End</label>
+						<input id="dosEnd"  name="dosEnd" type="text" value="02/16/2012" class="form-control input-sm">
+					</div>
+					<div class="col-md-1">
+						<label class="control-label">Claim Amt.</label>
+						<input type="text" id="claimAmt" name="claimAmt" class="form-control input-sm">
+					</div>
+					<div class="col-md-1">
+						<label class="control-label">Paid Amt.</label>
+						<input type="text" id="paidAmt" name="paidAmt" class="form-control input-sm">
+					</div>
+					<div class="col-md-2">
+						<label class="control-label">Date Bill Sent</label>
+						<input id="dateBillSent" name="dateBillSent" type="text" value="02/16/2012" class="form-control input-sm">
+					</div>
+					<div class="col-md-2 ">
+						<label class="control-label">Service Type</label>
+						<div>
+							<select class="form-control input-sm" id="serviceType" name="serviceType">
+                                <option>-- Select Service--</option>
+                                <?php foreach($Service as $row){?>
+                                <option value="<?php echo $row['ServiceType_ID']; ?>"> <?php echo $row['ServiceType']; ?> </option>
+                                <?php }?>
+                            </select>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<label class="control-label">Denial Reason</label>
+						<div>
+						<select class="form-control input-sm" id="denialReason" name="denialReason" >
+                            <option>-- Select Denial reason --</option>
+                            <?php foreach($DenialReasons as $row){?>
+                            <option value="<?php echo $row['DenialReasons_Id']; ?>"> <?php echo $row['DenialReasons_Type']; ?> </option>
+                            <?php }?>
+                        </select>
+						</div>
+					</div>
+					<div class="col-md-1" style="text-align:center">
+						<label class="control-label col-md-12">Delete</label>
+						<span><button type="button" class="btn btn-primary create">Add</button></span> 
+					</div>
+				</div>
+				<div class="form-group form-horizontal col-lg-12">
+					<div class="col-md-2">
+						<button type="button" class="btn w-xs btn-primary">Delete Checked</button>
+					</div>
+				</div>
+				<div class="form-group form-horizontal col-lg-12">
+					<label class="col-md-2 control-label">Memo</label>
+					<div class="col-md-4">
+						<textarea rows="3"  id="memo" name="memo" class="form-control" ></textarea>
+					</div>
+					<div class="col-md-12">
+						<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button><br><br>
+					</div>
+				</div>
+			</form><!--form end -->
+		</div><!-- End of panel-body tab-panel-->
+		</div><!-- End hpanel -->
+		</div><!-- End col-lg-12-->
+	</div><!-- End row-->
 </div>
 
 
@@ -280,19 +265,87 @@
 <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script> 
 <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script> 
 <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/addactive/addactive.js"></script>
+<script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
 <!-- App scripts --> 
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script> 
 <script>
+	$('#checkbox1').change(function() {
+		if ($(this).is(':checked')) {
+			var lastNameInsured = $("#lastNameInjured").val();
+			var firstNameInjured = $("#firstNameInjured").val();
+			$('#lastNameInsured').val(lastNameInsured);
+			$('#firstNameInsured').val(firstNameInjured);
+		}else{
+			$('#lastNameInsured').val("");
+			$('#firstNameInsured').val("");
+		}
+		
+		
+    });
+</script>
+<script>
 $(function(){
-	$('#datapicker1').datepicker();
-	$('#datapicker2').datepicker();
-	$('#datapicker3').datepicker();
+	$('#doBirth').datepicker();
+	$('#dosStart').datepicker();
+	$('#dosEnd').datepicker();
 	$('#datapicker4').datepicker();
-	$('#datapicker5').datepicker();
+	$('#dateBillSent').datepicker();
 	$('.input-group.date').datepicker({ });
 	$('.input-daterange').datepicker({ });
 });
+</script>
+<script>
+
+	$(function(){
+         $("#addCaseForm").validate({
+            rules: {
+				initialStatus: {
+					required: true
+				},
+                providerName: {
+                    required: true,
+					minlength: 3
+                },
+				providerId: {
+                    required: true
+                },
+				lastNameInjured: {
+                    required: true,
+					minlength: 3
+                },
+				firstNameInjured: {
+                    required: true,
+					minlength: 3
+                },
+				lastNameInsured: {
+                    required: true,
+					minlength: 3
+                },
+				firstNameInsured: {
+                    required: true,
+					minlength: 3
+                },
+				insuranceName: {
+					required: true
+				},
+				claimAmt: {
+					required: true,
+					number: true
+				},
+				paidAmt: {
+					required: true,
+					number: true
+				},
+				
+            },
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+	});
+</script>
+<script>
+	$('.dataentry').addClass('active');
 </script>
 </body>
 </html>

@@ -107,7 +107,6 @@
                     <label class="col-sm-2 control-label">Insurer</label>
                     <div class="col-md-5">
                         <select class="form-control input-sm" id="" name="" >
-                       	 	<option>--Select Insurance comp.--</option>
                             <?php foreach($InsuranceCompany_Name as $row){?>
                             <option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option>
                             <?php }?>

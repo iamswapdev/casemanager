@@ -34,7 +34,7 @@
 <body>
 
 <!-- Simple splash screen-->
-<div class="splash"> <div class="color-line"></div><div class="splash-title"><h1>Homer - Responsive Admin Theme</h1><p>Special AngularJS Admin Theme for small and medium webapp with very clean and aesthetic style and feel. </p><img src="images/loading-bars.svg" width="64" height="64" /> </div> </div>
+<!--<div class="splash"> <div class="color-line"></div><div class="splash-title"><h1>Homer - Responsive Admin Theme</h1><p>Special AngularJS Admin Theme for small and medium webapp with very clean and aesthetic style and feel. </p><img src="images/loading-bars.svg" width="64" height="64" /> </div> </div>-->
 <!--[if lt IE 7]>
 <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
@@ -60,10 +60,9 @@
 			<div class="form-group form-horizontal col-md-12">
 				<label class="col-sm-2 control-label">Select Role Name :</label>
 				<div class="col-sm-4">
-					<select class="form-control m-b" name="account">
+					<select class="form-control input-sm" name="account">
 					
                     <?php foreach($RoleName as $row){?>
-						<tr>
 							<option><?php echo $row['RoleName']?></option>
                     <?php }?>
 					</select>
@@ -72,7 +71,7 @@
 			<div class="form-group form-horizontal col-md-12">
 				<label class="col-sm-2 control-label">Select Main Menu Name:</label>
 				<div class="col-sm-4">
-					<select class="form-control m-b" name="account">
+					<select class="form-control input-sm" name="account">
 					<option>Admin</option>
 					<option>Master</option>
 					<option>Search</option>
@@ -84,7 +83,7 @@
 			</div>
 			
 			<div class="form-group form-horizontal col-md-12">
-				<div class="col-md-4">List of Menus for selected role and main menu.<select class="form-control m-b" name="account" multiple>
+				<div class="col-md-4">List of Menus for selected role and main menu.<select class="form-control input-sm input-rows" name="account" multiple>
 					<option>option 1</option>
 					<option>option 2</option>
 					<option>option 3</option>
@@ -92,7 +91,7 @@
 					</select>
 				</div>
 			
-				<div class="col-sm-4">List Assigned Menus To A Role<select class="form-control m-b" name="account" multiple>
+				<div class="col-sm-4">List Assigned Menus To A Role<select class="form-control input-sm input-rows" name="account" multiple>
 						<option>Admin</option>
 						<option>Master</option>
 						<option>Search</option>
@@ -138,7 +137,6 @@
 <script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/addactive/addactive.js"></script>
 <!-- App scripts -->
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
@@ -158,6 +156,8 @@
 		return false;
 	});
 </script>
-
+<script>
+	$('.adminprivilege').addClass('active');
+</script>
 </body>
 </html>

@@ -31,13 +31,13 @@
 </head>
 <body>
 <!-- Simple splash screen-->
-<div class="splash">
+<!--<div class="splash">
   <div class="color-line"></div>
   <div class="splash-title">
     <h1></h1>
     <p> </p>
     <img src="images/loading-bars.svg" width="64" height="64" /> </div>
-</div>
+</div>-->
 <!--[if lt IE 7]>
 <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]--> 
@@ -69,7 +69,7 @@
 							<div class="form-group col-md-12">
 								<label class="col-md-2 control-label">Name</label>
 								<div class="col-md-6">
-									<select class="form-control m-b" id="defendantId" name="defendantId">
+									<select class="form-control input-sm" id="defendantId" name="defendantId">
 										<?php foreach($Defendant_Name as $row){?>
                                         <option value="<?php echo $row['Defendant_id']; ?>"><?php echo $row['Defendant_Name'];?></option>
                                         <?php }?>
@@ -79,7 +79,8 @@
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"> </div>
 								<div class="col-md-2">
-									<button type="submit" class="btn w-xs btn-primary">Save</button>
+									<button type="submit" class="btn btn-primary"><i class="fa fa-paste"></i> Edit</button>
+                                    
 								</div>
 							</div>
 						</form>
@@ -92,26 +93,26 @@
                             	<input type="hidden" id="defendantIdHidden" name="defendantId" value="<?php echo $row['Defendant_id']; ?>" >
                                 <label class="col-md-2 control-label">Name</label>
                                 <div class="col-md-6">
-                                <input type="text" id="name" name="name" class="form-control input-md" value="<?php echo $row['Defendant_Name']; ?>" >
+                                <input type="text" id="name" name="name" class="form-control input-sm" value="<?php echo $row['Defendant_Name']; ?>" >
                                 </div>
                             </div>
                             
                             <h4>Defendant Contact Details Address</h4>
                             <div class="form-group form-horizontal col-md-12 ">
                             <label class="col-md-2 control-label">Address</label>
-                            <div class="col-md-6">
-                            <textarea rows="5" id="address" name="address"  class="form-control" > <?php echo $row['Defendant_Address']; ?> </textarea>
+                            <div class="col-md-5">
+                            <textarea rows="3" id="address" name="address"  class="form-control" > <?php echo $row['Defendant_Address']; ?> </textarea>
                             </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
                                 <label class="col-md-2 control-label">Zip</label>
                                 <div class="col-md-2">
-                                    <input type="text" id="zip" name="zip"  placeholder="Ex.11111" class="form-control m-b" value="<?php echo $row['Defendant_Zip']; ?>" >
+                                    <input type="text" id="zip" name="zip"  placeholder="Ex.11111" class="form-control input-sm" value="<?php echo $row['Defendant_Zip']; ?>" >
                                     <!--<input type="text" placeholder=".input-md" class="form-control input-md">--> 
                                 </div>
                                 <label class="col-md-1 control-label">City</label>
                                 <div class="col-md-2">
-                                    <select class="form-control m-b" id="city" name="city" >
+                                    <select class="form-control input-sm" id="city" name="city" >
                                         <option>option 1</option>
                                         <option>option 2</option>
                                         <option>option 3</option>
@@ -120,7 +121,7 @@
                                 </div>
                                 <label class="col-md-1 control-label">State</label>
                                 <div class="col-md-2">
-                                    <select class="form-control m-b"  id="state" name="state" >
+                                    <select class="form-control input-sm"  id="state" name="state" >
                                         <option>option 1</option>
                                         <option>option 2</option>
                                         <option>option 3</option>
@@ -131,15 +132,15 @@
                             <div class="form-group form-horizontal col-md-12">
                                 <label class="col-md-2 control-label">Email</label>
                                 <div class="col-md-2">
-                                    <input type="text" id="email" name="email"  placeholder="Ex.abc@pqr.com" class="form-control m-b" value="<?php echo $row['Defendant_Email']; ?>" >
+                                    <input type="text" id="email" name="email"  placeholder="Ex.abc@pqr.com" class="form-control input-sm" value="<?php echo $row['Defendant_Email']; ?>" >
                                 </div>
                                 <label class="col-md-1 control-label">Phone</label>
                                 <div class="col-md-2">
-                                    <input type="text" id="phone" name="phone"  placeholder="Ex.000000" class="form-control m-b" value="<?php echo $row['Defendant_Phone']; ?>" >
+                                    <input type="text" id="phone" name="phone"  placeholder="Ex.000000" class="form-control input-sm" value="<?php echo $row['Defendant_Phone']; ?>" >
                                 </div>
                                 <label class="col-md-1 control-label">Fax</label>
                                 <div class="col-md-2">
-                                    <input type="text" id="fax" name="fax"  placeholder="Ex.11111" class="form-control m-b" value="<?php echo $row['Defendant_Fax']; ?>" >
+                                    <input type="text" id="fax" name="fax"  placeholder="Ex.11111" class="form-control input-sm" value="<?php echo $row['Defendant_Fax']; ?>" >
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">

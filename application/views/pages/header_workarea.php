@@ -11,7 +11,7 @@
                 <ol class="hbreadcrumb breadcrumb">
                     <li><a href="<?php echo base_url();?>workarea/caseinformation">Case Information</a></li>
                     
-                    <li><a href="<?php echo base_url();?>workarea/dataentry_workarea">Data Entry(Case Entry Only)</a></li>
+                    <li><a href="<?php echo base_url();?>workarea/dataentryworkarea">Data Entry(Case Entry Only)</a></li>
                     
                     <li><a href="<?php echo base_url();?>workarea/fileinsert">File Insert</a></li>
                     

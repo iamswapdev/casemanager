@@ -24,29 +24,29 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/styles/style.css">
 
 </head>
-<body class="blank">
+<body class="blank" background="<?php echo base_url();?>assets/images/log6 .jpg" >
 
 <!-- Simple splash screen-->
-<div class="splash"> <div class="color-line"></div><div class="splash-title"><h1>Homer - Responsive Admin Theme</h1><p>Special AngularJS Admin Theme for small and medium webapp with very clean and aesthetic style and feel. </p><img src="<?php echo base_url();?>assets/images/loading-bars.svg" width="64" height="64" /> </div> </div>
+<!--<div class="splash"> <div class="color-line"></div><div class="splash-title"><h1>Homer - Responsive Admin Theme</h1><p>Special AngularJS Admin Theme for small and medium webapp with very clean and aesthetic style and feel. </p><img src="<?php echo base_url();?>assets/images/loading-bars.svg" width="64" height="64" /> </div> </div>-->
 <!--[if lt IE 7]>
 <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<div class="color-line"></div>
+<!--<div class="color-line"></div>
 
 <div class="back-link">
     <a href="index.html" class="btn btn-primary">Back to Dashboard</a>
-</div>
+</div>-->
 
 <div class="login-container">
     <div class="row">
         <div class="col-md-12">
-            <div class="text-center m-b-md">
+            <div class="text-center m-b-md welcome-text">
             <h2><strong>Welcome to Case Manager </strong></h2>
                 <h4>PLEASE LOGIN</h4>
             </div>
             <div class="hpanel">
-                <div class="panel-body">
+                <div class="panel-body login-page">
                         <form action="<?php echo base_url() ?>admin/dashboard" method="post">
                             <div class="form-group">
                                 <label class="control-label" for="username">Username</label>
@@ -63,16 +63,16 @@
                                      Remember login
                                 <p class="help-block small">(if this is a private computer)</p>
                             </div>
-                            <button class="btn btn-success btn-block">Login</button>
-                            <a class="btn btn-default btn-block" href="<?php echo base_url();?>admin/forgotPassword">Forgot Password</a>
+                            <button class="btn btn-success btn-block login-form-btn">Login</button>
+                            <a class="btn btn-primary btn-block forgot-btn" href="<?php echo base_url();?>admin/forgotPassword">Forgot Password</a>
                         </form>
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12 text-center">
-            2016 Copyright Company Name
+        <div class="col-md-12 text-center welcome-text">
+            <p>2016 Copyright Company Name</p>
         </div>
     </div>
 </div>

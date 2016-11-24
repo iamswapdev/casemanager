@@ -46,6 +46,7 @@ Class Dataentry_model extends CI_Model{
 	}
 	public function insert_InsuranceInfo($data)
 	{
+		$this->db->order_by("InsuranceCompany_Id", "asc");
 		$query = $this->db->insert('dbo_tblinsurancecompany',$data); 
 		return $query;
 	}
@@ -87,8 +88,36 @@ Class Dataentry_model extends CI_Model{
 	}
 	
 	
+	public function get_Plantiff()
+	{
+		$query=$this->db->get('dbo_tblplaintiffattorney');
+		$data=$query->result_array();
+		return $data;
+	}
+	public function edit_PlantiffById($plantiffId)
+	{
+		$this->db->where('Attorney_id',$plantiffId['Attorney_id']);
+		$query = $this->db->get('dbo_tblplaintiffattorney'); 
+		$data=$query->result_array();
+		return $data;
+	}
+	public function insert_PlantiffInfo($data)
+	{
+		$query = $this->db->insert('dbo_tblplaintiffattorney',$data); 
+		return $query;
+	}
+	public function update_PlantiffInfo($data)
+	{
+		$this->db->set($data); 
+		$this->db->where("Attorney_id", $data['Attorney_id']); 
+		$query = $this->db->update("dbo_tblplaintiffattorney", $data);
+		return $query;
+	}
+	
+	
 	public function get_Adjuster()
 	{
+		$this->db->order_by("Adjuster_LastName", "asc");
 		$query=$this->db->get('dbo_tbladjusters');
 		$data=$query->result_array();
 		return $data;
@@ -128,6 +157,9 @@ Class Dataentry_model extends CI_Model{
 	public function insert_AttorneyInfo($data)
 	{
 		$query = $this->db->insert('dbo_tblattorney',$data); 
+		/*if($query){
+			echo "succcssss";
+		}*/
 		return $query;
 	}
 	public function update_AttorneyInfo($data)
@@ -158,6 +190,12 @@ Class Dataentry_model extends CI_Model{
 		$data=$query->result_array();
 		return $data;
 	}
+	public function get_City_Zip_Country()
+	{
+		$query = $this->db->get('dbo_ziplist'); 
+		$data=$query->result_array();
+		return $data;
+	}
 	public function get_Court()
 	{
 		$query = $this->db->get('dbo_tblcourt'); 
@@ -182,6 +220,46 @@ Class Dataentry_model extends CI_Model{
 		$data=$query->result_array();
 		return $data;
 	}
+	public function get_ImageType()
+	{
+		$query = $this->db->get('dbo_tblimagetypes'); 
+		$data=$query->result_array();
+		return $data;
+	}
+	public function get_CaseStatus()
+	{
+		$query = $this->db->get('dbo_tblcasestatus'); 
+		$data=$query->result_array();
+		return $data;
+	}
+	public function get_Doc()
+	{
+		$query = $this->db->get('dbo_tbldocs'); 
+		$data=$query->result_array();
+		return $data;
+	}
+	public function get_EventStatus()
+	{
+		$query = $this->db->get('dbo_tbleventstatus'); 
+		$data=$query->result_array();
+		return $data;
+	}
+	public function get_EventType()
+	{
+		$query = $this->db->get('dbo_tbleventtype'); 
+		$data=$query->result_array();
+		return $data;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
 ?>

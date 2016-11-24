@@ -32,13 +32,13 @@
 <body>
 
 <!-- Simple splash screen-->
-<div class="splash">
+<!--<div class="splash">
   <div class="color-line"></div>
   <div class="splash-title">
     <h1></h1>
     <p> </p>
     <img src="images/loading-bars.svg" width="64" height="64" /> </div>
-</div>
+</div>-->
 <!--[if lt IE 7]>
 <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]--> 
@@ -71,7 +71,7 @@
 								<h4>Select Insurer To Edit</h4>
 								<div class="form-group form-horizontal col-sm-12">
 									<label class="col-sm-2 control-label">Name</label>
-									<div class="col-sm-6">
+									<div class="col-sm-5">
 										<select class="form-control input-sm" id="insuranceId" name="insuranceId">
                                             <?php foreach($InsuranceCompany_Name as $row){?>
                                             <option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option>
@@ -82,7 +82,7 @@
 								<div class="form-group form-horizontal col-sm-12">
 									<div class="col-sm-2"> </div>
 									<div class="col-sm-2">
-										<button type="submit" class="btn w-xs btn-primary">Submit</button>
+                                        <button class="btn btn-primary" type="submit"><i class="fa fa-paste"></i> Edit</button>
 									</div>
 								</div>
 							</form>
@@ -98,19 +98,19 @@
                         <div class="form-group form-horizontal col-md-12">
                         	<input type="hidden" id="insuranceId" name="insuranceId" value="<?php echo $row['InsuranceCompany_Id']; ?>" >
                             <label class="col-sm-2 control-label">Name</label>
-                            <div class="col-sm-6">
+                            <div class="col-sm-5">
                                 <input type="text" id="name" name="name" class="form-control input-sm" value="<?php echo $row['InsuranceCompany_Name']; ?>" >
                             </div>
                         </div>
                         <div class="form-group form-horizontal col-md-12">
                             <label class="col-sm-2 control-label">Suit</label>
-                            <div class="col-sm-6">
+                            <div class="col-sm-5">
                                 <input type="text" id="suit" name="suit" class="form-control input-sm" value="<?php echo $row['InsuranceCompany_SuitName']; ?>" >
                             </div>
                         </div>
                         <div class="form-group form-horizontal col-md-12">
                             <label class="col-sm-2 control-label">Type</label>
-                            <div class="col-sm-6">
+                            <div class="col-sm-5">
                                 <input type="text" id="type" name="type" class="form-control input-sm" value="<?php echo $row['InsuranceCompany_Type']; ?>" >
                             </div>
                         </div>
@@ -118,18 +118,18 @@
                         <h4>Insurance Company Local Address</h4>
                         <div class="form-group form-horizontal col-md-12">
                             <label class="col-sm-2 control-label">Address</label>
-                            <div class="col-sm-6">
-                                <textarea rows="5" id="addressLocal" name="addressLocal" class="form-control"> <?php echo $row['InsuranceCompany_Local_Address']; ?> </textarea>
+                            <div class="col-sm-5">
+                                <textarea rows="3" id="addressLocal" name="addressLocal" class="form-control"> <?php echo $row['InsuranceCompany_Local_Address']; ?> </textarea>
                             </div>
                         </div>
                         <div class="form-group form-horizontal col-md-12">
                             <label class="col-sm-2 control-label">Zip</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-1">
                                 <input type="text" id="zipLocal" name="zipLocal" placeholder="Ex.11111" class="form-control input-sm" value="<?php echo $row['InsuranceCompany_Local_Zip']; ?>" >
                                 <!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
                             </div>
                             <label class="col-sm-1 control-label">City</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-1">
                                 <select class="form-control input-sm" id="cityLocal" name="cityLocal" >
                                 <option>option 1</option>
                                 <option>option 2</option>
@@ -138,7 +138,7 @@
                                 </select>
                             </div>
                             <label class="col-sm-1 control-label">State</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-1">
                                 <select class="form-control input-sm"  id="stateLocal" name="stateLocal">
                                 <option>option 1</option>
                                 <option>option 2</option>
@@ -149,11 +149,11 @@
                         </div>
                         <div class="form-group form-horizontal col-md-12">
                             <label class="col-sm-2 control-label">Phone</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-1">
                                 <input type="text" id="phoneLocal" name="phoneLocal" placeholder="Ex.000000" class="form-control input-sm" value="<?php echo $row['InsuranceCompany_Local_Phone']; ?>" >
                             </div>
                             <label class="col-sm-1 control-label">Fax</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-1">
                                 <input type="text" id="faxLocal" name="faxLocal" placeholder="Ex.11111" class="form-control input-sm" value="<?php echo $row['InsuranceCompany_Local_Fax']; ?>" >
                             </div>
                         </div>
@@ -161,17 +161,17 @@
                         <h4>Insurance Company Perm.Address</h4>
                         <div class="form-group form-horizontal col-md-12">
                             <label class="col-sm-2 control-label">Address</label>
-                            <div class="col-sm-6">
-                                <textarea rows="5" id="addressPermanent" name="addressPermanent" class="form-control" > <?php echo $row['InsuranceCompany_Perm_Address']; ?> </textarea>
+                            <div class="col-sm-5">
+                                <textarea rows="3" id="addressPermanent" name="addressPermanent" class="form-control" > <?php echo $row['InsuranceCompany_Perm_Address']; ?> </textarea>
                             </div>
                         </div>
                         <div class="form-group form-horizontal col-md-12">
                             <label class="col-sm-2 control-label">Zip</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-1">
                                 <input type="text" id="zipPermanent" name="zipPermanent" placeholder="Ex.12345" class="form-control input-sm" value="<?php echo $row['InsuranceCompany_Perm_Zip']; ?>" >
                             </div>
                             <label class="col-sm-1 control-label">City</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-1">
                                 <select class="form-control input-sm" id="cityPermanent" name="cityPermanent" name="account">
                                 <option>option 1</option>
                                 <option>option 2</option>
@@ -180,7 +180,7 @@
                                 </select>
                             </div>
                             <label class="col-sm-1 control-label">State</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-1">
                                 <select class="form-control input-sm" id="statePermanent" name="statePermanent" >
                                 <option>option 1</option>
                                 <option>option 2</option>
@@ -191,11 +191,11 @@
                         </div>
                         <div class="form-group form-horizontal col-md-12">
                             <label class="col-sm-2 control-label">Phone</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-1">
                                 <input type="text" id="phonePermanent" name="phonePermanent" placeholder="Ex.12345" class="form-control input-sm" value="<?php echo $row['InsuranceCompany_Perm_Phone']; ?>" >
                             </div>
                             <label class="col-sm-1 control-label">Fax</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-1">
                                 <input type="text" id="faxPermanent" name="faxPermanent" placeholder="Ex.12345" class="form-control input-sm" value="<?php echo $row['InsuranceCompany_Perm_Fax']; ?>" >
                             </div>
                         </div>

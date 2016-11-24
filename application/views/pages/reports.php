@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- Page title -->
-    <title>Manage User</title>
+    <title>CaseSettelments</title>
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!--<link rel="shortcut icon" type="image/ico" href="favicon.ico" />-->
@@ -36,7 +36,7 @@
 <body>
 
 <!-- Simple splash screen-->
-<div class="splash"> <div class="color-line"></div><div class="splash-title"><h1>Homer - Responsive Admin Theme</h1><p>Special AngularJS Admin Theme for small and medium webapp with very clean and aesthetic style and feel. </p><img src="images/loading-bars.svg" width="64" height="64" /> </div> </div>
+<!--<div class="splash"> <div class="color-line"></div><div class="splash-title"><h1>Homer - Responsive Admin Theme</h1><p>Special AngularJS Admin Theme for small and medium webapp with very clean and aesthetic style and feel. </p><img src="images/loading-bars.svg" width="64" height="64" /> </div> </div>-->
 <!--[if lt IE 7]>
 <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
@@ -63,18 +63,18 @@
 						<div class="panel-body">
 							<div class="col-lg-12 panel-body tab-panel">
 								<form>
-									<h4>Select Date Range for Settlements</h4>
+									<h4 class="h4-title">Select Date Range for Settlements</h4>
 									<div class="form-group form-horizontal col-md-12">
 										<label class="col-md-1 control-label">Start Date</label>										
-										<div class="col-md-2">
+										<div class="col-md-1">
 											<input id="datapicker1" type="text" class="form-control input-sm">
 										</div>
 										
 										<label class="col-md-1 control-label">End Date</label>										
-										<div class="col-md-2">
+										<div class="col-md-1">
 											<input id="datapicker2" type="text" class="form-control input-sm">
 										</div>
-										<div class="col-md-2">
+										<div class="col-md-1">
 												
 											<select class="form-control input-sm" name="account">
 												<option>All</option>
@@ -84,7 +84,7 @@
 											</select>
 										</div>
 										<div class="col-md-2">
-											<button type="button" class="btn w-xs btn-primary">Get</button>
+											<button type="button" class="btn btn-primary">Get</button>
 										</div>
 										
 									</div>
@@ -97,78 +97,78 @@
 						<div class="panel-body">
 							<div class="col-lg-12 panel-body tab-panel">
 								<form>
-									<h4>Select Insurance Company Name</h4>
+									<h5>Select Insurance Company Name</h5>
 									<div class="form-group form-horizontal col-md-12">										
 										<div class="col-md-2">
 												
-											<select class="form-control input-sm" name="account">
-												<option>All</option>
-												<option>0%</option>
-												<option>Between 0% and 70%</option>
-												<option>70% and above</option>
-											</select>
+											<select class="form-control input-sm" id="insuranceId" name="insuranceId">
+												<option>-- Select Insurance comp. --</option>
+												<?php foreach($InsuranceCompany_Name as $row){?>
+                                                <option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option>
+                                                <?php }?>
+                                            </select>
 										</div>
 										
 										<div class="col-md-2">
-											<button type="button" class="btn w-xs btn-primary">Get</button>
+											<button type="button" class="btn btn-primary">Get</button>
 										</div>
 									</div>
 								</form>
 								
 								<h5>OR</h5><div class="hr-line-dashed"></div>
 								<form>
-									<h4>Select Provider Name</h4>
+									<h5>Select Provider Name</h5>
 									<div class="form-group form-horizontal col-md-12">										
 										<div class="col-md-2">
 												
-											<select class="form-control input-sm" name="account">
-												<option>All</option>
-												<option>0%</option>
-												<option>Between 0% and 70%</option>
-												<option>70% and above</option>
+											<select class="form-control input-sm" id="providerId" name="providerId">
+												<option>-- Select Provider --</option>
+                                                <?php foreach($Provider_Name as $row){?>
+                                                <option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option>
+                                                <?php }?>
 											</select>
 										</div>
 										
 										<div class="col-md-2">
-											<button type="button" class="btn w-xs btn-primary">Get</button>
+											<button type="button" class="btn btn-primary">Get</button>
 										</div>
 									</div>
 								</form>
 								
 								<h5>OR</h5><div class="hr-line-dashed"></div>
 								<form>
-									<h4>Cases for 0 Settlement Amount</h4>
+									<h5>Cases for 0 Settlement Amount</h5>
 									<div class="form-group form-horizontal col-md-12">										
 										<label class="col-md-1 control-label">Start Date</label>										
-										<div class="col-md-2">
+										<div class="col-md-1">
 											<input id="datapicker3" type="text" class="form-control input-sm">
 										</div>
 										<label class="col-md-1 control-label">End Date</label>										
-										<div class="col-md-2">
+										<div class="col-md-1">
 											<input id="datapicker4" type="text" class="form-control input-sm">
 										</div>
 										
 										<div class="col-md-2">
-											<button type="button" class="btn w-xs btn-primary">Get</button>
+											<button type="button" class="btn btn-primary">Get</button>
 										</div>
 									</div>
 								</form>
 								
 								<h5>OR</h5><div class="hr-line-dashed"></div>
 								<form>
-									<h4>Overdue Settlement Report</h4>
+									<h5>Overdue Settlement Report</h5>
 									<div class="form-group form-horizontal col-md-12">										
 										<label class="col-md-1 control-label">Start Date</label>										
-										<div class="col-md-2">
+										<div class="col-md-1">
 											<input id="datapicker5" type="text" class="form-control input-sm">
 										</div>
 										<label class="col-md-1 control-label">End Date</label>										
-										<div class="col-md-2">
+										<div class="col-md-1">
 											<input id="datapicker6" type="text" class="form-control input-sm">
 										</div>
 										
 										<div class="col-md-2">
-											<button type="button" class="btn w-xs btn-primary">Get</button>
+											<button type="button" class="btn btn-primary">Get</button>
 										</div>
 									</div>
 								</form>
@@ -180,24 +180,24 @@
 						<div class="panel-body">
 							<div class="col-lg-12 panel-body tab-panel">
 								<form>
-									<h4>Client Reports</h4>
+									<h4 class="h4-title">Client Reports</h4>
 									<div class="form-group form-horizontal col-md-12">
 										<label class="col-md-2 control-label">Select provider name:</label>
 										<div class="col-md-2">
 												
-											<select class="form-control input-sm" name="account">
-												<option>All</option>
-												<option>0%</option>
-												<option>Between 0% and 70%</option>
-												<option>70% and above</option>
+											<select class="form-control input-sm" id="providerId" name="providerId">
+												<option>-- Select Provider --</option>
+                                                <?php foreach($Provider_Name as $row){?>
+                                                <option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option>
+                                                <?php }?>
 											</select>
 										</div>
 										<label class="col-md-2 control-label">Enter date range in month:</label>
-										<div class="col-md-2">
+										<div class="col-md-1">
 											<input type="number" class="form-control input-sm">
 										</div>
 										<div class="col-md-2">
-											<button type="button" class="btn w-xs btn-primary">Get</button>
+											<button type="button" class="btn btn-primary">Get</button>
 										</div>
 									</div>
 								</form>
@@ -234,7 +234,6 @@
 <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/addactive/addactive.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
 
 <!-- App scripts -->
@@ -267,6 +266,8 @@ $(function(){
 	$('.input-daterange').datepicker({ });
 });
 </script>
-
+<script>
+	$('.financials').addClass('active');
+</script>
 </body>
 </html>

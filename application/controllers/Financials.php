@@ -6,6 +6,7 @@ session_cache_limiter('private_no_expire');
 		Public function __construct(){
 			parent::__construct();
 			$this->load->library('session');
+			$this->load->model('financials_model');
 		}
 		public function index(){
 			$this->session->all_userdata();
@@ -26,7 +27,9 @@ session_cache_limiter('private_no_expire');
 		public function reports(){
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
-				$this->load->view('pages/reports');
+				$data['Provider_Name']= $this->financials_model->get_Provider();
+				$data['InsuranceCompany_Name']= $this->financials_model->get_Insurance();
+				$this->load->view('pages/reports',$data);
 			}else{
 				$this->load->view('pages/login');
 			}
@@ -34,7 +37,9 @@ session_cache_limiter('private_no_expire');
 		public function rapidfunds(){
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
-				$this->load->view('pages/rapidfunds');
+				$data['Provider_Name']= $this->financials_model->get_Provider();
+				$data['InsuranceCompany_Name']= $this->financials_model->get_Insurance();
+				$this->load->view('pages/rapidfunds',$data);
 			}else{
 				$this->load->view('pages/login');
 			}

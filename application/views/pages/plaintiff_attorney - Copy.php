@@ -31,13 +31,13 @@
 </head>
 <body>
 <!-- Simple splash screen-->
-<div class="splash">
+<!--<div class="splash">
   <div class="color-line"></div>
   <div class="splash-title">
     <h1></h1>
     <p> </p>
     <img src="images/loading-bars.svg" width="64" height="64" /> </div>
-</div>
+</div>-->
 <!--[if lt IE 7]>
 <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]--> 
@@ -65,7 +65,7 @@
                 <div class="col-lg-12">
                 <div class="hpanel">
                 <div class="panel-body tab-panel">
-                <form method="get" class="form-horizontal">
+                <form id="addPlantiffInfo" method="get" class="form-horizontal">
                   <h4>Plaintiff Attorney </h4>
                   <span>Information</span>
                   <div class="form-group">
@@ -159,7 +159,7 @@
                     </div>
                   </div>
                   <div class="col-sm-12">
-                    <button type="button" class="btn w-xs btn-info create">Submit</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Submit</button>
                   </div>
                 </form>
               </div>
@@ -172,6 +172,29 @@
   <!--tab content close--> 
 </div>
 </div>
+</div>
+	<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog model-popup">
+	<div class="modal-content">
+		<div class="modal-header model-design">
+			<button type="button" class="close close-tab" data-dismiss="modal"> &times;</button>
+			<h4> Data Submitted successfully...... </h4>
+		</div>
+		<div class="modal-body">
+			<div class="row">
+				<div class="col-lg-12">
+				<div class="hpanel">
+				<div class="panel-heading"></div>
+				<div class="panel-body tab-panel">
+					
+				</div><!-- End of panel-body tab-panel-->
+				</div><!-- End hpanel -->
+				</div><!-- End col-lg-12-->
+			</div><!-- End row-->
+		</div><!-- End of modal-body-->
+	</div><!--End of modal-content -->
+	</div><!--End of modal-dialog model-popup -->
+	</div><!--End of modal fade-->
 </div>
 </div>
 
@@ -194,5 +217,37 @@
 <script src="<?php echo base_url();?>assets/vendor/addactive/addactive.js"></script>
 <!-- App scripts --> 
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
+<script>
+	$("#addPlantiffInfo").submit(function(e)
+	{
+    	var postData = $(this).serializeArray();
+		var formURL = $(this).attr("action");
+		
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,
+			success:function(data, textStatus, jqXHR) 
+			{
+				$('#insuranceId').val('');
+				$('#lastName').val('');
+				$('#firstName').val('');
+				$('#phone').val('');
+				$('#ext').val('');
+				$('#email').val('');
+				$('#fax').val('');
+
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				alert();
+				
+			}
+		});
+		e.preventDefault();	//STOP default action
+	});
+	$("#ajaxform").submit(); //SUBMIT FORM
+</script>
 </body>
 </html>

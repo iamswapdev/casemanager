@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- Page title -->
-    <title>Manage User</title>
+   <title>CaseSettelments</title>
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!--<link rel="shortcut icon" type="image/ico" href="favicon.ico" />-->
@@ -35,7 +35,7 @@
 <body>
 
 <!-- Simple splash screen-->
-<div class="splash"> <div class="color-line"></div><div class="splash-title"><h1>Homer - Responsive Admin Theme</h1><p>Special AngularJS Admin Theme for small and medium webapp with very clean and aesthetic style and feel. </p><img src="images/loading-bars.svg" width="64" height="64" /> </div> </div>
+<!--<div class="splash"> <div class="color-line"></div><div class="splash-title"><h1>Homer - Responsive Admin Theme</h1><p>Special AngularJS Admin Theme for small and medium webapp with very clean and aesthetic style and feel. </p><img src="images/loading-bars.svg" width="64" height="64" /> </div> </div>-->
 <!--[if lt IE 7]>
 <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
@@ -46,7 +46,7 @@
 <?php include 'sidebar.php';?>
 <!-- Main Wrapper -->
 <div id="wrapper">
-<?php include 'header_search.php';?>
+<?php include 'header_workarea.php';?>
 <div class="content animate-panel">
 
 	<div class="row">
@@ -59,77 +59,77 @@
 			<form method="get" class="form-horizontal">
 
 				<div class="form-group form-horizontal col-md-12">
-					<label class="col-sm-2 control-label">Case ID</label>
-					<div class="col-sm-2">
+					<label class="col-md-2 control-label">Case ID</label>
+					<div class="col-md-2">
 						<input type="text" class="form-control input-sm">
 					</div>
-					<label class="col-sm-2 control-label">Injured Name</label>
-					<div class="col-sm-2">
+					<label class="col-md-2 control-label">Injured Name</label>
+					<div class="col-md-2">
 						<input type="text" class="form-control input-sm">
 					</div>
-					<label class="col-sm-2 control-label">Insured Name</label>
-					<div class="col-sm-2">
+					<label class="col-md-2 control-label">Insured Name</label>
+					<div class="col-md-2">
 						<input type="text" class="form-control input-sm">
 					</div>
 				</div>
 
 				<div class="form-group form-horizontal col-md-12">
 					
-					<label class="col-sm-2 control-label">Policy Number</label>
-					<div class="col-sm-2">
+					<label class="col-md-2 control-label">Policy Number</label>
+					<div class="col-md-2">
 						<input type="text" class="form-control input-sm">
 					</div>
-					<label class="col-sm-2 control-label">Insurance Claim </label>
-					<div class="col-sm-2">
+					<label class="col-md-2 control-label">Insurance Claim </label>
+					<div class="col-md-2">
 						<input type="text" class="form-control input-sm">
 					</div>
-					<label class="col-sm-2 control-label">INDEX#/AAA#</label>
-					<div class="col-sm-2">
+					<label class="col-md-2 control-label">INDEX#/AAA#</label>
+					<div class="col-md-2">
 						<input type="text" class="form-control input-sm">
 					</div>
 
 				</div>
 				<div class="form-group form-horizontal col-md-12">
-					<label class="col-sm-2 control-label">Status</label>
-					<div class="col-sm-2">
-						<select class="form-control m-b input-sm" name="account">
+					<label class="col-md-2 control-label">Status</label>
+					<div class="col-md-2">
+						<select class="form-control input-sm" name="account">
 						<option>Yes</option>
 						<option>No</option>
 						</select>
 					</div>
-					<label class="col-sm-2 control-label">Insurance Comp.</label>
-					<div class="col-sm-2">
-						<select class="form-control m-b input-sm" name="account">
+					<label class="col-md-2 control-label">Insurance Comp.</label>
+					<div class="col-md-2">
+						<select class="form-control input-sm" name="account">
 						<option>Yes</option>
 						<option>No</option>
 						</select>
 					</div>
-					<label class="col-sm-2 control-label">Court Type</label>
-					<div class="col-sm-2">
-						<select class="form-control m-b input-sm" name="account">
+					<label class="col-md-2 control-label">Court Type</label>
+					<div class="col-md-2">
+						<select class="form-control input-sm" name="account">
 						<option>Yes</option>
 						<option>No</option>
 						</select>
 					</div>
 				</div>
 				<div class="form-group form-horizontal col-md-12">
-					<label class="col-sm-2 control-label">Case Status</label>
-					<div class="col-sm-2">
-						<select class="form-control m-b input-sm" name="account">
+					<label class="col-md-2 control-label">Case Status</label>
+					<div class="col-md-2">
+						<select class="form-control input-sm" name="account">
 						<option>Yes</option>
 						<option>No</option>
 						</select>
 					</div>
-					<label class="col-sm-2 control-label">Provider</label>
-					<div class="col-sm-2">
-						<select class="form-control m-b input-sm" name="account">
+					<label class="col-md-2 control-label">Provider</label>
+					<div class="col-md-2">
+						<select class="form-control input-sm" name="account">
 						<option>Yes</option>
 						<option>No</option>
 						</select>
 					</div>
-					<label class="col-sm-2 control-label">Defendant Name</label>
-					<div class="col-sm-2">
-						<select class="form-control m-b input-sm" name="account">
+					<label class="col-md-2 control-label">Defendant Name</label>
+					<div class="col-md-2">
+						<select class="form-control input-sm" name="account">
 						<option>Yes</option>
 						<option>No</option>
 						</select>
@@ -139,8 +139,8 @@
 				
 
 				<div class="form-group form-horizontal col-md-12">
-					<div class="col-sm-2"></div>
-					<div class="col-sm-4">
+					<div class="col-md-2"></div>
+					<div class="col-md-4">
 						<button type="button" class="btn btn-primary">Search</button>
 						<button class="btn btn-primary" type="submit">Reset</button>   
 					</div>
@@ -151,7 +151,7 @@
 			
 			<h4>Search Results</h4>
 			<div class="form-group form-horizontal col-md-12">
-				<table id="example2" class="display table table-bordered">
+				<table id="example2" class="table table-striped table-bordered table-hover dataTable no-footer">
 					<thead>
 						<tr> 	
 							<th>#</th> 	 
@@ -251,7 +251,6 @@
 <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/addactive/addactive.js"></script>
 
 <!-- App scripts -->
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
@@ -271,6 +270,8 @@
     });
 
 </script>
-
+<script>
+	$('.search').addClass('active');
+</script>
 </body>
 </html>

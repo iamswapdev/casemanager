@@ -101,8 +101,7 @@ table.dataTable thead .sorting_desc_disabled:after {
 }
 
 table.dataTable thead > tr > th {
-	padding-left: 8px;
-	padding-right: 30px;
+	padding: 4px;
 }
 
 table.dataTable th:active {

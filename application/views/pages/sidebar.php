@@ -2,7 +2,7 @@
     <div id="navigation">
         <div class="profile-picture">
             <a href="<?php echo base_url();?>admin/dashboard">
-                <img src="<?php echo base_url();?>assets/images/profile1.jpg" class="img-circle m-b" alt="logo">
+                <!--<img src="<?php echo base_url();?>assets/images/profile1.jpg" class="img-circle m-b" alt="logo">-->
             </a>
 
             <div class="stats-label text-color">
@@ -36,7 +36,7 @@
             <li class="adminprivilege">
                 <a href="#"><span class="nav-label">Admin</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>adminprivilege/config" onclick="addactive(this);">Admin Privileges</a></li>
+                    <li><a href="<?php echo base_url();?>adminprivilege/manageusers" onclick="addactive(this);">Admin Privileges</a></li>
                 </ul>
             </li>
             <li class="search">
