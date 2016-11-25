@@ -44,11 +44,29 @@
 		}
 		public function get_AllRoles()
 		{
-			$this->db->select('RoleName');
-			$this->db->from('dbo_issuetracker_roles');
-			$query=$this->db->get();
-			
+			$query=$this->db->get('dbo_issuetracker_roles');	
 			$data=$query->result_array();
+			return $data;
+		}
+		public function deleteRoles($data)
+		{
+			$data1 = array();
+			$data1 = $data;
+			//$data1 = $data['delete_Role'];
+			print_r($data1); exit();
+			foreach($data1 as $id){
+				$this->db->where('RoleId', $id);
+				$this->db->delete('dbo_issuetracker_roles');
+			}
+						
+   
+			return true;
+		}
+		public function get_SingleRoles()
+		{
+			$query ="select * from dbo_issuetracker_roles order by RoleId DESC limit 1";
+			$res = $this->db->query($query);
+			$data=$res->result_array();
 			return $data;
 		}
 		public function insert_Roles($data)

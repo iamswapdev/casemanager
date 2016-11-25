@@ -1,10 +1,3 @@
-<?php
-	/*session_cache_limiter('private_no_expire');
-	if( !isset($_SESSION["username"]) && !isset($_SESSION["password"])){
-		
-		header('Location: admin');
-	}*/
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -108,7 +101,7 @@
 							<div class="form-group form-horizontal col-sm-12">
 								<div class="col-sm-2"> </div>
 								<div class="col-sm-2">
-									<button class="btn btn-primary " type="submit" data-toggle="modal" data-target="#myModal"><i class="fa fa-check"></i> Submit</button>
+									<button class="btn btn-primary " type="submit" ><i class="fa fa-check"></i> Submit</button>
 								</div>
 							</div>
 						</form>
@@ -184,7 +177,7 @@
 							<div class="form-group form-horizontal col-sm-12">
 								<div class="col-sm-2"> </div>
 								<div class="col-sm-2">
-									<button class="btn btn-primary " type="submit" data-toggle="modal" data-target="#myModal"><i class="fa fa-check"></i> Submit</button>
+									<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary"><i class="fa fa-check"></i> Cancel</button>
 								</div>
 							</div>
 						</form>
@@ -220,6 +213,7 @@
 	</div><!--End of modal-content -->
 	</div><!--End of modal-dialog model-popup -->
 	</div><!--End of modal fade-->
+	
   </div>
   
   <!-- Right sidebar -->
@@ -238,36 +232,106 @@
 <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script> 
 <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script> 
 <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script> 
+<script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
 <!-- App scripts --> 
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
 
 /* Add Adjuster information - Tab-1*/ /*---------- Tab-1 --------------------*/
-	$("#addAdjusterInfo").submit(function(e)
-	{
-    	var postData = $(this).serializeArray();
-		var formURL = $(this).attr("action");
-		e.preventDefault();	//STOP default action
-		$.ajax(
-		{
-			url : formURL,
-			type: "POST",
-			data : postData,
-			success:function(data, textStatus, jqXHR) 
-			{
-				$('#insuranceId').val('');
-				$('#lastName').val('');
-				$('#firstName').val('');
-				$('#phone').val('');
-				$('#ext').val('');
-				$('#email').val('');
-				$('#fax').val('');
-				console.log("ssssss");
+	$("#addAdjusterInfo").validate({
+	
+		rules: {
+			name: {
+				required: true
 			},
-			error: function(jqXHR, textStatus, errorThrown){ alert(); }
-		});
-		
+			lastName: {
+				required: true
+			},
+			firstName: {
+				required: true
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			phone:{
+				required: true,
+				number: true
+			},
+			fax:{
+				number: true
+			},
+			zip:{
+				number: true
+			},
+			phoneLocal:{
+				required: true,
+				number: true
+			},
+			faxLocal:{
+				number: true
+			},
+			zipLocal:{
+				number: true
+			},
+			phonePermanent:{
+				required: true,
+				number: true
+			},
+			faxPermanent:{
+				number: true
+			},
+			zipPermanent:{
+				number: true
+			}		
+		},
+				
+		submitHandler: function (form) {
+			// setup some local variables
+			var $form = $(form);
+			// let's select and cache all the fields
+			var $inputs = $form.find("input, select, button, textarea");
+			// serialize the data in the form
+			var serializedData = $form.serialize();
+
+			// let's disable the inputs for the duration of the ajax request
+			$inputs.prop("disabled", true);
+
+			// fire off the request to /form.php
+
+			request = $.ajax({
+				url:"<?php echo base_url(); ?>dataentry/add_AdjusterInfo",
+				type: "post",
+				data: serializedData
+			});
+
+			// callback handler that will be called on success
+			request.done(function (response, textStatus, jqXHR) {
+				// log a message to the console
+				console.log("Hooray, it worked!");
+				$('input[type=text]').val('');
+					$('textarea').val('');
+					$("#state").val('');
+					 $("#myModal").modal("show");
+			});
+
+			// callback handler that will be called on failure
+			request.fail(function (jqXHR, textStatus, errorThrown) {
+				// log the error to the console
+				console.error(
+					"The following error occured: " + textStatus, errorThrown);
+			});
+
+			// callback handler that will be called regardless
+			// if the request failed or succeeded
+			request.always(function () {
+				// reenable the inputs
+				$inputs.prop("disabled", false);
+			});
+
+		}
 	});
+	
 /* *************************************************** */
 
 /* Bind Adjusters By clicking Tab-2 */  /*----------------- Tab-2 ---------------------*/
@@ -328,31 +392,103 @@
 	
 
 /*Update Adjuster information on Tab-2*/  /*----------------- Update ---------------------*/
-	$("#updateAdjusterInfo").submit(function(e){
-		var form = $(this);
-		var formDataNew = form.serialize();
-    	var formData = form.serializeArray();
-		var formURL = $(this).attr("action");
-		console.log("Update: "+formData);
-		console.log("Update: "+formDataNew);
-		e.preventDefault();	//STOP default action
-		
-		$.ajax({
-			url : formURL,
-			type: "POST",
-			data : formData,
-			success:function(data) 
-			{
-				results = JSON.parse(data);
-				console.log("Update success: "+data);
-				$("#updateAdjusterInfo").css("display", "none");
+	$("#updateAdjusterInfo").validate({
+	
+		rules: {
+			name: {
+				required: true
 			},
-			error: function(result) { alert(); }
-		});
-		
+			lastName: {
+				required: true
+			},
+			firsttName: {
+				required: true
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			phone:{
+				required: true,
+				number: true
+			},
+			fax:{
+				number: true
+			},
+			zip:{
+				number: true
+			},
+			phoneLocal:{
+				required: true,
+				number: true
+			},
+			faxLocal:{
+				number: true
+			},
+			zipLocal:{
+				number: true
+			},
+			phonePermanent:{
+				required: true,
+				number: true
+			},
+			faxPermanent:{
+				number: true
+			},
+			zipPermanent:{
+				number: true
+			}				
+		},
+				
+		submitHandler: function (form) {
+			// setup some local variables
+			var $form = $(form);
+			// let's select and cache all the fields
+			var $inputs = $form.find("input, select, button, textarea");
+			// serialize the data in the form
+			var serializedData = $form.serialize();
+
+			// let's disable the inputs for the duration of the ajax request
+			$inputs.prop("disabled", true);
+
+			request = $.ajax({
+				url:"<?php echo base_url(); ?>dataentry/updateAdjuster",
+				type: "post",
+				data: serializedData
+			});
+
+			// callback handler that will be called on success
+			request.done(function (response, textStatus, jqXHR) {
+				// log a message to the console
+				console.log("Hooray, it worked!");
+				$('input[type=text]').val('');
+					$('textarea').val('');
+					$("#state").val('');
+					$("#updateAdjusterInfo").css("display", "none");
+					 $("#myModal").modal("show");
+			});
+
+			// callback handler that will be called on failure
+			request.fail(function (jqXHR, textStatus, errorThrown) {
+				// log the error to the console
+				console.error(
+					"The following error occured: " + textStatus, errorThrown);
+			});
+
+			// callback handler that will be called regardless
+			// if the request failed or succeeded
+			request.always(function () {
+				// reenable the inputs
+				$inputs.prop("disabled", false);
+			});
+
+		}
+	});
+	$("#cancelUpdate").click(function(){
+		$("#updateAdjusterInfo").css("display", "none");
 	});
 /* *************************************************** */	
-	$("#ajaxform").submit(); //SUBMIT FORM
+
 </script>
 <script>
 	$('.dataentry').addClass('active');

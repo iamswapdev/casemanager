@@ -53,7 +53,7 @@
 		<div class="panel-body tab-panel">
 			
 			<h4 class="h4-title">Add New Role</h4>
-			<form id="addRoleForm" role="form" action="insert_Roles" method="post">
+			<form id="addRoleForm"  action="insert_Roles" method="post">
 				<div class="form-group form-horizontal col-md-12">
 					<label class="col-sm-2 control-label">Role Name</label>
 					<div class="col-sm-4">
@@ -63,14 +63,15 @@
 				<div class="form-group form-horizontal col-md-12">
 					<div class="col-md-2"></div>
 					<div class="col-md-1">
-						<button type="submit" class="btn btn-primary">Add</button>
+						<button class="btn btn-primary " type="submit" ><i class="fa fa-check"></i> Add</button>
 					</div>
 					<div class="col-md-1">
-						<button class="btn btn-primary" >Cancel</button>
+						<button type="button" id="cancel" class="btn btn-primary" >Cancel</button>
 					</div> 
 				</div>
 			</form>
 			
+			<form id="deleteRoleForm1"  action="delete_Roles" method="post">
 			<div class="form-group form-horizontal col-md-12">
 				<div class="col-md-2"></div>
 				<div class="col-md-4">
@@ -82,23 +83,23 @@
 						</tr>
 					</thead>
 					<tbody>
-                    <?php foreach($RoleName as $row){?>
+						<?php foreach($Roles as $row){?>
 						<tr>
 							<td><?php echo $row['RoleName']?></td>
-							<td><input type="checkbox" class="i-checks"></td>
+							<td><input name="deleteRole[]" type="checkbox" class="i-checks" value="<?php echo $row['RoleId']; ?>"></td>
 						</tr>
-                    <?php }?>
+						<?php }?>
 					</tbody>
 					</table>
 				</div>
-				
 			</div>
 			<div class="form-group form-horizontal col-md-12">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
-					<button type="button" class="btn w-xs btn-primary">Delete Checked</button>
+					<button type="button" class="btn w-xs btn-primary">Delete Checked</button><br><br>
 				</div>
 			</div>
+			</form>
 			
 			
 			
@@ -106,6 +107,23 @@
 		</div><!-- End hpanel -->
 		</div><!-- End col-lg-12-->
 	</div><!-- End row-->   
+	
+	<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+          <h4>Data submited successfully..</h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
       
     
     
@@ -141,7 +159,151 @@
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 
 <script>
-	$(function(){
+	/* Add Plantiff information - Tab-1*/ /*---------- Tab-1 --------------------*/
+	$("#cancel").click(function(){
+		$("input[type=text]").val("");
+	});
+	$("#addRoleForm").validate({
+		rules: {
+			RoleName: {
+				required: true,
+				minlength: 3
+			}		
+		},
+				
+		submitHandler: function (form) {
+			// setup some local variables
+			var $form = $(form);
+			// let's select and cache all the fields
+			var $inputs = $form.find("input, select, button, textarea");
+			// serialize the data in the form
+			var serializedData = $form.serialize();
+
+			// let's disable the inputs for the duration of the ajax request
+			$inputs.prop("disabled", true);
+
+			// fire off the request to /form.php
+
+			request = $.ajax({
+				url:"<?php echo base_url(); ?>adminprivilege/insert_Roles",
+				type: "post",
+				data: serializedData,
+				success:function(data, textStatus, jqXHR) 
+				{
+					results = JSON.parse(data);
+					var optionsAsString = "";
+					for($i in results.Roles){
+						//console.log(results.Provider_Name[$i].Adjuster_Id);
+						optionsAsString +="<tr> <td>'"+results.Roles[$i].RoleName+"'</td> <td><input type='checkbox' class='i-checks' value='"+results.Roles[$i].RoleId+"' > </td></tr>"
+						
+					}
+					$( 'tbody' ).append( optionsAsString );
+				}
+			});
+
+			// callback handler that will be called on success
+			request.done(function (response, textStatus, jqXHR) {
+				// log a message to the console
+				console.log("Hooray, it worked!");
+					 $("#myModal").modal("show");
+					
+					
+					$('input[type=text]').val('');
+			});
+
+			// callback handler that will be called regardless
+			// if the request failed or succeeded
+			request.always(function () {
+				// reenable the inputs
+				$inputs.prop("disabled", false);
+			});
+
+		}
+	});
+	
+	$("#deleteRoleForm").validate({
+		submitHandler: function (form) {
+			// setup some local variables
+			var $form = $(form);
+			// let's select and cache all the fields
+			var $inputs = $form.find("input, select, button, textarea");
+			// serialize the data in the form
+			var serializedData = $form.serialize();
+			console.log("DDDD: "+serializedData);
+
+			// let's disable the inputs for the duration of the ajax request
+			$inputs.prop("disabled", true);
+
+			// fire off the request to /form.php
+
+			request = $.ajax({
+				url:"<?php echo base_url(); ?>adminprivilege/delete_Roles",
+				type: "post",
+				data: serializedData,
+				success:function(data, textStatus, jqXHR) 
+				{
+					/*results = JSON.parse(data);
+					var optionsAsString = "";
+					for($i in results.Roles){
+						//console.log(results.Provider_Name[$i].Adjuster_Id);
+						optionsAsString +="<tr> <td>'"+results.Roles[$i].RoleName+"'</td> <td><input type='checkbox' class='i-checks' value='"+results.Roles[$i].RoleId+"' > </td></tr>"
+						
+					}
+					$( 'tbody' ).append( optionsAsString );*/
+				}
+			});
+
+			// callback handler that will be called on success
+			request.done(function (response, textStatus, jqXHR) {
+				// log a message to the console
+				console.log("Hooray, it worked!");
+					 $("#myModal").modal("show");
+					$('input[type=text]').val('');
+			});
+
+			// callback handler that will be called regardless
+			// if the request failed or succeeded
+			request.always(function () {
+				// reenable the inputs
+				$inputs.prop("disabled", false);
+			});
+
+		}
+	});
+	$("#addRoleForm1").submit(function(e)
+	{
+    	var postData = $(this).serializeArray();
+		var postDataN = $(this).serialize();
+		console.log("postDataN: "+postDataN);
+		var formURL = $(this).attr("action");
+		
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,
+			success:function(data, textStatus, jqXHR) 
+			{
+				
+				results = JSON.parse(data);
+				var optionsAsString = "";
+				for($i in results.Roles){
+					//console.log(results.Provider_Name[$i].Adjuster_Id);
+					optionsAsString +="<tr> <td>'"+results.Roles[$i].RoleName+"'</td> <td><input type='checkbox' class='i-checks' value='"+results.Roles[$i].RoleId+"' > </td></tr>"
+					
+				}
+				$( 'tbody' ).append( optionsAsString );
+				
+				$('input[type=text]').val('');
+				console.log("Success...........");
+				$("").attr();
+			},
+			error: function(jqXHR, textStatus, errorThrown){ alert(); }
+		});
+		e.preventDefault();	//STOP default action
+	});
+/* *************************************************** */
+	/*$(function(){
          $("#addRoleForm").validate({
             rules: {
                 RoleName: {
@@ -149,11 +311,12 @@
                     minlength: 3
                 }
             },
-            submitHandler: function(form) {
-                form.submit();
+            submitHandler: function(form, e) {
+                e.preventDefault();	//STOP default action
+				//form.submit();
             }
         });
-	});
+	});*/
 </script>
 <script>
 	$('.adminprivilege').addClass('active');

@@ -1,0 +1,47 @@
+public function updateadjusterOld(){
+			$this->session->all_userdata();
+			if(isset($this->session->userdata['logged_in'])){
+				$adjusterName = $this->input->post('lastName');
+				//echo "adjusterName: ".$adjusterName; exit();
+				if($adjusterName == ""){
+					$data['Adjuster_Name']= $this->dataentry_model->get_Adjuster();
+					$adjusterId = $this->input->post('adjusterId');
+					//echo "<pre>";print_r($data); exit();
+					//echo "adjusterId: ".$adjusterId; exit();
+					if($adjusterId == ""){
+						$data['AdjusterInfoById'] = "";
+						$data['display_form'] = 0;
+						$data['InsuranceCompany_Name']= $this->dataentry_model->get_Insurance();
+						//$this->load->view('pages/updateAdjusterInfo',$data);
+						echo json_encode($data);
+					}
+					$data['display_form'] = 1;
+					$inputdata = array(
+						'Adjuster_Id' => $adjusterId
+					);
+					//echo "inputdata: <pre>"; print_r($inputdata); exit();
+					$data['AdjusterInfoById'] = $this->dataentry_model->edit_AdjusterById($inputdata);
+					 //echo "AdjusterInfoById: <pre>"; print_r($data['AdjusterInfoById']); exit();
+					$data['InsuranceCompany_Name']= $this->dataentry_model->get_Insurance();
+					$this->load->view('pages/updateAdjusterInfo',$data);
+				}else{
+					$data = array(
+						'Adjuster_Id' => $this->input->post('adjusterId'),
+						'InsuranceCompany_Id' => $this->input->post('insuranceId'),
+						'Adjuster_LastName' => $this->input->post('lastName'),
+						'Adjuster_FirstName' => $this->input->post('firstName'),
+						'Adjuster_Phone' => $this->input->post('phone'),
+						'Adjuster_Phone_Ext' => $this->input->post('ext'),
+						'Adjuster_Email' => $this->input->post('email'),
+						'Adjuster_Fax' => $this->input->post('fax')
+					);
+					$success = $this->dataentry_model->update_AdjusterInfo($data);
+					if($success){
+						$this->load->view('pages/submitted');
+					}
+				}
+					
+			}else{
+				$this->load->view('pages/login');
+			}
+		}

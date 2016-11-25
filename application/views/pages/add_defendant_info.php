@@ -51,18 +51,15 @@
 <div id="wrapper">
 <?php include 'header_dataentry.php';?>
 <div class="content animate-panel">
-    
-	<div class="row">
-		<div class="col-lg-12">
-		<div class="hpanel">
-		<div class="panel-body tab-panel">
-			
-			<ul class="nav nav-tabs">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="hpanel">
+          <ul class="nav nav-tabs">
 				<li class="active"><a data-toggle="tab" href="#tab-1" href="#tab-1">Add Defendant Info</a></li>
 				<li class=""><a id="tab2" data-toggle="tab" href="#tab-2">Edit Defendant Info</a></li>
 			</ul>
-			<div class="tab-content">
-				<div id="tab-1" class="tab-pane active">
+          <div class="tab-content">
+            <div id="tab-1" class="tab-pane active">
 					<div class="panel-body">
 						<div class="col-lg-12 panel-body tab-panel">
 							<form id="addDefendantInfo" action="add_DefendantInfo" method="post" class="form-horizontal">
@@ -117,16 +114,14 @@
 								<div class="form-group form-horizontal col-md-12">
 									<div class="col-sm-2"> </div>
 									<div class="col-sm-2">
-										<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Save</button>
+										<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>
 									</div>
 								</div>
 							</form>
 						</div>
 					</div>
 				</div>
-				
-				
-				<div id="tab-2" class="tab-pane">
+			<div id="tab-2" class="tab-pane">
 					<div class="panel-body">
 						<div class="col-lg-12 panel-body tab-panel">
 							<form action="" id="updateDefendant" method="post">
@@ -201,7 +196,7 @@
 								<div class="form-group form-horizontal col-md-12">
 									<div class="col-sm-2"> </div>
 									<div class="col-sm-2">
-										<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Save</button>
+										<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary"><i class="fa fa-check"></i> Cancel</button>
 									</div>
 								</div>
 							</form>
@@ -209,19 +204,19 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</div><!-- End of panel-body tab-panel-->
-		</div><!-- End hpanel -->
-		</div><!-- End col-lg-12-->
-	</div><!-- End row-->
+			
+        </div>
+          <!--tab content close--> 
+        </div>
+      </div>
+    </div>
 	
-	
-	<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal fade" id="myModal" role="dialog">
 	<div class="modal-dialog model-popup">
 	<div class="modal-content">
 		<div class="modal-header model-design">
 			<button type="button" class="close close-tab" data-dismiss="modal"> &times;</button>
-			<h5> Data Submitted successfully...... </h5>
+			<h4> Data Submitted successfully...... </h4>
 		</div>
 		<div class="modal-body">
 			<div class="row">
@@ -239,8 +234,7 @@
 	</div><!--End of modal-dialog model-popup -->
 	</div><!--End of modal fade-->
 	
-	
-</div><!--content animate-panel--> 
+  </div>
 
 <!-- Right sidebar -->
 <div id="right-sidebar" class="animated fadeInRight"> </div>
@@ -258,32 +252,73 @@
 <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script> 
 <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script> 
 <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script> 
+<script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
 <!-- App scripts --> 
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
 
 /* Add Defendant information - Tab-1*/ /*---------- Tab-1 --------------------*/
-	$("#addDefendantInfo").submit(function(e)
-	{
-    	var postData = $(this).serializeArray();
-		var postDataN = $(this).serialize();
-		console.log("postDataN: "+postDataN);
-		var formURL = $(this).attr("action");
-		
-		$.ajax(
-		{
-			url : formURL,
-			type: "POST",
-			data : postData,
-			success:function(data, textStatus, jqXHR) 
-			{
+	$("#addDefendantInfo").validate({
+	
+		rules: {
+					name: {
+						required: true
+					},
+					email: {
+						required: true,
+						email: true
+					},
+					phone:{
+						required: true,
+						number: true
+					}
+					
+				},
+				
+		submitHandler: function (form) {
+			// setup some local variables
+			var $form = $(form);
+			// let's select and cache all the fields
+			var $inputs = $form.find("input, select, button, textarea");
+			// serialize the data in the form
+			var serializedData = $form.serialize();
+
+			// let's disable the inputs for the duration of the ajax request
+			$inputs.prop("disabled", true);
+
+			// fire off the request to /form.php
+
+			request = $.ajax({
+				url:"<?php echo base_url(); ?>dataentry/add_DefendantInfo",
+				type: "post",
+				data: serializedData
+			});
+
+			// callback handler that will be called on success
+			request.done(function (response, textStatus, jqXHR) {
+				// log a message to the console
+				console.log("Hooray, it worked!");
 				$('input[type=text]').val('');
-				$('textarea').val('');
-				$("#state").val('');
-			},
-			error: function(jqXHR, textStatus, errorThrown){ alert(); }
-		});
-		e.preventDefault();	//STOP default action
+					$('textarea').val('');
+					$("#state").val('');
+					 $("#myModal").modal("show");
+			});
+
+			// callback handler that will be called on failure
+			request.fail(function (jqXHR, textStatus, errorThrown) {
+				// log the error to the console
+				console.error(
+					"The following error occured: " + textStatus, errorThrown);
+			});
+
+			// callback handler that will be called regardless
+			// if the request failed or succeeded
+			request.always(function () {
+				// reenable the inputs
+				$inputs.prop("disabled", false);
+			});
+
+		}
 	});
 /* *************************************************** */
 
@@ -348,32 +383,76 @@
 	
 
 /*Update Provider information on Tab-2*/  /*----------------- Update ---------------------*/
-	$("#updateDefendantInfo").submit(function(e){
-		var form = $(this);
-		var formDataNew = form.serialize();
-    	var formData = form.serializeArray();
-		var formURL = $(this).attr("action");
-		console.log("Update: "+formDataNew);
-		e.preventDefault();	//STOP default action
-		
-		$.ajax({
-			url : formURL,
-			type: "POST",
-			data : formData,
-			success:function(data) 
-			{
-				results = JSON.parse(data);
-				console.log("Update success: "+data);
+	$("#updateDefendantInfo").validate({
+	
+		rules: {
+					name: {
+						required: true
+					},
+					email: {
+						required: true,
+						email: true
+					},
+					phone:{
+						required: true,
+						number: true
+					}
+					
+				},
+				
+		submitHandler: function (form) {
+			// setup some local variables
+			var $form = $(form);
+			// let's select and cache all the fields
+			var $inputs = $form.find("input, select, button, textarea");
+			// serialize the data in the form
+			var serializedData = $form.serialize();
+
+			// let's disable the inputs for the duration of the ajax request
+			$inputs.prop("disabled", true);
+
+			// fire off the request to /form.php
+
+			request = $.ajax({
+				url:"<?php echo base_url(); ?>dataentry/updateDefendant",
+				type: "post",
+				data: serializedData
+			});
+
+			// callback handler that will be called on success
+			request.done(function (response, textStatus, jqXHR) {
+				// log a message to the console
+				console.log("Hooray, it worked!");
 				$('input[type=text]').val('');
-				$("#stateU").val('');
-				$("#updateDefendantInfo").css("display", "none");
-			},
-			error: function(result) { alert(); }
-		});
-		
+					$('textarea').val('');
+					$("#state").val('');
+					$("#updateDefendantInfo").css("display", "none");
+					 $("#myModal").modal("show");
+			});
+
+			// callback handler that will be called on failure
+			request.fail(function (jqXHR, textStatus, errorThrown) {
+				// log the error to the console
+				console.error(
+					"The following error occured: " + textStatus, errorThrown);
+			});
+
+			// callback handler that will be called regardless
+			// if the request failed or succeeded
+			request.always(function () {
+				// reenable the inputs
+				$inputs.prop("disabled", false);
+			});
+
+		}
 	});
+	$("#cancelUpdate").click(function(){
+		$("#updateDefendantInfo").css("display", "none");
+	});
+	
 /* *************************************************** */
 
+	
 </script>
 <script>
 	$('.dataentry').addClass('active');

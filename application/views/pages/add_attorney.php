@@ -79,21 +79,21 @@
 						<div class="form-group form-horizontal col-smd-12">
 							<label class="col-sm-2 control-label">Last Name</label>
 							<div class="col-sm-1">
-								<input type="text" id="lastName" name="lastName" placeholder="Last Name" class="form-control input-sm">
+								<input type="text" id="lastName" name="lastName" placeholder="Last Name" class="form-control input-sm" required>
 							</div>
 							<label class="col-sm-1 control-label">First Name</label>
 							<div class="col-sm-1">
-								<input type="text" id="firstName" name="firstName" placeholder="First Name" class="form-control input-sm">
+								<input type="text" id="firstName" name="firstName" placeholder="First Name" class="form-control input-sm" required>
 							</div>
 						</div>
 						<div class="form-group form-horizontal col-smd-12">
 							<label class="col-sm-2 control-label">Zip</label>
 							<div class="col-sm-1">
-								<input type="text" id="zip" name="zip" placeholder="Ex.000000" class="form-control input-sm">
+								<input type="text" id="zip" name="zip" placeholder="Ex.12345" class="form-control input-sm">
 							</div>
 							<label class="col-sm-1 control-label">City</label>
 							<div class="col-sm-1">
-								<input type="text" id="city" name="city" placeholder="Ex.000000" class="form-control input-sm">
+								<input type="text" id="city" name="city"  class="form-control input-sm">
 							</div>
 							<label class="col-sm-1 control-label">State</label>
 							<div class="col-sm-1">
@@ -107,22 +107,22 @@
 						<div class="form-group form-horizontal col-smd-12">
 							<label class="col-sm-2 control-label">Phone</label>
 							<div class="col-sm-1">
-								<input type="text" id="phone" name="phone" placeholder="Ex.000000" class="form-control input-sm">
+								<input type="text" id="phone" name="phone" placeholder="Ex.12345" class="form-control input-sm" required>
 							</div>
 							<label class="col-sm-1 control-label">Fax</label>
 							<div class="col-sm-1">
-								<input type="text" id="fax" name="fax" placeholder="Ex.000000" class="form-control input-sm">
+								<input type="text" id="fax" name="fax" placeholder="Ex.12345" class="form-control input-sm">
 							</div>
 							<label class="col-sm-1 control-label">Email</label>
 							<div class="col-sm-1">
-								<input type="text" id="email" name="email" placeholder="abc@pqr.com" class="form-control input-sm">
+								<input type="text" id="email" name="email" placeholder="abc@pqr.com" class="form-control input-sm" required>
 							</div>
 							
 						</div>
 						<div class="form-group form-horizontal col-sm-12">
 							<div class="col-sm-2"> </div>
 							<div class="col-sm-2">
-								<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Save</button>
+								<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary"><i class="fa fa-check"></i> Cancel</button>
 							</div>
 						</div>
 					</form>
@@ -170,21 +170,21 @@
                                 <div class="form-group form-horizontal col-smd-12">
                                     <label class="col-sm-2 control-label">Last Name</label>
                                     <div class="col-sm-1">
-                                        <input type="text" id="lastNameU" name="lastName" placeholder="Last Name" class="form-control input-sm">
+                                        <input type="text" id="lastNameU" name="lastName" placeholder="Last Name" class="form-control input-sm" required>
                                     </div>
                                     <label class="col-sm-1 control-label">First Name</label>
                                     <div class="col-sm-1">
-                                        <input type="text" id="firstNameU" name="firstName" placeholder="First Name" class="form-control input-sm">
+                                        <input type="text" id="firstNameU" name="firstName" placeholder="First Name" class="form-control input-sm" required>
                                     </div>
                                 </div>
                                 <div class="form-group form-horizontal col-smd-12">
                                     <label class="col-sm-2 control-label">Zip</label>
                                     <div class="col-sm-1">
-                                        <input type="text" id="zipU" name="zip" placeholder="Ex.000000" class="form-control input-sm">
+                                        <input type="text" id="zipU" name="zip" placeholder="Ex.12345" class="form-control input-sm">
                                     </div>
                                     <label class="col-sm-1 control-label">City</label>
                                     <div class="col-sm-1">
-                                        <input type="text" id="cityU" name="city" placeholder="Ex.000000" class="form-control input-sm">
+                                        <input type="text" id="cityU" name="city"  class="form-control input-sm">
                                     </div>
                                     <label class="col-sm-1 control-label">State</label>
                                     <div class="col-sm-1">
@@ -198,22 +198,22 @@
                                 <div class="form-group form-horizontal col-smd-12">
                                     <label class="col-sm-2 control-label">Phone</label>
                                     <div class="col-sm-1">
-                                        <input type="text" id="phoneU" name="phone" placeholder="Ex.000000" class="form-control input-sm">
+                                        <input type="text" id="phoneU" name="phone" placeholder="Ex.12345" class="form-control input-sm" required>
                                     </div>
                                     <label class="col-sm-1 control-label">Fax</label>
                                     <div class="col-sm-1">
-                                        <input type="text" id="faxU" name="fax" placeholder="Ex.000000" class="form-control input-sm">
+                                        <input type="text" id="faxU" name="fax" placeholder="Ex.12345" class="form-control input-sm">
                                     </div>
                                     <label class="col-sm-1 control-label">Email</label>
                                     <div class="col-sm-1">
-                                        <input type="text" id="emailU" name="email" placeholder="abc@pqr.com" class="form-control input-sm">
+                                        <input type="text" id="emailU" name="email" placeholder="abc@pqr.com" class="form-control input-sm" required>
                                     </div>
                                     
                                 </div>
                                 <div class="form-group form-horizontal col-sm-12">
                                     <div class="col-sm-2"> </div>
                                     <div class="col-sm-2">
-                                        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Save</button>
+                                        <button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>
                                     </div>
                                 </div>
                             </form>
@@ -271,34 +271,104 @@
 <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script> 
 <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script> 
 <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
 <!-- App scripts --> 
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
 
 /* Add Attorney information - Tab-1*/ /*---------- Tab-1 --------------------*/
-	$("#addAttorneyInfo").submit(function(e)
-	{
-    	var postData = $(this).serializeArray();
-		var formDataNew = $(this).serialize();
-		var formURL = $(this).attr("action");
-		console.log("formURL: "+formURL);
-		console.log("formDataNew: "+formDataNew);
-		//e.preventDefault();	//STOP default action
-		$.ajax(
-		{
-			url : formURL,
-			type: "POST",
-			data : postData,
-			success:function(data) 
-			{
-				$('input[type=text]').val('');
-				$('#defendantId').val('');
-				$('#state').val('');
-				console.log("add success: "+data);
+	$("#addAttorneyInfo").validate({
+	
+		rules: {
+			name: {
+				required: true
 			},
-			error: function(jqXHR, textStatus, errorThrown){ console.log("error"); }
-		});
-		
+			lastName: {
+				required: true
+			},
+			firstName: {
+				required: true
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			phone:{
+				required: true,
+				number: true
+			},
+			fax:{
+				number: true
+			},
+			zip:{
+				number: true
+			},
+			phoneLocal:{
+				required: true,
+				number: true
+			},
+			faxLocal:{
+				number: true
+			},
+			zipLocal:{
+				number: true
+			},
+			phonePermanent:{
+				required: true,
+				number: true
+			},
+			faxPermanent:{
+				number: true
+			},
+			zipPermanent:{
+				number: true
+			}		
+		},
+				
+		submitHandler: function (form) {
+			// setup some local variables
+			var $form = $(form);
+			// let's select and cache all the fields
+			var $inputs = $form.find("input, select, button, textarea");
+			// serialize the data in the form
+			var serializedData = $form.serialize();
+
+			// let's disable the inputs for the duration of the ajax request
+			$inputs.prop("disabled", true);
+
+			// fire off the request to /form.php
+
+			request = $.ajax({
+				url:"<?php echo base_url(); ?>dataentry/add_AttorneyInfo",
+				type: "post",
+				data: serializedData
+			});
+
+			// callback handler that will be called on success
+			request.done(function (response, textStatus, jqXHR) {
+				// log a message to the console
+				console.log("Hooray, it worked!");
+				$('input[type=text]').val('');
+					$('textarea').val('');
+					$("#state").val('');
+					 $("#myModal").modal("show");
+			});
+
+			// callback handler that will be called on failure
+			request.fail(function (jqXHR, textStatus, errorThrown) {
+				// log the error to the console
+				console.error(
+					"The following error occured: " + textStatus, errorThrown);
+			});
+
+			// callback handler that will be called regardless
+			// if the request failed or succeeded
+			request.always(function () {
+				// reenable the inputs
+				$inputs.prop("disabled", false);
+			});
+
+		}
 	});
 /* *************************************************** */
 
@@ -362,33 +432,102 @@
 	
 
 /*Update Adjuster information on Tab-2*/  /*----------------- Update ---------------------*/
-	$("#updateAttorneyInfo").submit(function(e){
-		var form = $(this);
-		var formDataNew = form.serialize();
-    	var formData = form.serializeArray();
-		var formURL = $(this).attr("action");
-		//console.log("Update: "+formData);
-		console.log("Update: "+formDataNew);
-		e.preventDefault();	//STOP default action
-		
-		$.ajax({
-			url : formURL,
-			type: "POST",
-			data : formData,
-			success:function(data) 
-			{
-				results = JSON.parse(data);
-				console.log("Update success: "+data);
-				$('input[type=text]').val('');
-				$('#defendantIdU').val('');
-				$('#stateU').val('');
-				$("#updateAttorneyInfo").css("display", "none");
+	$("#updateAttorneyInfo").validate({
+	
+		rules: {
+			name: {
+				required: true
 			},
-			error: function(result) { alert(); }
-		});
-		
+			lastName: {
+				required: true
+			},
+			firsttName: {
+				required: true
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			phone:{
+				required: true,
+				number: true
+			},
+			fax:{
+				number: true
+			},
+			zip:{
+				number: true
+			},
+			phoneLocal:{
+				required: true,
+				number: true
+			},
+			faxLocal:{
+				number: true
+			},
+			zipLocal:{
+				number: true
+			},
+			phonePermanent:{
+				required: true,
+				number: true
+			},
+			faxPermanent:{
+				number: true
+			},
+			zipPermanent:{
+				number: true
+			}				
+		},
+				
+		submitHandler: function (form) {
+			// setup some local variables
+			var $form = $(form);
+			// let's select and cache all the fields
+			var $inputs = $form.find("input, select, button, textarea");
+			// serialize the data in the form
+			var serializedData = $form.serialize();
+
+			// let's disable the inputs for the duration of the ajax request
+			$inputs.prop("disabled", true);
+
+			request = $.ajax({
+				url:"<?php echo base_url(); ?>dataentry/updateAttorney",
+				type: "post",
+				data: serializedData
+			});
+
+			// callback handler that will be called on success
+			request.done(function (response, textStatus, jqXHR) {
+				// log a message to the console
+				console.log("Hooray, it worked!");
+				$('input[type=text]').val('');
+					$('textarea').val('');
+					$("#state").val('');
+					$("#updateAdjusterInfo").css("display", "none");
+					 $("#myModal").modal("show");
+			});
+
+			// callback handler that will be called on failure
+			request.fail(function (jqXHR, textStatus, errorThrown) {
+				// log the error to the console
+				console.error(
+					"The following error occured: " + textStatus, errorThrown);
+			});
+
+			// callback handler that will be called regardless
+			// if the request failed or succeeded
+			request.always(function () {
+				// reenable the inputs
+				$inputs.prop("disabled", false);
+			});
+
+		}
 	});
 /* *************************************************** */	
+	$("#cancelUpdate").click(function(){
+		$("#updateAttorneyInfo").css("display", "none");
+	});
 	$("#ajaxform").submit(); //SUBMIT FORM
 </script>
 <script>

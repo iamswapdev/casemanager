@@ -1,10 +1,3 @@
-<?php
-	/*session_cache_limiter('private_no_expire');
-	if( !isset($_SESSION["username"]) && !isset($_SESSION["password"])){
-		
-		header('Location: admin');
-	}*/
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,7 +49,7 @@
 	<div class="hpanel">
 		<ul class="nav nav-tabs">
 		<li class="active"><a data-toggle="tab" href="#tab-1">Add Plaintiff Attorney</a></li>
-		<li class=""><a data-toggle="tab" href="#tab-2">Edit Plaintiff Attorney</a></li>
+		<li class=""><a id="tab2" data-toggle="tab" href="#tab-2">Edit Plaintiff Attorney</a></li>
 		</ul>
 	<div class="tab-content">
 		<div id="tab-1" class="tab-pane active">
@@ -67,10 +60,10 @@
 					
 					<form id="addPlantiffInfo" action="add_PlantiffInfo" method="post" class="form-horizontal">
 						<h4>Plaintiff Attorney Information</h4>
-						<div class="form-group">
+						<div class="form-group form-horizontal col-sm-12">
 							<label class="col-sm-2 control-label">Name</label>
 							<div class="col-sm-4">
-								<input type="text" id="name" name="name" class="form-control input-sm">
+								<input type="text" id="name" name="name" class="form-control input-sm" required>
 							</div>
 						</div>
 						
@@ -95,21 +88,21 @@
 							<label class="col-sm-1 control-label">State</label>
 							<div class="col-sm-2">
 								<select id="state" name="state" class="form-control input-sm" >
-									<option>option 1</option>
-									<option>option 2</option>
-									<option>option 3</option>
-									<option>option 4</option>
+                                    <option></option>
+									<?php foreach($State_Name as $row){?>
+                                    <option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
+                                    <?php }?>
 								</select>
 							</div>
 						</div>
 						<div class="form-group form-horizontal col-sm-12">
 							<label class="col-sm-2 control-label">Email</label>
 							<div class="col-sm-2">
-								<input type="text" id="email" name="email" placeholder="Ex.abc@pqr.com" class="form-control input-sm">
+								<input type="text" id="email" name="email" placeholder="Ex.abc@pqr.com" class="form-control input-sm" required>
 							</div>
 							<label class="col-sm-1 control-label">Phone</label>
 							<div class="col-sm-2">
-								<input  type="text" id="phone" name="phone" placeholder="Ex.000000" class="form-control input-sm">
+								<input  type="text" id="phone" name="phone" placeholder="Ex.000000" class="form-control input-sm" required>
 							</div>
 							<label class="col-sm-1 control-label">Fax</label>
 							<div class="col-sm-2">
@@ -119,7 +112,7 @@
 						<div class="form-group form-horizontal col-sm-12">
 							<div class="col-sm-2"> </div>
 							<div class="col-sm-2">
-								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Save</button>
+								<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>  
 							</div>
 						</div>
 					</form>
@@ -144,21 +137,89 @@
 						<div class="form-group form-horizontal col-sm-12">
 							<label class="col-sm-2 control-label">Name</label>
 							<div class="col-sm-4">
-								<select class="form-control m-b" name="account">
-									<option>option 1</option>
-									<option>option 2</option>
-									<option>option 3</option>
-									<option>option 4</option>
+								<select id="plantiffId" name="plantiffId" class="form-control input-sm">
+									<option></option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group form-horizontal col-sm-12">
 							<div class="col-sm-2"> </div>
 							<div class="col-sm-2">
-								<button type="button" class="btn w-xs btn-primary">Save</button>
+								<button type="submit" class="btn btn-primary">Submit</button>
 							</div>
 						</div>
 					</form>
+					
+				</div><!-- End of panel-body tab-panel-->
+				</div><!-- End hpanel -->
+				</div><!-- End col-lg-12-->
+			</div><!-- End row-->
+			
+			<div class="row">
+				<div class="col-lg-12">
+				<div class="hpanel">
+				<div class="panel-body tab-panel">
+					
+					 <form id="updatePlantiffInfo" action="updateplantiff" method="post" style="display:none;">
+						<h4>Plaintiff Attorney Information</h4>
+						<div class="form-group form-horizontal col-sm-12">
+							<input type="hidden" id="plantiffIdU" name="plantiffId" class="form-control input-sm">
+                            <label class="col-sm-2 control-label">Name</label>
+							<div class="col-sm-4">
+								<input type="text" id="nameU" name="name" class="form-control input-sm" required>
+							</div>
+						</div>
+						
+                        
+                        <h4>Defendant Contact Details Address</h4>
+						<div class="form-group form-horizontal col-sm-12">
+							<label class="col-sm-2 control-label">Address</label>
+							<div class="col-sm-6">
+							<textarea rows="5" id="addressU" name="address" class="form-control" ></textarea>
+							</div>
+						</div>
+						<div class="form-group form-horizontal col-sm-12">
+							<label class="col-sm-2 control-label">Zip</label>
+							<div class="col-sm-2">
+								<input type="text" id="zipU" name="zip" placeholder="Ex.11111" class="form-control input-sm">
+								<!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
+							</div>
+							<label class="col-sm-1 control-label">City</label>
+							<div class="col-sm-2">
+								<input type="text" id="cityU" name="city" placeholder="Ex.11111" class="form-control input-sm">
+							</div>
+							<label class="col-sm-1 control-label">State</label>
+							<div class="col-sm-2">
+								<select id="stateU" name="state" class="form-control input-sm" >
+                                    <option></option>
+									<?php foreach($State_Name as $row){?>
+                                    <option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
+                                    <?php }?>
+								</select>
+							</div>
+						</div>
+						<div class="form-group form-horizontal col-sm-12">
+							<label class="col-sm-2 control-label">Email</label>
+							<div class="col-sm-2">
+								<input type="text" id="emailU" name="email" placeholder="Ex.abc@pqr.com" class="form-control input-sm" required>
+							</div>
+							<label class="col-sm-1 control-label">Phone</label>
+							<div class="col-sm-2">
+								<input  type="text" id="phoneU" name="phone" placeholder="Ex.000000" class="form-control input-sm" required>
+							</div>
+							<label class="col-sm-1 control-label">Fax</label>
+							<div class="col-sm-2">
+								<input type="text" id="faxU" name="fax" placeholder="Ex.11111" class="form-control input-sm">
+							</div>
+						</div>
+						<div class="form-group form-horizontal col-sm-12">
+							<div class="col-sm-2"> </div>
+							<div class="col-sm-2">
+								<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary"><i class="fa fa-check"></i> Cancel</button>
+							</div>
+						</div>
+					</form>
+					
 					
 				</div><!-- End of panel-body tab-panel-->
 				</div><!-- End hpanel -->
@@ -189,76 +250,7 @@
             </div><!--End of modal fade-->
             
             
-			<div class="row">
-				<div class="col-lg-12">
-				<div class="hpanel">
-				<div class="panel-body tab-panel">
-					
-					 <form id="updatePlantiffInfo" action="updateplantiff" method="post" style="display:none;">
-						<h4>Plaintiff Attorney Information</h4>
-						<div class="form-group">
-							<input type="text" id="plantiffIdU" name="plantiffId" class="form-control input-sm">
-                            <label class="col-sm-2 control-label">Name</label>
-							<div class="col-sm-4">
-								<input type="text" id="nameU" name="name" class="form-control input-sm">
-							</div>
-						</div>
-						
-                        
-                        <h4>Defendant Contact Details Address</h4>
-						<div class="form-group form-horizontal col-sm-12 ">
-							<label class="col-sm-2 control-label">Address</label>
-							<div class="col-sm-6">
-							<textarea rows="5" id="addressU" name="address" class="form-control" ></textarea>
-							</div>
-						</div>
-						<div class="form-group form-horizontal col-sm-12">
-							<label class="col-sm-2 control-label">Zip</label>
-							<div class="col-sm-2">
-								<input type="text" id="zipU" name="zip" placeholder="Ex.11111" class="form-control input-sm">
-								<!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
-							</div>
-							<label class="col-sm-1 control-label">City</label>
-							<div class="col-sm-2">
-								<input type="text" id="cityU" name="city" placeholder="Ex.11111" class="form-control input-sm">
-							</div>
-							<label class="col-sm-1 control-label">State</label>
-							<div class="col-sm-2">
-								<select id="stateU" name="state" class="form-control input-sm" >
-									<option>option 1</option>
-									<option>option 2</option>
-									<option>option 3</option>
-									<option>option 4</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group form-horizontal col-sm-12">
-							<label class="col-sm-2 control-label">Email</label>
-							<div class="col-sm-2">
-								<input type="text" id="emailU" name="email" placeholder="Ex.abc@pqr.com" class="form-control input-sm">
-							</div>
-							<label class="col-sm-1 control-label">Phone</label>
-							<div class="col-sm-2">
-								<input  type="text" id="phoneU" name="phone" placeholder="Ex.000000" class="form-control input-sm">
-							</div>
-							<label class="col-sm-1 control-label">Fax</label>
-							<div class="col-sm-2">
-								<input type="text" id="faxU" name="fax" placeholder="Ex.11111" class="form-control input-sm">
-							</div>
-						</div>
-						<div class="form-group form-horizontal col-sm-12">
-							<div class="col-sm-2"> </div>
-							<div class="col-sm-2">
-								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Save</button>
-							</div>
-						</div>
-					</form>
-					
-					
-				</div><!-- End of panel-body tab-panel-->
-				</div><!-- End hpanel -->
-				</div><!-- End col-lg-12-->
-			</div><!-- End row-->
+			
 		</div>
 
 	</div>
@@ -284,32 +276,104 @@
 <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script> 
 <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script> 
 <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script> 
+<script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
 <!-- App scripts --> 
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
 
 /* Add Plantiff information - Tab-1*/ /*---------- Tab-1 --------------------*/
-	$("#addPlantiffInfo").submit(function(e)
-	{
-    	var postData = $(this).serializeArray();
-		var postDataN = $(this).serialize();
-		console.log("postDataN: "+postDataN);
-		var formURL = $(this).attr("action");
-		
-		$.ajax(
-		{
-			url : formURL,
-			type: "POST",
-			data : postData,
-			success:function(data, textStatus, jqXHR) 
-			{
-				$('input[type=text]').val('');
-				$('textarea').val('');
-				$("#state").val('');
+	$("#addPlantiffInfo").validate({
+	
+		rules: {
+			name: {
+				required: true
 			},
-			error: function(jqXHR, textStatus, errorThrown){ alert(); }
-		});
-		e.preventDefault();	//STOP default action
+			lastName: {
+				required: true
+			},
+			firstName: {
+				required: true
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			phone:{
+				required: true,
+				number: true
+			},
+			fax:{
+				number: true
+			},
+			zip:{
+				number: true
+			},
+			phoneLocal:{
+				required: true,
+				number: true
+			},
+			faxLocal:{
+				number: true
+			},
+			zipLocal:{
+				number: true
+			},
+			phonePermanent:{
+				required: true,
+				number: true
+			},
+			faxPermanent:{
+				number: true
+			},
+			zipPermanent:{
+				number: true
+			}		
+		},
+				
+		submitHandler: function (form) {
+			// setup some local variables
+			var $form = $(form);
+			// let's select and cache all the fields
+			var $inputs = $form.find("input, select, button, textarea");
+			// serialize the data in the form
+			var serializedData = $form.serialize();
+
+			// let's disable the inputs for the duration of the ajax request
+			$inputs.prop("disabled", true);
+
+			// fire off the request to /form.php
+
+			request = $.ajax({
+				url:"<?php echo base_url(); ?>dataentry/add_PlantiffInfo",
+				type: "post",
+				data: serializedData
+			});
+
+			// callback handler that will be called on success
+			request.done(function (response, textStatus, jqXHR) {
+				// log a message to the console
+				console.log("Hooray, it worked!");
+				$('input[type=text]').val('');
+					$('textarea').val('');
+					$("#state").val('');
+					 $("#myModal").modal("show");
+			});
+
+			// callback handler that will be called on failure
+			request.fail(function (jqXHR, textStatus, errorThrown) {
+				// log the error to the console
+				console.error(
+					"The following error occured: " + textStatus, errorThrown);
+			});
+
+			// callback handler that will be called regardless
+			// if the request failed or succeeded
+			request.always(function () {
+				// reenable the inputs
+				$inputs.prop("disabled", false);
+			});
+
+		}
 	});
 /* *************************************************** */
 
@@ -319,13 +383,14 @@
 			type:'POST',
 			url:"<?php echo base_url(); ?>dataentry/getPla",
 			success:function(data){
+				console.log("data: "+data);
 				results = JSON.parse(data);
 				var optionsAsString = "";
 				for($i in results.Plantiff){
 					//console.log(results.Provider_Name[$i].Adjuster_Id);
 					optionsAsString += "<option value='" + results.Plantiff[$i].Attorney_id + "'>" + results.Plantiff[$i].Attorney_Name + "</option>";
 				}
-				$( 'select[name="defendantId"]' ).append( optionsAsString );
+				$( 'select[name="plantiffId"]' ).append( optionsAsString );
 				
 			},
 			error: function(result){ console.log("error"); }
@@ -336,7 +401,7 @@
 /* *************************************************** */
 
 /* Get Provider info By Id - Tab-2 */ /*----------------- Edit ---------------------*/
-	$("#updateAttorney").submit(function(e){
+	$("#updatePlantiff").submit(function(e){
 		var form = $(this);
 		var params = form.serialize();
 		var nameValue = document.getElementById("plantiffId").value;
@@ -353,7 +418,7 @@
 				$("#updatePlantiffInfo").css("display", "block");
 				//console.log(data);
 				
-				$("plantiffIdU").val(nameValue);
+				$("#plantiffIdU").val(nameValue);
 				
 				$("#nameU").val(results.PlantiffInfoById[0].Attorney_Name);
 				$("#addressU").val(results.PlantiffInfoById[0].Attorney_Address);
@@ -373,33 +438,103 @@
 
 	
 
-/*Update Provider information on Tab-2*/  /*----------------- Update ---------------------*/
-	$("#updatePlantiffInfo").submit(function(e){
-		var form = $(this);
-		var formDataNew = form.serialize();
-    	var formData = form.serializeArray();
-		var formURL = $(this).attr("action");
-		console.log("Update: "+formDataNew);
-		e.preventDefault();	//STOP default action
-		
-		$.ajax({
-			url : formURL,
-			type: "POST",
-			data : formData,
-			success:function(data) 
-			{
-				results = JSON.parse(data);
-				console.log("Update success: "+data);
-				$('input[type=text]').val('');
-				$("#stateU").val('');
-				$("#updatePlantiffInfo").css("display", "none");
+/*Update Plantiff information on Tab-2*/  /*----------------- Update ---------------------*/
+	$("#updatePlantiffInfo").validate({
+	
+		rules: {
+			name: {
+				required: true
 			},
-			error: function(result) { alert(); }
-		});
-		
+			lastName: {
+				required: true
+			},
+			firsttName: {
+				required: true
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			phone:{
+				required: true,
+				number: true
+			},
+			fax:{
+				number: true
+			},
+			zip:{
+				number: true
+			},
+			phoneLocal:{
+				required: true,
+				number: true
+			},
+			faxLocal:{
+				number: true
+			},
+			zipLocal:{
+				number: true
+			},
+			phonePermanent:{
+				required: true,
+				number: true
+			},
+			faxPermanent:{
+				number: true
+			},
+			zipPermanent:{
+				number: true
+			}				
+		},
+				
+		submitHandler: function (form) {
+			// setup some local variables
+			var $form = $(form);
+			// let's select and cache all the fields
+			var $inputs = $form.find("input, select, button, textarea");
+			// serialize the data in the form
+			var serializedData = $form.serialize();
+
+			// let's disable the inputs for the duration of the ajax request
+			$inputs.prop("disabled", true);
+
+			request = $.ajax({
+				url:"<?php echo base_url(); ?>dataentry/updatePlantiff",
+				type: "post",
+				data: serializedData
+			});
+
+			// callback handler that will be called on success
+			request.done(function (response, textStatus, jqXHR) {
+				// log a message to the console
+				console.log("Hooray, it worked!");
+				$('input[type=text]').val('');
+					$('textarea').val('');
+					$("#state").val('');
+					$("#updateAdjusterInfo").css("display", "none");
+					 $("#myModal").modal("show");
+			});
+
+			// callback handler that will be called on failure
+			request.fail(function (jqXHR, textStatus, errorThrown) {
+				// log the error to the console
+				console.error(
+					"The following error occured: " + textStatus, errorThrown);
+			});
+
+			// callback handler that will be called regardless
+			// if the request failed or succeeded
+			request.always(function () {
+				// reenable the inputs
+				$inputs.prop("disabled", false);
+			});
+
+		}
 	});
 /* *************************************************** */
-
+	$("#cancelUpdate").click(function(){
+		$("#updatePlantiffInfo").css("display", "none");
+	});
 </script>
 <script>
 	$('.dataentry').addClass('active');

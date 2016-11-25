@@ -246,7 +246,7 @@
 						<div class="form-group form-horizontal col-sm-12">
 							<div class="col-sm-2"> </div>
 							<div class="col-sm-2">
-							<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-check"></i> Save</button>
+							<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>
 							</div>
 						</div>
 					</form>				  
@@ -469,8 +469,7 @@
                                 <div class="form-group form-horizontal col-sm-12">
                                     <div class="col-sm-2"> </div>
                                     <div class="col-sm-2">
-                                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-check"></i> Save</button>
-                                    <button type="button" id="cancelUpdate" class="btn btn-primary"><i class="fa fa-check"></i> Cancel</button>
+                                    <button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary"><i class="fa fa-check"></i> Cancel</button>
                                     </div>
                                 </div>
                             </form>	
@@ -531,35 +530,110 @@
 <script>
 
 /* Add Provider information - Tab-1*/ /*---------- Tab-1 --------------------*/
-	$("#addProviderInfo").submit(function(e)
-	{
-    	var postData = $(this).serializeArray();
-		var formURL = $(this).attr("action");
-		
-		$.ajax(
-		{
-			url : formURL,
-			type: "POST",
-			data : postData,
-			success:function(data, textStatus, jqXHR) 
-			{
-				$('input[type=text]').val('');
-				$("#filingFees").val('');
-				$("#reimburseProvider").val('');
-				$("#stateLocal").val('');
-				$("#statePermanent").val('');
-				$("#rapidFunds").val('');
-				/*$('#president').val('');
-				$('#taxId').val('');
-				$('#type').val('');
-				$('#collectionBilling').val('');
-				$('#interestBilling').val('');
-				$('#Filing Fees').val('');
-				$(#).val('');*/
+	$("#addProviderInfo").validate({
+	
+		rules: {
+			costBalance:{
+				number: true
 			},
-			error: function(jqXHR, textStatus, errorThrown){ alert(); }
-		});
-		e.preventDefault();	//STOP default action
+			taxId:{
+				number: true
+			},
+			collectionBilling:{
+				number: true
+			},
+			interesBilling:{
+				number: true
+			},
+			name: {
+				required: true
+			},
+			lastName: {
+				required: true
+			},
+			firstName: {
+				required: true
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			phone:{
+				required: true,
+				number: true
+			},
+			fax:{
+				number: true
+			},
+			zip:{
+				number: true
+			},
+			phoneLocal:{
+				required: true,
+				number: true
+			},
+			faxLocal:{
+				number: true
+			},
+			zipLocal:{
+				number: true
+			},
+			phonePermanent:{
+				required: true,
+				number: true
+			},
+			faxPermanent:{
+				number: true
+			},
+			zipPermanent:{
+				number: true
+			}		
+		},
+				
+		submitHandler: function (form) {
+			// setup some local variables
+			var $form = $(form);
+			// let's select and cache all the fields
+			var $inputs = $form.find("input, select, button, textarea");
+			// serialize the data in the form
+			var serializedData = $form.serialize();
+
+			// let's disable the inputs for the duration of the ajax request
+			$inputs.prop("disabled", true);
+
+			// fire off the request to /form.php
+
+			request = $.ajax({
+				url:"<?php echo base_url(); ?>dataentry/add_ProviderInfo",
+				type: "post",
+				data: serializedData
+			});
+
+			// callback handler that will be called on success
+			request.done(function (response, textStatus, jqXHR) {
+				// log a message to the console
+				console.log("Hooray, it worked!");
+				$('input[type=text]').val('');
+					$('textarea').val('');
+					$("#state").val('');
+					 $("#myModal").modal("show");
+			});
+
+			// callback handler that will be called on failure
+			request.fail(function (jqXHR, textStatus, errorThrown) {
+				// log the error to the console
+				console.error(
+					"The following error occured: " + textStatus, errorThrown);
+			});
+
+			// callback handler that will be called regardless
+			// if the request failed or succeeded
+			request.always(function () {
+				// reenable the inputs
+				$inputs.prop("disabled", false);
+			});
+
+		}
 	});
 /* *************************************************** */
 
@@ -643,27 +717,109 @@
 	
 
 /*Update Provider information on Tab-2*/  /*----------------- Update ---------------------*/
-	$("#updateProviderInfo").submit(function(e){
-		var form = $(this);
-		var formDataNew = form.serialize();
-    	var formData = form.serializeArray();
-		var formURL = $(this).attr("action");
-		console.log("Update: "+formDataNew);
-		e.preventDefault();	//STOP default action
-		
-		$.ajax({
-			url : formURL,
-			type: "POST",
-			data : formData,
-			success:function(data) 
-			{
-				results = JSON.parse(data);
-				console.log("Update success: "+data);
-				$("#updateProviderInfo").css("display", "none");
+	$("#updateProviderInfo").validate({
+	
+		rules: {
+			costBalance:{
+				number: true
 			},
-			error: function(result) { alert(); }
-		});
-		
+			taxId:{
+				number: true
+			},
+			collectionBilling:{
+				number: true
+			},
+			interesBilling:{
+				number: true
+			},
+			name: {
+				required: true
+			},
+			lastName: {
+				required: true
+			},
+			firsttName: {
+				required: true
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			phone:{
+				required: true,
+				number: true
+			},
+			fax:{
+				number: true
+			},
+			zip:{
+				number: true
+			},
+			phoneLocal:{
+				required: true,
+				number: true
+			},
+			faxLocal:{
+				number: true
+			},
+			zipLocal:{
+				number: true
+			},
+			phonePermanent:{
+				required: true,
+				number: true
+			},
+			faxPermanent:{
+				number: true
+			},
+			zipPermanent:{
+				number: true
+			}				
+		},
+				
+		submitHandler: function (form) {
+			// setup some local variables
+			var $form = $(form);
+			// let's select and cache all the fields
+			var $inputs = $form.find("input, select, button, textarea");
+			// serialize the data in the form
+			var serializedData = $form.serialize();
+
+			// let's disable the inputs for the duration of the ajax request
+			$inputs.prop("disabled", true);
+
+			request = $.ajax({
+				url:"<?php echo base_url(); ?>dataentry/updateProvider",
+				type: "post",
+				data: serializedData
+			});
+
+			// callback handler that will be called on success
+			request.done(function (response, textStatus, jqXHR) {
+				// log a message to the console
+				console.log("Hooray, it worked!");
+				$('input[type=text]').val('');
+					$('textarea').val('');
+					$("#state").val('');
+					$("#updateProviderInfo").css("display", "none");
+					 $("#myModal").modal("show");
+			});
+
+			// callback handler that will be called on failure
+			request.fail(function (jqXHR, textStatus, errorThrown) {
+				// log the error to the console
+				console.error(
+					"The following error occured: " + textStatus, errorThrown);
+			});
+
+			// callback handler that will be called regardless
+			// if the request failed or succeeded
+			request.always(function () {
+				// reenable the inputs
+				$inputs.prop("disabled", false);
+			});
+
+		}
 	});
 /* *************************************************** */
 $("#cancelUpdate").click(function(){
@@ -674,23 +830,7 @@ $("#cancelUpdate").click(function(){
 
 <!-- App scripts --> 
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
-<script>
 
-	$(function(){
-         $("#addProviderInfo").validate({
-            rules: {
-				initialStatus: {
-					required: true
-				}
-				
-            },
-            submitHandler: function(form, event) {
-                event.preventDefault();
-				//form.submit();
-            }
-        });
-	});
-</script>
 <script>
 	/*$("#addProviderInfo").submit(function(e)
 	{

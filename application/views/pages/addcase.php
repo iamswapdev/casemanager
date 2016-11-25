@@ -1,10 +1,3 @@
-<?php
-	/*session_cache_limiter('private_no_expire');
-	if( !isset($_SESSION["username"]) && !isset($_SESSION["password"])){
-		
-		header('Location: admin');
-	}*/
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -295,53 +288,89 @@ $(function(){
 });
 </script>
 <script>
-
-	$(function(){
-         $("#addCaseForm").validate({
-            rules: {
-				initialStatus: {
-					required: true
-				},
-                providerName: {
-                    required: true,
-					minlength: 3
-                },
-				providerId: {
-                    required: true
-                },
-				lastNameInjured: {
-                    required: true,
-					minlength: 3
-                },
-				firstNameInjured: {
-                    required: true,
-					minlength: 3
-                },
-				lastNameInsured: {
-                    required: true,
-					minlength: 3
-                },
-				firstNameInsured: {
-                    required: true,
-					minlength: 3
-                },
-				insuranceName: {
-					required: true
-				},
-				claimAmt: {
-					required: true,
-					number: true
-				},
-				paidAmt: {
-					required: true,
-					number: true
-				},
+	$("#addCaseForm").validate({
+	
+		rules: {
+			providerName: {
+				required: true,
+				minlength: 3
+			},
+			providerId: {
+				required: true
+			},
+			lastNameInjured: {
+				required: true,
+				minlength: 3
+			},
+			firstNameInjured: {
+				required: true,
+				minlength: 3
+			},
+			lastNameInsured: {
+				required: true,
+				minlength: 3
+			},
+			firstNameInsured: {
+				required: true,
+				minlength: 3
+			},
+			insuranceName: {
+				required: true
+			},
+			claimAmt: {
+				required: true,
+				number: true
+			},
+			paidAmt: {
+				required: true,
+				number: true
+			}		
+		},
 				
-            },
-            submitHandler: function(form) {
-                form.submit();
-            }
-        });
+		submitHandler: function (form) {
+			// setup some local variables
+			var $form = $(form);
+			// let's select and cache all the fields
+			var $inputs = $form.find("input, select, button, textarea");
+			// serialize the data in the form
+			var serializedData = $form.serialize();
+
+			// let's disable the inputs for the duration of the ajax request
+			$inputs.prop("disabled", true);
+
+			// fire off the request to /form.php
+
+			request = $.ajax({
+				url:"<?php echo base_url(); ?>dataentry/addCaseFormInfo",
+				type: "post",
+				data: serializedData
+			});
+
+			// callback handler that will be called on success
+			request.done(function (response, textStatus, jqXHR) {
+				// log a message to the console
+				console.log("Hooray, it worked!");
+				$('input[type=text]').val('');
+					$('textarea').val('');
+					$("#state").val('');
+					 $("#myModal").modal("show");
+			});
+
+			// callback handler that will be called on failure
+			request.fail(function (jqXHR, textStatus, errorThrown) {
+				// log the error to the console
+				console.error(
+					"The following error occured: " + textStatus, errorThrown);
+			});
+
+			// callback handler that will be called regardless
+			// if the request failed or succeeded
+			request.always(function () {
+				// reenable the inputs
+				$inputs.prop("disabled", false);
+			});
+
+		}
 	});
 </script>
 <script>
