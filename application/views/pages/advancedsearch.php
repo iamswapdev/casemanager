@@ -150,7 +150,7 @@
 			
 			<h4>Search Results</h4>
 			<div class="form-group form-horizontal col-md-12 table-responsive">
-				<table id="example2" class="table table-striped table-bordered table-hover dataTable no-footer">
+				<table id="example1" class="table dataTable table-bordered table-striped">
 					<thead>
 						<tr>
 							<th>#</th> 	 	   	 	    	      	      	     	 	 	 	   	 	
@@ -168,28 +168,6 @@
 							<th>SELECT</th>
 						</tr>
 					</thead>
-					<tbody>
-                    
-                    <?php /*?><?php $i=0; foreach($SearchResult as $row){?>
-						<?php //if($i <= 200 ){?>
-                        <tr>
-                        	<td><?php echo $row['Case_AutoId']?></td>
-                            <td><?php echo "Edit"?></td>
-							<td><?php echo $row['Case_Id']?></td>
-                            <td><?php echo $row['InjuredParty_FirstName'].", ".$row['InjuredParty_LastName']?></td>
-                            <td><?php echo $row['Provider_Id']?></td>
-                            <td><?php echo "Insurance comp name" ?></td>
-                            <td><?php echo $row['Accident_Date']?></td>
-                            <td><?php echo "Dos"?></td>
-                            <td><?php echo "Dos End"?></td>
-                            <td><?php echo $row['Status']?></td>
-                            <td><?php echo $row['Ins_Claim_Number']?></td>
-                            <td><?php echo $row['Claim_Amount']?></td>
-                            <td><?php echo "Select"?></td>
-                        </tr>
-                        <?php // } $i++;?>
-                    <?php }?><?php */?>
-					</tbody>
 				</table>
 			</div>
 			
@@ -233,12 +211,11 @@
     $(function () {
 
         // Initialize Example 1
-        $('#example2').dataTable( {
-            "ajax": 'api/datatables.json'
+        $('#example1').dataTable( {
+            "ajax": 'getAdj'
         });
 
-        // Initialize Example 2
-        //$('#example2').dataTable();
+        
 
     });
 

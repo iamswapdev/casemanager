@@ -2686,6 +2686,8 @@ fieldset[disabled] .checkbox label {
   font-size: 10px;
   line-height: 1.5;
   border-radius: 3px;
+  color: #1d3348;
+  font-size: 14px;
 }
 select.input-sm {
   height: 25px;

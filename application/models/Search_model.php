@@ -8,7 +8,7 @@ Class Search_model extends CI_Model{
 	public function get_SearchResult()
 	{
 		$query=$this->db->get('dbo_tblcase');
-		$data=$query->result_array();
+		$data=$query->result();
 		return $data;
 	}
 

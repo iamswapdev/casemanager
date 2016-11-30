@@ -185,19 +185,19 @@ Class Dataentry_model extends CI_Model{
 		return $query;
 	}
 
-/* *******************************************************************************************************************************************/	
 	
-	
-	public function get_Status()
+/* ************************************  Start of Otherentries  *************************************************************************/		
+	public function get_DenialReasons()
 	{
-		$this->db->order_by("Status_Type", "asc");
-		$query = $this->db->get('dbo_tblstatus'); 
-		$data=$query->result_array();
+		$this->db->order_by("DenialReasons_Type", "asc");
+		$query = $this->db->get('dbo_tbldenialreasons'); 
+		$data=$query->result();
 		return $data;
 	}
-	public function get_City_Zip_Country()
+	public function get_CourtArray()
 	{
-		$query = $this->db->get('dbo_ziplist'); 
+		$this->db->order_by("Court_Name", "asc");
+		$query = $this->db->get('dbo_tblcourt'); 
 		$data=$query->result_array();
 		return $data;
 	}
@@ -205,34 +205,27 @@ Class Dataentry_model extends CI_Model{
 	{
 		$this->db->order_by("Court_Name", "asc");
 		$query = $this->db->get('dbo_tblcourt'); 
-		$data=$query->result_array();
-		return $data;
-	}
-	public function get_Service()
-	{
-		$this->db->order_by("ServiceType", "asc");
-		$query = $this->db->get('dbo_tblservicetype'); 
-		$data=$query->result_array();
-		return $data;
-	}
-	public function get_DenialReasons()
-	{
-		$this->db->order_by("DenialReasons_Type", "asc");
-		$query = $this->db->get('dbo_tbldenialreasons'); 
-		$data=$query->result_array();
-		return $data;
-	}
-	public function get_States()
-	{
-		$this->db->order_by("State_Name", "asc");
-		$query = $this->db->get('dbo_tblstates'); 
-		$data=$query->result_array();
+		$data=$query->result();
 		return $data;
 	}
 	public function get_ImageType()
 	{
 		$this->db->order_by("Image_Type", "asc");
 		$query = $this->db->get('dbo_tblimagetypes'); 
+		$data=$query->result();
+		return $data;
+	}
+	public function get_Status()
+	{
+		$this->db->order_by("Status_Type", "asc");
+		$query = $this->db->get('dbo_tblstatus'); 
+		$data=$query->result();
+		return $data;
+	}
+	public function get_StatusArray()
+	{
+		$this->db->order_by("Status_Type", "asc");
+		$query = $this->db->get('dbo_tblstatus'); 
 		$data=$query->result_array();
 		return $data;
 	}
@@ -240,30 +233,66 @@ Class Dataentry_model extends CI_Model{
 	{
 		$this->db->order_by("name", "asc");
 		$query = $this->db->get('dbo_tblcasestatus'); 
-		$data=$query->result_array();
+		$data=$query->result();
 		return $data;
 	}
 	public function get_Doc()
 	{
 		$this->db->order_by("Doc_Name", "asc");
 		$query = $this->db->get('dbo_tbldocs'); 
-		$data=$query->result_array();
+		$data=$query->result();
 		return $data;
 	}
-	public function get_EventStatus()
+	public function get_Service()
 	{
-		$this->db->order_by("EventStatusName", "asc");
-		$query = $this->db->get('dbo_tbleventstatus'); 
-		$data=$query->result_array();
+		$this->db->order_by("ServiceType", "asc");
+		$query = $this->db->get('dbo_tblservicetype'); 
+		$data=$query->result();
 		return $data;
 	}
 	public function get_EventType()
 	{
 		$this->db->order_by("EventTypeName", "asc");
 		$query = $this->db->get('dbo_tbleventtype'); 
+		$data=$query->result();
+		return $data;
+	}
+	public function get_EventStatus()
+	{
+		$this->db->order_by("EventStatusName", "asc");
+		$query = $this->db->get('dbo_tbleventstatus'); 
+		$data=$query->result();
+		return $data;
+	}
+	public function deleteRoles($roleId_array)
+	{
+		foreach($roleId_array as $id){
+			$this->db->where('EventStatusId', $id);
+			$this->db->delete('dbo_tbleventstatus');
+		}
+		return true;
+	}
+/* *******************************************************************************************************************************************/	
+	
+	
+	public function get_States()
+	{
+		$this->db->order_by("State_Name", "asc");
+		$query = $this->db->get('dbo_tblstates'); 
 		$data=$query->result_array();
 		return $data;
 	}
+	public function get_City_Zip_Country()
+	{
+		$query = $this->db->get('dbo_ziplist'); 
+		$data=$query->result();
+		return $data;
+	}
+	
+	
+	
+	
+	
 	
 	
 	

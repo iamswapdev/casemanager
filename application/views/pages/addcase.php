@@ -61,15 +61,16 @@
 		<div class="panel-body tab-panel">
 			
 			<form id="addCaseForm" role="form" action="add_CaseInfo" method="post" >
-				<h5 class="h5-title">CASE INFORMATION</h5>
+				
 				<div class="form-group form-horizontal col-md-12">
-					<p>(Note: All amounts are in USD wherever applicable.)</p>
+                	<h5 class="h5-title">CASE INFORMATION</h5>
+					<!--<p>(Note: All amounts are in USD wherever applicable.)</p>-->
 					<label class="col-md-2 control-label">Initial Status</label>
-					<div class="col-md-4 radio">
-						<label><input type="radio" value="ARBITRATION" id="arbitration" name="initialStatus">ARBITRATION</label>
-						<label><input type="radio" value="LITIGATION" id="litigation" name="initialStatus">LITIGATION</label>
-                        <label><input type="radio" value="INITIAL SUBMISSION" id="initialSubmission" name="initialStatus">INITIAL SUBMISSION</label>
-                        <label><input type="radio" value="PERSONAL INJURY" id="personalInjury" name="initialStatus">PERSONAL INJURY</label>
+					<div class="col-md-6 radio">
+						<label><input type="radio" class="horizontal" value="ARBITRATION" id="arbitration" name="initialStatus">ARBITRATION</label>
+						<label><input type="radio" class="horizontal" value="LITIGATION" id="litigation" name="initialStatus">LITIGATION</label>
+                        <label><input type="radio" class="horizontal" value="INITIAL SUBMISSION" id="initialSubmission" name="initialStatus">INITIAL SUBMISSION</label>
+                        <label><input type="radio" class="horizontal" value="PERSONAL INJURY" id="personalInjury" name="initialStatus">PERSONAL INJURY</label>
 					</div>
 				</div>
 				<div class="form-group form-horizontal col-md-12">
@@ -89,8 +90,9 @@
 					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
 				</div>
 
-				<h5 class="h5-title">Injured Party Information</h5>
+				
 				<div class="form-group form-horizontal col-md-12">
+                	<h5 class="h5-title">Injured Party Information</h5>
 					<label class="col-md-2 control-label">Last Name <span class="required-field">*</span></label>
 					<div class="col-md-2">
 						<input type="text" id="injuredPartyLastName" name="injuredPartyLastName" placeholder="Last Name" class="form-control input-sm" required> 
@@ -102,8 +104,9 @@
 					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
 				</div>
 
-				<h5 class="h5-title">Insured Party Information </h5>
+				
 				<div class="form-group form-horizontal col-md-12">
+                	<h5 class="h5-title">Insured Party Information </h5>
 					<div class="col-md-2">
 					</div>
 					<div class="col-md-6 checkbox">
@@ -123,8 +126,9 @@
 					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
 				</div>
 
-				<h5 class="h5-title">Insurance Information</h5>
+				
 				<div class="form-group form-horizontal col-md-12">
+                	<h5 class="h5-title">Insurance Information</h5>
 					<label class="col-md-2 control-label">Name</label>
 					<div class="col-md-2">	
 						<input type="text" id="insuranceName" name="insuranceName" class="form-control input-sm">
@@ -148,20 +152,20 @@
 					<div class="col-md-2">	
 						<input type="text" id="insClaimNumber" name="insClaimNumber" class="form-control input-sm">
 					</div>
-					<!--<div class="form-horizontal col-md-12 hr-line-dashed"></div>-->
+					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
 				</div>
                 
-                <div class="form-group form-horizontal col-md-12"> <hr> </div>
-
-				<h5 class="h5-title">Accident Information</h5>
+				
 				<div class="form-group form-horizontal col-md-12">
+                	<h5 class="h5-title">Accident Information</h5>
 					<label class="col-md-2 control-label">D.O.A <span class="required-field">*</span></label>
 					<div class="col-md-2"> <input id="accidentDate" name="accidentDate" type="text" class="form-control input-sm" required> </div>
 					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
 				</div>
 
-				<h5 class="h5-title">Other Information </h5>
+				
 				<div class="form-group form-horizontal col-lg-12">
+                	<h5 class="h5-title">Other Information </h5>
 					<label class="col-md-2 control-label">Status</label>
 					<div class="col-md-2">
 						<select class="form-control input-sm" id="status" name="status">

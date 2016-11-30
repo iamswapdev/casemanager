@@ -27,6 +27,38 @@ class Search extends CI_Controller{
 			$this->load->view('pages/login');
 		}
 	}
+	public function getAdj(){
+		$list=$this->search_model->get_SearchResult();
+		$data = array();
+		$no=0;
+		foreach ($list as $customers) {
+			$row = array();
+			$no++;
+			$row[] = $no;
+			$row[] = "Edit";
+			$row[] = $customers->Case_Id;
+			$row[] = $customers->InjuredParty_LastName;
+			$row[] = "provider";
+			$row[] = "insur com";
+			$row[] = $customers->Accident_Date;
+			$row[] = $customers->DateOfService_Start;
+			$row[] = $customers->DateOfService_End;
+			$row[] = $customers->Status;
+			$row[] = $customers->	Ins_Claim_Number;
+			$row[] = $customers->Claim_Amount;
+			$row[] = "select";
+			
+			$data[] = $row;
+		}
+		
+		$output = array(
+			"data" => $data
+		);
+		
+		echo json_encode($output);
+	}
+		
+		
 	public function advancedsearch(){
 		$this->session->all_userdata();
 		$this->session->all_userdata();

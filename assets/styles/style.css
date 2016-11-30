@@ -2788,6 +2788,7 @@ h6 {
 }
 .hbreadcrumb a.active {
   color: #4ea4de;
+  font-weight: 700;
 }
 .form-control {
   border-color: #e4e5e7 !important;
@@ -3623,6 +3624,18 @@ select[multiple].input-rows{
 }
 ul.nav.nav-tabs.top-pad {
     margin-top: 5px;
+}
+.hbreadcrumb.breadcrumb.make-bold a .active{
+	font-weight:700;
+}
+input[type="radio"].horizontal{
+	margin-top:2px;
+}
+.radio label{
+	padding-left:30px;
+}
+div#example1_wrapper tr:hover{
+	background-color: #ffd599;
 }
 	
 	

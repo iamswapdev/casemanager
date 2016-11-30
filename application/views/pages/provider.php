@@ -134,7 +134,8 @@
 						<div class="form-group form-horizontal col-md-12">
 							<label class="col-sm-2 control-label">Notes</label>
 							<div class="col-md-5">
-							<input type="text" id="notes" name="notes" class="form-control input-sm">
+								<!--<input type="text" id="notes" name="notes" class="form-control input-sm">-->
+                            	<textarea rows="2" id="notes" name="notes" class="form-control" required></textarea>
 							</div>
 							
 						</div>
@@ -146,7 +147,8 @@
 						<div class="form-group form-horizontal col-md-12">
 							<label class="col-sm-2 control-label">Address <span class="required-field">*</span></label>
 							<div class="col-sm-5">
-								<textarea rows="3" id="addressLocal" name="addressLocal" class="form-control" required></textarea>
+                            	<input type="text" id="addressLocal" name="addressLocal" class="form-control input-sm" required>
+								<!--<textarea rows="3" id="addressLocal" name="addressLocal" class="form-control" required></textarea>-->
 							</div>
 						</div>
 						<div class="form-group form-horizontal col-md-12">
@@ -193,7 +195,8 @@
 						<div class="form-group form-horizontal col-md-12">
 							<label class="col-sm-2 control-label">Address <span class="required-field">*</span></label>
 							<div class="col-sm-5">
-								<textarea rows="3" id="addressPermanent" name="addressPermanent" class="form-control" required></textarea>
+                            	<input type="text" id="addressPermanent" name="addressPermanent" class="form-control input-sm" required>
+								<!--<textarea rows="3" id="addressPermanent" name="addressPermanent" class="form-control" required></textarea>-->
 							</div>
 						</div>
 						<div class="form-group form-horizontal col-md-12">
@@ -239,6 +242,12 @@
 								<input type="email" id="email" name="email" placeholder="abc@xyz.com" class="form-control input-sm" required>
 							</div>
 						</div>
+                        <div class="form-group form-horizontal col-md-12">
+                        	<label class="col-md-2 control-label">Memo</label>
+                            <div class="col-md-4">
+                                <textarea rows="3"  id="memo" name="memo" class="form-control" ></textarea>
+                            </div>
+                        </div>
 						<div class="form-group form-horizontal col-sm-12">
 							<div class="col-sm-2"> </div>
 							<div class="col-sm-2">
@@ -353,7 +362,8 @@
                                 <div class="form-group form-horizontal col-md-12">
                                     <label class="col-sm-2 control-label">Notes</label>
                                     <div class="col-md-5">
-                                    <input type="text" id="notesU" name="notes" class="form-control input-sm">
+                                    	<!--<input type="text" id="notesU" name="notes" class="form-control input-sm">-->
+                                    	<textarea rows="2" id="notesU" name="notes" class="form-control" required></textarea>
                                     </div>
                                     
                                 </div>
@@ -365,7 +375,8 @@
                                 <div class="form-group form-horizontal col-md-12">
                                     <label class="col-sm-2 control-label">Address <span class="required-field">*</span></label>
                                     <div class="col-sm-5">
-                                        <textarea rows="3" id="addressLocalU" name="addressLocal" class="form-control" required></textarea>
+                                    	<input type="text" id="addressLocalU" name="addressLocal" class="form-control input-sm" required>
+                                        <!--<textarea rows="3" id="addressLocalU" name="addressLocal" class="form-control" required></textarea>-->
                                     </div>
                                 </div>
                                 <div class="form-group form-horizontal col-md-12">
@@ -413,7 +424,8 @@
                                 <div class="form-group form-horizontal col-md-12">
                                     <label class="col-sm-2 control-label">Address <span class="required-field">*</span></label>
                                     <div class="col-sm-5">
-                                        <textarea rows="3" id="addressPermanentU" name="addressPermanent" class="form-control" required></textarea>
+                                    	<input type="text" id="addressPermanentU" name="addressPermanent" class="form-control input-sm" required>
+                                        <!--<textarea rows="3" id="addressPermanentU" name="addressPermanent" class="form-control" required></textarea>-->
                                     </div>
                                 </div>
                                 <div class="form-group form-horizontal col-md-12">
@@ -457,6 +469,12 @@
                                     <label class="col-sm-1 control-label">Email <span class="required-field">*</span></label>
                                     <div class="col-sm-1">
                                         <input type="email" id="emailU" name="email" placeholder="abc@xyz.com" class="form-control input-sm" required>
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Memo</label>
+                                    <div class="col-md-4">
+                                        <textarea rows="3"  id="memo" name="memo" class="form-control" ></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group form-horizontal col-sm-12">

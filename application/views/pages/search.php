@@ -136,7 +136,7 @@
 			
 			<h4>Search Results</h4>
 			<div class="form-group form-horizontal col-md-12 table-responsive">
-				<table id="example2" class="table table-striped table-bordered table-hover dataTable no-footer">
+				<table id="example1" class="display table table-bordered">
 					<thead>
 						<tr>
 							<th>#</th> 	 	   	 	    	      	      	     	 	 	 	   	 	
@@ -154,26 +154,6 @@
 							<th>SELECT</th>
 						</tr>
 					</thead>
-					<tbody>
-                    <?php foreach($SearchResult as $row){?>
-						<tr>
-							<td><?php echo $row['Case_AutoId']?></td>
-                            <td><?php echo "Edit"?></td>
-							<td><?php echo $row['Case_Id']?></td>
-                            <td><?php echo $row['InjuredParty_FirstName'].", ".$row['InjuredParty_LastName']?></td>
-                            <td><?php echo $row['Provider_Id']?></td>
-                            <td><?php echo "Insurance comp name" ?></td>
-                            <td><?php echo $row['Accident_Date']?></td>
-                            <td><?php echo "Dos"?></td>
-                            <td><?php echo "Dos End"?></td>
-                            <td><?php echo $row['Status']?></td>
-                            <td><?php echo $row['Ins_Claim_Number']?></td>
-                            <td><?php echo $row['Claim_Amount']?></td>
-                            <td><?php echo "Select"?></td>
-                            
-						</tr>
-                    <?php }?>
-					</tbody>
 				</table>
 			</div>
 			
@@ -215,12 +195,10 @@
 
         // Initialize Example 1
         $('#example1').dataTable( {
-            "ajax": 'api/datatables.json'
+            "ajax": '<?php echo base_url();?>search/getAdj'
         });
 
-        // Initialize Example 2
-        $('#example2').dataTable();
-		$('#example3').dataTable();
+        
 
     });
 

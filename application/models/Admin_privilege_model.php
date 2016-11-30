@@ -39,7 +39,7 @@
 			$this->db->from('dbo_issuetracker_users as t1');
 			$this->db->join('dbo_issuetracker_roles as t2', 't1.RoleId = t2.RoleId', 'LEFT');
 			$query= $this->db->get();
-			$data=$query->result_array();
+			$data=$query->result();
 			return $data;
 		}
 		public function get_AllRoles()
@@ -50,16 +50,10 @@
 		}
 		public function deleteRoles($roleId_array)
 		{
-			//$data1 = array();
-			//$data1 = $data;
-			//$data1 = $data['delete_Role'];
-			//print_r($data1); exit();
 			foreach($roleId_array as $id){
 				$this->db->where('RoleId', $id);
 				$this->db->delete('dbo_issuetracker_roles');
 			}
-						
-   
 			return true;
 		}
 		public function get_SingleRoles()

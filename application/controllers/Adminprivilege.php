@@ -53,9 +53,25 @@ session_cache_limiter('private_no_expire');
 			
 		}
 		public function getAdj(){
-			$data['UserName']=$this->admin_privilege_model->get_ManageUserData();
-				//print_r($data); exit();
-				echo json_encode($data);
+			$list=$this->admin_privilege_model->get_ManageUserData();
+			$data = array();
+			foreach ($list as $customers) {
+				
+				$row = array();
+				
+				$row[] = $customers->UserName;
+				$row[] = $customers->DisplayName;
+				$row[] = $customers->RoleName;
+				
+				$data[] = $row;
+			}
+			
+			$output = array(
+					"data" => $data
+			);
+			
+			//print_r($data); exit();
+			echo json_encode($output);
 			//$this->load->view('pages/adj',$data);
 		}
 		public function addnewrole(){

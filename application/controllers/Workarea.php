@@ -31,12 +31,12 @@ session_cache_limiter('private_no_expire');
 				//$data['Provider_Name']= $this->workarea_model->just();
 				
 				
-				$data['Provider_Name']= $this->dataentry_model->get_Provider();
-				$data['InsuranceCompany_Name']= $this->dataentry_model->get_Insurance();
-				$data['Status']= $this->dataentry_model->get_Status();
-				$data['Court']= $this->dataentry_model->get_Court();
-				$data['Service']= $this->dataentry_model->get_Service();
-				$data['DenialReasons']= $this->dataentry_model->get_DenialReasons();
+				$data['Provider_Name']= $this->workarea_model->get_Provider();
+				$data['InsuranceCompany_Name']= $this->workarea_model->get_Insurance();
+				$data['Status']= $this->workarea_model->get_Status();
+				$data['Court']= $this->workarea_model->get_Court();
+				$data['Service']= $this->workarea_model->get_Service();
+				$data['DenialReasons']= $this->workarea_model->get_DenialReasons();
 				$this->load->view('pages/dataentry_workarea',$data);
 			}else{
 				$this->load->view('pages/login');
@@ -90,10 +90,10 @@ session_cache_limiter('private_no_expire');
 		public function workflowreport(){
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
-				$data['Provider_Name']= $this->dataentry_model->get_Provider();
-				$data['InsuranceCompany_Name']= $this->dataentry_model->get_Insurance();
-				$data['Defendant_Name']= $this->dataentry_model->get_Defendant();
-				$data['Court']= $this->dataentry_model->get_Court();
+				$data['Provider_Name']= $this->workarea_model->get_Provider();
+				$data['InsuranceCompany_Name']= $this->workarea_model->get_Insurance();
+				$data['Defendant_Name']= $this->workarea_model->get_Defendant();
+				$data['Court']= $this->workarea_model->get_Court();
 				$this->load->view('pages/workflowreport',$data);
 			}else{
 				$this->load->view('pages/login');

@@ -18,17 +18,18 @@
 <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 <!--<link rel="shortcut icon" type="image/ico" href="favicon.ico" />-->
 
-<!-- Vendor styles -->
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/fontawesome/css/font-awesome.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/animate.css/animate.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.css" />
+	<!-- Vendor styles -->
+	<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/fontawesome/css/font-awesome.css" />
+	<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.css" />
+	<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/animate.css/animate.css" />
+	<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
+	<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.css" />
 
-<!-- App styles -->
-<link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/helper.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/styles/style.css">
+    <!-- App styles -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/helper.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/styles/style.css">
+
 </head>
 <body>
 <!-- Simple splash screen-->
@@ -71,214 +72,143 @@
             <div id="tab-1" class="tab-pane active">
               <div class="panel-body"> 
 				<h5>Denial Types Add/Edit</h5>
-				<div class="form-group form-horizontal col-md-12">
-					<div class="col-md-8">
-                        <table id="example1" class="table table-striped table-bordered table-hover">
-                          <thead>
-                            <tr>
-                              <th></th>
-                              <th>Denial Reason Type</th>
-                              <th>Delete</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php foreach($DenialReasons as $row){ ?>
-                            <tr>
-                                
-                              <td><button onClick="edit(this)"> Edit </button></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm" value="ABCCA"> <?php echo $row['DenialReasons_Type']; ?></td>
-                              <td><input type="checkbox" class="i-checks"></td>
-                            </tr>
-                            <?php } ?>
-                            <tr>
-                              <td></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
-                              <td><a href="#">Add</a></td>
-                            </tr>
-                          </tbody>
-                        </table>
+				<form id="deleteDenialReasonsForm"  method="post">
+					<div class="form-group form-horizontal col-md-12">
+						<div class="col-md-8">
+							<table id="example1" class="table dataTable table-bordered table-striped">
+								<thead>
+								<tr>
+									<th></th>
+									<th>Denial Reason Type</th>
+									<th>Delete</th>
+								</tr>
+								</thead>
+							</table>
+							
+						</div>
 					</div>
-				</div>
-				
-                <div class="form-group form-horizontal col-md-12">
-                	<div class="col-md-2">
-                      <button type="button" class="btn w-xs btn-info create">Deleted checked</button><br><br>
-                    </div>
-                </div>
+					
+					<div class="form-group form-horizontal col-md-12">
+						<div class="col-md-2">
+						  <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted checked</button><br><br>
+						</div>
+					</div>
+				</form>
                 
               </div>
             </div>
             <div id="tab-2" class="tab-pane">
               <div class="panel-body">
                 <h5>Court Types Add/Edit</h5>
-              
-                <div class="form-group form-horizontal col-md-12">
-                	<div class="col-md-12">
-                        <table id="example2" class="table table-striped table-bordered table-hover">
-                          <thead>
-                            <tr>
-                              <th class="col-sm-1"></th>
-                              <th class="col-sm-1">Court Name</th>
-                              <th class="col-sm-1">Court Venue</th>
-                              <th class="col-sm-1">Court Address</th>
-                              <th class="col-sm-1">Court Basis</th>
-                              <th class="col-sm-1">Court Misc</th>
-                              <th class="col-sm-1">Delete</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php foreach($Court as $row){ ?>
-                            <tr>
-                              <td><a href="#">Edit</a></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['Court_Name']; ?>"></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['Court_Venue']; ?>"></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['Court_Address']; ?>"></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['Court_Basis']; ?>"></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['Court_Misc']; ?>"></td>
-                              <td><input type="checkbox" class="i-checks"></td>
-                            </tr>
-                            <?php } ?>
-                            <tr>
-                              <td></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
-                              <td><a href="#">Add</a></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="form-group form-horizontal col-md-12">
-                	<div class="col-md-2">
-                      <button type="button" class="btn w-xs btn-info create">Deleted checked</button><br><br>
-                    </div>
-                </div>
+				<form id="deleteCourtForm"  method="post">
+					<div class="form-group form-horizontal col-md-12">
+						<div class="col-md-12">
+							<table id="example2" class="table dataTable table-bordered table-striped">
+								<thead>
+								<tr>
+									<th class="col-sm-1"></th>
+									<th class="col-sm-1">Court Name</th>
+									<th class="col-sm-1">Court Venue</th>
+									<th class="col-sm-1">Court Address</th>
+									<th class="col-sm-1">Court Basis</th>
+									<th class="col-sm-1">Court Misc</th>
+									<th class="col-sm-1">Delete</th>
+								</tr>
+								</thead>
+							</table>
+							
+						</div>
+					</div>
+					<div class="form-group form-horizontal col-md-12">
+						<div class="col-md-2">
+						  <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted checked</button><br><br>
+						</div>
+					</div>
+				</form>
                 
               </div>
             </div>
             <div id="tab-3" class="tab-pane">
               <div class="panel-body"> 
                 <h5>Image Types Add/Edit</h5>
-                
-                <div class="form-group form-horizontal col-md-12">
-                	<div class="col-md-12">
-                        <table id="example3" class="table table-striped table-bordered table-hover">
-                          <thead>
-                            <tr>
-                              <th class="col-sm-1"></th>
-                              <th class="col-sm-2">Image Type</th>
-                              <th class="col-sm-1">Delete</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php foreach($ImageType as $row){ ?>
-                            <tr>
-                              <td><a href="#">Edit</a></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['Image_Type']; ?>"></td>
-                              <td><input type="checkbox" class="i-checks"></td>
-                            </tr>
-                            <?php } ?>
-                            <tr>
-                              <td></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
-                              <td><a href="#">Add</a></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="form-group form-horizontal col-md-12">
-                	<div class="col-md-2">
-                      <button type="button" class="btn w-xs btn-info create">Deleted checked</button><br><br>
-                    </div>
-                </div>
+                <form id="deleteImageTypeForm"  method="post">
+					<div class="form-group form-horizontal col-md-12">
+						<div class="col-md-12">
+							<table id="example3" class="table dataTable table-bordered table-striped">
+								<thead>
+								<tr>
+									<th class="col-sm-1"></th>
+									<th class="col-sm-2">Image Type</th>
+									<th class="col-sm-1">Delete</th>
+								</tr>
+								</thead>
+							</table>
+							
+							
+						</div>
+					</div>
+					<div class="form-group form-horizontal col-md-12">
+						<div class="col-md-2">
+						  <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted checked</button><br><br>
+						</div>
+					</div>
+				</form>
                 
               </div>
             </div>
             <div id="tab-4" class="tab-pane">
               <div class="panel-body">
                 <h5>Status Types Add/Edit</h5>
-              	
-                <div class="form-group form-horizontal col-md-12">
-                	<div class="col-md-12">
-                        <table id="example4" class="table table-striped table-bordered table-hover">
-                          <thead>
-                            <tr>
-                              <th class="col-sm-1"></th>
-                              <th class="col-sm-2">Status Type</th>
-                              <th class="col-sm-2">Status Abr</th>
-                              <th class="col-sm-1">Delete</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php foreach($Status as $row){ ?>
-                            <tr>
-                              <td><a href="#">Edit</a></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['Status_Type']; ?>"></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['Status_Abr']; ?>"></td>
-                              <td><input type="checkbox" class="i-checks"></td>
-                            </tr>
-                            <?php } ?>
-                            <tr>
-                              <td></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
-                              <td><a href="#">Add</a></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="form-group form-horizontal col-md-12">
-                	<div class="col-md-2">
-                      <button type="button" class="btn w-xs btn-info create">Deleted checked</button><br><br>
-                    </div>
-                </div>
+              	<form id="deleteStatusForm"  method="post">
+					<div class="form-group form-horizontal col-md-12">
+						<div class="col-md-12">
+							<table id="example4" class="table dataTable table-bordered table-striped">
+								<thead>
+								<tr>
+									<th class="col-sm-1"></th>
+									<th class="col-sm-2">Status Type</th>
+									<th class="col-sm-2">Status Abr</th>
+									<th class="col-sm-1">Delete</th>
+								</tr>
+								</thead>
+							</table>
+							
+						</div>
+					</div>
+					<div class="form-group form-horizontal col-md-12">
+						<div class="col-md-2">
+						  <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted checked</button><br><br>
+						</div>
+					</div>
+				</form>
               </div>
             </div>
             <div id="tab-5" class="tab-pane">
               <div class="panel-body"> 
                 <h5>Case Status Types Add/Edit</h5>
-              	
-                <div class="form-group form-horizontal col-md-12">
-                	<div class="col-md-12">
-                        <table id="example5" class="table table-striped table-bordered table-hover">
-                          <thead>
-                            <tr>
-                              <th class="col-sm-1"></th>
-                              <th class="col-sm-2">Case Status</th>
-                              <th class="col-sm-2">Description</th>
-                              <th class="col-sm-1">Delete</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php foreach($CaseStatus as $row){ ?>
-                            <tr>
-                              <td><a href="#">Edit</a></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['name']; ?>"></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['description']; ?>"></td>
-                              <td><input type="checkbox" class="i-checks"></td>
-                            </tr>
-                            <?php } ?>
-                            <tr>
-                              <td></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
-                              <td><a href="#">Add</a></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                    </div>
-                </div>
-                
-                <div class="form-group form-horizontal col-md-12">
-                	<div class="col-md-2">
-                      <button type="button" class="btn w-xs btn-info create">Deleted checked</button><br><br>
-                    </div>
-                </div>
+              	<form id="deleteCaseStatusForm"  method="post">
+					<div class="form-group form-horizontal col-md-12">
+						<div class="col-md-12">
+							<table id="example5" class="table dataTable table-bordered table-striped">
+								<thead>
+								<tr>
+									<th class="col-sm-1"></th>
+									<th class="col-sm-2">Case Status</th>
+									<th class="col-sm-2">Description</th>
+									<th class="col-sm-1">Delete</th>
+								</tr>
+								</thead>
+							</table>
+							
+						</div>
+					</div>
+					
+					<div class="form-group form-horizontal col-md-12">
+						<div class="col-md-2">
+						  <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted checked</button><br><br>
+						</div>
+					</div>
+				</form>
               </div>
             </div>
               
@@ -286,45 +216,29 @@
               <div class="panel-body">
                 <h5>Document Types Add/Edit</h5>
                
-                
-                <div class="form-group form-horizontal col-md-12">
-                	<div class="col-md-12">
-                        <table id="example6" class="table table-striped table-bordered table-hover">
-                          <thead>
-                            <tr>
-                              <th class="col-sm-1"></th>
-                              <th class="col-sm-2">Document Name</th>
-                              <th class="col-sm-2">Document Value</th>
-                              <th class="col-sm-1">Settlement</th>
-                              <th class="col-sm-1">Delete</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php foreach($Doc as $row){ ?>
-                            <tr>
-                              <td><a href="#">Edit</a></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['Doc_Name']; ?>"></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['Doc_Value']; ?>"></td>
-                              <td><input type="checkbox" class="i-checks"></td>
-                              <td><input type="checkbox" class="i-checks"></td>
-                            </tr>
-                            <?php } ?>
-                            <tr>
-                              <td></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
-                              <td><input type="checkbox" class="i-checks"></td>
-                              <td><a href="#">Add</a></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="form-group form-horizontal col-md-12">
-                	<div class="col-md-2">
-                      <button type="button" class="btn w-xs btn-info create">Deleted checked</button><br><br>
-                    </div>
-                </div>
+                <form id="deleteDocForm"  method="post">
+					<div class="form-group form-horizontal col-md-12">
+						<div class="col-md-12">
+							<table id="example6" class="table dataTable table-bordered table-striped">
+								<thead>
+								<tr>
+									<th class="col-sm-1"></th>
+									<th class="col-sm-2">Document Name</th>
+									<th class="col-sm-2">Document Value</th>
+									<th class="col-sm-1">Settlement</th>
+									<th class="col-sm-1">Delete</th>
+								</tr>
+								</thead>
+							</table>
+							
+						</div>
+					</div>
+					<div class="form-group form-horizontal col-md-12">
+						<div class="col-md-2">
+						  <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted checked</button><br><br>
+						</div>
+					</div>
+				</form>
                 
               </div>
             </div>
@@ -332,121 +246,80 @@
               <div class="panel-body"> <span>
                 <h5>Service Types Add/Edit</h5>
                 </span>
-                <div class="form-group form-horizontal col-md-12">
-                	<div class="col-md-12">
-                        <table id="example7" class="table table-striped table-bordered table-hover">
-                          <thead>
-                            <tr>
-                              <th class="col-sm-1"></th>
-                              <th class="col-sm-2">Service Type</th>
-                              <th class="col-sm-2">Service Desc</th>
-                              <th class="col-sm-1">Delete</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php foreach($Service as $row){ ?>
-                            <tr>
-                              <td><a href="#">Edit</a></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['ServiceType']; ?>"></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['ServiceDesc']; ?>"></td>
-                              <td><input type="checkbox" class="i-checks"></td>
-                            </tr>
-                            <?php } ?>
-                            <tr>
-                              <td></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
-                              <td><a href="#">Add</a></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="form-group form-horizontal col-md-12">
-                	<div class="col-md-2">
-                      <button type="button" class="btn w-xs btn-info create">Deleted checked</button><br><br>
-                    </div>
-                </div>
+				<form id="deleteServiceForm"  method="post">
+					<div class="form-group form-horizontal col-md-12">
+						<div class="col-md-12">
+							<table id="example7" class="table dataTable table-bordered table-striped">
+								<thead>
+								<tr>
+									<th class="col-sm-1"></th>
+									<th class="col-sm-2">Service Type</th>
+									<th class="col-sm-2">Service Desc</th>
+									<th class="col-sm-1">Delete</th>
+								</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+					<div class="form-group form-horizontal col-md-12">
+						<div class="col-md-2">
+						  <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted checked</button><br><br>
+						</div>
+					</div>
+				</form>
               </div>
             </div>
             
             <div id="tab-8" class="tab-pane">
               <div class="panel-body">
                 <h5>Event Type Add/Edit</h5>
-                
-                <div class="form-group form-horizontal col-md-12">
-                	<div class="col-md-12">
-                        <table id="example8" class="table table-striped table-bordered table-hover">
-                          <thead>
-                            <tr>
-                              <th class="col-sm-1"></th>
-                              <th class="col-sm-6">Event Type</th>
-                              <th class="col-sm-1">Delete</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php foreach($EventType as $row){ ?>
-                            <tr>
-                              <td><a href="#">Edit</a></td>
-                              <td><input type="text" class="form-control input-sm" value="<?php echo $row['EventTypeName']; ?>"></td>
-                              <td><input type="checkbox" class="i-checks"></td>
-                            </tr>
-                            <?php } ?>
-                            <tr>
-                              <td></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
-                              <td><a href="#">Add</a></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="form-group form-horizontal col-md-12">
-                	<div class="col-md-2">
-                      <button type="button" class="btn w-xs btn-info create">Deleted checked</button><br><br>
-                    </div>
-                </div>
+                <form id="deleteEventTypeForm"  method="post">
+					<div class="form-group form-horizontal col-md-12">
+						<div class="col-md-12">
+							<table id="example8" class="table dataTable table-bordered table-striped">
+								<thead>
+								<tr>
+									<th class="col-sm-1"></th>
+									<th class="col-sm-6">Event Type</th>
+									<th class="col-sm-1">Delete</th>
+								</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+					<div class="form-group form-horizontal col-md-12">
+						<div class="col-md-2">
+						  <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted checked</button><br><br>
+						</div>
+					</div>
+				</form>
               </div>
             </div>
             
              <div id="tab-9" class="tab-pane">
               <div class="panel-body"> 
                 <h5>Event Status Add/Edit</h5>
-               
-                <div class="form-group form-horizontal col-md-12">
-                	<div class="col-md-12">
-                        <table id="example9" class="table table-striped table-bordered table-hover">
-                          <thead>
-                            <tr>
-                              <th class="col-sm-1"></th>
-                              <th class="col-sm-6">Event Status</th>
-                              <th class="col-sm-1">Delete</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php foreach($EventStatus as $row){ ?>
-                            <tr>
-                              <td><a href="#">Edit</a></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['EventStatusName']; ?>"></td>
-                              <td><input type="checkbox" class="i-checks"></td>
-                            </tr>
-                            <?php } ?>
-                            
-                            <tr>
-                              <td></td>
-                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
-                              <td><a href="#">Add</a></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                    </div>
-                    
-                </div>
-                <div class="form-group form-horizontal col-md-12">
-                	<div class="col-md-2">
-                      <button type="button" class="btn w-xs btn-info create">Deleted checked</button><br><br>
-                    </div>
-                </div>
+                <form id="deleteEventStatusForm"  method="post">
+					<div class="form-group form-horizontal col-md-12">
+						<div class="col-md-12">
+							<table id="example9" class="table dataTable table-bordered table-striped">
+								<thead>
+								<tr>
+									<th class="col-sm-1"></th>
+									<th class="col-sm-6">Event Status</th>
+									<th class="col-sm-1">Delete</th>
+								</tr>
+								</thead>
+							</table>
+						</div>
+						
+					</div>
+					<div class="form-group form-horizontal col-md-12">
+						<div class="col-md-2">
+						  <button type="submit"  class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted checked</button><br><br>
+						</div>
+					</div>
+				</form>
                 
                 
               </div>
@@ -476,6 +349,7 @@
 <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script> 
+<script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
 <!-- App scripts --> 
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
@@ -483,15 +357,308 @@
 	$('.otherEntries').addClass('active');
 </script>
 <script>
-	$('#example1').dataTable();
-	$('#example2').dataTable();
-	$('#example3').dataTable();
-	$('#example4').dataTable();
-	$('#example5').dataTable();
-	$('#example6').dataTable();
-	$('#example7').dataTable();
-	$('#example8').dataTable();
-	$('#example9').dataTable();
+	$('#example1').dataTable( {
+		"ajax": 'DenialReasons'
+	});
+	$('#example2').dataTable( {
+		"ajax": 'Court'
+	});
+	$('#example3').dataTable( {
+		"ajax": 'ImageType'
+	});
+	$('#example4').dataTable( {
+		"ajax": 'Status'
+	});
+	$('#example5').dataTable( {
+		"ajax": 'CaseStatus'
+	});
+	$('#example6').dataTable( {
+		"ajax": 'Doc'
+	});
+	$('#example7').dataTable( {
+		"ajax": 'Service'
+	});
+	$('#example8').dataTable( {
+		"ajax": 'EventType'
+	});
+	$('#example9').dataTable( {
+		"ajax": 'EventStatus'
+	});
+	/*$("#deleteEventStatusForm").click(function(){
+		var vv = $(".deleteEventStatus16").parent().parent();
+		console.log("VV: "+vv);
+	});*/
+	$("#deleteDenialReasonsForm").submit(function(form){
+		var $form = $(form);
+		var $inputs = $form.find("input, select, button, textarea");
+		var serializedData = $form.serialize();
+		//console.log("DDDD: "+serializedData);
+		$inputs.prop("disabled", true);
+
+		request = $.ajax({
+			url:"delete_Roles",
+			type: "post",
+			data: serializedData
+		});
+
+		request.done(function (response, textStatus, jqXHR) {
+			console.log("Done: ");
+			$('.deleteDenialReasons:checked').each(function(i){
+				var values = $(this).val();
+				
+				var row = $(".deleteDenialReasons"+values).parent().parent();
+				$(row).remove();
+				console.log("value: "+values);
+			});
+			//callDelete();
+		});
+
+		request.always(function () {
+			$inputs.prop("disabled", false);
+		});
+		form.preventDefault();	//STOP default action
+	});
+	$("#deleteCourtForm").submit(function(form){
+		var $form = $(form);
+		var $inputs = $form.find("input, select, button, textarea");
+		var serializedData = $form.serialize();
+		//console.log("DDDD: "+serializedData);
+		$inputs.prop("disabled", true);
+
+		request = $.ajax({
+			url:"delete_Roles",
+			type: "post",
+			data: serializedData
+		});
+
+		request.done(function (response, textStatus, jqXHR) {
+			console.log("Done: ");
+			$('.deleteCourt:checked').each(function(i){
+				var values = $(this).val();
+				
+				var row = $(".deleteCourt"+values).parent().parent();
+				$(row).remove();
+				console.log("value: "+values);
+			});
+			//callDelete();
+		});
+
+		request.always(function () {
+			$inputs.prop("disabled", false);
+		});
+		form.preventDefault();	//STOP default action
+	});
+	$("#deleteImageTypeForm").submit(function(form){
+		var $form = $(form);
+		var $inputs = $form.find("input, select, button, textarea");
+		var serializedData = $form.serialize();
+		//console.log("DDDD: "+serializedData);
+		$inputs.prop("disabled", true);
+
+		request = $.ajax({
+			url:"delete_Roles",
+			type: "post",
+			data: serializedData
+		});
+
+		request.done(function (response, textStatus, jqXHR) {
+			console.log("Done: ");
+			$('.deleteImageType:checked').each(function(i){
+				var values = $(this).val();
+				
+				var row = $(".deleteImageType"+values).parent().parent();
+				$(row).remove();
+				console.log("value: "+values);
+			});
+			//callDelete();
+		});
+
+		request.always(function () {
+			$inputs.prop("disabled", false);
+		});
+		form.preventDefault();	//STOP default action
+	});
+	$("#deleteStatusForm").submit(function(form){
+		var $form = $(form);
+		var $inputs = $form.find("input, select, button, textarea");
+		var serializedData = $form.serialize();
+		//console.log("DDDD: "+serializedData);
+		$inputs.prop("disabled", true);
+
+		request = $.ajax({
+			url:"delete_Roles",
+			type: "post",
+			data: serializedData
+		});
+
+		request.done(function (response, textStatus, jqXHR) {
+			console.log("Done: ");
+			$('.deleteStatus:checked').each(function(i){
+				var values = $(this).val();
+				
+				var row = $(".deleteStatus"+values).parent().parent();
+				$(row).remove();
+				console.log("value: "+values);
+			});
+			//callDelete();
+		});
+
+		request.always(function () {
+			$inputs.prop("disabled", false);
+		});
+		form.preventDefault();	//STOP default action
+	});
+	$("#deleteCaseStatusForm").submit(function(form){
+		var $form = $(form);
+		var $inputs = $form.find("input, select, button, textarea");
+		var serializedData = $form.serialize();
+		//console.log("DDDD: "+serializedData);
+		$inputs.prop("disabled", true);
+
+		request = $.ajax({
+			url:"delete_Roles",
+			type: "post",
+			data: serializedData
+		});
+
+		request.done(function (response, textStatus, jqXHR) {
+			console.log("Done: ");
+			$('.deleteCaseStatus:checked').each(function(i){
+				var values = $(this).val();
+				
+				var row = $(".deleteCaseStatus"+values).parent().parent();
+				$(row).remove();
+				console.log("value: "+values);
+			});
+			//callDelete();
+		});
+
+		request.always(function () {
+			$inputs.prop("disabled", false);
+		});
+		form.preventDefault();	//STOP default action
+	});
+	$("#deleteDocForm").submit(function(form){
+		var $form = $(form);
+		var $inputs = $form.find("input, select, button, textarea");
+		var serializedData = $form.serialize();
+		//console.log("DDDD: "+serializedData);
+		$inputs.prop("disabled", true);
+
+		request = $.ajax({
+			url:"delete_Roles",
+			type: "post",
+			data: serializedData
+		});
+
+		request.done(function (response, textStatus, jqXHR) {
+			console.log("Done: ");
+			$('.deleteDoc:checked').each(function(i){
+				var values = $(this).val();
+				
+				var row = $(".deleteDoc"+values).parent().parent();
+				$(row).remove();
+				console.log("value: "+values);
+			});
+			//callDelete();
+		});
+
+		request.always(function () {
+			$inputs.prop("disabled", false);
+		});
+		form.preventDefault();	//STOP default action
+	});
+	$("#deleteServiceForm").submit(function(form){
+		var $form = $(form);
+		var $inputs = $form.find("input, select, button, textarea");
+		var serializedData = $form.serialize();
+		//console.log("DDDD: "+serializedData);
+		$inputs.prop("disabled", true);
+
+		request = $.ajax({
+			url:"delete_Roles",
+			type: "post",
+			data: serializedData
+		});
+
+		request.done(function (response, textStatus, jqXHR) {
+			console.log("Done: ");
+			$('.deleteService:checked').each(function(i){
+				var values = $(this).val();
+				
+				var row = $(".deleteService"+values).parent().parent();
+				$(row).remove();
+				console.log("value: "+values);
+			});
+			//callDelete();
+		});
+
+		request.always(function () {
+			$inputs.prop("disabled", false);
+		});
+		form.preventDefault();	//STOP default action
+	});
+	$("#deleteEventTypeForm").submit(function(form){
+		var $form = $(form);
+		var $inputs = $form.find("input, select, button, textarea");
+		var serializedData = $form.serialize();
+		//console.log("DDDD: "+serializedData);
+		$inputs.prop("disabled", true);
+
+		request = $.ajax({
+			url:"delete_Roles",
+			type: "post",
+			data: serializedData
+		});
+
+		request.done(function (response, textStatus, jqXHR) {
+			console.log("Done: ");
+			$('.deleteEventType:checked').each(function(i){
+				var values = $(this).val();
+				
+				var row = $(".deleteEventType"+values).parent().parent();
+				$(row).remove();
+				console.log("value: "+values);
+			});
+			//callDelete();
+		});
+
+		request.always(function () {
+			$inputs.prop("disabled", false);
+		});
+		form.preventDefault();	//STOP default action
+	});
+	$("#deleteEventStatusForm").submit(function(form){
+		var $form = $(form);
+		var $inputs = $form.find("input, select, button, textarea");
+		var serializedData = $form.serialize();
+		console.log("DDDD: "+serializedData);
+		$inputs.prop("disabled", true);
+
+		request = $.ajax({
+			url:"<?php echo base_url(); ?>dataentry/delete_Roles",
+			type: "post",
+			data: serializedData
+		});
+
+		request.done(function (response, textStatus, jqXHR) {
+			console.log("Done: ");
+			$('.deleteEventStatus:checked').each(function(i){
+				var values = $(this).val();
+				
+				var row = $(".deleteEventStatus"+values).parent().parent();
+				$(row).remove();
+				console.log("value: "+values);
+			});
+			//callDelete();
+		});
+
+		request.always(function () {
+			$inputs.prop("disabled", false);
+		});
+		form.preventDefault();	//STOP default action
+	});
+		
 </script>
 </body>
 </html>

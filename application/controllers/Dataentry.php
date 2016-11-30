@@ -24,8 +24,8 @@ session_cache_limiter('private_no_expire');
 				
 				$data['Provider_Name']= $this->dataentry_model->get_Provider();
 				$data['InsuranceCompany_Name']= $this->dataentry_model->get_Insurance();
-				$data['Status']= $this->dataentry_model->get_Status();
-				$data['Court']= $this->dataentry_model->get_Court();
+				$data['Status']= $this->dataentry_model->get_StatusArray();
+				$data['Court']= $this->dataentry_model->get_CourtArray();
 				$data['Service']= $this->dataentry_model->get_Service();
 				$data['DenialReasons']= $this->dataentry_model->get_DenialReasons();
 				
@@ -98,7 +98,7 @@ session_cache_limiter('private_no_expire');
 				'Provider_Perm_City' => $this->input->post('cityPermanent'),'Provider_Perm_State' => $this->input->post('statePermanent'),
 				'Provider_Perm_Phone' => $this->input->post('phonePermanent'),'Provider_Perm_Fax' => $this->input->post('faxPermanent'),
 				'provider_Rfunds' => $this->input->post('rapidFunds'),'Provider_Contact' => $this->input->post('contact'),
-				'Provider_Contact2' => $this->input->post('contact2'),'Provider_Email' => $this->input->post('email'),
+				'Provider_Contact2' => $this->input->post('contact2'),'Provider_Email' => $this->input->post('email'),'memo' => $this->input->post('memo')
 			);
 			$success = $this->dataentry_model->insert_ProviderInfo($data);
 			if($success){
@@ -450,7 +450,7 @@ session_cache_limiter('private_no_expire');
 /* ************************************  Start of otherentries  *************************************************************************/
 		public function otherentries(){
 			if(isset($this->session->userdata['logged_in'])){
-				$data['DenialReasons']= $this->dataentry_model->get_DenialReasons();
+				/*$data['DenialReasons']= $this->dataentry_model->get_DenialReasons();
 				$data['Court']= $this->dataentry_model->get_Court();
 				$data['ImageType']= $this->dataentry_model->get_ImageType();
 				$data['Status']= $this->dataentry_model->get_Status();
@@ -458,12 +458,189 @@ session_cache_limiter('private_no_expire');
 				$data['Doc']= $this->dataentry_model->get_Doc();
 				$data['Service']= $this->dataentry_model->get_Service();
 				$data['EventType']= $this->dataentry_model->get_EventType();
-				$data['EventStatus']= $this->dataentry_model->get_EventStatus();
+				$data['EventStatus']= $this->dataentry_model->get_EventStatus();*/
 				
-				$this->load->view('pages/other_entries',$data);
+				$this->load->view('pages/other_entries');
 			}else{
 				$this->load->view('pages/login');
 			}
+		}
+		public function DenialReasons(){
+			$list=$this->dataentry_model->get_DenialReasons();
+			$data = array();
+			$no=0;
+			foreach ($list as $customers) {
+				$row = array();
+				$no++;
+				$row[] ="<a>Edit</a>";
+				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->DenialReasons_Type."' >";
+				$row[] = "<input type='checkbox' name='deleteDenialReasons[]' class='deleteDenialReasons deleteDenialReasons".$customers->EventStatusId."' value=".$customers->DenialReasons_Id.">";
+				
+				$data[] = $row;
+			}
+			$output = array(
+				"data" => $data
+			);
+			echo json_encode($output);
+		}
+		public function Court(){
+			$list=$this->dataentry_model->get_Court();
+			$data = array();
+			$no=0;
+			foreach ($list as $customers) {
+				$row = array();
+				$no++;
+				$row[] ="<a>Edit</a>";
+				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Court_Name."' >";
+				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Court_Venue."' >";
+				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Court_Address."' >";
+				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Court_Basis."' >";
+				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Court_Misc."' >";
+				$row[] = "<input type='checkbox' name='deleteCourt[]' class='deleteCourt deleteCourt".$customers->Court_Id."' value=".$customers->Court_Id.">";
+				
+				$data[] = $row;
+			}
+			$output = array(
+				"data" => $data
+			);
+			echo json_encode($output);
+		}
+		public function ImageType(){
+			$list=$this->dataentry_model->get_ImageType();
+			$data = array();
+			$no=0;
+			foreach ($list as $customers) {
+				$row = array();
+				$no++;
+				$row[] ="<a>Edit</a>";
+				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Image_Type."' >";
+				$row[] = "<input type='checkbox' name='deleteImageType[]' class='deleteImageType deleteImageType".$customers->Image_Id."' value=".$customers->Image_Id.">";
+				
+				$data[] = $row;
+			}
+			$output = array(
+				"data" => $data
+			);
+			echo json_encode($output);
+		}
+		public function Status(){
+			$list=$this->dataentry_model->get_Status();
+			$data = array();
+			$no=0;
+			foreach ($list as $customers) {
+				$row = array();
+				$no++;
+				$row[] ="<a>Edit</a>";
+				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Status_Type."' >";
+				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Status_Abr."' >";
+				$row[] = "<input type='checkbox' name='deleteStatus[]' class='deleteStatus deleteStatus".$customers->Status_Id."' value=".$customers->Status_Id.">";
+				
+				$data[] = $row;
+			}
+			$output = array(
+				"data" => $data
+			);
+			echo json_encode($output);
+		}
+		public function CaseStatus(){
+			$list=$this->dataentry_model->get_CaseStatus();
+			$data = array();
+			$no=0;
+			foreach ($list as $customers) {
+				$row = array();
+				$no++;
+				$row[] ="<a>Edit</a>";
+				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->name."' >";
+				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->description."' >";
+				$row[] = "<input type='checkbox' name='deleteCaseStatus[]' class='deleteCaseStatus deleteCaseStatus".$customers->id."' value=".$customers->id.">";
+				
+				$data[] = $row;
+			}
+			$output = array(
+				"data" => $data
+			);
+			echo json_encode($output);
+		}
+		public function Doc(){
+			$list=$this->dataentry_model->get_Doc();
+			$data = array();
+			$no=0;
+			foreach ($list as $customers) {
+				$row = array();
+				$no++;
+				$row[] ="<a>Edit</a>";
+				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Doc_Name."' >";
+				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Doc_Value."' >";
+				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Settlement."' >";
+				$row[] = "<input type='checkbox' name='deleteDoc[]' class='deleteDoc deleteDoc".$customers->Doc_Id."' value=".$customers->Doc_Id.">";
+				
+				$data[] = $row;
+			}
+			$output = array(
+				"data" => $data
+			);
+			echo json_encode($output);
+		}
+		public function Service(){
+			$list=$this->dataentry_model->get_Service();
+			$data = array();
+			$no=0;
+			foreach ($list as $customers) {
+				$row = array();
+				$no++;
+				$row[] ="<a>Edit</a>";
+				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->ServiceType."' >";
+				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->ServiceDesc."' >";
+				$row[] = "<input type='checkbox' name='deleteService[]' class='deleteService deleteService".$customers->ServiceType_ID."' value=".$customers->ServiceType_ID.">";
+				
+				$data[] = $row;
+			}
+			$output = array(
+				"data" => $data
+			);
+			echo json_encode($output);
+		}
+		public function EventType(){
+			$list=$this->dataentry_model->get_EventType();
+			$data = array();
+			$no=0;
+			foreach ($list as $customers) {
+				$row = array();
+				$no++;
+				$row[] ="<a>Edit</a>";
+				$row[] = $customers->EventTypeName;
+				$row[] = "<input type='checkbox' name='deleteEventType[]' class='deleteEventType deleteEventType".$customers->EventTypeId."' value=".$customers->EventTypeId.">";
+				
+				$data[] = $row;
+			}
+			$output = array(
+				"data" => $data
+			);
+			echo json_encode($output);
+		}
+		public function EventStatus(){
+			$list=$this->dataentry_model->get_EventStatus();
+			$data = array();
+			$no=0;
+			foreach ($list as $customers) {
+				$row = array();
+				$no++;
+				$row[] ="<a>Edit</a> Udate Cancel";
+				$row[] = $customers->EventStatusName;
+				$row[] = "<input type='checkbox' name='deleteEventStatus[]' class='deleteEventStatus deleteEventStatus".$customers->EventStatusId."' value=".$customers->EventStatusId.">";
+				
+				$data[] = $row;
+			}
+			$output = array(
+				"data" => $data
+			);
+			echo json_encode($output);
+		}
+		public function delete_Roles(){
+			$data = $this->input->post('deleteEventStatus');
+			//echo "<pre>"; print_r($data);
+			$insert_success = $this->dataentry_model->deleteRoles($data);
+			return true;
 		}
 /* ************************************  End of otherentries  *************************************************************************/	
 	} 	
