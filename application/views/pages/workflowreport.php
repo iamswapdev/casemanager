@@ -53,7 +53,7 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="hpanel">
-				<ul class="nav nav-tabs">
+				<ul class="nav nav-tabs top-pad">
 					<li class="active"><a data-toggle="tab" href="#tab-1">Calendar Reports</a></li>					
 					<li class=""><a data-toggle="tab" href="#tab-2">Service Reports</a></li>					
 					<li class=""><a data-toggle="tab" href="#tab-3">Summons Printed Report</a></li>					
@@ -64,177 +64,538 @@
 			
 				<div class="tab-content">
 					<div id="tab-1" class="tab-pane active">
-						<div class="panel-body">
-							<div class="col-lg-12 panel-body tab-panel">
-								<form>
-									<div class="form-group form-horizontal col-md-12">
-										<label class="col-md-1 control-label">Start Date</label>										
-										<div class="col-md-1">
-											<input id="datapicker1" type="text" class="form-control input-sm">
-										</div>
-										
-										<label class="col-md-1 control-label">End Date</label>										
-										<div class="col-md-1">
-											<input id="datapicker2" type="text" class="form-control input-sm">
-										</div>
-										
-										<label class="col-md-1 control-label">Calendar type</label>	
-										<div class="col-md-1">											
-											<select class="form-control input-sm" name="account">
-												<option>All</option>
-												<option>Motion</option>
-												<option>Trial</option>
-												<option>Opposition Due Date</option>
-												<option>Reply DueDate</option>
-											</select>
-										</div>
-									</div>
-									<div class="form-group form-horizontal col-md-12">
-										<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-											Select Provider<select class="form-control input-sm input-rows" name="account" multiple>
-											<option>option 1</option>
-											<option>option 2</option>
-											<option>option 3</option>
-											<option>option 4</option>
-											</select>
-										</div>
-										<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-											Select Insurance Company<select class="form-control input-sm input-rows" name="account" multiple>
-											<option>option 1</option>
-											<option>option 2</option>
-											<option>option 3</option>
-											<option>option 4</option>
-											</select>
-										</div>	
-									</div>
-									<div class="form-group form-horizontal col-md-12">
-										<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-											Select Defendant<select class="form-control input-sm input-rows" name="account" multiple>
-											<option>option 1</option>
-											<option>option 2</option>
-											<option>option 3</option>
-											<option>option 4</option>
-											</select>
-										</div>
-										<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-											Select Venue<select class="form-control input-sm input-rows" name="account" multiple>
-											<option>option 1</option>
-											<option>option 2</option>
-											<option>option 3</option>
-											<option>option 4</option>
-											</select>
-										</div>	
-									</div>
-									
-									
-									<div class="form-group form-horizontal col-md-12">
-										<div class="col-md-4">
-											<button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
+						<div class="row">
+                            <div class="col-lg-12">
+                            <div class="hpanel">
+                            <div class="panel-heading"></div>
+                            <div class="panel-body tab-panel">
+                                
+                                <form>
+                                    <div class="form-group form-horizontal col-md-12">
+                                        <label class="col-md-1 control-label">Start Date</label>										
+                                        <div class="col-md-1">
+                                            <input id="datapicker1" type="text" class="form-control input-sm">
+                                        </div>
+                                        
+                                        <label class="col-md-1 control-label">End Date</label>										
+                                        <div class="col-md-1">
+                                            <input id="datapicker2" type="text" class="form-control input-sm">
+                                        </div>
+                                        
+                                        <label class="col-md-1 control-label">Calendar type</label>	
+                                        <div class="col-md-2">											
+                                            <select class="form-control input-sm" name="account">
+                                                <option value="All">All</option>
+                                                <option value="Motion">Motion</option>
+                                                <option value="Trial">Trial</option>
+                                                <option value="Opposition Due Date">Opposition Due Date</option>
+                                                <option value="Reply DueDate">Reply DueDate</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-horizontal col-md-12">
+                                        <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
+                                            <br>Select Provider
+                                            <select class="form-control input-sm select-height" id="providerId" multiple name="providerId">
+                                                <option selected="selected" value="All">All</option>
+                                                <?php foreach($Provider_Name as $row){?>
+                                                <option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option>
+                                                <?php }?>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
+                                            <br>Select Insurance Company
+                                            <select class="form-control input-sm select-height" id="insuranceCompanyId" multiple name="insuranceCompanyId">
+                                                <option selected="selected" value="All">All</option>
+                                                <?php foreach($InsuranceCompany_Name as $row){?>
+                                                <option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option>
+                                                <?php }?>
+                                            </select>
+                                        </div>	
+                                    </div>
+                                    <div class="form-group form-horizontal col-md-12">
+                                        <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
+                                            <br>Select Defendant
+                                            <select class="form-control input-sm select-height" id="defendantId" name="defendantId" multiple>
+                                                <option selected="selected" value="All">All</option>
+                                                <?php foreach($Defendant_Name as $row){?>
+                                                <option value="<?php echo $row['Defendant_id']; ?>"><?php echo $row['Defendant_Name'];?></option>
+                                                <?php }?>
+                                            </select>										
+                                        </div>
+                                        <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
+                                            <br>Select Venue
+                                            <select class="form-control input-sm select-height" id="courtId" name="courtId" multiple >
+                                                <option selected="selected" value="All">All</option>
+                                                <?php foreach($Court as $row){?>
+                                                <option value="<?php echo $row['Court_Id']; ?>"> <?php echo $row['Court_Name']; ?> </option>
+                                                <?php }?>
+                                            </select>
+                                        </div>	
+                                    </div>
+                                    
+                                    
+                                    <div class="form-group form-horizontal col-md-12">
+                                        <div class="col-md-4">
+                                            <br><button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancel" class="btn btn-primary">Cancel</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                
+                            </div><!-- End of panel-body tab-panel-->
+                            </div><!-- End hpanel -->
+                            </div><!-- End col-lg-12-->
+                        </div><!-- End row-->
 					</div>
 					
 					<div id="tab-2" class="tab-pane">
-						<div class="panel-body">
-							<div class="col-lg-12 panel-body tab-panel">
-								<form>
-									<h5>Select Date Range for Summons Sent to Court</h5>
-									<div class="form-group form-horizontal col-md-12">
-										<label class="col-md-1 control-label">Start Date</label>										
-										<div class="col-md-1">
-											<input id="datapicker3" type="text" class="form-control input-sm">
+						<div class="row">
+                            <div class="col-lg-12">
+                            <div class="hpanel">
+                            <div class="panel-heading"></div>
+                            <div class="panel-body tab-panel">
+                                
+                                <form>
+                                    <h5>Select Date Range for Summons Sent to Court</h5>
+                                    <div class="form-group form-horizontal col-md-12">
+                                        <label class="col-md-1 control-label">Start Date</label>										
+                                        <div class="col-md-1">
+                                            <input id="datapicker3" type="text" class="form-control input-sm">
+                                        </div>
+                                        
+                                        <label class="col-md-1 control-label">End Date</label>										
+                                        <div class="col-md-1">
+                                            <input id="datapicker4" type="text" class="form-control input-sm">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-primary">Get</button>
+                                        </div>
+                                        
+                                    </div>
+                                </form>
+                                
+                            </div><!-- End of panel-body tab-panel-->
+                            </div><!-- End hpanel -->
+                            </div><!-- End col-lg-12-->
+                        </div><!-- End row-->
+						
+						<div class="row">
+							<div class="col-lg-12">
+							<div class="hpanel">
+							<div class="panel-heading"></div>
+							<div class="panel-body tab-panel">
+								
+								<div class="form-group form-horizontal col-md-12">
+									<div class="table-responsive col-md-6">
+										<h4>Local Service</h4>
+										<div class="table-responsive">
+											<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+												<thead>
+												<tr>  	 	 	 	 	 	 	 	 	 	 	 	 	
+													<th>Insurance Company</th>
+													<th>Address</th>
+													<th>Count</th>
+													<th>Service Info</th>
+												</tr>
+												</thead>
+												<tbody>
+												<tr>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												</tbody>
+											</table>
 										</div>
-										
-										<label class="col-md-1 control-label">End Date</label>										
-										<div class="col-md-1">
-											<input id="datapicker4" type="text" class="form-control input-sm">
-										</div>
-										<div class="col-md-2">
-											<button type="button" class="btn btn-primary">Get</button>
-										</div>
-										
 									</div>
-								</form>
-							</div>
-						</div>
+									<div class="table-responsive col-md-6">
+										<h4>Superintendent Service</h4>
+										<div class="table-responsive">
+											<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+												<thead>
+												<tr>  	 	 	 	 	 	 	 	 	 	 	 	 	
+													<th>Insurance Company</th>
+													<th>Address</th>
+													<th>Count</th>
+													<th>Service Info</th>
+												</tr>
+												</thead>
+												<tbody>
+												<tr>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+								
+							</div><!-- End of panel-body tab-panel-->
+							</div><!-- End hpanel -->
+							</div><!-- End col-lg-12-->
+						</div><!-- End row-->
 					</div>
 					
 					<div id="tab-3" class="tab-pane">
-						<div class="panel-body">
-							<div class="col-lg-12 panel-body tab-panel">
-								<form>
-									<h5>Select Date Range for Print</h5>
-									<div class="form-group form-horizontal col-md-12">
-										<label class="col-md-1 control-label">Start Date</label>										
-										<div class="col-md-1">
-											<input id="datapicker5" type="text" class="form-control input-sm">
-										</div>
-										
-										<label class="col-md-1 control-label">End Date</label>										
-										<div class="col-md-1">
-											<input id="datapicker6" type="text" class="form-control input-sm">
-										</div>
-										<div class="col-md-2">
-												
-											<select class="form-control input-sm" name="account">
-												<option>Date_Opened</option>
-												<option>Date_Summons_Printed</option>
-												<option>Date_Summons_Sent_Court</option>
-												<option>Date_Summons_Served</option>
-												<option>Date_Index_Number_Purchased</option>
-												<option>Date_Afidavit_Filed</option>
-												<option>Date_Answer_Received</option>
-												<option>Date_Closed</option>
-											</select>
-										</div>
-										<div class="col-md-2">
-												
-											<select class="form-control input-sm" name="account">
-												<option>All</option>
-												<option>0%</option>
-												<option>Between 0% and 70%</option>
-												<option>70% and above</option>
-											</select>
-										</div>
-										<div class="col-md-2">
-											<button type="button" class="btn btn-primary">Get</button>
-										</div>
-										
-									</div>
-								</form>
-							</div>
-						</div>
+						<div class="row">
+                            <div class="col-lg-12">
+                            <div class="hpanel">
+                            <div class="panel-heading"></div>
+                            <div class="panel-body tab-panel">
+                                
+                                <form>
+                                    <h5>Select Date Range for Print</h5>
+                                    <div class="form-group form-horizontal col-md-12">
+                                        <label class="col-md-1 control-label">Start Date</label>										
+                                        <div class="col-md-1">
+                                            <input id="datapicker5" type="text" class="form-control input-sm">
+                                        </div>
+                                        
+                                        <label class="col-md-1 control-label">End Date</label>										
+                                        <div class="col-md-1">
+                                            <input id="datapicker6" type="text" class="form-control input-sm">
+                                        </div>
+                                        <div class="col-md-2">
+                                                
+                                            <select class="form-control input-sm" name="account">
+                                                <option>Date_Opened</option>
+                                                <option>Date_Summons_Printed</option>
+                                                <option>Date_Summons_Sent_Court</option>
+                                                <option>Date_Summons_Served</option>
+                                                <option>Date_Index_Number_Purchased</option>
+                                                <option>Date_Afidavit_Filed</option>
+                                                <option>Date_Answer_Received</option>
+                                                <option>Date_Closed</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2">
+                                                
+                                            <select class="form-control input-sm" name="account">
+                                                <option>All</option>
+                                                <option>0%</option>
+                                                <option>Between 0% and 70%</option>
+                                                <option>70% and above</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-primary">Get</button>
+                                        </div>
+                                        
+                                    </div>
+                                </form>
+                            </div><!-- End of panel-body tab-panel-->
+                            </div><!-- End hpanel -->
+                            </div><!-- End col-lg-12-->
+                        </div><!-- End row-->
+                        
+                        <div class="row">
+                            <div class="col-lg-12">
+                            <div class="hpanel">
+                            <div class="panel-body tab-panel">
+                                
+                                <div class="table-responsive">
+                                    <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>  	 	 	 	 	 	 	 	 	 	
+                                            <th>Send to Elite</th>
+                                            <th>Case ID</th>
+                                            <th>Patient</th>
+                                            <th>Provider</th>
+                                            <th>Insurer</th>
+                                            <th>Venue</th>
+                                            <th>Claim Amount</th>
+                                            <th>Date Opened</th>
+                                            <th>Date Printed</th>
+                                            <th>Date_Opened</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td><input class="ads_Checkbox" type="checkbox" name="delete[]" value="'+value+'"></td>
+                                            <td>076 9477 4896</td>
+                                            <td>294-318 Duis Ave</td>
+                                            <td>Vosselaar</td>
+                                            <td>Belgium</td>
+                                            <td>Phelan</td>
+                                            <td>0500 034548</td>
+                                            <td>680-1097 Mi Rd.</td>
+                                            <td>Lavoir</td>
+                                            <td>Pakistan</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input class="ads_Checkbox" type="checkbox" name="delete[]" value="'+value+'"></td>
+                                            <td>0500 034548</td>
+                                            <td>680-1097 Mi Rd.</td>
+                                            <td>Lavoir</td>
+                                            <td>Pakistan</td>
+                                            <td>Phelan</td>
+                                            <td>0500 034548</td>
+                                            <td>680-1097 Mi Rd.</td>
+                                            <td>Lavoir</td>
+                                            <td>Pakistan</td>
+                                        </tr>
+                                        <tr>
+                                        	<td><button type="button" id="sendToElite" class="btn btn-primary create">Send to Elite</button></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                
+                            </div><!-- End of panel-body tab-panel-->
+                            </div><!-- End hpanel -->
+                            </div><!-- End col-lg-12-->
+                        </div><!-- End row-->
+                        
+                        <div class="row">
+                            <div class="col-lg-12">
+                            <div class="hpanel">
+                            <div class="panel-heading"></div>
+                            <div class="panel-body tab-panel">
+                                
+                                <div class="form-group form-horizontal col-md-12">
+                                    <div class="table-responsive col-md-4">
+                                    <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>  	  		 	 	 	 	 	 	 	 	
+                                            <th>Status</th>
+                                            <th>Count</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Status</td>
+                                            <td>Count</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    </div>
+									<div class="table-responsive col-md-4">
+                                    <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>  	  		 	 	 	 	 	 	 	 	
+                                            <th>Provider</th>
+                                            <th>Count</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Provider</td>
+                                            <td>Count</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                    <div class="table-responsive col-md-4">
+                                    <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>  	  		 	 	 	 	 	 	 	 	
+                                            <th>Insurer</th>
+                                            <th>Count</th>
+                                            <th>Filing Fee Cost</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Provider</td>
+                                            <td>Count</td>
+                                            <th>Filing Fee Cost</th>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                    
+									
+                                </div>
+                                
+                            </div><!-- End of panel-body tab-panel-->
+                            </div><!-- End hpanel -->
+                            </div><!-- End col-lg-12-->
+                        </div><!-- End row-->
+                        
+                        
 					</div>
 					
 					<div id="tab-4" class="tab-pane">
-						<div class="panel-body">
-							<div class="col-lg-12 panel-body tab-panel">
+						<div class="row">
+                            <div class="col-lg-12">
+                            <div class="hpanel">
+                            <div class="panel-heading"></div>
+                            <div class="panel-body tab-panel">
+                                
+								<div class="table-responsive">
+                                    <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>   	 	 	 	 	 	 	 	 		 	 	 	 	 	 	 	 	 	
+                                            <th>CASE ID</th>
+                                            <th>INJURED PARTY</th>
+                                            <th>PROVIDER</th>
+                                            <th>INSURER</th>
+                                            <th>STATUS</th>
+                                            <th>CLAIM AMOUNT</th>
+                                            <th>PRINCIPAL</th>
+                                            <th>INTEREST</th>
+                                            <th>FILING FEE</th>
+                                            <th>ATTORNEY FEE/th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+											<td colspan="10"><button type="button" id="Close" class="btn btn-primary create">Close</button></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
 								
-								
-							</div>
-						</div>
+                            </div><!-- End of panel-body tab-panel-->
+                            </div><!-- End hpanel -->
+                            </div><!-- End col-lg-12-->
+                        </div><!-- End row-->
 					</div>
 					<div id="tab-5" class="tab-pane">
-						<div class="panel-body">
-							<div class="col-lg-12 panel-body tab-panel">
-								<ul>
-									<li><a href="#">All Cases Index Numbered 100 days and over and not Served</a></li>
-									<li><a href="#">All Cases Printed 30 days and over and not filed</a></li>
-									<li><a href="#">All Affidavits Printed 30 days and over and not filed</a></li>
-								</ul>
-							</div>
-						</div>
+						<div class="row">
+                            <div class="col-lg-12">
+                            <div class="hpanel">
+                            <div class="panel-heading"></div>
+                            <div class="panel-body tab-panel">
+								<div class="form-group form-horizontal col-md-12">	
+									<ul>
+										<li><a id="SummonsNotServed" href="#">All Cases Index Numbered 100 days and over and not Served</a></li>
+										<li><a id="SummonsNotField" href="#">All Cases Printed 30 days and over and not filed</a></li>
+										<li><a id="AffidavitNotGenerated" href="#">All Affidavits Printed 30 days and over and not filed</a></li>
+									</ul>
+                                </div>
+                            </div><!-- End of panel-body tab-panel-->
+                            </div><!-- End hpanel -->
+                            </div><!-- End col-lg-12-->
+                        </div><!-- End row-->
+						
+						<div class="row">
+							<div class="col-lg-12">
+							<div class="hpanel">
+							<div class="panel-heading"></div>
+							<div class="panel-body tab-panel">
+								<div class="form-group form-horizontal col-md-12"> 
+									
+									<div class="table-responsive SummonsNotServed" style="display:none;"> 
+										<h5>SUMMONS NOT SERVED</h5>
+										<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+											<thead>
+											<tr>   	 	 	 	 	 	 	 	 		 	 	 	 	 	 	 	 	 	
+												<th>Case Id</th>
+												<th>Patient</th>
+												<th>Provider</th>
+												<th>Insurer</th>
+												<th>Index No</th>
+												<th>Date Summons sent to court</th>
+												<th>Date Index Purchased </th>
+												<th>Claim Amount</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="table-responsive SummonsNotField" style="display:none;"> 
+										<h5>SUMMONS NOT FILED</h5>
+										<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+											<thead>
+											<tr>   	 	 	 	 	 	 	 	 		 	 	 	 	 	 	 	 	 	
+												<th>Case Id</th>
+												<th>Patient</th>
+												<th>Provider</th>
+												<th>Insurer</th>
+												<th>Index No</th>
+												<th>Date Printed </th>
+												<th>Date Summons sent to court</th>
+												<th>Date Index Purchased </th>
+												<th>Claim Amount</th>
+												<th>Status</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="table-responsive AffidavitNotGenerated" style="display:none;"> 
+										<h5>AFFIDAVIT NOT GENERATED</h5>
+										<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+											<thead>
+											<tr>   	 	 	 	 	 	 	 	 		 	 	 	 	 	 	 	 	 	
+												<th>Case Id</th>
+												<th>Patient</th>
+												<th>Provider</th>
+												<th>Insurer</th>
+												<th>Index No</th>
+												<th>Date Printed </th>
+												<th>Date Summons sent to court</th>
+												<th>Date Index Purchased </th>
+												<th>Claim Amount</th>
+												<th>Status</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div><!-- End of panel-body tab-panel-->
+							</div><!-- End hpanel -->
+							</div><!-- End col-lg-12-->
+						</div><!-- End row-->
+							
 					</div>
 					
 					<div id="tab-6" class="tab-pane">
-						<div class="panel-body">
-							<div class="col-lg-12 panel-body tab-panel">
+						
+						<div class="row">
+							<div class="col-lg-12">
+							<div class="hpanel">
+							<div class="panel-heading"></div>
+							<div class="panel-body tab-panel">
+								
 								<form>
-									<h5>Select Date Range for Pending Resons</h5>
+									
 									<div class="form-group form-horizontal col-md-12">
+										<h5>Select Date Range for Pending Resons</h5>
 										<label class="col-md-1 control-label">Start Date</label>										
 										<div class="col-md-1">
 											<input id="datapicker7" type="text" class="form-control input-sm">
@@ -250,8 +611,55 @@
 										
 									</div>
 								</form>
-							</div>
-						</div>
+								
+							</div><!-- End of panel-body tab-panel-->
+							</div><!-- End hpanel -->
+							</div><!-- End col-lg-12-->
+						</div><!-- End row-->
+
+						<div class="row">
+							<div class="col-lg-12">
+							<div class="hpanel">
+							<div class="panel-heading"></div>
+							<div class="panel-body tab-panel">
+								
+								<div class="form-group form-horizontal col-md-12">
+									<div class="col-md-2">Total Pending Ids Found :
+									</div>
+									<div class="col-md-2">Total Pending Reasons Found :
+									</div>
+								</div>
+								
+								<div class="form-group form-horizontal col-md-12">
+								<div class="table-responsive"> 	 		 
+									<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+										<thead>
+										<tr>   	 	 	 	 	 	 	 	 		 	 	 	 	 	 	 	 	 	
+											<th>CASE ID</th>
+											<th>STATUS</th>
+											<th>NOTES DESCRIPTION</th>
+											<th>NOTES DATE </th>
+											<th>USER ID</th>
+										</tr>
+										</thead>
+										<tbody>
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
+								</div>
+								
+							</div><!-- End of panel-body tab-panel-->
+							</div><!-- End hpanel -->
+							</div><!-- End col-lg-12-->
+						</div><!-- End row-->
+						
 					</div>
 				</div>
 			</div>
@@ -287,6 +695,26 @@
 <!-- App scripts -->
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
+	$("#SummonsNotServed").click(function(){
+		$(".SummonsNotServed").css("display","block");
+		$(".SummonsNotField").css("display","none");
+		$(".AffidavitNotGenerated").css("display","none");
+	});
+	$("#SummonsNotField").click(function(){
+		$(".SummonsNotServed").css("display","none");
+		$(".SummonsNotField").css("display","block");
+		$(".AffidavitNotGenerated").css("display","none");
+	});
+	$("#AffidavitNotGenerated").click(function(){
+		$(".SummonsNotServed").css("display","none");
+		$(".SummonsNotField").css("display","none");
+		$(".AffidavitNotGenerated").css("display","block");
+	});
+	
+	$("#cancel").click(function(){
+		$('input[type=text]').val('');
+		$('select').val('All');
+	});
 
     $(function () {
 
@@ -304,18 +732,43 @@
 </script>
 <script>
 $(function(){
-	$('#datapicker1').datepicker();
-	$('#datapicker2').datepicker();
-	$('#datapicker3').datepicker();
-	$('#datapicker4').datepicker();
-	$('#datapicker5').datepicker();
-	$('#datapicker6').datepicker();
-	$('#datapicker7').datepicker();
-	$('#datapicker8').datepicker();
+	$('#datapicker1').datepicker({
+		"autoclose": true,
+		"todayHighlight": true
+	});
+	$('#datapicker2').datepicker({
+		"autoclose": true,
+		"todayHighlight": true
+	});
+	$('#datapicker3').datepicker({
+		"autoclose": true,
+		"todayHighlight": true
+	});
+	$('#datapicker4').datepicker({
+		"autoclose": true,
+		"todayHighlight": true
+	});
+	$('#datapicker5').datepicker({
+		"autoclose": true,
+		"todayHighlight": true
+	});
+	$('#datapicker6').datepicker({
+		"autoclose": true,
+		"todayHighlight": true
+	});
+	$('#datapicker7').datepicker({
+		"autoclose": true,
+		"todayHighlight": true
+	});
+	$('#datapicker8').datepicker({
+		"autoclose": true,
+		"todayHighlight": true
+	});
 });
 </script>
 <script>
 	$('.workarea').addClass('active');
+	$('.workflowReport').addClass('active');
 </script>
 </body>
 </html>

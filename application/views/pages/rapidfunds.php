@@ -60,12 +60,17 @@
 				
 				<div class="tab-content">
 					<div id="tab-1" class="tab-pane active">
-						<div class="panel-body">
+						<div class="row">
 							<div class="col-lg-12">
-								<div class="panel-body tab-panel">
+							<div class="hpanel">
+							<div class="panel-heading"></div>
+							<div class="panel-body tab-panel">
+								
 								<form>
-									<h4 class="h4-title">Provider Local Address</h4>
+									
 									<div class="form-group form-horizontal col-md-12">
+										<h4 class="h4-title">Provider Local Address</h4>
+										
 										<label class="col-md-1 control-label">Start Date</label>
 										<div class="col-md-2"> <input id="datapicker1" type="text" class="form-control input-sm"> </div>
 										<label class="col-md-1 control-label">End Date</label>
@@ -75,21 +80,21 @@
 									<div class="form-group form-horizontal col-md-12">
 										<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
 											Select Provider
-                                            <select class="form-control input-sm input-rows" id="providerId" name="providerId">
+											<select class="form-control input-sm input-rows select-height" id="providerId" name="providerId" multiple>
 												<option>-- Select Provider --</option>
-                                                <?php foreach($Provider_Name as $row){?>
-                                                <option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option>
-                                                <?php }?>
+												<?php foreach($Provider_Name as $row){?>
+												<option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option>
+												<?php }?>
 											</select>
 										</div>
 										<div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
 											Select Insurance Company
-                                            <select class="form-control input-sm input-rows" id="insuranceId" name="insuranceId">
+											<select class="form-control input-sm input-rows select-height" id="insuranceId" name="insuranceId" multiple>
 												<option>-- Select Insurance comp. --</option>
 												<?php foreach($InsuranceCompany_Name as $row){?>
-                                                <option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option>
-                                                <?php }?>
-                                            </select>
+												<option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option>
+												<?php }?>
+											</select>
 										</div>	
 									</div>
 									<div class="form-group form-horizontal col-md-12">
@@ -98,24 +103,25 @@
 										</div>
 									</div>
 								</form>
-								</div>
-							</div>
-
-						</div>
-						<!--tab-pane--> 
+								
+							</div><!-- End of panel-body tab-panel-->
+							</div><!-- End hpanel -->
+							</div><!-- End col-lg-12-->
+						</div><!-- End row--> 
 					</div><!--tab 1 close-->
 					<!--tab1panel-->
 					
 					<div id="tab-2" class="tab-pane">
-						<div class="panel-body">
-
-							<div class="row">
-							<div class="col-lg-12 animated-panel zoomIn" style="animation-delay: 0.4s;">
+						<div class="row">
+							<div class="col-lg-12">
 							<div class="hpanel">
+							<div class="panel-heading"></div>
 							<div class="panel-body tab-panel">
-								<h4 class="h4-title">Rapid Fund Deposits</h4>
+								
 								<form>
 									<div class="form-group form-horizontal col-md-12">
+										<h4 class="h4-title">Rapid Fund Deposits</h4>
+										
 										<div class="col-md-1"></div>
 										<div class="col-md-10">
 											<div class="radio">
@@ -127,28 +133,28 @@
 									<div class="form-group form-horizontal col-md-12">
 										<div class="col-md-1"></div>
 										<div class="col-md-10">
-											<button type="button" class="btn w-xs btn-primary">Submit</button>
+											<button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
 										</div>
 									</div>
 								</form>
-							</div>
-							</div>
-							</div>
-							</div>
-
-						</div>
+								
+							</div><!-- End of panel-body tab-panel-->
+							</div><!-- End hpanel -->
+							</div><!-- End col-lg-12-->
+						</div><!-- End row-->
 					</div><!--tab 2 close--> 
 					
 					<div id="tab-3" class="tab-pane">
-						<div class="panel-body">
-
-							<div class="row">
-							<div class="col-lg-12 animated-panel zoomIn" style="animation-delay: 0.4s;">
+						<div class="row">
+							<div class="col-lg-12">
 							<div class="hpanel">
+							<div class="panel-heading"></div>
 							<div class="panel-body tab-panel">
-								<h4 class="h4-title">Rapid Fund Deposits</h4>
+								
 								<form>
 									<div class="form-group form-horizontal col-md-12">
+										<h4 class="h4-title">Rapid Fund Deposits</h4>
+										
 										<div class="col-md-1"></div>
 										<div class="col-md-10">
 											<div class="radio">
@@ -160,16 +166,15 @@
 									<div class="form-group form-horizontal col-md-12">
 										<div class="col-md-1"></div>
 										<div class="col-md-10">
-											<button type="button" class="btn w-xs btn-primary">Submit</button>
+											<button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
 										</div>
 									</div>
 								</form>
-							</div>
-							</div>
-							</div>
-							</div>
-
-						</div>
+								
+							</div><!-- End of panel-body tab-panel-->
+							</div><!-- End hpanel -->
+							</div><!-- End col-lg-12-->
+						</div><!-- End row-->
 					</div><!--tab 3 close--> 
 				</div><!--tab content close-->
 			</div>
@@ -227,6 +232,7 @@ $(function(){
 </script>
 <script>
 	$('.financials').addClass('active');
+	$('.rapidFunds').addClass('active');
 </script>
 </body>
 </html>

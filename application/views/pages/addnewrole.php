@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/animate.css/animate.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
+    
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.css" />
 
     <!-- App styles -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
@@ -71,10 +74,11 @@
 				</div>
 			</form>
 			
-			<form id="deleteRoleForm1"  action="delete_Roles" method="post">
+			<form id="deleteRoleForm"  action="delete_Roles" method="post">
 			<div class="form-group form-horizontal col-md-12">
 				<div class="col-md-2"></div>
 				<div class="col-md-4">
+                	
 					<table id="example2" class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
@@ -84,9 +88,9 @@
 					</thead>
 					<tbody>
 						<?php foreach($Roles as $row){?>
-						<tr>
+						<tr class="r<?php echo $row['RoleId'];?>">
 							<td><?php echo $row['RoleName']?></td>
-							<td><input name="deleteRole[]" type="checkbox" class="i-checks" value="<?php echo $row['RoleId']; ?>"></td>
+							<td><input name="deleteRole[]" type="checkbox" class="ads_Checkbox"  value="<?php echo $row['RoleId']; ?>"></td>
 						</tr>
 						<?php }?>
 					</tbody>
@@ -96,7 +100,7 @@
 			<div class="form-group form-horizontal col-md-12">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
-					<button type="button" class="btn w-xs btn-primary">Delete Checked</button><br><br>
+					<button type="submit" id="DeleteButton" class="btn w-xs btn-primary">Delete Checked</button><br><br>
 				</div>
 			</div>
 			</form>
@@ -146,23 +150,24 @@
 
 </div>
 
-<!-- Vendor scripts -->
-<script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
-<!-- App scripts -->
-<script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
+    <!-- Vendor scripts -->
+    <script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
+    
+    <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.js"></script>
+    <!-- App scripts --> 
+    <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 
 <script>
-	/* Add Plantiff information - Tab-1*/ /*---------- Tab-1 --------------------*/
-	$("#cancel").click(function(){
-		$("input[type=text]").val("");
-	});
+	var value= 0;
 	$("#addRoleForm").validate({
 		rules: {
 			RoleName: {
@@ -172,17 +177,25 @@
 		},
 				
 		submitHandler: function (form) {
-			// setup some local variables
+			form.submit();
+		}
+	});
+	
+	
+	$("#addRoleForm1").validate({
+		rules: {
+			RoleName: {
+				required: true,
+				minlength: 3
+			}		
+		},
+				
+		submitHandler: function (form) {
 			var $form = $(form);
-			// let's select and cache all the fields
 			var $inputs = $form.find("input, select, button, textarea");
-			// serialize the data in the form
 			var serializedData = $form.serialize();
 
-			// let's disable the inputs for the duration of the ajax request
 			$inputs.prop("disabled", true);
-
-			// fire off the request to /form.php
 
 			request = $.ajax({
 				url:"<?php echo base_url(); ?>adminprivilege/insert_Roles",
@@ -194,27 +207,20 @@
 					var optionsAsString = "";
 					for($i in results.Roles){
 						//console.log(results.Provider_Name[$i].Adjuster_Id);
-						optionsAsString +="<tr> <td>'"+results.Roles[$i].RoleName+"'</td> <td><input type='checkbox' class='i-checks' value='"+results.Roles[$i].RoleId+"' > </td></tr>"
+						optionsAsString +="<tr class='r"+results.Roles[$i].RoleId+"'> <td>"+results.Roles[$i].RoleName+"</td> <td><input type='checkbox' class='.ads_Checkbox' value='"+results.Roles[$i].RoleId+"' > </td></tr>"
 						
 					}
+					value++;
 					$( 'tbody' ).append( optionsAsString );
 				}
 			});
 
-			// callback handler that will be called on success
 			request.done(function (response, textStatus, jqXHR) {
-				// log a message to the console
-				console.log("Hooray, it worked!");
-					 $("#myModal").modal("show");
-					
-					
-					$('input[type=text]').val('');
+				$('input[type=text]').val('');
+				callSuccess();
 			});
 
-			// callback handler that will be called regardless
-			// if the request failed or succeeded
 			request.always(function () {
-				// reenable the inputs
 				$inputs.prop("disabled", false);
 			});
 
@@ -223,103 +229,54 @@
 	
 	$("#deleteRoleForm").validate({
 		submitHandler: function (form) {
-			// setup some local variables
 			var $form = $(form);
-			// let's select and cache all the fields
 			var $inputs = $form.find("input, select, button, textarea");
-			// serialize the data in the form
 			var serializedData = $form.serialize();
-			console.log("DDDD: "+serializedData);
-
-			// let's disable the inputs for the duration of the ajax request
+			//console.log("DDDD: "+serializedData);
 			$inputs.prop("disabled", true);
-
-			// fire off the request to /form.php
 
 			request = $.ajax({
 				url:"<?php echo base_url(); ?>adminprivilege/delete_Roles",
 				type: "post",
-				data: serializedData,
-				success:function(data, textStatus, jqXHR) 
-				{
-					/*results = JSON.parse(data);
-					var optionsAsString = "";
-					for($i in results.Roles){
-						//console.log(results.Provider_Name[$i].Adjuster_Id);
-						optionsAsString +="<tr> <td>'"+results.Roles[$i].RoleName+"'</td> <td><input type='checkbox' class='i-checks' value='"+results.Roles[$i].RoleId+"' > </td></tr>"
-						
-					}
-					$( 'tbody' ).append( optionsAsString );*/
-				}
+				data: serializedData
 			});
 
-			// callback handler that will be called on success
 			request.done(function (response, textStatus, jqXHR) {
-				// log a message to the console
-				console.log("Hooray, it worked!");
-					 $("#myModal").modal("show");
-					$('input[type=text]').val('');
+				$('input[type=text]').val('');
+				$('.ads_Checkbox:checked').each(function(i){
+					var values = $(this).val();
+					$(".r"+values).remove();
+				});
+				callDelete();
 			});
 
-			// callback handler that will be called regardless
-			// if the request failed or succeeded
 			request.always(function () {
-				// reenable the inputs
 				$inputs.prop("disabled", false);
 			});
 
 		}
 	});
-	$("#addRoleForm1").submit(function(e)
-	{
-    	var postData = $(this).serializeArray();
-		var postDataN = $(this).serialize();
-		console.log("postDataN: "+postDataN);
-		var formURL = $(this).attr("action");
-		
-		$.ajax(
-		{
-			url : formURL,
-			type: "POST",
-			data : postData,
-			success:function(data, textStatus, jqXHR) 
-			{
-				
-				results = JSON.parse(data);
-				var optionsAsString = "";
-				for($i in results.Roles){
-					//console.log(results.Provider_Name[$i].Adjuster_Id);
-					optionsAsString +="<tr> <td>'"+results.Roles[$i].RoleName+"'</td> <td><input type='checkbox' class='i-checks' value='"+results.Roles[$i].RoleId+"' > </td></tr>"
-					
-				}
-				$( 'tbody' ).append( optionsAsString );
-				
-				$('input[type=text]').val('');
-				console.log("Success...........");
-				$("").attr();
-			},
-			error: function(jqXHR, textStatus, errorThrown){ alert(); }
+	function callSuccess() {
+		swal({
+			title: "Successfully Added",
+			type: "success"
 		});
-		e.preventDefault();	//STOP default action
+	}
+	function callDelete() {
+		swal({
+			title: "Successfully Deleted",
+			type: "success"
+		});
+	}
+	
+	$("#cancel").click(function(){
+		$("input[type=text]").val("");
 	});
-/* *************************************************** */
-	/*$(function(){
-         $("#addRoleForm").validate({
-            rules: {
-                RoleName: {
-                    required: true,
-                    minlength: 3
-                }
-            },
-            submitHandler: function(form, e) {
-                e.preventDefault();	//STOP default action
-				//form.submit();
-            }
-        });
-	});*/
+	
 </script>
 <script>
 	$('.adminprivilege').addClass('active');
+	 $('.addNewRole').addClass('active');
 </script>
 </body>
 </html>

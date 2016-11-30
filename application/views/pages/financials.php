@@ -65,11 +65,15 @@
 			
 				<div class="tab-content">
 					<div id="tab-1" class="tab-pane active">
-						<div class="panel-body">
-							<div class="col-lg-12 panel-body tab-panel">
+						<div class="row">
+							<div class="col-lg-12">
+							<div class="hpanel">
+							<div class="panel-heading"></div>
+							<div class="panel-body tab-panel">
+								
 								<form>
-									<h4 class="h4-title">Select Date Range for Processed Invoices</h4>
 									<div class="form-group form-horizontal col-md-12">
+										<h4 class="h4-title">Select Date Range for Processed Invoices</h4>
 										<label class="col-md-1 control-label">Start Date</label>										
 										<div class="col-md-1">
 											<input id="datapicker1" type="text" class="form-control input-sm">
@@ -88,49 +92,104 @@
 										<label class="col-md-2 control-label">Click <a href="#">here</a> to set Check Date</label>
 									</div>
 								</form>
-							</div>
-						</div>
+								
+							</div><!-- End of panel-body tab-panel-->
+							</div><!-- End hpanel -->
+							</div><!-- End col-lg-12-->
+						</div><!-- End row-->
+						<div class="row">
+							<div class="col-lg-12">
+							<div class="hpanel">
+							<div class="panel-heading"></div>
+							<div class="panel-body tab-panel">
+								
+								<div class="form-group form-horizontal col-md-12"> 	
+									<div class="table-responsive">
+										
+										<div class="table-responsive">
+											<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+												<thead> 	 	 	 	 	 		 	 	
+												<tr>  	 	 	 	 	 	 	 	 	 	 	 	 	
+													<th>PROVIDER ID</th>
+													<th>PROVIDER NAME</th>
+													<th>GROSS AMOUNT</th>
+													<th>FEES</th>
+													<th>CLIENT REMIT AMOUNT</th>
+													<th>FIRM REMIT AMOUNT</th>
+													<th>PRINT CHECKS</th>
+													<th>PRINT INVOICE</th>
+													<th>INVOICE ID</th>
+													<th>GENERATED ON</th>
+													<th>PRINTED ON</th>
+													<th>CONFIRM PRINTING</th>
+													<th>REVERSE INVOICE</th>
+												</tr>
+												</thead>
+												<tbody>
+												<tr>
+													
+												</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+								
+							</div><!-- End of panel-body tab-panel-->
+							</div><!-- End hpanel -->
+							</div><!-- End col-lg-12-->
+						</div><!-- End row-->
+						
 					</div>
 					
 					<div id="tab-2" class="tab-pane">
-						<div class="panel-body">
-							<div class="col-lg-12 panel-body tab-panel">
-								<form>
-									<h4 class="h4-title"> <<< <a href="<?php echo base_url();?>search/advancedsearch">Advanced Search</a></h4>
-									<div class="panel-heading">
-										<div class="panel-tools">
-											<a class="showhide"><i class="fa fa-chevron-up"></i></a>
-											<a class="closebox"><i class="fa fa-times"></i></a>
+						<div class="row">
+							<div class="col-lg-12">
+							<div class="hpanel">
+							<div class="panel-heading"></div>
+							<div class="panel-body tab-panel">
+								
+								<div class="form-group form-horizontal col-md-12"> 	 	 	 	 	 	 	
+									<div class="table-responsive">
+										<h4 class="h4-title"> <<< <a href="<?php echo base_url();?>search/advancedsearch">Advanced Search</a></h4>
+										<div class="table-responsive DailySettlementReports">
+											<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+												<thead>
+												<tr>  	 	 	 	 	 	 	 	 	 	 	 	 	
+													<th>PROVIDER ID</th>
+													<th>PROVIDER NAME</th>
+													<th>NUMBER OF CHECKS</th>
+													<th>TOTAL AMOUNT</th>
+													<th>PROCESS INVOICE</th>
+												</tr>
+												</thead>
+												<tbody>
+												<tr>
+													<td>Abraham</td>
+													<td>076 9477 4896</td>
+													<td>076 9477 4896</td>
+													<td>076 9477 4896</td>
+													<td><button type="button" class="btn btn-primary">View Report</button></td>
+												</tr>
+												</tbody>
+											</table>
 										</div>
 									</div>
-									<table id="example2" class="table table-striped table-bordered table-hover">
-										<thead>
-											<tr>
-												<th>PROVIDER ID</th>
-												<th>PROVIDER NAME</th>
-												<th>NUMBER OF CHECKS</th>
-												<th>TOTAL AMOUNT</th>
-												<th>PROCESS INVOICE</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>Abraham</td>
-												<td>076 9477 4896</td>
-												<td>076 9477 4896</td>
-												<td>076 9477 4896</td>
-												<td><button type="button" class="btn w-xs btn-primary">View Report</button></td>
-											</tr>
-										</tbody>
-									</table>
-								</form>
-							</div>
-						</div>
+								</div>
+								
+							</div><!-- End of panel-body tab-panel-->
+							</div><!-- End hpanel -->
+							</div><!-- End col-lg-12-->
+						</div><!-- End row-->
 					</div>
 					
 					<div id="tab-3" class="tab-pane">
-						<div class="panel-body">
-							<div class="col-lg-12 panel-body tab-panel">
+						<div class="row">
+							<div class="col-lg-12">
+							<div class="hpanel">
+							<div class="panel-heading"></div>
+							<div class="panel-body tab-panel">
+								
 								<form>
 									<h4 class="h4-title">Select Date Range for Firm Fees</h4>
 									<div class="form-group form-horizontal col-md-12">
@@ -149,164 +208,193 @@
 										
 									</div>
 								</form>
-							</div>
-						</div>
+								
+							</div><!-- End of panel-body tab-panel-->
+							</div><!-- End hpanel -->
+							</div><!-- End col-lg-12-->
+						</div><!-- End row-->
+
+						<div class="row">
+							<div class="col-lg-12">
+							<div class="hpanel">
+							<div class="panel-heading"></div>
+							<div class="panel-body tab-panel">
+								
+								<div class="table-responsive"> 	 	 	 	 	 	 	
+									<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+										<thead>
+										<tr>
+											<th>PROVIDER ID</th>
+											<th>PROVIDER NAME</th>
+											<th>CASE ID</th>
+											<th>INDEX NUMBER</th>
+											<th>FFC</th>
+											<th>AF</th>
+											<th>DATE</th>
+											<th>DESCRIPTION</th>
+										</tr>
+										</thead>
+										<tbody>
+										<tr>
+											<td>Abraham</td>
+											<td>076 9477 4896</td>
+											<td>294-318 Duis Ave</td>
+											<td>Vosselaar</td>
+											<td>Belgium</td>
+											<td>076 9477 4896</td>
+											<td>294-318 Duis Ave</td>
+											<td>Vosselaar</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
+
+								
+							</div><!-- End of panel-body tab-panel-->
+							</div><!-- End hpanel -->
+							</div><!-- End col-lg-12-->
+						</div><!-- End row-->
+						
 					</div>
 					
 					<div id="tab-4" class="tab-pane">
-						<div class="panel-body">
-							<div class="col-lg-12 panel-body tab-panel">
-								
+						<div class="row">
+							<div class="col-lg-12">
+							<div class="hpanel">
+							<div class="panel-heading"></div>
+							<div class="panel-body tab-panel">
 								<!-- <p><a href="#">All</a>|<a href="#">A</a>|<a href="#">B</a>|<a href="#">C</a>|<a href="#">D</a>|<a href="#">E</a>|<a href="#">F</a>|<a href="#">G</a>|<a href="#">H</a>|<a href="#">I</a>|<a href="#">J</a>|<a href="#">K</a>|<a href="#">L</a>|<a href="#">M</a>|<a href="#">N</a>|<a href="#">O</a>|<a href="#">P</a>|<a href="#">Q</a>|<a href="#">R</a>|<a href="#">S</a>|<a href="#">T</a>|<a href="#">U</a>|<a href="#">V</a>|<a href="#">W</a>|<a href="#">X</a>|<a href="#">Y</a>|<a href="#">Z</a>|</p> -->
 								
-								<div class="panel-heading"><h4 class="h4-title">Client Cost Balance</h4>
-									<div class="panel-tools">
-										<a class="showhide"><i class="fa fa-chevron-up"></i></a>
-										<a class="closebox"><i class="fa fa-times"></i></a>
+								<div class="form-group form-horizontal col-md-12"> 	 	 	 	 	 	 	
+									<div class="table-responsive col-md-6">
+										<div class="table-responsive">
+											<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+												<thead> 	 	 	 	 	 		 	 	
+												<tr>  	 	 	 	 	 	 	 	 	 	 	 	 	
+													<th>PROVIDER ID</th>
+													<th>PROVIDER NAME</th>
+													<th>COST BALANCE</th>
+												</tr>
+												</thead>
+												<tbody>
+												<tr>
+													<td>Abraham</td>
+													<td>076 9477 4896</td>
+													<td><div class="form-horizontal col-md-5 table-input"> <input type="text" class="form-control input-sm input-height"> </div></td>
+												</tr>
+												</tbody>
+											</table>
+										</div>
 									</div>
 								</div>
-								<table id="example3" class="table table-striped table-bordered table-hover">
-									<thead>
-									<tr>
-										<th>PROVIDER ID</th>
-										<th>PROVIDER NAME</th>
-										<th>COST BALANCE</th>
-									</tr>
-									</thead>
-									<tbody>
-									<tr>
-										<td>Abraham</td>
-										<td>076 9477 4896</td>
-										<td><div class="form-horizontal col-md-5 table-input"> <input type="text" class="form-control input-sm input-height"> </div></td>
-									</tr>
-									<tr>
-										<td>Abraham</td>
-										<td>076 9477 4896</td>
-										<td><div class="form-horizontal col-md-5 table-input"> <input type="text" class="form-control input-sm input-height"> </div></td>
-									</tr>
-									<tr>
-										<td>Abraham</td>
-										<td>076 9477 4896</td>
-										<td><div class="form-horizontal col-md-5 table-input"> <input type="text" class="form-control input-sm input-height"> </div></td>
-									<tr>
-										<td>Abraham</td>
-										<td>076 9477 4896</td>
-										<td><div class="form-horizontal col-md-5 table-input"> <input type="text" class="form-control input-sm input-height"> </div></td>
-									</tr>
-									<tr>
-										<td>Abraham</td>
-										<td>076 9477 4896</td>
-										<td><div class="form-horizontal col-md-5 table-input"> <input type="text" class="form-control input-sm input-height"> </div></td>
-									</tr>
-									<tr>
-										<td>Abraham</td>
-										<td>076 9477 4896</td>
-										<td><div class="form-horizontal col-md-5 table-input"> <input type="text" class="form-control input-sm input-height"> </div></td>
-									</tr>
-									<tr>
-										<td>Abraham</td>
-										<td>076 9477 4896</td>
-										<td><div class="form-horizontal col-md-5 table-input"> <input type="text" class="form-control input-sm input-height"> </div></td>
-									</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
+								<div class="form-group form-horizontal col-md-12">
+									<div class="col-md-4">
+										<button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
+									</div>
+								</div>
+								
+							</div><!-- End of panel-body tab-panel-->
+							</div><!-- End hpanel -->
+							</div><!-- End col-lg-12-->
+						</div><!-- End row-->
+						
 					</div>
 					<div id="tab-5" class="tab-pane">
-						<div class="panel-body">
-							<div class="col-lg-12 panel-body tab-panel">
-								<div class="panel-heading">
-									<div class="panel-tools">
-										<a class="showhide"><i class="fa fa-chevron-up"></i></a>
-										<a class="closebox"><i class="fa fa-times"></i></a>
+						<div class="row">
+							<div class="col-lg-12">
+							<div class="hpanel">
+							<div class="panel-heading"></div>
+							<div class="panel-body tab-panel">
+								
+								<div class="form-group form-horizontal col-md-12"> 	 	 	 	 	 	 	
+									<div class="table-responsive">
+										<div class="table-responsive">
+											<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+												<thead> 	 	 	 	 	 		 	 	
+												<tr>  	 	 	 	 	 	 	 	 	 	 	 	 	
+													<th>Select</th>
+													<th>PROVIDER NAME</th>
+													<th>INSURER NAME</th>
+													<th>CASE ID</th>
+													<th>EXP COST</th>
+													<th>FFB</th>
+													<th>FFC</th>
+													<th>FFREC</th>
+												</tr>
+												</thead>
+												<tbody>
+												<tr>
+													<td><input type="checkbox" value="" /></td>
+													<td>System Architect</td>
+													<td>Edinburgh</td>
+													<td>61</td>
+													<td class="inputt"><input type="text" class="form-control input-sm input-height"></td>
+													<td class="inputt"><input type="text" class="form-control input-sm input-height"></td>
+													<td class="inputt"><input type="text" class="form-control input-sm input-height"></td>
+													<td class="inputt"><input type="text" class="form-control input-sm input-height"></td>
+												</tr>
+												<tr>
+													<td><input type="checkbox" value="" /></td>
+													<td>Accountant</td>
+													<td>Tokyo</td>
+													<td>63</td>
+													<td class="inputt"><input type="text" class="form-control input-sm input-height"></td>
+													<td class="inputt"><input type="text" class="form-control input-sm input-height"></td>
+													<td class="inputt"><input type="text" class="form-control input-sm input-height"></td>
+													<td class="inputt"><input type="text" class="form-control input-sm input-height"></td>
+												</tr>
+												</tbody>
+											</table>
+										</div>
 									</div>
 								</div>
-									<table id="example2" class="table table-striped table-bordered table-hover">
-									<thead>
-									<tr>
-										<th>Select</th>
-										<th>PROVIDER NAME</th>
-										<th>INSURER NAME</th>
-										<th>CASE ID</th>
-										<th>EXP COST</th>
-										<th>FFB</th>
-										<th>FFC</th>
-										<th>FFREC</th>
-									</tr>
-									</thead>
-									<tbody>
-									<tr>
-										<td><input type="checkbox" value="" /></td>
-										<td>System Architect</td>
-										<td>Edinburgh</td>
-										<td>61</td>
-										<td class="inputt"><input type="text" class="form-control input-sm"></td>
-										<td class="inputt"><input type="text" class="form-control input-sm"></td>
-										<td class="inputt"><input type="text" class="form-control input-sm"></td>
-										<td class="inputt"><input type="text" class="form-control input-sm"></td>
-									</tr>
-									<tr>
-										<td>Garrett Winters</td>
-										<td>Accountant</td>
-										<td>Tokyo</td>
-										<td>63</td>
-										<td class="inputt"><input type="text" class="form-control input-sm"></td>
-										<td class="inputt"><input type="text" class="form-control input-sm"></td>
-										<td class="inputt"><input type="text" class="form-control input-sm"></td>
-										<td class="inputt"><input type="text" class="form-control input-sm"></td>
-									</tr>
-									<tr>
-										<td>Sonya Frost</td>
-										<td>Software Engineer</td>
-										<td>Edinburgh</td>
-										<td>23</td>
-										<td class="inputt"><input type="text" class="form-control input-sm"></td>
-										<td class="inputt"><input type="text" class="form-control input-sm"></td>
-										<td class="inputt"><input type="text" class="form-control input-sm"></td>
-										<td class="inputt"><input type="text" class="form-control input-sm"></td>
-									</tr>
-									
-									</tbody>
-									</table>
-									<div class="col-md-2">
-										<button class="btn btn-primary " type="submit" data-toggle="modal" data-target="#myModal"><i class="fa fa-check"></i> Submit</button>
-									</div>
-							</div>
-						</div>
+								
+							</div><!-- End of panel-body tab-panel-->
+							</div><!-- End hpanel -->
+							</div><!-- End col-lg-12-->
+						</div><!-- End row-->
 					</div>
 					
 					<div id="tab-6" class="tab-pane">
-						<div class="panel-body">
-							<div class="col-lg-12 panel-body tab-panel">
-								<table id="example2" class="table table-striped table-bordered table-hover">
-									<thead>	 	 		 	 	 	
-									<tr>
-										<th>Select</th>
-										<th>CASE ID</th>
-										<th>INSURER NAME</th>
-										<th>PROVIDER NAME</th>
-										<th>INSURANCE COMPANY NAME</th>
-										<th>VENUE</th>
-										<th>DATE OPENED </th>
-										<th>DATE PRINTED</th>
-										<th>STATUS</th>
-										<th>COST</th>
-										<th>AWAITING PROVIDER VERIFICATION</th>
-									</tr>
-									</thead>
-									<tbody>
-									<tr>
-										<td colspan="8"><button class="btn btn-primary " type="submit" data-toggle="modal" data-target="#myModal"><i class="fa fa-check"></i>Process</button></td>
-										<td>Checkcount <input type="text" class="form-control input-sm"></td>
-										<td>Total=0 <br> Count=0</td>
-										<td></td>
-									</tr>
-									
-									</tbody>
+						<div class="row">
+							<div class="col-lg-12">
+							<div class="hpanel">
+							<div class="panel-heading"></div>
+							<div class="panel-body tab-panel">
+								
+								<div class="table-responsive"> 	 	 	 	 	 	 	
+									<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+										<thead>
+										<tr>
+											<th>Select</th>
+											<th>CASE ID</th>
+											<th>INSURER NAME</th>
+											<th>PROVIDER NAME</th>
+											<th>INSURANCE COMPANY NAME</th>
+											<th>VENUE</th>
+											<th>DATE OPENED </th>
+											<th>DATE PRINTED</th>
+											<th>STATUS</th>
+											<th>COST</th>
+											<th>AWAITING PROVIDER VERIFICATION</th>
+										</tr>
+										</thead>
+										<tbody>
+										<tr>
+											<td colspan="8"><button class="btn btn-primary " type="submit" data-toggle="modal" data-target="#myModal"><i class="fa fa-check"></i>Process</button></td>
+											<td>Checkcount <input type="text" class="form-control input-sm input-height"></td>
+											<td>Total=0 <br> Count=0</td>
+											<td></td>
+										</tr>
+										</tbody>
 									</table>
-							</div>
-						</div>
+								</div>
+
+								
+							</div><!-- End of panel-body tab-panel-->
+							</div><!-- End hpanel -->
+							</div><!-- End col-lg-12-->
+						</div><!-- End row-->
 					</div>
 				</div>
 			</div>
@@ -342,6 +430,24 @@
 <!-- App scripts -->
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
+	$(function(){
+		$('#datapicker1').datepicker({
+			"autoclose": true,
+			"todayHighlight": true
+		});
+		$('#datapicker2').datepicker({
+			"autoclose": true,
+			"todayHighlight": true
+		});
+		$('#datapicker3').datepicker({
+			"autoclose": true,
+			"todayHighlight": true
+		});
+		$('#datapicker4').datepicker({
+			"autoclose": true,
+			"todayHighlight": true
+		});
+	});
 
     $(function () {
 
@@ -357,15 +463,10 @@
     });
 
 </script>
-$(function(){
-	$('#datapicker1').datepicker();
-	$('#datapicker2').datepicker();
-	$('#datapicker3').datepicker();
-	$('#datapicker4').datepicker();
-});
-</script>
+
 <script>
 	$('.financials').addClass('active');
+	$('.financials-page').addClass('active');
 </script>
 </body>
 </html>

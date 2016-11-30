@@ -43,62 +43,7 @@
 <!-- Header -->
 <?php include 'header.php';?>
 <!-- Navigation -->
-<aside id="menu">
-    <div id="navigation">
-        <ul class="nav" id="side-menu">
-            <li class="active adminprivilege">
-                <a href="#"><span class="nav-label">Admin</span><span class="fa arrow"></span> </a>
-                <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>adminprivilege/manageusers">Admin Privileges</a></li>
-                </ul>
-            </li>
-            <li class="search">
-                <a href="#"><span class="nav-label">Search</span><span class="fa arrow"></span> </a>
-                <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>search/searchs">Search</a></li>
-                    <li><a href="<?php echo base_url();?>search/advancedsearch">Advanced Search</a></li>
-                </ul>
-            </li>
-            <li class="dataentry">
-                <a href="#"><span class="nav-label">Master</span><span class="fa arrow"></span> </a>
-                <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>dataentry/addcase">Data Entry</a></li>
-                </ul>
-            </li>
-             <li class="workarea">
-                <a href="#"><span class="nav-label">Work Area</span><span class="fa arrow"></span> </a>
-                <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>workarea/caseinformation">Case Information</a></li>
-                    <li><a href="<?php echo base_url();?>workarea/dataentryworkarea">Data Entry(Case Entry Only)</a></li>
-                    <li><a href="<?php echo base_url();?>workarea/fileinsert">File Insert</a></li>
-                    <li><a href="<?php echo base_url();?>workarea/workflowreport">WorkFlow Report</a></li>
-                    <li><a href="<?php echo base_url();?>workarea/calendar">Calendar</a></li>
-                </ul>
-            </li>
-            <li class="workdesk">
-                <a href="#"><span class="nav-label">WorkDesk</span><span class="fa arrow"></span> </a>
-                <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>workdesk/workdesks">WorkDesk</a></li>
-                </ul>
-            </li>
-             <li class="financials">
-                <a href="#"><span class="nav-label">Financials</span><span class="fa arrow"></span> </a>
-                <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>financials/financial">Financial</a></li>
-                    <li><a href="<?php echo base_url();?>financials/reports">Reports</a></li>
-                    <li><a href="<?php echo base_url();?>financials/rapidfunds">Rapid Funds</a></li>
-                </ul>
-            </li>
-             <li>
-                	<a href="<?php echo base_url();?>admin/contacts"><span class="nav-label">Contacts</span><span class="fa arrow"></span> </a> 
-            </li>   
-            <li>
-                <a href="<?php echo base_url();?>admin/logout"><span class="nav-label">Logoff</span><span class="fa arrow"></span> </a>
-            </li>        
-      
-        </ul>
-    </div>
-</aside>
+<?php include 'sidebar.php';?>
 <!-- Main Wrapper -->
 <div id="wrapper">
 <?php include 'header_adminprivilege.php';?>
@@ -117,7 +62,7 @@
 				<button type="button" class="btn btn-primary delete" title="Delete User"><i class="fa fa-trash-o"></i></button>
 			</div>
             
-			<table id="example2" class="table table-striped table-bordered table-hover">
+			<table id="manageUsers" class="display table table-striped table-bordered table-hover">
 			<thead>
 				<tr>
 				<th>Desk Info</th>
@@ -129,23 +74,6 @@
 			</tr>
 			</thead>
 			<tbody>
-            <?php foreach($UserName as $row){?>
-				<tr>
-                    <td><?php echo $row['UserName'];?></td>
-                    
-					<td><?php echo $row['UserName'];?></td>
-                    
-					<td><?php echo $row['DisplayName'];?></td>
-                    
-					<td><?php echo $row['RoleName'];?></td>
-					<td>
-                    	<button class="btn btn-primary table-icons" type="button" title="Edit"><i class="fa fa-paste"></i></button>&nbsp;
-                        <button class="btn btn-primary table-icons" type="button" title="Upload"><i class="fa fa-upload"></i></button>&nbsp;
-                    	<button class="btn btn-primary table-icons" type="button" title="Delete"><i class="fa fa-trash-o"></i></button>
-					</td>
-
-				</tr>
-             <?php }?>
 			</tbody>
 			</table>
 			
@@ -303,23 +231,49 @@
 <!-- App scripts -->
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
+	/*$(document).ready(function() {
+		$('#example2').DataTable( {
+			"processing": true,
+			"serverSide": true,
+			"ajax": "<?php echo base_url();?>adminprivilege/manageusers"
+		});
+	});*/
+ 
+	var table;
+	 
+	$(document).ready(function() {
+	 
+		//datatables
+		table = $('#manageUsers').DataTable({ 
+	 
+			"processing": true, //Feature control the processing indicator.
+			"serverSide": true, //Feature control DataTables' server-side processing mode.
+			"order": [], //Initial no order.
+	 
+			// Load data for the table's content from an Ajax source
+			"ajax": {
+				"url": "<?php echo base_url();?>adminprivilege/getAdj",
+				"type": "POST"
+			}
+	 
+		});
+	 
+	});
+
+
+	
 
     $(function () {
 
-        // Initialize Example 1
-        $('#example1').dataTable( {
-            "ajax": 'api/datatables.json'
-        });
-
-        // Initialize Example 2
-        $('#example2').dataTable();
-		$('#example3').dataTable();
+        
+		//$('#manageUsers').dataTable();
 
     });
 
 </script>
 <script>
 	$('.adminprivilege').addClass('active');
+	$('.manageUsers').addClass('active');
 </script>
 </body>
 </html>

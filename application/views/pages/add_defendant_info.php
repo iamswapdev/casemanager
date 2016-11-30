@@ -18,16 +18,20 @@
 <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 <!--<link rel="shortcut icon" type="image/ico" href="favicon.ico" />-->
 
-<!-- Vendor styles -->
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/fontawesome/css/font-awesome.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/animate.css/animate.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
+    <!-- Vendor styles -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/fontawesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/animate.css/animate.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
+    
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.css" />
+    
+    <!-- App styles -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/helper.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/styles/style.css">
 
-<!-- App styles -->
-<link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/helper.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/styles/style.css">
 </head>
 <body>
 <!-- Simple splash screen-->
@@ -63,34 +67,37 @@
 					<div class="panel-body">
 						<div class="col-lg-12 panel-body tab-panel">
 							<form id="addDefendantInfo" action="add_DefendantInfo" method="post" class="form-horizontal">
-								<h5>Defendant Information Information</h5>
-								<div class="form-group">
-									<label class="col-sm-2 control-label">Name</label>
-									<div class="col-sm-6">
-									<input type="text" id="name" name="name" class="form-control input-sm">
+								
+								<div class="form-group form-horizontal col-sm-12 ">
+                                	<h5>Defendant Information</h5>
+									<label class="col-sm-2 control-label">Name <span class="required-field">*</span></label>
+									<div class="col-sm-5">
+									<input type="text" id="name" name="name" class="form-control input-sm" required>
 									</div>
 								</div>
 								
-								<h5>Defendant Contact Details Address</h5>
-								<div class="form-group form-horizontal col-sm-12 ">
-								<label class="col-sm-2 control-label">Address</label>
-								<div class="col-sm-6">
-								<textarea rows="5" id="address" name="address"  class="form-control" ></textarea>
-								</div>
+								
+                                 <div class="form-group form-horizontal col-sm-12 ">
+                                    <h5>Defendant Contact Details</h5>
+                                    <label class="col-sm-2 control-label">Address <span class="required-field">*</span></label>
+                                    <div class="col-sm-5">
+                                    	<textarea rows="3" id="address" name="address"  class="form-control" required ></textarea>
+                                    </div>
 								</div>
 								<div class="form-group form-horizontal col-sm-12">
-									<label class="col-sm-2 control-label">Zip</label>
-									<div class="col-sm-2">
-										<input type="text" id="zip" name="zip"  placeholder="Ex.11111" class="form-control m-b">
+									<label class="col-sm-2 control-label">Zip <span class="required-field">*</span></label>
+									<div class="col-sm-1">
+										<input type="text" id="zip" name="zip"  class="form-control input-sm" required>
 										<!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
 									</div>
-									<label class="col-sm-1 control-label">City</label>
-									<div class="col-sm-2">
-										<input type="text" id="city" name="city" class="form-control m-b">
+									<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
+									<div class="col-sm-1">
+										<input type="text" id="city" name="city" class="form-control input-sm" required>
 									</div>
-									<label class="col-sm-1 control-label">State</label>
-									<div class="col-sm-2">
-										<select class="form-control m-b"  id="state" name="state" >
+									<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
+									<div class="col-sm-1">
+										<select class="form-control input-sm"  id="state" name="state" required>
+                                        	<option selected="selected" value=""></option>
 											<?php foreach($State_Name as $row){?>
 											<option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
 											<?php }?>
@@ -99,22 +106,22 @@
 								</div>
 								<div class="form-group form-horizontal col-sm-12">
 									<label class="col-sm-2 control-label">Email</label>
-									<div class="col-sm-2">
-										<input type="text" id="email" name="email"  placeholder="Ex.abc@pqr.com" class="form-control m-b">
+									<div class="col-sm-1">
+										<input type="text" id="email" name="email"  placeholder="Ex.abc@pqr.com" class="form-control input-sm">
 									</div>
-									<label class="col-sm-1 control-label">Phone</label>
-									<div class="col-sm-2">
-										<input type="text" id="phone" name="phone"  placeholder="Ex.000000" class="form-control m-b">
+									<label class="col-sm-1 control-label">Phone <span class="required-field">*</span></label>
+									<div class="col-sm-1">
+										<input type="text" id="phone" name="phone"  class="form-control input-sm" required>
 									</div>
 									<label class="col-sm-1 control-label">Fax</label>
-									<div class="col-sm-2">
-										<input type="text" id="fax" name="fax"  placeholder="Ex.11111" class="form-control m-b">
+									<div class="col-sm-1">
+										<input type="text" id="fax" name="fax" class="form-control input-sm">
 									</div>
 								</div>
 								<div class="form-group form-horizontal col-md-12">
 									<div class="col-sm-2"> </div>
 									<div class="col-sm-2">
-										<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>
+										<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancel" class="btn btn-primary">Cancel</button>
 									</div>
 								</div>
 							</form>
@@ -125,54 +132,58 @@
 					<div class="panel-body">
 						<div class="col-lg-12 panel-body tab-panel">
 							<form action="" id="updateDefendant" method="post">
-								<h5>Select Defendant To Edit</h5>
-								<div class="form-group col-md-12">
-									<label class="col-md-2 control-label">Name</label>
-									<div class="col-md-6">
-										<select class="form-control input-sm" id="defendantId" name="defendantId">
-											
+								
+								<div class="form-group form-horizontal col-sm-12">
+                                	<h5>Select Defendant To Edit</h5>
+									<label class="col-sm-2 control-label">Name</label>
+									<div class="col-md-5">
+										<select class="form-control input-sm" id="defendantId" name="defendantId" required>
+											<option selected="selected" value=""></option>
 										</select>
 									</div>
 								</div>
 								<div class="form-group form-horizontal col-md-12">
 									<div class="col-md-2"> </div>
 									<div class="col-md-2">
-										<button type="submit" class="btn btn-primary"><i class="fa fa-paste"></i> Edit</button>
+										<button type="submit" class="btn btn-primary"><i class="fa fa-paste"></i> Edit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary">Cancel</button>
 										
 									</div>
 								</div>
 							</form>
                             
                            <form id="updateDefendantInfo" action="updatedefendant" method="post" style="display:none;">
-								<h5>Defendant Information Information</h5>
-								<div class="form-group">
+								
+								<div class="form-group form-horizontal col-sm-12">
+                                	<h5>Defendant Information</h5>
                                 	<input type="hidden" id="defendantIdU" name="defendantId" class="form-control input-sm">
-									<label class="col-sm-2 control-label">Name</label>
-									<div class="col-sm-6">
-										<input type="text" id="nameU" name="name" class="form-control input-sm">
+									<label class="col-sm-2 control-label">Name <span class="required-field">*</span></label>
+									<div class="col-sm-5">
+										<input type="text" id="nameU" name="name" class="form-control input-sm" required>
 									</div>
 								</div>
 								
-								<h5>Defendant Contact Details Address</h5>
-								<div class="form-group form-horizontal col-sm-12 ">
-								<label class="col-sm-2 control-label">Address</label>
-								<div class="col-sm-6">
-								<textarea rows="5" id="addressU" name="address"  class="form-control" ></textarea>
-								</div>
+								
+								<div class="form-group form-horizontal col-sm-12">
+                                    <h5>Defendant Contact Details</h5>
+                                    <label class="col-sm-2 control-label">Address <span class="required-field">*</span></label>
+                                    <div class="col-sm-5">
+                                    	<textarea rows="3" id="addressU" name="address"  class="form-control" required></textarea>
+                                    </div>
 								</div>
 								<div class="form-group form-horizontal col-sm-12">
-									<label class="col-sm-2 control-label">Zip</label>
-									<div class="col-sm-2">
-										<input type="text" id="zipU" name="zip"  placeholder="Ex.11111" class="form-control m-b">
+									<label class="col-sm-2 control-label">Zip <span class="required-field">*</span></label>
+									<div class="col-sm-1">
+										<input type="text" id="zipU" name="zip" class="form-control input-sm" required>
 										<!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
 									</div>
-									<label class="col-sm-1 control-label">City</label>
-									<div class="col-sm-2">
-										<input type="text" id="cityU" name="city" class="form-control m-b">
+									<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
+									<div class="col-sm-1">
+										<input type="text" id="cityU" name="city" class="form-control input-sm" required>
 									</div>
-									<label class="col-sm-1 control-label">State</label>
-									<div class="col-sm-2">
-										<select class="form-control m-b"  id="stateU" name="state" >
+									<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
+									<div class="col-sm-1">
+										<select class="form-control input-sm"  id="stateU" name="state" required>
+											<option selected="selected" value=""></option>
 											<?php foreach($State_Name as $row){?>
 											<option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
 											<?php }?>
@@ -181,22 +192,22 @@
 								</div>
 								<div class="form-group form-horizontal col-sm-12">
 									<label class="col-sm-2 control-label">Email</label>
-									<div class="col-sm-2">
-										<input type="text" id="emailU" name="email"  placeholder="Ex.abc@pqr.com" class="form-control m-b">
+									<div class="col-sm-1">
+										<input type="text" id="emailU" name="email"  placeholder="Ex.abc@pqr.com" class="form-control input-sm">
 									</div>
-									<label class="col-sm-1 control-label">Phone</label>
-									<div class="col-sm-2">
-										<input type="text" id="phoneU" name="phone"  placeholder="Ex.000000" class="form-control m-b">
+									<label class="col-sm-1 control-label">Phone <span class="required-field">*</span></label>
+									<div class="col-sm-1">
+										<input type="text" id="phoneU" name="phone"  class="form-control input-sm" required>
 									</div>
 									<label class="col-sm-1 control-label">Fax</label>
-									<div class="col-sm-2">
-										<input type="text" id="faxU" name="fax"  placeholder="Ex.11111" class="form-control m-b">
+									<div class="col-sm-1">
+										<input type="text" id="faxU" name="fax" class="form-control input-sm">
 									</div>
 								</div>
 								<div class="form-group form-horizontal col-md-12">
 									<div class="col-sm-2"> </div>
 									<div class="col-sm-2">
-										<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary"><i class="fa fa-check"></i> Cancel</button>
+										<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary">Cancel</button>
 									</div>
 								</div>
 							</form>
@@ -243,37 +254,60 @@
 <footer class="footer"> <span class="pull-right"> Example text </span> Company 2015-2020 </footer>
 </div>
 
-<!-- Vendor scripts --> 
-<script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
-<!-- App scripts --> 
-<script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
+    <!-- Vendor scripts --> 
+    <script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
+    
+    <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.js"></script>
+    <!-- App scripts --> 
+    <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
+
 <script>
+	function callSuccess() {
+		swal({
+			title: "Successfully submitted",
+			type: "success"
+		});
+	}
 
 /* Add Defendant information - Tab-1*/ /*---------- Tab-1 --------------------*/
 	$("#addDefendantInfo").validate({
 	
 		rules: {
-					name: {
-						required: true
-					},
-					email: {
-						required: true,
-						email: true
-					},
-					phone:{
-						required: true,
-						number: true
-					}
-					
-				},
+			name: {
+				required: true
+			},
+			address: {
+				required: true
+			},
+			zip: {
+				required: true,
+				number:true
+			},
+			city: {
+				required: true
+			},
+			state: {
+				required: true
+			},
+			phone: {
+				required: true,
+				number:true
+			},
+			email: {
+				email: true
+			}
+			
+		},
 				
 		submitHandler: function (form) {
 			// setup some local variables
@@ -296,12 +330,11 @@
 
 			// callback handler that will be called on success
 			request.done(function (response, textStatus, jqXHR) {
-				// log a message to the console
-				console.log("Hooray, it worked!");
 				$('input[type=text]').val('');
-					$('textarea').val('');
-					$("#state").val('');
-					 $("#myModal").modal("show");
+				$('textarea').val('');
+				$("select").val('');
+				//$("#myModal").modal("show");
+				callSuccess();
 			});
 
 			// callback handler that will be called on failure
@@ -385,20 +418,31 @@
 /*Update Provider information on Tab-2*/  /*----------------- Update ---------------------*/
 	$("#updateDefendantInfo").validate({
 	
-		rules: {
-					name: {
-						required: true
-					},
-					email: {
-						required: true,
-						email: true
-					},
-					phone:{
-						required: true,
-						number: true
-					}
-					
-				},
+		rules: {	
+			name: {
+				required: true
+			},
+			address: {
+				required: true
+			},
+			zip: {
+				required: true,
+				number:true
+			},
+			city: {
+				required: true
+			},
+			state: {
+				required: true
+			},
+			phone: {
+				required: true,
+				number:true
+			},
+			email: {
+				email: true
+			}	
+		},
 				
 		submitHandler: function (form) {
 			// setup some local variables
@@ -427,7 +471,8 @@
 					$('textarea').val('');
 					$("#state").val('');
 					$("#updateDefendantInfo").css("display", "none");
-					 $("#myModal").modal("show");
+					//$("#myModal").modal("show");
+					callSuccess();
 			});
 
 			// callback handler that will be called on failure
@@ -446,7 +491,15 @@
 
 		}
 	});
+	$("#cancel").click(function(){
+		$('input[type=text]').val('');
+		$('select').val('');
+		$('textarea').val('');
+	});
 	$("#cancelUpdate").click(function(){
+		$('input[type=text]').val('');
+		$('select').val('');
+		$('textarea').val('');
 		$("#updateDefendantInfo").css("display", "none");
 	});
 	
@@ -456,6 +509,7 @@
 </script>
 <script>
 	$('.dataentry').addClass('active');
+	$('.defendant').addClass('active');
 </script>
 </body>
 </html>

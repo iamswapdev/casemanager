@@ -86,13 +86,13 @@
                             <tr>
                                 
                               <td><button onClick="edit(this)"> Edit </button></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2" value="ABCCA"> <?php echo $row['DenialReasons_Type']; ?></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm" value="ABCCA"> <?php echo $row['DenialReasons_Type']; ?></td>
                               <td><input type="checkbox" class="i-checks"></td>
                             </tr>
                             <?php } ?>
                             <tr>
                               <td></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
                               <td><a href="#">Add</a></td>
                             </tr>
                           </tbody>
@@ -130,21 +130,21 @@
                             <?php foreach($Court as $row){ ?>
                             <tr>
                               <td><a href="#">Edit</a></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2" value="<?php echo $row['Court_Name']; ?>"></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2" value="<?php echo $row['Court_Venue']; ?>"></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2" value="<?php echo $row['Court_Address']; ?>"></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2" value="<?php echo $row['Court_Basis']; ?>"></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2" value="<?php echo $row['Court_Misc']; ?>"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['Court_Name']; ?>"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['Court_Venue']; ?>"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['Court_Address']; ?>"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['Court_Basis']; ?>"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['Court_Misc']; ?>"></td>
                               <td><input type="checkbox" class="i-checks"></td>
                             </tr>
                             <?php } ?>
                             <tr>
                               <td></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2"></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2"></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2"></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2"></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
                               <td><a href="#">Add</a></td>
                             </tr>
                           </tbody>
@@ -177,13 +177,13 @@
                             <?php foreach($ImageType as $row){ ?>
                             <tr>
                               <td><a href="#">Edit</a></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2" value="<?php echo $row['Image_Type']; ?>"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['Image_Type']; ?>"></td>
                               <td><input type="checkbox" class="i-checks"></td>
                             </tr>
                             <?php } ?>
                             <tr>
                               <td></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
                               <td><a href="#">Add</a></td>
                             </tr>
                           </tbody>
@@ -217,15 +217,15 @@
                             <?php foreach($Status as $row){ ?>
                             <tr>
                               <td><a href="#">Edit</a></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2" value="<?php echo $row['Status_Type']; ?>"></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2" value="<?php echo $row['Status_Abr']; ?>"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['Status_Type']; ?>"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['Status_Abr']; ?>"></td>
                               <td><input type="checkbox" class="i-checks"></td>
                             </tr>
                             <?php } ?>
                             <tr>
                               <td></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2"></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
                               <td><a href="#">Add</a></td>
                             </tr>
                           </tbody>
@@ -258,15 +258,15 @@
                             <?php foreach($CaseStatus as $row){ ?>
                             <tr>
                               <td><a href="#">Edit</a></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2" value="<?php echo $row['name']; ?>"></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2" value="<?php echo $row['description']; ?>"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['name']; ?>"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['description']; ?>"></td>
                               <td><input type="checkbox" class="i-checks"></td>
                             </tr>
                             <?php } ?>
                             <tr>
                               <td></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2"></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
                               <td><a href="#">Add</a></td>
                             </tr>
                           </tbody>
@@ -303,16 +303,16 @@
                             <?php foreach($Doc as $row){ ?>
                             <tr>
                               <td><a href="#">Edit</a></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2" value="<?php echo $row['Doc_Name']; ?>"></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2" value="<?php echo $row['Doc_Value']; ?>"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['Doc_Name']; ?>"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['Doc_Value']; ?>"></td>
                               <td><input type="checkbox" class="i-checks"></td>
                               <td><input type="checkbox" class="i-checks"></td>
                             </tr>
                             <?php } ?>
                             <tr>
                               <td></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2"></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
                               <td><input type="checkbox" class="i-checks"></td>
                               <td><a href="#">Add</a></td>
                             </tr>
@@ -347,15 +347,15 @@
                             <?php foreach($Service as $row){ ?>
                             <tr>
                               <td><a href="#">Edit</a></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2" value="<?php echo $row['ServiceType']; ?>"></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2" value="<?php echo $row['ServiceDesc']; ?>"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['ServiceType']; ?>"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['ServiceDesc']; ?>"></td>
                               <td><input type="checkbox" class="i-checks"></td>
                             </tr>
                             <?php } ?>
                             <tr>
                               <td></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2"></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
                               <td><a href="#">Add</a></td>
                             </tr>
                           </tbody>
@@ -388,13 +388,13 @@
                             <?php foreach($EventType as $row){ ?>
                             <tr>
                               <td><a href="#">Edit</a></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2" value="<?php echo $row['EventTypeName']; ?>"></td>
+                              <td><input type="text" class="form-control input-sm" value="<?php echo $row['EventTypeName']; ?>"></td>
                               <td><input type="checkbox" class="i-checks"></td>
                             </tr>
                             <?php } ?>
                             <tr>
                               <td></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
                               <td><a href="#">Add</a></td>
                             </tr>
                           </tbody>
@@ -427,14 +427,14 @@
                             <?php foreach($EventStatus as $row){ ?>
                             <tr>
                               <td><a href="#">Edit</a></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2" value="<?php echo $row['EventStatusName']; ?>"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm" value="<?php echo $row['EventStatusName']; ?>"></td>
                               <td><input type="checkbox" class="i-checks"></td>
                             </tr>
                             <?php } ?>
                             
                             <tr>
                               <td></td>
-                              <td><input type="text" placeholder="" class="form-control col-sm-2"></td>
+                              <td><input type="text" placeholder="" class="form-control input-sm"></td>
                               <td><a href="#">Add</a></td>
                             </tr>
                           </tbody>
@@ -480,6 +480,7 @@
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
 	$('.dataentry').addClass('active');
+	$('.otherEntries').addClass('active');
 </script>
 <script>
 	$('#example1').dataTable();

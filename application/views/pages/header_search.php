@@ -9,9 +9,9 @@
 
             <div id="hbreadcrumb" style="margin-top:-10px;" class="pull-right">
                 <ol class="hbreadcrumb breadcrumb style-menu">
-                    <li><a href="<?php echo base_url();?>search">Search</a></li>
+                   <!-- <li><a href="<?php// echo base_url();?>search">Search</a></li>-->
                     
-                    <li><a href="<?php echo base_url();?>search/advancedsearch">Advanced Search</a></li>
+                    <li><a href="<?php echo base_url();?>search/advancedsearch">SEARCH</a></li>
                     
                 </ol>
             </div>

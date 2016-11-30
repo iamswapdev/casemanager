@@ -122,6 +122,7 @@
 </script>
 <script>
 	$('.workarea').addClass('active');
+	$('.fileInsert').addClass('active');
 </script>
 </body>
 </html>

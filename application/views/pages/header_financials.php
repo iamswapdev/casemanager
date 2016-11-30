@@ -1,6 +1,6 @@
 <div class="normalheader transition animated fadeIn">
     <div class="hpanel">
-        <div class="panel-body">
+        <div class="panel-body pad-b">
             <a class="small-header-action" href="">
                 <div class="clip-header">
                     <i class="fa fa-arrow-up"></i>
@@ -8,12 +8,12 @@
             </a>
 
             <div id="hbreadcrumb" style="margin-top:-10px;" class="pull-right">
-                <ol class="hbreadcrumb breadcrumb">
-                    <li><a href="<?php echo base_url();?>financials/financial">Financial</a></li>
+                <ol class="hbreadcrumb breadcrumb make-bold">
+                    <li><a class="financials-page" href="<?php echo base_url();?>financials/financial">FINANCIAL</a></li>
                     
-                    <li><a href="<?php echo base_url();?>financials/reports">Reports</a></li>
+                    <li><a class="reports" href="<?php echo base_url();?>financials/reports">REPORTS</a></li>
                     
-                    <li><a href="<?php echo base_url();?>financials/rapidfunds">Rapid Funds</a></li>
+                    <li><a class="rapidFunds" href="<?php echo base_url();?>financials/rapidfunds">RAPID FUNDS</a></li>
                 </ol>
             </div>
             

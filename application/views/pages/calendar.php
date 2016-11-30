@@ -1,10 +1,3 @@
-<?php
-	/*session_cache_limiter('private_no_expire');
-	if( !isset($_SESSION["username"]) && !isset($_SESSION["password"])){
-		
-		header('Location: admin');
-	}*/
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,16 +11,14 @@
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!--<link rel="shortcut icon" type="image/ico" href="favicon.ico" />-->
-
+	
     <!-- Vendor styles -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/fontawesome/css/font-awesome.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/animate.css/animate.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/fullcalendar/dist/fullcalendar.print.css" media='print'/>
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/fullcalendar/dist/fullcalendar.min.css" />
-
 
     <!-- App styles -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
@@ -52,20 +43,16 @@
 <?php include 'header_workarea.php';?>
 <div class="content animate-panel">
 
-	<div class="col-lg-12">
-        <div class="hpanel">
-            <div class="panel-heading">
-                <div class="panel-tools">
-                    <a class="showhide"><i class="fa fa-chevron-up"></i></a>
-                    <a class="closebox"><i class="fa fa-times"></i></a>
-                </div>
-                Calendar
-            </div>
-            <div class="panel-body">
-                <div id="calendar"></div>
-            </div>
-        </div>
-    </div>
+	<div class="row">
+		<div class="col-lg-12">
+		<div class="hpanel">
+		<div class="panel-heading"></div>
+		<div class="panel-body tab-panel">
+			<div id="calendar"></div>
+		</div><!-- End of panel-body tab-panel-->
+		</div><!-- End hpanel -->
+		</div><!-- End col-lg-12-->
+	</div><!-- End row-->
 	
 </div>
                 
@@ -80,38 +67,21 @@
 </div>
 
 
+	<!-- Vendor scripts -->
+	<script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/moment/min/moment.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/fullcalendar/dist/fullcalendar.min.js"></script>
+    
+    <!-- App scripts -->
+    <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
+    
 
-<!-- Vendor scripts -->
-<script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/addactive/addactive.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/fullcalendar/dist/fullcalendar.min.js"></script>
-
-<!-- App scripts -->
-<script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
-<script>
-
-    $(function () {
-
-        // Initialize Example 1
-        $('#example1').dataTable( {
-            "ajax": 'api/datatables.json'
-        });
-
-        // Initialize Example 2
-        $('#example2').dataTable();
-		$('#example3').dataTable();
-
-    });
-
-</script>
 
 <script>
 
@@ -223,6 +193,7 @@
 </script>
 <script>
 	$('.workarea').addClass('active');
+	$('.calendar').addClass('active');
 </script>
 </body>
 </html>

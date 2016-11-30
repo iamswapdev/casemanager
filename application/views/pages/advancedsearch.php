@@ -46,7 +46,6 @@
 <?php include 'sidebar.php';?>
 <!-- Main Wrapper -->
 <div id="wrapper">
-<?php include 'header_workarea.php';?>
 <div class="content animate-panel">
 
 	<div class="row">
@@ -153,68 +152,43 @@
 			<div class="form-group form-horizontal col-md-12 table-responsive">
 				<table id="example2" class="table table-striped table-bordered table-hover dataTable no-footer">
 					<thead>
-						<tr> 	
-							<th>#</th> 	 
+						<tr>
+							<th>#</th> 	 	   	 	    	      	      	     	 	 	 	   	 	
+							<th>EDIT</th>
 							<th>CASE ID</th>
-							<th>Old CASE ID</th>
 							<th>INJURED PARTY</th>
 							<th>PROVIDER</th>
 							<th>INSURANCE COMPANY</th>
 							<th>DOA</th>
-							<th>DATE OF SERVICE</th>
+							<th>DOS-Start</th>
+							<th>DOS-End</th>
 							<th>STATUS</th>
 							<th>CLAIM NUMBER</th>
 							<th>CLAIM AMT.</th>
-							<th>Indexoraaa_number</th>
-							<th>INITIAL_STATUS</th>
+							<th>SELECT</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-							<td>System Architect</td>
-							<td>Edinburgh</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-							<td>$320,800</td>
-							<td>61</td>
-							<td>2011/04/25</td>
-						</tr>
+                    
+                    <?php /*?><?php $i=0; foreach($SearchResult as $row){?>
+						<?php //if($i <= 200 ){?>
+                        <tr>
+                        	<td><?php echo $row['Case_AutoId']?></td>
+                            <td><?php echo "Edit"?></td>
+							<td><?php echo $row['Case_Id']?></td>
+                            <td><?php echo $row['InjuredParty_FirstName'].", ".$row['InjuredParty_LastName']?></td>
+                            <td><?php echo $row['Provider_Id']?></td>
+                            <td><?php echo "Insurance comp name" ?></td>
+                            <td><?php echo $row['Accident_Date']?></td>
+                            <td><?php echo "Dos"?></td>
+                            <td><?php echo "Dos End"?></td>
+                            <td><?php echo $row['Status']?></td>
+                            <td><?php echo $row['Ins_Claim_Number']?></td>
+                            <td><?php echo $row['Claim_Amount']?></td>
+                            <td><?php echo "Select"?></td>
+                        </tr>
+                        <?php // } $i++;?>
+                    <?php }?><?php */?>
 					</tbody>
 				</table>
 			</div>
@@ -259,13 +233,12 @@
     $(function () {
 
         // Initialize Example 1
-        $('#example1').dataTable( {
+        $('#example2').dataTable( {
             "ajax": 'api/datatables.json'
         });
 
         // Initialize Example 2
-        $('#example2').dataTable();
-		$('#example3').dataTable();
+        //$('#example2').dataTable();
 
     });
 

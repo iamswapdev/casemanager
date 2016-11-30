@@ -18,16 +18,20 @@
 <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 <!--<link rel="shortcut icon" type="image/ico" href="favicon.ico" />-->
 
-<!-- Vendor styles -->
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/fontawesome/css/font-awesome.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/animate.css/animate.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
+    <!-- Vendor styles -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/fontawesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/animate.css/animate.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
+    
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.css" />
+    
+    <!-- App styles -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/helper.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/styles/style.css">
 
-<!-- App styles -->
-<link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/helper.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/styles/style.css">
 </head>
 <body>
 <!-- Simple splash screen-->
@@ -65,64 +69,66 @@
 					<div class="col-lg-12 panel-body tab-panel">
 						
 						<form id="addAttorneyInfo" action="add_AttorneyInfo" method="post" class="form-horizontal">
-						<h4>Attorney Information </h4>
+						<h5>Attorney Information </h5>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">Defendant</label>
+							<label class="col-sm-2 control-label">Defendant <span class="required-field">*</span></label>
 							<div class="col-md-5">
-								<select class="form-control input-sm" id="defendantId" name="defendantId" >
+								<select class="form-control input-sm" id="defendantId" name="defendantId" required>
+									<option selected="selected" value=""></option>
 									<?php foreach($Defendant_Name as $row){?>
 									<option value="<?php echo $row['Defendant_id']; ?>"><?php echo $row['Defendant_Name'];?></option>
 									<?php }?>
 								</select>
 							</div>
 						</div>
-						<div class="form-group form-horizontal col-smd-12">
-							<label class="col-sm-2 control-label">Last Name</label>
+						<div class="form-group form-horizontal col-md-12">
+							<label class="col-sm-2 control-label">Last Name <span class="required-field">*</span></label>
 							<div class="col-sm-1">
 								<input type="text" id="lastName" name="lastName" placeholder="Last Name" class="form-control input-sm" required>
 							</div>
-							<label class="col-sm-1 control-label">First Name</label>
+							<label class="col-sm-1 control-label">First Name <span class="required-field">*</span></label>
 							<div class="col-sm-1">
 								<input type="text" id="firstName" name="firstName" placeholder="First Name" class="form-control input-sm" required>
 							</div>
 						</div>
-						<div class="form-group form-horizontal col-smd-12">
-							<label class="col-sm-2 control-label">Zip</label>
+						<div class="form-group form-horizontal col-md-12">
+							<label class="col-sm-2 control-label">Zip <span class="required-field">*</span></label>
 							<div class="col-sm-1">
-								<input type="text" id="zip" name="zip" placeholder="Ex.12345" class="form-control input-sm">
+								<input type="text" id="zip" name="zip" class="form-control input-sm" required>
 							</div>
-							<label class="col-sm-1 control-label">City</label>
+							<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
 							<div class="col-sm-1">
-								<input type="text" id="city" name="city"  class="form-control input-sm">
+								<input type="text" id="city" name="city"  class="form-control input-sm" required>
 							</div>
-							<label class="col-sm-1 control-label">State</label>
+							<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
 							<div class="col-sm-1">
-								<select class="form-control input-sm"  id="state" name="state" >
+								<select class="form-control input-sm"  id="state" name="state" required>
+									<option selected="selected" value=""></option>
 									<?php foreach($State_Name as $row){?>
 									<option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
 									<?php }?>
 								</select>
 							</div>
 						</div>
-						<div class="form-group form-horizontal col-smd-12">
-							<label class="col-sm-2 control-label">Phone</label>
+						<div class="form-group form-horizontal col-md-12">
+							<label class="col-sm-2 control-label">Phone <span class="required-field">*</span></label>
 							<div class="col-sm-1">
 								<input type="text" id="phone" name="phone" placeholder="Ex.12345" class="form-control input-sm" required>
 							</div>
 							<label class="col-sm-1 control-label">Fax</label>
 							<div class="col-sm-1">
-								<input type="text" id="fax" name="fax" placeholder="Ex.12345" class="form-control input-sm">
+								<input type="text" id="fax" name="fax"  class="form-control input-sm">
 							</div>
 							<label class="col-sm-1 control-label">Email</label>
 							<div class="col-sm-1">
-								<input type="text" id="email" name="email" placeholder="abc@pqr.com" class="form-control input-sm" required>
+								<input type="text" id="email" name="email" placeholder="abc@pqr.com" class="form-control input-sm">
 							</div>
 							
 						</div>
 						<div class="form-group form-horizontal col-sm-12">
 							<div class="col-sm-2"> </div>
 							<div class="col-sm-2">
-								<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary"><i class="fa fa-check"></i> Cancel</button>
+								<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancel" class="btn btn-primary">Cancel</button>
 							</div>
 						</div>
 					</form>
@@ -130,101 +136,118 @@
 					</div>
 				</div>
 			</div>
-            <div id="tab-2" class="tab-pane">
-				<div class="panel-body">
-					<div class="col-lg-12 panel-body tab-panel">
-						<div class="form-group form-horizontal col-md-12">
-							
-							<form action="" method="post" id="updateAttorney">
-								<h4>Select Name To Edit</h4>
-								<div class="form-group form-horizontal col-sm-12">
-									<label class="col-sm-2 control-label">Name</label>
-									<div class="col-sm-6">
-										<select class="form-control input-sm" id="attorneyId" name="attorneyId">
-											
-										</select>
-									</div>
-								</div>
-								<div class="form-group form-horizontal col-sm-12">
-									<div class="col-sm-2"> </div>
-									<div class="col-sm-2">
-										<button type="submit" class="btn btn-primary"><i class="fa fa-paste"></i> Edit</button>
-									</div>
-								</div>
-							</form>
-                            
-                            <form id="updateAttorneyInfo" action="updateattorney" method="post" class="form-horizontal" style="display:none;">
-                                <h4>Attorney Information </h4>
-                                <div class="form-group">
-                                	<input type="hidden" id="attorneyIdU" name="attorneyIdU" class="form-control input-sm">
-                                    
-                                    <label class="col-sm-2 control-label">Defendant</label>
-                                    <div class="col-md-5">
-                                        <select class="form-control input-sm" id="defendantIdU" name="defendantIdU" >
-                                            <?php foreach($Defendant_Name as $row){?>
-                                            <option value="<?php echo $row['Defendant_id']; ?>"><?php echo $row['Defendant_Name'];?></option>
-                                            <?php }?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group form-horizontal col-smd-12">
-                                    <label class="col-sm-2 control-label">Last Name</label>
-                                    <div class="col-sm-1">
-                                        <input type="text" id="lastNameU" name="lastName" placeholder="Last Name" class="form-control input-sm" required>
-                                    </div>
-                                    <label class="col-sm-1 control-label">First Name</label>
-                                    <div class="col-sm-1">
-                                        <input type="text" id="firstNameU" name="firstName" placeholder="First Name" class="form-control input-sm" required>
-                                    </div>
-                                </div>
-                                <div class="form-group form-horizontal col-smd-12">
-                                    <label class="col-sm-2 control-label">Zip</label>
-                                    <div class="col-sm-1">
-                                        <input type="text" id="zipU" name="zip" placeholder="Ex.12345" class="form-control input-sm">
-                                    </div>
-                                    <label class="col-sm-1 control-label">City</label>
-                                    <div class="col-sm-1">
-                                        <input type="text" id="cityU" name="city"  class="form-control input-sm">
-                                    </div>
-                                    <label class="col-sm-1 control-label">State</label>
-                                    <div class="col-sm-1">
-                                        <select class="form-control input-sm"  id="stateU" name="state" >
-                                            <?php foreach($State_Name as $row){?>
-                                            <option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
-                                            <?php }?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group form-horizontal col-smd-12">
-                                    <label class="col-sm-2 control-label">Phone</label>
-                                    <div class="col-sm-1">
-                                        <input type="text" id="phoneU" name="phone" placeholder="Ex.12345" class="form-control input-sm" required>
-                                    </div>
-                                    <label class="col-sm-1 control-label">Fax</label>
-                                    <div class="col-sm-1">
-                                        <input type="text" id="faxU" name="fax" placeholder="Ex.12345" class="form-control input-sm">
-                                    </div>
-                                    <label class="col-sm-1 control-label">Email</label>
-                                    <div class="col-sm-1">
-                                        <input type="text" id="emailU" name="email" placeholder="abc@pqr.com" class="form-control input-sm" required>
-                                    </div>
-                                    
-                                </div>
-                                <div class="form-group form-horizontal col-sm-12">
-                                    <div class="col-sm-2"> </div>
-                                    <div class="col-sm-2">
-                                        <button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>
-                                    </div>
-                                </div>
-                            </form>
-							
-						</div>
-					</div>
-				</div>
-			</div>
 			
-        </div>
-          <!--tab content close--> 
+			<div id="tab-2" class="tab-pane">
+				<div class="row">
+					<div class="col-lg-12">
+					<div class="hpanel">
+					<div class="panel-heading"></div>
+					<div class="panel-body tab-panel">
+						<form action="" method="post" id="updateAttorney">
+							<h5>Select Name To Edit</h5>
+							<div class="form-group form-horizontal col-sm-12">
+								<label class="col-sm-2 control-label">Name</label>
+								<div class="col-sm-2">
+									<select class="form-control input-sm" id="attorneyId" name="attorneyId" required>
+										<option selected="selected" value=""></option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group form-horizontal col-sm-12">
+								<div class="col-sm-2"> </div>
+								<div class="col-sm-2">
+									<button type="submit" class="btn btn-primary"><i class="fa fa-paste"></i> Edit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary">Cancel</button>
+								</div>
+							</div>
+						</form>
+					</div><!-- End of panel-body tab-panel-->
+					</div><!-- End hpanel -->
+					</div><!-- End col-lg-12-->
+				</div><!-- End row-->
+
+				<div class="row">
+					<div class="col-lg-12">
+					<div class="hpanel">
+					<div class="panel-heading"></div>
+					<div class="panel-body tab-panel">
+						
+						<form id="updateAttorneyInfo" action="updateattorney" method="post" class="form-horizontal" style="display:none;">
+							
+							<div class="form-group form-horizontal col-md-12">
+								<h5>Defendant Information </h5>
+								<input type="hidden" id="attorneyIdU" name="attorneyIdU" class="form-control input-sm">
+								
+								<label class="col-sm-2 control-label">Defendant <span class="required-field">*</span></label>
+								<div class="col-md-5">
+									<select class="form-control input-sm" id="defendantIdU" name="defendantIdU" required>
+										<option selected="selected" value=""></option>
+										<?php foreach($Defendant_Name as $row){?>
+										<option value="<?php echo $row['Defendant_id']; ?>"><?php echo $row['Defendant_Name'];?></option>
+										<?php }?>
+									</select>
+								</div>
+							</div>
+							<div class="form-group form-horizontal col-md-12">
+								<h5>Attorney Information </h5>
+								<label class="col-sm-2 control-label">Last Name <span class="required-field">*</span></label>
+								<div class="col-sm-1">
+									<input type="text" id="lastNameU" name="lastName" placeholder="Last Name" class="form-control input-sm" required>
+								</div>
+								<label class="col-sm-1 control-label">First Name <span class="required-field">*</span></label>
+								<div class="col-sm-1">
+									<input type="text" id="firstNameU" name="firstName" placeholder="First Name" class="form-control input-sm" required>
+								</div>
+							</div>
+							<div class="form-group form-horizontal col-md-12">
+								<label class="col-sm-2 control-label">Zip <span class="required-field">*</span></label>
+								<div class="col-sm-1">
+									<input type="text" id="zipU" name="zip"  class="form-control input-sm" required>
+								</div>
+								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
+								<div class="col-sm-1">
+									<input type="text" id="cityU" name="city"  class="form-control input-sm" required>
+								</div>
+								<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
+								<div class="col-sm-1">
+									<select class="form-control input-sm"  id="stateU" name="state" >
+										<option selected="selected" value=""></option>
+										<?php foreach($State_Name as $row){?>
+										<option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
+										<?php }?>
+									</select>
+								</div>
+							</div>
+							<div class="form-group form-horizontal col-md-12">
+								<label class="col-sm-2 control-label">Phone <span class="required-field">*</span></label>
+								<div class="col-sm-1">
+									<input type="text" id="phoneU" name="phone" placeholder="Ex.12345" class="form-control input-sm" required>
+								</div>
+								<label class="col-sm-1 control-label">Fax</label>
+								<div class="col-sm-1">
+									<input type="text" id="faxU" name="fax"  class="form-control input-sm">
+								</div>
+								<label class="col-sm-1 control-label">Email</label>
+								<div class="col-sm-1">
+									<input type="text" id="emailU" name="email" placeholder="abc@pqr.com" class="form-control input-sm">
+								</div>
+								
+							</div>
+							<div class="form-group form-horizontal col-sm-12">
+								<div class="col-sm-2"> </div>
+								<div class="col-sm-2">
+									<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary">Cancel</button>
+								</div>
+							</div>
+						</form>
+					</div><!-- End of panel-body tab-panel-->
+					</div><!-- End hpanel -->
+					</div><!-- End col-lg-12-->
+				</div><!-- End row-->
+			</div>
+
+            
+			
+        </div><!--tab content close--> 
         </div>
       </div>
     </div>
@@ -234,7 +257,7 @@
 	<div class="modal-content">
 		<div class="modal-header model-design">
 			<button type="button" class="close close-tab" data-dismiss="modal"> &times;</button>
-			<h4> Data Submitted successfully...... </h4>
+			<h5> Data Submitted successfully...... </h5>
 		</div>
 		<div class="modal-body">
 			<div class="row">
@@ -262,25 +285,36 @@
   <footer class="footer"> <span class="pull-right"> Example text </span> Company 2015-2020 </footer>
 </div>
 
-<!-- Vendor scripts --> 
-<script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
-<!-- App scripts --> 
-<script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
+    <!-- Vendor scripts --> 
+    <script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
+    
+    <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.js"></script>
+    <!-- App scripts --> 
+    <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
+
 <script>
+	function callSuccess() {
+		swal({
+			title: "Successfully submitted",
+			type: "success"
+		});
+	}
 
 /* Add Attorney information - Tab-1*/ /*---------- Tab-1 --------------------*/
 	$("#addAttorneyInfo").validate({
 	
 		rules: {
-			name: {
+			defendantId: {
 				required: true
 			},
 			lastName: {
@@ -289,9 +323,15 @@
 			firstName: {
 				required: true
 			},
-			email: {
+			zip:{
 				required: true,
-				email: true
+				number: true
+			},
+			city:{
+				required: true
+			},
+			state:{
+				required: true
 			},
 			phone:{
 				required: true,
@@ -300,29 +340,10 @@
 			fax:{
 				number: true
 			},
-			zip:{
-				number: true
-			},
-			phoneLocal:{
-				required: true,
-				number: true
-			},
-			faxLocal:{
-				number: true
-			},
-			zipLocal:{
-				number: true
-			},
-			phonePermanent:{
-				required: true,
-				number: true
-			},
-			faxPermanent:{
-				number: true
-			},
-			zipPermanent:{
-				number: true
-			}		
+			email: {
+				email: true
+			}
+					
 		},
 				
 		submitHandler: function (form) {
@@ -346,12 +367,11 @@
 
 			// callback handler that will be called on success
 			request.done(function (response, textStatus, jqXHR) {
-				// log a message to the console
-				console.log("Hooray, it worked!");
 				$('input[type=text]').val('');
-					$('textarea').val('');
-					$("#state").val('');
-					 $("#myModal").modal("show");
+				$('textarea').val('');
+				$("select").val('');
+				//$("#myModal").modal("show");
+				callSuccess();
 			});
 
 			// callback handler that will be called on failure
@@ -435,18 +455,24 @@
 	$("#updateAttorneyInfo").validate({
 	
 		rules: {
-			name: {
+			defendantId: {
 				required: true
 			},
 			lastName: {
 				required: true
 			},
-			firsttName: {
+			firstName: {
 				required: true
 			},
-			email: {
+			zip:{
 				required: true,
-				email: true
+				number: true
+			},
+			city:{
+				required: true
+			},
+			state:{
+				required: true
 			},
 			phone:{
 				required: true,
@@ -455,28 +481,8 @@
 			fax:{
 				number: true
 			},
-			zip:{
-				number: true
-			},
-			phoneLocal:{
-				required: true,
-				number: true
-			},
-			faxLocal:{
-				number: true
-			},
-			zipLocal:{
-				number: true
-			},
-			phonePermanent:{
-				required: true,
-				number: true
-			},
-			faxPermanent:{
-				number: true
-			},
-			zipPermanent:{
-				number: true
+			email: {
+				email: true
 			}				
 		},
 				
@@ -505,7 +511,8 @@
 					$('textarea').val('');
 					$("#state").val('');
 					$("#updateAdjusterInfo").css("display", "none");
-					 $("#myModal").modal("show");
+					//$("#myModal").modal("show");
+					callSuccess();
 			});
 
 			// callback handler that will be called on failure
@@ -525,13 +532,22 @@
 		}
 	});
 /* *************************************************** */	
+	$("#cancel").click(function(){
+		$('input[type=text]').val('');
+		$('select').val('');
+		$('textarea').val('');
+	});
 	$("#cancelUpdate").click(function(){
+		$('input[type=text]').val('');
+		$('select').val('');
+		$('textarea').val('');
 		$("#updateAttorneyInfo").css("display", "none");
 	});
 	$("#ajaxform").submit(); //SUBMIT FORM
 </script>
 <script>
 	$('.dataentry').addClass('active');
+	$('.attorney').addClass('active');
 </script>
 </body>
 </html>

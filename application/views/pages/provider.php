@@ -1,10 +1,3 @@
-<?php
-	/*session_cache_limiter('private_no_expire');
-	if( !isset($_SESSION["username"]) && !isset($_SESSION["password"])){
-		
-		header('Location: admin');
-	}*/
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,16 +11,21 @@
 <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 <!--<link rel="shortcut icon" type="image/ico" href="favicon.ico" />-->
 
-<!-- Vendor styles -->
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/fontawesome/css/font-awesome.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/animate.css/animate.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
+    <!-- Vendor styles -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/fontawesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/animate.css/animate.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
+    
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.css" />
+    
+    
+    <!-- App styles -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/helper.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/styles/style.css">
 
-<!-- App styles -->
-<link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/helper.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/styles/style.css">
 </head>
 <body>
 
@@ -82,9 +80,9 @@
 							<div class="col-md-1">
 							<input type="text" id="taxId" name="taxId" class="form-control input-sm" required>
 							</div>
-                            <label class="col-sm-1 control-label">Type</label>
+                            <label class="col-sm-1 control-label">Type <span class="required-field">*</span></label>
 							<div class="col-md-1">
-								<input type="text" id="type" name="type" class="form-control input-sm">
+								<input type="text" id="type" name="type" class="form-control input-sm" required>
 							</div>
 						</div>
 						<div class="form-group form-horizontal col-md-12">
@@ -100,37 +98,37 @@
 							</div>
 						</div>
 						<div class="form-group form-horizontal col-md-12">
-							<label class="col-sm-2 control-label">Bill Provider for Filing Fees</label>
+							<label class="col-sm-2 control-label">Bill Provider for Filing Fees <span class="required-field">*</span></label>
 							<div class="col-sm-1">
-								<select id="fillingFees" name="fillingFees" class="form-control input-sm" >
-									<option></option>
+								<select id="fillingFees" name="fillingFees" class="form-control input-sm" required>
+									<option selected="selected" value=""></option>
                                     <option value="1">Yes</option>
                                     <option value="0">No</option>
 								</select>
 							</div>
-                            <label class="col-sm-2 control-label">Reimburse Provider for Filing</label>
+                            <label class="col-sm-2 control-label">Reimburse Provider for Filing <span class="required-field">*</span></label>
                             <div class="col-sm-1">
-								<select id="reimburseProvider" name="reimburseProvider" class="form-control input-sm" >
-									<option></option>
+								<select id="reimburseProvider" name="reimburseProvider" class="form-control input-sm" required>
+									<option selected="selected" value=""></option>
                                     <option value="1">Yes</option>
                                     <option value="0">No</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group form-horizontal col-md-12">
-							<label class="col-sm-2 control-label">Cost Balance</label>
+							<label class="col-sm-2 control-label">Cost Balance <span class="required-field">*</span></label>
 							<div class="col-md-1">
-							<input type="text" id="costBalance" name="costBalance" class="form-control input-sm">
+							<input type="text" id="costBalance" name="costBalance" class="form-control input-sm" required>
 							</div>
-                            <label class="col-sm-2 control-label">Invoice Type</label>
+                            <label class="col-sm-2 control-label">Invoice Type <span class="required-field">*</span></label>
 							<div class="col-md-1">
-								<input type="text" id="invoiceType" name="invoiceType" class="form-control input-sm">
+								<input type="text" id="invoiceType" name="invoiceType" class="form-control input-sm" required>
 							</div>
 						</div>
 						<div class="form-group form-horizontal col-md-12">
-							<label class="col-sm-2 control-label">Refered By </label>
+							<label class="col-sm-2 control-label">Refered By <span class="required-field">*</span></label>
 							<div class="col-md-5">
-								<input type="text" id="referedBy" name="referedBy" class="form-control input-sm">
+								<input type="text" id="referedBy" name="referedBy" class="form-control input-sm" required>
 							</div>
 						</div>
 						<div class="form-group form-horizontal col-md-12">
@@ -146,24 +144,24 @@
 									  
 						<h5>Provider Local Address</h5>
 						<div class="form-group form-horizontal col-md-12">
-							<label class="col-sm-2 control-label">Address</label>
+							<label class="col-sm-2 control-label">Address <span class="required-field">*</span></label>
 							<div class="col-sm-5">
-								<textarea rows="3" id="addressLocal" name="addressLocal" class="form-control"></textarea>
+								<textarea rows="3" id="addressLocal" name="addressLocal" class="form-control" required></textarea>
 							</div>
 						</div>
 						<div class="form-group form-horizontal col-md-12">
-							<label class="col-sm-2 control-label">Zip</label>
+							<label class="col-sm-2 control-label">Zip <span class="required-field">*</span></label>
 							<div class="col-sm-1">
-								<input type="text" id="zipLocal" name="zipLocal" placeholder="12345" class="form-control input-sm">
+								<input type="text" id="zipLocal" name="zipLocal" placeholder="12345" class="form-control input-sm" required>
 							</div>
-							<label class="col-sm-1 control-label">City</label>
+							<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
 							<div class="col-sm-1">
-								<input id="cityLocal" name="cityLocal" type="text" class="form-control input-sm">
+								<input id="cityLocal" name="cityLocal" type="text" class="form-control input-sm" required>
 							</div>
-							<label class="col-sm-1 control-label">State</label>
+							<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
 							<div class="col-sm-1">
-								<select id="stateLocal" name="stateLocal" class="form-control input-sm" >
-                                    <option></option>
+								<select id="stateLocal" name="stateLocal" class="form-control input-sm" required>
+                                    <option selected="selected" value=""></option>
 									<?php foreach($State_Name as $row){?>
                                     <option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
                                     <?php }?>
@@ -171,9 +169,9 @@
 							</div>
 						</div>
 						<div class="form-group form-horizontal col-md-12">
-							<label class="col-sm-2 control-label">Phone</label>
+							<label class="col-sm-2 control-label">Phone <span class="required-field">*</span></label>
 							<div class="col-sm-1">
-								<input id="phoneLocal" name="phoneLocal" type="text" class="form-control input-sm">
+								<input id="phoneLocal" name="phoneLocal" type="text" class="form-control input-sm" required>
 							</div>
 							<label class="col-sm-1 control-label">Fax</label>
 							<div class="col-sm-1">
@@ -186,25 +184,31 @@
 						
 						
 						<h5>Provider Permanent Address</h5>
+                        <div class="form-group form-horizontal col-md-12">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-6 checkbox">
+                                <label><input type="checkbox" id="checkbox1" >Check here if permanent address info is same.</label>
+                            </div>
+                        </div>
 						<div class="form-group form-horizontal col-md-12">
-							<label class="col-sm-2 control-label">Address</label>
+							<label class="col-sm-2 control-label">Address <span class="required-field">*</span></label>
 							<div class="col-sm-5">
-								<textarea rows="3" id="addressPermanent" name="addressPermanent" class="form-control" ></textarea>
+								<textarea rows="3" id="addressPermanent" name="addressPermanent" class="form-control" required></textarea>
 							</div>
 						</div>
 						<div class="form-group form-horizontal col-md-12">
-							<label class="col-sm-2 control-label">Zip</label>
+							<label class="col-sm-2 control-label">Zip <span class="required-field">*</span></label>
 							<div class="col-sm-1">
-								<input type="text" id="zipPermanent" name="zipPermanent" placeholder="12345" class="form-control input-sm">
+								<input type="text" id="zipPermanent" name="zipPermanent" placeholder="12345" class="form-control input-sm" required>
 							</div>
-							<label class="col-sm-1 control-label">City</label>
+							<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
 							<div class="col-sm-1">
-								<input id="cityPermanent" name="cityPermanent" type="text" class="form-control input-sm">
+								<input id="cityPermanent" name="cityPermanent" type="text" class="form-control input-sm" required>
 							</div>
-							<label class="col-sm-1 control-label">State</label>
+							<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
 							<div class="col-sm-1">
-								<select id="statePermanent" name="statePermanent" class="form-control input-sm" >
-									<option></option>
+								<select id="statePermanent" name="statePermanent" class="form-control input-sm" required>
+									<option selected="selected" value=""></option>
 									<?php foreach($State_Name as $row){?>
                                     <option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
                                     <?php }?>
@@ -212,21 +216,13 @@
 							</div>
 						</div>
 						<div class="form-group form-horizontal col-md-12">
-							<label class="col-sm-2 control-label">Phone</label>
+							<label class="col-sm-2 control-label">Phone <span class="required-field">*</span></label>
 							<div class="col-sm-1">
-								<input id="phonePermanent" name="phonePermanent" type="text" class="form-control input-sm">
+								<input id="phonePermanent" name="phonePermanent" type="text" class="form-control input-sm" required>
 							</div>
 							<label class="col-sm-1 control-label">Fax</label>
 							<div class="col-sm-1">
 								<input id="faxPermanent" name="faxPermanent" type="text" class="form-control input-sm">
-							</div>
-							<label class="col-sm-1 control-label">Rapid Funds</label>
-							<div class="col-sm-1">
-								<select id="rapidFunds" name="rapidFunds" class="form-control input-sm" >
-								<option></option>
-                                <option value="1">Yes</option>
-								<option value="0">No</option>
-								</select>
 							</div>
 						</div>
 						<div class="form-group form-horizontal col-md-12">
@@ -238,15 +234,15 @@
 							<div class="col-sm-1">
 								<input type="text" id="contact2" name="contact2" class="form-control input-sm">
 							</div>
-							<label class="col-sm-1 control-label">Email</label>
+							<label class="col-sm-1 control-label">Email <span class="required-field">*</span></label>
 							<div class="col-sm-1">
-								<input type="email" id="email" name="email" placeholder="abc@xyz.com" class="form-control input-sm">
+								<input type="email" id="email" name="email" placeholder="abc@xyz.com" class="form-control input-sm" required>
 							</div>
 						</div>
 						<div class="form-group form-horizontal col-sm-12">
 							<div class="col-sm-2"> </div>
 							<div class="col-sm-2">
-							<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>
+							<button type="submit" class="btn btn-primary demo2" ><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancel" class="btn btn-primary">Cancel</button>
 							</div>
 						</div>
 					</form>				  
@@ -263,20 +259,18 @@
 								<form action="" id="updateProvider" method="post" >
                                     <h4 class="h4-title">Select Provider To View </h4>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Name</label>
+                                        <label class="col-sm-2 control-label">Name <span class="required-field">*</span></label>
                                         <div class="col-sm-5">
-                                            <select class="form-control input-sm" id="providerId" name="providerId">
-                                                <option>-- Select Provider --</option>
-                                                <?php foreach($Provider_Name as $row){?>
-                                                <option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option>
-                                                <?php }?>
+                                            <select class="form-control input-sm" id="providerId" name="providerId" required>
+                                                <option selected="selected" value=""></option>
+                                                
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group form-horizontal col-sm-12">
                                         <div class="col-sm-2"> </div>
                                         <div class="col-sm-2">
-                                            <button type="submit" class="btn btn-primary"><i class="fa fa-paste"></i> Edit</button>
+                                            <button type="submit" class="btn btn-primary"><i class="fa fa-paste"></i> Edit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary">Cancel</button>
                                             
                                         </div>
                                     </div>
@@ -305,9 +299,9 @@
                                     <div class="col-md-1">
                                     <input type="text" id="taxIdU" name="taxId" class="form-control input-sm" required>
                                     </div>
-                                    <label class="col-sm-1 control-label">Type</label>
+                                    <label class="col-sm-1 control-label">Type <span class="required-field">*</span></label>
                                     <div class="col-md-1">
-                                        <input type="text" id="typeU" name="type" class="form-control input-sm">
+                                        <input type="text" id="typeU" name="type" class="form-control input-sm" required>
                                     </div>
                                 </div>
                                 <div class="form-group form-horizontal col-md-12">
@@ -323,37 +317,37 @@
                                     </div>
                                 </div>
                                 <div class="form-group form-horizontal col-md-12">
-                                    <label class="col-sm-2 control-label">Bill Provider for Filing Fees</label>
+                                    <label class="col-sm-2 control-label">Bill Provider for Filing Fees <span class="required-field">*</span></label>
                                     <div class="col-sm-1">
-                                        <select id="fillingFeesU" name="fillingFees" class="form-control input-sm" >
-                                            <option></option>
+                                        <select id="fillingFeesU" name="fillingFees" class="form-control input-sm" required>
+                                            <option selected="selected" value=""></option>
                                             <option value="1">Yes</option>
                                             <option value="0">No</option>
                                         </select>
                                     </div>
-                                    <label class="col-sm-2 control-label">Reimburse Provider for Filing</label>
+                                    <label class="col-sm-2 control-label">Reimburse Provider for Filing <span class="required-field">*</span></label>
                                     <div class="col-sm-1">
-                                        <select id="reimburseProviderU" name="reimburseProvider" class="form-control input-sm" >
-                                            <option></option>
+                                        <select id="reimburseProviderU" name="reimburseProvider" class="form-control input-sm" required>
+                                            <option selected="selected" value=""></option>
                                             <option value="1">Yes</option>
                                             <option value="0">No</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group form-horizontal col-md-12">
-                                    <label class="col-sm-2 control-label">Cost Balance</label>
+                                    <label class="col-sm-2 control-label">Cost Balance <span class="required-field">*</span></label>
                                     <div class="col-md-1">
-                                    <input type="text" id="costBalanceU" name="costBalance" class="form-control input-sm">
+                                    <input type="text" id="costBalanceU" name="costBalance" class="form-control input-sm" required>
                                     </div>
-                                    <label class="col-sm-2 control-label">Invoice Type</label>
+                                    <label class="col-sm-2 control-label">Invoice Type <span class="required-field">*</span></label>
                                     <div class="col-md-1">
-                                        <input type="text" id="invoiceTypeU" name="invoiceType" class="form-control input-sm">
+                                        <input type="text" id="invoiceTypeU" name="invoiceType" class="form-control input-sm" required>
                                     </div>
                                 </div>
                                 <div class="form-group form-horizontal col-md-12">
-                                    <label class="col-sm-2 control-label">Refered By </label>
+                                    <label class="col-sm-2 control-label">Refered By <span class="required-field">*</span></label>
                                     <div class="col-md-5">
-                                        <input type="text" id="referedByU" name="referedBy" class="form-control input-sm">
+                                        <input type="text" id="referedByU" name="referedBy" class="form-control input-sm" required>
                                     </div>
                                 </div>
                                 <div class="form-group form-horizontal col-md-12">
@@ -369,24 +363,24 @@
                                               
                                 <h5>Provider Local Address</h5>
                                 <div class="form-group form-horizontal col-md-12">
-                                    <label class="col-sm-2 control-label">Address</label>
+                                    <label class="col-sm-2 control-label">Address <span class="required-field">*</span></label>
                                     <div class="col-sm-5">
-                                        <textarea rows="3" id="addressLocalU" name="addressLocal" class="form-control"></textarea>
+                                        <textarea rows="3" id="addressLocalU" name="addressLocal" class="form-control" required></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group form-horizontal col-md-12">
-                                    <label class="col-sm-2 control-label">Zip</label>
+                                    <label class="col-sm-2 control-label">Zip <span class="required-field">*</span></label>
                                     <div class="col-sm-1">
-                                        <input type="text" id="zipLocalU" name="zipLocal" placeholder="12345" class="form-control input-sm">
+                                        <input type="text" id="zipLocalU" name="zipLocal" placeholder="12345" class="form-control input-sm" required>
                                     </div>
-                                    <label class="col-sm-1 control-label">City</label>
+                                    <label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
                                     <div class="col-sm-1">
-                                        <input id="cityLocalU" name="cityLocal" type="text" class="form-control input-sm">
+                                        <input id="cityLocalU" name="cityLocal" type="text" class="form-control input-sm" required>
                                     </div>
-                                    <label class="col-sm-1 control-label">State</label>
+                                    <label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
                                     <div class="col-sm-1">
-                                        <select id="stateLocalU" name="stateLocal" class="form-control input-sm" >
-                                            <option></option>
+                                        <select id="stateLocalU" name="stateLocal" class="form-control input-sm" required>
+                                            <option selected="selected" value=""></option>
                                             <?php foreach($State_Name as $row){?>
                                             <option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
                                             <?php }?>
@@ -394,9 +388,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group form-horizontal col-md-12">
-                                    <label class="col-sm-2 control-label">Phone</label>
+                                    <label class="col-sm-2 control-label">Phone <span class="required-field">*</span></label>
                                     <div class="col-sm-1">
-                                        <input id="phoneLocalU" name="phoneLocal" type="text" class="form-control input-sm">
+                                        <input id="phoneLocalU" name="phoneLocal" type="text" class="form-control input-sm" required>
                                     </div>
                                     <label class="col-sm-1 control-label">Fax</label>
                                     <div class="col-sm-1">
@@ -410,24 +404,31 @@
                                 
                                 <h5>Provider Permanent Address</h5>
                                 <div class="form-group form-horizontal col-md-12">
-                                    <label class="col-sm-2 control-label">Address</label>
-                                    <div class="col-sm-5">
-                                        <textarea rows="3" id="addressPermanentU" name="addressPermanent" class="form-control" ></textarea>
+                                    <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-6 checkbox">
+                                        <label><input type="checkbox" id="checkbox1" >Check here if permanent address info is same.</label>
                                     </div>
                                 </div>
                                 <div class="form-group form-horizontal col-md-12">
-                                    <label class="col-sm-2 control-label">Zip</label>
-                                    <div class="col-sm-1">
-                                        <input type="text" id="zipPermanentU" name="zipPermanent" placeholder="12345" class="form-control input-sm">
+                                    <label class="col-sm-2 control-label">Address <span class="required-field">*</span></label>
+                                    <div class="col-sm-5">
+                                        <textarea rows="3" id="addressPermanentU" name="addressPermanent" class="form-control" required></textarea>
                                     </div>
-                                    <label class="col-sm-1 control-label">City</label>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-sm-2 control-label">Zip <span class="required-field">*</span></label>
                                     <div class="col-sm-1">
-                                        <input id="cityPermanentU" name="cityPermanent" type="text" class="form-control input-sm">
+                                        <input type="text" id="zipPermanentU" name="zipPermanent" placeholder="12345" class="form-control input-sm" required>
                                     </div>
-                                    <label class="col-sm-1 control-label">State</label>
+                                    <label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
                                     <div class="col-sm-1">
-                                        <select id="statePermanentU" name="statePermanent" class="form-control input-sm" >
-                                            <option></option>
+                                        <input id="cityPermanentU" name="cityPermanent" type="text" class="form-control input-sm" required>
+                                    </div>
+                                    <label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
+                                    <div class="col-sm-1">
+                                        <select id="statePermanentU" name="statePermanent" class="form-control input-sm" required>
+                                            <option selected="selected" value=""></option>
                                             <?php foreach($State_Name as $row){?>
                                             <option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
                                             <?php }?>
@@ -435,21 +436,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group form-horizontal col-md-12">
-                                    <label class="col-sm-2 control-label">Phone</label>
+                                    <label class="col-sm-2 control-label">Phone <span class="required-field">*</span></label>
                                     <div class="col-sm-1">
-                                        <input id="phonePermanentU" name="phonePermanent" type="text" class="form-control input-sm">
+                                        <input id="phonePermanentU" name="phonePermanent" type="text" class="form-control input-sm" required>
                                     </div>
                                     <label class="col-sm-1 control-label">Fax</label>
                                     <div class="col-sm-1">
                                         <input id="faxPermanentU" name="faxPermanent" type="text" class="form-control input-sm">
-                                    </div>
-                                    <label class="col-sm-1 control-label">Rapid Funds</label>
-                                    <div class="col-sm-1">
-                                        <select id="rapidFundsU" name="rapidFunds" class="form-control input-sm" >
-                                        <option></option>
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
-                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group form-horizontal col-md-12">
@@ -461,15 +454,15 @@
                                     <div class="col-sm-1">
                                         <input type="text" id="contact2U" name="contact2" class="form-control input-sm">
                                     </div>
-                                    <label class="col-sm-1 control-label">Email</label>
+                                    <label class="col-sm-1 control-label">Email <span class="required-field">*</span></label>
                                     <div class="col-sm-1">
-                                        <input type="email" id="emailU" name="email" placeholder="abc@xyz.com" class="form-control input-sm">
+                                        <input type="email" id="emailU" name="email" placeholder="abc@xyz.com" class="form-control input-sm" required>
                                     </div>
                                 </div>
                                 <div class="form-group form-horizontal col-sm-12">
                                     <div class="col-sm-2"> </div>
                                     <div class="col-sm-2">
-                                    <button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary"><i class="fa fa-check"></i> Cancel</button>
+                                    <button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary">Cancel</button>
                                     </div>
                                 </div>
                             </form>	
@@ -517,36 +510,93 @@
   <footer class="footer"> <span class="pull-right"> Example text </span> Company 2015-2020 </footer>
 </div>
 
-<!-- Vendor scripts --> 
-<script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <!-- Vendor scripts --> 
+    <script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
+    
+    <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.js"></script>
+    
+    <!-- App scripts -->
+    <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
+
 
 <script>
+	function callSuccess() {
+		swal({
+			title: "Successfully submitted",
+			type: "success"
+		});
+	}
+
+	$("#cancel").click(function(){
+		$('input[type=text]').val('');
+		$('select').val('');
+		$('textarea').val('');
+	});
+	$('#checkbox1').change(function() {
+		if ($(this).is(':checked')) {
+			var addressLocal = $("textarea[name=addressLocal]").val();
+			var zipLocal = $("input[name=zipLocal]").val();
+			var cityLocal = $("input[name=cityLocal]").val();
+			var stateLocal = $("select[name=stateLocal]").val();
+			var phoneLocal = $("input[name=phoneLocal]").val();
+			var faxLocal = $("input[name=faxLocal]").val();
+			console.log("okkk");
+			$('textarea[name=addressPermanent]').val(addressLocal);
+			$('input[name=zipPermanent]').val(zipLocal);
+			$('input[name=cityPermanent]').val(cityLocal);
+			$('select[name=statePermanent]').val(stateLocal);
+			$('input[name=phonePermanent]').val(phoneLocal);
+			$('input[name=faxPermanent]').val(faxLocal);
+			
+		}else{
+			$('#addressPermanent').val("");
+			$('#zipaPermanent').val("");
+			$('#cityPermanent').val("");
+			$('#statePermanent').val("");
+			$('#phonePermanent').val("");
+			$('#faxPermanent').val("");
+		}
+		
+		
+    });
 
 /* Add Provider information - Tab-1*/ /*---------- Tab-1 --------------------*/
 	$("#addProviderInfo").validate({
 	
 		rules: {
-			costBalance:{
-				number: true
+			name: {
+				required: true
+			},
+			president:{
+				required: true
 			},
 			taxId:{
+				required: true,
 				number: true
 			},
+			type:{
+				required: true
+			},
 			collectionBilling:{
+				required: true,
 				number: true
 			},
 			interesBilling:{
+				required: true,
 				number: true
 			},
-			name: {
-				required: true
+			costBalance:{
+				required: true,
+				number: true
 			},
 			lastName: {
 				required: true
@@ -566,6 +616,7 @@
 				number: true
 			},
 			zip:{
+				required: true,
 				number: true
 			},
 			phoneLocal:{
@@ -576,7 +627,14 @@
 				number: true
 			},
 			zipLocal:{
+				required: true,
 				number: true
+			},
+			cityLocal:{
+				required: true
+			},
+			stateLocal:{
+				required: true
 			},
 			phonePermanent:{
 				required: true,
@@ -586,8 +644,15 @@
 				number: true
 			},
 			zipPermanent:{
+				required: true,
 				number: true
-			}		
+			},
+			cityPermanent:{
+				required: true
+			},
+			statePermanent:{
+				required: true
+			},		
 		},
 				
 		submitHandler: function (form) {
@@ -611,12 +676,12 @@
 
 			// callback handler that will be called on success
 			request.done(function (response, textStatus, jqXHR) {
-				// log a message to the console
-				console.log("Hooray, it worked!");
 				$('input[type=text]').val('');
-					$('textarea').val('');
-					$("#state").val('');
-					 $("#myModal").modal("show");
+				$('textarea').val('');
+				$("select").val('');
+				//$("#myModal").modal("show");
+				callSuccess();
+				$("#updateProviderInfo").css("display", "none");
 			});
 
 			// callback handler that will be called on failure
@@ -802,7 +867,9 @@
 					$('textarea').val('');
 					$("#state").val('');
 					$("#updateProviderInfo").css("display", "none");
-					 $("#myModal").modal("show");
+					//$("#myModal").modal("show");
+					callSuccess();
+					
 			});
 
 			// callback handler that will be called on failure
@@ -822,10 +889,9 @@
 		}
 	});
 /* *************************************************** */
-$("#cancelUpdate").click(function(){
-	$("#updateProviderInfo").css("display", "none");
-});	
-	$("#ajaxform").submit(); //SUBMIT FORM
+	$("#cancelUpdate").click(function(){
+		$("#updateProviderInfo").css("display", "none");
+	});	
 </script>
 
 <!-- App scripts --> 
@@ -875,6 +941,7 @@ $("#cancelUpdate").click(function(){
 </script>
 <script>
 	$('.dataentry').addClass('active');
+	$('.provider').addClass('active');
 </script>
 </body>
 </html>

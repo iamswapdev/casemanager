@@ -40,11 +40,8 @@
                 </ul>
             </li>
             <li class="search">
-                <a href="#"><span class="nav-label">Search</span><span class="fa arrow"></span> </a>
-                <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>search/searchs">Search</a></li>
-                    <li><a href="<?php echo base_url();?>search/advancedsearch">Advanced Search</a></li>
-                </ul>
+                <a href="<?php echo base_url();?>search/advancedsearch"><span class="nav-label">Search</span><span class="fa arrow"></span> </a>
+                
             </li>
             <li class="dataentry">
                 <a href="#"><span class="nav-label">Master</span><span class="fa arrow"></span> </a>
@@ -55,7 +52,6 @@
              <li class="workarea">
                 <a href="#"><span class="nav-label">Work Area</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>workarea/caseinformation">Case Information</a></li>
                     <li><a href="<?php echo base_url();?>workarea/dataentryworkarea">Data Entry(Case Entry Only)</a></li>
                     <li><a href="<?php echo base_url();?>workarea/fileinsert">File Insert</a></li>
                     <li><a href="<?php echo base_url();?>workarea/workflowreport">WorkFlow Report</a></li>

@@ -48,13 +48,13 @@
 			$data=$query->result_array();
 			return $data;
 		}
-		public function deleteRoles($data)
+		public function deleteRoles($roleId_array)
 		{
-			$data1 = array();
-			$data1 = $data;
+			//$data1 = array();
+			//$data1 = $data;
 			//$data1 = $data['delete_Role'];
-			print_r($data1); exit();
-			foreach($data1 as $id){
+			//print_r($data1); exit();
+			foreach($roleId_array as $id){
 				$this->db->where('RoleId', $id);
 				$this->db->delete('dbo_issuetracker_roles');
 			}

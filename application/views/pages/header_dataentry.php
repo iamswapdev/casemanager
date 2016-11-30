@@ -1,6 +1,6 @@
 <div class="normalheader transition animated fadeIn">
     <div class="hpanel">
-        <div class="panel-body">
+        <div class="panel-body pad-b">
             <a class="small-header-action" href="">
                 <div class="clip-header">
                     <i class="fa fa-arrow-up"></i>
@@ -8,25 +8,22 @@
             </a>
 
             <div id="hbreadcrumb" style="margin-top:-10px;" class="pull-right">
-                <ol class="hbreadcrumb breadcrumb">
-                    <li class="show-nav"><a href="<?php echo base_url();?>dataentry/addcase">Add case info</a>
-                    	<ul>
-                          <li class="nav nav-second-level hide"> Add case info</li>
-                          <li class="nav nav-second-level hide"> Edit case info</li>
-                        </ul></li>
-                    <li><a href="<?php echo base_url();?>dataentry/provider">Provider</a></li>
+                <ol class="hbreadcrumb breadcrumb make-bold">
+                    <li ><a class="addCaseInfo" href="<?php echo base_url();?>dataentry/addcase">ADD CASE INFO</a></li>
                     
-                    <li><a href="<?php echo base_url();?>dataentry/insurancecompany">Insurance Company</a></li>
+                    <li><a class="provider" href="<?php echo base_url();?>dataentry/provider">PROVIDER</a></li>
                     
-                    <li><a id="ThisLink" href="<?php echo base_url();?>dataentry/defendant">Defendant</a></li>
+                    <li><a class="insuranceCompnay" href="<?php echo base_url();?>dataentry/insurancecompany">INSURANCE COMPANY</a></li>
                     
-                    <li><a id="ThisLink" href="<?php echo base_url();?>dataentry/adjuster">Adjuster</a></li>
+                    <li><a class="defendant" id="ThisLink" href="<?php echo base_url();?>dataentry/defendant">DEFENDANT</a></li>
                     
-                    <li><a id="ThisLink" href="<?php echo base_url();?>dataentry/attorney">Attorney</a></li>
+                    <li><a class="adjuster" id="ThisLink" href="<?php echo base_url();?>dataentry/adjuster">ADJUSTER</a></li>
                     
-                    <li><a id="ThisLink" href="<?php echo base_url();?>dataentry/plantiffattorney">Plantiff Attorney</a></li>
+                    <li><a class="attorney" id="ThisLink" href="<?php echo base_url();?>dataentry/attorney">ATTORNEY</a></li>
                     
-                    <li><a id="ThisLink" href="<?php echo base_url();?>dataentry/otherentries">Other Entries</a></li>
+                    <li><a class="plantiffAttorney" id="ThisLink" href="<?php echo base_url();?>dataentry/plantiffattorney">PLANTIFF ATTORNEY</a></li>
+                    
+                    <li><a class="otherEntries" id="ThisLink" href="<?php echo base_url();?>dataentry/otherentries">OTHER ENTRIES</a></li>
                     <!--<li class="active">
                         <span>Contacts</span>
                     </li>-->

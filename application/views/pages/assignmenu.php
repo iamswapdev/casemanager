@@ -90,7 +90,8 @@
 					<option>option 4</option>
 					</select>
 				</div>
-			
+				<div class="col-sm-1"><br><br><button type="button" class="btn btn-primary"><p> << </p></button><br><br><button type="button" class="btn btn-primary"><p> << </p></button>
+                </div>
 				<div class="col-sm-4">List Assigned Menus To A Role<select class="form-control input-sm input-rows" name="account" multiple>
 						<option>Admin</option>
 						<option>Master</option>
@@ -158,6 +159,7 @@
 </script>
 <script>
 	$('.adminprivilege').addClass('active');
+	$('.assignMenu').addClass('active');
 </script>
 </body>
 </html>

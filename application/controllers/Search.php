@@ -31,7 +31,8 @@ class Search extends CI_Controller{
 		$this->session->all_userdata();
 		$this->session->all_userdata();
 		if(isset($this->session->userdata['logged_in'])){
-			$this->load->view('pages/advancedsearch');
+			$data['SearchResult']=$this->search_model->get_SearchResult();
+			$this->load->view('pages/advancedsearch',$data);
 		}else{
 			$this->load->view('pages/login');
 		}

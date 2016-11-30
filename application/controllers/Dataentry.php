@@ -16,6 +16,8 @@ session_cache_limiter('private_no_expire');
 				$this->load->view('pages/login');
 			}	
 		}
+
+/* ************************************  Start of Addcase  *************************************************************************/
 		public function addcase(){
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
@@ -28,6 +30,42 @@ session_cache_limiter('private_no_expire');
 				$data['DenialReasons']= $this->dataentry_model->get_DenialReasons();
 				
 				$this->load->view('pages/addcase',$data);
+			}else{
+				$this->load->view('pages/login');
+			}
+		}
+		public function add_CaseInfo(){
+			$this->session->all_userdata();
+			if(isset($this->session->userdata['logged_in'])){
+				
+				$data = array(
+					'Initial_Status' => $this->input->post('initialStatus'),
+					'Provider_Id' => $this->input->post('providerId'),
+					'InjuredParty_LastName' => $this->input->post('injuredPartyLastName'),
+					'InjuredParty_FirstName' => $this->input->post('injuredPartyFirstName'),
+					'InsuredParty_LastName' => $this->input->post('insuredPartyLastName'),
+					'InsuredParty_FirstName' => $this->input->post('insuredPartyFirstName'),
+					'InsuranceCompany_Id' => $this->input->post('insuranceCompanyId'),
+					'Policy_Number' => $this->input->post('policyNumber'),
+					'Ins_Claim_Number' => $this->input->post('insClaimNumber'),
+					'Accident_Date' => $this->input->post('accidentDate'),
+					'Status' => $this->input->post('Status'),
+					'IndexOrAAA_Number' => $this->input->post('indexOrAAANumber'),
+					'Court_Id' => $this->input->post('courtId'),
+					'DateOfService_Start' => $this->input->post('dateOfServiceStart'),
+					'DateOfService_End' => $this->input->post('dateOfServiceEnd'),
+					'Claim_Amount' => $this->input->post('claimAmt'),
+					'Paid_Amount' => $this->input->post('paidAmt'),
+					'Date_BillSent' => $this->input->post('dateBillSent'),
+					'DenialReasons_Type' => $this->input->post('denialReasons'),
+					'Memo' => $this->input->post('memo')
+				);
+				$success = $this->dataentry_model->insert_CaseInfo($data);
+				//echo "<pre> "; print_r($data); exit();
+				if($success){
+					return true;
+					//$this->load->view('pages/submitted');
+				}
 			}else{
 				$this->load->view('pages/login');
 			}
@@ -104,8 +142,6 @@ session_cache_limiter('private_no_expire');
 			$success = $this->dataentry_model->update_ProviderInfo($data);
 			echo json_encode($data);
 		}
-		
-/* ************************************  End of Provider  *************************************************************************/
 
 /* ************************************  Start of Insurance  *************************************************************************/		
 		
@@ -179,7 +215,6 @@ session_cache_limiter('private_no_expire');
 			$success = $this->dataentry_model->update_InsuranceInfo($data);
 			echo json_encode($data);
 		}
-/* ************************************  End of Insurance  *************************************************************************/
 
 /* ************************************  Start of Defendant  *************************************************************************/	
 		public function defendant(){
@@ -236,7 +271,6 @@ session_cache_limiter('private_no_expire');
 			$success = $this->dataentry_model->update_DefendantInfo($data);
 			echo json_encode($data);
 		}
-/* ************************************  End of Defendant  *************************************************************************/
 		
 /* ************************************  Start of Adjuster  *************************************************************************/
 		
@@ -295,8 +329,6 @@ session_cache_limiter('private_no_expire');
 			$success = $this->dataentry_model->update_AdjusterInfo($data);
 			echo json_encode($data);
 		}
-		
-/* ************************************  End of Adjuster  *************************************************************************/
 		
 		
 /* ************************************  Start of Attorney  *************************************************************************/		
@@ -358,13 +390,12 @@ session_cache_limiter('private_no_expire');
 			$success = $this->dataentry_model->update_AttorneyInfo($data);
 			echo json_encode($data);
 		}
-		
-/* ************************************  End of Attorney  *************************************************************************/
 
 /* ************************************  Start of PlantiffAttorney  *************************************************************************/
 		public function plantiffattorney(){
 			if(isset($this->session->userdata['logged_in'])){
-				$this->load->view('pages/plaintiff_attorney');
+				$data['State_Name']= $this->dataentry_model->get_States();
+				$this->load->view('pages/plaintiff_attorney',$data);
 			}else{
 				$this->load->view('pages/login');
 			} 
@@ -402,7 +433,7 @@ session_cache_limiter('private_no_expire');
 		}
 		public function updateplantiff(){
 			$data = array(
-				'Attorney_Id' => $this->input->post('attorneyId'),
+				'Attorney_id' => $this->input->post('plantiffId'),
 				'Attorney_Name' => $this->input->post('name'),
 				'Attorney_Address' => $this->input->post('address'),
 				'Attorney_Zip' => $this->input->post('zip'),
@@ -415,8 +446,6 @@ session_cache_limiter('private_no_expire');
 			$success = $this->dataentry_model->update_PlantiffInfo($data);
 			echo json_encode($data);
 		}
-		
-/* ************************************  End of PlantiffAttorney  *************************************************************************/
 
 /* ************************************  Start of otherentries  *************************************************************************/
 		public function otherentries(){

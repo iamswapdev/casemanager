@@ -11,16 +11,20 @@
 <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 <!--<link rel="shortcut icon" type="image/ico" href="favicon.ico" />-->
 
-<!-- Vendor styles -->
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/fontawesome/css/font-awesome.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/animate.css/animate.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
+    <!-- Vendor styles -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/fontawesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/animate.css/animate.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
+    
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.css" />
+    
+    <!-- App styles -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/helper.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/styles/style.css">
 
-<!-- App styles -->
-<link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/helper.css" />
-<link rel="stylesheet" href="<?php echo base_url();?>assets/styles/style.css">
 </head>
 <body>
 
@@ -58,47 +62,47 @@
 					<div class="col-lg-12 panel-body tab-panel">
 						
 						<form id="addInsuranceInfo" action="add_InsuranceInfo" method="post" class="form-horizontal">
-							<h4>Insurance Company Information</h4>
+							<h5>Insurance Company Information</h5>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">Name <span class="required-field">*</span></label>
-								<div class="col-sm-6">
+								<div class="col-sm-5">
 									<input type="text" id="name" name="name" class="form-control input-sm" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">Suit <span class="required-field">*</span></label>
-								<div class="col-sm-6">
+								<div class="col-sm-5">
 									<input type="text" id="suit" name="suit" class="form-control input-sm" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">Type <span class="required-field">*</span></label>
-								<div class="col-sm-6">
+								<div class="col-sm-5">
 									<input type="text" id="type" name="type" class="form-control input-sm" required>
 								</div>
 							</div>
 							
-							<h4>Insurance Company Local Address</h4>
+							<h5>Insurance Company Local Address</h5>
 							<div class="form-group form-horizontal col-sm-12 ">
-								<label class="col-sm-2 control-label">Address</label>
-								<div class="col-sm-6">
-									<textarea rows="5" id="addressLocal" name="addressLocal" class="form-control"></textarea>
+								<label class="col-sm-2 control-label">Address <span class="required-field">*</span></label>
+								<div class="col-sm-5">
+									<textarea rows="3" id="addressLocal" name="addressLocal" class="form-control" required></textarea>
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-sm-12">
-								<label class="col-sm-2 control-label">Zip</label>
-								<div class="col-sm-2">
-									<input type="text" id="zipLocal" name="zipLocal" placeholder="Ex.11111" class="form-control input-sm">
+								<label class="col-sm-2 control-label">Zip <span class="required-field">*</span></label>
+								<div class="col-sm-1">
+									<input type="text" id="zipLocal" name="zipLocal"  class="form-control input-sm" required>
 									<!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
 								</div>
-								<label class="col-sm-1 control-label">City</label>
-								<div class="col-sm-2">
-									<input type="text" id="cityLocal" name="cityLocal" placeholder="Ex.11111" class="form-control input-sm">
+								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
+								<div class="col-sm-1">
+									<input type="text" id="cityLocal" name="cityLocal" class="form-control input-sm" required>
 								</div>
-								<label class="col-sm-1 control-label">State</label>
-								<div class="col-sm-2">
-									<select class="form-control input-sm"  id="stateLocal" name="stateLocal">
-										<option>-- Select State --</option>
+								<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
+								<div class="col-sm-1">
+									<select class="form-control input-sm"  id="stateLocal" name="stateLocal" required>
+										<option selected="selected" value=""></option>
 										<?php foreach($State_Name as $row){?>
                                         <option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
                                         <?php }?>
@@ -107,35 +111,41 @@
 							</div>
 							<div class="form-group form-horizontal col-sm-12">
 								<label class="col-sm-2 control-label">Phone <span class="required-field">*</span></label>
-								<div class="col-sm-2">
-									<input type="text" id="phoneLocal" name="phoneLocal" placeholder="Ex.000000" class="form-control input-sm" required>
+								<div class="col-sm-1">
+									<input type="text" id="phoneLocal" name="phoneLocal" class="form-control input-sm" required>
 								</div>
 								<label class="col-sm-1 control-label">Fax</label>
-								<div class="col-sm-2">
-									<input type="text" id="faxLocal" name="faxLocal" placeholder="Ex.11111" class="form-control input-sm">
+								<div class="col-sm-1">
+									<input type="text" id="faxLocal" name="faxLocal" class="form-control input-sm">
 								</div>
 							</div>
 							
-							<h4>Insurance Company Perm.Address</h4>
+							<h5>Insurance Company Perm.Address</h5>
+                            <div class="form-group form-horizontal col-md-12">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-6 checkbox">
+                                    <label><input type="checkbox" id="checkbox1" >Check here if permanent address info is same.</label>
+                                </div>
+                            </div>
 							<div class="form-group form-horizontal col-sm-12 ">
-								<label class="col-sm-2 control-label">Address</label>
-								<div class="col-sm-6">
-									<textarea rows="5" id="addressPermanent" name="addressPermanent" class="form-control" ></textarea>
+								<label class="col-sm-2 control-label">Address <span class="required-field">*</span></label>
+								<div class="col-sm-5">
+									<textarea rows="3" id="addressPermanent" name="addressPermanent" class="form-control" required></textarea>
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-sm-12">
-								<label class="col-sm-2 control-label">Zip</label>
-								<div class="col-sm-2">
-									<input type="text" id="zipPermanent" name="zipPermanent" placeholder="Ex.12345" class="form-control input-sm">
+								<label class="col-sm-2 control-label">Zip <span class="required-field">*</span></label>
+								<div class="col-sm-1">
+									<input type="text" id="zipPermanent" name="zipPermanent" class="form-control input-sm" required>
 								</div>
-								<label class="col-sm-1 control-label">City</label>
-								<div class="col-sm-2">
-									<input type="text" id="cityPermanent" name="cityPermanent" placeholder="Ex.11111" class="form-control input-sm">
+								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
+								<div class="col-sm-1">
+									<input type="text" id="cityPermanent" name="cityPermanent" class="form-control input-sm" required>
 								</div>
-								<label class="col-sm-1 control-label">State</label>
-								<div class="col-sm-2">
-									<select class="form-control input-sm" id="statePermanent" name="statePermanent" >
-										<option>-- Select State --</option>
+								<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
+								<div class="col-sm-1">
+									<select class="form-control input-sm" id="statePermanent" name="statePermanent" required>
+										<option selected="selected" value=""></option>
 										<?php foreach($State_Name as $row){?>
                                         <option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
                                         <?php }?>
@@ -144,18 +154,18 @@
 							</div>
 							<div class="form-group form-horizontal col-sm-12">
 								<label class="col-sm-2 control-label">Phone <span class="required-field">*</span></label>
-								<div class="col-sm-2">
-									<input type="text" id="phonePermanent" name="phonePermanent" placeholder="Ex.12345" class="form-control input-sm" required>
+								<div class="col-sm-1">
+									<input type="text" id="phonePermanent" name="phonePermanent" class="form-control input-sm" required>
 								</div>
 								<label class="col-sm-1 control-label">Fax</label>
-								<div class="col-sm-2">
-									<input type="text" id="faxPermanent" name="faxPermanent" placeholder="Ex.12345" class="form-control input-sm">
+								<div class="col-sm-1">
+									<input type="text" id="faxPermanent" name="faxPermanent" class="form-control input-sm">
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-sm-12">
 								<div class="col-sm-2"> </div>
 								<div class="col-sm-2">
-									<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>
+									<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancel" class="btn btn-primary">Cancel</button>
 								</div>
 							</div>
 						</form>
@@ -171,19 +181,19 @@
 							<div class="form-group form-horizontal col-md-12">
 								
 								<form action="" id="updateInsurance" method="post">
-									<h4>Select Insurer To Edit</h4>
+									<h5>Select Insurer To Edit</h5>
 									<div class="form-group form-horizontal col-sm-12">
-										<label class="col-sm-2 control-label">Name</label>
+										<label class="col-sm-2 control-label">Name <span class="required-field">*</span></label>
 										<div class="col-sm-5">
-											<select class="form-control input-sm" id="insuranceId" name="insuranceId">
-												
+											<select class="form-control input-sm" id="insuranceId" name="insuranceId" required>
+												<option selected="selected" value=""></option>
 											</select>
 										</div>
 									</div>
 									<div class="form-group form-horizontal col-sm-12">
 										<div class="col-sm-2"> </div>
 										<div class="col-sm-2">
-											<button class="btn btn-primary" type="submit"><i class="fa fa-paste"></i> Edit</button>
+											<button class="btn btn-primary" type="submit"><i class="fa fa-paste"></i> Edit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary">Cancel</button>
 										</div>
 									</div>
 								</form>
@@ -191,48 +201,48 @@
 							
 							<div class="form-group form-horizontal col-md-12">
 								<form id="updateInsuranceInfo" action="updateinsurance" method="post" style="display:none;">
-									<h4>Insurance Company Information</h4>
+									<h5>Insurance Company Information</h5>
 									<div class="form-group">
                                     	<input type="hidden" id="insuranceIdU" name="insuranceId" class="form-control input-sm">
 										<label class="col-sm-2 control-label">Name <span class="required-field">*</span></label>
-										<div class="col-sm-6">
+										<div class="col-sm-5">
 											<input type="text" id="nameU" name="name" class="form-control input-sm" required>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-sm-2 control-label">Suit <span class="required-field">*</span></label>
-										<div class="col-sm-6">
+										<div class="col-sm-5">
 											<input type="text" id="suitU" name="suit" class="form-control input-sm" required>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-sm-2 control-label">Type <span class="required-field">*</span></label>
-										<div class="col-sm-6">
+										<div class="col-sm-5">
 											<input type="text" id="typeU" name="type" class="form-control input-sm" required>
 										</div>
 									</div>
 									
-									<h4>Insurance Company Local Address</h4>
+									<h5>Insurance Company Local Address</h5>
 									<div class="form-group form-horizontal col-sm-12 ">
-										<label class="col-sm-2 control-label">Address</label>
-										<div class="col-sm-6">
-											<textarea rows="5" id="addressLocalU" name="addressLocal" class="form-control"></textarea>
+										<label class="col-sm-2 control-label">Address <span class="required-field">*</span></label>
+										<div class="col-sm-5">
+											<textarea rows="3" id="addressLocalU" name="addressLocal" class="form-control" required></textarea>
 										</div>
 									</div>
 									<div class="form-group form-horizontal col-sm-12">
-										<label class="col-sm-2 control-label">Zip</label>
-										<div class="col-sm-2">
-											<input type="text" id="zipLocalU" name="zipLocal" placeholder="Ex.11111" class="form-control input-sm">
+										<label class="col-sm-2 control-label">Zip <span class="required-field">*</span></label>
+										<div class="col-sm-1">
+											<input type="text" id="zipLocalU" name="zipLocal" class="form-control input-sm" required>
 											<!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
 										</div>
-										<label class="col-sm-1 control-label">City</label>
-										<div class="col-sm-2">
-											<input type="text" id="cityLocalU" name="cityLocal" placeholder="Ex.11111" class="form-control input-sm">
+										<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
+										<div class="col-sm-1">
+											<input type="text" id="cityLocalU" name="cityLocal" class="form-control input-sm" required>
 										</div>
-										<label class="col-sm-1 control-label">State</label>
-										<div class="col-sm-2">
-											<select class="form-control input-sm"  id="stateLocalU" name="stateLocal">
-												<option>-- Select State --</option>
+										<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
+										<div class="col-sm-1">
+											<select class="form-control input-sm"  id="stateLocalU" name="stateLocal" required>
+												<option selected="selected" value=""></option>
 												<?php foreach($State_Name as $row){?>
 												<option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
 												<?php }?>
@@ -241,35 +251,41 @@
 									</div>
 									<div class="form-group form-horizontal col-sm-12">
 										<label class="col-sm-2 control-label">Phone <span class="required-field">*</span></label>
-										<div class="col-sm-2">
-											<input type="text" id="phoneLocalU" name="phoneLocal" placeholder="Ex.000000" class="form-control input-sm" required>
+										<div class="col-sm-1">
+											<input type="text" id="phoneLocalU" name="phoneLocal" class="form-control input-sm" required>
 										</div>
 										<label class="col-sm-1 control-label">Fax</label>
-										<div class="col-sm-2">
-											<input type="text" id="faxLocalU" name="faxLocal" placeholder="Ex.11111" class="form-control input-sm">
+										<div class="col-sm-1">
+											<input type="text" id="faxLocalU" name="faxLocal" class="form-control input-sm">
 										</div>
 									</div>
 									
-									<h4>Insurance Company Perm.Address</h4>
+									<h5>Insurance Company Perm.Address</h5>
+                                    <div class="form-group form-horizontal col-md-12">
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-6 checkbox">
+                                            <label><input type="checkbox" id="checkbox1" >Check here if permanent address info is same.</label>
+                                        </div>
+                                    </div>
 									<div class="form-group form-horizontal col-sm-12 ">
-										<label class="col-sm-2 control-label">Address</label>
-										<div class="col-sm-6">
-											<textarea rows="5" id="addressPermanentU" name="addressPermanent" class="form-control" ></textarea>
+										<label class="col-sm-2 control-label">Address <span class="required-field">*</span></label>
+										<div class="col-sm-5">
+											<textarea rows="3" id="addressPermanentU" name="addressPermanent" class="form-control" required></textarea>
 										</div>
 									</div>
 									<div class="form-group form-horizontal col-sm-12">
-										<label class="col-sm-2 control-label">Zip</label>
-										<div class="col-sm-2">
-											<input type="text" id="zipPermanentU" name="zipPermanent" placeholder="Ex.12345" class="form-control input-sm">
+										<label class="col-sm-2 control-label">Zip <span class="required-field">*</span></label>
+										<div class="col-sm-1">
+											<input type="text" id="zipPermanentU" name="zipPermanent" class="form-control input-sm" required>
 										</div>
-										<label class="col-sm-1 control-label">City</label>
-										<div class="col-sm-2">
-											<input type="text" id="cityPermanentU" name="cityPermanent" placeholder="Ex.12345" class="form-control input-sm">
+										<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
+										<div class="col-sm-1">
+											<input type="text" id="cityPermanentU" name="cityPermanent" class="form-control input-sm" required>
 										</div>
-										<label class="col-sm-1 control-label">State</label>
-										<div class="col-sm-2">
-											<select class="form-control input-sm" id="statePermanentU" name="statePermanent" >
-												<option>-- Select State --</option>
+										<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
+										<div class="col-sm-1">
+											<select class="form-control input-sm" id="statePermanentU" name="statePermanent" required>
+												<option selected="selected" value=""></option>
 												<?php foreach($State_Name as $row){?>
 												<option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
 												<?php }?>
@@ -278,18 +294,18 @@
 									</div>
 									<div class="form-group form-horizontal col-sm-12">
 										<label class="col-sm-2 control-label">Phone <span class="required-field">*</span></label>
-										<div class="col-sm-2">
-											<input type="text" id="phonePermanentU" name="phonePermanent" placeholder="Ex.12345" class="form-control input-sm" required>
+										<div class="col-sm-1">
+											<input type="text" id="phonePermanentU" name="phonePermanent" class="form-control input-sm" required>
 										</div>
 										<label class="col-sm-1 control-label">Fax</label>
-										<div class="col-sm-2">
-											<input type="text" id="faxPermanentU" name="faxPermanent" placeholder="Ex.12345" class="form-control input-sm">
+										<div class="col-sm-1">
+											<input type="text" id="faxPermanentU" name="faxPermanent" class="form-control input-sm">
 										</div>
 									</div>
 									<div class="form-group form-horizontal col-sm-12">
 										<div class="col-sm-2"> </div>
 										<div class="col-sm-2">
-											<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary"><i class="fa fa-check"></i> Cancel</button>
+											<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary">Cancel</button>
 										</div>
 									</div>
 								</form>
@@ -310,7 +326,7 @@
 					<div class="modal-content">
 						<div class="modal-header model-design">
 							<button type="button" class="close close-tab" data-dismiss="modal"> &times;</button>
-							<h4> Data Submitted successfully...... </h4>
+							<h5> Data Submitted successfully...... </h5>
 						</div>
 						<div class="modal-body">
 							<div class="row">
@@ -337,19 +353,57 @@
 <footer class="footer"> <span class="pull-right"> Example text </span> Company 2015-2020 </footer>
 </div>
 
-<!-- Vendor scripts --> 
-<script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script> 
-<script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
-<!-- App scripts --> 
-<script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
+    <!-- Vendor scripts --> 
+    <script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.js"></script>
+    <!-- App scripts --> 
+    <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
+
 <script>
+	function callSuccess() {
+		swal({
+			title: "Successfully submitted",
+			type: "success"
+		});
+	}
+	
+	$('#checkbox1').change(function() {
+		if ($(this).is(':checked')) {
+			var addressLocal = $("textarea[name=addressLocal]").val();
+			var zipLocal = $("input[name=zipLocal]").val();
+			var cityLocal = $("input[name=cityLocal]").val();
+			var stateLocal = $("select[name=stateLocal]").val();
+			var phoneLocal = $("input[name=phoneLocal]").val();
+			var faxLocal = $("input[name=faxLocal]").val();
+			console.log("okkk");
+			$('textarea[name=addressPermanent]').val(addressLocal);
+			$('input[name=zipPermanent]').val(zipLocal);
+			$('input[name=cityPermanent]').val(cityLocal);
+			$('select[name=statePermanent]').val(stateLocal);
+			$('input[name=phonePermanent]').val(phoneLocal);
+			$('input[name=faxPermanent]').val(faxLocal);
+			
+		}else{
+			$('#addressPermanent').val("");
+			$('#zipaPermanent').val("");
+			$('#cityPermanent').val("");
+			$('#statePermanent').val("");
+			$('#phonePermanent').val("");
+			$('#faxPermanent').val("");
+		}
+		
+		
+    });
 
 /* Add Insurance information - Tab-1*/ /*---------- Tab-1 --------------------*/
 	$("#addInsuranceInfo").validate({
@@ -383,6 +437,9 @@
 			},
 			zip:{
 				number: true
+			},
+			insuranceId:{
+				required: true
 			},
 			phoneLocal:{
 				required: true,
@@ -427,12 +484,11 @@
 
 			// callback handler that will be called on success
 			request.done(function (response, textStatus, jqXHR) {
-				// log a message to the console
-				console.log("Hooray, it worked!");
 				$('input[type=text]').val('');
-					$('textarea').val('');
-					$("#state").val('');
-					 $("#myModal").modal("show");
+				$('textarea').val('');
+				$("select").val('');
+				//$("#myModal").modal("show");
+				callSuccess();
 			});
 
 			// callback handler that will be called on failure
@@ -623,14 +679,22 @@
 	});
 /* *************************************************** */
 
-	
+	$("#cancel").click(function(){
+		$('input[type=text]').val('');
+		$('select').val('');
+		$('textarea').val('');
+	});
 	$("#cancelUpdate").click(function(){
+		$('input[type=text]').val('');
+		$('select').val('');
+		$('textarea').val('');
 		$("#updateInsuranceInfo").css("display", "none");
 	});
 </script>
 
 <script>
 	$('.dataentry').addClass('active');
+	$('.insuranceCompnay').addClass('active');
 </script>
 </body>
 </html>

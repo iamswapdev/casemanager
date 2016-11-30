@@ -44,14 +44,19 @@ session_cache_limiter('private_no_expire');
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
 				//$this->load->model('admin_privilege_model');
-				$data['UserName']=$this->admin_privilege_model->get_ManageUserData();
-				//print_r($data); exit();
-				$this->load->view('pages/manageusers',$data);
+				
+				$this->load->view('pages/manageusers');
 			}else{
 				//echo "session deleted";
 				$this->load->view('pages/login');
 			}
 			
+		}
+		public function getAdj(){
+			$data['UserName']=$this->admin_privilege_model->get_ManageUserData();
+				//print_r($data); exit();
+				echo json_encode($data);
+			//$this->load->view('pages/adj',$data);
 		}
 		public function addnewrole(){
 			$this->session->all_userdata();
@@ -67,24 +72,27 @@ session_cache_limiter('private_no_expire');
 		}
 		public function delete_Roles()
 		{
-			$data = array();
-			$delete= $this->input->post('deleteRole');
-			$data =implode(",", $delete); 
+			$data = $this->input->post('deleteRole');
+			//echo "<pre>"; print_r($data);
 			$insert_success = $this->admin_privilege_model->deleteRoles($data);
-			
 			return true;
 		}
 		public function insert_Roles(){
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
-				$data=array(
-					'RoleName' => $this->input->post('RoleName'),
-				); 
-				$insert_success = $this->admin_privilege_model->insert_Roles($data);
-				if($insert_success){
-					$data1['Roles']=$this->admin_privilege_model->get_SingleRoles(); 
-					echo json_encode($data1);  
-				} else{ $this->addnewrole(); }
+				$Rolename = $this->input->post('RoleName');
+				if($Rolename != ""){
+					$data=array(
+						'RoleName' => $this->input->post('RoleName'),
+					); 
+					$insert_success = $this->admin_privilege_model->insert_Roles($data);
+					redirect("/adminprivilege/addnewrole");
+					//$this->addnewrole();
+				}else{
+					echo "R: ".$Rolename; exit();
+					$this->addnewrole();
+				}
+				
 				
 			}else{
 				//echo "session deleted";
