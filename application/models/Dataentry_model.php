@@ -194,6 +194,13 @@ Class Dataentry_model extends CI_Model{
 		$data=$query->result();
 		return $data;
 	}
+	public function get_DenialReasonsArray()
+	{
+		$this->db->order_by("DenialReasons_Type", "asc");
+		$query = $this->db->get('dbo_tbldenialreasons'); 
+		$data=$query->result_array();
+		return $data;
+	}
 	public function get_CourtArray()
 	{
 		$this->db->order_by("Court_Name", "asc");
@@ -250,6 +257,14 @@ Class Dataentry_model extends CI_Model{
 		$data=$query->result();
 		return $data;
 	}
+	public function get_ServiceArray()
+	{
+		$this->db->order_by("ServiceType", "asc");
+		$query = $this->db->get('dbo_tblservicetype'); 
+		$data=$query->result_array();
+		return $data;
+	}
+	
 	public function get_EventType()
 	{
 		$this->db->order_by("EventTypeName", "asc");
@@ -287,6 +302,80 @@ Class Dataentry_model extends CI_Model{
 		$query = $this->db->get('dbo_ziplist'); 
 		$data=$query->result();
 		return $data;
+	}
+	
+	public function Add_OtherEntries($data,$tabIdentityData)
+	{
+		if($tabIdentityData['tabIdentity'] == 1){
+			$query = $this->db->insert('dbo_tbldenialreasons',$data); 
+			return $query;
+		}else if($tabIdentityData['tabIdentity'] == 2){
+			$query = $this->db->insert('dbo_tblcourt',$data); 
+			return $query;
+		}else if($tabIdentityData['tabIdentity'] == 3){
+			$query = $this->db->insert('dbo_tblimagetypes',$data); 
+			return $query;
+		}else if($tabIdentityData['tabIdentity'] == 4){
+			$query = $this->db->insert('dbo_tblstatus',$data); 
+			return $query;
+		}else if($tabIdentityData['tabIdentity'] == 5){
+			$query = $this->db->insert('dbo_tblcasestatus',$data); 
+			return $query;
+		}else if($tabIdentityData['tabIdentity'] == 6){
+			$query = $this->db->insert('dbo_tbldocs',$data); 
+			return $query;
+		}else if($tabIdentityData['tabIdentity'] == 7){
+			$query = $this->db->insert('dbo_tblservicetype',$data); 
+			return $query;
+		}else if($tabIdentityData['tabIdentity'] == 8){
+			$query = $this->db->insert('dbo_tbleventtype',$data); 
+			return $query;
+		}else if($tabIdentityData['tabIdentity'] == 9){
+			$query = $this->db->insert('dbo_tbleventstatus',$data); 
+			return $query;
+		}
+	}
+	public function Update_OtherEntries($data,$tabIdentityData)
+	{
+		if($tabIdentityData['tabIdentity'] == 1){
+			$this->db->set($data); 
+			$this->db->where("DenialReasons_Id", $data['DenialReasons_Id']); 
+			$query = $this->db->update("dbo_tbldenialreasons", $data);
+		}else if($tabIdentityData['tabIdentity'] == 2){
+			$this->db->set($data); 
+			$this->db->where("Court_Id", $data['Court_Id']); 
+			$query = $this->db->update("dbo_tblcourt", $data);
+		}else if($tabIdentityData['tabIdentity'] == 3){
+			$this->db->set($data); 
+			$this->db->where("Image_Id", $data['Image_Id']); 
+			$query = $this->db->update("dbo_tblimagetypes", $data);
+		}else if($tabIdentityData['tabIdentity'] == 4){
+			$this->db->set($data); 
+			$this->db->where("Status_Id", $data['Status_Id']); 
+			$query = $this->db->update("dbo_tblstatus", $data);
+		}else if($tabIdentityData['tabIdentity'] == 5){
+			$this->db->set($data); 
+			$this->db->where("id", $data['id']); 
+			$query = $this->db->update("dbo_tblcasestatus", $data);
+		}else if($tabIdentityData['tabIdentity'] == 6){
+			$this->db->set($data); 
+			$this->db->where("Doc_Id", $data['Doc_Id']); 
+			$query = $this->db->update("dbo_tbldocs", $data);
+		}else if($tabIdentityData['tabIdentity'] == 7){
+			$this->db->set($data); 
+			$this->db->where("ServiceType_ID", $data['ServiceType_ID']); 
+			$query = $this->db->update("dbo_tblservicetype", $data);
+		}else if($tabIdentityData['tabIdentity'] == 8){
+			$this->db->set($data); 
+			$this->db->where("EventTypeId", $data['EventTypeId']); 
+			$query = $this->db->update("dbo_tbleventtype", $data);
+		}else if($tabIdentityData['tabIdentity'] == 9){
+			$this->db->set($data); 
+			$this->db->where("EventStatusId", $data['EventStatusId']); 
+			$query = $this->db->update("dbo_tbleventstatus", $data);
+		}
+		
+		return $query;
 	}
 	
 	

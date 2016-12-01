@@ -159,7 +159,7 @@
 				<div class="form-group form-horizontal col-md-12">
                 	<h5 class="h5-title">Accident Information</h5>
 					<label class="col-md-2 control-label">D.O.A <span class="required-field">*</span></label>
-					<div class="col-md-2"> <input id="accidentDate" name="accidentDate" type="text" class="form-control input-sm" required> </div>
+					<div class="col-md-2"> <input id="accidentDate" name="accidentDate"  class="form-control input-sm datepicker_recurring_start" required> </div>
 					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
 				</div>
 
@@ -209,11 +209,11 @@
                             </thead>
                             <tbody>
                             <tr class="first-row">
-                                <td><input id="dateOfServiceStart" name="dateOfServiceStart" type="text" class="form-control input-sm"></td>
-                                <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" type="text" class="form-control input-sm"></td>
+                                <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start"></td>
+                                <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start"></td>
                                 <td><input type="text" id="claimAmt" name="claimAmt" class="form-control input-sm"></td>
                                 <td><input type="text" id="paidAmt" name="paidAmt" class="form-control input-sm"></td>
-                                <td><input id="dateBillSent" name="dateBillSent" type="text" class="form-control input-sm"></td>
+                                <td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datepicker_recurring_start"></td>
                                 <td><select class="form-control input-sm" id="serviceType" name="serviceType">
                                         <option>-- Select Service--</option>
                                         <?php foreach($Service as $row){?>
@@ -311,15 +311,17 @@
     
 <script>
 	$("#cancel").click(function(){
-		$('input[type=text]').val('');
-		$('input[type=radio]').val('');
+		$('input').val('');
+		$('select').val('');
+		//$('input[type=radio]').val('');
 		$('textarea').val('');
-		$('#providerId').val('');
+		/*$('#providerId').val('');
 		$('#insuranceCompanyId').val('');
 		$('#status').val('');
 		$('#courtId').val('');
 		$('#serviceType').val('');
-		$('#denialReasons').val(''); 
+		$('#denialReasons').val('');*/
+		$('.datepicker_recurring_start').val(''); 
 	});
 	$('#checkbox1').change(function() {
 		if ($(this).is(':checked')) {
@@ -350,15 +352,16 @@
 			$("#DeleteButton").css("display", "block");
 		}
 		countForRows++;
-		 
+		  
 		var addNewRow = '<tr class="r'+value+'">';
-		    addNewRow += '<td><input class="dateOfServiceStart" name="dateOfServiceStart" type="text" class="form-control input-sm"></td>';
-            addNewRow += '<td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" type="text" class="form-control input-sm"></td>'
-            addNewRow += '<td><input type="text" id="claimAmt" name="claimAmt" class="form-control input-sm"></td>'
-            addNewRow += '<td><input type="text" id="paidAmt" name="paidAmt" class="form-control input-sm"></td>'
-            addNewRow += '<td><input id="dateBillSent" name="dateBillSent" type="text" class="form-control input-sm"></td>';
-			addNewRow += '<td></td>';
-			addNewRow += '<td></td>';
+		    addNewRow += '<td><input class="form-control input-sm datepicker_recurring_start" name="dateOfServiceStart"></td>';
+            addNewRow += '<td><input class="form-control input-sm datepicker_recurring_start" name="dateOfServiceStart"></td>'
+            addNewRow += '<td><input type="text" name="claimAmt" class="form-control input-sm"></td>'
+            addNewRow += '<td><input type="text" name="paidAmt" class="form-control input-sm"></td>'
+            addNewRow += '<td><input class="form-control input-sm datepicker_recurring_start" name="dateBillSent"></td>';
+			addNewRow += '<td><select class="form-control input-sm" name="serviceType"><option>-- Select Service--</option><?php foreach($Service as $row){?><option value="<?php echo $row['ServiceType_ID']; ?>"> <?php echo $row['ServiceType']; ?> </option><?php }?></select></td>';
+			
+			addNewRow += '<td><select class="form-control input-sm" name="denialReasons"><option>-- Select Denial reason --</option><?php foreach($DenialReasons as $row){?><option value="<?php echo $row['DenialReasons_Id']; ?>"> <?php echo $row['DenialReasons_Type']; ?> </option><?php }?></select></td>';
 			addNewRow += '<td><input class="ads_Checkbox" type="checkbox" name="delete[]" value="'+value+'"></td>';
 			value++;
 			addNewRow += '</tr>';
@@ -378,17 +381,17 @@
 		}
 		
 	});
-
-	$(function(){
+	/*$('input[name=dateOfServiceStart]').datepicker({
+			"autoclose": true,
+			"todayHighlight": true
+		});*/
+	/*$(function(){
 		//$("#accidentDate").datepicker("setDate", new Date());
 		$('#accidentDate').datepicker({
 			"autoclose": true,
 			"todayHighlight": true
 		});
-		$('#dateOfServiceStart').datepicker({
-			"autoclose": true,
-			"todayHighlight": true
-		});
+		
 		$('#dateOfServiceEnd').datepicker({
 			"autoclose": true,
 			"todayHighlight": true
@@ -398,6 +401,12 @@
 			"todayHighlight": true
 		});
 		$('#dateBillSent').datepicker({
+			"autoclose": true,
+			"todayHighlight": true
+		});
+	});*/
+	$('body').on('focus',".datepicker_recurring_start", function(){
+		$(this).datepicker({
 			"autoclose": true,
 			"todayHighlight": true
 		});

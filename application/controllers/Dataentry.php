@@ -26,8 +26,8 @@ session_cache_limiter('private_no_expire');
 				$data['InsuranceCompany_Name']= $this->dataentry_model->get_Insurance();
 				$data['Status']= $this->dataentry_model->get_StatusArray();
 				$data['Court']= $this->dataentry_model->get_CourtArray();
-				$data['Service']= $this->dataentry_model->get_Service();
-				$data['DenialReasons']= $this->dataentry_model->get_DenialReasons();
+				$data['Service']= $this->dataentry_model->get_ServiceArray();
+				$data['DenialReasons']= $this->dataentry_model->get_DenialReasonsArray();
 				
 				$this->load->view('pages/addcase',$data);
 			}else{
@@ -465,16 +465,22 @@ session_cache_limiter('private_no_expire');
 				$this->load->view('pages/login');
 			}
 		}
+/********************************* Tab 1 DenialReasons *******************************************************************/
 		public function DenialReasons(){
 			$list=$this->dataentry_model->get_DenialReasons();
 			$data = array();
 			$no=0;
-			foreach ($list as $customers) {
+			$row = array();
+			$row[] ="";
+			$row[] = "<input type='text' name='DenialReasons_Type' class='form-control input-sm input-height' value='' >";
+			$row[] = "<button type='button' class='btn addRecord'>Add</button><input type='hidden' name='tabIdentity' value='1' >";
+			$data[] = $row;
+			foreach ($list as $result) {
 				$row = array();
 				$no++;
-				$row[] ="<a>Edit</a>";
-				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->DenialReasons_Type."' >";
-				$row[] = "<input type='checkbox' name='deleteDenialReasons[]' class='deleteDenialReasons deleteDenialReasons".$customers->EventStatusId."' value=".$customers->DenialReasons_Id.">";
+				$row[] ="<button type='button' class='btn editRecord'>Edit</button> <div class='update-record' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn btn-primary cancel'>Cancel</button></div>";
+				$row[] = "<input type='text' name='DenialReasons_Type' class='form-control input-sm input-height' value='".$result->DenialReasons_Type."' >";
+				$row[] = "<input type='checkbox' name='deleteDenialReasons[]' class='deleteDenialReasons deleteDenialReasons".$result->DenialReasons_Id."' value=".$result->DenialReasons_Id."> <input type='hidden' name='tabIdentity' value='1' > <input type='hidden' name='DenialReasons_Id' value='".$result->DenialReasons_Id."' >";
 				
 				$data[] = $row;
 			}
@@ -483,21 +489,31 @@ session_cache_limiter('private_no_expire');
 			);
 			echo json_encode($output);
 		}
+/********************************* Tab 2 Court *******************************************************************/
 		public function Court(){
 			$list=$this->dataentry_model->get_Court();
 			$data = array();
 			$no=0;
-			foreach ($list as $customers) {
+			$row = array();
+			$row[] ="";
+			$row[] = "<input type='text' name='Court_Name' class='form-control input-sm input-height' value='' >";
+			$row[] = "<input type='text' name='Court_Venue' class='form-control input-sm input-height' value='' >";
+			$row[] = "<input type='text' name='Court_Address' class='form-control input-sm input-height' value='' >";
+			$row[] = "<input type='text' name='Court_Basis' class='form-control input-sm input-height' value='' >";
+			$row[] = "<input type='text' name='Court_Misc' class='form-control input-sm input-height' value='' >";
+			$row[] = "<button type='button' class='btn addRecord'>Add</button><input type='hidden' name='tabIdentity' value='2' >";
+			
+			$data[] = $row;
+			foreach ($list as $result) {
 				$row = array();
 				$no++;
-				$row[] ="<a>Edit</a>";
-				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Court_Name."' >";
-				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Court_Venue."' >";
-				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Court_Address."' >";
-				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Court_Basis."' >";
-				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Court_Misc."' >";
-				$row[] = "<input type='checkbox' name='deleteCourt[]' class='deleteCourt deleteCourt".$customers->Court_Id."' value=".$customers->Court_Id.">";
-				
+				$row[] ="<button type='button' class='btn editRecord'>Edit</button> <div class='update-record' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn btn-primary cancel'>Cancel</button></div>";
+				$row[] = "<input type='text' name='Court_Name' class='form-control input-sm input-height' value='".$result->Court_Name."' >";
+				$row[] = "<input type='text' name='Court_Venue' class='form-control input-sm input-height' value='".$result->Court_Venue."' >";
+				$row[] = "<input type='text' name='Court_Address' class='form-control input-sm input-height' value='".$result->Court_Address."' >";
+				$row[] = "<input type='text' name='Court_Basis' class='form-control input-sm input-height' value='".$result->Court_Basis."' >";
+				$row[] = "<input type='text' name='Court_Misc' class='form-control input-sm input-height' value='".$result->Court_Misc."' >";
+				$row[] = "<input type='checkbox' name='deleteCourt[]' class='deleteCourt deleteCourt".$result->Court_Id."' value=".$result->Court_Id."> <input type='hidden' name='tabIdentity' value='2' > <input type='hidden' name='Court_Id' value='".$result->Court_Id."' >";
 				$data[] = $row;
 			}
 			$output = array(
@@ -505,16 +521,22 @@ session_cache_limiter('private_no_expire');
 			);
 			echo json_encode($output);
 		}
+/********************************* Tab 3 ImageType *******************************************************************/
 		public function ImageType(){
 			$list=$this->dataentry_model->get_ImageType();
 			$data = array();
 			$no=0;
-			foreach ($list as $customers) {
+			$row = array();
+			$row[] ="";
+			$row[] = "<input type='text' name='Image_Type' class='form-control input-sm input-height'>";
+			$row[] = "<button type='button' class='btn addRecord'>Add</button><input type='hidden' name='tabIdentity' value='3' >";
+			$data[] = $row;
+			foreach ($list as $result) {
 				$row = array();
 				$no++;
-				$row[] ="<a>Edit</a>";
-				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Image_Type."' >";
-				$row[] = "<input type='checkbox' name='deleteImageType[]' class='deleteImageType deleteImageType".$customers->Image_Id."' value=".$customers->Image_Id.">";
+				$row[] ="<button type='button' class='btn editRecord'>Edit</button> <div class='update-record' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn btn-primary cancel'>Cancel</button></div>";
+				$row[] = "<input type='text' name='Image_Type' class='form-control input-sm input-height' value='".$result->Image_Type."' >";
+				$row[] = "<input type='checkbox' name='deleteImageType[]' class='deleteImageType deleteImageType".$result->Image_Id."' value=".$result->Image_Id."> <input type='hidden' name='tabIdentity' value='3' > <input type='hidden' name='Image_Id' value='".$result->Image_Id."' >";
 				
 				$data[] = $row;
 			}
@@ -523,17 +545,24 @@ session_cache_limiter('private_no_expire');
 			);
 			echo json_encode($output);
 		}
+/********************************* Tab 4 Status *******************************************************************/
 		public function Status(){
 			$list=$this->dataentry_model->get_Status();
 			$data = array();
 			$no=0;
-			foreach ($list as $customers) {
+			$row = array();
+			$row[] ="";
+			$row[] = "<input type='text' name='Status_Type' class='form-control input-sm input-height'>";
+			$row[] = "<input type='text' name='Status_Abr' class='form-control input-sm input-height'>";
+			$row[] = "<button type='button' class='btn addRecord'>Add</button><input type='hidden' name='tabIdentity' value='4' >";
+			$data[] = $row;
+			foreach ($list as $result) {
 				$row = array();
 				$no++;
-				$row[] ="<a>Edit</a>";
-				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Status_Type."' >";
-				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Status_Abr."' >";
-				$row[] = "<input type='checkbox' name='deleteStatus[]' class='deleteStatus deleteStatus".$customers->Status_Id."' value=".$customers->Status_Id.">";
+				$row[] ="<button type='button' class='btn editRecord'>Edit</button> <div class='update-record' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn btn-primary cancel'>Cancel</button></div>";
+				$row[] = "<input type='text' name='Status_Type' class='form-control input-sm input-height' value='".$result->Status_Type."' >";
+				$row[] = "<input type='text' name='Status_Abr' class='form-control input-sm input-height' value='".$result->Status_Abr."' >";
+				$row[] = "<input type='checkbox' name='deleteStatus[]' class='deleteStatus deleteStatus".$result->Status_Id."' value=".$result->Status_Id."> <input type='hidden' name='tabIdentity' value='4' > <input type='hidden' name='Status_Id' value='".$result->Status_Id."' >";
 				
 				$data[] = $row;
 			}
@@ -542,17 +571,24 @@ session_cache_limiter('private_no_expire');
 			);
 			echo json_encode($output);
 		}
+/********************************* Tab 5 CaseStatus *******************************************************************/
 		public function CaseStatus(){
 			$list=$this->dataentry_model->get_CaseStatus();
 			$data = array();
 			$no=0;
-			foreach ($list as $customers) {
+			$row = array();
+			$row[] ="";
+			$row[] = "<input type='text' name='name' class='form-control input-sm input-height'>";
+			$row[] = "<input type='text' name='description' class='form-control input-sm input-height'>";
+			$row[] = "<button type='button' class='btn addRecord'>Add</button><input type='hidden' name='tabIdentity' value='5' >";
+			$data[] = $row;
+			foreach ($list as $result) {
 				$row = array();
 				$no++;
-				$row[] ="<a>Edit</a>";
-				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->name."' >";
-				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->description."' >";
-				$row[] = "<input type='checkbox' name='deleteCaseStatus[]' class='deleteCaseStatus deleteCaseStatus".$customers->id."' value=".$customers->id.">";
+				$row[] ="<button type='button' class='btn editRecord'>Edit</button> <div class='update-record' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn btn-primary cancel'>Cancel</button></div>";
+				$row[] = "<input type='text' name='name' class='form-control input-sm input-height' value='".$result->name."' >";
+				$row[] = "<input type='text' name='description' class='form-control input-sm input-height' value='".$result->description."' >";
+				$row[] = "<input type='checkbox' name='deleteCaseStatus[]' class='deleteCaseStatus deleteCaseStatus".$result->id."' value=".$result->id."> <input type='hidden' name='tabIdentity' value='5' > <input type='hidden' name='id' value='".$result->id."' >";
 				
 				$data[] = $row;
 			}
@@ -561,18 +597,26 @@ session_cache_limiter('private_no_expire');
 			);
 			echo json_encode($output);
 		}
+/********************************* Tab 6 Doc *******************************************************************/
 		public function Doc(){
 			$list=$this->dataentry_model->get_Doc();
 			$data = array();
 			$no=0;
-			foreach ($list as $customers) {
+			$row = array();
+			$row[] ="";
+			$row[] = "<input type='text' name='Doc_Name' class='form-control input-sm input-height'>";
+			$row[] = "<input type='text' name='Doc_Value' class='form-control input-sm input-height'>";
+			$row[] = "<input type='text' name='Settlement' class='form-control input-sm input-height'>";
+			$row[] = "<button type='button' class='btn addRecord'>Add</button><input type='hidden' name='tabIdentity' value='6' >";
+			$data[] = $row;
+			foreach ($list as $result) {
 				$row = array();
 				$no++;
-				$row[] ="<a>Edit</a>";
-				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Doc_Name."' >";
-				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Doc_Value."' >";
-				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->Settlement."' >";
-				$row[] = "<input type='checkbox' name='deleteDoc[]' class='deleteDoc deleteDoc".$customers->Doc_Id."' value=".$customers->Doc_Id.">";
+				$row[] ="<button type='button' class='btn editRecord'>Edit</button> <div class='update-record' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn btn-primary cancel'>Cancel</button></div>";
+				$row[] = "<input type='text' name='Doc_Name' class='form-control input-sm input-height' value='".$result->Doc_Name."' >";
+				$row[] = "<input type='text' name='Doc_Value' class='form-control input-sm input-height' value='".$result->Doc_Value."' >";
+				$row[] = "<input type='text' name='Settlement' class='form-control input-sm input-height' value='".$result->Settlement."' >";
+				$row[] = "<input type='checkbox' name='deleteDoc[]' class='deleteDoc deleteDoc".$result->Doc_Id."' value=".$result->Doc_Id."> <input type='hidden' name='tabIdentity' value='6' > <input type='hidden' name='Doc_Id' value='".$result->Doc_Id."' >";
 				
 				$data[] = $row;
 			}
@@ -581,17 +625,24 @@ session_cache_limiter('private_no_expire');
 			);
 			echo json_encode($output);
 		}
+/********************************* Tab 7 Service *******************************************************************/
 		public function Service(){
 			$list=$this->dataentry_model->get_Service();
 			$data = array();
 			$no=0;
-			foreach ($list as $customers) {
+			$row = array();
+			$row[] ="";
+			$row[] = "<input type='text' name='ServiceType' class='form-control input-sm input-height'>";
+			$row[] = "<input type='text' name='ServiceDesc' class='form-control input-sm input-height'>";
+			$row[] = "<button type='button' class='btn addRecord'>Add</button><input type='hidden' name='tabIdentity' value='7' >";
+			$data[] = $row;
+			foreach ($list as $result) {
 				$row = array();
 				$no++;
-				$row[] ="<a>Edit</a>";
-				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->ServiceType."' >";
-				$row[] = "<input type='text' class='form-control input-sm input-height' value='".$customers->ServiceDesc."' >";
-				$row[] = "<input type='checkbox' name='deleteService[]' class='deleteService deleteService".$customers->ServiceType_ID."' value=".$customers->ServiceType_ID.">";
+				$row[] ="<button type='button' class='btn editRecord'>Edit</button> <div class='update-record' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn btn-primary cancel'>Cancel</button></div>";
+				$row[] = "<input type='text' name='ServiceType' class='form-control input-sm input-height' value='".$result->ServiceType."' >";
+				$row[] = "<input type='text' name='ServiceDesc' class='form-control input-sm input-height' value='".$result->ServiceDesc."' >";
+				$row[] = "<input type='checkbox' name='deleteService[]' class='deleteService deleteService".$result->ServiceType_ID."' value=".$result->ServiceType_ID."> <input type='hidden' name='tabIdentity' value='7' > <input type='hidden' name='ServiceType_ID' value='".$result->ServiceType_ID."' >";
 				
 				$data[] = $row;
 			}
@@ -600,16 +651,22 @@ session_cache_limiter('private_no_expire');
 			);
 			echo json_encode($output);
 		}
+/********************************* Tab 8 EventType *******************************************************************/
 		public function EventType(){
 			$list=$this->dataentry_model->get_EventType();
 			$data = array();
 			$no=0;
-			foreach ($list as $customers) {
+			$row = array();
+			$row[] ="";
+			$row[] = "<input type='text' name='EventTypeName' class='form-control input-sm input-height'>";
+			$row[] = "<button type='button' class='btn addRecord'>Add</button><input type='hidden' name='tabIdentity' value='8' >";
+			$data[] = $row;
+			foreach ($list as $result) {
 				$row = array();
 				$no++;
-				$row[] ="<a>Edit</a>";
-				$row[] = $customers->EventTypeName;
-				$row[] = "<input type='checkbox' name='deleteEventType[]' class='deleteEventType deleteEventType".$customers->EventTypeId."' value=".$customers->EventTypeId.">";
+				$row[] ="<button type='button' class='btn editRecord'>Edit</button> <div class='update-record' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn btn-primary cancel'>Cancel</button></div>";
+				$row[] = "<input type='text' name='EventTypeName' class='form-control input-sm input-height' value='".$result->EventTypeName."' > ";
+				$row[] = "<input type='checkbox' name='deleteEventType[]' class='deleteEventType deleteEventType".$result->EventTypeId."' value=".$result->EventTypeId."> <input type='hidden' name='tabIdentity' value='8' > <input type='hidden' name='EventTypeId' value='".$result->EventTypeId."' >";
 				
 				$data[] = $row;
 			}
@@ -618,16 +675,23 @@ session_cache_limiter('private_no_expire');
 			);
 			echo json_encode($output);
 		}
+/********************************* Tab 9 EventStatus *******************************************************************/
 		public function EventStatus(){
 			$list=$this->dataentry_model->get_EventStatus();
 			$data = array();
 			$no=0;
-			foreach ($list as $customers) {
+			$row = array();
+				$row[] ="<form>";
+				$row[] = "<input type='text' name='EventStatusName' class='form-control input-sm input-height'>";
+				$row[] = "<button type='button' class='btn addRecord'>Add</button><input type='hidden' name='tabIdentity' value='9' >";
+			$data[] = $row;
+			foreach ($list as $result) {
 				$row = array();
 				$no++;
-				$row[] ="<a>Edit</a> Udate Cancel";
-				$row[] = $customers->EventStatusName;
-				$row[] = "<input type='checkbox' name='deleteEventStatus[]' class='deleteEventStatus deleteEventStatus".$customers->EventStatusId."' value=".$customers->EventStatusId.">";
+				$row[] ="<button type='button' class='btn editRecord'>Edit</button> <div class='update-record' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn btn-primary cancel'>Cancel</button></div>";
+				
+				$row[] = "<input type='text' name='EventStatusName' class='form-control input-sm input-height' value='".$result->EventStatusName."' > ";
+				$row[] = "<input type='checkbox' name='deleteEventStatus[]' class='deleteEventStatus deleteEventStatus".$result->EventStatusId."' value=".$result->EventStatusId."> <input type='hidden' name='tabIdentity' value='9' ><input type='hidden' name='EventStatusId' value='".$result->EventStatusId."' >";
 				
 				$data[] = $row;
 			}
@@ -635,6 +699,176 @@ session_cache_limiter('private_no_expire');
 				"data" => $data
 			);
 			echo json_encode($output);
+		}
+		public function Add_Record(){
+			$tabIdentity = $this->input->post('tabIdentity');
+			if($tabIdentity == 1){
+				$data = array(
+					'DenialReasons_Type' => $this->input->post('DenialReasons_Type')
+				);
+				$tabIdentityData = array(
+					'tabIdentity' => $tabIdentity
+				);
+			}else if($tabIdentity == 2){
+				$data = array(
+					'Court_Name' => $this->input->post('Court_Name'),
+					'Court_Venue' => $this->input->post('Court_Venue'),
+					'Court_Address' => $this->input->post('Court_Address'),
+					'Court_Basis' => $this->input->post('Court_Basis'),
+					'Court_Misc' => $this->input->post('Court_Misc')
+				);
+				$tabIdentityData = array(
+					'tabIdentity' => $tabIdentity
+				);
+			}else if($tabIdentity == 3){
+				$data = array(
+					'Image_Type' => $this->input->post('Image_Type')
+				);
+				$tabIdentityData = array(
+					'tabIdentity' => $tabIdentity
+				);
+			}else if($tabIdentity == 4){
+				$data = array(
+					'Status_Type' => $this->input->post('Status_Type'),
+					'Status_Abr' => $this->input->post('Status_Abr')
+				);
+				$tabIdentityData = array(
+					'tabIdentity' => $tabIdentity
+				);
+			}else if($tabIdentity == 5){
+				$data = array(
+					'name' => $this->input->post('name'),
+					'description' => $this->input->post('description')
+				);
+				$tabIdentityData = array(
+					'tabIdentity' => $tabIdentity
+				);
+			}else if($tabIdentity == 6){
+				$data = array(
+					'Doc_Name' => $this->input->post('Doc_Name'),
+					'Doc_Value' => $this->input->post('Doc_Value'),
+					'Settlement' => $this->input->post('Settlement') 
+				);
+				$tabIdentityData = array(
+					'tabIdentity' => $tabIdentity
+				);
+			}else if($tabIdentity == 7){
+				$data = array(
+					'ServiceType' => $this->input->post('ServiceType'),
+					'ServiceDesc' => $this->input->post('ServiceDesc')
+				);
+				$tabIdentityData = array(
+					'tabIdentity' => $tabIdentity
+				);
+			}else if($tabIdentity == 8){
+				$data = array(
+					'EventTypeName' => $this->input->post('EventTypeName')
+				);
+				$tabIdentityData = array(
+					'tabIdentity' => $tabIdentity
+				);
+			}else if($tabIdentity == 9){
+				$data = array(
+					'EventStatusName' => $this->input->post('EventStatusName')
+				);
+				$tabIdentityData = array(
+					'tabIdentity' => $tabIdentity
+				);
+			}
+			//echo "<pre>"; print_r($data); exit();
+			$insert_success = $this->dataentry_model->Add_OtherEntries($data,$tabIdentityData);
+			return true;
+		}
+		public function just(){
+			$tabIdentity = $this->input->post('tabIdentity');
+			if($tabIdentity == 1){
+				$data = array(
+					'DenialReasons_Id' => $this->input->post('DenialReasons_Id'),
+					'DenialReasons_Type' => $this->input->post('DenialReasons_Type')
+				);
+				$tabIdentityData = array(
+					'tabIdentity' => $tabIdentity
+				);
+			}else if($tabIdentity == 2){
+				$data = array(
+					'Court_Id' => $this->input->post('Court_Id'),
+					'Court_Name' => $this->input->post('Court_Name'),
+					'Court_Venue' => $this->input->post('Court_Venue'),
+					'Court_Address' => $this->input->post('Court_Address'),
+					'Court_Basis' => $this->input->post('Court_Basis'),
+					'Court_Misc' => $this->input->post('Court_Misc')
+				);
+				$tabIdentityData = array(
+					'tabIdentity' => $tabIdentity
+				);
+			}else if($tabIdentity == 3){
+				$data = array(
+					'Image_Id' => $this->input->post('Image_Id'),
+					'Image_Type' => $this->input->post('Image_Type')
+				);
+				$tabIdentityData = array(
+					'tabIdentity' => $tabIdentity
+				);
+			}else if($tabIdentity == 4){
+				$data = array(
+					'Status_Id' => $this->input->post('Status_Id'),
+					'Status_Type' => $this->input->post('Status_Type'),
+					'Status_Abr' => $this->input->post('Status_Abr')
+				);
+				$tabIdentityData = array(
+					'tabIdentity' => $tabIdentity
+				);
+			}else if($tabIdentity == 5){
+				$data = array(
+					'id' => $this->input->post('id'),
+					'name' => $this->input->post('name'),
+					'description' => $this->input->post('description')
+				);
+				$tabIdentityData = array(
+					'tabIdentity' => $tabIdentity
+				);
+			}else if($tabIdentity == 6){
+				$data = array(
+					'Doc_Id' => $this->input->post('Doc_Id'),
+					'Doc_Name' => $this->input->post('Doc_Name'),
+					'Doc_Value' => $this->input->post('Doc_Value'),
+					'Settlement' => $this->input->post('Settlement') 
+				);
+				$tabIdentityData = array(
+					'tabIdentity' => $tabIdentity
+				);
+			}else if($tabIdentity == 7){
+				$data = array(
+					'ServiceType_ID' => $this->input->post('ServiceType_ID'),
+					'ServiceType' => $this->input->post('ServiceType'),
+					'ServiceDesc' => $this->input->post('ServiceDesc')
+				);
+				$tabIdentityData = array(
+					'tabIdentity' => $tabIdentity
+				);
+			}else if($tabIdentity == 8){
+				$data = array(
+					'EventTypeId' => $this->input->post('EventTypeId'),
+					'EventTypeName' => $this->input->post('EventTypeName')
+				);
+				$tabIdentityData = array(
+					'tabIdentity' => $tabIdentity
+				);
+			}else if($tabIdentity == 9){
+				$data = array(
+					'EventStatusId' => $this->input->post('EventStatusId'),
+					'EventStatusName' => $this->input->post('EventStatusName')
+				);
+				$tabIdentityData = array(
+					'tabIdentity' => $tabIdentity
+				);
+			}
+			
+			
+			
+			//echo "<pre>"; print_r($data); exit();
+			$insert_success = $this->dataentry_model->Update_OtherEntries($data,$tabIdentityData);
+			return true;
 		}
 		public function delete_Roles(){
 			$data = $this->input->post('deleteEventStatus');

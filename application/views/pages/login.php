@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/styles/style.css">
 
 </head>
-<body class="blank" style="background-image:url(<?php echo base_url();?>assets/images/log6.jpg); background-repeat: no-repeat;
+<body class="blank" style="background-image:url(<?php echo base_url();?>assets/images/log66.jpg); background-repeat: no-repeat;
     background-size: cover;>
 
 

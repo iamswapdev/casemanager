@@ -135,7 +135,7 @@
 							<label class="col-sm-2 control-label">Notes</label>
 							<div class="col-md-5">
 								<!--<input type="text" id="notes" name="notes" class="form-control input-sm">-->
-                            	<textarea rows="2" id="notes" name="notes" class="form-control" required></textarea>
+                            	<textarea rows="2" id="notes" name="notes" class="form-control"></textarea>
 							</div>
 							
 						</div>
@@ -173,7 +173,7 @@
 						<div class="form-group form-horizontal col-md-12">
 							<label class="col-sm-2 control-label">Phone <span class="required-field">*</span></label>
 							<div class="col-sm-1">
-								<input id="phoneLocal" name="phoneLocal" type="text" class="form-control input-sm" required>
+								<input id="phoneLocal" name="phoneLocal" type="text" class="form-control input-sm">
 							</div>
 							<label class="col-sm-1 control-label">Fax</label>
 							<div class="col-sm-1">
@@ -221,7 +221,7 @@
 						<div class="form-group form-horizontal col-md-12">
 							<label class="col-sm-2 control-label">Phone <span class="required-field">*</span></label>
 							<div class="col-sm-1">
-								<input id="phonePermanent" name="phonePermanent" type="text" class="form-control input-sm" required>
+								<input id="phonePermanent" name="phonePermanent" type="text" class="form-control input-sm">
 							</div>
 							<label class="col-sm-1 control-label">Fax</label>
 							<div class="col-sm-1">
@@ -418,7 +418,7 @@
                                     <div class="col-md-2">
                                     </div>
                                     <div class="col-md-6 checkbox">
-                                        <label><input type="checkbox" id="checkbox1" >Check here if permanent address info is same.</label>
+                                        <label><input type="checkbox" id="checkbox2" >Check here if permanent address info is same.</label>
                                     </div>
                                 </div>
                                 <div class="form-group form-horizontal col-md-12">
@@ -547,6 +547,7 @@
 
 
 <script>
+	
 	function callSuccess() {
 		swal({
 			title: "Successfully submitted",
@@ -561,14 +562,14 @@
 	});
 	$('#checkbox1').change(function() {
 		if ($(this).is(':checked')) {
-			var addressLocal = $("textarea[name=addressLocal]").val();
+			var addressLocal = $("input[name=addressLocal]").val();
 			var zipLocal = $("input[name=zipLocal]").val();
 			var cityLocal = $("input[name=cityLocal]").val();
 			var stateLocal = $("select[name=stateLocal]").val();
 			var phoneLocal = $("input[name=phoneLocal]").val();
 			var faxLocal = $("input[name=faxLocal]").val();
 			console.log("okkk");
-			$('textarea[name=addressPermanent]').val(addressLocal);
+			$('input[name=addressPermanent]').val(addressLocal);
 			$('input[name=zipPermanent]').val(zipLocal);
 			$('input[name=cityPermanent]').val(cityLocal);
 			$('select[name=statePermanent]').val(stateLocal);
@@ -583,8 +584,31 @@
 			$('#phonePermanent').val("");
 			$('#faxPermanent').val("");
 		}
-		
-		
+    });
+	$('#checkbox2').change(function() {
+		if ($(this).is(':checked')) {
+			var addressLocal = $("#updateProviderInfo input[name=addressLocal]").val();
+			var zipLocal = $("#updateProviderInfo input[name=zipLocal]").val();
+			var cityLocal = $("#updateProviderInfo input[name=cityLocal]").val();
+			var stateLocal = $("#updateProviderInfo select[name=stateLocal]").val();
+			var phoneLocal = $("#updateProviderInfo input[name=phoneLocal]").val();
+			var faxLocal = $("#updateProviderInfo input[name=faxLocal]").val();
+			console.log("okkk");
+			$('#updateProviderInfo input[name=addressPermanent]').val(addressLocal);
+			$('#updateProviderInfo input[name=zipPermanent]').val(zipLocal);
+			$('#updateProviderInfo input[name=cityPermanent]').val(cityLocal);
+			$('#updateProviderInfo select[name=statePermanent]').val(stateLocal);
+			$('#updateProviderInfo input[name=phonePermanent]').val(phoneLocal);
+			$('#updateProviderInfo input[name=faxPermanent]').val(faxLocal);
+			
+		}else{
+			$('#addressPermanent').val("");
+			$('#zipaPermanent').val("");
+			$('#cityPermanent').val("");
+			$('#statePermanent').val("");
+			$('#phonePermanent').val("");
+			$('#faxPermanent').val("");
+		}
     });
 
 /* Add Provider information - Tab-1*/ /*---------- Tab-1 --------------------*/
@@ -626,18 +650,10 @@
 				required: true,
 				email: true
 			},
-			phone:{
-				required: true,
-				number: true
-			},
 			fax:{
 				number: true
 			},
 			zip:{
-				required: true,
-				number: true
-			},
-			phoneLocal:{
 				required: true,
 				number: true
 			},
@@ -653,10 +669,6 @@
 			},
 			stateLocal:{
 				required: true
-			},
-			phonePermanent:{
-				required: true,
-				number: true
 			},
 			faxPermanent:{
 				number: true

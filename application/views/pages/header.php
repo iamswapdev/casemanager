@@ -2,9 +2,9 @@
     <!--<div class="color-line">
     </div>-->
     <div id="logo" class="light-version">
-        <span class="logo-span">
-            Case-Manager
-        </span>
+        
+            <a href="<?php echo base_url(); ?>adminprivilege/manageusers"> <span class="logo-span"> Case-Manager </span> </a>
+        
     </div>
     <nav role="navigation">
         <div class="header-link hide-menu"><i class="fa fa-bars"></i></div>

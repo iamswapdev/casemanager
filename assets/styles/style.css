@@ -3637,6 +3637,10 @@ input[type="radio"].horizontal{
 div#example1_wrapper tr:hover{
 	background-color: #ffd599;
 }
+.otherEntries-table{
+	position: relative;
+    bottom: 163px;
+}
 	
 	
 	
