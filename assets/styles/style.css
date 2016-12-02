@@ -3641,6 +3641,26 @@ div#example1_wrapper tr:hover{
 	position: relative;
     bottom: 163px;
 }
-	
+h5.h4-title{
+   color: #006896;
+}
+.label-font label{
+	font-size:14px;
+}
+label.case-id{
+	font-size:18px;
+}
+tr{
+	color:#000;
+}
+.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+    border: 1px solid #e2e2e2
+}
+#example1.advanced-search{
+	font-size:11px;
+}
+.nav.nav-tabs.black-tab a{
+	color:#000;
+}
 	
 	

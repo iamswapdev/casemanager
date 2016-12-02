@@ -60,7 +60,7 @@
       <div class="col-lg-12 animated-panel zoomIn">
        <div class="hpanel">
         <div class="tabs-left">
-          <ul class="nav nav-tabs">
+          <ul class="nav nav-tabs black-tab">
             <li class="active"><a data-toggle="tab" href="#tab-1">Denial Types Add/Edit</a></li>
             <li class=""><a data-toggle="tab" href="#tab-2">Court Types Add/Edit</a></li>
             <li class=""><a data-toggle="tab" href="#tab-3">Image Types Add/Edit</a></li>
@@ -74,7 +74,7 @@
           <div class="tab-content">
             <div id="tab-1" class="tab-pane active">
               <div class="panel-body"> 
-				<h4>Denial Types Add/Edit</h4>
+				<h5 class="h4-title">Denial Types Add/Edit</h5>
 				<form id="deleteDenialReasonsForm"  method="post">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-8">
@@ -102,7 +102,7 @@
             </div>
             <div id="tab-2" class="tab-pane">
               <div class="panel-body">
-                <h4>Court Types Add/Edit</h4>
+                <h5 class="h4-title">Court Types Add/Edit</h5>
 				<form id="deleteCourtForm"  method="post">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
@@ -144,7 +144,7 @@
             </div>
             <div id="tab-3" class="tab-pane">
               <div class="panel-body"> 
-                <h4>Image Types Add/Edit</h4>
+                <h5 class="h4-title">Image Types Add/Edit</h5>
                 <form id="deleteImageTypeForm"  method="post">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
@@ -172,7 +172,7 @@
             </div>
             <div id="tab-4" class="tab-pane">
               <div class="panel-body">
-                <h4>Status Types Add/Edit</h4>
+                <h5 class="h4-title">Status Types Add/Edit</h5>
               	<form id="deleteStatusForm"  method="post">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
@@ -199,7 +199,7 @@
             </div>
             <div id="tab-5" class="tab-pane">
               <div class="panel-body"> 
-                <h4>Case Status Types Add/Edit</h4>
+                <h5 class="h4-title">Case Status Types Add/Edit</h5>
               	<form id="deleteCaseStatusForm"  method="post">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
@@ -228,7 +228,7 @@
               
                <div id="tab-6" class="tab-pane">
               <div class="panel-body">
-                <h4>Document Types Add/Edit</h4>
+                <h5 class="h4-title">Document Types Add/Edit</h5>
                
                 <form id="deleteDocForm"  method="post">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
@@ -258,7 +258,7 @@
             </div>
             <div id="tab-7" class="tab-pane">
               <div class="panel-body"> <span>
-                <h4>Service Types Add/Edit</h4>
+                <h5 class="h4-title">Service Types Add/Edit</h5>
                 </span>
 				<form id="deleteServiceForm"  method="post">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
@@ -286,7 +286,7 @@
             
             <div id="tab-8" class="tab-pane">
               <div class="panel-body">
-                <h4>Event Type Add/Edit</h4>
+                <h5 class="h4-title">Event Type Add/Edit</h5>
                 <form id="deleteEventTypeForm"  method="post">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
@@ -312,7 +312,7 @@
             
              <div id="tab-9" class="tab-pane">
               <div class="panel-body"> 
-                <h4>Event Status Add/Edit</h4>
+                <h5 class="h4-title">Event Status Add/Edit</h5>
                 <form id="deleteEventStatusForm"  method="post">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
@@ -380,7 +380,7 @@
     });
 </script>
 <script>
-	$('#example1').dataTable( {
+	var t = $('#example1').dataTable( {
 		"ajax": 'DenialReasons'
 	});
 	$('#example2').dataTable( {
@@ -505,8 +505,17 @@
 		});
 
 		request.done(function (response, textStatus, jqXHR) {
-			console.log("Successssss ");
+			console.log("Successssss "+response);
+			
+			/*results = JSON.parse(response);
+				var optionsAsString = "";
+				for($i in results.dd){
+					t.row.add( [
+						results.dd[$i].0,results.0[$i].1,results.0[$i].2
+					] ).draw( false );
+				}*/
 			callSuccess();
+			
 		});
 	})
 	

@@ -64,159 +64,177 @@
 			</ul>
           <div class="tab-content">
             <div id="tab-1" class="tab-pane active">
-					<div class="panel-body">
-						<div class="col-lg-12 panel-body tab-panel">
-							<form id="addDefendantInfo" action="add_DefendantInfo" method="post" class="form-horizontal">
-								
-								<div class="form-group form-horizontal col-sm-12 ">
-                                	<h5>Defendant Information</h5>
-									<label class="col-sm-2 control-label">Name <span class="required-field">*</span></label>
-									<div class="col-sm-5">
-									<input type="text" id="name" name="name" class="form-control input-sm" required>
-									</div>
+				<div class="row">
+					<div class="col-lg-12">
+					<div class="hpanel">
+					<div class="panel-heading"></div>
+					<div class="panel-body tab-panel">
+						
+						<form id="addDefendantInfo" action="add_DefendantInfo" method="post" class="form-horizontal">				
+							<div class="form-group form-horizontal col-sm-12 ">
+								<h5 class="h4-title">Defendant Information</h5>
+								<label class="col-sm-2 control-label">Name <span class="required-field">*</span></label>
+								<div class="col-sm-5">
+								<input type="text" id="name" name="name" class="form-control input-sm" required>
 								</div>
-								
-								
-                                 <div class="form-group form-horizontal col-sm-12 ">
-                                    <h5>Defendant Contact Details</h5>
-                                    <label class="col-sm-2 control-label">Address <span class="required-field">*</span></label>
-                                    <div class="col-sm-5">
-                                    	<textarea rows="3" id="address" name="address"  class="form-control" required ></textarea>
-                                    </div>
+							</div>
+							
+							
+							 <div class="form-group form-horizontal col-sm-12 ">
+								<h5 class="h4-title">Defendant Contact Details</h5>
+								<label class="col-sm-2 control-label">Address <span class="required-field">*</span></label>
+								<div class="col-sm-5">
+									<textarea rows="3" id="address" name="address"  class="form-control" required ></textarea>
 								</div>
-								<div class="form-group form-horizontal col-sm-12">
-									<label class="col-sm-2 control-label">Zip <span class="required-field">*</span></label>
-									<div class="col-sm-1">
-										<input type="text" id="zip" name="zip"  class="form-control input-sm" required>
-										<!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
-									</div>
-									<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
-									<div class="col-sm-1">
-										<input type="text" id="city" name="city" class="form-control input-sm" required>
-									</div>
-									<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
-									<div class="col-sm-1">
-										<select class="form-control input-sm"  id="state" name="state" required>
-                                        	<option selected="selected" value=""></option>
-											<?php foreach($State_Name as $row){?>
-											<option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
-											<?php }?>
-										</select>
-									</div>
+							</div>
+							<div class="form-group form-horizontal col-sm-12">
+								<label class="col-sm-2 control-label">Zip <span class="required-field">*</span></label>
+								<div class="col-sm-1">
+									<input type="text" id="zip" name="zip"  class="form-control input-sm" required>
+									<!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
 								</div>
-								<div class="form-group form-horizontal col-sm-12">
-									<label class="col-sm-2 control-label">Email</label>
-									<div class="col-sm-1">
-										<input type="text" id="email" name="email"  placeholder="Ex.abc@pqr.com" class="form-control input-sm">
-									</div>
-									<label class="col-sm-1 control-label">Phone <span class="required-field">*</span></label>
-									<div class="col-sm-1">
-										<input type="text" id="phone" name="phone"  class="form-control input-sm" required>
-									</div>
-									<label class="col-sm-1 control-label">Fax</label>
-									<div class="col-sm-1">
-										<input type="text" id="fax" name="fax" class="form-control input-sm">
-									</div>
+								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
+								<div class="col-sm-1">
+									<input type="text" id="city" name="city" class="form-control input-sm" required>
 								</div>
-								<div class="form-group form-horizontal col-md-12">
-									<div class="col-sm-2"> </div>
-									<div class="col-sm-2">
-										<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancel" class="btn btn-primary">Cancel</button>
-									</div>
+								<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
+								<div class="col-sm-1">
+									<select class="form-control input-sm"  id="state" name="state" required>
+										<option selected="selected" value=""></option>
+										<?php foreach($State_Name as $row){?>
+										<option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
+										<?php }?>
+									</select>
 								</div>
-							</form>
-						</div>
-					</div>
-				</div>
+							</div>
+							<div class="form-group form-horizontal col-sm-12">
+								<label class="col-sm-2 control-label">Email</label>
+								<div class="col-sm-1">
+									<input type="text" id="email" name="email"  placeholder="Ex.abc@pqr.com" class="form-control input-sm">
+								</div>
+								<label class="col-sm-1 control-label">Phone <span class="required-field">*</span></label>
+								<div class="col-sm-1">
+									<input type="text" id="phone" name="phone"  class="form-control input-sm" required>
+								</div>
+								<label class="col-sm-1 control-label">Fax</label>
+								<div class="col-sm-1">
+									<input type="text" id="fax" name="fax" class="form-control input-sm">
+								</div>
+							</div>
+							<div class="form-group form-horizontal col-md-12">
+								<div class="col-sm-2"> </div>
+								<div class="col-sm-2">
+									<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancel" class="btn btn-primary">Cancel</button>
+								</div>
+							</div>
+						</form>
+						
+					</div><!-- End of panel-body tab-panel-->
+					</div><!-- End hpanel -->
+					</div><!-- End col-lg-12-->
+				</div><!-- End row-->
+			</div>
 			<div id="tab-2" class="tab-pane">
-					<div class="panel-body">
-						<div class="col-lg-12 panel-body tab-panel">
-							<form action="" id="updateDefendant" method="post">
-								
-								<div class="form-group form-horizontal col-sm-12">
-                                	<h5>Select Defendant To Edit</h5>
-									<label class="col-sm-2 control-label">Name</label>
-									<div class="col-md-5">
-										<select class="form-control input-sm" id="defendantId" name="defendantId" required>
-											<option selected="selected" value=""></option>
-										</select>
-									</div>
+				<div class="row">
+					<div class="col-lg-12">
+					<div class="hpanel">
+					<div class="panel-heading"></div>
+					<div class="panel-body tab-panel">
+						
+						<form action="" id="updateDefendant" method="post">					
+							<div class="form-group form-horizontal col-sm-12">
+								<h5 class="h4-title">Select Defendant To Edit</h5>
+								<label class="col-sm-2 control-label">NAME <span class="required-field">*</span></label>
+								<div class="col-md-5">
+									<select class="form-control input-sm" id="defendantId" name="defendantId" required>
+										<option selected="selected" value=""></option>
+									</select>
 								</div>
-								<div class="form-group form-horizontal col-md-12">
-									<div class="col-md-2"> </div>
-									<div class="col-md-2">
-										<button type="submit" class="btn btn-primary"><i class="fa fa-paste"></i> Edit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary">Cancel</button>
-										
-									</div>
+								<div class="col-md-2">
+									<button type="submit" class="btn btn-primary"><i class="fa fa-paste"></i> VIEW</button>
+									
 								</div>
-							</form>
-                            
-                           <form id="updateDefendantInfo" action="updatedefendant" method="post" style="display:none;">
-								
-								<div class="form-group form-horizontal col-sm-12">
-                                	<h5>Defendant Information</h5>
-                                	<input type="hidden" id="defendantIdU" name="defendantId" class="form-control input-sm">
-									<label class="col-sm-2 control-label">Name <span class="required-field">*</span></label>
-									<div class="col-sm-5">
-										<input type="text" id="nameU" name="name" class="form-control input-sm" required>
-									</div>
+							</div>
+						</form>
+						
+					</div><!-- End of panel-body tab-panel-->
+					</div><!-- End hpanel -->
+					</div><!-- End col-lg-12-->
+				</div><!-- End row-->
+
+				<div class="row update-row" style="display:none;">
+					<div class="col-lg-12">
+					<div class="hpanel">
+					<div class="panel-heading"></div>
+					<div class="panel-body tab-panel">
+						
+						<form id="updateDefendantInfo" action="updatedefendant" method="post" style="display:none;">					
+							<div class="form-group form-horizontal col-sm-12">
+								<h5 class="h4-title">Defendant Information</h5>
+								<input type="hidden" id="defendantIdU" name="defendantId" class="form-control input-sm">
+								<label class="col-sm-2 control-label">Name <span class="required-field">*</span></label>
+								<div class="col-sm-5">
+									<input type="text" id="nameU" name="name" class="form-control input-sm" required>
 								</div>
-								
-								
-								<div class="form-group form-horizontal col-sm-12">
-                                    <h5>Defendant Contact Details</h5>
-                                    <label class="col-sm-2 control-label">Address <span class="required-field">*</span></label>
-                                    <div class="col-sm-5">
-                                    	<textarea rows="3" id="addressU" name="address"  class="form-control" required></textarea>
-                                    </div>
+							</div>
+							
+							
+							<div class="form-group form-horizontal col-sm-12">
+								<h5 class="h4-title">Defendant Contact Details</h5>
+								<label class="col-sm-2 control-label">Address <span class="required-field">*</span></label>
+								<div class="col-sm-5">
+									<textarea rows="3" id="addressU" name="address"  class="form-control" required></textarea>
 								</div>
-								<div class="form-group form-horizontal col-sm-12">
-									<label class="col-sm-2 control-label">Zip <span class="required-field">*</span></label>
-									<div class="col-sm-1">
-										<input type="text" id="zipU" name="zip" class="form-control input-sm" required>
-										<!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
-									</div>
-									<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
-									<div class="col-sm-1">
-										<input type="text" id="cityU" name="city" class="form-control input-sm" required>
-									</div>
-									<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
-									<div class="col-sm-1">
-										<select class="form-control input-sm"  id="stateU" name="state" required>
-											<option selected="selected" value=""></option>
-											<?php foreach($State_Name as $row){?>
-											<option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
-											<?php }?>
-										</select>
-									</div>
+							</div>
+							<div class="form-group form-horizontal col-sm-12">
+								<label class="col-sm-2 control-label">Zip <span class="required-field">*</span></label>
+								<div class="col-sm-1">
+									<input type="text" id="zipU" name="zip" class="form-control input-sm" required>
+									<!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
 								</div>
-								<div class="form-group form-horizontal col-sm-12">
-									<label class="col-sm-2 control-label">Email</label>
-									<div class="col-sm-1">
-										<input type="text" id="emailU" name="email"  placeholder="Ex.abc@pqr.com" class="form-control input-sm">
-									</div>
-									<label class="col-sm-1 control-label">Phone <span class="required-field">*</span></label>
-									<div class="col-sm-1">
-										<input type="text" id="phoneU" name="phone"  class="form-control input-sm" required>
-									</div>
-									<label class="col-sm-1 control-label">Fax</label>
-									<div class="col-sm-1">
-										<input type="text" id="faxU" name="fax" class="form-control input-sm">
-									</div>
+								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
+								<div class="col-sm-1">
+									<input type="text" id="cityU" name="city" class="form-control input-sm" required>
 								</div>
-								<div class="form-group form-horizontal col-md-12">
-									<div class="col-sm-2"> </div>
-									<div class="col-sm-2">
-										<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary">Cancel</button>
-									</div>
+								<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
+								<div class="col-sm-1">
+									<select class="form-control input-sm"  id="stateU" name="state" required>
+										<option selected="selected" value=""></option>
+										<?php foreach($State_Name as $row){?>
+										<option value="<?php echo $row['State_Id']; ?>"> <?php echo $row['State_Name']; ?> </option>
+										<?php }?>
+									</select>
 								</div>
-							</form>
-						   
-						</div>
-					</div>
-				</div>
+							</div>
+							<div class="form-group form-horizontal col-sm-12">
+								<label class="col-sm-2 control-label">Email</label>
+								<div class="col-sm-1">
+									<input type="text" id="emailU" name="email"  placeholder="Ex.abc@pqr.com" class="form-control input-sm">
+								</div>
+								<label class="col-sm-1 control-label">Phone <span class="required-field">*</span></label>
+								<div class="col-sm-1">
+									<input type="text" id="phoneU" name="phone"  class="form-control input-sm" required>
+								</div>
+								<label class="col-sm-1 control-label">Fax</label>
+								<div class="col-sm-1">
+									<input type="text" id="faxU" name="fax" class="form-control input-sm">
+								</div>
+							</div>
+							<div class="form-group form-horizontal col-md-12">
+								<div class="col-sm-2"> </div>
+								<div class="col-sm-2">
+									<button type="submit" class="btn btn-primary" ><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary">Cancel</button>
+								</div>
+							</div>
+						</form>
+						
+					</div><!-- End of panel-body tab-panel-->
+					</div><!-- End hpanel -->
+					</div><!-- End col-lg-12-->
+				</div><!-- End row-->
+			</div>
 			
-        </div>
+			</div>
           <!--tab content close--> 
         </div>
       </div>
@@ -392,7 +410,7 @@
 			data: params,
 			success:function(data){
 				results = JSON.parse(data);
-				$("#updateDefendantInfo").css("display", "block");
+				$("#updateDefendantInfo, .update-row").css("display", "block");
 				//console.log(data);
 				
 				$("#defendantIdU").val(nameValue);
@@ -470,7 +488,7 @@
 				$('input[type=text]').val('');
 					$('textarea').val('');
 					$("#state").val('');
-					$("#updateDefendantInfo").css("display", "none");
+					$("#updateDefendantInfo, .update-row").css("display", "none");
 					//$("#myModal").modal("show");
 					callSuccess();
 			});
@@ -500,7 +518,7 @@
 		$('input[type=text]').val('');
 		$('select').val('');
 		$('textarea').val('');
-		$("#updateDefendantInfo").css("display", "none");
+		$("#updateDefendantInfo, .update-row").css("display", "none");
 	});
 	
 /* *************************************************** */

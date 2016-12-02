@@ -408,7 +408,9 @@
 	$('body').on('focus',".datepicker_recurring_start", function(){
 		$(this).datepicker({
 			"autoclose": true,
-			"todayHighlight": true
+			"todayHighlight": true,
+			"yearHighlight": true,
+			"monthHighlight": true
 		});
 	});
 </script>

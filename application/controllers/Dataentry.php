@@ -18,6 +18,7 @@ session_cache_limiter('private_no_expire');
 		}
 
 /* ************************************  Start of Addcase  *************************************************************************/
+		
 		public function addcase(){
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
@@ -30,6 +31,25 @@ session_cache_limiter('private_no_expire');
 				$data['DenialReasons']= $this->dataentry_model->get_DenialReasonsArray();
 				
 				$this->load->view('pages/addcase',$data);
+			}else{
+				$this->load->view('pages/login');
+			}
+		}
+		public function editcase(){
+			$this->session->all_userdata();
+			if(isset($this->session->userdata['logged_in'])){
+				$data = array(
+					$Case_AutoId = $this->input->post('Case_AutoId')
+				);
+				$case['CaseInfo']= $this->dataentry_model->get_CaseInfo($data);
+				/*$data['Provider_Name']= $this->dataentry_model->get_Provider();
+				$data['InsuranceCompany_Name']= $this->dataentry_model->get_Insurance();
+				$data['Status']= $this->dataentry_model->get_StatusArray();
+				$data['Court']= $this->dataentry_model->get_CourtArray();
+				$data['Service']= $this->dataentry_model->get_ServiceArray();
+				$data['DenialReasons']= $this->dataentry_model->get_DenialReasonsArray();
+				
+				$this->load->view('pages/addcase',$data);*/
 			}else{
 				$this->load->view('pages/login');
 			}
@@ -709,6 +729,13 @@ session_cache_limiter('private_no_expire');
 				$tabIdentityData = array(
 					'tabIdentity' => $tabIdentity
 				);
+				/*$asd = array();
+				$row = array();
+				$row[] ="<button type='button' class='btn editRecord'>Edit</button> <div class='update-record' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn btn-primary cancel'>Cancel</button></div>";
+				$row[] = "<input type='text' name='DenialReasons_Type' class='form-control input-sm input-height' >";
+				$row[] = "<input type='checkbox' name='deleteDenialReasons[]' class='deleteDenialReasons' > <input type='hidden' name='tabIdentity' value='1' > <input type='hidden' name='DenialReasons_Id'";
+				
+				$asd['dd'] = $row;*/
 			}else if($tabIdentity == 2){
 				$data = array(
 					'Court_Name' => $this->input->post('Court_Name'),
@@ -777,6 +804,7 @@ session_cache_limiter('private_no_expire');
 			}
 			//echo "<pre>"; print_r($data); exit();
 			$insert_success = $this->dataentry_model->Add_OtherEntries($data,$tabIdentityData);
+			//echo json_encode($asd);
 			return true;
 		}
 		public function just(){

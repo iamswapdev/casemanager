@@ -12,6 +12,13 @@ Class Dataentry_model extends CI_Model{
 		$query = $this->db->insert('dbo_tblcase',$data); 
 		return $query;
 	}
+	public function get_CaseInfo($data){
+		$this->db->where('Case_AutoId', $data['Case_AutoId']);
+		$query = $this->db->get('dbo_tblcase'); 
+		$data=$query->result_array();
+		echo "<pre>"; print_r($data); exit();
+		return $data;
+	}
 
 /* ************************************  Start of Provider  *************************************************************************/	
 	public function get_Provider()

@@ -57,18 +57,22 @@
           </ul>
           <div class="tab-content">
             <div id="tab-1" class="tab-pane active">
-				<div class="panel-body">
-					<div class="col-lg-12 panel-body tab-panel">
+				<div class="row">
+					<div class="col-lg-12">
+					<div class="hpanel">
+					<div class="panel-heading"></div>
+					<div class="panel-body tab-panel">
+						
 						<form id="addAdjusterInfo" action="add_AdjusterInfo" method="post" class="form-horizontal">
-							<h5>Adjuster Information </h5>
+							<h5 class="h4-title">Adjuster Information </h5>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">Insurer <span class="required-field">*</span></label>
 								<div class="col-md-5">
 									<select class="form-control input-sm" id="insuranceId" name="insuranceId" required>
 										<option selected="selected" value=""></option>
 										<?php foreach($InsuranceCompany_Name as $row){?>
-                                        <option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option>
-                                        <?php }?>
+										<option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option>
+										<?php }?>
 									</select>
 								</div>
 							</div>
@@ -110,45 +114,59 @@
 							</div>
 						</form>
 						
-					</div>
-				</div>
+					</div><!-- End of panel-body tab-panel-->
+					</div><!-- End hpanel -->
+					</div><!-- End col-lg-12-->
+				</div><!-- End row-->
 			</div>
 			<div id="tab-2" class="tab-pane">
-				<div class="panel-body">
-					<div class="col-lg-12 panel-body tab-panel">
+				<div class="row">
+					<div class="col-lg-12">
+					<div class="hpanel">
+					<div class="panel-heading"></div>
+					<div class="panel-body tab-panel">
+						
 						<form action="" method="post" id="updateAdjuster">
-							<h5>Select Adjuster To Edit</h5> 
+							<h5 class="h4-title">Select Adjuster To Edit</h5> 
 							<div class="form-group form-horizontal col-md-12">
-								<label class="col-sm-2 control-label">Name</label>
+								<label class="col-sm-2 control-label">NAME <span class="required-field">*</span></label>
 								<div id="test" class="col-md-5">
 									<select class="form-control input-sm" id="adjusterId" name="adjusterId" required>
-                                        <option selected="selected" value=""></option>
-                                    </select>
+										<option selected="selected" value=""></option>
+									</select>
 								</div>
-							</div>
-							<div class="form-group form-horizontal col-md-12">
-								<div class="col-sm-2"> </div>
 								<div class="col-sm-2">
-									<button type="submit" class="btn btn-primary"><i class="fa fa-paste"></i> Edit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary">Cancel</button>
+									<button type="submit" class="btn btn-primary"><i class="fa fa-paste"></i> VIEW</button>
 								</div>
 							</div>
 						</form>
-                        
-                        <form id="updateAdjusterInfo" action="updateadjuster" method="post" class="form-horizontal" style="display:none;">
-							<h5>Adjuster Information </h5>
+						
+					</div><!-- End of panel-body tab-panel-->
+					</div><!-- End hpanel -->
+					</div><!-- End col-lg-12-->
+				</div><!-- End row-->
+
+				<div class="row update-row" style="display:none;">
+					<div class="col-lg-12">
+					<div class="hpanel">
+					<div class="panel-heading"></div>
+					<div class="panel-body tab-panel">
+						
+						<form id="updateAdjusterInfo" action="updateadjuster" method="post" class="form-horizontal" style="display:none;">
+							<h5 class="h4-title">Adjuster Information </h5>
 							<div class="form-group">
 								<label class="col-sm-2 control-label">Insurer <span class="required-field">*</span></label>
 								<div class="col-md-5">
 									<select class="form-control input-sm" id="insuranceIdU" name="insuranceId" required>
 										<option selected="selected" value=""></option>
 										<?php foreach($InsuranceCompany_Name as $row){?>
-                                        <option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option>
-                                        <?php }?>
+										<option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option>
+										<?php }?>
 									</select>
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-smd-12">
-                            	<input type="hidden" id="adjusterIdU" name="adjusterId" class="form-control input-sm">
+								<input type="hidden" id="adjusterIdU" name="adjusterId" class="form-control input-sm">
 								<label class="col-sm-2 control-label">Last Name <span class="required-field">*</span></label>
 								<div class="col-sm-2">
 									<input type="text" id="lastNameU" name="lastName" placeholder="Last Name" class="form-control input-sm" required>
@@ -185,8 +203,11 @@
 								</div>
 							</div>
 						</form>
+						
+					</div><!-- End of panel-body tab-panel-->
+					</div><!-- End hpanel -->
 					</div><!-- End col-lg-12-->
-				</div><!-- End of panel-body-->
+				</div><!-- End row-->
 			</div><!-- End of tab-1-->
 			
         </div>
@@ -200,7 +221,7 @@
 	<div class="modal-content">
 		<div class="modal-header model-design">
 			<button type="button" class="close close-tab" data-dismiss="modal"> &times;</button>
-			<h5> Data Submitted successfully...... </h5>
+			<h5 class="h4-title"> Data Submitted successfully...... </h5>
 		</div>
 		<div class="modal-body">
 			<div class="row">
@@ -364,7 +385,7 @@
 			data: params,
 			success:function(data){
 				results = JSON.parse(data);
-				$("#updateAdjusterInfo").css("display", "block");
+				$("#updateAdjusterInfo, .update-row").css("display", "block");
 				//console.log(data);
 				
 				$("#adjusterIdU").val(nameValue);
@@ -398,8 +419,7 @@
 				required: true
 			},
 			phone:{
-				required: true,
-				number: true
+				required: true
 			},
 			ext:{
 				number: true
@@ -468,7 +488,7 @@
 		$('input[type=text]').val('');
 		$('select').val('');
 		$('textarea').val('');
-		$("#updateAdjusterInfo").css("display", "none");
+		$("#updateAdjusterInfo, .update-row").css("display", "none");
 	});
 /* *************************************************** */	
 

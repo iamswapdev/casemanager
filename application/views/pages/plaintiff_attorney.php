@@ -63,7 +63,7 @@
 				<div class="panel-body tab-panel">
 					
 					<form id="addPlantiffInfo" action="add_PlantiffInfo" method="post" class="form-horizontal">
-						<h5>Plaintiff Attorney Information</h5>
+						<h5 class="h4-title">Plaintiff Attorney Information</h5>
 						<div class="form-group form-horizontal col-sm-12">
 							<label class="col-sm-2 control-label">Name <span class="required-field">*</span></label>
 							<div class="col-sm-4">
@@ -72,7 +72,7 @@
 						</div>
 						
                         
-                        <h5>Defendant Contact Details Address</h5>
+                        <h5 class="h4-title">Defendant Contact Details Address</h5>
 						<div class="form-group form-horizontal col-sm-12 ">
 							<label class="col-sm-2 control-label">Address <span class="required-field">*</span></label>
 							<div class="col-sm-5">
@@ -137,19 +137,16 @@
 					
 					
 					<form action="" id="updatePlantiff" method="post">
-						<h5>Select Plaintiff Attorney To </h5>
+						<h5 class="h4-title">Select Plaintiff Attorney To </h5>
 						<div class="form-group form-horizontal col-sm-12">
-							<label class="col-sm-2 control-label">Name <span class="required-field">*</span></label>
+							<label class="col-sm-2 control-label">NAME <span class="required-field">*</span></label>
 							<div class="col-sm-4">
 								<select id="plantiffId" name="plantiffId" class="form-control input-sm" required>
 									<option selected="selected" value=""></option>
 								</select>
 							</div>
-						</div>
-						<div class="form-group form-horizontal col-sm-12">
-							<div class="col-sm-2"> </div>
 							<div class="col-sm-2">
-								<button type="submit" class="btn btn-primary"><i class="fa fa-paste"></i> Edit</button>  <button type="button" id="cancelUpdate" class="btn btn-primary">Cancel</button>
+								<button type="submit" class="btn btn-primary"><i class="fa fa-paste"></i> VIEW</button>
 							</div>
 						</div>
 					</form>
@@ -159,13 +156,13 @@
 				</div><!-- End col-lg-12-->
 			</div><!-- End row-->
 			
-			<div class="row">
+			<div class="row update-row" style="display:none;">
 				<div class="col-lg-12">
 				<div class="hpanel">
 				<div class="panel-body tab-panel">
 					
 					 <form id="updatePlantiffInfo" action="updateplantiff" method="post" style="display:none;">
-						<h5>Plaintiff Attorney Information</h5>
+						<h5 class="h4-title">Plaintiff Attorney Information</h5>
 						<div class="form-group form-horizontal col-sm-12">
 							<input type="hidden" id="plantiffIdU" name="plantiffId" class="form-control input-sm">
                             <label class="col-sm-2 control-label">Name <span class="required-field">*</span></label>
@@ -175,7 +172,7 @@
 						</div>
 						
                         
-                        <h5>Plaintiff Attorney Contact Details</h5>
+                        <h5 class="h4-title">Plaintiff Attorney Contact Details</h5>
 						<div class="form-group form-horizontal col-sm-12">
 							<label class="col-sm-2 control-label">Address <span class="required-field">*</span></label>
 							<div class="col-sm-5">
@@ -235,7 +232,7 @@
             <div class="modal-content">
                 <div class="modal-header model-design">
                     <button type="button" class="close close-tab" data-dismiss="modal"> &times;</button>
-                    <h5> Data Submitted successfully...... </h5>
+                    <h5 class="h4-title"> Data Submitted successfully...... </h5>
                 </div>
                 <div class="modal-body">
                     <div class="row">
@@ -412,7 +409,7 @@
 			data: params,
 			success:function(data){
 				results = JSON.parse(data);
-				$("#updatePlantiffInfo").css("display", "block");
+				$("#updatePlantiffInfo, .update-row").css("display", "block");
 				//console.log(data);
 				
 				$("#plantiffIdU").val(nameValue);
@@ -492,7 +489,7 @@
 				$("select").val('');
 				//$("#myModal").modal("show");
 				callSuccess();
-				$("#updatePlantiffInfo").css("display", "none");
+				$("#updatePlantiffInfo, .update-row").css("display", "none");
 			});
 
 			// callback handler that will be called on failure
@@ -521,7 +518,7 @@
 		$('input[type=text]').val('');
 		$('select').val('');
 		$('textarea').val('');
-		$("#updatePlantiffInfo").css("display", "none");
+		$("#updatePlantiffInfo, .update-row").css("display", "none");
 	});
 </script>
 <script>
