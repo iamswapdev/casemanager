@@ -76,6 +76,7 @@
               <div class="panel-body"> 
 				<h5 class="h4-title">Denial Types Add/Edit</h5>
 				<form id="deleteDenialReasonsForm"  method="post">
+                	<input type="hidden" name="tabIdentity" value="1">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-8">
 							<table id="example1" class="table dataTable table-bordered table-striped">
@@ -104,6 +105,7 @@
               <div class="panel-body">
                 <h5 class="h4-title">Court Types Add/Edit</h5>
 				<form id="deleteCourtForm"  method="post">
+                	<input type="hidden" name="tabIdentity" value="2">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
 							<table id="example2" class="table dataTable table-bordered table-striped">
@@ -146,6 +148,7 @@
               <div class="panel-body"> 
                 <h5 class="h4-title">Image Types Add/Edit</h5>
                 <form id="deleteImageTypeForm"  method="post">
+                	<input type="hidden" name="tabIdentity" value="3">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
 							<table id="example3" class="table dataTable table-bordered table-striped">
@@ -174,6 +177,7 @@
               <div class="panel-body">
                 <h5 class="h4-title">Status Types Add/Edit</h5>
               	<form id="deleteStatusForm"  method="post">
+                	<input type="hidden" name="tabIdentity" value="4">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
 							<table id="example4" class="table dataTable table-bordered table-striped">
@@ -201,6 +205,7 @@
               <div class="panel-body"> 
                 <h5 class="h4-title">Case Status Types Add/Edit</h5>
               	<form id="deleteCaseStatusForm"  method="post">
+                	<input type="hidden" name="tabIdentity" value="5">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
 							<table id="example5" class="table dataTable table-bordered table-striped">
@@ -231,6 +236,7 @@
                 <h5 class="h4-title">Document Types Add/Edit</h5>
                
                 <form id="deleteDocForm"  method="post">
+                	<input type="hidden" name="tabIdentity" value="6">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
 							<table id="example6" class="table dataTable table-bordered table-striped">
@@ -261,6 +267,7 @@
                 <h5 class="h4-title">Service Types Add/Edit</h5>
                 </span>
 				<form id="deleteServiceForm"  method="post">
+                	<input type="hidden" name="tabIdentity" value="7">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
 							<table id="example7" class="table dataTable table-bordered table-striped">
@@ -288,6 +295,7 @@
               <div class="panel-body">
                 <h5 class="h4-title">Event Type Add/Edit</h5>
                 <form id="deleteEventTypeForm"  method="post">
+                	<input type="hidden" name="tabIdentity" value="8">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
 							<table id="example8" class="table dataTable table-bordered table-striped">
@@ -314,6 +322,7 @@
               <div class="panel-body"> 
                 <h5 class="h4-title">Event Status Add/Edit</h5>
                 <form id="deleteEventStatusForm"  method="post">
+                	<input type="hidden" name="tabIdentity" value="9">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
 							<table id="example9" class="table dataTable table-bordered table-striped">
@@ -381,31 +390,49 @@
 </script>
 <script>
 	var t = $('#example1').dataTable( {
-		"ajax": 'DenialReasons'
+		"ajax": 'DenialReasons',
+		"iDisplayLength": 20,
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 	});
 	$('#example2').dataTable( {
-		"ajax": 'Court'
+		"ajax": 'Court',
+		"iDisplayLength": 20,
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 	});
 	$('#example3').dataTable( {
-		"ajax": 'ImageType'
+		"ajax": 'ImageType',
+		"iDisplayLength": 20,
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 	});
 	$('#example4').dataTable( {
-		"ajax": 'Status'
+		"ajax": 'Status',
+		"iDisplayLength": 20,
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 	});
 	$('#example5').dataTable( {
-		"ajax": 'CaseStatus'
+		"ajax": 'CaseStatus',
+		"iDisplayLength": 20,
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 	});
 	$('#example6').dataTable( {
-		"ajax": 'Doc'
+		"ajax": 'Doc',
+		"iDisplayLength": 20,
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 	});
 	$('#example7').dataTable( {
-		"ajax": 'Service'
+		"ajax": 'Service',
+		"iDisplayLength": 20,
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 	});
 	$('#example8').dataTable( {
-		"ajax": 'EventType'
+		"ajax": 'EventType',
+		"iDisplayLength": 20,
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 	});
 	var table = $('#example9').dataTable( {
-		"ajax": 'EventStatus'
+		"ajax": 'EventStatus',
+		"iDisplayLength": 20,
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 	});
 	$('tbody').on( 'click', '.editRecord', function () {
 		var parentR = $(this).parent();
@@ -633,35 +660,68 @@
 	
 	
 /********************************* Tab 1 DenialReasons *******************************************************************/
-	$("#deleteDenialReasonsForm").submit(function(form){
-		var $form = $(form);
-		var $inputs = $form.find("input, select, button, textarea");
-		var serializedData = $form.serialize();
-		//console.log("DDDD: "+serializedData);
-		$inputs.prop("disabled", true);
-
-		request = $.ajax({
-			url:"delete_Roles",
-			type: "post",
-			data: serializedData
+	$('#deleteDenialReasonsForm').submit(function (form) {
+		var checkedNo = [];
+		$('.deleteDenialReasons:checked').each(function(i){
+			var values = $(this).val();
+			checkedNo.push(values);
+			//var row = $(".deleteDenialReasons"+values).parent().parent();
+			//$(row).remove();
+			 console.log("value: "+values);
 		});
-
-		request.done(function (response, textStatus, jqXHR) {
-			//console.log("Done: ");
-			$('.deleteDenialReasons:checked').each(function(i){
-				var values = $(this).val();
-				
-				var row = $(".deleteDenialReasons"+values).parent().parent();
-				$(row).remove();
-				console.log("value: "+values);
-			});
-			callDelete();
-		});
-
-		request.always(function () {
-			$inputs.prop("disabled", false);
-		});
+		for(i=0;i<checkedNo.length;i++){
+		   console.log("i: "+ i+" checkedNo: "+checkedNo[i]);
+		}
+		
+		var form1 = $(this);
+		var newd = form1.serialize();
+		console.log("SSSS: "+newd);
 		form.preventDefault();	//STOP default action
+		swal({
+			title: "Are you sure?",
+			text: "You will not be able to recover these records",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#DD6B55",
+			confirmButtonText: "Yes, delete it!",
+			cancelButtonText: "No, cancel it!",
+			closeOnConfirm: false,
+			closeOnCancel: false },
+		function (isConfirm) {
+			if (isConfirm) {
+				var $form = $(form);
+				var $inputs = $form.find("input, select, button, textarea");
+				var serializedData = $form.serialize();
+				console.log("DDDD: "+serializedData);
+				$inputs.prop("disabled", true);
+		
+				request = $.ajax({
+					url:"delete_Roles",
+					type: "post",
+					data: serializedData
+				});
+		
+				request.done(function (response, textStatus, jqXHR) {
+					//console.log("Done: ");
+					$('.deleteDenialReasons:checked').each(function(i){
+						var values = $(this).val();
+						
+						var row = $(".deleteDenialReasons"+values).parent().parent();
+						$(row).remove();
+						console.log("value: "+values);
+					});
+					//callDelete();
+				});
+		
+				request.always(function () {
+					$inputs.prop("disabled", false);
+				});
+				form.preventDefault();	//STOP default action
+				swal("Deleted!", "Your records has been deleted.", "success");
+			} else {
+				swal("Cancelled", "Your records are safe :)", "error");
+			}
+		});
 	});
 /********************************* Tab 2 Court *******************************************************************/
 	$("#deleteCourtForm").submit(function(form){
@@ -931,6 +991,8 @@
 			type: "success"
 		});
 	}
+	
+
 	
 		
 </script>

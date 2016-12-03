@@ -92,13 +92,13 @@
 							<div class="form-group form-horizontal col-md-12">
 								<label class="col-sm-2 control-label">Collection Billing <span class="required-field">*</span></label>
 								<div class="col-md-5">
-								<input type="text" id="collectionBilling" name="collectionBilling" class="form-control input-sm" required>
+								<input type="number" step="0.01" id="collectionBilling" name="collectionBilling" class="form-control input-sm" required>
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<label value="0.0" class="col-sm-2 control-label">Interest Billing <span class="required-field">*</span></label>
 								<div class="col-md-5">
-								<input type="text"  id="interestBilling" name="interestBilling"  class="form-control input-sm" required>
+								<input type="number" step="0.01"  id="interestBilling" name="interestBilling"  class="form-control input-sm" required>
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
@@ -122,7 +122,7 @@
 							<div class="form-group form-horizontal col-md-12">
 								<label class="col-sm-2 control-label">Cost Balance <span class="required-field">*</span></label>
 								<div class="col-md-1">
-								<input type="text" id="costBalance" name="costBalance" class="form-control input-sm" required>
+								<input type="number" step="0.01" id="costBalance" name="costBalance" class="form-control input-sm" required>
 								</div>
 								<label class="col-sm-2 control-label">Invoice Type <span class="required-field">*</span></label>
 								<div class="col-md-1">
@@ -160,11 +160,7 @@
 								<div class="col-sm-1">
 									<input type="text" id="zipLocal" name="zipLocal" placeholder="12345" class="form-control input-sm" required>
 								</div>
-								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
-								<div class="col-sm-1">
-									<input id="cityLocal" name="cityLocal" type="text" class="form-control input-sm" required>
-								</div>
-								<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
+                                <label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
 								<div class="col-sm-1">
 									<select id="stateLocal" name="stateLocal" class="form-control input-sm" required>
 										<option selected="selected" value=""></option>
@@ -173,15 +169,20 @@
 										<?php }?>
 									</select>
 								</div>
+								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
+								<div class="col-sm-2">
+									<input id="cityLocal" name="cityLocal" type="text" class="form-control input-sm" required>
+								</div>
+								
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<label class="col-sm-2 control-label">Phone <span class="required-field">*</span></label>
 								<div class="col-sm-1">
-									<input id="phoneLocal" name="phoneLocal" type="text" class="form-control input-sm">
+									<input id="phoneLocal" name="phoneLocal" type="text" placeholder="123-456-7890" class="phone-format form-control input-sm">
 								</div>
 								<label class="col-sm-1 control-label">Fax</label>
 								<div class="col-sm-1">
-									<input id="faxLocal" name="faxLocal" type="text" class="form-control input-sm">
+									<input id="faxLocal" name="faxLocal" type="text" placeholder="123-456-7890" class="phone-format form-control input-sm">
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
@@ -208,11 +209,7 @@
 								<div class="col-sm-1">
 									<input type="text" id="zipPermanent" name="zipPermanent" placeholder="12345" class="form-control input-sm" required>
 								</div>
-								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
-								<div class="col-sm-1">
-									<input id="cityPermanent" name="cityPermanent" type="text" class="form-control input-sm" required>
-								</div>
-								<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
+                                <label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
 								<div class="col-sm-1">
 									<select id="statePermanent" name="statePermanent" class="form-control input-sm" required>
 										<option selected="selected" value=""></option>
@@ -221,28 +218,33 @@
 										<?php }?>
 									</select>
 								</div>
+								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
+								<div class="col-sm-2">
+									<input id="cityPermanent" name="cityPermanent" type="text" class="form-control input-sm" required>
+								</div>
+								
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<label class="col-sm-2 control-label">Phone <span class="required-field">*</span></label>
 								<div class="col-sm-1">
-									<input id="phonePermanent" name="phonePermanent" type="text" class="form-control input-sm">
+									<input id="phonePermanent" name="phonePermanent" placeholder="123-456-7890" type="text" class="phone-format form-control input-sm">
 								</div>
 								<label class="col-sm-1 control-label">Fax</label>
 								<div class="col-sm-1">
-									<input id="faxPermanent" name="faxPermanent" type="text" class="form-control input-sm">
+									<input id="faxPermanent" name="faxPermanent" placeholder="123-456-7890" type="text" class="phone-format form-control input-sm">
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<label class="col-sm-2 control-label">Contact</label>
 								<div class="col-sm-1">
-									<input type="text" id="contact" name="contact" class="form-control input-sm">
+									<input type="text" id="contact" name="contact" placeholder="123-456-7890" class="phone-format form-control input-sm">
 								</div>
 								<label class="col-sm-1 control-label">Contact 2</label>
 								<div class="col-sm-1">
-									<input type="text" id="contact2" name="contact2" class="form-control input-sm">
+									<input type="text" id="contact2" name="contact2" placeholder="123-456-7890" class="phone-format form-control input-sm">
 								</div>
 								<label class="col-sm-1 control-label">Email <span class="required-field">*</span></label>
-								<div class="col-sm-1">
+								<div class="col-sm-2">
 									<input type="email" id="email" name="email" placeholder="abc@xyz.com" class="form-control input-sm" required>
 								</div>
 							</div>
@@ -336,13 +338,13 @@
 							<div class="form-group form-horizontal col-md-12">
 								<label class="col-sm-2 control-label">Collection Billing <span class="required-field">*</span></label>
 								<div class="col-md-5">
-								<input type="text" id="collectionBillingU" name="collectionBilling" class="form-control input-sm" required>
+								<input type="number" step="0.01" id="collectionBillingU" name="collectionBilling" class="form-control input-sm" required>
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<label value="0.0" class="col-sm-2 control-label">Interest Billing <span class="required-field">*</span></label>
 								<div class="col-md-5">
-								<input type="text"  id="interestBillingU" name="interestBilling"  class="form-control input-sm" required>
+								<input type="number" step="0.01"  id="interestBillingU" name="interestBilling"  class="form-control input-sm" required>
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
@@ -366,7 +368,7 @@
 							<div class="form-group form-horizontal col-md-12">
 								<label class="col-sm-2 control-label">Cost Balance <span class="required-field">*</span></label>
 								<div class="col-md-1">
-								<input type="text" id="costBalanceU" name="costBalance" class="form-control input-sm" required>
+								<input type="number" step="0.01" id="costBalanceU" name="costBalance" class="form-control input-sm" required>
 								</div>
 								<label class="col-sm-2 control-label">Invoice Type <span class="required-field">*</span></label>
 								<div class="col-md-1">
@@ -404,11 +406,7 @@
 								<div class="col-sm-1">
 									<input type="text" id="zipLocalU" name="zipLocal" placeholder="12345" class="form-control input-sm" required>
 								</div>
-								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
-								<div class="col-sm-1">
-									<input id="cityLocalU" name="cityLocal" type="text" class="form-control input-sm" required>
-								</div>
-								<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
+                                <label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
 								<div class="col-sm-1">
 									<select id="stateLocalU" name="stateLocal" class="form-control input-sm" required>
 										<option selected="selected" value=""></option>
@@ -417,15 +415,20 @@
 										<?php }?>
 									</select>
 								</div>
+								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
+								<div class="col-sm-2">
+									<input id="cityLocalU" name="cityLocal" type="text" class="form-control input-sm" required>
+								</div>
+								
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<label class="col-sm-2 control-label">Phone <span class="required-field">*</span></label>
 								<div class="col-sm-1">
-									<input id="phoneLocalU" name="phoneLocal" type="text" class="form-control input-sm" required>
+									<input id="phoneLocalU" name="phoneLocal" type="text" placeholder="123-456-7890" class="phone-format form-control input-sm" required>
 								</div>
 								<label class="col-sm-1 control-label">Fax</label>
 								<div class="col-sm-1">
-									<input id="faxLocalU" name="faxLocal" type="text" class="form-control input-sm">
+									<input id="faxLocalU" name="faxLocal" type="text" placeholder="123-456-7890" class="phone-format form-control input-sm">
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
@@ -453,11 +456,7 @@
 								<div class="col-sm-1">
 									<input type="text" id="zipPermanentU" name="zipPermanent" placeholder="12345" class="form-control input-sm" required>
 								</div>
-								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
-								<div class="col-sm-1">
-									<input id="cityPermanentU" name="cityPermanent" type="text" class="form-control input-sm" required>
-								</div>
-								<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
+                                <label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
 								<div class="col-sm-1">
 									<select id="statePermanentU" name="statePermanent" class="form-control input-sm" required>
 										<option selected="selected" value=""></option>
@@ -466,28 +465,33 @@
 										<?php }?>
 									</select>
 								</div>
+								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
+								<div class="col-sm-2">
+									<input id="cityPermanentU" name="cityPermanent" type="text" class="form-control input-sm" required>
+								</div>
+								
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<label class="col-sm-2 control-label">Phone <span class="required-field">*</span></label>
 								<div class="col-sm-1">
-									<input id="phonePermanentU" name="phonePermanent" type="text" class="form-control input-sm" required>
+									<input id="phonePermanentU" name="phonePermanent" placeholder="123-456-7890" type="text" class="phone-format form-control input-sm" required>
 								</div>
 								<label class="col-sm-1 control-label">Fax</label>
 								<div class="col-sm-1">
-									<input id="faxPermanentU" name="faxPermanent" type="text" class="form-control input-sm">
+									<input id="faxPermanentU" name="faxPermanent" placeholder="123-456-7890" type="text" class="phone-format form-control input-sm">
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<label class="col-sm-2 control-label">Contact</label>
 								<div class="col-sm-1">
-									<input type="text" id="contactU" name="contact" class="form-control input-sm">
+									<input type="text" id="contactU" name="contact" placeholder="123-456-7890" class="phone-format form-control input-sm">
 								</div>
 								<label class="col-sm-1 control-label">Contact 2</label>
 								<div class="col-sm-1">
-									<input type="text" id="contact2U" name="contact2" class="form-control input-sm">
+									<input type="text" id="contact2U" name="contact2" placeholder="123-456-7890" class="phone-format form-control input-sm">
 								</div>
 								<label class="col-sm-1 control-label">Email <span class="required-field">*</span></label>
-								<div class="col-sm-1">
+								<div class="col-sm-2">
 									<input type="email" id="emailU" name="email" placeholder="abc@xyz.com" class="form-control input-sm" required>
 								</div>
 							</div>
@@ -559,6 +563,8 @@
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
     
+    <script src="<?php echo base_url();?>assets/vendor/mask-phone/maskPhone.js"></script>
+    
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.js"></script>
@@ -568,6 +574,9 @@
 
 
 <script>
+	$('body').on('focus',".phone-format", function(){
+		$(this).mask("999-999-9999");
+	});
 	
 	function callSuccess() {
 		swal({
@@ -671,14 +680,8 @@
 				required: true,
 				email: true
 			},
-			fax:{
-				number: true
-			},
 			zip:{
 				required: true,
-				number: true
-			},
-			faxLocal:{
 				number: true
 			},
 			zipLocal:{
@@ -690,9 +693,6 @@
 			},
 			stateLocal:{
 				required: true
-			},
-			faxPermanent:{
-				number: true
 			},
 			zipPermanent:{
 				required: true,
@@ -861,31 +861,10 @@
 				required: true,
 				email: true
 			},
-			phone:{
-				required: true,
-				number: true
-			},
-			fax:{
-				number: true
-			},
 			zip:{
 				number: true
 			},
-			phoneLocal:{
-				required: true,
-				number: true
-			},
-			faxLocal:{
-				number: true
-			},
 			zipLocal:{
-				number: true
-			},
-			phonePermanent:{
-				required: true,
-				number: true
-			},
-			faxPermanent:{
 				number: true
 			},
 			zipPermanent:{

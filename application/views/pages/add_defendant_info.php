@@ -93,10 +93,6 @@
 									<input type="text" id="zip" name="zip"  class="form-control input-sm" required>
 									<!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
 								</div>
-								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
-								<div class="col-sm-1">
-									<input type="text" id="city" name="city" class="form-control input-sm" required>
-								</div>
 								<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
 								<div class="col-sm-1">
 									<select class="form-control input-sm"  id="state" name="state" required>
@@ -106,19 +102,23 @@
 										<?php }?>
 									</select>
 								</div>
+								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
+								<div class="col-sm-2">
+									<input type="text" id="city" name="city" class="form-control input-sm" required>
+								</div>
 							</div>
 							<div class="form-group form-horizontal col-sm-12">
-								<label class="col-sm-2 control-label">Email</label>
+								<label class="col-sm-2 control-label">Phone <span class="required-field">*</span></label>
 								<div class="col-sm-1">
-									<input type="text" id="email" name="email"  placeholder="Ex.abc@pqr.com" class="form-control input-sm">
-								</div>
-								<label class="col-sm-1 control-label">Phone <span class="required-field">*</span></label>
-								<div class="col-sm-1">
-									<input type="text" id="phone" name="phone"  class="form-control input-sm" required>
+									<input type="text" id="phone" name="phone"  placeholder="123-456-7890" class="phone-format form-control input-sm" required>
 								</div>
 								<label class="col-sm-1 control-label">Fax</label>
 								<div class="col-sm-1">
-									<input type="text" id="fax" name="fax" class="form-control input-sm">
+									<input type="text" id="fax" name="fax" placeholder="123-456-7890" class="phone-format form-control input-sm">
+								</div>
+                                <label class="col-sm-1 control-label">Email</label>
+								<div class="col-sm-2">
+									<input type="text" id="email" name="email"  placeholder="Ex.abc@pqr.com" class="form-control input-sm">
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
@@ -151,7 +151,7 @@
 									</select>
 								</div>
 								<div class="col-md-2">
-									<button type="submit" class="btn btn-primary"><i class="fa fa-paste"></i> VIEW</button>
+									<button type="submit" class="btn btn-primary"><i class="fa fa-paste"></i> SUBMIT</button>
 									
 								</div>
 							</div>
@@ -192,10 +192,6 @@
 									<input type="text" id="zipU" name="zip" class="form-control input-sm" required>
 									<!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
 								</div>
-								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
-								<div class="col-sm-1">
-									<input type="text" id="cityU" name="city" class="form-control input-sm" required>
-								</div>
 								<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
 								<div class="col-sm-1">
 									<select class="form-control input-sm"  id="stateU" name="state" required>
@@ -205,19 +201,23 @@
 										<?php }?>
 									</select>
 								</div>
+								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
+								<div class="col-sm-2">
+									<input type="text" id="cityU" name="city" class="form-control input-sm" required>
+								</div>
 							</div>
 							<div class="form-group form-horizontal col-sm-12">
-								<label class="col-sm-2 control-label">Email</label>
+								<label class="col-sm-2 control-label">Phone <span class="required-field">*</span></label>
 								<div class="col-sm-1">
-									<input type="text" id="emailU" name="email"  placeholder="Ex.abc@pqr.com" class="form-control input-sm">
-								</div>
-								<label class="col-sm-1 control-label">Phone <span class="required-field">*</span></label>
-								<div class="col-sm-1">
-									<input type="text" id="phoneU" name="phone"  class="form-control input-sm" required>
+									<input type="text" id="phoneU" name="phone" placeholder="123-456-7890"  class="phone-format form-control input-sm" required>
 								</div>
 								<label class="col-sm-1 control-label">Fax</label>
 								<div class="col-sm-1">
-									<input type="text" id="faxU" name="fax" class="form-control input-sm">
+									<input type="text" id="faxU" name="fax" placeholder="123-456-7890" class="phone-format form-control input-sm">
+								</div>
+                                <label class="col-sm-1 control-label">Email</label>
+								<div class="col-sm-2">
+									<input type="text" id="emailU" name="email"  placeholder="Ex.abc@pqr.com" class="form-control input-sm">
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
@@ -283,6 +283,8 @@
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script> 
     <script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
     
+    <script src="<?php echo base_url();?>assets/vendor/mask-phone/maskPhone.js"></script>
+    
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.js"></script>
@@ -290,6 +292,9 @@
     <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 
 <script>
+	$('body').on('focus',".phone-format", function(){
+		$(this).mask("999-999-9999");
+	});
 	function callSuccess() {
 		swal({
 			title: "Successfully submitted",
@@ -318,8 +323,7 @@
 				required: true
 			},
 			phone: {
-				required: true,
-				number:true
+				required: true
 			},
 			email: {
 				email: true
@@ -454,8 +458,7 @@
 				required: true
 			},
 			phone: {
-				required: true,
-				number:true
+				required: true
 			},
 			email: {
 				email: true

@@ -211,8 +211,8 @@
                             <tr class="first-row">
                                 <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start"></td>
                                 <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start"></td>
-                                <td><input type="text" id="claimAmt" name="claimAmt" class="form-control input-sm"></td>
-                                <td><input type="text" id="paidAmt" name="paidAmt" class="form-control input-sm"></td>
+                                <td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm"></td>
+                                <td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm"></td>
                                 <td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datepicker_recurring_start"></td>
                                 <td><select class="form-control input-sm" id="serviceType" name="serviceType">
                                         <option>-- Select Service--</option>
@@ -409,8 +409,7 @@
 		$(this).datepicker({
 			"autoclose": true,
 			"todayHighlight": true,
-			"yearHighlight": true,
-			"monthHighlight": true
+			"selectOtherMonths": true
 		});
 	});
 </script>
