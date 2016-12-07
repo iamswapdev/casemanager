@@ -807,7 +807,7 @@ session_cache_limiter('private_no_expire');
 			//echo json_encode($asd);
 			return true;
 		}
-		public function just(){
+		public function update_Record(){
 			$tabIdentity = $this->input->post('tabIdentity');
 			if($tabIdentity == 1){
 				$data = array(
@@ -898,11 +898,16 @@ session_cache_limiter('private_no_expire');
 			$insert_success = $this->dataentry_model->Update_OtherEntries($data,$tabIdentityData);
 			return true;
 		}
-		public function delete_Roles(){
-			$data = $this->input->post('deleteEventStatus');
-			//echo "<pre>"; print_r($data);
-			$insert_success = $this->dataentry_model->deleteRoles($data);
-			return true;
+		public function delete_Records(){
+			$data = $this->input->post('checkedNo');
+			$tabIdentity = $this->input->post('tabIdentity');
+			$delete_success = $this->dataentry_model->deleteRecords($data,$tabIdentity);
+			if($delete_success){
+				return true;
+			}else{
+				return false;
+			}
+			
 		}
 /* ************************************  End of otherentries  *************************************************************************/	
 	} 	

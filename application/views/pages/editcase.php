@@ -51,7 +51,24 @@
 <?php include 'sidebar.php';?>
 <!-- Main Wrapper -->
 <div id="wrapper">
-<?php //include 'header_dataentry.php';?>
+<?php foreach($CaseInfo as $row){$selectedProvider_Id = $row['Provider_Id']; $InsuranceCompany_Id = $row['InsuranceCompany_Id']; $Status = $row['Status']; $DenialReasons_Type = $row['DenialReasons_Type']; $Court_Id = $row['Court_Id']; $Initial_Status = $row['Initial_Status']; $Initial_Status = $row['Initial_Status']; $Memo = $row['Memo'];}?>
+<div class="normalheader transition animated fadeIn">
+    <div class="hpanel">
+        <div class="panel-body pad-b">
+            <a class="small-header-action" href="">
+                <div class="clip-header">
+                    <i class="fa fa-arrow-up"></i>
+                </div>
+            </a>
+
+            <div id="hbreadcrumb" style="margin-top:-10px;" class="pull-right">
+                <ol class="hbreadcrumb breadcrumb make-bold">
+                    <li ><a class="addCaseInfo active" href="#">EDIT CASE INFO</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="content animate-panel">
     
 	<div class="row">
@@ -67,23 +84,24 @@
 					<!--<p>(Note: All amounts are in USD wherever applicable.)</p>-->
 					<label class="col-md-2 control-label">Initial Status</label>
 					<div class="col-md-6 radio">
-						<label><input type="radio" class="horizontal" value="ARBITRATION" id="arbitration" name="initialStatus">ARBITRATION</label>
-						<label><input type="radio" class="horizontal" value="LITIGATION" id="litigation" name="initialStatus">LITIGATION</label>
-                        <label><input type="radio" class="horizontal" value="INITIAL SUBMISSION" id="initialSubmission" name="initialStatus">INITIAL SUBMISSION</label>
-                        <label><input type="radio" class="horizontal" value="PERSONAL INJURY" id="personalInjury" name="initialStatus">PERSONAL INJURY</label>
+						<label><input type="radio" class="horizontal" value="ARBITRATION" id="arbitration" name="initialStatus" <?php if($Initial_Status == 'ARBITRATION'){ echo "checked";}?>>ARBITRATION</label>
+						<label><input type="radio" class="horizontal" value="LITIGATION" id="litigation" name="initialStatus" <?php if($Initial_Status == 'LITIGATION'){ echo "checked";}?>>LITIGATION</label>
+                        <label><input type="radio" class="horizontal" value="INITIAL SUBMISSION" id="initialSubmission" name="initialStatus" <?php if($Initial_Status == 'INITIAL SUBMISSION'){ echo "checked";}?>>INITIAL SUBMISSION</label>
+                        <label><input type="radio" class="horizontal" value="PERSONAL INJURY" id="personalInjury" name="initialStatus" <?php if($Initial_Status == 'PERSONAL INJURY'){ echo "checked";}?>>PERSONAL INJURY</label>
+                        
 					</div>
 				</div>
 				<div class="form-group form-horizontal col-md-12">
 					<label class="col-md-2 control-label">Provider Name</label>
 					<div class="col-md-2">	
-						<input type="text" id="providerName" name="providerName" class="form-control input-sm">
+						<input type="text" id="providerName" name="providerName" class="form-control input-sm" >
 					</div>
 					<label class="col-md-2 control-label">Select Provider</label>
 					<div class="col-md-2">	
 						<select class="form-control input-sm" id="providerId" name="providerId">
-                            <option selected="selected" value=""></option>
+                            
                             <?php foreach($Provider_Name as $row){?>
-                            <option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option>
+                            <option value="<?php echo $row['Provider_Id']; ?>" <?php if($selectedProvider_Id == $row['Provider_Id']){ echo "selected";}?>> <?php echo $row['Provider_Name']; ?> </option>
                             <?php }?>
                         </select>
 					</div>
@@ -95,11 +113,11 @@
                 	<h5 class="h5-title">Injured Party Information</h5>
 					<label class="col-md-2 control-label">Last Name <span class="required-field">*</span></label>
 					<div class="col-md-2">
-						<input type="text" id="injuredPartyLastName" name="injuredPartyLastName" placeholder="Last Name" class="form-control input-sm" value="<?php echo $CaseInfo['InsuredParty_LastName'];?>" required> 
+						<input type="text" id="injuredPartyLastName" name="injuredPartyLastName" placeholder="Last Name" class="form-control input-sm" value="<?php foreach($CaseInfo as $row){ echo $row['InjuredParty_LastName']; }?>" required> 
 					</div>
 					<label class="col-md-2 control-label">First Name <span class="required-field">*</span></label>
 					<div class="col-md-2">
-						<input type="text" id="injuredPartyFirstName" name="injuredPartyFirstName" placeholder="First Name" class="form-control input-sm" value="<?php echo $CaseInfo['InsuredParty_FirstName'];?>" required>
+						<input type="text" id="injuredPartyFirstName" name="injuredPartyFirstName" placeholder="First Name" class="form-control input-sm" value="<?php foreach($CaseInfo as $row){ echo $row['InjuredParty_FirstName']; }?>" required>
 					</div>
 					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
 				</div>
@@ -117,11 +135,11 @@
 				<div class="form-group form-horizontal col-md-12">
 					<label class="col-md-2 control-label">Last Name</label>
 					<div class="col-md-2">
-						<input type="text" id="insuredPartyLastName" name="insuredPartyLastName" placeholder="Last Name" class="form-control input-sm"> 
+						<input type="text" id="insuredPartyLastName" name="insuredPartyLastName" value="<?php foreach($CaseInfo as $row){ echo $row['InsuredParty_LastName']; }?>" placeholder="Last Name" class="form-control input-sm"> 
 					</div>
 					<label class="col-md-2 control-label">First Name</label>
 					<div class="col-md-2">
-						<input type="text" id="insuredPartyFirstName" name="insuredPartyFirstName" placeholder="First Name" class="form-control input-sm">
+						<input type="text" id="insuredPartyFirstName" name="insuredPartyFirstName" value="<?php foreach($CaseInfo as $row){ echo $row['InsuredParty_FirstName']; }?>" placeholder="First Name" class="form-control input-sm">
 					</div>
 					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
 				</div>
@@ -131,14 +149,14 @@
                 	<h5 class="h5-title">Insurance Information</h5>
 					<label class="col-md-2 control-label">Name</label>
 					<div class="col-md-2">	
-						<input type="text" id="insuranceName" name="insuranceName" class="form-control input-sm">
+						<input type="text" id="insuranceName" name="insuranceName" value="<?php foreach($CaseInfo as $row){ echo $row['InsuredParty_FirstName']; }?>" class="form-control input-sm">
 					</div>
 					<label class="col-md-2 control-label">Select Insurance comp.</label>
 					<div class="col-md-2">	
 						<select class="form-control input-sm" id="insuranceCompanyId" name="insuranceCompanyId">
-                       	 	<option selected="selected" value=""></option>
+                       	 	
                             <?php foreach($InsuranceCompany_Name as $row){?>
-                            <option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option>
+                            <option value="<?php echo $row['InsuranceCompany_Id']; ?>" <?php if($row['InsuranceCompany_Id'] == $InsuranceCompany_Id){echo "selected";}?>><?php echo $row['InsuranceCompany_Name'];?></option>
                             <?php }?>
                         </select>
 					</div>
@@ -146,11 +164,11 @@
 				<div class="form-group form-horizontal col-md-12">
 					<label class="col-md-2 control-label">Policy# <span class="required-field">*</span></label>
 					<div class="col-md-2">	
-						<input type="text" id="policyNumber" name="policyNumber" class="form-control input-sm"  required>
+						<input type="text" id="policyNumber" name="policyNumber" class="form-control input-sm" value="<?php foreach($CaseInfo as $row){ echo $row['Policy_Number']; }?>" required>
 					</div>
 					<label class="col-md-2 control-label">Claim#</label>
 					<div class="col-md-2">	
-						<input type="text" id="insClaimNumber" name="insClaimNumber" class="form-control input-sm">
+						<input type="text" id="insClaimNumber" name="insClaimNumber" class="form-control input-sm" value="<?php foreach($CaseInfo as $row){ echo $row['Ins_Claim_Number']; }?>">
 					</div>
 					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
 				</div>
@@ -159,7 +177,7 @@
 				<div class="form-group form-horizontal col-md-12">
                 	<h5 class="h5-title">Accident Information</h5>
 					<label class="col-md-2 control-label">D.O.A <span class="required-field">*</span></label>
-					<div class="col-md-2"> <input id="accidentDate" name="accidentDate"  class="form-control input-sm datepicker_recurring_start" required> </div>
+					<div class="col-md-2"> <input id="accidentDate" name="accidentDate"  class="form-control input-sm datepicker_recurring_start" value="<?php foreach($CaseInfo as $row){ echo $row['Accident_Date']; }?>" required> </div>
 					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
 				</div>
 
@@ -184,7 +202,7 @@
 						<select class="form-control input-sm" id="courtId" name="courtId" required >
                             <option selected="selected" value=""></option>
                             <?php foreach($Court as $row){?>
-                            <option value="<?php echo $row['Court_Id']; ?>"> <?php echo $row['Court_Name']; ?> </option>
+                            <option value="<?php echo $row['Court_Id']; ?>" <?php if($row['Court_Id'] == $Court_Id){echo "selected";}?>> <?php echo $row['Court_Name']; ?> </option>
                             <?php }?>
                         </select>
 					</div>
@@ -211,11 +229,10 @@
                             <tr class="first-row">
                                 <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start"></td>
                                 <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start"></td>
-                                <td><input type="text" id="claimAmt" name="claimAmt" class="form-control input-sm"></td>
-                                <td><input type="text" id="paidAmt" name="paidAmt" class="form-control input-sm"></td>
+                                <td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm"></td>
+                                <td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm"></td>
                                 <td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datepicker_recurring_start"></td>
                                 <td><select class="form-control input-sm" id="serviceType" name="serviceType">
-                                        <option>-- Select Service--</option>
                                         <?php foreach($Service as $row){?>
                                         <option value="<?php echo $row['ServiceType_ID']; ?>"> <?php echo $row['ServiceType']; ?> </option>
                                         <?php }?>
@@ -242,7 +259,7 @@
 				<div class="form-group form-horizontal col-lg-12">
 					<label class="col-md-2 control-label">Memo</label>
 					<div class="col-md-4">
-						<textarea rows="3"  id="memo" name="memo" class="form-control" ></textarea>
+						<textarea rows="3"  id="memo" name="memo" class="form-control"><?php echo $Memo;?></textarea>
 					</div>
 					<div class="col-md-12">
 						<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancel" class="btn btn-primary">Cancel</button><br><br>
@@ -254,32 +271,7 @@
 		</div><!-- End col-lg-12-->
 	</div><!-- End row-->
     
-    
-    <div class="modal fade" id="myModal" role="dialog">
-	<div class="modal-dialog model-popup">
-	<div class="modal-content">
-		<div class="modal-header model-design">
-			<button type="button" class="close close-tab" data-dismiss="modal"> &times;</button>
-			<h5> Data Submitted successfully...... </h5>
-		</div>
-		<div class="modal-body">
-			<div class="row">
-				<div class="col-lg-12">
-				<div class="hpanel">
-				<div class="panel-heading"></div>
-				<div class="panel-body tab-panel">
-					
-				</div><!-- End of panel-body tab-panel-->
-				</div><!-- End hpanel -->
-				</div><!-- End col-lg-12-->
-			</div><!-- End row-->
-		</div><!-- End of modal-body-->
-	</div><!--End of modal-content -->
-	</div><!--End of modal-dialog model-popup -->
-	</div><!--End of modal fade-->
-    
-    
-    
+
 </div>
 
 
@@ -308,7 +300,7 @@
     <script src="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.js"></script>
     <!-- App scripts --> 
     <script src="<?php echo base_url();?>assets/scripts/homer.js"></script> 
-    
+
 <script>
 	$("#cancel").click(function(){
 		$('input').val('');
@@ -335,8 +327,8 @@
 		}
 		
     });
-
-
+</script>
+<script>
 	function callSuccess() {
 		swal({
 			title: "Successfully submitted",
@@ -381,14 +373,39 @@
 		}
 		
 	});
-	$('body').on('focus',".datepicker_recurring_start", function(){
-		$(this).datepicker({
+	/*$('input[name=dateOfServiceStart]').datepicker({
+			"autoclose": true,
+			"todayHighlight": true
+		});*/
+	/*$(function(){
+		//$("#accidentDate").datepicker("setDate", new Date());
+		$('#accidentDate').datepicker({
 			"autoclose": true,
 			"todayHighlight": true
 		});
+		
+		$('#dateOfServiceEnd').datepicker({
+			"autoclose": true,
+			"todayHighlight": true
+		});
+		$('#datapicker4').datepicker({
+			"autoclose": true,
+			"todayHighlight": true
+		});
+		$('#dateBillSent').datepicker({
+			"autoclose": true,
+			"todayHighlight": true
+		});
+	});*/
+	$('body').on('focus',".datepicker_recurring_start", function(){
+		$(this).datepicker({
+			"autoclose": true,
+			"todayHighlight": true,
+			"selectOtherMonths": true
+		});
 	});
-
-
+</script>
+<script>
 	$("#addCaseForm").validate({
 	
 		rules: {
@@ -469,11 +486,12 @@
 
 		}
 	});
-
-
+	var providerName = $("#providerId").val();
+	$("#providerName").val(providerName);
+</script>
+<script>
 	$('.dataentry').addClass('active');
 	$('.addCaseInfo').addClass('active');
 </script>
-
 </body>
 </html>

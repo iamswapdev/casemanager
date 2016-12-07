@@ -405,11 +405,22 @@
 			"todayHighlight": true
 		});
 	});*/
+	/*$('select#providerId').on('change', function() {
+		var option = $(this).find('option:selected').val();
+		$('#showoption').val(option);
+		
+		var providerName = $(this).text();
+		console.log("providerName: "+providerName);
+		$("#providerName").val(providerName);
+	});*/
+	
 	$('body').on('focus',".datepicker_recurring_start", function(){
 		$(this).datepicker({
 			"autoclose": true,
 			"todayHighlight": true,
 			"selectOtherMonths": true
+			
+			
 		});
 	});
 </script>

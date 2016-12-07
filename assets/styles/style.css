@@ -3662,5 +3662,8 @@ tr{
 .nav.nav-tabs.black-tab a{
 	color:#000;
 }
+.fa-edit, .fa-save{
+	cursor:pointer;
+}
 	
 	

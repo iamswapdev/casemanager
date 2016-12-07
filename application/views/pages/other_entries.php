@@ -75,8 +75,8 @@
             <div id="tab-1" class="tab-pane active">
               <div class="panel-body"> 
 				<h5 class="h4-title">Denial Types Add/Edit</h5>
-				<form id="deleteDenialReasonsForm"  method="post">
-                	<input type="hidden" name="tabIdentity" value="1">
+				
+                	
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-8">
 							<table id="example1" class="table dataTable table-bordered table-striped">
@@ -94,17 +94,18 @@
 					
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-2">
-						  <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted checked</button><br><br>
+                        	<button type="button"  class="btn btn-primary delete"><i class="fa fa-trash-o"></i> Deleted checked</button><input type="hidden" name="tabIdentity" value="1"><br><br>
+						  	
 						</div>
 					</div>
-				</form>
+				
                 
               </div>
             </div>
             <div id="tab-2" class="tab-pane">
               <div class="panel-body">
                 <h5 class="h4-title">Court Types Add/Edit</h5>
-				<form id="deleteCourtForm"  method="post">
+				
                 	<input type="hidden" name="tabIdentity" value="2">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
@@ -137,17 +138,15 @@
 					</div>
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-2">
-						  <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted checked</button><br><br>
+						  <button type="button"  class="btn btn-primary delete"><i class="fa fa-trash-o"></i> Deleted checked</button><input type="hidden" name="tabIdentity" value="2"><br><br>
 						</div>
 					</div>
-				</form>
                 
               </div>
             </div>
             <div id="tab-3" class="tab-pane">
               <div class="panel-body"> 
                 <h5 class="h4-title">Image Types Add/Edit</h5>
-                <form id="deleteImageTypeForm"  method="post">
                 	<input type="hidden" name="tabIdentity" value="3">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
@@ -166,17 +165,15 @@
 					</div>
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-2">
-						  <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted checked</button><br><br>
+						  <button type="button"  class="btn btn-primary delete"><i class="fa fa-trash-o"></i> Deleted checked</button><input type="hidden" name="tabIdentity" value="3"><br><br>
 						</div>
 					</div>
-				</form>
                 
               </div>
             </div>
             <div id="tab-4" class="tab-pane">
               <div class="panel-body">
                 <h5 class="h4-title">Status Types Add/Edit</h5>
-              	<form id="deleteStatusForm"  method="post">
                 	<input type="hidden" name="tabIdentity" value="4">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
@@ -195,16 +192,14 @@
 					</div>
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-2">
-						  <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted checked</button><br><br>
+						  <button type="button"  class="btn btn-primary delete"><i class="fa fa-trash-o"></i> Deleted checked</button><input type="hidden" name="tabIdentity" value="4"><br><br>
 						</div>
 					</div>
-				</form>
               </div>
             </div>
             <div id="tab-5" class="tab-pane">
               <div class="panel-body"> 
                 <h5 class="h4-title">Case Status Types Add/Edit</h5>
-              	<form id="deleteCaseStatusForm"  method="post">
                 	<input type="hidden" name="tabIdentity" value="5">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
@@ -224,10 +219,9 @@
 					
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-2">
-						  <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted checked</button><br><br>
+						  <button type="button"  class="btn btn-primary delete"><i class="fa fa-trash-o"></i> Deleted checked</button><input type="hidden" name="tabIdentity" value="5"><br><br>
 						</div>
 					</div>
-				</form>
               </div>
             </div>
               
@@ -235,7 +229,6 @@
               <div class="panel-body">
                 <h5 class="h4-title">Document Types Add/Edit</h5>
                
-                <form id="deleteDocForm"  method="post">
                 	<input type="hidden" name="tabIdentity" value="6">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
@@ -255,10 +248,9 @@
 					</div>
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-2">
-						  <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted checked</button><br><br>
+						  <button type="button"  class="btn btn-primary delete"><i class="fa fa-trash-o"></i> Deleted checked</button><input type="hidden" name="tabIdentity" value="6"><br><br>
 						</div>
 					</div>
-				</form>
                 
               </div>
             </div>
@@ -266,7 +258,6 @@
               <div class="panel-body"> <span>
                 <h5 class="h4-title">Service Types Add/Edit</h5>
                 </span>
-				<form id="deleteServiceForm"  method="post">
                 	<input type="hidden" name="tabIdentity" value="7">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
@@ -284,17 +275,15 @@
 					</div>
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-2">
-						  <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted checked</button><br><br>
+						  <button type="button"  class="btn btn-primary delete"><i class="fa fa-trash-o"></i> Deleted checked</button><input type="hidden" name="tabIdentity" value="7"><br><br>
 						</div>
 					</div>
-				</form>
               </div>
             </div>
             
             <div id="tab-8" class="tab-pane">
               <div class="panel-body">
                 <h5 class="h4-title">Event Type Add/Edit</h5>
-                <form id="deleteEventTypeForm"  method="post">
                 	<input type="hidden" name="tabIdentity" value="8">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
@@ -311,17 +300,15 @@
 					</div>
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-2">
-						  <button type="submit" class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted checked</button><br><br>
+						  <button type="button"  class="btn btn-primary delete"><i class="fa fa-trash-o"></i> Deleted checked</button><input type="hidden" name="tabIdentity" value="8"><br><br>
 						</div>
 					</div>
-				</form>
               </div>
             </div>
             
              <div id="tab-9" class="tab-pane">
               <div class="panel-body"> 
                 <h5 class="h4-title">Event Status Add/Edit</h5>
-                <form id="deleteEventStatusForm"  method="post">
                 	<input type="hidden" name="tabIdentity" value="9">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
@@ -339,10 +326,9 @@
 					</div>
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-2">
-						  <button type="submit"  class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted checked</button><br><br>
+						  <button type="button"  class="btn btn-primary delete"><i class="fa fa-trash-o"></i> Deleted checked</button><input type="hidden" name="tabIdentity" value="9"><br><br>
 						</div>
 					</div>
-				</form>
                 
                 
               </div>
@@ -382,11 +368,6 @@
 <script>
 	$('.dataentry').addClass('active');
 	$('.otherEntries').addClass('active');
-	$(document).ready(function(e) {
-        $("button").click(function(){
-			console.log("okk");
-		});
-    });
 </script>
 <script>
 	var t = $('#example1').dataTable( {
@@ -641,7 +622,7 @@
 		}*/
 		
 		request = $.ajax({
-			url:"<?php echo base_url(); ?>dataentry/just",
+			url:"<?php echo base_url(); ?>dataentry/update_Record",
 			type: "post",
 			data: string
 		});
@@ -653,346 +634,150 @@
 		});
 		
     } );
-	/*$("#deleteEventStatusForm").click(function(){
-		var vv = $(".deleteEventStatus16").parent().parent();
-		console.log("VV: "+vv);
-	});*/
 	
 	
 /********************************* Tab 1 DenialReasons *******************************************************************/
-	$('#deleteDenialReasonsForm').submit(function (form) {
+	$('body').on( 'click', '.delete', function () {
+		var parentR = $(this).parent();
+		var tabIdentity = $(this).next().val();
+		console.log("tabIdentity: "+tabIdentity);
 		var checkedNo = [];
-		$('.deleteDenialReasons:checked').each(function(i){
-			var values = $(this).val();
-			checkedNo.push(values);
-			//var row = $(".deleteDenialReasons"+values).parent().parent();
-			//$(row).remove();
-			 console.log("value: "+values);
-		});
-		for(i=0;i<checkedNo.length;i++){
-		   console.log("i: "+ i+" checkedNo: "+checkedNo[i]);
-		}
-		
-		var form1 = $(this);
-		var newd = form1.serialize();
-		console.log("SSSS: "+newd);
-		form.preventDefault();	//STOP default action
-		swal({
-			title: "Are you sure?",
-			text: "You will not be able to recover these records",
-			type: "warning",
-			showCancelButton: true,
-			confirmButtonColor: "#DD6B55",
-			confirmButtonText: "Yes, delete it!",
-			cancelButtonText: "No, cancel it!",
-			closeOnConfirm: false,
-			closeOnCancel: false },
-		function (isConfirm) {
-			if (isConfirm) {
-				var $form = $(form);
-				var $inputs = $form.find("input, select, button, textarea");
-				var serializedData = $form.serialize();
-				console.log("DDDD: "+serializedData);
-				$inputs.prop("disabled", true);
-		
-				request = $.ajax({
-					url:"delete_Roles",
-					type: "post",
-					data: serializedData
-				});
-		
-				request.done(function (response, textStatus, jqXHR) {
-					//console.log("Done: ");
-					$('.deleteDenialReasons:checked').each(function(i){
-						var values = $(this).val();
-						
-						var row = $(".deleteDenialReasons"+values).parent().parent();
-						$(row).remove();
-						console.log("value: "+values);
-					});
-					//callDelete();
-				});
-		
-				request.always(function () {
-					$inputs.prop("disabled", false);
-				});
-				form.preventDefault();	//STOP default action
-				swal("Deleted!", "Your records has been deleted.", "success");
-			} else {
-				swal("Cancelled", "Your records are safe :)", "error");
-			}
-		});
-	});
-/********************************* Tab 2 Court *******************************************************************/
-	$("#deleteCourtForm").submit(function(form){
-		var $form = $(form);
-		var $inputs = $form.find("input, select, button, textarea");
-		var serializedData = $form.serialize();
-		//console.log("DDDD: "+serializedData);
-		$inputs.prop("disabled", true);
-
-		request = $.ajax({
-			url:"delete_Roles",
-			type: "post",
-			data: serializedData
-		});
-
-		request.done(function (response, textStatus, jqXHR) {
-			//console.log("Done: ");
+		if(tabIdentity == 1){
+			$('.deleteDenialReasons:checked').each(function(i){
+				var values = $(this).val();
+				checkedNo.push(values);
+			});
+		}else if(tabIdentity == 2){
 			$('.deleteCourt:checked').each(function(i){
 				var values = $(this).val();
-				
-				var row = $(".deleteCourt"+values).parent().parent();
-				$(row).remove();
-				console.log("value: "+values);
+				checkedNo.push(values);
 			});
-			callDelete();
-		});
-
-		request.always(function () {
-			$inputs.prop("disabled", false);
-		});
-		form.preventDefault();	//STOP default action
-	});
-/********************************* Tab 3 ImageType *******************************************************************/
-	$("#deleteImageTypeForm").submit(function(form){
-		var $form = $(form);
-		var $inputs = $form.find("input, select, button, textarea");
-		var serializedData = $form.serialize();
-		//console.log("DDDD: "+serializedData);
-		$inputs.prop("disabled", true);
-
-		request = $.ajax({
-			url:"delete_Roles",
-			type: "post",
-			data: serializedData
-		});
-
-		request.done(function (response, textStatus, jqXHR) {
-			//console.log("Done: ");
+		}else if(tabIdentity == 3){
 			$('.deleteImageType:checked').each(function(i){
 				var values = $(this).val();
-				
-				var row = $(".deleteImageType"+values).parent().parent();
-				$(row).remove();
-				console.log("value: "+values);
+				checkedNo.push(values);
 			});
-			callDelete();
-		});
-
-		request.always(function () {
-			$inputs.prop("disabled", false);
-		});
-		form.preventDefault();	//STOP default action
-	});
-/********************************* Tab 4 Status *******************************************************************/
-	$("#deleteStatusForm").submit(function(form){
-		var $form = $(form);
-		var $inputs = $form.find("input, select, button, textarea");
-		var serializedData = $form.serialize();
-		//console.log("DDDD: "+serializedData);
-		$inputs.prop("disabled", true);
-
-		request = $.ajax({
-			url:"delete_Roles",
-			type: "post",
-			data: serializedData
-		});
-
-		request.done(function (response, textStatus, jqXHR) {
-			//console.log("Done: ");
+		}else if(tabIdentity == 4){
 			$('.deleteStatus:checked').each(function(i){
 				var values = $(this).val();
-				
-				var row = $(".deleteStatus"+values).parent().parent();
-				$(row).remove();
-				console.log("value: "+values);
+				checkedNo.push(values);
 			});
-			callDelete();
-		});
-
-		request.always(function () {
-			$inputs.prop("disabled", false);
-		});
-		form.preventDefault();	//STOP default action
-	});
-/********************************* Tab 5 CaseStatus *******************************************************************/
-	$("#deleteCaseStatusForm").submit(function(form){
-		var $form = $(form);
-		var $inputs = $form.find("input, select, button, textarea");
-		var serializedData = $form.serialize();
-		//console.log("DDDD: "+serializedData);
-		$inputs.prop("disabled", true);
-
-		request = $.ajax({
-			url:"delete_Roles",
-			type: "post",
-			data: serializedData
-		});
-
-		request.done(function (response, textStatus, jqXHR) {
-			//console.log("Done: ");
+		}else if(tabIdentity == 5){
 			$('.deleteCaseStatus:checked').each(function(i){
 				var values = $(this).val();
-				
-				var row = $(".deleteCaseStatus"+values).parent().parent();
-				$(row).remove();
-				console.log("value: "+values);
+				checkedNo.push(values);
 			});
-			callDelete();
-		});
-
-		request.always(function () {
-			$inputs.prop("disabled", false);
-		});
-		form.preventDefault();	//STOP default action
-	});
-/********************************* Tab 6 Doc *******************************************************************/
-	$("#deleteDocForm").submit(function(form){
-		var $form = $(form);
-		var $inputs = $form.find("input, select, button, textarea");
-		var serializedData = $form.serialize();
-		//console.log("DDDD: "+serializedData);
-		$inputs.prop("disabled", true);
-
-		request = $.ajax({
-			url:"delete_Roles",
-			type: "post",
-			data: serializedData
-		});
-
-		request.done(function (response, textStatus, jqXHR) {
-			//console.log("Done: ");
+		}else if(tabIdentity == 6){
 			$('.deleteDoc:checked').each(function(i){
 				var values = $(this).val();
-				
-				var row = $(".deleteDoc"+values).parent().parent();
-				$(row).remove();
-				console.log("value: "+values);
+				checkedNo.push(values);
 			});
-			callDelete();
-		});
-
-		request.always(function () {
-			$inputs.prop("disabled", false);
-		});
-		form.preventDefault();	//STOP default action
-	});
-/********************************* Tab 7 Service *******************************************************************/
-	$("#deleteServiceForm").submit(function(form){
-		var $form = $(form);
-		var $inputs = $form.find("input, select, button, textarea");
-		var serializedData = $form.serialize();
-		//console.log("DDDD: "+serializedData);
-		$inputs.prop("disabled", true);
-
-		request = $.ajax({
-			url:"delete_Roles",
-			type: "post",
-			data: serializedData
-		});
-
-		request.done(function (response, textStatus, jqXHR) {
-			//console.log("Done: ");
+		}else if(tabIdentity == 7){
 			$('.deleteService:checked').each(function(i){
 				var values = $(this).val();
-				
-				var row = $(".deleteService"+values).parent().parent();
-				$(row).remove();
-				console.log("value: "+values);
+				checkedNo.push(values);
 			});
-			callDelete();
-		});
-
-		request.always(function () {
-			$inputs.prop("disabled", false);
-		});
-		form.preventDefault();	//STOP default action
-	});
-/********************************* Tab 8 EventType *******************************************************************/
-	$("#deleteEventTypeForm").submit(function(form){
-		var $form = $(form);
-		var $inputs = $form.find("input, select, button, textarea");
-		var serializedData = $form.serialize();
-		//console.log("DDDD: "+serializedData);
-		$inputs.prop("disabled", true);
-
-		request = $.ajax({
-			url:"delete_Roles",
-			type: "post",
-			data: serializedData
-		});
-
-		request.done(function (response, textStatus, jqXHR) {
-			//console.log("Done: ");
+		}else if(tabIdentity == 8){
 			$('.deleteEventType:checked').each(function(i){
 				var values = $(this).val();
-				
-				var row = $(".deleteEventType"+values).parent().parent();
-				$(row).remove();
-				console.log("value: "+values);
+				checkedNo.push(values);
 			});
-			callDelete();
-		});
-
-		request.always(function () {
-			$inputs.prop("disabled", false);
-		});
-		form.preventDefault();	//STOP default action
-	});
-/********************************* Tab 9 EventStatus *******************************************************************/
-	$("#deleteEventStatusForm").submit(function(form){
-		var $form = $(form);
-		var $inputs = $form.find("input, select, button, textarea");
-		var serializedData = $form.serialize();
-		//console.log("DDDD: "+serializedData);
-		$inputs.prop("disabled", true);
-
-		request = $.ajax({
-			url:"<?php echo base_url(); ?>dataentry/delete_Roles",
-			type: "post",
-			data: serializedData
-		});
-
-		request.done(function (response, textStatus, jqXHR) {
-			//console.log("Done: ");
+		}else if(tabIdentity == 9){
 			$('.deleteEventStatus:checked').each(function(i){
 				var values = $(this).val();
-				
-				var row = $(".deleteEventStatus"+values).parent().parent();
-				$(row).remove();
-				console.log("value: "+values);
+				checkedNo.push(values);
 			});
-			callDelete();
-		});
-
-		request.always(function () {
-			$inputs.prop("disabled", false);
-		});
-		form.preventDefault();	//STOP default action
-	});
-	
-	$('#deleteEventTypeForm td:first-child').append("Some appended text.");
-	/*$("button .editRecord").click(function(){
-		console.log("okk");
-		var parentR = $(this).parent();
-		var div = $(parentR).find(".update-record");
-		$(div).css("display", "blobk");
-	});*/
+		}
+		if(checkedNo.length !=0){
+			swal({
+				title: "Are you sure?",
+				text: "You will not be able to recover these records",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "Yes, delete it!",
+				cancelButtonText: "No, cancel it!",
+				closeOnConfirm: false,
+				closeOnCancel: false },
+			function (isConfirm) {
+				if (isConfirm) {
+					request = $.ajax({
+						url:"delete_Records",
+						type: "post",
+						data: {checkedNo:checkedNo, tabIdentity:tabIdentity}
+					});
+			
+					request.done(function (response, textStatus, jqXHR) {
+						if(tabIdentity == 1){
+							$('.deleteDenialReasons:checked').each(function(i){
+								var values = $(this).val();
+								var row = $(".deleteDenialReasons"+values).parent().parent();
+								$(row).remove();
+							});
+						}else if(tabIdentity == 2){
+							$('.deleteCourt:checked').each(function(i){
+								var values = $(this).val();
+								var row = $(".deleteCourt"+values).parent().parent();
+								$(row).remove();
+							});
+						}else if(tabIdentity == 3){
+							$('.deleteImageType:checked').each(function(i){
+								var values = $(this).val();
+								var row = $(".deleteImageType"+values).parent().parent();
+								$(row).remove();
+							});
+						}else if(tabIdentity == 4){
+							$('.deleteStatus:checked').each(function(i){
+								var values = $(this).val();
+								var row = $(".deleteStatus"+values).parent().parent();
+								$(row).remove();
+							});
+						}else if(tabIdentity == 5){
+							$('.deleteCaseStatus:checked').each(function(i){
+								var values = $(this).val();
+								var row = $(".deleteCaseStatus"+values).parent().parent();
+								$(row).remove();
+							});
+						}else if(tabIdentity == 6){
+							$('.deleteDoc:checked').each(function(i){
+								var values = $(this).val();
+								var row = $(".deleteDoc"+values).parent().parent();
+								$(row).remove();
+							});
+						}else if(tabIdentity == 7){
+							$('.deleteService:checked').each(function(i){
+								var values = $(this).val();
+								var row = $(".deleteService"+values).parent().parent();
+								$(row).remove();
+							});
+						}else if(tabIdentity == 8){
+							$('.deleteEventType:checked').each(function(i){
+								var values = $(this).val();
+								var row = $(".deleteEventType"+values).parent().parent();
+								$(row).remove();
+							});
+						}else if(tabIdentity == 9){
+							$('.deleteEventStatus:checked').each(function(i){
+								var values = $(this).val();
+								var row = $(".deleteEventStatus"+values).parent().parent();
+								$(row).remove();
+							});
+						}
+					});
+					swal("Deleted!", "Your records has been deleted.", "success");
+				} else {
+					swal("Cancelled", "Your records are safe :)", "error");
+				}
+			});
+		}
+			
+	});	
 	function callSuccess() {
 		swal({
 			title: "Successfully Added",
 			type: "success"
 		});
 	}
-	function callDelete() {
-		swal({
-			title: "Successfully Deleted",
-			type: "success"
-		});
-	}
-	
-
 	
 		
 </script>
