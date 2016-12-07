@@ -51,7 +51,7 @@
 <?php include 'sidebar.php';?>
 <!-- Main Wrapper -->
 <div id="wrapper">      
-<?php foreach($CaseInfo as $row){$Case_AutoId = $row['Case_AutoId']; $Provider_Name = $row['Provider_Name']; $InsuranceCompany_Name = $row['InsuranceCompany_Name']; $Status = $row['Status']; $InjuredParty_LastName = $row['InjuredParty_LastName']; $InjuredParty_FirstName = $row['InjuredParty_FirstName']; $Accident_DateNoTimr = $row['Accident_DateNoTimr']; $Ins_Claim_Number = $row['Ins_Claim_Number']; $Claim_Amount = $row['Claim_Amount']; $InsuredParty_LastName = $row['InsuredParty_LastName']; $InsuredParty_FirstName = $row['InsuredParty_FirstName']; $Old_Case_Id = $row['Old_Case_Id']; $Paid_Amount = $row['Paid_Amount']; $Adjuster_LastName = $row['Adjuster_LastName']; $Adjuster_FirstName = $row['Adjuster_FirstName']; $Attorney_Name = $row['Attorney_Name']; $IndexOrAAA_Number = $row['IndexOrAAA_Number']; $Policy_Number = $row['Policy_Number']; $Defendant_Name = $row['Defendant_Name']; $Attorney_FileNumber = $row['Attorney_FileNumber']; $Court_Name = $row['Court_Name']; $DateOfService_Start = $row['DateOfService_Start']; $DateOfService_End = $row['DateOfService_End']; $Date_BillSent = $row['Date_BillSent']; $DenialReasons_Type = $row['DenialReasons_Type']; $Case_Id = $row['Case_Id']; $Case_Id = $row['Case_Id']; $Case_Id = $row['Case_Id']; $Case_Id = $row['Case_Id']; $Case_Id = $row['Case_Id']; $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submitted']; $Date_Status_Changed = $row['Date_Status_Changed']; $Date_Summons_Printed = $row['Date_Summons_Printed']; $Date_Index_Number_Purchased = $row['Date_Index_Number_Purchased']; $Date_Summons_Sent_Court = $row['Date_Summons_Sent_Court']; $Served_On_Date = $row['Served_On_Date']; $Served_To = $row['Served_To']; $Served_On_Time = $row['Served_On_Time']; $Date_Afidavit_Filed = $row['Date_Afidavit_Filed']; $Date_Answer_Received = $row['Date_Answer_Received']; $Our_Discovery_Demands = $row['Our_Discovery_Demands']; $Date_Demands_Printed = $row['Date_Demands_Printed']; $Plaintiff_Discovery_Due_Date = $row['Plaintiff_Discovery_Due_Date']; $Date_Disc_Conf_Letter_Printed = $row['Date_Disc_Conf_Letter_Printed']; $Date_Ext_Of_Time = $row['Date_Ext_Of_Time']; $Date_Ext_Of_Time_2 = $row['Date_Ext_Of_Time_2']; $Date_Ext_Of_Time_3 = $row['Date_Ext_Of_Time_3']; $Date_Disc_Conf_Letter_Printed = $row['Date_Disc_Conf_Letter_Printed']; $stips_signed_and_returned = $row['stips_signed_and_returned']; $stips_signed_and_returned_2 = $row['stips_signed_and_returned_2']; $stips_signed_and_returned_3 = $row['stips_signed_and_returned_3']; $Date_Closed = $row['Date_Closed']; $AAA_Conciliation_Date = $row['AAA_Conciliation_Date']; $Arb_Award_Date = $row['Arb_Award_Date']; $Date_Reply_To_Disc_Conf_Letter_Recd = $row['Date_Reply_To_Disc_Conf_Letter_Recd'];}?>
+<?php foreach($CaseInfo as $row){$Case_AutoId = $row['Case_AutoId']; $Provider_Name = $row['Provider_Name']; $InsuranceCompany_Name1 = $row['InsuranceCompany_Name']; $Status = $row['Status']; $InjuredParty_LastName = $row['InjuredParty_LastName']; $InjuredParty_FirstName = $row['InjuredParty_FirstName']; $Accident_DateNoTimr = $row['Accident_DateNoTimr']; $Ins_Claim_Number = $row['Ins_Claim_Number']; $Claim_Amount = $row['Claim_Amount']; $InsuredParty_LastName = $row['InsuredParty_LastName']; $InsuredParty_FirstName = $row['InsuredParty_FirstName']; $Old_Case_Id = $row['Old_Case_Id']; $Paid_Amount = $row['Paid_Amount']; $Adjuster_LastName = $row['Adjuster_LastName']; $Adjuster_FirstName = $row['Adjuster_FirstName']; $Attorney_Name = $row['Attorney_Name']; $IndexOrAAA_Number = $row['IndexOrAAA_Number']; $Policy_Number = $row['Policy_Number']; $Defendant_Name = $row['Defendant_Name']; $Attorney_FileNumber = $row['Attorney_FileNumber']; $Court_Name = $row['Court_Name']; $DateOfService_Start = $row['DateOfService_Start']; $DateOfService_End = $row['DateOfService_End']; $Date_BillSent = $row['Date_BillSent']; $DenialReasons_Type = $row['DenialReasons_Type']; $Case_Id = $row['Case_Id']; $Case_Id = $row['Case_Id']; $Case_Id = $row['Case_Id']; $Case_Id = $row['Case_Id']; $Case_Id = $row['Case_Id']; $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submitted']; $Date_Status_Changed = $row['Date_Status_Changed']; $Date_Summons_Printed = $row['Date_Summons_Printed']; $Date_Index_Number_Purchased = $row['Date_Index_Number_Purchased']; $Date_Summons_Sent_Court = $row['Date_Summons_Sent_Court']; $Served_On_Date = $row['Served_On_Date']; $Served_To = $row['Served_To']; $Served_On_Time = $row['Served_On_Time']; $Date_Afidavit_Filed = $row['Date_Afidavit_Filed']; $Date_Answer_Received = $row['Date_Answer_Received']; $Our_Discovery_Demands = $row['Our_Discovery_Demands']; $Date_Demands_Printed = $row['Date_Demands_Printed']; $Plaintiff_Discovery_Due_Date = $row['Plaintiff_Discovery_Due_Date']; $Date_Disc_Conf_Letter_Printed = $row['Date_Disc_Conf_Letter_Printed']; $Date_Ext_Of_Time = $row['Date_Ext_Of_Time']; $Date_Ext_Of_Time_2 = $row['Date_Ext_Of_Time_2']; $Date_Ext_Of_Time_3 = $row['Date_Ext_Of_Time_3']; $Date_Disc_Conf_Letter_Printed = $row['Date_Disc_Conf_Letter_Printed']; $stips_signed_and_returned = $row['stips_signed_and_returned']; $stips_signed_and_returned_2 = $row['stips_signed_and_returned_2']; $stips_signed_and_returned_3 = $row['stips_signed_and_returned_3']; $Date_Closed = $row['Date_Closed']; $AAA_Conciliation_Date = $row['AAA_Conciliation_Date']; $Arb_Award_Date = $row['Arb_Award_Date']; $Date_Reply_To_Disc_Conf_Letter_Recd = $row['Date_Reply_To_Disc_Conf_Letter_Recd'];}?>
 
 <div class="content animate-panel">
 
@@ -83,93 +83,104 @@
 								<tbody>
 								<tr> 
                                 	<th><input type="hidden" name="recordNo" value="1"><input type="hidden" name="recordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-									<th>PROVIDER</th>
+									<th>1 PROVIDER</th>
 									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="providerId" name="providerId"><option selected="selected" value=""></option><?php foreach($Provider_Name1 as $row){?><option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option><?php }?></select></div></td>
                                     <th><input type="hidden" name="recordNo" value="2"><input type="hidden" name="recordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save fa-save1" style="display:none"></i></th>
-									<th>CASE STATUS</th>
-									<td><div class="visible" style="display:block;"><?php echo $Status;?></div><div class="editHidden" style="display:none;">hiddqwqwqwqwqwwqqwqwqen</div></td>
+									<th>2 CASE STATUS</th>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="caseStatusId" name="caseStatusId"><option selected="selected" id="caseStatusId" name="caseStatusId" value=""></option><?php foreach($CaseStatus as $row){?><option value="<?php echo $row['id']; ?>"> <?php echo $row['name']; ?> </option><?php }?></select></div></td>
 								</tr>
+                                
 								<tr>  
                                 	<th><input type="hidden" name="recordNo" value="3"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save fa-save1" style="display:none"></i></th>
-									<th>INJURED NAME</th>
-									<td><div class="visible" style="display:block;"><?php //echo $InjuredParty_LastName.", ".$InjuredParty_FirstName;?></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="InjuredParty_LastName" value="<?php echo $InjuredParty_LastName?>" /><input type="text" class="input-sm" name="InjuredParty_FirstName" value="<?php echo $InjuredParty_FirstName?>" /></div></td>
+									<th>3 INJURED NAME</th>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="InjuredParty_LastName" /><input type="text" class="input-sm" name="InjuredParty_FirstName" /></div></td>
                                     <th><input type="hidden" name="recordNo" value="4"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-									<th>CURRENT STATUS</th>
-									<td></td>
+									<th>4 CURRENT STATUS</th>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;">hiddqwqwqwqwqwwqqwqwqen</div></td>
 								</tr>
-								<tr> 
+                                
+                                <tr> 
                                 	<th><input type="hidden" name="recordNo" value="5"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-									<th>INSURED NAME</th>
-									<td><div class="visible" style="display:block;"><?php echo $InsuredParty_LastName.", ".$InsuredParty_FirstName;?></div><div class="editHidden" style="display:none;">hiddqwqwqwqwqwwqqwqwqen</div></td>
+									<th>5 INSURED NAME</th>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="InsuredParty_LastName" /><input type="text" class="input-sm" name="InsuredParty_FirstName" /></div></td>
                                     <th><input type="hidden" name="recordNo" value="6"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-									<th>INS. CLAIM #</th>
-									<td><div class="visible" style="display:block;"><?php echo $Ins_Claim_Number;?></div><div class="editHidden" style="display:none;">hiddqwqwqwqwqwwqqwqwqen</div></td>
+									<th>6 INS. CLAIM #</th>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Ins_Claim_Number" /></div></td>
 								</tr>
-								<tr> 
+                                
+                                <tr> 
                                 	<th><input type="hidden" name="recordNo" value="7"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-									<th>POLICY #</th>
-									<td><div class="visible" style="display:block;"><?php echo $Policy_Number;?></div><div class="editHidden" style="display:none;">hiddqwqwqwqwqwwqqwqwqen</div></td>
+									<th>7 POLICY #</th>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Policy_Number" /></div></td>
                                     <th><input type="hidden" name="recordNo" value="8"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-									<th>INDEX / AAA #</th>
-									<td><div class="visible" style="display:block;"><?php echo $IndexOrAAA_Number;?></div><div class="editHidden" style="display:none;">hiddqwqwqwqwqwwqqwqwqen</div></td>
+									<th>8 INDEX / AAA #</th>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="IndexOrAAA_Number" /></div></td>
 								</tr>
-								<tr> 
+                                
+                                <tr> 
                                 	<th><input type="hidden" name="recordNo" value="9"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-									<th>INSURANCE COMPANY</th>
-									<td><div class="visible" style="display:block;"><?php echo $InsuranceCompany_Name;?></div><div class="editHidden" style="display:none;">hiddqwqwqwqwqwwqqwqwqen</div></td>
-                                    <th><input type="hidden" name="recordNo" name="recordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+									<th>9 INSURANCE COMPANY</th>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="insuranceCompanyId" name="insuranceCompanyId"><option selected="selected" value=""></option><?php foreach($InsuranceCompany_Name as $row){?><option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option><?php }?></select></div></td>
+                                    <th></th>
                                     <td></td>
                                     <td></td>
 								</tr>
-								<tr> 
-                                	<th><input type="hidden" name="recordNo" name="recordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-									<th>DEF ATTORNEY NAME</th>
-									<td><div class="visible" style="display:block;"><?php echo $Defendant_Name;?></div><div class="editHidden" style="display:none;">hiddqwqwqwqwqwwqqwqwqen</div></td>
-                                    <th><input type="hidden" name="recordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+                                
+                                <tr> 
+                                	<th><input type="hidden" name="recordNo" name="recordNo" value="10"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+									<th>10 DEF ATTORNEY NAME</th>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;">hiddqwqwqwqwqwwqqwqwqen</div></td>
+                                    <th></th>
                                     <td></td>
                                     <td></td>
 								</tr>
-								<tr> 
-                                	<th><input type="hidden" name="recordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-									<th>DEF ATTORNEY FILE #</th>
-									<td><div class="visible" style="display:block;"><?php echo $Attorney_FileNumber;?></div><div class="editHidden" style="display:none;">hiddqwqwqwqwqwwqqwqwqen</div></td>
-                                    <th><input type="hidden" name="recordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-									<th>COURT NAME</th>
-									<td><div class="visible" style="display:block;"><?php echo $Court_Name;?></div><div class="editHidden" style="display:none;">hiddqwqwqwqwqwwqqwqwqen</div></td>
+                                
+                                <tr> 
+                                	<th><input type="hidden" name="recordNo" value="11"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+									<th>11 DEF ATTORNEY FILE #</th>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Attorney_FileNumber" /></div></td>
+                                    <th><input type="hidden" name="recordNo" value="12"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+									<th>12 COURT NAME</th>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="courtId" name="courtId"><option selected="selected" value=""></option><?php foreach($Court as $row){?><option value="<?php echo $row['Court_Id']; ?>"> <?php echo $row['Court_Name']; ?> </option><?php }?></select></div></td>
 								</tr>
-								<tr> 
-                                	<th><input type="hidden" name="recordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-									<th>CLAIM AMOUNT</th>
-									<td><div class="visible" style="display:block;"><?php echo $Claim_Amount;?></div><div class="editHidden" style="display:none;">hiddqwqwqwqwqwwqqwqwqen</div></td>
-                                    <th><input type="hidden" name="recordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-									<th>PAID/BALANCE</th>
-									<td><div class="visible" style="display:block;"><?php echo $Paid_Amount;?></div><div class="editHidden" style="display:none;">hiddqwqwqwqwqwwqqwqwqen</div></td>
+                                
+                                <tr> 
+                                	<th><input type="hidden" name="recordNo" value="13"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+									<th>13 CLAIM AMOUNT</th>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Claim_Amount" /></div></td>
+                                    <th><input type="hidden" name="recordNo" value="14"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+									<th>14 PAID/BALANCE</th>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Paid_Amount" /></div></td>
 								</tr>
-								<tr> 
-                                	<th><input type="hidden" name="recordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-									<th>ASSIGN TO WORK DESK</th>
-									<td><div class="visible" style="display:block;"><?php echo $Court_Name;?></div><div class="editHidden" style="display:none;">hiddqwqwqwqwqwwqqwqwqen</div></td>
-                                    <th><input type="hidden" name="recordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-									<th>OLD CASE ID</th>
-									<td><div class="visible" style="display:block;"><?php echo $Old_Case_Id;?></div><div class="editHidden" style="display:none;">hiddqwqwqwqwqwwqqwqwqen</div></td>
+                                
+                                <tr> 
+                                	<th><input type="hidden" name="recordNo" value="15"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+									<th>15 ASSIGN TO WORK DESK</th>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="caseStatusId" name="caseStatusId"><option selected="selected" value=""></option><?php foreach($CaseStatus as $row){?><option value="<?php echo $row['id']; ?>"> <?php echo $row['name']; ?> </option><?php }?></select></div></td>
+                                    <th><input type="hidden" name="recordNo" value="16"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+									<th>16 OLD CASE ID</th>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Old_Case_Id" /></div></td>
 								</tr>
-								<tr> 
-                                	<th><input type="hidden" name="recordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-									<th>DATE OF ACCIDENT</th>
-									<td><div class="visible" style="display:block;"><?php echo $Accident_DateNoTimr;?></div><div class="editHidden" style="display:none;">hiddqwqwqwqwqwwqqwqwqen</div></td>
-                                    <th><input type="hidden" name="recordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-									<th>ADJUSTER</th>
-									<td><div class="visible" style="display:block;"><?php echo $Adjuster_LastName.", ".$Adjuster_FirstName;?></div><div class="editHidden" style="display:none;">hiddqwqwqwqwqwwqqwqwqen</div></td>
+                                
+                                <tr> 
+                                	<th><input type="hidden" name="recordNo" value="17"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+									<th>17 DATE OF ACCIDENT</th>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Accident_Date" /></div></td>
+                                    <th><input type="hidden" name="recordNo" value="18"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+									<th>18 ADJUSTER</th>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="adjusterId" name="adjusterId"><option selected="selected" value=""></option><?php foreach($Adjuster_Name as $row){?><option value="<?php echo $row['Adjuster_Id']; ?>"> <?php echo $row['Adjuster_LastName'].", ".$row['Adjuster_FirstName']; ?> </option><?php }?></select></div></td>
 								</tr>
-								<tr> 
-                                	<th><input type="hidden" name="recordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-									<th>PLAINTIFF ATTORNEY CO.</th>
-									<td><div class="visible" style="display:block;"><?php echo $Attorney_Name;?></div><div class="editHidden" style="display:none;">hiddqwqwqwqwqwwqqwqwqen</div></td>
-                                    <th><input type="hidden" name="recordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+                                
+                                <tr> 
+                                	<th><input type="hidden" name="recordNo" value="19"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+									<th>19 PLAINTIFF ATTORNEY CO.</th>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="attorneyId" name="attorneyId"><option selected="selected" value=""></option><?php foreach($Plantiff as $row){?><option value="<?php echo $row['Attorney_id']; ?>"> <?php echo $row['Attorney_Name']; ?> </option><?php }?></select></div></td>
+                                    <th></th>
 									<th></th>
 									<td></td>
 								</tr>
-								</tbody>
+                                
+                                </tbody>
 							</table>
 						</div>
 						</div>
@@ -187,7 +198,8 @@
                                         <th>Denial Reason</th>
                                         <th>Delete</th>
 									</tr>
-									</thead>
+                                
+                                </thead>
 									<tbody>
 									<tr class="first-row">
 										<td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start" value="<?php echo $DateOfService_Start;?>"></td>
@@ -209,7 +221,8 @@
                                             </select></td>
                                         <td><span><button type="button" id="addOtherInfo" class="btn btn-primary create">Add</button></span></td>
 									</tr>
-									</tbody>
+                                
+                                </tbody>
 								</table>
 							</div>
 						</div>
@@ -233,7 +246,8 @@
 										<th>Paid Amt.</th>
 										<th>Date Bill Sent</th>
 									</tr>
-									</thead>
+                                
+                                </thead>
 									<tbody>
 									<tr class="first-row">
 										<td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start" value="<?php echo $DateOfService_Start;?>"></td>
@@ -242,7 +256,8 @@
 										<td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm" value="<?php echo $Paid_Amount;?>"></td>
 										<td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datepicker_recurring_start" value="<?php echo $Date_BillSent;?>"></td>
 									</tr>
-									</tbody>
+                                
+                                </tbody>
 								</table>
 							</div>
 						</div>
@@ -252,7 +267,7 @@
 							<label class="col-md-2 control-label">Description</label>
 							<div class="col-md-4">
                                 <textarea rows="3"  id="notesDescription" name="notesDescription" class="form-control" ></textarea>
-                                <input type="hidden" name="recordNo" id="notesAccedentDate" name="notesAccedentDate"  class="form-control input-sm datepicker_recurring_start" value="">
+                                <input type="hidden" name="notesAccidentDate"  class="form-control input-sm datepicker_recurring_start">
                             </div>
 						</div>				
                         <div class="form-group form-horizontal col-lg-12">
@@ -297,7 +312,8 @@
                                         <th>Date Editted</th>
                                         <th>Type</th>
                                     </tr>
-                                    </thead>
+                                
+                                </thead>
                                 </table>
                                 
                             </div>
@@ -448,25 +464,27 @@
 						<div class="hpanel">
 						<div class="panel-heading"></div>
 						<div class="panel-body tab-panel">
+                        	<form id="addNotes_form2" method="post">
 							<div class="form-group form-horizontal col-md-12">
 								<h5 class="h4-title">Notes Module</h5>
 								<label class="col-md-2 control-label">Description</label>
 								<div class="col-md-4">
-									<textarea rows="3"  id="notesDescription" name="notesDescription" class="form-control" ></textarea>
+									<textarea rows="3"  id="notesDescription2" name="notesDescription" class="form-control" ></textarea>
+                                    <input type="hidden" name="notesAccidentDate"  class="form-control input-sm datepicker_recurring_start" value="">
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-lg-12">
 								<label class="col-md-2 control-label">Type</label>
 								<div class="col-md-6 radio">
-									<label><input type="radio" class="horizontal" value="ACTIVITY" id="arbitration" name="notesType">ACTIVITY</label>
-									<label><input type="radio" class="horizontal" value="CALENDAR" id="litigation" name="notesType">CALENDAR</label>
-									<label><input type="radio" class="horizontal" value="GENERAL" id="initialSubmission" name="notesType">GENERAL</label>
-									<label><input type="radio" class="horizontal" value="POPUP" id="personalInjury" name="notesType">POPUP</label>
-									<label><input type="radio" class="horizontal" value="PROVIDER" id="personalInjury" name="notesType">PROVIDER</label>
+									<label><input type="radio" class="horizontal" value="ACTIVITY" id="activity" name="notesType">ACTIVITY</label>
+									<label><input type="radio" class="horizontal" value="CALENDAR" id="calendar" name="notesType">CALENDAR</label>
+									<label><input type="radio" class="horizontal" value="GENERAL" id="general" name="notesType">GENERAL</label>
+									<label><input type="radio" class="horizontal" value="POPUP" id="popup" name="notesType">POPUP</label>
+									<label><input type="radio" class="horizontal" value="PROVIDER" id="provider" name="notesType">PROVIDER</label>
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-lg-12">
-								<div class="col-md-1"><button type="button" class="btn btn-primary">Add Notes</button></div>
+								<div class="col-md-1"><button type="submit" class="btn btn-primary">Add Notes</button></div>
 								<div class="col-md-9"></div>
 								<div class="col-md-1">
 									<select class="form-control input-sm" id="" name="">
@@ -479,6 +497,7 @@
 								</div>
 								<div class="col-md-1"><button type="button" class="btn btn-primary">Filter</button></div>
 							</div>
+                            <form id="addNotes_form" method="post">
 							<div class="form-group form-horizontal col-lg-12">
 								<h5 class="h4-title">Notes Details</h5>
 									<div class="col-md-12">
@@ -1125,11 +1144,12 @@
 			"selectOtherMonths": true
 		});
 	});
-	$("#addNotes_form").submit(function(e){
+	$("#addNotes_form, #addNotes_form2").submit(function(e){
 		// setup some local variables
-		var notesDescription = $(this).find("#notesDescription").val();
-		var notesType = $('input[name=notesType]:checked').val();
-		var notesAccedentDate = $(this).find("input[name=notesAccedentDate]").val();
+		var notesDescription = $(this).find("textarea").val();
+		var notesType = $(this).find('input[name=notesType]:checked').val();
+		var notesAccidentDate = $(this).find("input[name=notesAccidentDate]").val();
+		console.log("notesAccidentDate: "+notesAccidentDate);
 		var caseId = "<?php echo $Case_Id;?>";
 		var Case_AutoId = "<?php echo $Case_AutoId;?>";
 			// fire off the request to /form.php
@@ -1137,7 +1157,7 @@
 			request = $.ajax({
 				url:"<?php echo base_url(); ?>search/addNotes",
 				type: "post",
-				data: {notesDescription:notesDescription, caseId:caseId,notesAccedentDate:notesAccedentDate,notesType:notesType,Case_AutoId:Case_AutoId }
+				data: {notesDescription:notesDescription, caseId:caseId,notesAccidentDate:notesAccidentDate,notesType:notesType,Case_AutoId:Case_AutoId }
 			});
 
 			// callback handler that will be called on success
@@ -1146,8 +1166,7 @@
 				$('textarea').val('');
 				$("select").val('');
 				//$("#myModal").modal("show");
-				 $('#example1').dataTable().fnAddData( [ notesDescription,"system",notesAccedentDate,notesType
-				 ] );
+				 $('#example1').dataTable().fnAddData( [ notesDescription,"system",notesAccidentDate,notesType ] );
 				callSuccess();
 				$("#updateProviderInfo").css("display", "none");
 			});
@@ -1162,30 +1181,127 @@
 		$(divs).find(".visible").css("display", "none");
 		$(divs).find(".editHidden").css("display", "block");
 	});
+	//var tt = $("#providerId option:selected").text();
+	//console.log("tt: "+tt);
 	$(".fa-save").click(function(){
 		$(this).parent().find(".fa-edit").css("display", "block");
 		$(this).css("display", "none");
-		console.log("fa-edit");
-		var parentTd = $(this).parent().next().next();
-		var divs = $(parentTd).next().next();
-		$(divs).find(".visible").css("display", "block");
-		$(divs).find(".editHidden").css("display", "none");
-	});
-	$(".fa-save1").click(function(){
-		var recordNo = $(this).parent().find("input[name=recordNo]").val();
-		var divs1 = $(this).parent().next().next().find(".editHidden").find("input[name=InjuredParty_LastName]").val();
-		var divs2 = $(this).parent().next().next().find(".editHidden").find("input[name=InjuredParty_FirstName]").val();
-		console.log("divs1: "+divs1+", divs2: "+divs2);
-		var visibleDiv = $(this).parent().next().next().find(".visible").attr("class");
-		document.getElementsByClassName(visibleDiv).innerHTML = divs1;
-		console.log("visibleDiv: "+visibleDiv);
-		var x = document.getElementsByClassName(visibleDiv);
-   		x[1].innerHTML = divs1;
 		
-		$(this).parent().next().next().find(".visible").css("display", "block");
-		$(this).parent().next().next().find(".editHidden").css("display", "none");
+		var recordNo = $(this).parent().find("input[name=recordNo]").val();
+		var editHidden = $(this).parent().next().next().find(".editHidden");
+		var visible = $(this).parent().next().next().find(".visible");
+		
+		var x = document.getElementsByClassName("visible");
+		if(recordNo == 1){
+			x[0].innerHTML = $("#providerId option:selected").text();
+		}else if(recordNo ==2){
+			x[1].innerHTML = $("#caseStatusId option:selected").text();
+		}else if(recordNo ==3){
+			var InjuredParty_LastName = $(editHidden).find("input[name=InjuredParty_LastName]").val();
+			var InjuredParty_FirstName = $(editHidden).find("input[name=InjuredParty_FirstName]").val();
+   			x[2].innerHTML = InjuredParty_LastName+", "+InjuredParty_FirstName;
+		}else if(recordNo ==4){
+		}else if(recordNo ==5){
+			var InsuredParty_LastName = $(editHidden).find("input[name=InsuredParty_LastName]").val();
+			var InsuredParty_FirstName = $(editHidden).find("input[name=InsuredParty_FirstName]").val();
+			x[4].innerHTML = InsuredParty_LastName+", "+InsuredParty_FirstName;
+		}else if(recordNo ==6){
+			var Ins_Claim_Number = $(editHidden).find("input[name=Ins_Claim_Number]").val();
+			x[5].innerHTML = Ins_Claim_Number;
+		}else if(recordNo ==7){
+			var Policy_Number = $(editHidden).find("input[name=Policy_Number]").val();
+			x[6].innerHTML = Policy_Number;
+		}else if(recordNo ==8){
+			var IndexOrAAA_Number = $(editHidden).find("input[name=IndexOrAAA_Number]").val();
+			x[7].innerHTML = IndexOrAAA_Number;
+		}else if(recordNo ==9){
+			x[8].innerHTML = $("#insuranceCompanyId option:selected").text();
+		}else if(recordNo ==10){
+		}else if(recordNo ==11){
+			var Attorney_FileNumber = $(editHidden).find("input[name=Attorney_FileNumber]").val();
+			x[10].innerHTML = Attorney_FileNumber;
+		}else if(recordNo ==12){
+			x[11].innerHTML = $("#courtId option:selected").text();
+		}else if(recordNo ==13){
+			var Claim_Amount = $(editHidden).find("input[name=Claim_Amount]").val();
+			x[12].innerHTML = Claim_Amount;
+		}else if(recordNo ==14){
+			var Paid_Amount = $(editHidden).find("input[name=Paid_Amount]").val();
+			x[13].innerHTML = Paid_Amount;
+		}else if(recordNo ==15){
+		}else if(recordNo ==16){
+			var Old_Case_Id = $(editHidden).find("input[name=Old_Case_Id]").val();
+			x[15].innerHTML = Old_Case_Id;
+		}else if(recordNo ==17){
+			var Accident_Date = $(editHidden).find("input[name=Accident_Date]").val();
+			x[16].innerHTML = Accident_Date;
+		}else if(recordNo ==18){
+			x[17].innerHTML = $("#adjusterId option:selected").text();
+		}else if(recordNo ==19){
+			x[18].innerHTML = $("#attorneyId option:selected").text();
+		}
+		
+		$(editHidden).css("display", "none");
+		$(visible).css("display", "block");
 	});
-	$("#notesAccedentDate").datepicker().datepicker("setDate", new Date());
+	$("inpu[name=notesAccidentDate]").datepicker().datepicker("setDate", new Date());
+	
+/* Bind Case info By clicking Tab-2 */  /*----------------- Tab-2 ---------------------*/
+	var x = document.getElementsByClassName("visible");
+		$.ajax({
+			type:'POST',
+			url:"<?php echo base_url(); ?>search/getCaseInfo/<?php echo $Case_AutoId;?>",
+			success:function(data){
+				results = JSON.parse(data);
+				var optionsAsString = "";
+				for($i in results.CaseInfo){
+					//optionsAsString += "<option value='" + results.Adjuster_Name[$i].Adjuster_Id + "'>" + results.Adjuster_Name[$i].Adjuster_LastName + " ," + results.Adjuster_Name[$i].Adjuster_FirstName + "</option>";
+					console.log("suucess");
+					console.log("FFF: "+results.CaseInfo[$i].Claim_Amount); 
+					
+					x[0].innerHTML = results.CaseInfo[$i].Provider_Name;
+					x[2].innerHTML = results.CaseInfo[$i].InjuredParty_LastName +", "+results.CaseInfo[$i].InjuredParty_FirstName ;
+					$("input[name=InjuredParty_LastName]").val(results.CaseInfo[$i].InjuredParty_LastName);
+					$("input[name=InjuredParty_FirstName]").val(results.CaseInfo[$i].InjuredParty_FirstName);
+					x[4].innerHTML = results.CaseInfo[$i].InsuredParty_LastName +", "+results.CaseInfo[$i].InsuredParty_FirstName ;
+					$("input[name=InsuredParty_LastName]").val(results.CaseInfo[$i].InsuredParty_LastName);
+					$("input[name=InsuredParty_FirstName]").val(results.CaseInfo[$i].InsuredParty_FirstName);
+					
+					x[5].innerHTML = results.CaseInfo[$i].Ins_Claim_Number;
+					$("input[name=Ins_Claim_Number]").val(results.CaseInfo[$i].Ins_Claim_Number);
+					
+					x[6].innerHTML = results.CaseInfo[$i].Policy_Number;
+					$("input[name=Policy_Number]").val(results.CaseInfo[$i].Policy_Number);
+					
+					x[7].innerHTML = results.CaseInfo[$i].IndexOrAAA_Number;
+					$("input[name=IndexOrAAA_Number]").val(results.CaseInfo[$i].IndexOrAAA_Number);
+					
+					x[0].innerHTML = results.CaseInfo[$i].InsuranceCompany_Name;
+					
+					x[10].innerHTML = results.CaseInfo[$i].Attorney_FileNumber;
+					$("input[name=Attorney_FileNumber]").val(results.CaseInfo[$i].Attorney_FileNumber);
+					
+					x[11].innerHTML = results.CaseInfo[$i].Court_Name;
+					
+					x[12].innerHTML = results.CaseInfo[$i].Claim_Amount;
+					$("input[name=Claim_Amount]").val(results.CaseInfo[$i].Claim_Amount);
+					
+					x[13].innerHTML = results.CaseInfo[$i].Paid_Amount;
+					$("input[name=Paid_Amount]").val(results.CaseInfo[$i].Paid_Amount);
+					
+					x[16].innerHTML = results.CaseInfo[$i].Accident_DateNoTimr;
+					$("input[name=Accident_Date]").val(results.CaseInfo[$i].Accident_DateNoTimr);
+					
+					x[17].innerHTML = results.CaseInfo[$i].Adjuster_LastName+ ", "+results.CaseInfo[$i].Adjuster_FirstName;
+					
+					x[18].innerHTML = results.CaseInfo[$i].Attorney_Name;
+				}
+				
+			},
+			error: function(result){ console.log("error"); }
+		
+		});
+/* *************************************************** */
 	
 	
 </script>

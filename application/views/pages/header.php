@@ -3,7 +3,7 @@
     </div>-->
     <div id="logo" class="light-version">
         
-            <a href="<?php echo base_url(); ?>adminprivilege/manageusers"> <span class="logo-span"> Case-Manager </span> </a>
+            <a href="<?php echo base_url(); ?>search/advancedsearch"> <span class="logo-span"> Case-Manager </span> </a>
         
     </div>
     <nav role="navigation">

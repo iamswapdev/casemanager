@@ -7,6 +7,7 @@ class Search extends CI_Controller{
 			parent::__construct();
 			$this->load->library('session');
 			$this->load->model('search_model');
+			$this->load->model('dataentry_model');
 		}
 	public function index(){
 		$this->session->all_userdata();
@@ -39,6 +40,7 @@ class Search extends CI_Controller{
 				$data['Court']= $this->search_model->get_CourtArray();
 				$data['Service']= $this->search_model->get_ServiceArray();
 				$data['DenialReasons']= $this->search_model->get_DenialReasonsArray();
+				$data['CaseStatus']= $this->search_model->get_CaseStatus();
 				
 				$data['CaseInfo']= $this->search_model->get_CaseInfo($Case_AutoIdData);
 				//echo "<pre>"; print_r($data['CaseInfo']); exit();
@@ -57,6 +59,9 @@ class Search extends CI_Controller{
 			$data['Court']= $this->search_model->get_CourtArray();
 			$data['Service']= $this->search_model->get_ServiceArray();
 			$data['DenialReasons']= $this->search_model->get_DenialReasonsArray();
+			$data['CaseStatus']= $this->search_model->get_CaseStatus();
+			$data['Adjuster_Name']= $this->dataentry_model->get_Adjuster();
+			$data['Plantiff']= $this->dataentry_model->get_Plantiff();
 			
 			$data['CaseInfo']= $this->search_model->get_CaseInfo_ById($Case_AutoId);
 			//echo "<pre>"; print_r($data['CaseInfo']); exit();
@@ -64,6 +69,10 @@ class Search extends CI_Controller{
 		}else{
 			$this->load->view('pages/login');
 		}
+	}
+	public function getCaseInfo($Case_AutoId){
+		$data['CaseInfo']= $this->search_model->get_CaseInfo_ById($Case_AutoId);
+		echo json_encode($data);
 	}
 	public function addNotes(){
 		$data = array(
@@ -84,23 +93,23 @@ class Search extends CI_Controller{
 		foreach ($list as $result) {
 			$row = array();
 			$no++;
-			$row[] = "<a href='editcase/".$result->Case_AutoId."'>".$no."</a>";
+			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$no."</a>";
 			$row[] = "<a href='editcase/".$result->Case_AutoId."'>Edit</a>";
 			//<form action='editcase' method='post'><input type='hidden' name='Case_AutoId' value='".$result->Case_AutoId."'><button type='submit' class='btn btn-primary editRecord'>Edit</button></form>
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Case_Id."</a>";
-			$row[] = "<a href='editcase/".$result->Case_AutoId."'>".$result->InjuredParty_LastName."</a>";
-			$row[] = "<a href='editcase/".$result->Case_AutoId."'>".$result->Provider_Name."</a>";
-			$row[] = "<a href='editcase/".$result->Case_AutoId."'>".$result->InsuranceCompany_Name."</a>";
-			$row[] = "<a href='editcase/".$result->Case_AutoId."'>".$result->Accident_Date."</a>";
+			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->InjuredParty_LastName."</a>";
+			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Provider_Name."</a>";
+			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->InsuranceCompany_Name."</a>";
+			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Accident_Date."</a>";
 			$DateOfService_Start = str_replace("12:00AM","",$result->DateOfService_Start);
 			$DateOfService_End = str_replace("12:00AM","",$result->DateOfService_End);
-			$row[] = "<a href='editcase/".$result->Case_AutoId."'>".$DateOfService_Start."</a>";
-			$row[] = "<a href='editcase/".$result->Case_AutoId."'>".$DateOfService_End."</a>";
-			$row[] = "<a href='editcase/".$result->Case_AutoId."'>".$result->Status."</a>";
-			$row[] = "<a href='editcase/".$result->Case_AutoId."'>".$result->Ins_Claim_Number."</a>";
-			$row[] = "<a href='editcase/".$result->Case_AutoId."'>".$result->Claim_Amount."</a>";
-			$row[] = "<a href='editcase/".$result->Case_AutoId."'>".$result->IndexOrAAA_Number."</a>";
-			$row[] = "<a href='editcase/".$result->Case_AutoId."'>".$result->Initial_Status."</a>";
+			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$DateOfService_Start."</a>";
+			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$DateOfService_End."</a>";
+			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Status."</a>";
+			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Ins_Claim_Number."</a>";
+			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Claim_Amount."</a>";
+			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->IndexOrAAA_Number."</a>";
+			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Initial_Status."</a>";
 			//$row[] = "<input type='checkbox' name='selectCase[]'> <input type='hidden' name='Case_AutoId' value='".$result->Case_AutoId."' >";
 			
 			$data[] = $row;
