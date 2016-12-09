@@ -151,7 +151,7 @@
                             <?php }?>
                         </select>
 					</div>
-                    <label class="col-md-2 control-label">Accedent Date</label>
+                    <label class="col-md-2 control-label">ACCIDENT DATE</label>
 					<div class="col-md-2">
 						<input id="accidentDate" name="accidentDate"  class="form-control input-sm datepicker_recurring_start">
 					</div>
