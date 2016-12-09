@@ -3689,5 +3689,8 @@ tr{
 	padding:0px;
 	color:#00C;
 }
+.tdAlignLeft-bottom td, th{
+	text-align:left !important;
+}
 	
 	

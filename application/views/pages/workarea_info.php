@@ -313,7 +313,7 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
                         
                         <h5 class="h4-title">Notes Details</h5>
                             <div class="col-md-12">
-                                <table id="example1" class="table dataTable table-bordered table-striped tdAlignLeft">
+                                <table id="example1" class="table dataTable table-bordered table-striped tdAlignLeft-bottom">
                                     <thead>
                                     <tr>
                                         <th>Notes Desc.</th>
@@ -345,7 +345,7 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
 							<div class="form-group form-horizontal col-md-8">
 								<h5 class="h4-title">Workarea Information</h5>
 								<div class="table-responsive">
-									<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+									<table cellpadding="1" cellspacing="1" class="table tdAlignLeft">
 										<tbody>
 										<tr>
 											<th></th>		
