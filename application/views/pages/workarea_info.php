@@ -52,7 +52,7 @@
 <!-- Main Wrapper -->
 <div id="wrapper"> 
 <?php //$Defendant_Name = $row['Defendant_Name'];?>   
-<?php foreach($CaseInfo as $row){$Case_AutoId = $row['Case_AutoId']; $Provider_Name = $row['Provider_Name']; $InsuranceCompany_Name1 = $row['InsuranceCompany_Name']; $Status = $row['Status']; $InjuredParty_LastName = $row['InjuredParty_LastName']; $InjuredParty_FirstName = $row['InjuredParty_FirstName']; $Accident_DateNoTimr = $row['Accident_DateNoTimr']; $Ins_Claim_Number = $row['Ins_Claim_Number']; $Claim_Amount = $row['Claim_Amount']; $InsuredParty_LastName = $row['InsuredParty_LastName']; $InsuredParty_FirstName = $row['InsuredParty_FirstName']; $Old_Case_Id = $row['Old_Case_Id']; $Paid_Amount = $row['Paid_Amount']; $Adjuster_LastName = $row['Adjuster_LastName']; $Adjuster_FirstName = $row['Adjuster_FirstName']; $Attorney_Name = $row['Attorney_Name']; $IndexOrAAA_Number = $row['IndexOrAAA_Number']; $Policy_Number = $row['Policy_Number'];  $Attorney_FileNumber = $row['Attorney_FileNumber']; $Court_Name = $row['Court_Name']; $DateOfService_Start = $row['DateOfService_Start']; $DateOfService_End = $row['DateOfService_End']; $Date_BillSent = $row['Date_BillSent']; $DenialReasons_Type = $row['DenialReasons_Type']; $Case_Id = $row['Case_Id']; $Case_Id = $row['Case_Id']; $Case_Id = $row['Case_Id']; $Case_Id = $row['Case_Id']; $Case_Id = $row['Case_Id']; 
+<?php foreach($CaseInfo as $row){$Case_AutoId = $row['Case_AutoId']; $Provider_Name = $row['Provider_Name']; $InsuranceCompany_Name1 = $row['InsuranceCompany_Name']; $Status1 = $row['Status']; $InjuredParty_LastName = $row['InjuredParty_LastName']; $InjuredParty_FirstName = $row['InjuredParty_FirstName']; $Accident_DateNoTimr = $row['Accident_DateNoTimr']; $Ins_Claim_Number = $row['Ins_Claim_Number']; $Claim_Amount = $row['Claim_Amount']; $InsuredParty_LastName = $row['InsuredParty_LastName']; $InsuredParty_FirstName = $row['InsuredParty_FirstName']; $Old_Case_Id = $row['Old_Case_Id']; $Paid_Amount = $row['Paid_Amount']; $Adjuster_LastName = $row['Adjuster_LastName']; $Adjuster_FirstName = $row['Adjuster_FirstName']; $Attorney_Name = $row['Attorney_Name']; $IndexOrAAA_Number = $row['IndexOrAAA_Number']; $Policy_Number = $row['Policy_Number'];  $Attorney_FileNumber = $row['Attorney_FileNumber']; $Court_Name = $row['Court_Name']; $DateOfService_Start = $row['DateOfService_Start']; $DateOfService_End = $row['DateOfService_End']; $Date_BillSent = $row['Date_BillSent']; $DenialReasons_Type = $row['DenialReasons_Type']; $Case_Id = $row['Case_Id']; $Case_Id = $row['Case_Id']; $Case_Id = $row['Case_Id']; $Case_Id = $row['Case_Id']; $Case_Id = $row['Case_Id']; 
 
 
 
@@ -86,7 +86,7 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
                       	<!--<div class="col-md-2"><div class="col-md-6 case-info-id">Old Case Id:</div><div class="col-md-6 old-case-id case-info-id-data"></div></div>-->
                         <div class="col-md-2"><div class="col-md-5 case-info-id">Case Id:</div><div class="col-md-6 case-id case-info-id-data"></div></div>
                     </div>
-						<div class="form-group form-horizontal col-md-8">                
+						<div class="form-group form-horizontal col-md-10">                
 						<div class="table-responsive">
 							<table cellpadding="1" cellspacing="1" class="table tdAlignLeft">
 								<tbody>
@@ -102,16 +102,16 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
 								<tr>  
                                 	<th><input type="hidden" name="recordNo" value="3"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save fa-save1" style="display:none"></i></th>
 									<th>INJURED NAME</th>
-									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><label>First Name: </label><input type="text" class="input-sm" name="InjuredParty_FirstName" /><label>Last Name: </label><input type="text" class="input-sm" name="InjuredParty_LastName" /></div></td>
-                                    <th><input type="hidden" name="recordNo" value="4"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><label>Last Name: </label><input type="text" class="input-sm" name="InjuredParty_LastName" /><label>First Name: </label><input type="text" class="input-sm" name="InjuredParty_FirstName" /></div></td>
+                                    <th><input type="hidden" name="recordNo" value="4"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>CURRENT STATUS</th>
-									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm datepicker_recurring_start" name="Accident_Date" /></div></td>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="currentStatusId" name="currentStatusId"><option selected="selected" value=""></option><?php foreach($Status as $row){?><option value="<?php echo $row['Status_Id']; ?>"> <?php echo $row['Status_Type']; ?> </option><?php }?></select></div></td>
 								</tr>
                                 
                                 <tr> 
                                 	<th><input type="hidden" name="recordNo" value="5"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>INSURED NAME</th>
-									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><label>First Name: </label><input type="text" class="input-sm" name="InsuredParty_FirstName" /><label>Last Name: </label><input type="text" class="input-sm" name="InsuredParty_LastName" /></div></td>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><label>Last Name: </label><input type="text" class="input-sm" name="InsuredParty_LastName" /><label>First Name: </label><input type="text" class="input-sm" name="InsuredParty_FirstName" /></div></td>
                                     <th><input type="hidden" name="recordNo" value="6"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>INS. CLAIM #</th>
 									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Ins_Claim_Number" /></div></td>
@@ -123,7 +123,7 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
 									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Policy_Number" /></div></td>
                                     <th><input type="hidden" name="recordNo" value="8"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>INDEX / AAA #</th>
-									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="IndexOrAAA_Number" /></div></td>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="phone-format input-sm" name="IndexOrAAA_Number" /></div></td>
 								</tr>
                                 
                                 <tr> 
@@ -282,7 +282,7 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
                         <div class="form-group form-horizontal col-lg-12">
                         	<label class="col-md-2 control-label">Type</label>
                             <div class="col-md-6 radio">
-                                <label><input type="radio" class="horizontal" value="ACTIVITY" id="activity" name="notesType">ACTIVITY</label>
+                                <label><input type="radio" class="horizontal" value="ACTIVITY" id="activity" name="notesType" checked>ACTIVITY</label>
                                 <label><input type="radio" class="horizontal" value="CALENDAR" id="calendar" name="notesType">CALENDAR</label>
                                 <label><input type="radio" class="horizontal" value="GENERAL" id="general" name="notesType">GENERAL</label>
                                 <label><input type="radio" class="horizontal" value="POPUP" id="popup" name="notesType">POPUP</label>
@@ -316,7 +316,7 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
                                 <table id="example1" class="table dataTable table-bordered table-striped tdAlignLeft-bottom">
                                     <thead>
                                     <tr>
-                                        <th>Notes Desc.</th>
+                                    	<th>Notes Desc.</th>
                                         <th>Editted By</th>
                                         <th>Date Editted</th>
                                         <!--<th>Time</th>-->
@@ -486,7 +486,7 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
 							<div class="form-group form-horizontal col-lg-12">
 								<label class="col-md-2 control-label">Type</label>
 								<div class="col-md-6 radio">
-									<label><input type="radio" class="horizontal" value="ACTIVITY" id="activity" name="notesType">ACTIVITY</label>
+									<label><input type="radio" class="horizontal" value="ACTIVITY" id="activity" name="notesType" checked>ACTIVITY</label>
 									<label><input type="radio" class="horizontal" value="CALENDAR" id="calendar" name="notesType">CALENDAR</label>
 									<label><input type="radio" class="horizontal" value="GENERAL" id="general" name="notesType">GENERAL</label>
 									<label><input type="radio" class="horizontal" value="POPUP" id="popup" name="notesType">POPUP</label>
@@ -515,9 +515,10 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
 							<div class="form-group form-horizontal col-lg-12">
 								<h5 class="h4-title">Notes Details</h5>
 									<div class="col-md-12">
-										<table id="example2" class="table dataTable table-bordered table-striped">
+										<table id="example2" class="table dataTable table-bordered tdAlignLeft-bottom table-striped">
 											<thead>
 											<tr>
+                                            	<th>Edit</th>
 												<th>Notes Desc.</th>
 												<th>Editted By</th>
 												<th>Date Editted</th>
@@ -1063,6 +1064,59 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
 		</div><!-- End col-lg-12-->
 	</div><!-- End row-->
     
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                
+                    <form id="UpdateNotesInfo_form" method="post">
+                        <div class="modal-body">
+                            <div class="hpanel">
+                                <div class="panel-body tab-panel">
+                                    <div class="form-group form-horizontal col-md-12">
+                                    	<input type="hidden" class="mNoteId">
+                                        <label class="col-md-3 control-label">Description</label>
+                                        <div class="col-md-6">
+                                            <textarea rows="3" id="mnotesDescription" name="mnotesDescription" class="mNoteDesc  form-control" ></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-horizontal col-md-12">
+                                        <label class="col-md-3 control-label">Edited By</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="mNoteEditedBy input-sm" id="mEditedBy" name="mEditedBy">
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-horizontal col-md-12">
+                                    	<label class="col-md-3 control-label">Edited Date</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="mNoteDate input-sm datepicker_recurring_start" id="mEditedDate" name="mEditedDate">
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-horizontal col-md-12">
+                                        <label class="col-md-3 control-label">Notes Type</label>
+                                        <div class="col-md-4">
+                                            <select class="form-control input-sm mNoteType" id="mNoteType" name="mNoteType">
+                                                <option value="ACTIVITY">ACTIVITY</option>
+                                                <option value="CALENDAR">CALENDAR</option>
+                                                <option value="GENERAL">GENERAL</option>
+                                                <option value="POPUP">POPUP</option>
+                                                <option value="PROVIDER">PROVIDER</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                
+            </div>
+        </div>
+    </div>
+
+    
 
 </div>
 
@@ -1089,6 +1143,7 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
     <script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
 	<script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
     
+    <script src="<?php echo base_url();?>assets/vendor/mask-phone/maskPhone.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.js"></script>
@@ -1211,12 +1266,12 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
 		if(recordNo ==3){
 			var InjuredParty_LastName = $(editHidden).find("input[name=InjuredParty_LastName]").val();
 			var InjuredParty_FirstName = $(editHidden).find("input[name=InjuredParty_FirstName]").val();
-   			x[2].innerHTML = InjuredParty_FirstName+", "+InjuredParty_LastName;
+   			x[2].innerHTML = InjuredParty_LastName+", "+InjuredParty_FirstName;
 			string += "&InjuredParty_LastName="+InjuredParty_LastName+"&InjuredParty_FirstName="+InjuredParty_FirstName;
 		}else if(recordNo ==5){
 			var InsuredParty_LastName = $(editHidden).find("input[name=InsuredParty_LastName]").val();
 			var InsuredParty_FirstName = $(editHidden).find("input[name=InsuredParty_FirstName]").val();
-			x[4].innerHTML = InsuredParty_FirstName+", "+InsuredParty_LastName;
+			x[4].innerHTML = InsuredParty_LastName+", "+InsuredParty_FirstName;
 			string += "&InsuredParty_LastName="+InsuredParty_LastName+"&InsuredParty_FirstName="+InsuredParty_FirstName;
 		}else{
 			if(selectRecordNo !=1){
@@ -1230,7 +1285,7 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
 				selectValue = $("#"+selectId+" option:selected").val();
 				selectText = $("#"+selectId+" option:selected").text();
 				console.log("recordNo:"+recordNo+" selectId:"+selectId+" selectValue:"+selectValue+" selectText:"+selectText);
-				if(recordNo == 2){
+				if(recordNo == 2 || recordNo ==4){
 					string += "&"+selectId+"="+selectText;
 				}else{
 					string += "&"+selectId+"="+selectValue;
@@ -1275,10 +1330,11 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
 					//document.getElementsByClassName("old-case-id").innerHTML =  results.CaseInfo[$i].Old_Case_Id;
 					x[0].innerHTML = results.CaseInfo[$i].Provider_Name;
 					x[1].innerHTML = results.CaseInfo[$i].Initial_Status;
-					x[2].innerHTML = results.CaseInfo[$i].InjuredParty_FirstName +", "+results.CaseInfo[$i].InjuredParty_LastName ;
+					x[2].innerHTML = results.CaseInfo[$i].InjuredParty_LastName +", "+results.CaseInfo[$i].InjuredParty_FirstName ;
 					$("input[name=InjuredParty_LastName]").val(results.CaseInfo[$i].InjuredParty_LastName);
 					$("input[name=InjuredParty_FirstName]").val(results.CaseInfo[$i].InjuredParty_FirstName);
-					x[4].innerHTML = results.CaseInfo[$i].InsuredParty_FirstName +", "+results.CaseInfo[$i].InsuredParty_LastName ;
+					x[3].innerHTML = results.CaseInfo[$i].Last_Status;
+					x[4].innerHTML = results.CaseInfo[$i].InsuredParty_LastName +", "+results.CaseInfo[$i].InsuredParty_FirstName ;
 					$("input[name=InsuredParty_LastName]").val(results.CaseInfo[$i].InsuredParty_LastName);
 					$("input[name=InsuredParty_FirstName]").val(results.CaseInfo[$i].InsuredParty_FirstName);
 					
@@ -1435,7 +1491,36 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
 		$(visible).css("display", "block");
 	});
 /************************************************************************************************************************************/
+	//AdvancedSearchTable_wrapper
+	$("#AdvancedSearchTable_wrapper div:nth-child(3)").addClass("Third");
+	$('body').on('focus',".phone-format", function(){
+		$(this).mask("999999/99");
+		//$(this).mask("999-999-999");
+	});
+	//$("#myModal").modal("show");
 	
+	$('tbody').on( 'click', '.editNotes', function () {
+		console.log("ccc");
+		var tNoteId = $(this).parent().parent().find(".tNoteId").val();
+		var tNoteDesc = $(this).parent().parent().find(".tNoteDesc").val();
+		var tNoteEditedBy = $(this).parent().parent().find(".tNoteUserId").val();
+		var tNoteDate = $(this).parent().parent().find(".tNoteDate").val();
+		var tNoteType = $(this).parent().parent().find(".tNoteType").val();
+		console.log("tNoteId:"+tNoteId);
+		console.log("tNoteDesc:"+tNoteDesc);
+		console.log("tNoteEditedBy:"+tNoteEditedBy);
+		console.log("tNoteDate:"+tNoteDate);
+		console.log("tNoteType:"+tNoteType);
+		$(".mNoteId").val(tNoteId);
+		$(".mNoteDesc").val(tNoteDesc);
+		$(".mNoteEditedBy").val(tNoteEditedBy);
+		$(".mNoteDate").val(tNoteDate);
+		//$(".mNoteType").val(tNoteType);
+		
+		$("#myModal").modal("show");
+	});
+	//$("#AdvancedSearchTable_filter").find("label").addClass("lll");
+	$(".dataTables_filter").remove();
 </script>
 <script>
 	$('.dataentry').addClass('active');

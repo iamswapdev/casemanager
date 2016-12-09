@@ -49,21 +49,21 @@
 		<div class="panel-body tab-panel">
 			
 			
-			<form method="get" class="form-horizontal label-font">
+			<form method="get" id="caseInfoSerach_form" class="form-horizontal label-font">
 
 				<div class="form-group form-horizontal col-md-12">
                 <h5 class="h4-title">Search</h5>
 					<label class="col-md-2 control-label">CASE ID</label>
 					<div class="col-md-2">
-						<input type="text" class="form-control input-sm">
+						<input type="text" id="sCaseId" name="sCaseId" class="form-control input-sm" required>
 					</div>
                     <label class="col-md-2 control-label">INJURED NAME</label>
 					<div class="col-md-2">
-						<input type="text" class="form-control input-sm">
+						<input type="text" id="sInjuredName" name="" class="form-control input-sm">
 					</div>
                     <label class="col-md-2 control-label">INSURED NAME</label>
 					<div class="col-md-2">
-						<input type="text" class="form-control input-sm">
+						<input type="text" id="" name="sInsuredName" class="form-control input-sm">
 					</div>
 				</div>
 
@@ -71,22 +71,22 @@
 					
 					<label class="col-md-2 control-label">POLICY NUMBER</label>
 					<div class="col-md-2">
-						<input type="text" class="form-control input-sm">
+						<input type="text" id="spolicyNumber" name="spolicyNumber" class="form-control input-sm">
 					</div>
 					<label class="col-md-2 control-label">INS. CLAIM #</label>
 					<div class="col-md-2">
-						<input type="text" class="form-control input-sm">
+						<input type="text" id="sInsuranceClaimNo" name="sInsuranceClaimNo" class="form-control input-sm">
 					</div>
 					<label class="col-md-2 control-label">INDEX#/AAA#</label>
 					<div class="col-md-2">
-						<input type="text" class="form-control input-sm">
+						<input type="text" id="sIndexaaa" name="sIndexaaa" class="form-control input-sm">
 					</div>
 
 				</div>
 				<div class="form-group form-horizontal col-md-12">
 					<label class="col-md-2 control-label">STATUS</label>
 					<div class="col-md-2">
-						<select class="form-control input-sm" id="status" name="status">
+						<select class="form-control input-sm" id="sStatus" name="sStatus">
                             <option selected="selected" value=""></option>
                             <?php foreach($Status as $row){?>
                             <option value="<?php echo $row['Status_Id']; ?>"> <?php echo $row['Status_Type']; ?> </option>
@@ -95,7 +95,7 @@
 					</div>
 					<label class="col-md-2 control-label">INSURANCE COMP.</label>
 					<div class="col-md-2">
-						<select class="form-control input-sm" id="insuranceCompanyId" name="insuranceCompanyId">
+						<select class="form-control input-sm" id="sInsuranceCompanyId" name="sInsuranceCompanyId">
                        	 	<option selected="selected" value=""></option>
                             <?php foreach($InsuranceCompany_Name as $row){?>
                             <option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option>
@@ -104,7 +104,7 @@
 					</div>
 					<label class="col-md-2 control-label">COURT TYPE</label>
 					<div class="col-md-2">
-						<select class="form-control input-sm" id="courtId" name="courtId" required >
+						<select class="form-control input-sm" id="sCourtId" name="sCourtId" required >
                             <option selected="selected" value=""></option>
                             <?php foreach($Court as $row){?>
                             <option value="<?php echo $row['Court_Id']; ?>"> <?php echo $row['Court_Name']; ?> </option>
@@ -115,7 +115,7 @@
 				<div class="form-group form-horizontal col-md-12">
 					<label class="col-md-2 control-label">CASE STATUS</label>
 					<div class="col-md-2">
-						<select class="form-control input-sm" name="account">
+						<select class="form-control input-sm" id="sCaseStatus" name="sCaseStatus">
                             <option selected="selected" value=""></option>
                             <?php foreach($CaseStatus as $row){?>
                             <option value="<?php echo $row['id']; ?>"> <?php echo $row['name']; ?> </option>
@@ -124,7 +124,7 @@
 					</div>
 					<label class="col-md-2 control-label">PROVIDER</label>
 					<div class="col-md-2">
-						<select class="form-control input-sm" id="providerId" name="providerId">
+						<select class="form-control input-sm" id="sProviderId" name="sProviderId">
                             <option selected="selected" value=""></option>
                             <?php foreach($Provider_Name as $row){?>
                             <option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option>
@@ -133,7 +133,7 @@
 					</div>
 					<label class="col-md-2 control-label">DEFENDANT NAME</label>
 					<div class="col-md-2">
-						<select class="form-control input-sm" id="defendantId" name="defendantId" required>
+						<select class="form-control input-sm" id="sDefendantId" name="sDefendantId" required>
                             <option selected="selected" value=""></option>
                             <?php foreach($Defendant_Name as $row){?>
                             <option value="<?php echo $row['Defendant_id']; ?>"><?php echo $row['Defendant_Name'];?></option>
@@ -144,7 +144,7 @@
                 <div class="form-group form-horizontal col-md-12">
                 	<label class="col-md-2 control-label">ADJUSTER NAME</label>
 					<div class="col-md-2">
-						<select class="form-control input-sm" id="adjusterId" name="adjusterId" required>
+						<select class="form-control input-sm" id="sAdjusterId" name="sAdjusterId" required>
                             <option selected="selected" value=""></option>
                             <?php foreach($Adjuster_Name as $row){?>
                             <option value="<?php echo $row['Adjuster_Id']; ?>"><?php echo $row['Adjuster_LastName'].", ".$row['Adjuster_FirstName'];?></option>
@@ -153,13 +153,13 @@
 					</div>
                     <label class="col-md-2 control-label">ACCIDENT DATE</label>
 					<div class="col-md-2">
-						<input id="accidentDate" name="accidentDate"  class="form-control input-sm datepicker_recurring_start">
+						<input id="sAccidentDate" name="sAccidentDate"  class="form-control input-sm datepicker_recurring_start">
 					</div>
                 </div>
                 <div class="form-group form-horizontal col-md-12">
 					<div class="col-md-2"></div>
 					<div class="col-md-4">
-						<button type="button" class="btn btn-primary">Search</button>
+						<button type="button" id="searchbutton" class="btn btn-primary">Search</button>
 						<button class="btn btn-primary" type="submit">Reset</button>   
 					</div>
 				</div>
@@ -167,23 +167,22 @@
 			
 			<h5 class="h4-title">Search Results</h5>
 			<div class="form-group form-horizontal col-md-12 table-responsive">
-				<table id="example1" class="table dataTable table-bordered table-striped advanced-search">
+				<table id="AdvancedSearchTable" class="table dataTable table-bordered table-striped advanced-search">
 					<thead>
 						<tr>
 							<th>#</th> 	 	   	 	    	      	      	     	 	 	 	   	 	
 							<th>EDIT</th>
-							<th>&nbsp;CASE ID</th>
+							<th class="th-case-id">CASE ID</th>
 							<th>INJURED PARTY</th>
 							<th>PROVIDER</th>
 							<th>INSURANCE COMPANY</th>
-							<th>&nbsp;&nbsp;&nbsp;&nbsp;DOA&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th>DATE OF SERVICE START</th>
-                            <th>DATE OF SERVICE END</th>
+							<th class="th-doa">DOA</th>
+							<th class="th-dos">DATE OF SERVICE</th>
 							<th>STATUS</th>
-							<th>CLAIM NUMBER</th>
-							<th>CLAIM AMT.</th>
-                            <th>Indexor aaa_number</th>
-                            <th>INITIAL STATUS</th>
+							<th class="th-claim-no">CLAIM NUMBER</th>
+							<th class="th-claim-amt">CLAIM AMT.</th>
+                            <th class="th-indexaaano">Indexoraaa_number</th>
+                            <th class="th-initial-status">INITIAL_STATUS</th>
 						</tr>
 					</thead>
 				</table>
@@ -237,11 +236,24 @@
     $(function () {
 
         // Initialize Example 1
-        $('#example1').dataTable( {
+        $('#AdvancedSearchTable').dataTable( {
             "ajax": 'getSearchTable',
 			"pageLength": 100
         });
     });
+	
+	$("#searchbutton").click(function(){
+		console.log("Clcked...");
+		var sProviderId = $("#sProviderId").val();
+		console.log("sProviderId: "+sProviderId);
+		var string = "getSearchTable_2/"+sProviderId
+		$("#AdvancedSearchTable").dataTable().fnDestroy();
+		$('#AdvancedSearchTable').dataTable( {
+            "ajax": string,
+			"pageLength": 100
+        });
+	});
+	
 
 </script>
 <script>

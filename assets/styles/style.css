@@ -3688,12 +3688,53 @@ tr{
 .case-info-id-data{
 	padding:0px;
 	color:#00C;
+	font-size: 15px;
+    font-weight: bold;
 }
-.tdAlignLeft-bottom td, th{
+.tdAlignLeft-bottom td{
 	text-align:left !important;
+	padding-left:10px !important;
 }
-#example1 td a{
+.table.tdAlignLeft th{
+	font-weight:600;
+}
+#AdvancedSearchTable td a{
 	color:#000 !important;
+	font: Arial;
+}
+#AdvancedSearchTable th{
+	text-align:center !important;
+}
+/*#AdvancedSearchTable td + td{   this will go to the 2nd column of a table directly 
+	background:red;
+}*/
+
+#AdvancedSearchTable tr td:nth-child(3) a {
+	color:#00F !important;
+}
+.th-claim-no{
+	width: 147px;
+}
+.th-claim-amt{
+	width: 88px;
+}
+.th-indexaaano{
+	width: 131px;
+}
+.th-initial-status{
+	width: 101px;
+}
+.th-case-id{
+	width:66px;
+}
+.th-doa{
+	width:68px;
+}
+.th-dos{
+	width:153px;
+}
+textarea.form-control {
+    color: #000;
 }
 	
 	
