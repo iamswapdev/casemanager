@@ -2392,7 +2392,7 @@ body.page-small.show-sidebar #wrapper {
 }
 a {
   cursor: pointer;
-  color: #34495e;
+  color: #000;
 }
 a:hover,
 a:focus {
@@ -3691,6 +3691,9 @@ tr{
 }
 .tdAlignLeft-bottom td, th{
 	text-align:left !important;
+}
+#example1 td a{
+	color:#000 !important;
 }
 	
 	
