@@ -211,8 +211,8 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
                                 </thead>
 									<tbody>
 									<tr class="first-row">
-										<td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start" value="<?php echo $DateOfService_Start;?>"></td>
-										<td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start" value="<?php  echo $DateOfService_End;?>"></td>
+										<td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start" value="<?php $DateOfService_Start1 = str_replace("12:00AM","",$DateOfService_Start); echo $DateOfService_Start1;?>"></td>
+										<td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start" value="<?php  $DateOfService_End1 = str_replace("12:00AM","",$DateOfService_End);echo $DateOfService_End1;?>"></td>
 										<td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm" value="<?php echo $Claim_Amount;?>"></td>
 										<td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm" value="<?php echo $Paid_Amount;?>"></td>
 										<td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datepicker_recurring_start" value="<?php echo $Date_BillSent;?>"></td>
@@ -259,8 +259,8 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
                                 </thead>
 									<tbody>
 									<tr class="first-row">
-										<td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start" value="<?php echo $DateOfService_Start;?>"></td>
-										<td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start" value="<?php echo $DateOfService_End;?>"></td>
+										<td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start" value="<?php $DateOfService_Start1 = str_replace("12:00AM","",$DateOfService_Start); echo $DateOfService_Start1;?>"></td>
+										<td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start" value="<?php $DateOfService_End1 = str_replace("12:00AM","",$DateOfService_End);echo $DateOfService_End1;?>"></td>
 										<td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm" value="<?php echo $Claim_Amount;?>"></td>
 										<td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm" value="<?php echo $Paid_Amount;?>"></td>
 										<td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datepicker_recurring_start" value="<?php echo $Date_BillSent;?>"></td>

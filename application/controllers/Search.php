@@ -88,6 +88,7 @@ class Search extends CI_Controller{
 		//return true;
 	}
 	public function getSearchTable(){
+		//$DateOfService_Start = str_replace("12:00AM","",$DateOfService_Start)
 		$list=$this->search_model->get_SearchResult();
 		$data = array();
 		$no=0;
