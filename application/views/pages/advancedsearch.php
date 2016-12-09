@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/animate.css/animate.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.min.css" />
 
     <!-- App styles -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
@@ -150,6 +151,10 @@
                             <?php }?>
                         </select>
 					</div>
+                    <label class="col-md-2 control-label">Accedent Date</label>
+					<div class="col-md-2">
+						<input id="accidentDate" name="accidentDate"  class="form-control input-sm datepicker_recurring_start">
+					</div>
                 </div>
                 <div class="form-group form-horizontal col-md-12">
 					<div class="col-md-2"></div>
@@ -216,17 +221,24 @@
 <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+<script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
 
 <!-- App scripts -->
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
 	//$("tr:nth-child(7)").addClass("DOA-width");
-
+	$('body').on('focus',".datepicker_recurring_start", function(){
+		$(this).datepicker({
+			"autoclose": true,
+			"todayHighlight": true,
+			"selectOtherMonths": true
+		});
+	});
     $(function () {
 
         // Initialize Example 1
         $('#example1').dataTable( {
-            "ajax": 'getAdj',
+            "ajax": 'getSearchTable',
 			"pageLength": 100
         });
     });

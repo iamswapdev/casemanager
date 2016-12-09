@@ -293,55 +293,55 @@ Class Dataentry_model extends CI_Model{
 				$this->db->where('DenialReasons_Id', $id);
 				$this->db->delete('dbo_tbldenialreasons');
 			} 
-			return $true;
+			return true;
 		}else if($tabIdentity == 2){
 			foreach($data as $id){
 				$this->db->where('Court_Id', $id);
 				$this->db->delete('dbo_tblcourt');
 			} 
-			return $true;
+			return true;
 		}else if($tabIdentity == 3){
 			foreach($data as $id){
 				$this->db->where('Image_Id', $id);
 				$this->db->delete('dbo_tblimagetypes');
 			} 
-			return $true;
+			return true;
 		}else if($tabIdentity == 4){
 			foreach($data as $id){
 				$this->db->where('Status_Id', $id);
 				$this->db->delete('dbo_tblstatus');
 			} 
-			return $true;
+			return true;
 		}else if($tabIdentity == 5){
 			foreach($data as $id){
 				$this->db->where('id', $id);
 				$this->db->delete('dbo_tblcasestatus');
 			} 
-			return $true;
+			return true;
 		}else if($tabIdentity == 6){
 			foreach($data as $id){
 				$this->db->where('Doc_Id', $id);
 				$this->db->delete('dbo_tbldocs');
 			} 
-			return $true;
+			return true;
 		}else if($tabIdentity == 7){
 			foreach($data as $id){
 				$this->db->where('ServiceType_ID', $id);
 				$this->db->delete('dbo_tblservicetype');
 			} 
-			return $true;
+			return true;
 		}else if($tabIdentity == 8){
 			foreach($data as $id){
 				$this->db->where('EventTypeId', $id);
 				$this->db->delete('dbo_tbleventtype');
 			} 
-			return $true;
+			return true;
 		}else if($tabIdentity == 9){
 			foreach($data as $id){
 				$this->db->where('EventStatusId', $id);
 				$this->db->delete('dbo_tbleventstatus');
 			} 
-			return $true;
+			return true;
 		}else{
 			return false;
 		}

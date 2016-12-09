@@ -3665,5 +3665,29 @@ tr{
 .fa-edit, .fa-save{
 	cursor:pointer;
 }
+.tdAlignLeft td, th{
+	text-align:left !important;
+	border:none!important;	
+}
+.tdAlignLeft{
+	border:none!important;	
+}
+.tdAlignLeft th{
+	background-color:#ffefde;
+}
+.tdAlignLeft td{
+	background-color:#feffef;
+	color:#a23e26;
+}
+.case-info-id{
+	color:#F00;
+	font-size:15px;
+	padding-right: 0px;
+    text-align: center;
+}
+.case-info-id-data{
+	padding:0px;
+	color:#00C;
+}
 	
 	

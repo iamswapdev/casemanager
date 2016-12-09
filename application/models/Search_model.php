@@ -84,7 +84,8 @@ Class Search_model extends CI_Model{
 		$query=$this->db->get('dbo_tblcase');
 		$data=$query->result();
 		return $data;*/
-		$this->db->select('t1.Case_AutoId, t1.Case_Id, t1.InjuredParty_LastName, t2.Provider_Name, t3.InsuranceCompany_Name, DATE_FORMAT(t1.Accident_Date,"%m-%Y-%d") as Accident_Date, t1.DateOfService_Start, t1.DateOfService_End, t1.Status, t1.Ins_Claim_Number, t1.Claim_Amount, t1.IndexOrAAA_Number, t1.Initial_Status');
+		$this->db->order_by("Case_Id","dsc");
+		$this->db->select('t1.Case_AutoId, t1.Case_Id, t1.InjuredParty_LastName, t2.Provider_Name, t3.InsuranceCompany_Name, DATE_FORMAT(t1.Accident_Date,"%m-%d-%Y") as Accident_Date, t1.DateOfService_Start, t1.DateOfService_End, t1.Status, t1.Ins_Claim_Number, t1.Claim_Amount, t1.IndexOrAAA_Number, t1.Initial_Status');
 		$this->db->from('dbo_tblcase as t1');
 		$this->db->join('dbo_tblprovider as t2', 't1.Provider_Id = t2.Provider_Id', 'LEFT');
 		$this->db->join('dbo_tblinsurancecompany as t3', 't1.InsuranceCompany_Id = t3.InsuranceCompany_Id', 'LEFT');
@@ -115,6 +116,7 @@ Class Search_model extends CI_Model{
 	}
 	public function get_Notes($Case_Id){
 		//$this->db->order_by("Notes_Desc", "asc");
+		
 		$this->db->where('Case_Id', $Case_Id);
 		$query = $this->db->get('dbo_tblnotes'); 
 		$data=$query->result();
@@ -125,7 +127,24 @@ Class Search_model extends CI_Model{
 		$this->db->insert("dbo_tblnotes", $data);
 		return true;
 	}
+	public function update_CaseInfo($data, $Case_Id){
+		$this->db->set($data);
+		$this->db->where("Case_Id", $Case_Id);
+		$query = $this->db->update("dbo_tblcase", $data);
+		if($query){
+			return true;
+		}else{
+			return false;
+		}
 	
+	}
+	public function delete_Notes($data){
+		foreach($data as $id){
+			$this->db->where('Notes_ID', $id);
+			$this->db->delete('dbo_tblnotes');
+		} 
+		return true;
+	}
 
 }
 ?>
