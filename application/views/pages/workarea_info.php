@@ -52,18 +52,50 @@
 <!-- Main Wrapper -->
 <div id="wrapper"> 
 <?php //$Defendant_Name = $row['Defendant_Name'];?>   
-<?php foreach($CaseInfo as $row){$Case_AutoId = $row['Case_AutoId']; $Provider_Name = $row['Provider_Name']; $InsuranceCompany_Name1 = $row['InsuranceCompany_Name']; $Status1 = $row['Status']; $InjuredParty_LastName = $row['InjuredParty_LastName']; $InjuredParty_FirstName = $row['InjuredParty_FirstName']; $Accident_DateNoTimr = $row['Accident_DateNoTimr']; $Ins_Claim_Number = $row['Ins_Claim_Number']; $Claim_Amount = $row['Claim_Amount']; $InsuredParty_LastName = $row['InsuredParty_LastName']; $InsuredParty_FirstName = $row['InsuredParty_FirstName']; $Old_Case_Id = $row['Old_Case_Id']; $Paid_Amount = $row['Paid_Amount']; $Adjuster_LastName = $row['Adjuster_LastName']; $Adjuster_FirstName = $row['Adjuster_FirstName']; $Attorney_Name = $row['Attorney_Name']; $IndexOrAAA_Number = $row['IndexOrAAA_Number']; $Policy_Number = $row['Policy_Number'];  $Attorney_FileNumber = $row['Attorney_FileNumber']; $Court_Name = $row['Court_Name']; $DateOfService_Start = $row['DateOfService_Start']; $DateOfService_End = $row['DateOfService_End']; $Date_BillSent = $row['Date_BillSent']; $DenialReasons_Type = $row['DenialReasons_Type']; $Case_Id = $row['Case_Id']; $Case_Id = $row['Case_Id']; $Case_Id = $row['Case_Id']; $Case_Id = $row['Case_Id']; $Case_Id = $row['Case_Id']; 
+<?php $months = array("Just", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+foreach($CaseInfo as $row){$Case_AutoId = $row['Case_AutoId']; $Case_Id = $row['Case_Id']; $Claim_Amount = $row['Claim_Amount']; $Paid_Amount = $row['Paid_Amount']; $DateOfService_Start = $row['DateOfService_Start']; $DateOfService_End = $row['DateOfService_End']; $Date_BillSent = $row['Date_BillSent']; }
 
-
-
-
-$Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submitted']; $Date_Status_Changed = $row['Date_Status_Changed']; $Date_Summons_Printed = $row['Date_Summons_Printed']; $Date_Index_Number_Purchased = $row['Date_Index_Number_Purchased']; $Date_Summons_Sent_Court = $row['Date_Summons_Sent_Court']; $Served_On_Date = $row['Served_On_Date']; $Served_To = $row['Served_To']; $Served_On_Time = $row['Served_On_Time']; $Date_Afidavit_Filed = $row['Date_Afidavit_Filed']; $Date_Answer_Received = $row['Date_Answer_Received']; $Our_Discovery_Demands = $row['Our_Discovery_Demands']; $Date_Demands_Printed = $row['Date_Demands_Printed']; $Plaintiff_Discovery_Due_Date = $row['Plaintiff_Discovery_Due_Date']; $Date_Disc_Conf_Letter_Printed = $row['Date_Disc_Conf_Letter_Printed']; $Date_Ext_Of_Time = $row['Date_Ext_Of_Time']; $Date_Ext_Of_Time_2 = $row['Date_Ext_Of_Time_2']; $Date_Ext_Of_Time_3 = $row['Date_Ext_Of_Time_3']; $Date_Disc_Conf_Letter_Printed = $row['Date_Disc_Conf_Letter_Printed']; $stips_signed_and_returned = $row['stips_signed_and_returned']; $stips_signed_and_returned_2 = $row['stips_signed_and_returned_2']; $stips_signed_and_returned_3 = $row['stips_signed_and_returned_3']; $Date_Closed = $row['Date_Closed']; $AAA_Conciliation_Date = $row['AAA_Conciliation_Date']; $Arb_Award_Date = $row['Arb_Award_Date']; $Date_Reply_To_Disc_Conf_Letter_Recd = $row['Date_Reply_To_Disc_Conf_Letter_Recd'];}?>  
+for($i=0; $i<=12; $i++){
+	if(substr($DateOfService_Start, 0, 3) == $months[$i]){
+		if($i<10){
+			if(substr($DateOfService_Start, 4, 1) == " "){
+				$DateOfService_Start7 = substr_replace($DateOfService_Start,"0",4,1);
+				$DateOfService_Start2 = str_replace($months[$i]." ","0".$i."/",$DateOfService_Start7);
+			}else{
+				$DateOfService_Start2 = str_replace($months[$i]." ","0".$i."/",$DateOfService_Start);
+			}
+		}else{
+			$DateOfService_Start2 = str_replace($months[$i]." ",$i."/",$DateOfService_Start);
+		}
+		$DateOfService_Start3 = substr_replace($DateOfService_Start2,"/",strpos($DateOfService_Start2," "),1);
+		
+		break;
+	}
+}
+for($i=0; $i<=12; $i++){
+	if(substr($DateOfService_End, 0, 3) == $months[$i]){
+		if($i<10){
+			if(substr($DateOfService_End, 4, 1) == " "){
+				$DateOfService_End7 = substr_replace($DateOfService_End,"0",4,1);
+				$DateOfService_End2 = str_replace($months[$i]." ","0".$i."/",$DateOfService_End7);
+			}else{
+				$DateOfService_End2 = str_replace($months[$i]." ","0".$i."/",$DateOfService_End);
+			}
+		}else{
+			$DateOfService_End2 = str_replace($months[$i]." ",$i."/",$DateOfService_End);
+		}
+		$DateOfService_End3 = substr_replace($DateOfService_End2,"/",strpos($DateOfService_End2," "),1);
+		
+		break;
+	}
+}
+?>  
 <div class="content animate-panel">
 
 	<div class="row">
 		<div class="col-lg-12">
 		<div class="hpanel">
-			<ul class="nav nav-tabs">
+			<ul class="nav nav-tabs view-case-navigation">
 				<li class="active"><a id="tab1" data-toggle="tab" href="#tab-1">Case Information</a></li>
 				<li class=""><a id="tab2" data-toggle="tab" href="#tab-2">Extended case info</a></li>
 				<li class=""><a id="tab3" data-toggle="tab" href="#tab-3">Notes</a></li>
@@ -211,8 +243,8 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
                                 </thead>
 									<tbody>
 									<tr class="first-row">
-										<td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start" value="<?php $DateOfService_Start1 = str_replace("12:00AM","",$DateOfService_Start); echo $DateOfService_Start1;?>"></td>
-										<td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start" value="<?php  $DateOfService_End1 = str_replace("12:00AM","",$DateOfService_End);echo $DateOfService_End1;?>"></td>
+										<td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start" value="<?php echo str_replace(" 12:00AM","",$DateOfService_Start3);?>"></td>
+										<td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start" value="<?php  echo str_replace(" 12:00AM","",$DateOfService_End3);?>"></td>
 										<td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm" value="<?php echo $Claim_Amount;?>"></td>
 										<td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm" value="<?php echo $Paid_Amount;?>"></td>
 										<td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datepicker_recurring_start" value="<?php echo $Date_BillSent;?>"></td>
@@ -259,8 +291,8 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
                                 </thead>
 									<tbody>
 									<tr class="first-row">
-										<td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start" value="<?php $DateOfService_Start1 = str_replace("12:00AM","",$DateOfService_Start); echo $DateOfService_Start1;?>"></td>
-										<td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start" value="<?php $DateOfService_End1 = str_replace("12:00AM","",$DateOfService_End);echo $DateOfService_End1;?>"></td>
+										<td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start" value="<?php echo str_replace(" 12:00AM","",$DateOfService_Start3);?>"></td>
+										<td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start" value="<?php echo str_replace(" 12:00AM","",$DateOfService_End3);?>"></td>
 										<td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm" value="<?php echo $Claim_Amount;?>"></td>
 										<td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm" value="<?php echo $Paid_Amount;?>"></td>
 										<td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datepicker_recurring_start" value="<?php echo $Date_BillSent;?>"></td>
@@ -482,6 +514,10 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
 									<textarea rows="3"  id="notesDescription2" name="notesDescription" class="form-control" ></textarea>
                                     <input type="hidden" class="notesAccidentDate" name="notesAccidentDate"  class="form-control input-sm" value="">
 								</div>
+                                <label class="col-md-1 control-label">Memo</label>
+                                <div class="col-md-4">
+									<textarea rows="3"  id="notesDescription2" name="notesDescription" class="form-control" ></textarea>
+								</div>
 							</div>
 							<div class="form-group form-horizontal col-lg-12">
 								<label class="col-md-2 control-label">Type</label>
@@ -498,11 +534,11 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
 								<div class="col-md-9"></div>
 								<div class="col-md-1">
 									<select class="form-control input-sm" id="" name="">
-										<option value="">ACTIVITY</option>
-										<option value="">CALENDAR</option>
-										<option value="">GENERAL</option>
-										<option value="">POPUP</option>
-										<option value="">PROVIDER</option>
+										<option value="ACTIVITY">ACTIVITY</option>
+										<option value="CALENDAR">CALENDAR</option>
+										<option value="GENERAL">GENERAL</option>
+										<option value="POPUP">POPUP</option>
+										<option value="PROVIDER">PROVIDER</option>
 									</select>
 								</div>
 								<div class="col-md-1"><button type="button" class="btn btn-primary">Filter</button></div>
@@ -522,6 +558,7 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
 												<th>Notes Desc.</th>
 												<th>Editted By</th>
 												<th>Date Editted</th>
+                                                <th>Time Editted</th>
 												<th>Type</th>
                                                 <th>Notes Id</th>
 											</tr>
@@ -594,12 +631,7 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
 							<div class="form-group form-horizontal col-md-12">
 								<label class="col-md-2 control-label">ADJUSTER</label>
 								<div class="col-md-6">
-									<select class="form-control input-sm" id="" name="" required>
-										<option selected="selected" value=""></option>
-										<?php //foreach($InsuranceCompany_Name as $row){?>
-										<option value="<?php //echo $row['InsuranceCompany_Id']; ?>"><?php //echo $row['InsuranceCompany_Name'];?> option</option>
-										<?php // }?>
-									</select>
+									<select class="form-control input-sm" id="adjusterId" name="adjusterId"><option selected="selected" value=""></option><?php foreach (array_combine($Adjuster_Name, $InsuranceCompany_Name) as $code => $name) {?><option value="<?php echo $code['Adjuster_Id']; ?>"> <?php echo $name['InsuranceCompany_Name']; ?> </option><?php  }?></select>
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
@@ -1073,28 +1105,28 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
                             <div class="hpanel">
                                 <div class="panel-body tab-panel">
                                     <div class="form-group form-horizontal col-md-12">
-                                    	<input type="hidden" class="mNoteId">
+                                    	<input type="hidden" class="mNoteId" name="Notes_ID">
                                         <label class="col-md-3 control-label">Description</label>
                                         <div class="col-md-6">
-                                            <textarea rows="3" id="mnotesDescription" name="mnotesDescription" class="mNoteDesc  form-control" ></textarea>
+                                            <textarea rows="3" id="mnotesDescription" name="Notes_Desc" class="mNoteDesc  form-control" ></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group form-horizontal col-md-12">
                                         <label class="col-md-3 control-label">Edited By</label>
                                         <div class="col-md-4">
-                                            <input type="text" class="mNoteEditedBy input-sm" id="mEditedBy" name="mEditedBy">
+                                            <input type="text" class="mNoteEditedBy input-sm" id="mEditedBy" name="User_Id">
                                         </div>
                                     </div>
                                     <div class="form-group form-horizontal col-md-12">
                                     	<label class="col-md-3 control-label">Edited Date</label>
                                         <div class="col-md-4">
-                                            <input type="text" class="mNoteDate input-sm datepicker_recurring_start" id="mEditedDate" name="mEditedDate">
+                                            <input type="text" class="mNoteDate input-sm datepicker_recurring_start" id="mEditedDate" name="Notes_Date">
                                         </div>
                                     </div>
                                     <div class="form-group form-horizontal col-md-12">
                                         <label class="col-md-3 control-label">Notes Type</label>
                                         <div class="col-md-4">
-                                            <select class="form-control input-sm mNoteType" id="mNoteType" name="mNoteType">
+                                            <select class="form-control input-sm mNoteType" id="mNoteType" name="Notes_Type">
                                                 <option value="ACTIVITY">ACTIVITY</option>
                                                 <option value="CALENDAR">CALENDAR</option>
                                                 <option value="GENERAL">GENERAL</option>
@@ -1104,7 +1136,7 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                     </div>
                                 </div>
@@ -1457,39 +1489,16 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
 						var row = $(".DeleteNotes"+values).parent().parent();
 						$(row).remove();
 					});
-					//console.log("suuuuu:"+response);
+					console.log("suuuuu:"+response);
 				});
 				swal("Deleted!", "Your records has been deleted.", "success");
 			} else {
 				swal("Cancelled", "Your records are safe :)", "error");
 			}
-		});
-	})
-	/********************************* fa-save *************************************************************************************/
-	$(".fa-save2").click(function(){
-		$(this).parent().find(".fa-edit").css("display", "block");
-		$(this).css("display", "none");
-		var editHidden = $(this).parent().next().next().find(".editHidden");
-		var visible = $(this).parent().next().next().find(".visible");
-		var x = document.getElementsByClassName("visible");
-		var recordNo = $(this).parent().find("input[name=recordNo]").val();
-		var selectRecordNo = $(this).parent().find("input[name=selectRecordNo]").val();
-		var string = "recordNo="+recordNo+"&Case_Id=<?php echo $Case_Id;?>";
 		
-		
-		console.log("string= "+string);
-		request = $.ajax({
-			url:"<?php echo base_url(); ?>search/updateCaseInfo",
-			type: "post",
-			data: string
 		});
-		request.done(function (response, textStatus, jqXHR) {
-			//console.log("Successssss :"+response);
-			callSuccess();
-		});
-		$(editHidden).css("display", "none");
-		$(visible).css("display", "block");
 	});
+	/********************************* fa-save *************************************************************************************/
 /************************************************************************************************************************************/
 	//AdvancedSearchTable_wrapper
 	$("#AdvancedSearchTable_wrapper div:nth-child(3)").addClass("Third");
@@ -1519,8 +1528,35 @@ $Date_Opened = $row['Date_Opened']; $Date_Bill_Submitted = $row['Date_Bill_Submi
 		
 		$("#myModal").modal("show");
 	});
+	
+	$("#UpdateNotesInfo_form").submit(function(e){
+		var form = $(this);
+		var params = form.serialize();
+		var nameValue = document.getElementById("adjusterId").value;
+		console.log("Edit: "+nameValue);
+		
+		e.preventDefault();	//STOP default action
+		
+		$.ajax({
+			type:'POST',
+			url:"<?php echo base_url(); ?>search/UpdateNotesInfo",
+			data: params,
+			success:function(data){
+				results = JSON.parse(data);	
+				callSuccess();
+			},
+			error: function(result){ console.log("error"); }
+		});
+		
+	});
 	//$("#AdvancedSearchTable_filter").find("label").addClass("lll");
-	$(".dataTables_filter").remove();
+	//$(".dataTables_filter").remove();
+	function callSuccess() {
+		swal({
+			title: "Successfully Added",
+			type: "success"
+		});
+	}
 </script>
 <script>
 	$('.dataentry').addClass('active');

@@ -55,15 +55,15 @@
                 <h5 class="h4-title">Search</h5>
 					<label class="col-md-2 control-label">CASE ID</label>
 					<div class="col-md-2">
-						<input type="text" id="sCaseId" name="sCaseId" class="form-control input-sm" required>
+						<input type="text" id="sCaseId" name="sCaseId" class="form-control input-sm">
 					</div>
                     <label class="col-md-2 control-label">INJURED NAME</label>
 					<div class="col-md-2">
-						<input type="text" id="sInjuredName" name="" class="form-control input-sm">
+						<input type="text" id="sInjuredName" name="sInjuredName" placeholder="Last Name First Name" class="form-control input-sm">
 					</div>
                     <label class="col-md-2 control-label">INSURED NAME</label>
 					<div class="col-md-2">
-						<input type="text" id="" name="sInsuredName" class="form-control input-sm">
+						<input type="text" id="sInsuredName" name="sInsuredName" placeholder="Last Name First Name" class="form-control input-sm">
 					</div>
 				</div>
 
@@ -79,7 +79,7 @@
 					</div>
 					<label class="col-md-2 control-label">INDEX#/AAA#</label>
 					<div class="col-md-2">
-						<input type="text" id="sIndexaaa" name="sIndexaaa" class="form-control input-sm">
+						<input type="text" id="sIndexaaa" name="sIndexaaa" class="form-control input-sm phone-format">
 					</div>
 
 				</div>
@@ -89,7 +89,7 @@
 						<select class="form-control input-sm" id="sStatus" name="sStatus">
                             <option selected="selected" value=""></option>
                             <?php foreach($Status as $row){?>
-                            <option value="<?php echo $row['Status_Id']; ?>"> <?php echo $row['Status_Type']; ?> </option>
+                            <option value="<?php echo $row['Status_Type']; ?>"> <?php echo $row['Status_Type']; ?> </option>
                             <?php }?>
                         </select>
 					</div>
@@ -104,7 +104,7 @@
 					</div>
 					<label class="col-md-2 control-label">COURT TYPE</label>
 					<div class="col-md-2">
-						<select class="form-control input-sm" id="sCourtId" name="sCourtId" required >
+						<select class="form-control input-sm" id="sCourtId" name="sCourtId"  >
                             <option selected="selected" value=""></option>
                             <?php foreach($Court as $row){?>
                             <option value="<?php echo $row['Court_Id']; ?>"> <?php echo $row['Court_Name']; ?> </option>
@@ -118,7 +118,7 @@
 						<select class="form-control input-sm" id="sCaseStatus" name="sCaseStatus">
                             <option selected="selected" value=""></option>
                             <?php foreach($CaseStatus as $row){?>
-                            <option value="<?php echo $row['id']; ?>"> <?php echo $row['name']; ?> </option>
+                            <option value="<?php echo $row['name']; ?>"> <?php echo $row['name']; ?> </option>
                             <?php }?>
 						</select>
 					</div>
@@ -133,7 +133,7 @@
 					</div>
 					<label class="col-md-2 control-label">DEFENDANT NAME</label>
 					<div class="col-md-2">
-						<select class="form-control input-sm" id="sDefendantId" name="sDefendantId" required>
+						<select class="form-control input-sm" id="sDefendantId" name="sDefendantId" >
                             <option selected="selected" value=""></option>
                             <?php foreach($Defendant_Name as $row){?>
                             <option value="<?php echo $row['Defendant_id']; ?>"><?php echo $row['Defendant_Name'];?></option>
@@ -144,7 +144,7 @@
                 <div class="form-group form-horizontal col-md-12">
                 	<label class="col-md-2 control-label">ADJUSTER NAME</label>
 					<div class="col-md-2">
-						<select class="form-control input-sm" id="sAdjusterId" name="sAdjusterId" required>
+						<select class="form-control input-sm" id="sAdjusterId" name="sAdjusterId" >
                             <option selected="selected" value=""></option>
                             <?php foreach($Adjuster_Name as $row){?>
                             <option value="<?php echo $row['Adjuster_Id']; ?>"><?php echo $row['Adjuster_LastName'].", ".$row['Adjuster_FirstName'];?></option>
@@ -159,8 +159,8 @@
                 <div class="form-group form-horizontal col-md-12">
 					<div class="col-md-2"></div>
 					<div class="col-md-4">
-						<button type="button" id="searchbutton" class="btn btn-primary">Search</button>
-						<button class="btn btn-primary" type="submit">Reset</button>   
+						<button type="submit" id="searchbutton" class="btn btn-primary">Search</button>
+						<button class="btn btn-primary" id="resetSearch" type="button">Reset</button>   
 					</div>
 				</div>
 			</form>
@@ -210,51 +210,122 @@
 
 
 
-<!-- Vendor scripts -->
-<script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
+    <!-- Vendor scripts -->
+    <script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/mask-phone/maskPhone.js"></script>
+    
+     <script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
+    
+    <!-- App scripts -->
+    <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 
-<!-- App scripts -->
-<script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
-	//$("tr:nth-child(7)").addClass("DOA-width");
-	$('body').on('focus',".datepicker_recurring_start", function(){
-		$(this).datepicker({
-			"autoclose": true,
-			"todayHighlight": true,
-			"selectOtherMonths": true
+	$(document).ready(function(e) {
+        //$("tr:nth-child(7)").addClass("DOA-width");
+		$('body').on('focus',".phone-format", function(){
+			$(this).mask("999999/99");
+			//$(this).mask("999-999-999");
 		});
-	});
-    $(function () {
-
-        // Initialize Example 1
-        $('#AdvancedSearchTable').dataTable( {
-            "ajax": 'getSearchTable',
-			"pageLength": 100
-        });
+		
+		$('body').on('focus',".datepicker_recurring_start", function(){
+			$(this).datepicker({
+				"format": 'yyyy-mm-dd',
+				"autoclose": true,
+				"todayHighlight": true,
+				"selectOtherMonths": true,
+				"timeFormat": 'hh:mm'
+			});
+		});
+		$("#resetSearch").click(function(){
+			$('input[type=text]').val('');
+			$('textarea').val('');
+			$("select").val('');
+			$("#AdvancedSearchTable").dataTable().fnDestroy();
+			$('#AdvancedSearchTable').dataTable( {
+				"ajax": 'getSearchTable',
+				"pageLength": 100
+			});
+		});
+		$(function () {
+			// Initialize Example 1
+			$('#AdvancedSearchTable').dataTable( {
+				"ajax": 'getSearchTable',
+				"pageLength": 100,
+				"searching": false
+			});
+		});
+		
+		$("#caseInfoSerach_form").validate({
+		
+			/*rules: {
+				sCaseId:{
+					required: true
+				}	
+			},*/
+					
+			submitHandler: function (form) {
+				// setup some local variables
+				var $form = $(form);
+				// let's select and cache all the fields
+				var $inputs = $form.find("input, select, button, textarea");
+				// serialize the data in the form
+				var serializedData = $form.serialize();
+				
+				var dataArray = $form.serializeArray(),
+				len = dataArray.length,
+				dataObj = {};
+				
+				for (i=0; i<len; i++) {
+				  dataObj[dataArray[i].name] = dataArray[i].value;
+				}
+				//dataObj['title']);
+	
+				//$inputs.prop("disabled", true);
+	
+	
+				$("#AdvancedSearchTable").dataTable().fnDestroy();
+				$('#AdvancedSearchTable').dataTable( {
+					"searching": false,
+				  "ajax": {
+						"url": "getSearchTable_2",
+						"data": {
+							"sCaseId": dataObj['sCaseId'],
+							"InjuredParty_LastName": dataObj['sInjuredName'].split(' ')[0],
+							"InjuredParty_FirstName": dataObj['sInjuredName'].split(' ')[1],
+							"InsuredParty_LastName": dataObj['sInsuredName'].split(' ')[0],
+							"InsuredParty_FirstName": dataObj['sInsuredName'].split(' ')[1],
+							"spolicyNumber": dataObj['spolicyNumber'],
+							"sInsuranceClaimNo": dataObj['sInsuranceClaimNo'],
+							"sIndexaaa": dataObj['sIndexaaa'],
+							"sStatus": dataObj['sStatus'],
+							"sInsuranceCompanyId": dataObj['sInsuranceCompanyId'],
+							"sCourtId": dataObj['sCourtId'],
+							"sCaseStatus": dataObj['sCaseStatus'],
+							"sProviderId": dataObj['sProviderId'],
+							"sDefendantId": dataObj['sDefendantId'],
+							"sAdjusterId": dataObj['sAdjusterId'],
+							"AccidentDate": dataObj['sAccidentDate'].replace(/\//g , "-")
+						},
+						"type": "POST"
+					  },
+					  
+				});
+	
+			}
+		});
+		
+		/* *************************************************** */
     });
 	
-	$("#searchbutton").click(function(){
-		console.log("Clcked...");
-		var sProviderId = $("#sProviderId").val();
-		console.log("sProviderId: "+sProviderId);
-		var string = "getSearchTable_2/"+sProviderId
-		$("#AdvancedSearchTable").dataTable().fnDestroy();
-		$('#AdvancedSearchTable').dataTable( {
-            "ajax": string,
-			"pageLength": 100
-        });
-	});
-	
-
 </script>
 <script>
 	$('.search').addClass('active');
