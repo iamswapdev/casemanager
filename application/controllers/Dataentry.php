@@ -21,6 +21,8 @@ session_cache_limiter('private_no_expire');
 		
 		public function addcase(){
 			$this->session->all_userdata();
+			//$username = $this->session->session_data['username'];
+			//echo $username; exit();
 			if(isset($this->session->userdata['logged_in'])){
 				
 				$data['Provider_Name']= $this->dataentry_model->get_Provider();

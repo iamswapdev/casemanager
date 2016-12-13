@@ -1046,7 +1046,7 @@ for($i=0; $i<=13; $i++){
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Event Date <span class="required-field">*</span></label>
                                 <div class="col-md-2">
-                                	<input id="EventDate" name="EventDate"  class="form-control input-sm datepicker_recurring_start" >
+                                	<input id="EventDate" name="EventDate"  class="form-control input-sm datepicker_recurring_start" required>
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
@@ -1097,7 +1097,6 @@ for($i=0; $i<=13; $i++){
                             </form>
                             <!--<form action="/casemanager/search/deleteEvents" method="post">-->
                             <div class="form-group form-horizontal col-md-12">
-                            	<h5 class="h4-title">PAYMENT DETAILS</h5>
                                 <div class="col-md-12">
                                     <table id="eventTable" class="table dataTable table-bordered table-striped">
                                         <thead>
@@ -1228,29 +1227,7 @@ for($i=0; $i<=13; $i++){
 
 <script>
 $(document).ready(function(e) {
-	$(".notesAccidentDate").datepicker().datepicker("setDate", new Date());
-	var t = $('#example1').dataTable( {
-		"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
-		"iDisplayLength": 5,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
-	});
-	$('#example2').dataTable( {
-		"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
-		"iDisplayLength": 10,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
-	});
-	$('#eventTable').dataTable( {
-		"ajax": "<?php echo base_url();?>search/getEvents/<?php echo $Case_Id;?>",
-		"iDisplayLength": 10,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
-	});
-	function callSuccess() {
-		swal({
-			title: "Successfully submitted",
-			type: "success"
-		});
-	}
-	
+/**************************** CASEINFORMATION TAB-1 ************************************************************************************/
 	var countForRows = 0;
 	var value = 0;
 	$("#addOtherInfo").click(function(){
@@ -1288,13 +1265,6 @@ $(document).ready(function(e) {
 		}
 		
 	});
-	$('body').on('focus',".datepicker_recurring_start", function(){
-		$(this).datepicker({
-			"autoclose": true,
-			"todayHighlight": true,
-			"selectOtherMonths": true
-		});
-	});
 	$("#addNotes_form").submit(function(e){
 		// setup some local variables
 		var notesDescription = $(this).find("textarea").val();
@@ -1317,7 +1287,7 @@ $(document).ready(function(e) {
 				$('textarea').val('');
 				$("select").val('');
 				//$("#myModal").modal("show");
-				 $('#example1').dataTable().fnAddData( [ notesDescription,"system",notesAccidentDate,notesType ] );
+				 $('#example1').dataTable().fnAddData( [ notesDescription,"admin",notesAccidentDate,"",notesType ] );
 				callSuccess();
 				$("#updateProviderInfo").css("display", "none");
 			});
@@ -1332,7 +1302,7 @@ $(document).ready(function(e) {
 		$(divs).find(".editHidden").css("display", "block");
 	});
 	
-/********************************* fa-save *************************************************************************************/
+/*********** fa-save ***********/
 	$(".fa-save").click(function(){
 		$(this).parent().find(".fa-edit").css("display", "block");
 		$(this).css("display", "none");
@@ -1388,6 +1358,130 @@ $(document).ready(function(e) {
 		$(editHidden).css("display", "none");
 		$(visible).css("display", "block");
 	});
+/**************************** EDIT CASE INFO TAB-2 ***********************************************************************/
+	$('#example2').dataTable( {
+		"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
+		"iDisplayLength": 10,
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+	});
+	
+/**************************** NOTES TAB-3 ************************************************************************************/
+	$(".notesAccidentDate").datepicker().datepicker("setDate", new Date());
+	var t = $('#example1').dataTable( {
+		"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
+		"iDisplayLength": 5,
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+	});
+
+/**** ADD NOTES INFO *********/
+	$("#addNotes_form2").submit(function(e){
+			console.log("addNotes_form2: ");
+			var notesDescription = $(this).find("textarea").val();
+			var notesType = $(this).find('input[name=notesType]:checked').val();
+			var notesAccidentDate = $(this).find(".notesAccidentDate").val();
+			console.log("notesAccidentDate: "+notesAccidentDate);
+			var caseId = "<?php echo $Case_Id;?>";
+			var Case_AutoId = "<?php echo $Case_AutoId;?>";
+				// fire off the request to /form.php
+	
+				request = $.ajax({
+					url:"<?php echo base_url(); ?>search/addNotes",
+					type: "post",
+					data: {notesDescription:notesDescription, caseId:caseId,notesAccidentDate:notesAccidentDate,notesType:notesType,Case_AutoId:Case_AutoId }
+				});
+	
+				// callback handler that will be called on success
+				request.done(function (response, textStatus, jqXHR) {
+					$('input[type=text]').val('');
+					$('textarea').val('');
+					$("select").val('');
+					//$("#myModal").modal("show");
+					 $('#example2').dataTable().fnAddData( [ notesDescription,"admin",notesAccidentDate,"",notesType,"" ] );
+					callSuccess();
+					$("#updateProviderInfo").css("display", "none");
+				});
+				e.preventDefault();	//STOP default action
+		});
+/**** EDIT NOTES INFO *********/
+	$('tbody').on( 'click', '.editNotes', function () {
+		console.log("ccc");
+		var tNoteId = $(this).parent().parent().find(".tNoteId").val();
+		var tNoteDesc = $(this).parent().parent().find(".tNoteDesc").val();
+		var tNoteEditedBy = $(this).parent().parent().find(".tNoteUserId").val();
+		var tNoteDate = $(this).parent().parent().find(".tNoteDate").val();
+		var tNoteType = $(this).parent().parent().find(".tNoteType").val();
+		console.log("tNoteId:"+tNoteId);
+		console.log("tNoteDesc:"+tNoteDesc);
+		console.log("tNoteEditedBy:"+tNoteEditedBy);
+		console.log("tNoteDate:"+tNoteDate);
+		console.log("tNoteType:"+tNoteType);
+		$(".mNoteId").val(tNoteId);
+		$(".mNoteDesc").val(tNoteDesc);
+		$(".mNoteEditedBy").val(tNoteEditedBy);
+		$(".mNoteDate").val(tNoteDate);
+		//$(".mNoteType").val(tNoteType);
+		
+		$("#myModal").modal("show");
+	});
+/**** DELETE NOTES **********/
+	$('body').on( 'click', '#deleteNotesButton', function () {
+		var DeletedNotesId = [];
+		$('.DeleteNotes:checked').each(function(i){
+			var values = $(this).val();
+			DeletedNotesId.push(values);
+		});
+		swal({
+			title: "Are you sure?",
+			text: "You will not be able to recover these records",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#DD6B55",
+			confirmButtonText: "Yes, delete it!",
+			cancelButtonText: "No, cancel it!",
+			closeOnConfirm: false,
+			closeOnCancel: false },
+		function (isConfirm) {
+			if (isConfirm) {
+				request = $.ajax({
+					url:"<?php echo base_url();?>search/deleteNotesFromTab3",
+					type: "post",
+					data: {DeletedNotesId:DeletedNotesId}
+				});
+		
+				request.done(function (response, textStatus, jqXHR) {
+					$('.DeleteNotes:checked').each(function(i){
+						var values = $(this).val();
+						var row = $(".DeleteNotes"+values).parent().parent();
+						$(row).remove();
+					});
+					console.log("suuuuu:"+response);
+				});
+				swal("Deleted!", "Your records has been deleted.", "success");
+			} else {
+				swal("Cancelled", "Your records are safe :)", "error");
+			}
+		
+		});
+	});
+/****UPDATE NOTES INFO *********/	
+	$("#UpdateNotesInfo_form").submit(function(e){
+		var form = $(this);
+		var params = form.serialize();
+		console.log("params:"+params);
+		e.preventDefault();	//STOP default action
+		
+		$.ajax({
+			type:'POST',
+			url:"<?php echo base_url(); ?>search/UpdateNotesInfo",
+			data: params,
+			success:function(data){
+				//results = JSON.parse(data);	
+				//callSuccess();
+			},
+			error: function(result){ console.log("error"); }
+		});
+		
+	});
 /************************************************************************************************************************************/
 	
 	
@@ -1402,9 +1496,6 @@ $(document).ready(function(e) {
 				results = JSON.parse(data);
 				var optionsAsString = "";
 				for($i in results.CaseInfo){
-					//optionsAsString += "<option value='" + results.Adjuster_Name[$i].Adjuster_Id + "'>" + results.Adjuster_Name[$i].Adjuster_LastName + " ," + results.Adjuster_Name[$i].Adjuster_FirstName + "</option>";
-					//console.log("suucess loaded editeble info");
-					//console.log("results.CaseInfo[$i].Provider_Id: "+results.CaseInfo[$i].Provider_Id);
 					y[0].innerHTML =  results.CaseInfo[$i].Case_Id;
 					$("#9CaseId").val(results.CaseInfo[$i].Case_Id);
 					document.getElementById("CaseId-tab-6").innerHTML = results.CaseInfo[$i].Case_Id;
@@ -1480,138 +1571,17 @@ $(document).ready(function(e) {
 					x[28].innerHTML = results.CaseInfo[$i].Date_Ext_Of_Time_3;
 					$("input[name=Date_Ext_Of_Time_3]").val(results.CaseInfo[$i].Date_Ext_Of_Time_3);
 				}
-				
 			},
 			error: function(result){ console.log("error"); }
 		
 		});
-		$("#addNotes_form2").submit(function(e){
-			console.log("addNotes_form2: ");
-			var notesDescription = $(this).find("textarea").val();
-			var notesType = $(this).find('input[name=notesType]:checked').val();
-			var notesAccidentDate = $(this).find(".notesAccidentDate").val();
-			console.log("notesAccidentDate: "+notesAccidentDate);
-			var caseId = "<?php echo $Case_Id;?>";
-			var Case_AutoId = "<?php echo $Case_AutoId;?>";
-				// fire off the request to /form.php
-	
-				request = $.ajax({
-					url:"<?php echo base_url(); ?>search/addNotes",
-					type: "post",
-					data: {notesDescription:notesDescription, caseId:caseId,notesAccidentDate:notesAccidentDate,notesType:notesType,Case_AutoId:Case_AutoId }
-				});
-	
-				// callback handler that will be called on success
-				request.done(function (response, textStatus, jqXHR) {
-					$('input[type=text]').val('');
-					$('textarea').val('');
-					$("select").val('');
-					//$("#myModal").modal("show");
-					 $('#example2').dataTable().fnAddData( [ notesDescription,"system",notesAccidentDate,notesType,"" ] );
-					callSuccess();
-					$("#updateProviderInfo").css("display", "none");
-				});
-				e.preventDefault();	//STOP default action
-		});
-/* *************************************************** */
-
-	$('body').on( 'click', '#deleteNotesButton', function () {
-		var DeletedNotesId = [];
-		$('.DeleteNotes:checked').each(function(i){
-			var values = $(this).val();
-			DeletedNotesId.push(values);
-		});
-		swal({
-			title: "Are you sure?",
-			text: "You will not be able to recover these records",
-			type: "warning",
-			showCancelButton: true,
-			confirmButtonColor: "#DD6B55",
-			confirmButtonText: "Yes, delete it!",
-			cancelButtonText: "No, cancel it!",
-			closeOnConfirm: false,
-			closeOnCancel: false },
-		function (isConfirm) {
-			if (isConfirm) {
-				request = $.ajax({
-					url:"<?php echo base_url();?>search/deleteNotesFromTab3",
-					type: "post",
-					data: {DeletedNotesId:DeletedNotesId}
-				});
-		
-				request.done(function (response, textStatus, jqXHR) {
-					$('.DeleteNotes:checked').each(function(i){
-						var values = $(this).val();
-						var row = $(".DeleteNotes"+values).parent().parent();
-						$(row).remove();
-					});
-					console.log("suuuuu:"+response);
-				});
-				swal("Deleted!", "Your records has been deleted.", "success");
-			} else {
-				swal("Cancelled", "Your records are safe :)", "error");
-			}
-		
-		});
-	});
-	/********************************* fa-save *************************************************************************************/
-/************************************************************************************************************************************/
-	//AdvancedSearchTable_wrapper
-	$("#AdvancedSearchTable_wrapper div:nth-child(3)").addClass("Third");
-	$('body').on('focus',".phone-format", function(){
-		$(this).mask("999999/99");
-		//$(this).mask("999-999-999");
-	});
-	//$("#myModal").modal("show");
-	
-	$('tbody').on( 'click', '.editNotes', function () {
-		console.log("ccc");
-		var tNoteId = $(this).parent().parent().find(".tNoteId").val();
-		var tNoteDesc = $(this).parent().parent().find(".tNoteDesc").val();
-		var tNoteEditedBy = $(this).parent().parent().find(".tNoteUserId").val();
-		var tNoteDate = $(this).parent().parent().find(".tNoteDate").val();
-		var tNoteType = $(this).parent().parent().find(".tNoteType").val();
-		console.log("tNoteId:"+tNoteId);
-		console.log("tNoteDesc:"+tNoteDesc);
-		console.log("tNoteEditedBy:"+tNoteEditedBy);
-		console.log("tNoteDate:"+tNoteDate);
-		console.log("tNoteType:"+tNoteType);
-		$(".mNoteId").val(tNoteId);
-		$(".mNoteDesc").val(tNoteDesc);
-		$(".mNoteEditedBy").val(tNoteEditedBy);
-		$(".mNoteDate").val(tNoteDate);
-		//$(".mNoteType").val(tNoteType);
-		
-		$("#myModal").modal("show");
-	});
-	
-	$("#UpdateNotesInfo_form").submit(function(e){
-		var form = $(this);
-		var params = form.serialize();
-		console.log("params:"+params);
-		e.preventDefault();	//STOP default action
-		
-		$.ajax({
-			type:'POST',
-			url:"<?php echo base_url(); ?>search/UpdateNotesInfo",
-			data: params,
-			success:function(data){
-				//results = JSON.parse(data);	
-				//callSuccess();
-			},
-			error: function(result){ console.log("error"); }
-		});
-		
-	});
-	//$("#AdvancedSearchTable_filter").find("label").addClass("lll");
-	//$(".dataTables_filter").remove();
-	function callSuccess() {
-		swal({
-			title: "Successfully Added",
-			type: "success"
-		});
-	}
 /*************************************************** EVENT TAB-9 ***************************************************************/
+/****GET EVENTS NOTES INFO *********/	
+	$('#eventTable').dataTable( {
+		"ajax": "<?php echo base_url();?>search/getEvents/<?php echo $Case_Id;?>",
+		"iDisplayLength": 10,
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+	});
 	$('#selectEventType').on('change', function() {
 		var EventType =$("#selectEventType option:selected").text();
 		var EventTypeId =$("#selectEventType option:selected").val();
@@ -1731,13 +1701,32 @@ $(document).ready(function(e) {
 
 		}
 	});
-	
+/*********************************************************/
+	$('body').on('focus',".datepicker_recurring_start", function(){
+		$(this).datepicker({
+			"autoclose": true,
+			"todayHighlight": true,
+			"selectOtherMonths": true
+		});
+	});
+	function callSuccess() {
+		swal({
+			title: "Successfully Added",
+			type: "success"
+		});
+	}
+	$('body').on('focus',".phone-format", function(){
+		$(this).mask("999999/99");
+		//$(this).mask("999-999-999");
+	});
+	//$("#myModal").modal("show");
 	
 	
 	
 });
 	
 /**********************************************************************************************************************************/
+	
 	
 </script>
 <script>
