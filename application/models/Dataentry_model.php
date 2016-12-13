@@ -286,6 +286,20 @@ Class Dataentry_model extends CI_Model{
 		$data=$query->result();
 		return $data;
 	}
+	public function get_EventTypeArray()
+	{
+		$this->db->order_by("EventTypeName", "asc");
+		$query = $this->db->get('dbo_tbleventtype'); 
+		$data=$query->result_array();
+		return $data;
+	}
+	public function get_EventStatusArray()
+	{
+		$this->db->order_by("EventStatusName", "asc");
+		$query = $this->db->get('dbo_tbleventstatus'); 
+		$data=$query->result_array();
+		return $data;
+	}
 	public function deleteRecords($data,$tabIdentity)
 	{
 		if($tabIdentity == 1){

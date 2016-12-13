@@ -11,7 +11,6 @@ class Search extends CI_Controller{
 		}
 	public function index(){
 		$this->session->all_userdata();
-		$this->session->all_userdata();
 		if(isset($this->session->userdata['logged_in'])){
 			$data['SearchResult']=$this->search_model->get_SearchResult();
 			$this->load->view('pages/search',$data);
@@ -64,6 +63,9 @@ class Search extends CI_Controller{
 			$data['Plantiff']= $this->dataentry_model->get_Plantiff();
 			$data['Defendant_Name']= $this->dataentry_model->get_Defendant();
 			$data['Adjuster_Name_Insurance']= $this->search_model->AdjusterInsurance();
+			$data['EventType']= $this->dataentry_model->get_EventTypeArray();
+			$data['EventStatus']= $this->dataentry_model->get_EventStatusArray();
+			$data['Transactions'] = $this->search_model->Transanction_Info();
 			
 			$data['CaseInfo']= $this->search_model->get_CaseInfo_ById($Case_AutoId);
 			//echo "<pre>"; print_r($data['Adjuster_Name_Insurance']); exit();
@@ -101,8 +103,8 @@ class Search extends CI_Controller{
 			$no++;
 			$row[] = $result->Notes_Desc;
 			$row[] = $result->User_Id;
-			$row[] = $result->Notes_Date;
-			//$row[] = $result->TIMEONLY;
+			$row[] = substr($result->Notes_Date, 0, 10);
+			$row[] = substr($result->Notes_Date, 11, 8);
 			$row[] = $result->Notes_Type;
 			
 			$data[] = $row;
@@ -134,11 +136,42 @@ class Search extends CI_Controller{
 		);
 		echo json_encode($output);
 	}
+	public function getEvents($Case_Id){
+		$list=$this->search_model->get_Events($Case_Id);
+		//echo "<pre>";print_r($list);exit();
+		$data = array();
+		foreach ($list as $result) {
+			$row = array();
+			$row[] ="<i title='Edit' class='fa fa-edit editEvent'></i>";
+			$row[] = $result->Case_Id;
+			$row[] = $result->EventTypeName;
+			$row[] = $result->EventStatusName;
+			$row[] = substr($result->Event_Date, 0, 9);
+			$row[] = substr($result->Event_Date, 11, 8);
+			$row[] = $result->Event_Notes;
+			$row[] = $result->Assigned_To;
+			$row[] = $result->Provider_Name;
+			$row[] = $result->InjuredParty_LastName." ".$result->InjuredParty_FirstName;
+			$row[] = $result->Court_Name;
+			$row[] = $result->IndexOrAAA_Number;
+			$row[] = $result->Defendant_Name;
+			$row[] = $result->InsuranceCompany_Name;
+			$row[] = "<input type='checkbox' name='deleteCheckedEvents[]' class='deleteCheckedEvents deleteCheckedEvents".$result->Event_id."' value='".$result->Event_id."'>";
+			
+			$data[] = $row;
+		}
+		$output = array(
+			"data" => $data
+		);
+		echo json_encode($output);
+	}
 		
 		
 	public function advancedsearch(){
 		$this->session->all_userdata();
-		$this->session->all_userdata();
+		//echo $this->session->userdata['username'];
+		//exit();
+		//echo $this->session->userdata['username']; exit();
 		if(isset($this->session->userdata['logged_in'])){
 			$data['Provider_Name']= $this->search_model->get_Provider();
 			$data['InsuranceCompany_Name']= $this->search_model->get_Insurance();
@@ -282,8 +315,8 @@ class Search extends CI_Controller{
 			return false;
 		}
 	}
-	public function deleteNotes(){
-		$data = $this->input->post('checkedNo');
+	public function deleteNotesFromTab3(){
+		$data = $this->input->post('DeletedNotesId');
 		$this->search_model->delete_Notes($data);
 	}
 	public function getSearchTable_2(){
@@ -310,7 +343,7 @@ class Search extends CI_Controller{
 		
 	}
 	public function Search_Table_Data($list){
-		$months = array("Just", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+		$months = array("Just", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "jan");
 		
 		$data = array();
 		$no=0;
@@ -327,14 +360,24 @@ class Search extends CI_Controller{
 			$DateOfService_Start = str_replace(" 12:00AM","",$result->DateOfService_Start);
 			$DateOfService_End = str_replace(" 12:00AM","",$result->DateOfService_End);
 			
-			for($i=0; $i<=12; $i++){
+			for($i=0; $i<=13; $i++){
 				if(substr($DateOfService_Start, 0, 3) == $months[$i]){
 					if($i<10){
 						if(substr($DateOfService_Start, 4, 1) == " "){
 							$DateOfService_Start7 = substr_replace($DateOfService_Start,"0",4,1);
-							$DateOfService_Start2 = str_replace($months[$i]." ","0".$i."-",$DateOfService_Start7);
+							if($i == 13){
+								$DateOfService_Start2 = str_replace($months[$i]." ","01-",$DateOfService_Start7);
+							}else{
+								$DateOfService_Start2 = str_replace($months[$i]." ","0".$i."-",$DateOfService_Start7);
+							}
+							
 						}else{
-							$DateOfService_Start2 = str_replace($months[$i]." ","0".$i."-",$DateOfService_Start);
+							if($i == 13){
+								$DateOfService_Start2 = str_replace($months[$i]." ","01-",$DateOfService_Start);
+							}else{
+								$DateOfService_Start2 = str_replace($months[$i]." ","0".$i."-",$DateOfService_Start);
+							}
+							
 						}
 					}else{
 						$DateOfService_Start2 = str_replace($months[$i]." ",$i."-",$DateOfService_Start);
@@ -344,14 +387,22 @@ class Search extends CI_Controller{
 					break;
 				}
 			}
-			for($i=0; $i<=12; $i++){
+			for($i=0; $i<=13; $i++){
 				if(substr($DateOfService_End, 0, 3) == $months[$i]){
 					if($i<10){
 						if(substr($DateOfService_End, 4, 1) == " "){
 							$DateOfService_End7 = substr_replace($DateOfService_End,"0",4,1);
-							$DateOfService_End2 = str_replace($months[$i]." ","0".$i."-",$DateOfService_End7);
+							if($i == 13){
+								$DateOfService_End2 = str_replace($months[$i]." ","01-",$DateOfService_End7);
+							}else{
+								$DateOfService_End2 = str_replace($months[$i]." ","0".$i."-",$DateOfService_End7);
+							}
 						}else{
-							$DateOfService_End2 = str_replace($months[$i]." ","0".$i."-",$DateOfService_End);
+							if($i == 13){
+								$DateOfService_End2 = str_replace($months[$i]." ","01-",$DateOfService_End);
+							}else{
+								$DateOfService_End2 = str_replace($months[$i]." ","0".$i."-",$DateOfService_End);
+							}
 						}
 					}else{
 						$DateOfService_End2 = str_replace($months[$i]." ",$i."-",$DateOfService_End);
@@ -377,14 +428,28 @@ class Search extends CI_Controller{
 		echo json_encode($output);
 	}
 	public function UpdateNotesInfo(){
-		$data = array(
-			"Notes_ID" => $this->input->post('Notes_ID'),
-			"Notes_Desc" => $this->input->post('Notes_Desc'),
-			"User_Id" => $this->input->post('User_Id'),
-			"Notes_Date" => $this->input->post('Notes_Date'),
-			"Notes_Type" => $this->input->post('Notes_Type'),
-		);
-		$this->search_model->Update_NotesInfo($data);
+		$this->session->all_userdata();
+		if(isset($this->session->userdata['logged_in'])){
+			$data = array(
+				"Notes_ID" => $this->input->post('Notes_ID'),
+				"Notes_Desc" => $this->input->post('Notes_Desc'),
+				"User_Id" => $this->session->userdata['username'],
+				"Notes_Date" => $this->input->post('Notes_Date'),
+				"Notes_Type" => $this->input->post('Notes_Type'),
+			);
+			$this->search_model->Update_NotesInfo($data);
+		}else{
+			$this->load->view('pages/login');
+		}
+	}
+	public function deleteEvents(){
+		$CheckedEvents = $this->input->post('deleteCheckedEvents');
+		$delete_success = $this->search_model->delete_Events($CheckedEvents);
+		if($delete_success){
+				return true;
+			}else{
+				return false;
+			}
 	}
 }
 ?>

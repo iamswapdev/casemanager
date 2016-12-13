@@ -3739,5 +3739,28 @@ textarea.form-control {
 .view-case-navigation{
 	font-size:18px;
 }
-	
+.case-info-tab6-title {
+    padding: 0px;
+    color: #00C;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+	margin-left: 15px;
+}
+.case-info-tab6 {
+    color: #F00;
+    font-size: 13px;
+    text-align: left;
+    padding: 0px;
+    margin-left: 15px;
+}
+.Amount{
+	color:#0C0;
+}
+.percentage{
+	color:#F00;
+}
+.settlement-title{
+	color:#00C;
+}
 	

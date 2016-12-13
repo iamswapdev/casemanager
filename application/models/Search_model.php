@@ -206,7 +206,8 @@ Class Search_model extends CI_Model{
 		$this->db->update("dbo_tblnotes");
 	}
 	public function AdjusterInsurance(){
-		$this->db->select('t2.Adjuster_LastName, t3.InsuranceCompany_Name, ');
+		$this->db->order_by('t2.Adjuster_LastName');
+		$this->db->select('t2.Adjuster_Id, t2.Adjuster_LastName, t2.Adjuster_FirstName, t3.InsuranceCompany_Name ');
 		$this->db->from('dbo_tblcase as t1');
 		$this->db->join('dbo_tbladjusters as t2', 't1.Adjuster_Id = t2.Adjuster_Id', 'LEFT');
 		$this->db->join('dbo_tblinsurancecompany as t3', 't1.InsuranceCompany_Id = t3.InsuranceCompany_Id', 'LEFT');
@@ -214,6 +215,36 @@ Class Search_model extends CI_Model{
 		$data=$query->result_array();
 		//echo "<pre>"; print_r($data); exit();
 		return $data;
+	}
+	public function Transanction_Info(){
+		$this->db->order_by("Transactions_Type", "asc");
+		$query = $this->db->get("dbo_tbltransactions");
+		$data = $query->result_array();
+		return $data;
+	}
+	public function get_Events($Case_Id){
+		$this->db->order_by("t1.Case_Id","asc");
+		$this->db->select('t1.Case_Id, t2.Event_id, t3.EventTypeName, t4.EventStatusName, t2.Event_Date, t2.Event_Notes, t2.Assigned_To, t5.Provider_Name, t1.InjuredParty_LastName, t1.InjuredParty_FirstName, t6.Court_Name, t1.IndexOrAAA_Number, t7.Defendant_Name, t8.InsuranceCompany_Name');
+		$this->db->from('dbo_tblcase as t1');
+		$this->db->join('dbo_tblevent as t2', 't1.Case_Id = t2.Case_id');
+		$this->db->join('dbo_tbleventtype as t3', 't2.EventTypeId = t3.EventTypeId');
+		$this->db->join('dbo_tbleventstatus as t4', 't2.EventStatusId = t4.EventStatusId');
+		$this->db->join('dbo_tblprovider as t5', 't1.Provider_Id = t5.Provider_Id');
+		$this->db->join('dbo_tblcourt as t6', 't1.Court_Id = t6.Court_Id');
+		$this->db->join('dbo_tbldefendant as t7', 't1.Defendant_Id = t7.Defendant_id');
+		$this->db->join('dbo_tblinsurancecompany as t8', 't1.InsuranceCompany_Id = t8.InsuranceCompany_Id');
+		$this->db->where("t1.Case_Id", $Case_Id);
+		$query= $this->db->get();
+		$data=$query->result();
+		//echo "<pre>"; print_r($data); exit();
+		return $data;
+	}
+	public function delete_Events($CheckedEvents){
+		foreach($CheckedEvents as $row){
+			$this->db->where("Event_id", $row);
+			//echo "ID: ".$row;
+			$this->db->delete('dbo_tblevent');
+		}
 	}
 
 }

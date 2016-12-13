@@ -51,46 +51,63 @@
 <?php include 'sidebar.php';?>
 <!-- Main Wrapper -->
 <div id="wrapper"> 
-<?php //$Defendant_Name = $row['Defendant_Name'];?>   
-<?php $months = array("Just", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+<div class="content animate-panel">
+<?php $months = array("Just", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "jan");
 foreach($CaseInfo as $row){$Case_AutoId = $row['Case_AutoId']; $Case_Id = $row['Case_Id']; $Claim_Amount = $row['Claim_Amount']; $Paid_Amount = $row['Paid_Amount']; $DateOfService_Start = $row['DateOfService_Start']; $DateOfService_End = $row['DateOfService_End']; $Date_BillSent = $row['Date_BillSent']; }
 
-for($i=0; $i<=12; $i++){
+for($i=0; $i<=13; $i++){
 	if(substr($DateOfService_Start, 0, 3) == $months[$i]){
 		if($i<10){
 			if(substr($DateOfService_Start, 4, 1) == " "){
 				$DateOfService_Start7 = substr_replace($DateOfService_Start,"0",4,1);
-				$DateOfService_Start2 = str_replace($months[$i]." ","0".$i."/",$DateOfService_Start7);
+				if($i == 13){
+					$DateOfService_Start2 = str_replace($months[$i]." ","01-",$DateOfService_Start7);
+				}else{
+					$DateOfService_Start2 = str_replace($months[$i]." ","0".$i."-",$DateOfService_Start7);
+				}
+				
 			}else{
-				$DateOfService_Start2 = str_replace($months[$i]." ","0".$i."/",$DateOfService_Start);
+				if($i == 13){
+					$DateOfService_Start2 = str_replace($months[$i]." ","01-",$DateOfService_Start);
+				}else{
+					$DateOfService_Start2 = str_replace($months[$i]." ","0".$i."-",$DateOfService_Start);
+				}
+				
 			}
 		}else{
-			$DateOfService_Start2 = str_replace($months[$i]." ",$i."/",$DateOfService_Start);
+			$DateOfService_Start2 = str_replace($months[$i]." ",$i."-",$DateOfService_Start);
 		}
-		$DateOfService_Start3 = substr_replace($DateOfService_Start2,"/",strpos($DateOfService_Start2," "),1);
+		$DateOfService_Start3 = substr_replace($DateOfService_Start2,"-",strpos($DateOfService_Start2," "),1);
 		
 		break;
 	}
 }
-for($i=0; $i<=12; $i++){
+for($i=0; $i<=13; $i++){
 	if(substr($DateOfService_End, 0, 3) == $months[$i]){
 		if($i<10){
 			if(substr($DateOfService_End, 4, 1) == " "){
 				$DateOfService_End7 = substr_replace($DateOfService_End,"0",4,1);
-				$DateOfService_End2 = str_replace($months[$i]." ","0".$i."/",$DateOfService_End7);
+				if($i == 13){
+					$DateOfService_End2 = str_replace($months[$i]." ","01-",$DateOfService_End7);
+				}else{
+					$DateOfService_End2 = str_replace($months[$i]." ","0".$i."-",$DateOfService_End7);
+				}
 			}else{
-				$DateOfService_End2 = str_replace($months[$i]." ","0".$i."/",$DateOfService_End);
+				if($i == 13){
+					$DateOfService_End2 = str_replace($months[$i]." ","01-",$DateOfService_End);
+				}else{
+					$DateOfService_End2 = str_replace($months[$i]." ","0".$i."-",$DateOfService_End);
+				}
 			}
 		}else{
-			$DateOfService_End2 = str_replace($months[$i]." ",$i."/",$DateOfService_End);
+			$DateOfService_End2 = str_replace($months[$i]." ",$i."-",$DateOfService_End);
 		}
-		$DateOfService_End3 = substr_replace($DateOfService_End2,"/",strpos($DateOfService_End2," "),1);
+		$DateOfService_End3 = substr_replace($DateOfService_End2,"-",strpos($DateOfService_End2," "),1);
 		
 		break;
 	}
 }
-?>  
-<div class="content animate-panel">
+?>
 
 	<div class="row">
 		<div class="col-lg-12">
@@ -351,7 +368,7 @@ for($i=0; $i<=12; $i++){
                                     	<th>Notes Desc.</th>
                                         <th>Editted By</th>
                                         <th>Date Editted</th>
-                                        <!--<th>Time</th>-->
+                                        <th>Time</th>
                                         <th>Type</th>
                                     </tr>
                                 
@@ -545,7 +562,7 @@ for($i=0; $i<=12; $i++){
 							</div>
                             <div class="form-group form-horizontal col-lg-12">
                             	<div class="col-md-11"></div>
-                            	<div class="col-md-1"><button type="button" class="btn btn-primary deleteNotes">Delete</button></div>
+                            	<div class="col-md-1"><button type="button" id="deleteNotesButton" class="btn btn-primary">Delete</button></div>
                             </div>
                             </form>
 							<div class="form-group form-horizontal col-lg-12">
@@ -619,43 +636,40 @@ for($i=0; $i<=12; $i++){
 						<div class="panel-body tab-panel">
 							<div class="form-group form-horizontal col-md-12">
 								<br><h5 class="h4-title">SETTLEMENT DETAIL</h5>
-								<label class="col-md-2 control-label">CASE ID</label>
-								<label class="col-md-2 control-label">PROVIDER</label>
-								<label class="col-md-2 control-label">INJURED PARTY</label>
+                                <div class="col-md-2"></div>
+                                <div class="col-md-1 case-info-tab6-title">CASE ID</div>
+                                <div class="col-md-2 case-info-tab6-title">PROVIDER</div>
+                                <div class="col-md-2 case-info-tab6-title">INJURED PARTY</div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
-								<label class="col-md-2 control-label">CASE ID</label>
-								<label class="col-md-2 control-label">PROVIDER</label>
-								<label class="col-md-2 control-label">INJURED PARTY</label>
+                            	<div class="col-md-2"></div>
+								<div class="col-md-1 case-info-tab6" id="CaseId-tab-6"></div>
+                                <div class="col-md-2 case-info-tab6" id="ProviderName-tab-6"></div>
+                                <div class="col-md-2 case-info-tab6" id="InjuredPartyName-tab-6"></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<label class="col-md-2 control-label">ADJUSTER</label>
 								<div class="col-md-6">
-									<select class="form-control input-sm" id="adjusterId" name="adjusterId"><option selected="selected" value=""></option><?php foreach (array_combine($Adjuster_Name, $InsuranceCompany_Name) as $code => $name) {?><option value="<?php echo $code['Adjuster_Id']; ?>"> <?php echo $name['InsuranceCompany_Name']; ?> </option><?php  }?></select>
+									<select class="form-control input-sm" id="adjusterIdTab-6" name="adjusterIdTab-6"><option selected="selected" value=""></option><?php foreach ($Adjuster_Name_Insurance as $row) {?><option value="<?php echo $row['Adjuster_Id']; ?>"> <?php echo $row['Adjuster_LastName']." ".$row['Adjuster_LastName']." => ". $row['InsuranceCompany_Name']; ?> </option><?php  }?></select>
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<label class="col-md-2 control-label">ATTORNEY</label>
 								<div class="col-md-6">
-									<select class="form-control input-sm" id="" name="" required>
-										<option selected="selected" value=""></option>
-										<?php //foreach($InsuranceCompany_Name as $row){?>
-										<option value="<?php //echo $row['InsuranceCompany_Id']; ?>"><?php //echo $row['InsuranceCompany_Name'];?> option</option>
-										<?php // }?>
-									</select>
+									<select class="form-control input-sm" id="defendantIdTab-6" name="defendantIdTab-6"><option selected="selected" value=""></option><?php foreach($Defendant_Name as $row){?><option value="<?php echo $row['Defendant_id']; ?>"><?php echo $row['Defendant_Name']." => ".$row['Defendant_Address'];?></option><?php }?></select>
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
-								<div class="col-md-2"><label class="control-label">CLAIM AMOUNT</label> </div>
-								<div class="col-md-2"><label class="control-label">PAYMENTS</label> </div>
-								<div class="col-md-2"><label class="control-label">BALANCE</label> </div>
+								<div class="col-md-2"><label class="control-label settlement-title">CLAIM AMOUNT</label> </div>
+								<div class="col-md-2"><label class="control-label settlement-title">PAYMENTS</label> </div>
+								<div class="col-md-2"><label class="control-label settlement-title">BALANCE</label> </div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
-								<div class="col-md-2"><input type="text" id="" name="" class="form-control input-sm" ></div> 	 	
-								<div class="col-md-2"><input type="text" id="" name="" class="form-control input-sm" ></div>
-								<div class="col-md-2"><input type="text" id="" name=""  class="form-control input-sm" ></div>
+								<div class="col-md-2"><input step="0.0001" type="number" id="ClaimAmtTab6" name="ClaimAmtTab6" class="form-control input-sm Amount" ></div> 	 	
+								<div class="col-md-2"><input step="0.0001" type="number" id="PaymentsTab6" name="PaymentsTab6" class="form-control input-sm Amount" ></div>
+								<div class="col-md-2"><input step="0.0001" type="number" id="BalanceTab6" name="BalanceTab6"  class="form-control input-sm Amount" ></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
@@ -665,41 +679,41 @@ for($i=0; $i<=12; $i++){
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label">SETTLEMENT AMOUNT</label> </div>
-								<div class="col-md-1"><input type="text" id="" name=""  class="form-control input-sm" ></div>
-								<div class="col-md-1"><input type="text" id="" name=""  class="form-control input-sm" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="" name=""  class="form-control input-sm Amount" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="" name=""  class="form-control input-sm percentage" ></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label col-md-12">INTEREST</label> </div>
-								<div class="col-md-1"><input type="text" id="" name=""  class="form-control input-sm" ></div>
-								<div class="col-md-1"><input type="text" id="" name=""  class="form-control input-sm" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="" name=""  class="form-control input-sm Amount" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="" name=""  class="form-control input-sm percentage" ></div>
 								<div class="col-md-1"><label class="control-label col-md-12">START DATE</label> </div>
-								<div class="col-md-1"><input type="text" id="" name=""  class="form-control input-sm" ></div>
+								<div class="col-md-1"><input type="text" id="CopundIntStartData" name="CopundIntStartData"  class="form-control input-sm datepicker_recurring_start" ></div>
 								<div class="col-md-1"><label class="control-label col-md-12">END DATE</label> </div>
-								<div class="col-md-1"><input type="text" id="" name=""  class="form-control input-sm" ></div>
+								<div class="col-md-1"><input type="text" id="CopundIntEndData" name="CopundIntEndData"  class="form-control input-sm datepicker_recurring_start" ></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
-								<div class="col-md-5"></div>
+								<div class="col-md-3"></div>
 								<div class="col-md-2"><button>Calculate compound interest</button></div>
 								<div class="col-md-2"><button>Calculate Simple interest</button></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label">ATTORNEY'S FEE 	</label> </div>
-								<div class="col-md-1"><input type="text" id="" name=""  class="form-control input-sm" ></div>
-								<div class="col-md-1"><input type="text" id="" name=""  class="form-control input-sm" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="" name=""  class="form-control input-sm Amount" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="" name=""  class="form-control input-sm percentage" ></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label">FILING FEE</label> </div>
-								<div class="col-md-1"><input type="text" id="" name=""  class="form-control input-sm" ></div>
-								<div class="col-md-1"><input type="text" id="" name=""  class="form-control input-sm" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="" name=""  class="form-control input-sm Amount" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="" name=""  class="form-control input-sm percentage" ></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
-								<div class="col-md-1"><label class="control-label">TOTAL AMOUNT</label> </div>
-								<div class="col-md-1"><input type="text" id="" name=""  class="form-control input-sm" ></div>
-								<div class="col-md-1"><input type="text" id="" name=""  class="form-control input-sm" ></div>
+								<div class="col-md-1"><label class="control-label settlement-title">TOTAL AMOUNT</label> </div>
+								<div class="col-md-1"><input step="0.01" type="number" id="" name=""  class="form-control input-sm Amount" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="" name=""  class="form-control input-sm percentage" ></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-3"></div>
@@ -711,10 +725,11 @@ for($i=0; $i<=12; $i++){
 								<label class="col-md-2 control-label">SETTLED TYPE</label>
 								<div class="col-md-2">
 									<select class="form-control input-sm" id="" name="" required>
-										<option selected="selected" value=""></option>
-										<?php //foreach($InsuranceCompany_Name as $row){?>
-										<option value="<?php //echo $row['InsuranceCompany_Id']; ?>"><?php //echo $row['InsuranceCompany_Name'];?> option</option>
-										<?php // }?>
+                                        <option value="0">...SELECT....</option>
+                                        <option value="Settled/Phone">SETTLED/PHONE</option>
+                                        <option value="Settled/Court">SETTLED IN COURT</option>
+                                        <option value="Trial/Win">TRIAL WON</option>
+                                        <option value="Trial/Lose">TRIAL LOST</option>
 									</select>
 								</div>
 							</div>
@@ -964,29 +979,32 @@ for($i=0; $i<=12; $i++){
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Transaction Date</label>
                                 <div class="col-md-2">
-                                	<input type="text" id="" name=""  class="form-control input-sm" >
+                                	<input type="text" id="TransactionDate" name="TransactionDate"  class="form-control input-sm datepicker_recurring_start" >
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Transaction Type</label>
                                 <div class="col-md-2">
-                                	<select class="form-control input-sm" id="" name="" required>
-										<option selected="selected" value=""></option>
-										<?php //foreach($InsuranceCompany_Name as $row){?>
-										<option value="<?php //echo $row['InsuranceCompany_Id']; ?>"><?php //echo $row['InsuranceCompany_Name'];?> option</option>
-										<?php // }?>
+                                	<select class="form-control input-sm" id="TransactionType" name="" required>
+                                        <option selected="selected" value="0">...Select...</option>
+                                        <option value="C">Collected (C - From Insurer)</option>
+                                        <option value="AF">Attorney Fee (AF)</option>
+                                        <option value="CRED">Credit (CRED - To Provider)</option>
+                                        <option value="EXP">Expense (EXP - Billed to Provider)</option>
+                                        <option value="FFB">Filing Fee Billed (FFB)</option>
+                                        <option value="FFC">Filing Fee Collected (FFC - From Provider)</option>
+                                        <option value="I">Interest (I - From Insurer)</option>
+                                        <option value="W">WriteOff (W - To Provider)</option>
 									</select>
-                                </div>
+                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Transaction Status</label>
                                 <div class="col-md-2">
                                 	<select class="form-control input-sm" id="" name="" required>
-										<option selected="selected" value=""></option>
-										<?php //foreach($InsuranceCompany_Name as $row){?>
-										<option value="<?php //echo $row['InsuranceCompany_Id']; ?>"><?php //echo $row['InsuranceCompany_Name'];?> option</option>
-										<?php // }?>
-									</select>
+                                        <option selected="selected" value="Show On Remittance">Show On Remittance</option>
+                                        <option value="X">Do Not Show On Remittance</option>
+                                     </select>
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
@@ -1020,41 +1038,31 @@ for($i=0; $i<=12; $i++){
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Case_Id:</label>
                                 <div class="col-md-2">
-                                	<input type="text" id="" name=""  class="form-control input-sm" >
+                                	<input type="text" id="9CaseId" name="9CaseId"  class="form-control input-sm" >
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Event Date</label>
                                 <div class="col-md-2">
-                                	<input id="" name=""  class="form-control input-sm" >
+                                	<input id="EventDate" name="EventDate"  class="form-control input-sm datepicker_recurring_start" >
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Event Type</label>
                                 <div class="col-md-2">
-                                	<input id="" name=""  class="form-control input-sm" >
+                                	<input id="EventType" name="EventType"  class="form-control input-sm" >
                                 </div>
                                 <div class="col-md-4">
-                                	<select class="form-control input-sm" id="" name="" required>
-										<option selected="selected" value=""></option>
-										<?php //foreach($InsuranceCompany_Name as $row){?>
-										<option value="<?php //echo $row['InsuranceCompany_Id']; ?>"><?php //echo $row['InsuranceCompany_Name'];?> option</option>
-										<?php // }?>
-									</select>
+                                	<select class="form-control input-sm" id="selectEventType" name="" required><option selected="selected" value="">Select Event Type</option><?php foreach($EventType as $row){?><option value="<?php echo $row['EventTypeId']; ?>"><?php echo $row['EventTypeName'];?></option><?php  }?></select>
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Event Status: </label>
                                 <div class="col-md-2">
-                                	<input id="" name=""  class="form-control input-sm" >
+                                	<input id="EventStatus" name="EventStatus"  class="form-control input-sm" >
                                 </div>
                                 <div class="col-md-4">
-                                	<select class="form-control input-sm" id="" name="" required>
-										<option selected="selected" value=""></option>
-										<?php //foreach($InsuranceCompany_Name as $row){?>
-										<option value="<?php //echo $row['InsuranceCompany_Id']; ?>"><?php //echo $row['InsuranceCompany_Name'];?> option</option>
-										<?php // }?>
-									</select>
+                                	<select class="form-control input-sm" id="selectEventStatus" name="" required><option selected="selected" value="">Select Event Status</option><?php foreach($EventStatus as $row){?><option value="<?php echo $row['EventStatusId']; ?>"><?php echo $row['EventStatusName'];?></option><?php  }?></select>
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
@@ -1072,17 +1080,48 @@ for($i=0; $i<=12; $i++){
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Assigned To: </label>
                                 <div class="col-md-2">
-                                	<input id="" name=""  class="form-control input-sm" >
+                                	<input id="AssignUser" name="AssignUser"  class="form-control input-sm" >
                                 </div>
                                 <div class="col-md-4">
-                                	<select class="form-control input-sm" id="" name="" required>
-										<option selected="selected" value=""></option>
-										<?php //foreach($InsuranceCompany_Name as $row){?>
-										<option value="<?php //echo $row['InsuranceCompany_Id']; ?>"><?php //echo $row['InsuranceCompany_Name'];?> option</option>
-										<?php // }?>
-									</select>
+                                	<select class="form-control input-sm" id="selectAssignUser" name="selectAssignUser" required><option selected="selected" value="">Select User to Assign</option><?php foreach($EventStatus as $row){?><option value="<?php echo $row['EventStatusId']; ?>"><?php echo $row['EventStatusName'];?></option><?php  }?></select>
                                 </div>
                             </div>
+                            <div class="form-group form-horizontal col-md-12">
+                            	<div class="col-md-2"></div>
+                                <div class="col-md-2"><button type="submit" class="btn btn-primary">Save</button></div>
+                            </div>
+                            <!--<form action="/casemanager/search/deleteEvents" method="post">-->
+                            <div class="form-group form-horizontal col-md-12">
+                            	<h5 class="h4-title">PAYMENT DETAILS</h5>
+                                <div class="col-md-12">
+                                    <table id="eventTable" class="table dataTable table-bordered table-striped">
+                                        <thead>
+                                        <tr> 	
+                                        	<th></th>											
+                                            <th>Case ID</th>
+                                            <th>Event Type</th>
+                                            <th>Event Status</th>
+                                            <th>Event Date</th>
+                                            <th>Event Time</th>
+                                            <th>Event Description</th>
+                                            <th>Assigned To</th>
+                                            <th>Provider Name</th>
+                                            <th>Injured Party</th>
+                                            <th>Court Name</th>
+                                            <th>IndexOrAAA Number</th>
+                                            <th>Defendant Name</th>
+                                            <th>InsuranceCompany Name</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                    
+                                </div>
+                            </div>
+                            <div class="form-group form-horizontal col-md-12">
+                                <div class="col-md-2"><button type="button" id="deleteEventsButton" name="deleteEventsButton" class="btn btn-primary">Deleted Checked</button></div>
+                            </div>
+                            <!--</form>-->
                             
                             
 						</div><!-- End of panel-body tab-panel-->
@@ -1193,6 +1232,11 @@ for($i=0; $i<=12; $i++){
 	});
 	$('#example2').dataTable( {
 		"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
+		"iDisplayLength": 10,
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+	});
+	$('#eventTable').dataTable( {
+		"ajax": "<?php echo base_url();?>search/getEvents/<?php echo $Case_Id;?>",
 		"iDisplayLength": 10,
     	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 	});
@@ -1358,13 +1402,18 @@ for($i=0; $i<=12; $i++){
 					//console.log("suucess loaded editeble info");
 					//console.log("results.CaseInfo[$i].Provider_Id: "+results.CaseInfo[$i].Provider_Id);
 					y[0].innerHTML =  results.CaseInfo[$i].Case_Id;
+					$("#9CaseId").val(results.CaseInfo[$i].Case_Id);
+					document.getElementById("CaseId-tab-6").innerHTML = results.CaseInfo[$i].Case_Id;
 					//y2[0].innerHTML =  results.CaseInfo[$i].Old_Case_Id;
 					//document.getElementsByClassName("old-case-id").innerHTML =  results.CaseInfo[$i].Old_Case_Id;
 					x[0].innerHTML = results.CaseInfo[$i].Provider_Name;
+					document.getElementById("ProviderName-tab-6").innerHTML = results.CaseInfo[$i].Provider_Name;
 					x[1].innerHTML = results.CaseInfo[$i].Initial_Status;
 					x[2].innerHTML = results.CaseInfo[$i].InjuredParty_LastName +", "+results.CaseInfo[$i].InjuredParty_FirstName ;
 					$("input[name=InjuredParty_LastName]").val(results.CaseInfo[$i].InjuredParty_LastName);
 					$("input[name=InjuredParty_FirstName]").val(results.CaseInfo[$i].InjuredParty_FirstName);
+					document.getElementById("InjuredPartyName-tab-6").innerHTML = results.CaseInfo[$i].InjuredParty_LastName  +" "+results.CaseInfo[$i].InjuredParty_FirstName
+					
 					x[3].innerHTML = results.CaseInfo[$i].Last_Status;
 					x[4].innerHTML = results.CaseInfo[$i].InsuredParty_LastName +", "+results.CaseInfo[$i].InsuredParty_FirstName ;
 					$("input[name=InsuredParty_LastName]").val(results.CaseInfo[$i].InsuredParty_LastName);
@@ -1389,6 +1438,9 @@ for($i=0; $i<=12; $i++){
 					
 					x[12].innerHTML = results.CaseInfo[$i].Claim_Amount;
 					$("input[name=Claim_Amount]").val(results.CaseInfo[$i].Claim_Amount);
+					$("#ClaimAmtTab6").val(results.CaseInfo[$i].Claim_Amount);
+					$("#PaymentsTab6").val(results.CaseInfo[$i].Claim_Amount);
+					$("#BalanceTab6").val(results.CaseInfo[$i].Claim_Amount);
 					
 					x[13].innerHTML = results.CaseInfo[$i].Paid_Amount;
 					$("input[name=Paid_Amount]").val(results.CaseInfo[$i].Paid_Amount);
@@ -1459,11 +1511,11 @@ for($i=0; $i<=12; $i++){
 		});
 /* *************************************************** */
 
-	$('body').on( 'click', '.deleteNotes', function () {
-		var checkedNo = [];
+	$('body').on( 'click', '#deleteNotesButton', function () {
+		var DeletedNotesId = [];
 		$('.DeleteNotes:checked').each(function(i){
 			var values = $(this).val();
-			checkedNo.push(values);
+			DeletedNotesId.push(values);
 		});
 		swal({
 			title: "Are you sure?",
@@ -1478,9 +1530,9 @@ for($i=0; $i<=12; $i++){
 		function (isConfirm) {
 			if (isConfirm) {
 				request = $.ajax({
-					url:"deleteNotes",
+					url:"deleteNotesFromTab3",
 					type: "post",
-					data: {checkedNo:checkedNo}
+					data: {DeletedNotesId:DeletedNotesId}
 				});
 		
 				request.done(function (response, textStatus, jqXHR) {
@@ -1532,9 +1584,7 @@ for($i=0; $i<=12; $i++){
 	$("#UpdateNotesInfo_form").submit(function(e){
 		var form = $(this);
 		var params = form.serialize();
-		var nameValue = document.getElementById("adjusterId").value;
-		console.log("Edit: "+nameValue);
-		
+		console.log("params:"+params);
 		e.preventDefault();	//STOP default action
 		
 		$.ajax({
@@ -1542,8 +1592,8 @@ for($i=0; $i<=12; $i++){
 			url:"<?php echo base_url(); ?>search/UpdateNotesInfo",
 			data: params,
 			success:function(data){
-				results = JSON.parse(data);	
-				callSuccess();
+				//results = JSON.parse(data);	
+				//callSuccess();
 			},
 			error: function(result){ console.log("error"); }
 		});
@@ -1557,6 +1607,70 @@ for($i=0; $i<=12; $i++){
 			type: "success"
 		});
 	}
+	$('#selectEventType').on('change', function() {
+		var EventType =$("#selectEventType option:selected").text();
+		$("input[name=EventType]").val(EventType);
+	});
+	$('#selectEventStatus').on('change', function() {
+	  var EventStatus =$("#selectEventStatus option:selected").text();
+	  $("input[name=EventStatus]").val(EventStatus);
+	});
+	$('#selectAssignUser').on('change', function() {
+	  var AssignUser =$("#selectAssignUser option:selected").text();
+	  $("input[name=AssignUser]").val(AssignUser);
+	});
+	$("input[name=EventType]").prop("disabled", true);
+	$("input[name=EventStatus]").prop("disabled", true);
+	$("input[name=AssignUser]").prop("disabled", true);
+	/*$('#eventTable tr').each(function() {
+		var customerId = $(this).find("td:first").html();   
+		console.log("customerId:"+customerId); 
+	});*/
+	$("#deleteEventsButton").click(function(){
+		
+		var checkedNo = [];
+		
+		$('.deleteCheckedEvents:checked').each(function(i){
+			var values = $(this).val();
+			checkedNo.push(values);
+			console.log("deleteEventsButton values:"+values);
+		});
+		console.log("deleteEventsButton:"+checkedNo.length);
+		if(checkedNo.length !=0){
+			swal({
+				title: "Are you sure?",
+				text: "You will not be able to recover these records",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "Yes, delete it!",
+				cancelButtonText: "No, cancel it!",
+				closeOnConfirm: false,
+				closeOnCancel: false },
+			function (isConfirm) {
+				if (isConfirm) {
+					request = $.ajax({
+						url:"deleteEvents",
+						type: "post",
+						data: {deleteCheckedEvents:checkedNo}
+					});
+			
+					request.done(function (response, textStatus, jqXHR) {
+						
+						$('.deleteCheckedEvents:checked').each(function(i){
+							var values = $(this).val();
+							var row = $(".deleteCheckedEvents"+values).parent().parent();
+							$(row).remove();
+						});
+					});
+					swal("Deleted!", "Your records has been deleted.", "success");
+				} else {
+					swal("Cancelled", "Your records are safe :)", "error");
+				}
+			});
+		}
+	});
+	
 </script>
 <script>
 	$('.dataentry').addClass('active');
