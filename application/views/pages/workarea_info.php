@@ -1028,11 +1028,13 @@ for($i=0; $i<=13; $i++){
 						<div class="hpanel">
 						<div class="panel-heading"></div>
 						<div class="panel-body tab-panel">
+                        <form id="updateEventInfo_form"  method="post">
 							<div class="form-group form-horizontal col-md-12">
                             	<h5 class="h4-title">Event Module</h5>
                             	<label class="col-md-2 control-label">User_Id:</label>
                                 <div class="col-md-2">
-                                	<input type="text" id="" name=""  class="form-control input-sm" >
+                                <input type="hidden" name="EventIdHidden">
+                                	<input type="text" id="UserId" name="UserId"  class="form-control input-sm" value="admin" >
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
@@ -1042,7 +1044,7 @@ for($i=0; $i<=13; $i++){
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
-                            	<label class="col-md-2 control-label">Event Date</label>
+                            	<label class="col-md-2 control-label">Event Date <span class="required-field">*</span></label>
                                 <div class="col-md-2">
                                 	<input id="EventDate" name="EventDate"  class="form-control input-sm datepicker_recurring_start" >
                                 </div>
@@ -1051,45 +1053,48 @@ for($i=0; $i<=13; $i++){
                             	<label class="col-md-2 control-label">Event Type</label>
                                 <div class="col-md-2">
                                 	<input id="EventType" name="EventType"  class="form-control input-sm" >
+                                    <input type="hidden" name="EventTypeHidden">
                                 </div>
                                 <div class="col-md-4">
-                                	<select class="form-control input-sm" id="selectEventType" name="" required><option selected="selected" value="">Select Event Type</option><?php foreach($EventType as $row){?><option value="<?php echo $row['EventTypeId']; ?>"><?php echo $row['EventTypeName'];?></option><?php  }?></select>
+                                	<select class="form-control input-sm" id="selectEventType" name=""><option selected="selected" value="">Select Event Type</option><?php foreach($EventType as $row){?><option value="<?php echo $row['EventTypeId']; ?>"><?php echo $row['EventTypeName'];?></option><?php  }?></select>
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Event Status: </label>
                                 <div class="col-md-2">
                                 	<input id="EventStatus" name="EventStatus"  class="form-control input-sm" >
+                                    <input type="hidden" name="EventStatusHidden">
                                 </div>
                                 <div class="col-md-4">
-                                	<select class="form-control input-sm" id="selectEventStatus" name="" required><option selected="selected" value="">Select Event Status</option><?php foreach($EventStatus as $row){?><option value="<?php echo $row['EventStatusId']; ?>"><?php echo $row['EventStatusName'];?></option><?php  }?></select>
+                                	<select class="form-control input-sm" id="selectEventStatus" name=""><option selected="selected" value="">Select Event Status</option><?php foreach($EventStatus as $row){?><option value="<?php echo $row['EventStatusId']; ?>"><?php echo $row['EventStatusName'];?></option><?php  }?></select>
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Time</label>
                                 <div class="col-md-2">
-                                	<input id="" name=""  class="form-control input-sm" >
+                                	<input id="EventTime" name="EventTime"  class="form-control input-sm" >
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Event Notes: </label>
                                 <div class="col-md-2">
-                                	<textarea rows="3"  id="memo" name="memo" class="form-control" ></textarea>
+                                	<textarea rows="3"  id="EventDescription" name="EventDescription" class="form-control" ></textarea>
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Assigned To: </label>
                                 <div class="col-md-2">
-                                	<input id="AssignUser" name="AssignUser"  class="form-control input-sm" >
+                                    <input name="AssignUser"  class="form-control input-sm">
                                 </div>
                                 <div class="col-md-4">
-                                	<select class="form-control input-sm" id="selectAssignUser" name="selectAssignUser" required><option selected="selected" value="">Select User to Assign</option><?php foreach($EventStatus as $row){?><option value="<?php echo $row['EventStatusId']; ?>"><?php echo $row['EventStatusName'];?></option><?php  }?></select>
+                                	<select class="form-control input-sm" id="selectAssignUser" name="selectAssignUser"><option selected="selected" value="">Select User to Assign</option><?php foreach($EventStatus as $row){?><option value="<?php echo $row['EventStatusId']; ?>"><?php echo $row['EventStatusName'];?></option><?php  }?></select>
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
                             	<div class="col-md-2"></div>
                                 <div class="col-md-2"><button type="submit" class="btn btn-primary">Save</button></div>
                             </div>
+                            </form>
                             <!--<form action="/casemanager/search/deleteEvents" method="post">-->
                             <div class="form-group form-horizontal col-md-12">
                             	<h5 class="h4-title">PAYMENT DETAILS</h5>
@@ -1097,7 +1102,7 @@ for($i=0; $i<=13; $i++){
                                     <table id="eventTable" class="table dataTable table-bordered table-striped">
                                         <thead>
                                         <tr> 	
-                                        	<th></th>											
+                                        	<th>Edit</th>											
                                             <th>Case ID</th>
                                             <th>Event Type</th>
                                             <th>Event Status</th>
@@ -1222,11 +1227,10 @@ for($i=0; $i<=13; $i++){
     <script src="<?php echo base_url();?>assets/scripts/homer.js"></script> 
 
 <script>
+$(document).ready(function(e) {
 	$(".notesAccidentDate").datepicker().datepicker("setDate", new Date());
-	var str = '/casemanager/search/getNotes/<?php echo $Case_Id;?>';
-	//console.log("str: "+str);
 	var t = $('#example1').dataTable( {
-		"ajax": str,
+		"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
 		"iDisplayLength": 5,
     	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 	});
@@ -1530,7 +1534,7 @@ for($i=0; $i<=13; $i++){
 		function (isConfirm) {
 			if (isConfirm) {
 				request = $.ajax({
-					url:"deleteNotesFromTab3",
+					url:"<?php echo base_url();?>search/deleteNotesFromTab3",
 					type: "post",
 					data: {DeletedNotesId:DeletedNotesId}
 				});
@@ -1607,13 +1611,18 @@ for($i=0; $i<=13; $i++){
 			type: "success"
 		});
 	}
+/*************************************************** EVENT TAB-9 ***************************************************************/
 	$('#selectEventType').on('change', function() {
 		var EventType =$("#selectEventType option:selected").text();
+		var EventTypeId =$("#selectEventType option:selected").val();
 		$("input[name=EventType]").val(EventType);
+		$("input[name=EventTypeHidden]").val(EventTypeId);
 	});
 	$('#selectEventStatus').on('change', function() {
 	  var EventStatus =$("#selectEventStatus option:selected").text();
+		var EventStatusId =$("#selectEventStatus option:selected").val();
 	  $("input[name=EventStatus]").val(EventStatus);
+	  $("input[name=EventStatusHidden]").val(EventStatusId);
 	});
 	$('#selectAssignUser').on('change', function() {
 	  var AssignUser =$("#selectAssignUser option:selected").text();
@@ -1622,12 +1631,9 @@ for($i=0; $i<=13; $i++){
 	$("input[name=EventType]").prop("disabled", true);
 	$("input[name=EventStatus]").prop("disabled", true);
 	$("input[name=AssignUser]").prop("disabled", true);
-	/*$('#eventTable tr').each(function() {
-		var customerId = $(this).find("td:first").html();   
-		console.log("customerId:"+customerId); 
-	});*/
-	$("#deleteEventsButton").click(function(){
-		
+
+/******** DELETE EVENTS ********/
+	$('body').on( 'click', '#deleteEventsButton', function () {
 		var checkedNo = [];
 		
 		$('.deleteCheckedEvents:checked').each(function(i){
@@ -1650,7 +1656,7 @@ for($i=0; $i<=13; $i++){
 			function (isConfirm) {
 				if (isConfirm) {
 					request = $.ajax({
-						url:"deleteEvents",
+						url:"<?php echo base_url();?>search/deleteEvents",
 						type: "post",
 						data: {deleteCheckedEvents:checkedNo}
 					});
@@ -1670,6 +1676,68 @@ for($i=0; $i<=13; $i++){
 			});
 		}
 	});
+/******** EDIT EVENTS ********/
+	$('body').on( 'click', '.editEventsButton', function () {
+		var parentRow = $(this).parent().parent();
+		var EventDate = $(parentRow).find("td:nth-child(5)").text();
+		var EventId = $(this).parent().find("input[name=EventId]").val();
+		
+		var EventType = $(parentRow).find("td:nth-child(3)").text();
+		var EventTypeId = $(parentRow).find("td:nth-child(3)").find("input[name=EventTypeIdHidden]").val();
+		
+		var EventStatus = $(parentRow).find("td:nth-child(4)").text();
+		var EventStatusId = $(parentRow).find("td:nth-child(4)").find("input[name=EventStatusIdHidden]").val();
+		
+		var EventTime = $(parentRow).find("td:nth-child(6)").text();
+		var EventDescription = $(parentRow).find("td:nth-child(7)").text();
+		var Assigned_To = $(parentRow).find("input[name=Assigned_To]").val();
+		$("input[name=AssignUser]").val(Assigned_To);
+		$("input[name=EventDate]").val(EventDate);
+		$("input[name=EventType]").val(EventType);
+		$("input[name=EventStatus]").val(EventStatus);
+		$("input[name=EventTime]").val(EventTime);
+		$("#EventDescription").val(EventDescription);
+		
+		$("input[name=EventTypeHidden]").val(EventTypeId);
+		$("input[name=EventStatusHidden]").val(EventStatusId);
+		$("input[name=EventIdHidden]").val(EventId);
+	});
+/******** UPDATE EVENTS ********/
+	$("#updateEventInfo_form").validate({
+		rules: {
+			EventDate:{
+				required: true
+			}	
+		},
+				
+		submitHandler: function (form) {
+			// setup some local variables
+			var $form = $(form);
+			// let's select and cache all the fields
+			var $inputs = $form.find("input, select, button, textarea");
+			// serialize the data in the form
+			var serializedData = $form.serialize();
+
+			request = $.ajax({
+				url:"<?php echo base_url();?>search/updateEventInfo",
+				type: "post",
+				data: serializedData
+			});
+
+			// callback handler that will be called on success
+			request.done(function (response, textStatus, jqXHR) {
+				callSuccess();
+			});
+
+		}
+	});
+	
+	
+	
+	
+});
+	
+/**********************************************************************************************************************************/
 	
 </script>
 <script>

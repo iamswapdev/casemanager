@@ -224,7 +224,7 @@ Class Search_model extends CI_Model{
 	}
 	public function get_Events($Case_Id){
 		$this->db->order_by("t1.Case_Id","asc");
-		$this->db->select('t1.Case_Id, t2.Event_id, t3.EventTypeName, t4.EventStatusName, t2.Event_Date, t2.Event_Notes, t2.Assigned_To, t5.Provider_Name, t1.InjuredParty_LastName, t1.InjuredParty_FirstName, t6.Court_Name, t1.IndexOrAAA_Number, t7.Defendant_Name, t8.InsuranceCompany_Name');
+		$this->db->select('t1.Case_Id, t2.Event_id, t3.EventTypeName, t4.EventStatusName, t2.Event_Date, t2.Event_Notes, t2.Assigned_To, t5.Provider_Name, t1.InjuredParty_LastName, t1.InjuredParty_FirstName, t6.Court_Name, t1.IndexOrAAA_Number, t7.Defendant_Name, t8.InsuranceCompany_Name, t2.EventTypeId, t2.EventStatusId');
 		$this->db->from('dbo_tblcase as t1');
 		$this->db->join('dbo_tblevent as t2', 't1.Case_Id = t2.Case_id');
 		$this->db->join('dbo_tbleventtype as t3', 't2.EventTypeId = t3.EventTypeId');
@@ -245,6 +245,11 @@ Class Search_model extends CI_Model{
 			//echo "ID: ".$row;
 			$this->db->delete('dbo_tblevent');
 		}
+	}
+	public function update_EventInfo($data){
+		$this->db->set($data);
+		$this->db->where("Event_id", $data['Event_id']);
+		$this->db->update("dbo_tblevent");
 	}
 
 }

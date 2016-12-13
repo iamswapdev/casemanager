@@ -4,11 +4,11 @@ session_cache_limiter('private_no_expire');
 class Search extends CI_Controller{
 
 	Public function __construct(){
-			parent::__construct();
-			$this->load->library('session');
-			$this->load->model('search_model');
-			$this->load->model('dataentry_model');
-		}
+		parent::__construct();
+		$this->load->library('session');
+		$this->load->model('search_model');
+		$this->load->model('dataentry_model');
+	}
 	public function index(){
 		$this->session->all_userdata();
 		if(isset($this->session->userdata['logged_in'])){
@@ -23,6 +23,25 @@ class Search extends CI_Controller{
 		if(isset($this->session->userdata['logged_in'])){
 			$data['SearchResult']=$this->search_model->get_SearchResult();
 			$this->load->view('pages/search',$data);
+		}else{
+			$this->load->view('pages/login');
+		}
+	}
+	public function advancedsearch(){
+		$this->session->all_userdata();
+		//echo $this->session->userdata['username'];
+		//exit();
+		//echo $this->session->userdata['username']; exit();
+		if(isset($this->session->userdata['logged_in'])){
+			$data['Provider_Name']= $this->search_model->get_Provider();
+			$data['InsuranceCompany_Name']= $this->search_model->get_Insurance();
+			$data['Status']= $this->search_model->get_StatusArray();
+			$data['CaseStatus']= $this->search_model->get_CaseStatus();
+			$data['Defendant_Name']= $this->search_model->get_Defendant();
+			$data['Adjuster_Name']= $this->search_model->get_Adjuster();
+			$data['Court']= $this->search_model->get_CourtArray();
+			$data['SearchResult']=$this->search_model->get_SearchResult();
+			$this->load->view('pages/advancedsearch',$data);
 		}else{
 			$this->load->view('pages/login');
 		}
@@ -74,26 +93,14 @@ class Search extends CI_Controller{
 			$this->load->view('pages/login');
 		}
 	}
-	public function getCaseInfo($Case_AutoId){
-		$data['CaseInfo']= $this->search_model->get_CaseInfo_ById($Case_AutoId);
-		echo json_encode($data);
-	}
-	public function addNotes(){
-		$data = array(
-			"Notes_Type" => $this->input->post("notesType"),
-			"Notes_Desc" => $this->input->post("notesDescription"),
-			"Notes_Date" => $this->input->post("notesAccedentDate"),
-			"Case_Id" => $this->input->post("caseId")
-			
-		);
-		$this->search_model->add_Notes($data);
-		echo json_encode($data);
-		//return true;
-	}
+	
+	
 	public function getSearchTable(){  
 		$list=$this->search_model->get_SearchResult();
 		$this->Search_Table_Data($list);
 	}
+
+/**************************** CASEINFORMATION TAB-1 ************************************************************************************/
 	public function getNotes($Case_Id){
 		$list=$this->search_model->get_Notes($Case_Id);
 		$data = array();
@@ -114,77 +121,9 @@ class Search extends CI_Controller{
 		);
 		echo json_encode($output);
 	}
-	public function getNotes2($Case_Id){
-		$list=$this->search_model->get_Notes($Case_Id);
-		$data = array();
-		$no=0;
-		foreach ($list as $result) {
-			$row = array();
-			$no++;
-			$row[] ="<i title='Edit' class='fa fa-edit editNotes'></i>";
-			$row[] = $result->Notes_Desc."<input type='hidden' class='tNoteDesc' value='".$result->Notes_Desc."'>";
-			$row[] = $result->User_Id."<input type='hidden' class='tNoteUserId' value='".$result->User_Id."'>";
-			$row[] = substr($result->Notes_Date, 0, 10)."<input type='hidden' class='tNoteDate' value='".$result->Notes_Date."'>";
-			$row[] = substr($result->Notes_Date, 11, 8);
-			$row[] = $result->Notes_Type."<input type='hidden' class='tNoteType' value='".$result->Notes_Type."'>";
-			$row[] = "<input type='hidden' class='tNoteId' value='".$result->Notes_ID."'><input type='checkbox' name='DeleteNotes[]' class='DeleteNotes DeleteNotes".$result->Notes_ID."' value='".$result->Notes_ID."'>";
-			
-			$data[] = $row;
-		}
-		$output = array(
-			"data" => $data
-		);
-		echo json_encode($output);
-	}
-	public function getEvents($Case_Id){
-		$list=$this->search_model->get_Events($Case_Id);
-		//echo "<pre>";print_r($list);exit();
-		$data = array();
-		foreach ($list as $result) {
-			$row = array();
-			$row[] ="<i title='Edit' class='fa fa-edit editEvent'></i>";
-			$row[] = $result->Case_Id;
-			$row[] = $result->EventTypeName;
-			$row[] = $result->EventStatusName;
-			$row[] = substr($result->Event_Date, 0, 9);
-			$row[] = substr($result->Event_Date, 11, 8);
-			$row[] = $result->Event_Notes;
-			$row[] = $result->Assigned_To;
-			$row[] = $result->Provider_Name;
-			$row[] = $result->InjuredParty_LastName." ".$result->InjuredParty_FirstName;
-			$row[] = $result->Court_Name;
-			$row[] = $result->IndexOrAAA_Number;
-			$row[] = $result->Defendant_Name;
-			$row[] = $result->InsuranceCompany_Name;
-			$row[] = "<input type='checkbox' name='deleteCheckedEvents[]' class='deleteCheckedEvents deleteCheckedEvents".$result->Event_id."' value='".$result->Event_id."'>";
-			
-			$data[] = $row;
-		}
-		$output = array(
-			"data" => $data
-		);
-		echo json_encode($output);
-	}
-		
-		
-	public function advancedsearch(){
-		$this->session->all_userdata();
-		//echo $this->session->userdata['username'];
-		//exit();
-		//echo $this->session->userdata['username']; exit();
-		if(isset($this->session->userdata['logged_in'])){
-			$data['Provider_Name']= $this->search_model->get_Provider();
-			$data['InsuranceCompany_Name']= $this->search_model->get_Insurance();
-			$data['Status']= $this->search_model->get_StatusArray();
-			$data['CaseStatus']= $this->search_model->get_CaseStatus();
-			$data['Defendant_Name']= $this->search_model->get_Defendant();
-			$data['Adjuster_Name']= $this->search_model->get_Adjuster();
-			$data['Court']= $this->search_model->get_CourtArray();
-			$data['SearchResult']=$this->search_model->get_SearchResult();
-			$this->load->view('pages/advancedsearch',$data);
-		}else{
-			$this->load->view('pages/login');
-		}
+	public function getCaseInfo($Case_AutoId){
+		$data['CaseInfo']= $this->search_model->get_CaseInfo_ById($Case_AutoId);
+		echo json_encode($data);
 	}
 	public function updateCaseInfo(){
 		$recordNo = $this->input->post("recordNo");
@@ -315,10 +254,7 @@ class Search extends CI_Controller{
 			return false;
 		}
 	}
-	public function deleteNotesFromTab3(){
-		$data = $this->input->post('DeletedNotesId');
-		$this->search_model->delete_Notes($data);
-	}
+	
 	public function getSearchTable_2(){
 		$Recieveddata = array(
 			"Case_Id" => $this->input->post("sCaseId"),
@@ -342,6 +278,130 @@ class Search extends CI_Controller{
 		$this->Search_Table_Data($list);
 		
 	}
+	/**************************** EDIT CASE INFO TAB-2 ***********************************************************************/
+/**************************** NOTES TAB-3 ************************************************************************************/
+/***** BIND NOTES TABLE ****/	
+	public function getNotes2($Case_Id){
+		$list=$this->search_model->get_Notes($Case_Id);
+		$data = array();
+		$no=0;
+		foreach ($list as $result) {
+			$row = array();
+			$no++;
+			$row[] ="<i title='Edit' class='fa fa-edit editNotes'></i>";
+			$row[] = $result->Notes_Desc."<input type='hidden' class='tNoteDesc' value='".$result->Notes_Desc."'>";
+			$row[] = $result->User_Id."<input type='hidden' class='tNoteUserId' value='".$result->User_Id."'>";
+			$row[] = substr($result->Notes_Date, 0, 10)."<input type='hidden' class='tNoteDate' value='".$result->Notes_Date."'>";
+			$row[] = substr($result->Notes_Date, 11, 8);
+			$row[] = $result->Notes_Type."<input type='hidden' class='tNoteType' value='".$result->Notes_Type."'>";
+			$row[] = "<input type='hidden' class='tNoteId' value='".$result->Notes_ID."'><input type='checkbox' name='DeleteNotes[]' class='DeleteNotes DeleteNotes".$result->Notes_ID."' value='".$result->Notes_ID."'>";
+			
+			$data[] = $row;
+		}
+		$output = array(
+			"data" => $data
+		);
+		echo json_encode($output);
+	}
+/**** ADD NOTES ***********/
+	public function addNotes(){
+		$data = array(
+			"Notes_Type" => $this->input->post("notesType"),
+			"Notes_Desc" => $this->input->post("notesDescription"),
+			"Notes_Date" => $this->input->post("notesAccedentDate"),
+			"Case_Id" => $this->input->post("caseId")
+			
+		);
+		$this->search_model->add_Notes($data);
+		echo json_encode($data);
+		//return true;
+	}
+/***** DELETE NOTES ********/
+	public function deleteNotesFromTab3(){
+		$data = $this->input->post('DeletedNotesId');
+		$this->search_model->delete_Notes($data);
+	}
+/***** UPDATE NOTES INFO*/
+	public function UpdateNotesInfo(){
+		$this->session->all_userdata();
+		if(isset($this->session->userdata['logged_in'])){
+			$data = array(
+				"Notes_ID" => $this->input->post('Notes_ID'),
+				"Notes_Desc" => $this->input->post('Notes_Desc'),
+				"User_Id" => $this->session->userdata['username'],
+				"Notes_Date" => $this->input->post('Notes_Date'),
+				"Notes_Type" => $this->input->post('Notes_Type'),
+			);
+			$this->search_model->Update_NotesInfo($data);
+		}else{
+			$this->load->view('pages/login');
+		}
+	}
+	
+	
+/**************************** DOCUMENT MANAGER TAB-4 ************************************************************************************/
+/**************************** TEMPLATE TAB-5 ************************************************************************************/
+
+/**************************** SETTLEMENT TAB-6 ************************************************************************************/
+/**************************** PAYMENET TAB-7 ************************************************************************************/
+	
+/**************************** EVENT TAB-8 ************************************************************************************/
+/**** GET EVENT LIST BY CASE ID ********/
+	public function getEvents($Case_Id){
+		$list=$this->search_model->get_Events($Case_Id);
+		//echo "<pre>";print_r($list);exit();
+		$data = array();
+		foreach ($list as $result) {
+			$row = array();
+			$row[] ="<i title='Edit' class='fa fa-edit editEventsButton'></i><input type='hidden' name='Assigned_To' value='".$result->Assigned_To."'>"."<input type='hidden' name='EventId' value='".$result->Event_id."'>";
+			$row[] = $result->Case_Id;
+			$row[] = $result->EventTypeName."<input type='hidden' name='EventTypeIdHidden' value='".$result->EventTypeId."'>";
+			$row[] = $result->EventStatusName."<input type='hidden' name='EventStatusIdHidden' value='".$result->EventStatusId."'>";
+			$row[] = substr($result->Event_Date, 0, 10);
+			$row[] = substr($result->Event_Date, 11, 8);
+			$row[] = $result->Event_Notes;
+			$row[] = $result->Assigned_To;
+			$row[] = $result->Provider_Name;
+			$row[] = $result->InjuredParty_LastName." ".$result->InjuredParty_FirstName;
+			$row[] = $result->Court_Name;
+			$row[] = $result->IndexOrAAA_Number;
+			$row[] = $result->Defendant_Name;
+			$row[] = $result->InsuranceCompany_Name;
+			$row[] = "<input type='checkbox' name='deleteCheckedEvents[]' class='deleteCheckedEvents deleteCheckedEvents".$result->Event_id."' value='".$result->Event_id."'>";
+			
+			$data[] = $row;
+		}
+		$output = array(
+			"data" => $data
+		);
+		echo json_encode($output);
+	}
+/**** delete EVENT LIST ********/
+	public function deleteEvents(){
+		$CheckedEvents = $this->input->post('deleteCheckedEvents');
+		$delete_success = $this->search_model->delete_Events($CheckedEvents);
+		if($delete_success){
+			return true;
+		}else{
+			return false;
+		}
+	}
+/**** update EVENT LIST INFO BY ********/
+	public function updateEventInfo(){
+		$data = array(
+			"User_id" => $this->input->post("UserId"),
+			"Event_Date" => $this->input->post("EventDate"),
+			"EventTypeId" => $this->input->post("EventTypeHidden"),
+			"EventStatusId" => $this->input->post("EventStatusHidden"),
+			"Event_Time" => $this->input->post("EventTime"),
+			"Event_Notes" => $this->input->post("EventDescription"),
+			"Assigned_To" => $this->input->post("AssignUser"),
+			"Event_id" => $this->input->post("EventIdHidden")
+		);
+		$this->search_model->update_EventInfo($data);
+		//echo "<pre>"; print_r($data);exit();
+	}
+/*****************************************************************************************************************************************/
 	public function Search_Table_Data($list){
 		$months = array("Just", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "jan");
 		
@@ -427,29 +487,6 @@ class Search extends CI_Controller{
 		
 		echo json_encode($output);
 	}
-	public function UpdateNotesInfo(){
-		$this->session->all_userdata();
-		if(isset($this->session->userdata['logged_in'])){
-			$data = array(
-				"Notes_ID" => $this->input->post('Notes_ID'),
-				"Notes_Desc" => $this->input->post('Notes_Desc'),
-				"User_Id" => $this->session->userdata['username'],
-				"Notes_Date" => $this->input->post('Notes_Date'),
-				"Notes_Type" => $this->input->post('Notes_Type'),
-			);
-			$this->search_model->Update_NotesInfo($data);
-		}else{
-			$this->load->view('pages/login');
-		}
-	}
-	public function deleteEvents(){
-		$CheckedEvents = $this->input->post('deleteCheckedEvents');
-		$delete_success = $this->search_model->delete_Events($CheckedEvents);
-		if($delete_success){
-				return true;
-			}else{
-				return false;
-			}
-	}
+/*****************************************************************************************************************************************/
 }
 ?>
