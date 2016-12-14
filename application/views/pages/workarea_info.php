@@ -215,7 +215,7 @@ for($i=0; $i<=13; $i++){
 								</tr>
                                 
                                 <tr> 
-                                	<th><input type="hidden" name="recordNo" value="15"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+                                	<th><input type="hidden" name="recordNo" value="15"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit1"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>ASSIGN TO WORK DESK</th>
 									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="caseStatusId" name="caseStatusId"><option selected="selected" value=""></option><?php foreach($CaseStatus as $row){?><option value="<?php echo $row['id']; ?>"> <?php echo $row['name']; ?> </option><?php }?></select></div></td>
                                     <th><input type="hidden" name="recordNo" value="16"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
@@ -1229,7 +1229,6 @@ for($i=0; $i<=13; $i++){
     
     <script src="<?php echo base_url();?>assets/datetimepicker/moment.min.js"></script>
     <script src="<?php echo base_url();?>assets/datetimepicker/new/bootstrap-datetimepicker.min.js"></script>
-    
 	<script src="<?php echo base_url();?>assets/vendor/mask-phone/maskPhone.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>

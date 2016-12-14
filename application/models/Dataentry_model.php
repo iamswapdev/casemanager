@@ -9,8 +9,17 @@ Class Dataentry_model extends CI_Model{
 /* ************************************  Start of Addcase  *************************************************************************/
 	public function insert_CaseInfo($data)
 	{
+		$this->db->order_by("Case_AutoId", "desc");
+		$this->db->select("Case_AutoId");
+		$this->db->limit('1');
+		$query1 = $this->db->get("dbo_tblcase");
+		$Case_AutoId = $query1->result_array();
+		$Case_AutoId1 = $Case_AutoId[0]['Case_AutoId'];
+		$data1 = $data;
+		$data["Case_Id"] = "AR16-".($Case_AutoId1+1);
+		
 		$query = $this->db->insert('dbo_tblcase',$data); 
-		return $query;
+		return true;
 	}
 	public function get_CaseInfo($data){
 		$this->db->where('Case_AutoId', $data['Case_AutoId']);

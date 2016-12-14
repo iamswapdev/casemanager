@@ -84,14 +84,16 @@ session_cache_limiter('private_no_expire');
 				);
 				$success = $this->dataentry_model->insert_CaseInfo($data);
 				//echo "<pre> "; print_r($data); exit();
+				//echo json_encode($success);
 				if($success){
 					return true;
-					//$this->load->view('pages/submitted');
+					$this->load->view('pages/submitted');
 				}
 			}else{
 				$this->load->view('pages/login');
 			}
 		}
+		
 /* ************************************  Start of Provider  *************************************************************************/
 
 		public function provider(){

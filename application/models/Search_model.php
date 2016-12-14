@@ -81,7 +81,7 @@ Class Search_model extends CI_Model{
 	}
 	public function get_SearchResult()
 	{
-		$this->db->order_by("Case_Id","dsc");
+		$this->db->order_by("Case_Id","desc");
 		$this->db->select('t1.*, t2.Provider_Name, t3.InsuranceCompany_Name, DATE_FORMAT(t1.Accident_Date,"%m-%d-%Y") as Accident_Date');
 		$this->db->from('dbo_tblcase as t1');
 		$this->db->join('dbo_tblprovider as t2', 't1.Provider_Id = t2.Provider_Id', 'LEFT');
@@ -113,7 +113,7 @@ Class Search_model extends CI_Model{
 		return $data;
 	}
 	public function get_Notes($Case_Id){
-		$this->db->order_by("Notes_Date", "dsc");
+		$this->db->order_by("Notes_Date", "desc");
 		$this->db->where('Case_Id', $Case_Id);
 		$query = $this->db->get('dbo_tblnotes'); 
 		$data=$query->result();
