@@ -19,13 +19,13 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/select2-3.5.2/select2.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/select2-bootstrap/select2-bootstrap.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" />
+    
+    <!-- DATETIMEPICKER CSS -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/datetimepicker/jscss/css/bootstrap-datetimepicker.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.min.css" />
     
-    <!--<link rel="stylesheet" href="<?php echo base_url();?>assets/datetimepicker/bootstrap-datetimepicker.min.css" />-->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.css" />
-    
-    <link rel="stylesheet href="<?php echo base_url();?>assets/datetimepicker/jscss/bootstrap-datetimepicker.css" ">
     
     <!-- App styles -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
@@ -164,7 +164,7 @@
 				<div class="form-group form-horizontal col-md-12">
                 	<h5 class="h5-title">Accident Information</h5>
 					<label class="col-md-2 control-label">D.O.A <span class="required-field">*</span></label>
-					<div class="col-md-2"> <input id="accidentDate" name="accidentDate"  class="form-control input-sm datetimepicker_start" required> </div>
+					<div class="col-md-2"> <input id="accidentDate" name="accidentDate"  class="form-control input-sm datetimepicker" required> </div>
 					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
 				</div>
 
@@ -214,8 +214,8 @@
                             </thead>
                             <tbody>
                             <tr class="first-row">
-                                <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datetimepicker_start"></td>
-                                <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datetimepicker_start"></td>
+                                <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start"></td>
+                                <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start"></td>
                                 <td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm"></td>
                                 <td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm"></td>
                                 <td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datepicker_recurring_start"></td>
@@ -296,28 +296,27 @@
 </div>
 
     <!-- Vendor scripts --> 
-    <script src="<?php echo base_url();?>assets/datetimepicker/jscss/jquery-2.1.1.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script> 
+    
     <script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script> 
-     
+    <script src="<?php echo base_url();?>assets/datetimepicker/jscss/js/bootstrap.min.js"></script> 
     <script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script> 
     <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script> 
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script> 
     <script src="<?php echo base_url();?>assets/vendor/select2-3.5.2/select2.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
+    
     <script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
-    
-    <script src="<?php echo base_url();?>assets/datetimepicker/moment.min.js"></script>
-    <script src="<?php echo base_url();?>assets/datetimepicker/new/bootstrap-datetimepicker.min.js"></script>
-    
-	
-	<script src="<?php echo base_url();?>assets/datetimepicker/jscss/bootstrap.min.js"></script>
-    <script src="<?php echo base_url();?>assets/datetimepicker/jscss/moment-with-locales.js"></script>
-    <script src="<?php echo base_url();?>assets/datetimepicker/jscss/bootstrap-datetimepicker.js"></script> 
-
     <script src="<?php echo base_url();?>assets/vendor/mask-phone/maskPhone.js"></script>
     
+    <!-- DATETIMEPICKER SCRIPTS -->
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/mask-phone/maskPhone.js"></script>
+    <script src="<?php echo base_url();?>assets/datetimepicker/jscss/js/moment-with-locales.js"></script>
+    <script src="<?php echo base_url();?>assets/datetimepicker/jscss/js/bootstrap-datetimepicker.js"></script>
+    
+    <!-- ALERT SCRIPTS -->
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.js"></script>
@@ -369,11 +368,11 @@
 		countForRows++;
 		  
 		var addNewRow = '<tr class="r'+value+'">';
-		    addNewRow += '<td><input name="dateOfServiceStart" class="form-control input-sm datetimepicker_start"></td>';
-            addNewRow += '<td><input name="dateOfServiceEnd" class="form-control input-sm datetimepicker_start"></td>'
+		    addNewRow += '<td><input name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start"></td>';
+            addNewRow += '<td><input name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start"></td>'
             addNewRow += '<td><input type="text" name="claimAmt" class="form-control input-sm"></td>'
             addNewRow += '<td><input type="text" name="paidAmt" class="form-control input-sm"></td>'
-            addNewRow += '<td><input class="form-control input-sm datetimepicker_start" name="dateBillSent"></td>';
+            addNewRow += '<td><input class="form-control input-sm datepicker_recurring_start" name="dateBillSent"></td>';
 			addNewRow += '<td><select class="form-control input-sm" name="serviceType"><option>-- Select Service--</option><?php foreach($Service as $row){?><option value="<?php echo $row['ServiceType_ID']; ?>"> <?php echo $row['ServiceType']; ?> </option><?php }?></select></td>';
 			
 			addNewRow += '<td><select class="form-control input-sm" name="denialReasons"><option>-- Select Denial reason --</option><?php foreach($DenialReasons as $row){?><option value="<?php echo $row['DenialReasons_Id']; ?>"> <?php echo $row['DenialReasons_Type']; ?> </option><?php }?></select></td>';
@@ -527,7 +526,12 @@
 	$("input[name=providerName]").prop("disabled", true);
 	$("input[name=insuranceName]").prop("disabled", true);
 	
-	$('body').on('focus',".datetimepicker_start", function(){
+	
+	$('body').on('focus',".phone-format", function(){
+		$(this).mask("999999/99");
+	});
+	
+	$('body').on('focus',".datetimepicker", function(){
 		$(this).datetimepicker({
 			format:'YYYY/MM/DD HH:mm:ss'
 		})
@@ -538,9 +542,6 @@
 			"todayHighlight": true,
 			"selectOtherMonths": true
 		});
-	});
-	$('body').on('focus',".phone-format", function(){
-		$(this).mask("999999/99");
 	});
 </script>
 <script>

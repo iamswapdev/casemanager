@@ -3774,4 +3774,7 @@ table tr:hover {
 	padding:0px;
 	width:85px !important;
 }
+form#caseInfoSerach_form {
+    color: #000;
+}
 	

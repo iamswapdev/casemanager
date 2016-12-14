@@ -21,7 +21,10 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.min.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.css" />
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/datetimepicker/bootstrap-datetimepicker.min.css" />
+    
+    <!-- DATETIMEPICKER CSS -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/datetimepicker/jscss/css/bootstrap-datetimepicker.css" />
+    
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.css" />
     
@@ -1227,9 +1230,11 @@ for($i=0; $i<=13; $i++){
     <script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
 	<script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
     
-    <script src="<?php echo base_url();?>assets/datetimepicker/moment.min.js"></script>
-    <script src="<?php echo base_url();?>assets/datetimepicker/new/bootstrap-datetimepicker.min.js"></script>
-	<script src="<?php echo base_url();?>assets/vendor/mask-phone/maskPhone.js"></script>
+    <!-- DATETIMEPICKER SCRIPTS -->
+    <script src="<?php echo base_url();?>assets/vendor/mask-phone/maskPhone.js"></script>
+    <script src="<?php echo base_url();?>assets/datetimepicker/jscss/js/moment-with-locales.js"></script>
+    <script src="<?php echo base_url();?>assets/datetimepicker/jscss/js/bootstrap-datetimepicker.js"></script>
+    
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.js"></script>
@@ -1803,7 +1808,7 @@ $(document).ready(function(e) {
 	$('body').on('focus',".datetimepicker_start", function(){
 		$(this).datetimepicker({
 			format:'YYYY/MM/DD HH:mm:ss'
-		}).data('autoclose', true);
+		})
 	});
 	$('body').on('focus',".datetimepicker_only_time", function(){
 		$(this).datetimepicker({
