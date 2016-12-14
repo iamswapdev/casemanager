@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.min.css" />
     
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/datetimepicker/bootstrap-datetimepicker.min.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.css" />
     
@@ -77,6 +78,7 @@
 					<label class="col-md-2 control-label">Provider Name</label>
 					<div class="col-md-2">	
 						<input type="text" id="providerName" name="providerName" class="form-control input-sm">
+                        <input type="hidden" name="providerNameHidden">
 					</div>
 					<label class="col-md-2 control-label">Select Provider</label>
 					<div class="col-md-2">	
@@ -132,6 +134,7 @@
 					<label class="col-md-2 control-label">Name</label>
 					<div class="col-md-2">	
 						<input type="text" id="insuranceName" name="insuranceName" class="form-control input-sm">
+                        <input type="hidden" name="insuranceNameHidden">
 					</div>
 					<label class="col-md-2 control-label">Select Insurance comp.</label>
 					<div class="col-md-2">	
@@ -159,7 +162,7 @@
 				<div class="form-group form-horizontal col-md-12">
                 	<h5 class="h5-title">Accident Information</h5>
 					<label class="col-md-2 control-label">D.O.A <span class="required-field">*</span></label>
-					<div class="col-md-2"> <input id="accidentDate" name="accidentDate"  class="form-control input-sm datepicker_recurring_start" required> </div>
+					<div class="col-md-2"> <input id="accidentDate" name="accidentDate"  class="form-control input-sm datetimepicker_start" required> </div>
 					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
 				</div>
 
@@ -303,6 +306,9 @@
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
     
+    <script src="<?php echo base_url();?>assets/datetimepicker/moment.min.js"></script>
+    <script src="<?php echo base_url();?>assets/datetimepicker/new/bootstrap-datetimepicker.min.js"></script>
+    
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.js"></script>
@@ -414,15 +420,7 @@
 		$("#providerName").val(providerName);
 	});*/
 	
-	$('body').on('focus',".datepicker_recurring_start", function(){
-		$(this).datepicker({
-			"autoclose": true,
-			"todayHighlight": true,
-			"selectOtherMonths": true
-			
-			
-		});
-	});
+	
 </script>
 <script>
 	$("#addCaseForm").validate({
@@ -504,6 +502,35 @@
 			});
 
 		}
+	});
+	$('#providerId').on('change', function() {
+		var providerName =$("#providerId option:selected").text();
+		var providerId =$("#providerId option:selected").val();
+		$("input[name=providerName]").val(providerName);
+		$("input[name=providerNameHidden]").val(providerId);
+	});
+	$('#insuranceCompanyId').on('change', function() {
+		var insuranceName =$("#insuranceCompanyId option:selected").text();
+		var insuranceId =$("#insuranceCompanyId option:selected").val();
+		$("input[name=insuranceName]").val(insuranceName);
+		$("input[name=insuranceNameHidden]").val(insuranceId);
+	});
+	$("input[name=providerName]").prop("disabled", true);
+	$("input[name=insuranceName]").prop("disabled", true);
+	
+	$('body').on('focus',".datetimepicker_start", function(){
+		$(this).datetimepicker({
+			format:'YYYY/MM/DD HH:mm:ss'
+		}).data('autoclose', true);
+	});
+	$('body').on('focus',".datepicker_recurring_start", function(){
+		$(this).datepicker({
+			"autoclose": true,
+			"todayHighlight": true,
+			"selectOtherMonths": true
+			
+			
+		});
 	});
 </script>
 <script>

@@ -123,136 +123,35 @@ class Search extends CI_Controller{
 	}
 	public function getCaseInfo($Case_AutoId){
 		$data['CaseInfo']= $this->search_model->get_CaseInfo_ById($Case_AutoId);
+		//echo json_encode($data['CaseInfo'][0]);
 		echo json_encode($data);
 	}
 	public function updateCaseInfo(){
 		$recordNo = $this->input->post("recordNo");
 		$Case_Id = $this->input->post("Case_Id");
-		if($recordNo == 1){
-			$data = array(
-				"Provider_Id" => $this->input->post("providerId")
-			);
-		}else if($recordNo == 2){
-			$data = array(
-				"Initial_Status" => $this->input->post("caseStatusId")
-			);
-		}else if($recordNo == 3){
+		if($recordNo == 3){
 			$data = array(
 				"InjuredParty_LastName" => $this->input->post("InjuredParty_LastName"),
 				"InjuredParty_FirstName" => $this->input->post("InjuredParty_FirstName")
 			);
-		}else if($recordNo == 4){
-			$data = array(
-				"Last_Status" => $this->input->post("currentStatusId")
-			);
-		}else if($recordNo == 5){
+		}else if($recordNo ==5){
 			$data = array(
 				"InsuredParty_LastName" => $this->input->post("InsuredParty_LastName"),
 				"InsuredParty_FirstName" => $this->input->post("InsuredParty_FirstName")
 			);
-		}else if($recordNo == 6){
+		}else{
 			$data = array(
-				"Ins_Claim_Number" => $this->input->post("Ins_Claim_Number")
-			);
-		}else if($recordNo == 7){
-			$data = array(
-				"Policy_Number" => $this->input->post("Policy_Number")
-			);
-		}else if($recordNo == 8){
-			$data = array(
-				"IndexOrAAA_Number" => $this->input->post("IndexOrAAA_Number")
-			);
-		}else if($recordNo == 9){
-			$data = array(
-				"InsuranceCompany_Id" => $this->input->post("insuranceCompanyId")
-			);
-		}else if($recordNo == 10){
-			$data = array(
-				"Defendant_Id" => $this->input->post("defendantId")
-			);
-		}else if($recordNo == 11){
-			$data = array(
-				"Attorney_FileNumber" => $this->input->post("Attorney_FileNumber")
-			);
-		}else if($recordNo == 12){
-			$data = array(
-				"Court_Id" => $this->input->post("courtId")
-			);
-		}else if($recordNo == 13){
-			$data = array(
-				"Claim_Amount" => $this->input->post("Claim_Amount")
-			);
-		}else if($recordNo == 14){
-			$data = array(
-				"Paid_Amount" => $this->input->post("Paid_Amount")
-			);
-		}else if($recordNo == 15){
-			$data = array(
-				"Provider_Id" => $this->input->post("assignToWorkdeskId")
-			);
-		}else if($recordNo == 16){
-			$data = array(
-				"Old_Case_Id" => $this->input->post("Old_Case_Id")
-			);
-		}else if($recordNo == 17){
-			$data = array(
-				"Accident_Date" => $this->input->post("Accident_Date")
-			);
-		}else if($recordNo == 18){
-			$data = array(
-				"Adjuster_Id" => $this->input->post("adjusterId")
-			);
-		}else if($recordNo == 19){
-			$data = array(
-				"Plaintiff_Id" => $this->input->post("attorneyId")
-			);
-		}else if($recordNo == 21){
-			$data = array(
-				"Date_Opened" => $this->input->post("Date_Opened")
-			);
-		}else if($recordNo == 22){
-			$data = array(
-				"Plaintiff_Discovery_Due_Date" => $this->input->post("Plaintiff_Discovery_Due_Date")
-			);
-		}else if($recordNo == 23){
-			$data = array(
-				"Accident_Date" => $this->input->post("Accident_Date")
-			);
-		}else if($recordNo == 24){
-			$data = array(
-				"Date_Reply_To_Disc_Conf_Letter_Recd" => $this->input->post("Date_Reply_To_Disc_Conf_Letter_Recd")
-			);
-		}else if($recordNo == 25){
-			$data = array(
-				"Date_Bill_Submitted" => $this->input->post("Date_Bill_Submitted")
-			);
-		}else if($recordNo == 26){
-			$data = array(
-				"Date_Ext_Of_Time" => $this->input->post("Date_Ext_Of_Time")
-			);
-		}else if($recordNo == 27){
-			$data = array(
-				"Date_Status_Changed" => $this->input->post("Date_Status_Changed")
-			);
-		}else if($recordNo == 28){
-			$data = array(
-				"Date_Ext_Of_Time_2" => $this->input->post("Date_Ext_Of_Time_2")
-			);
-		}else if($recordNo == 29){
-			$data = array(
-				"Date_Summons_Printed" => $this->input->post("Date_Summons_Printed")
-			);
-		}else if($recordNo == 30){
-			$data = array(
-				"Date_Ext_Of_Time_3" => $this->input->post("Date_Ext_Of_Time_3")
+				$this->input->post("inputName") => $this->input->post("inputValue")
 			);
 		}
+		
 		$success = $this->search_model->update_CaseInfo($data, $Case_Id);
-		if($success){
+		/*if($success){
 			return true;
 		}else{
 			return false;
-		}
+		}*/
+		echo json_encode($data);
 	}
 	
 	public function getSearchTable_2(){

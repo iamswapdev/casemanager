@@ -136,7 +136,7 @@
 						<select class="form-control input-sm" id="sDefendantId" name="sDefendantId" >
                             <option selected="selected" value=""></option>
                             <?php foreach($Defendant_Name as $row){?>
-                            <option value="<?php echo $row['Defendant_id']; ?>"><?php echo $row['Defendant_Name'];?></option>
+                            <option value="<?php echo $row['Defendant_id']; ?>"><?php echo $row['Defendant_Name']." => ".$row['Defendant_Address'];?></option>
                             <?php }?>
                         </select>
 					</div>
@@ -317,6 +317,7 @@
 						},
 						"type": "POST"
 					  },
+					  "pageLength": 100
 					  
 				});
 	

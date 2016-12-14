@@ -62,12 +62,12 @@ session_cache_limiter('private_no_expire');
 				
 				$data = array(
 					'Initial_Status' => $this->input->post('initialStatus'),
-					'Provider_Id' => $this->input->post('providerId'),
+					'Provider_Id' => $this->input->post('providerNameHidden'),
 					'InjuredParty_LastName' => $this->input->post('injuredPartyLastName'),
 					'InjuredParty_FirstName' => $this->input->post('injuredPartyFirstName'),
 					'InsuredParty_LastName' => $this->input->post('insuredPartyLastName'),
 					'InsuredParty_FirstName' => $this->input->post('insuredPartyFirstName'),
-					'InsuranceCompany_Id' => $this->input->post('insuranceCompanyId'),
+					'InsuranceCompany_Id' => $this->input->post('insuranceNameHidden'),
 					'Policy_Number' => $this->input->post('policyNumber'),
 					'Ins_Claim_Number' => $this->input->post('insClaimNumber'),
 					'Accident_Date' => $this->input->post('accidentDate'),
