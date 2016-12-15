@@ -80,7 +80,7 @@
 							</div>
 							
 							
-							 <div class="form-group form-horizontal col-sm-12 ">
+							<div class="form-group form-horizontal col-sm-12 ">
 								<h5 class="h4-title">Defendant Contact Details</h5>
 								<label class="col-sm-2 control-label">Address <span class="required-field">*</span></label>
 								<div class="col-sm-5">

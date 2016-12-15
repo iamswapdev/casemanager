@@ -21,11 +21,17 @@ Class Dataentry_model extends CI_Model{
 		$query = $this->db->insert('dbo_tblcase',$data); 
 		return true;
 	}
-	public function get_CaseInfo($data){
-		$this->db->where('Case_AutoId', $data['Case_AutoId']);
+	public function Update_CaseInfo($data, $Case_AutoId){
+		$this->db->set($data);
+		$this->db->where("Case_AutoId", $Case_AutoId);
+		$query = $this->db->update("dbo_tblcase",$data);
+		return $query;
+	}
+	public function get_CaseInfo($Case_AutoId){
+		$this->db->where('Case_AutoId', $Case_AutoId);
 		$query = $this->db->get('dbo_tblcase'); 
 		$data=$query->result_array();
-		echo "<pre>"; print_r($data); exit();
+		//echo "<pre>"; print_r($data); exit();
 		return $data;
 	}
 

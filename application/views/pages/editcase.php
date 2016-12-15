@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/select2-3.5.2/select2.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/select2-bootstrap/select2-bootstrap.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" />
+    
+    <!-- DATETIMEPICKER CSS -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/datetimepicker/jscss/css/bootstrap-datetimepicker.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.min.css" />
     
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.css" />
@@ -51,7 +54,69 @@
 <?php include 'sidebar.php';?>
 <!-- Main Wrapper -->
 <div id="wrapper">
-<?php foreach($CaseInfo as $row){$selectedProvider_Id = $row['Provider_Id']; $InsuranceCompany_Id = $row['InsuranceCompany_Id']; $Status = $row['Status']; $DenialReasons_Type = $row['DenialReasons_Type']; $Court_Id = $row['Court_Id']; $Initial_Status = $row['Initial_Status']; $Initial_Status = $row['Initial_Status']; $Memo = $row['Memo'];}?>
+<?php foreach($CaseInfo as $row){ $Case_AutoId = $row['Case_AutoId']; $selectedProvider_Id = $row['Provider_Id']; $InsuranceCompany_Id = $row['InsuranceCompany_Id']; $Status_Type = $row['Status']; $DenialReasons_Type = $row['DenialReasons_Type']; $Court_Id = $row['Court_Id']; $Initial_Status = $row['Initial_Status']; $IndexOrAAA_Number = $row['IndexOrAAA_Number']; $Memo = $row['Memo']; $InjuredParty_LastName = $row['InjuredParty_LastName']; $InjuredParty_FirstName = $row['InjuredParty_FirstName']; $InsuredParty_LastName = $row['InsuredParty_LastName']; $InsuredParty_FirstName = $row['InsuredParty_FirstName']; $Accident_Date = $row['Accident_Date']; $Policy_Number = $row['Policy_Number']; $Ins_Claim_Number = $row['Ins_Claim_Number']; $DateOfService_Start = $row['DateOfService_Start']; $DateOfService_End = $row['DateOfService_End']; $Claim_Amount = $row['Claim_Amount']; $Paid_Amount = $row['Paid_Amount']; $Date_BillSent = $row['Date_BillSent']; $Provider_Name_input =$row['Provider_Name']; $InsuranceCompany_Name_input = $row['InsuranceCompany_Name']; $InjuredParty_Type = $row['InjuredParty_Type']; $InsuredParty_Type = $row['InsuredParty_Type']; $InsuredParty_Address = $row['InsuredParty_Address'];$InsuredParty_City = $row['InsuredParty_City'];$InsuredParty_State  = $row['InsuredParty_State']; $InsuredParty_Zip = $row['InsuredParty_Zip'];$InsuredParty_Misc = $row['InsuredParty_Misc'];$Accident_Date = $row['Accident_Date'];$Accident_Address = $row['Accident_Address'];$Accident_City = $row['Accident_City'];$Accident_State = $row['Accident_State']; $Accident_Zip = $row['Accident_Zip'];$InjuredParty_Address = $row['InjuredParty_Address']; $InjuredParty_City = $row['InjuredParty_City']; $InjuredParty_State = $row['InjuredParty_State']; $InjuredParty_Zip = $row['InjuredParty_Zip']; $InjuredParty_Phone = $row['InjuredParty_Phone']; $InjuredParty_Misc = $row['InjuredParty_Misc']; $Adjuster_Id = $row['Adjuster_Id']; $DenialReasons_Id = $row['DenialReasons_Type'];
+
+}
+
+$months = array("Just", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "jan");
+for($i=0; $i<=13; $i++){
+	if(substr($DateOfService_Start, 0, 3) == $months[$i]){
+		if($i<10){
+			if(substr($DateOfService_Start, 4, 1) == " "){
+				$DateOfService_Start7 = substr_replace($DateOfService_Start,"0",4,1);
+				if($i == 13){
+					$DateOfService_Start2 = str_replace($months[$i]." ","01-",$DateOfService_Start7);
+				}else{
+					$DateOfService_Start2 = str_replace($months[$i]." ","0".$i."-",$DateOfService_Start7);
+				}
+				
+			}else{
+				if($i == 13){
+					$DateOfService_Start2 = str_replace($months[$i]." ","01-",$DateOfService_Start);
+				}else{
+					$DateOfService_Start2 = str_replace($months[$i]." ","0".$i."-",$DateOfService_Start);
+				}
+				
+			}
+		}else{
+			$DateOfService_Start2 = str_replace($months[$i]." ",$i."-",$DateOfService_Start);
+		}
+		$DateOfService_Start3 = substr_replace($DateOfService_Start2,"-",strpos($DateOfService_Start2," "),1);
+		$DateOfService_Start = $DateOfService_Start3;
+		break;
+	}
+}
+
+for($i=0; $i<=13; $i++){
+	if(substr($DateOfService_End, 0, 3) == $months[$i]){
+		if($i<10){
+			if(substr($DateOfService_End, 4, 1) == " "){
+				$DateOfService_End7 = substr_replace($DateOfService_End,"0",4,1);
+				if($i == 13){
+					$DateOfService_End2 = str_replace($months[$i]." ","01-",$DateOfService_End7);
+				}else{
+					$DateOfService_End2 = str_replace($months[$i]." ","0".$i."-",$DateOfService_End7);
+				}
+			}else{
+				if($i == 13){
+					$DateOfService_End2 = str_replace($months[$i]." ","01-",$DateOfService_End);
+				}else{
+					$DateOfService_End2 = str_replace($months[$i]." ","0".$i."-",$DateOfService_End);
+				}
+			}
+		}else{
+			$DateOfService_End2 = str_replace($months[$i]." ",$i."-",$DateOfService_End);
+		}
+		$DateOfService_End3 = substr_replace($DateOfService_End2,"-",strpos($DateOfService_End2," "),1);
+		$DateOfService_End = $DateOfService_End3;
+		break;
+	}
+}
+
+
+
+
+?>
 <div class="normalheader transition animated fadeIn">
     <div class="hpanel">
         <div class="panel-body pad-b">
@@ -80,7 +145,8 @@
 			<form id="addCaseForm" role="form" action="add_CaseInfo" method="post" >
 				
 				<div class="form-group form-horizontal col-md-12">
-                	<h5 class="h5-title">CASE INFORMATION</h5>
+                	<h5 class="h4-title">CASE INFORMATION</h5>
+                    <input type="hidden" name="Case_AutoId" value="<?php echo $Case_AutoId;?>">
 					<!--<p>(Note: All amounts are in USD wherever applicable.)</p>-->
 					<label class="col-md-2 control-label">Initial Status</label>
 					<div class="col-md-6 radio">
@@ -94,7 +160,8 @@
 				<div class="form-group form-horizontal col-md-12">
 					<label class="col-md-2 control-label">Provider Name</label>
 					<div class="col-md-2">	
-						<input type="text" id="providerName" name="providerName" class="form-control input-sm" >
+						<input type="text" id="providerName" name="providerName" class="form-control input-sm" value="<?php echo $Provider_Name_input; ?>" >
+                        <input type="hidden" name="providerNameHidden" value="<?php echo $selectedProvider_Id;?>">
 					</div>
 					<label class="col-md-2 control-label">Select Provider</label>
 					<div class="col-md-2">	
@@ -110,53 +177,141 @@
 
 				
 				<div class="form-group form-horizontal col-md-12">
-                	<h5 class="h5-title">Injured Party Information</h5>
+                	<h5 class="h4-title">Injured Party Information</h5>
 					<label class="col-md-2 control-label">Last Name <span class="required-field">*</span></label>
 					<div class="col-md-2">
-						<input type="text" id="injuredPartyLastName" name="injuredPartyLastName" placeholder="Last Name" class="form-control input-sm" value="<?php foreach($CaseInfo as $row){ echo $row['InjuredParty_LastName']; }?>" required> 
+						<input type="text" id="InjuredPartyLastName" name="InjuredPartyLastName" placeholder="Last Name" class="form-control input-sm" value="<?php echo $InjuredParty_LastName; ?>" required> 
 					</div>
 					<label class="col-md-2 control-label">First Name <span class="required-field">*</span></label>
 					<div class="col-md-2">
-						<input type="text" id="injuredPartyFirstName" name="injuredPartyFirstName" placeholder="First Name" class="form-control input-sm" value="<?php foreach($CaseInfo as $row){ echo $row['InjuredParty_FirstName']; }?>" required>
+						<input type="text" id="InjuredPartyFirstName" name="InjuredPartyFirstName" placeholder="First Name" class="form-control input-sm" value="<?php echo $InjuredParty_FirstName;?>" required>
 					</div>
-					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
 				</div>
-
-				
-				<div class="form-group form-horizontal col-md-12">
-                	<h5 class="h5-title">Insured Party Information </h5>
-					<div class="col-md-2">
+                <div class="form-group form-horizontal col-sm-12 ">
+                    <label class="col-sm-2 control-label">Address</label>
+                    <div class="col-sm-5">
+                        <textarea rows="3" id="InjuredParty_Address" name="InjuredParty_Address"  class="form-control" ><?php echo $InjuredParty_Address;?></textarea>
+                    </div>
+                </div>
+                <div class="form-group form-horizontal col-sm-12">
+                    <label class="col-sm-2 control-label">Zip</label>
+                    <div class="col-sm-1">
+                        <input type="text" id="InjuredParty_Zip" name="InjuredParty_Zip"  class="form-control input-sm" value="<?php echo $InjuredParty_Zip;?>">
+                        <!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
+                    </div>
+                    <label class="col-sm-1 control-label">State</label>
+                    <div class="col-sm-1">
+                        <select class="form-control input-sm"  id="InjuredParty_State" name="InjuredParty_State">
+                            <option selected="selected" value=""></option>
+                            <?php foreach($State_Name as $row){?>
+                            <option value="<?php echo $row['State_Id']; ?>" <?php if($row['State_Id'] == $InjuredParty_State){echo "selected";}?>> <?php echo $row['State_Name']; ?> </option>
+                            <?php }?>
+                        </select>
+                    </div>
+                    <label class="col-sm-1 control-label">City</label>
+                    <div class="col-sm-2">
+                        <input type="text" id="InjuredParty_City" name="InjuredParty_City" class="form-control input-sm" value="<?php echo $InjuredParty_City;?>">
+                    </div>
+                </div>
+                <div class="form-group form-horizontal col-sm-12">
+                    <label class="col-sm-2 control-label">Phone</label>
+                    <div class="col-sm-1">
+                        <input type="text" id="InjuredParty_Phone" name="InjuredParty_Phone"  placeholder="123-456-7890" class="phone-format form-control input-sm" value="<?php echo $InjuredParty_Phone;?>">
+                    </div>
+                    <label class="col-sm-1 control-label">Misc</label>
+                    <div class="col-sm-1">
+                        <input type="text" id="InjuredParty_Misc" name="InjuredParty_Misc" class="form-control input-sm" value="<?php echo $InjuredParty_Misc;?>">
+                    </div>
+                </div>
+                <div class="form-group form-horizontal col-md-12">
+                    <label class="col-md-2 control-label">Type</label>
+					<div class="col-md-6 radio">
+						<label><input type="radio" class="horizontal" value="Passenger" name="InjuredParty_Type" <?php if($InjuredParty_Type == 'Passenger'){ echo "checked";}?>>Passenger</label>
+						<label><input type="radio" class="horizontal" value="Pedestrian" name="InjuredParty_Type" <?php if($InjuredParty_Type == 'Pedestrian'){ echo "checked";}?>>Pedestrian</label>
+                        <label><input type="radio" class="horizontal" value="Other" name="InjuredParty_Type" <?php if($InjuredParty_Type == 'Other'){ echo "checked";}?>>Other</label>
 					</div>
+                    <div class="form-horizontal col-md-12 hr-line-dashed"></div>
+				</div>
+                <div class="form-group form-horizontal col-md-12">
+                	<h5 class="h4-title">Insured Party Information </h5>
+					<div class="col-md-2"></div>
 					<div class="col-md-6 checkbox">
 						<label><input type="checkbox" id="checkbox1" >Check here if same as Patient Information.</label>
 					</div>
 				</div>
-                
 				<div class="form-group form-horizontal col-md-12">
 					<label class="col-md-2 control-label">Last Name</label>
 					<div class="col-md-2">
-						<input type="text" id="insuredPartyLastName" name="insuredPartyLastName" value="<?php foreach($CaseInfo as $row){ echo $row['InsuredParty_LastName']; }?>" placeholder="Last Name" class="form-control input-sm"> 
+						<input type="text" id="InsuredPartyLastName" name="InsuredPartyLastName" value="<?php echo $InsuredParty_LastName;?>" placeholder="Last Name" class="form-control input-sm"> 
 					</div>
 					<label class="col-md-2 control-label">First Name</label>
 					<div class="col-md-2">
-						<input type="text" id="insuredPartyFirstName" name="insuredPartyFirstName" value="<?php foreach($CaseInfo as $row){ echo $row['InsuredParty_FirstName']; }?>" placeholder="First Name" class="form-control input-sm">
+						<input type="text" id="InsuredPartyFirstName" name="InsuredPartyFirstName" value="<?php echo $InsuredParty_FirstName;?>" placeholder="First Name" class="form-control input-sm">
 					</div>
-					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
 				</div>
-
+                <div class="form-group form-horizontal col-sm-12 ">
+                    <label class="col-sm-2 control-label">Address</label>
+                    <div class="col-sm-5">
+                        <textarea rows="3" id="InsuredParty_Address" name="InsuredParty_Address"  class="form-control" > <?php echo $InsuredParty_Address;?></textarea>
+                    </div>
+                </div>
+                <div class="form-group form-horizontal col-sm-12">
+                    <label class="col-sm-2 control-label">Zip</label>
+                    <div class="col-sm-1">
+                        <input type="text" id="InsuredParty_Zip" name="InsuredParty_Zip"  class="form-control input-sm" value="<?php echo $InsuredParty_Zip;?>">
+                        <!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
+                    </div>
+                    <label class="col-sm-1 control-label">State</label>
+                    <div class="col-sm-1">
+                        <select class="form-control input-sm"  id="InsuredParty_State" name="InsuredParty_State">
+                            <option selected="selected" value=""></option>
+                            <?php foreach($State_Name as $row){?>
+                            <option value="<?php echo $row['State_Id']; ?>" <?php if($row['State_Id'] == $InsuredParty_State){echo "selected";}?>> <?php echo $row['State_Name']; ?> </option>
+                            <?php }?>
+                        </select>
+                    </div>
+                    <label class="col-sm-1 control-label">City</label>
+                    <div class="col-sm-2">
+                        <input type="text" id="InsuredParty_City" name="InsuredParty_City" class="form-control input-sm" value="<?php echo $InsuredParty_City;?>">
+                    </div>
+                </div>
+                <div class="form-group form-horizontal col-sm-12">
+                    <label class="col-sm-2 control-label">Misc</label>
+                    <div class="col-sm-1">
+                        <input type="text" id="InsuredParty_Misc" name="InsuredParty_Misc" class="form-control input-sm" value="<?php echo $InsuredParty_Misc;?>">
+                    </div>
+                </div>
+                <div class="form-group form-horizontal col-md-12">
+                    <label class="col-md-2 control-label">Type</label>
+					<div class="col-md-6 radio">
+						<label><input type="radio" class="horizontal" value="Passenger" name="InsuredParty_Type" <?php if($InsuredParty_Type == 'Passenger'){ echo "checked";}?>>Passenger</label>
+						<label><input type="radio" class="horizontal" value="Pedestrian" name="InsuredParty_Type" <?php if($InsuredParty_Type == 'Pedestrian'){ echo "checked";}?>>Pedestrian</label>
+                        <label><input type="radio" class="horizontal" value="Other" name="InsuredParty_Type" <?php if($InsuredParty_Type == 'Other'){ echo "checked";}?>>Other</label>
+					</div>
+                    <div class="form-horizontal col-md-12 hr-line-dashed"></div>
+				</div>
 				
 				<div class="form-group form-horizontal col-md-12">
-                	<h5 class="h5-title">Insurance Information</h5>
+                	<h5 class="h4-title">Insurance Information</h5>
 					<label class="col-md-2 control-label">Name</label>
 					<div class="col-md-2">	
-						<input type="text" id="insuranceName" name="insuranceName" value="<?php foreach($CaseInfo as $row){ echo $row['InsuredParty_FirstName']; }?>" class="form-control input-sm">
+						<input type="text" id="insuranceName" name="insuranceName" class="form-control input-sm" value="<?php echo $InsuranceCompany_Name_input; ?>">
+                        <input type="hidden" name="insuranceNameHidden" value="<?php echo $InsuranceCompany_Id;?>">
 					</div>
 					<label class="col-md-2 control-label">Select Insurance comp.</label>
 					<div class="col-md-2">	
 						<select class="form-control input-sm" id="insuranceCompanyId" name="insuranceCompanyId">
-                       	 	
                             <?php foreach($InsuranceCompany_Name as $row){?>
                             <option value="<?php echo $row['InsuranceCompany_Id']; ?>" <?php if($row['InsuranceCompany_Id'] == $InsuranceCompany_Id){echo "selected";}?>><?php echo $row['InsuranceCompany_Name'];?></option>
+                            <?php }?>
+                        </select>
+					</div>
+                    <label class="col-md-1 control-label">ADJUSTER NAME</label>
+					<div class="col-md-2">
+						<select class="form-control input-sm" id="Adjuster_Id" name="Adjuster_Id" >
+                            <option selected="selected" value=""></option>
+                            <?php foreach($Adjuster_Name as $row){?>
+                            <option value="<?php echo $row['Adjuster_Id']; ?>" <?php if($row['Adjuster_Id'] == $Adjuster_Id){echo "selected";}?>><?php echo $row['Adjuster_LastName'].", ".$row['Adjuster_FirstName'];?></option>
                             <?php }?>
                         </select>
 					</div>
@@ -164,40 +319,76 @@
 				<div class="form-group form-horizontal col-md-12">
 					<label class="col-md-2 control-label">Policy# <span class="required-field">*</span></label>
 					<div class="col-md-2">	
-						<input type="text" id="policyNumber" name="policyNumber" class="form-control input-sm" value="<?php foreach($CaseInfo as $row){ echo $row['Policy_Number']; }?>" required>
+						<input type="text" id="policyNumber" name="policyNumber" class="form-control input-sm" value="<?php echo $Policy_Number; ?>" required>
 					</div>
 					<label class="col-md-2 control-label">Claim#</label>
 					<div class="col-md-2">	
-						<input type="text" id="insClaimNumber" name="insClaimNumber" class="form-control input-sm" value="<?php foreach($CaseInfo as $row){ echo $row['Ins_Claim_Number']; }?>">
+						<input type="text" id="insClaimNumber" name="insClaimNumber" class="form-control input-sm" value="<?php echo $Ins_Claim_Number?>">
 					</div>
 					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
 				</div>
                 
 				
 				<div class="form-group form-horizontal col-md-12">
-                	<h5 class="h5-title">Accident Information</h5>
+                	<h5 class="h4-title">Accident Information</h5>
 					<label class="col-md-2 control-label">D.O.A <span class="required-field">*</span></label>
-					<div class="col-md-2"> <input id="accidentDate" name="accidentDate"  class="form-control input-sm datepicker_recurring_start" value="<?php foreach($CaseInfo as $row){ echo $row['Accident_Date']; }?>" required> </div>
-					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
+					<div class="col-md-2"> <input id="accidentDate" name="accidentDate"  class="form-control input-sm datetimepicker" value="<?php echo $Accident_Date;?>" required> </div>
 				</div>
-
+				<div class="form-group form-horizontal col-sm-12 ">
+                    <label class="col-sm-2 control-label">Address</label>
+                    <div class="col-sm-5">
+                        <textarea rows="3" id="Accident_Address" name="Accident_Address"  class="form-control" > <?php echo $Accident_Address;?></textarea>
+                    </div>
+                </div>
+                <div class="form-group form-horizontal col-sm-12">
+                    <label class="col-sm-2 control-label">Zip</label>
+                    <div class="col-sm-1">
+                        <input type="text" id="Accident_Zip" name="Accident_Zip"  class="form-control input-sm" value="<?php echo $Accident_Zip;?>">
+                        <!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
+                    </div>
+                    <label class="col-sm-1 control-label">State</label>
+                    <div class="col-sm-1">
+                        <select class="form-control input-sm"  id="Accident_State" name="Accident_State">
+                            <option selected="selected" value=""></option>
+                            <?php foreach($State_Name as $row){?>
+                            <option value="<?php echo $row['State_Id']; ?>" <?php if($row['State_Id'] == $Accident_State){echo "selected";}?>> <?php echo $row['State_Name']; ?> </option>
+                            <?php }?>
+                        </select>
+                    </div>
+                    <label class="col-sm-1 control-label">City</label>
+                    <div class="col-sm-2">
+                        <input type="text" id="Accident_City" name="Accident_City" class="form-control input-sm" value="<?php echo $Accident_City;?>">
+                    </div>
+					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
+                </div>
 				
 				<div class="form-group form-horizontal col-lg-12">
-                	<h5 class="h5-title">Other Information </h5>
+                	<h5 class="h4-title">Other Information </h5>
 					<label class="col-md-2 control-label">Status</label>
 					<div class="col-md-2">
 						<select class="form-control input-sm" id="status" name="status">
                             <option selected="selected" value=""></option>
                             <?php foreach($Status as $row){?>
-                            <option value="<?php echo $row['Status_Id']; ?>"> <?php echo $row['Status_Type']; ?> </option>
+                            <option value="<?php echo $row['Status_Type']; ?>" <?php if($row['Status_Type'] == $Status_Type){echo "selected";}?>> <?php echo $row['Status_Type']; ?> </option>
                             <?php }?>
                         </select>
 					</div>
 					<label class="col-md-2 control-label"> Index/AAA #</label>
 					<div class="col-md-2">
-						<input id="indexOrAAANumber"  name="indexOrAAANumber" type="text" class="form-control input-sm">
+						<input id="indexOrAAANumber"  name="indexOrAAANumber" type="text" class="form-control input-sm" value="<?php echo $IndexOrAAA_Number; ?>">
 					</div>
-					<label class="col-md-2 control-label">Court Name <span class="required-field">*</span></label>
+				</div>
+                <div class="form-group form-horizontal col-lg-12">
+                	<label class="col-md-2 control-label">Denial Reason</label>
+					<div class="col-md-2">
+						<select class="form-control input-sm" id="denialReasons" name="denialReasons" >
+                            <option>-- Select Denial reason --</option>
+                            <?php foreach($DenialReasons as $row){?>
+                            <option value="<?php echo $row['DenialReasons_Id']; ?>" <?php if($row['DenialReasons_Id'] == $DenialReasons_Id){echo "selected";}?>> <?php echo $row['DenialReasons_Type']; ?> </option>
+                            <?php }?>
+                        </select>
+					</div>
+                    <label class="col-md-2 control-label">Court Name <span class="required-field">*</span></label>
 					<div class="col-md-2">
 						<select class="form-control input-sm" id="courtId" name="courtId" required >
                             <option selected="selected" value=""></option>
@@ -206,13 +397,15 @@
                             <?php }?>
                         </select>
 					</div>
-				</div>
+                </div>
                 
                 
                 
-                <div class="form-group form-horizontal col-lg-12 set-bg">
+                <div class="form-group form-horizontal col-lg-12">
+                	<label class="col-md-2 control-label">Treatment Info</label>
+                    <div class="col-md-10">
                 	<div class="table-responsive">
-                        <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped add-case-table">
+                        <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped add-case-table edit-case-table">
                             <thead>
                             <tr>
                                 <th>D.O.S-Start</th>
@@ -220,42 +413,21 @@
                                 <th>Claim Amt.</th>
                                 <th>Paid Amt.</th>
                                 <th>Date Bill Sent</th>
-                                <th>Service Type</th>
-                                <th>Denial Reason</th>
-                                <th>Delete</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr class="first-row">
-                                <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start"></td>
-                                <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start"></td>
-                                <td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm"></td>
-                                <td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm"></td>
-                                <td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datepicker_recurring_start"></td>
-                                <td><select class="form-control input-sm" id="serviceType" name="serviceType">
-                                        <?php foreach($Service as $row){?>
-                                        <option value="<?php echo $row['ServiceType_ID']; ?>"> <?php echo $row['ServiceType']; ?> </option>
-                                        <?php }?>
-                                    </select></td>
-                                <td><select class="form-control input-sm" id="denialReasons" name="denialReasons" >
-                                        <option>-- Select Denial reason --</option>
-                                        <?php foreach($DenialReasons as $row){?>
-                                        <option value="<?php echo $row['DenialReasons_Id']; ?>"> <?php echo $row['DenialReasons_Type']; ?> </option>
-                                        <?php }?>
-                                    </select></td>
-                                <td><span><button type="button" id="addOtherInfo" class="btn btn-primary create">Add</button></span></td>
+                                <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datetimepicker" value="<?php echo str_replace(" 12:00AM","",$DateOfService_Start);?>"></td>
+                                <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start" value="<?php echo str_replace(" 12:00AM","",$DateOfService_End);?>"></td>
+                                <td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm" value="<?php echo $Claim_Amount;?>"></td>
+                                <td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm" value="<?php echo $Paid_Amount;?>"></td>
+                                <td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datepicker_recurring_start" value="<?php echo $Date_BillSent;?>"></td>
                             </tr>
                             </tbody>
                         </table>
                         </div>
+                        </div>
                 </div>
-                <div class="form-group form-horizontal col-lg-12">
-					<div class="col-md-2">
-						<button type="button" id="DeleteButton" class="btn w-xs btn-primary" style="display:none;">Delete Checked</button>
-					</div>
-				</div>
-                
-				
 				<div class="form-group form-horizontal col-lg-12">
 					<label class="col-md-2 control-label">Memo</label>
 					<div class="col-md-4">
@@ -292,8 +464,13 @@
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script> 
     <script src="<?php echo base_url();?>assets/vendor/select2-3.5.2/select2.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
+    
+    <!-- DATETIMEPICKER SCRIPTS -->
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/mask-phone/maskPhone.js"></script>
+    <script src="<?php echo base_url();?>assets/datetimepicker/jscss/js/moment-with-locales.js"></script>
+    <script src="<?php echo base_url();?>assets/datetimepicker/jscss/js/bootstrap-datetimepicker.js"></script>
     
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>
@@ -305,25 +482,26 @@
 	$("#cancel").click(function(){
 		$('input').val('');
 		$('select').val('');
-		//$('input[type=radio]').val('');
 		$('textarea').val('');
-		/*$('#providerId').val('');
-		$('#insuranceCompanyId').val('');
-		$('#status').val('');
-		$('#courtId').val('');
-		$('#serviceType').val('');
-		$('#denialReasons').val('');*/
 		$('.datepicker_recurring_start').val(''); 
 	});
 	$('#checkbox1').change(function() {
 		if ($(this).is(':checked')) {
-			var injuredPartyLastName = $("#injuredPartyLastName").val();
-			var injuredPartyFirstName = $("#injuredPartyFirstName").val();
-			$('#insuredPartyLastName').val(injuredPartyLastName);
-			$('#insuredPartyFirstName').val(injuredPartyFirstName);
+			$('#InsuredPartyLastName').val($("#InjuredPartyLastName").val());
+			$('#InsuredPartyFirstName').val($("#InjuredPartyFirstName").val());
+			$('#InsuredParty_Address').val($("#InjuredParty_Address").val());
+			$('#InsuredParty_Zip').val($("#InjuredParty_Zip").val());
+			$('#InsuredParty_City').val($("#InjuredParty_City").val());
+			$('#InsuredParty_State').val($("#InjuredParty_State").val());
+			$('#InsuredParty_Misc').val($("#InjuredParty_Misc").val());
 		}else{
-			$('#insuredPartyLastName').val("");
-			$('#insuredPartyFirstName').val("");
+			$('#InsuredPartyLastName').val("");
+			$('#InsuredPartyFirstName').val("");
+			$('#InsuredParty_Address').val("");
+			$('#InsuredParty_Zip').val("");
+			$('#InsuredParty_City').val("");
+			$('#InsuredParty_State').val("");
+			$('#InsuredParty_Misc').val("");
 		}
 		
     });
@@ -335,68 +513,6 @@
 			type: "success"
 		});
 	}
-	
-	var countForRows = 0;
-	var value = 0;
-	$("#addOtherInfo").click(function(){
-		if(countForRows >= 0){
-			console.log("ccc: "+countForRows);
-			$("#DeleteButton").css("display", "block");
-		}
-		countForRows++;
-		  
-		var addNewRow = '<tr class="r'+value+'">';
-		    addNewRow += '<td><input class="form-control input-sm datepicker_recurring_start" name="dateOfServiceStart"></td>';
-            addNewRow += '<td><input class="form-control input-sm datepicker_recurring_start" name="dateOfServiceStart"></td>'
-            addNewRow += '<td><input type="text" name="claimAmt" class="form-control input-sm"></td>'
-            addNewRow += '<td><input type="text" name="paidAmt" class="form-control input-sm"></td>'
-            addNewRow += '<td><input class="form-control input-sm datepicker_recurring_start" name="dateBillSent"></td>';
-			addNewRow += '<td><select class="form-control input-sm" name="serviceType"><option>-- Select Service--</option><?php foreach($Service as $row){?><option value="<?php echo $row['ServiceType_ID']; ?>"> <?php echo $row['ServiceType']; ?> </option><?php }?></select></td>';
-			
-			addNewRow += '<td><select class="form-control input-sm" name="denialReasons"><option>-- Select Denial reason --</option><?php foreach($DenialReasons as $row){?><option value="<?php echo $row['DenialReasons_Id']; ?>"> <?php echo $row['DenialReasons_Type']; ?> </option><?php }?></select></td>';
-			addNewRow += '<td><input class="ads_Checkbox" type="checkbox" name="delete[]" value="'+value+'"></td>';
-			value++;
-			addNewRow += '</tr>';
-						  
-		$(addNewRow).insertBefore(".first-row");
-	});
-	
-	 $('#DeleteButton').click(function(){
-		var final = '';
-		$('.ads_Checkbox:checked').each(function(){        
-			var values = $(this).val();
-			$(".r"+values).remove();
-			countForRows--;
-		});
-		if(countForRows == 0){
-			$("#DeleteButton").css("display", "none");
-		}
-		
-	});
-	/*$('input[name=dateOfServiceStart]').datepicker({
-			"autoclose": true,
-			"todayHighlight": true
-		});*/
-	/*$(function(){
-		//$("#accidentDate").datepicker("setDate", new Date());
-		$('#accidentDate').datepicker({
-			"autoclose": true,
-			"todayHighlight": true
-		});
-		
-		$('#dateOfServiceEnd').datepicker({
-			"autoclose": true,
-			"todayHighlight": true
-		});
-		$('#datapicker4').datepicker({
-			"autoclose": true,
-			"todayHighlight": true
-		});
-		$('#dateBillSent').datepicker({
-			"autoclose": true,
-			"todayHighlight": true
-		});
-	});*/
 	$('body').on('focus',".datepicker_recurring_start", function(){
 		$(this).datepicker({
 			"autoclose": true,
@@ -448,26 +564,14 @@
 			// fire off the request to /form.php
 
 			request = $.ajax({
-				url:"<?php echo base_url(); ?>dataentry/add_CaseInfo",
+				url:"<?php echo base_url(); ?>dataentry/Update_CaseInfo",
 				type: "post",
 				data: serializedData
 			});
 
 			// callback handler that will be called on success
 			request.done(function (response, textStatus, jqXHR) {
-				// log a message to the console
-				console.log("Hooray, it worked!");
-				$('input[type=text]').val('');
-				$('input[type=radio]').val('');
-				$('textarea').val('');
-				$('#providerId').val('');
-				$('#insuranceCompanyId').val('');
-				$('#status').val('');
-				$('#courtId').val('');
-				$('#serviceType').val('');
-				$('#denialReasons').val('');   
-				//$("#myModal").modal("show");
-					callSuccess();
+				callSuccess();
 			});
 
 			// callback handler that will be called on failure
@@ -486,8 +590,32 @@
 
 		}
 	});
-	var providerName = $("#providerId").val();
-	$("#providerName").val(providerName);
+	
+	$('#providerId').on('change', function() {
+		var providerName =$("#providerId option:selected").text();
+		var providerId =$("#providerId option:selected").val();
+		console.log("providerName:"+providerName+" providerId:"+providerId);
+		$("input[name=providerName]").val(providerName);
+		$("input[name=providerNameHidden]").val(providerId);
+	});
+	$('#insuranceCompanyId').on('change', function() {
+		var insuranceName =$("#insuranceCompanyId option:selected").text();
+		var insuranceId =$("#insuranceCompanyId option:selected").val();
+		$("input[name=insuranceName]").val(insuranceName);
+		$("input[name=insuranceNameHidden]").val(insuranceId);
+	});
+	$("input[name=providerName]").prop("disabled", true);
+	$("input[name=insuranceName]").prop("disabled", true);
+	
+	$('body').on('focus',".datetimepicker", function(){
+		$(this).datetimepicker({
+			format:'YYYY/MM/DD HH:mm:ss'
+		})
+	});
+	$('body').on('focus',".phone-format", function(){
+		$(this).mask("999-999-9999");
+	});
+	
 </script>
 <script>
 	$('.dataentry').addClass('active');

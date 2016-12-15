@@ -5,22 +5,14 @@ Class Search_model extends CI_Model{
 		parent::__construct();
 		$this->load->database();
 	}
-	public function get_CaseInfo($data){
-		$this->db->where('Case_AutoId', $data['Case_AutoId']);
+	public function get_CaseInfo($Case_AutoId){
+		$this->db->where('Case_AutoId', $Case_AutoId);
 		$query = $this->db->get('dbo_tblcase'); 
 		$data=$query->result_array();
-		//echo "<pre>"; print_r($data); exit();
+		//echo "<pre>"; print_r($data); echo "AL:".count($data[0]);exit();
 		return $data;
 	}
 	public function get_CaseInfo_ById($Case_AutoId){
-		/*$this->db->where('Case_AutoId', $data['Case_AutoId']);
-		$query = $this->db->get('dbo_tblcase'); 
-		$data=$query->result_array();
-		//echo "<pre>"; print_r($data); exit();
-		return $data;*/ //DATE_FORMAT(t1.Accident_Date,"%m-%Y-%d") as Accident_Date
-		
-		//$this->db->select('t1.Case_AutoId, t1.Case_Id, t1.InjuredParty_LastName, t1.InjuredParty_FirstName, t2.Provider_Name, t3.InsuranceCompany_Name, t1.DateOfService_Start, t1.DateOfService_End, t1.Status, t1.Ins_Claim_Number, t1.Claim_Amount, t1.IndexOrAAA_Number, t1.Initial_Status, t1.Initial_Status, t1.Initial_Status, t1.Initial_Status, t1.Initial_Status, t4.Defendant_Name, t5.Adjuster_LastName, t5.Adjuster_FirstName, t6.Attorney_Name, t1.InsuredParty_LastName, t1.InsuredParty_FirstName, t1.Attorney_FileNumber, t7.Court_Name, t1.Old_Case_Id, t1.Paid_Amount, t1.Policy_Number, t1.Date_BillSent' );
-		//$this->db->select('t1.*, t2.Provider_Name, t3.InsuranceCompany_Name');
 		
 		$this->db->select('t1.*, DATE_FORMAT(t1.Accident_Date,"%m-%Y-%d") as Accident_DateNoTimr, t2.Provider_Name, t3.InsuranceCompany_Name, t4.Defendant_Name, t5.Adjuster_LastName, t5.Adjuster_FirstName, t6.Attorney_Name, t7.Court_Name' );
 		$this->db->from('dbo_tblcase as t1');

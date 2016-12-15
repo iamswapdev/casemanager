@@ -685,14 +685,14 @@ for($i=0; $i<=13; $i++){
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label">SETTLEMENT AMOUNT</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="" name=""  class="form-control input-sm Amount" ></div>
-								<div class="col-md-1"><input step="0.01" type="number" id="" name=""  class="form-control input-sm percentage" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltSettlement_AmountTab6" name="FltSettlement_AmountTab6"  class="form-control input-sm Amount" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="settlementPercentageTab6" name="settlementPercentageTab6"  class="form-control input-sm percentage" ></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label col-md-12">INTEREST</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="" name=""  class="form-control input-sm Amount" ></div>
-								<div class="col-md-1"><input step="0.01" type="number" id="" name=""  class="form-control input-sm percentage" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltInterestTab6" name="FltInterestTab6"  class="form-control input-sm Amount" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltInterestPercTab6" name="FltInterestPercTab6"  class="form-control input-sm percentage" ></div>
 								<div class="col-md-1 start-date-settlement"><label class="control-label col-md-12">START DATE</label> </div>
 								<div class="col-md-1"><input type="text" id="CopundIntStartData" name="CopundIntStartData"  class="form-control input-sm datepicker_recurring_start" ></div>
 								<div class="col-md-1 end-date-settlement"><label class="control-label col-md-12">END DATE</label> </div>
@@ -706,20 +706,20 @@ for($i=0; $i<=13; $i++){
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label">ATTORNEY'S FEE 	</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="" name=""  class="form-control input-sm Amount" ></div>
-								<div class="col-md-1"><input step="0.01" type="number" id="" name=""  class="form-control input-sm percentage" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltAttorneyFeeTab6" name="FltAttorneyFeeTab6"  class="form-control input-sm Amount" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltAttorneyPercTab6" name="FltAttorneyPercTab6"  class="form-control input-sm percentage" ></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label">FILING FEE</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="" name=""  class="form-control input-sm Amount" ></div>
-								<div class="col-md-1"><input step="0.01" type="number" id="" name=""  class="form-control input-sm percentage" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltFillingFeeTab6" name="FltFillingFeeTab6"  class="form-control input-sm Amount" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltFillingFeePercTab6" name="FltFillingFeePercTab6"  class="form-control input-sm percentage" ></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label settlement-title">TOTAL AMOUNT</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="" name=""  class="form-control input-sm Amount" ></div>
-								<div class="col-md-1"><input step="0.01" type="number" id="" name=""  class="form-control input-sm percentage" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="TotalAmount" name="TotalAmount"  class="form-control input-sm Amount" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="TotalAmountPerc" name="TotalAmountPerc"  class="form-control input-sm percentage" ></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-3"></div>
@@ -1562,8 +1562,17 @@ $(document).ready(function(e) {
 					x[12].innerHTML = results.CaseInfo[$i].Claim_Amount;
 					$("input[name=Claim_Amount]").val(results.CaseInfo[$i].Claim_Amount);
 					$("#ClaimAmtTab6").val(results.CaseInfo[$i].Claim_Amount);
-					$("#PaymentsTab6").val(results.CaseInfo[$i].Claim_Amount);
-					$("#BalanceTab6").val(results.CaseInfo[$i].Claim_Amount);
+					$("#PaymentsTab6").val(results.CaseInfo[$i].Paid_Amount);
+					var balance = results.CaseInfo[$i].Claim_Amount - results.CaseInfo[$i].Paid_Amount;
+					$("#BalanceTab6").val(balance.toFixed(2));
+					$("#FltSettlement_AmountTab6").val(results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT);
+					var settlementPercentage = (results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT * 100)/ balance;
+					$("#settlementPercentageTab6").val(settlementPercentage.toFixed(2));
+					$("#FltAttorneyFeeTab6").val(results.CaseInfo[$i].FLT_ATTORNEY_FEE);
+					$("#FltInterestTab6").val(results.CaseInfo[$i].FLT_INTERATE_RATE);
+					$("#FltFillingFeeTab6").val(results.CaseInfo[$i].FLT_FILING_FEE);
+					var TotalAmount =  parseFloat(results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT) + parseFloat(results.CaseInfo[$i].FLT_INTERATE_RATE) + parseFloat(results.CaseInfo[$i].FLT_ATTORNEY_FEE) + parseFloat(results.CaseInfo[$i].FLT_FILING_FEE);
+					$("#TotalAmount").val(TotalAmount.toFixed(2));
 					
 					x[13].innerHTML = results.CaseInfo[$i].Paid_Amount;
 					$("input[name=Paid_Amount]").val(results.CaseInfo[$i].Paid_Amount);

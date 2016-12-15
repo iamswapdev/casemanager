@@ -3777,4 +3777,7 @@ table tr:hover {
 form#caseInfoSerach_form {
     color: #000;
 }
+.add-case-table.edit-case-table th{
+	text-align:center !important;
+}
 	

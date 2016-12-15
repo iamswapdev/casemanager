@@ -59,8 +59,10 @@ class Search extends CI_Controller{
 				$data['Service']= $this->search_model->get_ServiceArray();
 				$data['DenialReasons']= $this->search_model->get_DenialReasonsArray();
 				$data['CaseStatus']= $this->search_model->get_CaseStatus();
+				$data['State_Name']= $this->dataentry_model->get_States();
+				$data['Adjuster_Name']= $this->dataentry_model->get_Adjuster();
 				
-				$data['CaseInfo']= $this->search_model->get_CaseInfo($Case_AutoIdData);
+				$data['CaseInfo']= $this->search_model->get_CaseInfo_ById($Case_AutoId);
 				//echo "<pre>"; print_r($data['CaseInfo']); exit();
 				$this->load->view('pages/editcase',$data);
 				
@@ -342,7 +344,7 @@ class Search extends CI_Controller{
 						$DateOfService_Start2 = str_replace($months[$i]." ",$i."-",$DateOfService_Start);
 					}
 					$DateOfService_Start3 = substr_replace($DateOfService_Start2,"-",strpos($DateOfService_Start2," "),1);
-					
+					$DateOfService_Start = $DateOfService_Start3;
 					break;
 				}
 			}
@@ -367,11 +369,11 @@ class Search extends CI_Controller{
 						$DateOfService_End2 = str_replace($months[$i]." ",$i."-",$DateOfService_End);
 					}
 					$DateOfService_End3 = substr_replace($DateOfService_End2,"-",strpos($DateOfService_End2," "),1);
-					
+					$DateOfService_End = $DateOfService_End3;
 					break;
 				}
 			}
-			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$DateOfService_Start3."- ".$DateOfService_End3."</a>";
+			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$DateOfService_Start."- ".$DateOfService_End."</a>";
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Status."</a>";
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Ins_Claim_Number."</a>";
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Claim_Amount."</a>";
