@@ -950,7 +950,7 @@ for($i=0; $i<=13; $i++){
 							<div class="form-group form-horizontal col-md-12">
                             	<h5 class="h4-title">PAYMENT DETAILS</h5>
                                 <div class="col-md-12">
-                                    <table id="example3" class="table dataTable table-bordered table-striped">
+                                    <table id="SettlementQuickView" class="table dataTable table-bordered table-striped">
                                         <thead>
                                         <tr> 
                                             <th>Case ID</th>
@@ -977,21 +977,46 @@ for($i=0; $i<=13; $i++){
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
+                            	<h5 class="h4-title">PAYMENT DETAILS</h5>
+                                <div class="col-md-12">
+                                    <table id="TransactionTable" class="table dataTable table-bordered table-striped">
+                                        <thead>
+                                        <tr>					
+                                            <th>Provider</th>
+                                            <th>Transactions Type</th>
+                                            <th>Trans. Date</th>
+                                            <th>Trans. Amt.</th>
+                                            <th>Description</th>
+                                            <th>Fee</th>
+                                            <th>Transactions Status</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                    
+                                </div>
+                            </div>
+                            <div class="form-group form-horizontal col-md-12">
+                                <div class="col-md-2"><button type="button" id="deleteTransactionsButton" name="deleteTransactionsButton" class="btn btn-primary">Deleted Checked</button></div>
+                            </div>
+                            <form method="post" id="add_Transactions_Form" action="<?php echo base_url();?>search/addTransactions">
+                            <div class="form-group form-horizontal col-md-12">
+                            	<input type="hidden" name="Case_Id" value="<?php echo $Case_Id;?>">
                             	<label class="col-md-2 control-label">Transaction Amount</label>
                                 <div class="col-md-2">
-                                	<input type="text" id="" name=""  class="form-control input-sm" >
+                                	<input type="text" id="Transactions_Amount" name="Transactions_Amount"  class="form-control input-sm" >
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Transaction Date</label>
                                 <div class="col-md-2">
-                                	<input type="text" id="TransactionDate" name="TransactionDate"  class="form-control input-sm datepicker_recurring_start" >
+                                	<input type="text" id="Transactions_Date" name="Transactions_Date"  class="form-control input-sm datetimepicker_start" >
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Transaction Type</label>
                                 <div class="col-md-2">
-                                	<select class="form-control input-sm" id="TransactionType" name="" required>
+                                	<select class="form-control input-sm" id="Transactions_Type" name="Transactions_Type" required>
                                         <option selected="selected" value="0">...Select...</option>
                                         <option value="C">Collected (C - From Insurer)</option>
                                         <option value="AF">Attorney Fee (AF)</option>
@@ -1007,7 +1032,7 @@ for($i=0; $i<=13; $i++){
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Transaction Status</label>
                                 <div class="col-md-2">
-                                	<select class="form-control input-sm" id="" name="" required>
+                                	<select class="form-control input-sm" id="Transactions_status" name="Transactions_status" required>
                                         <option selected="selected" value="Show On Remittance">Show On Remittance</option>
                                         <option value="X">Do Not Show On Remittance</option>
                                      </select>
@@ -1016,13 +1041,16 @@ for($i=0; $i<=13; $i++){
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Notes</label>
                                 <div class="col-md-4">
-									<textarea rows="3"  id="memo" name="memo" class="form-control" ></textarea>
+									<textarea rows="3"  id="Transactions_Description" name="Transactions_Description" class="form-control" ></textarea>
 								</div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
                             	<div class="col-md-2"></div>
-                                <div class="col-md-2"><button>Finalize Settlement</button></div>
+                                <div class="col-md-2">
+                                	<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
+                                </div>
                             </div>
+                            </form>
 						</div><!-- End of panel-body tab-panel-->
 						</div><!-- End hpanel -->
 						</div><!-- End col-lg-12-->
@@ -1508,164 +1536,61 @@ $(document).ready(function(e) {
 	});
 /************************************************************************************************************************************/
 	
-	
-/* Bind Case info By CASE_ID clicking Tab-2 */ 
-	var x = document.getElementsByClassName("visible");
-	var y = document.getElementsByClassName("case-id");
-	var y2 = document.getElementsByClassName("old-case-id");
-		$.ajax({
-			type:'POST',
-			url:"<?php echo base_url(); ?>search/getCaseInfo/<?php echo $Case_AutoId;?>",
-			success:function(data){
-				results = JSON.parse(data);
-				/*$.each($.parseJSON(data), function(k, v) {
-					console.log(k + ' is ' + v);
-				});*/
-				
-				var optionsAsString = "";
-				for($i in results.CaseInfo){
-					y[0].innerHTML =  results.CaseInfo[$i].Case_Id;
-					$("#9CaseId").val(results.CaseInfo[$i].Case_Id);
-					document.getElementById("CaseId-tab-6").innerHTML = results.CaseInfo[$i].Case_Id;
-					//y2[0].innerHTML =  results.CaseInfo[$i].Old_Case_Id;
-					//document.getElementsByClassName("old-case-id").innerHTML =  results.CaseInfo[$i].Old_Case_Id;
-					x[0].innerHTML = results.CaseInfo[$i].Provider_Name;
-					document.getElementById("ProviderName-tab-6").innerHTML = results.CaseInfo[$i].Provider_Name;
-					x[1].innerHTML = results.CaseInfo[$i].Initial_Status;
-					x[2].innerHTML = results.CaseInfo[$i].InjuredParty_LastName +", "+results.CaseInfo[$i].InjuredParty_FirstName ;
-					$("input[name=InjuredParty_LastName]").val(results.CaseInfo[$i].InjuredParty_LastName);
-					$("input[name=InjuredParty_FirstName]").val(results.CaseInfo[$i].InjuredParty_FirstName);
-					document.getElementById("InjuredPartyName-tab-6").innerHTML = results.CaseInfo[$i].InjuredParty_LastName  +" "+results.CaseInfo[$i].InjuredParty_FirstName
-					
-					x[3].innerHTML = results.CaseInfo[$i].Last_Status;
-					x[4].innerHTML = results.CaseInfo[$i].InsuredParty_LastName +", "+results.CaseInfo[$i].InsuredParty_FirstName ;
-					$("input[name=InsuredParty_LastName]").val(results.CaseInfo[$i].InsuredParty_LastName);
-					$("input[name=InsuredParty_FirstName]").val(results.CaseInfo[$i].InsuredParty_FirstName);
-					
-					x[5].innerHTML = results.CaseInfo[$i].Ins_Claim_Number;
-					$("input[name=Ins_Claim_Number]").val(results.CaseInfo[$i].Ins_Claim_Number);
-					
-					x[6].innerHTML = results.CaseInfo[$i].Policy_Number;
-					$("input[name=Policy_Number]").val(results.CaseInfo[$i].Policy_Number);
-					
-					x[7].innerHTML = results.CaseInfo[$i].IndexOrAAA_Number;
-					$("input[name=IndexOrAAA_Number]").val(results.CaseInfo[$i].IndexOrAAA_Number);
-					
-					x[8].innerHTML = results.CaseInfo[$i].InsuranceCompany_Name;
-					x[9].innerHTML = results.CaseInfo[$i].Defendant_Name;
-					
-					x[10].innerHTML = results.CaseInfo[$i].Attorney_FileNumber;
-					$("input[name=Attorney_FileNumber]").val(results.CaseInfo[$i].Attorney_FileNumber);
-					
-					x[11].innerHTML = results.CaseInfo[$i].Court_Name;
-					
-					x[12].innerHTML = results.CaseInfo[$i].Claim_Amount;
-					$("input[name=Claim_Amount]").val(results.CaseInfo[$i].Claim_Amount);
-					$("#ClaimAmtTab6").val(results.CaseInfo[$i].Claim_Amount);
-					$("#PaymentsTab6").val(results.CaseInfo[$i].Paid_Amount);
-					var balance = results.CaseInfo[$i].Claim_Amount - results.CaseInfo[$i].Paid_Amount;
-					$("#BalanceTab6").val(balance.toFixed(2));
-					$("#FltSettlement_AmountTab6").val(results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT);
-					var settlementPercentage = (results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT * 100)/ balance;
-					$("#settlementPercentageTab6").val(settlementPercentage.toFixed(2));
-					$("#FltAttorneyFeeTab6").val(results.CaseInfo[$i].FLT_ATTORNEY_FEE);
-					$("#FltInterestTab6").val(results.CaseInfo[$i].FLT_INTERATE_RATE);
-					$("#FltFillingFeeTab6").val(results.CaseInfo[$i].FLT_FILING_FEE);
-					var TotalAmount =  parseFloat(results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT) + parseFloat(results.CaseInfo[$i].FLT_INTERATE_RATE) + parseFloat(results.CaseInfo[$i].FLT_ATTORNEY_FEE) + parseFloat(results.CaseInfo[$i].FLT_FILING_FEE);
-					$("#TotalAmount").val(TotalAmount.toFixed(2));
-					
-					x[13].innerHTML = results.CaseInfo[$i].Paid_Amount;
-					$("input[name=Paid_Amount]").val(results.CaseInfo[$i].Paid_Amount);
-					
-					x[15].innerHTML = results.CaseInfo[$i].Old_Case_Id;
-					$("input[name=Old_Case_Id]").val(results.CaseInfo[$i].Old_Case_Id);
-					
-					//x[16].innerHTML = results.CaseInfo[$i].Accident_DateNoTimr;
-					//$("input[name=Accident_Date]").val(results.CaseInfo[$i].Accident_DateNoTimr);
-					
-					x[16].innerHTML = results.CaseInfo[$i].Accident_Date;
-					$("input[name=Accident_Date]").val(results.CaseInfo[$i].Accident_Date);
-					
-					x[17].innerHTML = results.CaseInfo[$i].Adjuster_LastName+ ", "+results.CaseInfo[$i].Adjuster_FirstName;
-					
-					x[18].innerHTML = results.CaseInfo[$i].Attorney_Name;
-					
-					x[21].innerHTML = results.CaseInfo[$i].Date_Opened;
-					$("input[name=Date_Opened]").val(results.CaseInfo[$i].Date_Opened);
-					x[20].innerHTML = results.CaseInfo[$i].Plaintiff_Discovery_Due_Date;
-					$("input[name=Plaintiff_Discovery_Due_Date]").val(results.CaseInfo[$i].Plaintiff_Discovery_Due_Date);
-					x[21].innerHTML = results.CaseInfo[$i].Accident_Date;
-					$("input[name=Accident_Date]").val(results.CaseInfo[$i].Accident_Date);
-					x[22].innerHTML = results.CaseInfo[$i].Date_Reply_To_Disc_Conf_Letter_Recd;
-					$("input[name=Date_Reply_To_Disc_Conf_Letter_Recd]").val(results.CaseInfo[$i].Date_Reply_To_Disc_Conf_Letter_Recd);
-					x[23].innerHTML = results.CaseInfo[$i].Date_Bill_Submitted;
-					$("input[name=Date_Bill_Submitted]").val(results.CaseInfo[$i].Date_Bill_Submitted);
-					x[24].innerHTML = results.CaseInfo[$i].Date_Ext_Of_Time;
-					$("input[name=Date_Ext_Of_Time]").val(results.CaseInfo[$i].Date_Ext_Of_Time);
-					x[25].innerHTML = results.CaseInfo[$i].Date_Status_Changed;
-					$("input[name=Date_Status_Changed]").val(results.CaseInfo[$i].Date_Status_Changed);
-					x[26].innerHTML = results.CaseInfo[$i].Date_Ext_Of_Time_2;
-					$("input[name=Date_Ext_Of_Time_2]").val(results.CaseInfo[$i].Date_Ext_Of_Time_2);
-					x[27].innerHTML = results.CaseInfo[$i].Date_Summons_Printed;
-					$("input[name=Date_Summons_Printed]").val(results.CaseInfo[$i].Date_Summons_Printed);
-					x[28].innerHTML = results.CaseInfo[$i].Date_Ext_Of_Time_3;
-					$("input[name=Date_Ext_Of_Time_3]").val(results.CaseInfo[$i].Date_Ext_Of_Time_3);
-					
-					x[29].innerHTML = results.CaseInfo[$i].Date_Index_Number_Purchased;
-					$("input[name=Date_Index_Number_Purchased]").val(results.CaseInfo[$i].Date_Index_Number_Purchased);
-					
-					x[30].innerHTML = results.CaseInfo[$i].Defendant_Discovery_Due_Date;
-					$("input[name=Defendant_Discovery_Due_Date]").val(results.CaseInfo[$i].Defendant_Discovery_Due_Date);
-					
-					x[31].innerHTML = results.CaseInfo[$i].Date_Summons_Sent_Court;
-					$("input[name=Date_Ext_Of_Time_3]").val(results.CaseInfo[$i].Date_Ext_Of_Time_3);
-					
-					x[32].innerHTML = results.CaseInfo[$i].Date_Disc_Conf_Letter_Printed;
-					$("input[name=Date_Ext_Of_Time_3]").val(results.CaseInfo[$i].Date_Ext_Of_Time_3);
-					
-					x[33].innerHTML = results.CaseInfo[$i].Served_On_Date;
-					$("input[name=Served_On_Date]").val(results.CaseInfo[$i].Served_On_Date);
-					
-					x[34].innerHTML = results.CaseInfo[$i].stips_signed_and_returned;
-					$("input[name=stips_signed_and_returned]").val(results.CaseInfo[$i].stips_signed_and_returned);
-					
-					x[35].innerHTML = results.CaseInfo[$i].Served_To;
-					$("input[name=Served_To]").val(results.CaseInfo[$i].Served_To);
-					
-					x[36].innerHTML = results.CaseInfo[$i].stips_signed_and_returned_2;
-					$("input[name=stips_signed_and_returned_2]").val(results.CaseInfo[$i].stips_signed_and_returned_2);
-					
-					x[37].innerHTML = results.CaseInfo[$i].Served_On_Time;
-					$("input[name=Served_On_Time]").val(results.CaseInfo[$i].Served_On_Time);
-					
-					x[38].innerHTML = results.CaseInfo[$i].stips_signed_and_returned_3;
-					$("input[name=stips_signed_and_returned_3]").val(results.CaseInfo[$i].stips_signed_and_returned_3);
-					
-					x[39].innerHTML = results.CaseInfo[$i].Date_Afidavit_Filed;
-					$("input[name=Date_Afidavit_Filed]").val(results.CaseInfo[$i].Date_Afidavit_Filed);
-					
-					x[40].innerHTML = results.CaseInfo[$i].Date_Closed;
-					$("input[name=Date_Closed]").val(results.CaseInfo[$i].Date_Closed);
-					 
-					x[41].innerHTML = results.CaseInfo[$i].Date_Answer_Received;
-					$("input[name=Date_Answer_Received]").val(results.CaseInfo[$i].Date_Answer_Received);
-					
-					x[42].innerHTML = results.CaseInfo[$i].AAA_Conciliation_Date;
-					$("input[name=AAA_Conciliation_Date]").val(results.CaseInfo[$i].AAA_Conciliation_Date);
-					
-					x[43].innerHTML = results.CaseInfo[$i].Our_Discovery_Demands;
-					$("input[name=Our_Discovery_Demands]").val(results.CaseInfo[$i].Our_Discovery_Demands);
-					
-					x[44].innerHTML = results.CaseInfo[$i].Arb_Award_Date;
-					$("input[name=Arb_Award_Date]").val(results.CaseInfo[$i].Arb_Award_Date);
-					
-					x[45].innerHTML = results.CaseInfo[$i].Date_Demands_Printed;
-					$("input[name=Date_Demands_Printed]").val(results.CaseInfo[$i].Date_Demands_Printed);
-				}  
-			},
-			error: function(result){ console.log("error"); }
+/*************************************************** Payment TAB-8 ***************************************************************/	
 		
+	$('#SettlementQuickView').dataTable( {
+		"ajax": "<?php echo base_url();?>search/SettlementQuickView/<?php echo $Case_AutoId;?>",
+		"iDisplayLength": 10,
+		"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+	});
+	$('#TransactionTable').dataTable( {
+		"ajax": "<?php echo base_url();?>search/getTransactions/<?php echo $Case_Id;?>",
+		"iDisplayLength": 10,
+		"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+	});
+	/******** DELETE TRANSACTIONS ********/
+	$('body').on( 'click', '#deleteTransactionsButton', function () {
+		var checkedNo = [];
+		
+		$('.deleteCheckedTransactions:checked').each(function(i){
+			var values = $(this).val();
+			checkedNo.push(values);
 		});
+		console.log("deleteTransactionsButton:"+checkedNo.length);
+		if(checkedNo.length !=0){
+			swal({
+				title: "Are you sure?",
+				text: "You will not be able to recover these records",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "Yes, delete it!",
+				cancelButtonText: "No, cancel it!",
+				closeOnConfirm: false,
+				closeOnCancel: false },
+			function (isConfirm) {
+				if (isConfirm) {
+					request = $.ajax({
+						url:"<?php echo base_url();?>search/deleteTransactions",
+						type: "post",
+						data: {deleteCheckedTransactions:checkedNo}
+					});
+			
+					request.done(function (response, textStatus, jqXHR) {
+						
+						$('.deleteCheckedTransactions:checked').each(function(i){
+							var values = $(this).val();
+							var row = $(".deleteCheckedTransactions"+values).parent().parent();
+							$(row).remove();
+						});
+					});
+					swal("Deleted!", "Your records has been deleted.", "success");
+				} else {
+					swal("Cancelled", "Your records are safe :)", "error");
+				}
+			});
+		}
+	});
 /*************************************************** EVENT TAB-9 ***************************************************************/
 /****GET EVENTS NOTES INFO *********/	
 	$('#eventTable').dataTable( {
@@ -1828,7 +1753,163 @@ $(document).ready(function(e) {
 });
 	
 /**********************************************************************************************************************************/
-	
+/* Bind Case info By CASE_ID clicking Tab-2 */ 
+	var x = document.getElementsByClassName("visible");
+	var y = document.getElementsByClassName("case-id");
+	var y2 = document.getElementsByClassName("old-case-id");
+		$.ajax({
+			type:'POST',
+			url:"<?php echo base_url(); ?>search/getCaseInfo/<?php echo $Case_AutoId;?>",
+			success:function(data){
+				results = JSON.parse(data);
+				/*$.each($.parseJSON(data), function(k, v) {
+					console.log(k + ' is ' + v);
+				});*/
+				
+				var optionsAsString = "";
+				for($i in results.CaseInfo){
+					y[0].innerHTML =  results.CaseInfo[$i].Case_Id;
+					$("#9CaseId").val(results.CaseInfo[$i].Case_Id);
+					document.getElementById("CaseId-tab-6").innerHTML = results.CaseInfo[$i].Case_Id;
+					//y2[0].innerHTML =  results.CaseInfo[$i].Old_Case_Id;
+					//document.getElementsByClassName("old-case-id").innerHTML =  results.CaseInfo[$i].Old_Case_Id;
+					x[0].innerHTML = results.CaseInfo[$i].Provider_Name;
+					document.getElementById("ProviderName-tab-6").innerHTML = results.CaseInfo[$i].Provider_Name;
+					x[1].innerHTML = results.CaseInfo[$i].Initial_Status;
+					x[2].innerHTML = results.CaseInfo[$i].InjuredParty_LastName +", "+results.CaseInfo[$i].InjuredParty_FirstName ;
+					$("input[name=InjuredParty_LastName]").val(results.CaseInfo[$i].InjuredParty_LastName);
+					$("input[name=InjuredParty_FirstName]").val(results.CaseInfo[$i].InjuredParty_FirstName);
+					document.getElementById("InjuredPartyName-tab-6").innerHTML = results.CaseInfo[$i].InjuredParty_LastName  +" "+results.CaseInfo[$i].InjuredParty_FirstName
+					
+					x[3].innerHTML = results.CaseInfo[$i].Last_Status;
+					x[4].innerHTML = results.CaseInfo[$i].InsuredParty_LastName +", "+results.CaseInfo[$i].InsuredParty_FirstName ;
+					$("input[name=InsuredParty_LastName]").val(results.CaseInfo[$i].InsuredParty_LastName);
+					$("input[name=InsuredParty_FirstName]").val(results.CaseInfo[$i].InsuredParty_FirstName);
+					
+					x[5].innerHTML = results.CaseInfo[$i].Ins_Claim_Number;
+					$("input[name=Ins_Claim_Number]").val(results.CaseInfo[$i].Ins_Claim_Number);
+					
+					x[6].innerHTML = results.CaseInfo[$i].Policy_Number;
+					$("input[name=Policy_Number]").val(results.CaseInfo[$i].Policy_Number);
+					
+					x[7].innerHTML = results.CaseInfo[$i].IndexOrAAA_Number;
+					$("input[name=IndexOrAAA_Number]").val(results.CaseInfo[$i].IndexOrAAA_Number);
+					
+					x[8].innerHTML = results.CaseInfo[$i].InsuranceCompany_Name;
+					x[9].innerHTML = results.CaseInfo[$i].Defendant_Name;
+					
+					x[10].innerHTML = results.CaseInfo[$i].Attorney_FileNumber;
+					$("input[name=Attorney_FileNumber]").val(results.CaseInfo[$i].Attorney_FileNumber);
+					
+					x[11].innerHTML = results.CaseInfo[$i].Court_Name;
+					
+					x[12].innerHTML = results.CaseInfo[$i].Claim_Amount;
+					$("input[name=Claim_Amount]").val(results.CaseInfo[$i].Claim_Amount);
+					$("#ClaimAmtTab6").val(results.CaseInfo[$i].Claim_Amount);
+					$("#PaymentsTab6").val(results.CaseInfo[$i].Paid_Amount);
+					var balance = results.CaseInfo[$i].Claim_Amount - results.CaseInfo[$i].Paid_Amount;
+					$("#BalanceTab6").val(balance.toFixed(2));
+					$("#FltSettlement_AmountTab6").val(results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT);
+					var settlementPercentage = (results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT * 100)/ balance;
+					$("#settlementPercentageTab6").val(settlementPercentage.toFixed(2));
+					$("#FltAttorneyFeeTab6").val(results.CaseInfo[$i].FLT_ATTORNEY_FEE);
+					$("#FltInterestTab6").val(results.CaseInfo[$i].FLT_INTERATE_RATE);
+					$("#FltFillingFeeTab6").val(results.CaseInfo[$i].FLT_FILING_FEE);
+					var TotalAmount =  parseFloat(results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT) + parseFloat(results.CaseInfo[$i].FLT_INTERATE_RATE) + parseFloat(results.CaseInfo[$i].FLT_ATTORNEY_FEE) + parseFloat(results.CaseInfo[$i].FLT_FILING_FEE);
+					$("#TotalAmount").val(TotalAmount.toFixed(2));
+					
+					x[13].innerHTML = results.CaseInfo[$i].Paid_Amount;
+					$("input[name=Paid_Amount]").val(results.CaseInfo[$i].Paid_Amount);
+					
+					x[15].innerHTML = results.CaseInfo[$i].Old_Case_Id;
+					$("input[name=Old_Case_Id]").val(results.CaseInfo[$i].Old_Case_Id);
+					
+					//x[16].innerHTML = results.CaseInfo[$i].Accident_DateNoTimr;
+					//$("input[name=Accident_Date]").val(results.CaseInfo[$i].Accident_DateNoTimr);
+					
+					x[16].innerHTML = results.CaseInfo[$i].Accident_Date;
+					$("input[name=Accident_Date]").val(results.CaseInfo[$i].Accident_Date);
+					
+					x[17].innerHTML = results.CaseInfo[$i].Adjuster_LastName+ ", "+results.CaseInfo[$i].Adjuster_FirstName;
+					
+					x[18].innerHTML = results.CaseInfo[$i].Attorney_Name;
+					
+					x[21].innerHTML = results.CaseInfo[$i].Date_Opened;
+					$("input[name=Date_Opened]").val(results.CaseInfo[$i].Date_Opened);
+					x[20].innerHTML = results.CaseInfo[$i].Plaintiff_Discovery_Due_Date;
+					$("input[name=Plaintiff_Discovery_Due_Date]").val(results.CaseInfo[$i].Plaintiff_Discovery_Due_Date);
+					x[21].innerHTML = results.CaseInfo[$i].Accident_Date;
+					$("input[name=Accident_Date]").val(results.CaseInfo[$i].Accident_Date);
+					x[22].innerHTML = results.CaseInfo[$i].Date_Reply_To_Disc_Conf_Letter_Recd;
+					$("input[name=Date_Reply_To_Disc_Conf_Letter_Recd]").val(results.CaseInfo[$i].Date_Reply_To_Disc_Conf_Letter_Recd);
+					x[23].innerHTML = results.CaseInfo[$i].Date_Bill_Submitted;
+					$("input[name=Date_Bill_Submitted]").val(results.CaseInfo[$i].Date_Bill_Submitted);
+					x[24].innerHTML = results.CaseInfo[$i].Date_Ext_Of_Time;
+					$("input[name=Date_Ext_Of_Time]").val(results.CaseInfo[$i].Date_Ext_Of_Time);
+					x[25].innerHTML = results.CaseInfo[$i].Date_Status_Changed;
+					$("input[name=Date_Status_Changed]").val(results.CaseInfo[$i].Date_Status_Changed);
+					x[26].innerHTML = results.CaseInfo[$i].Date_Ext_Of_Time_2;
+					$("input[name=Date_Ext_Of_Time_2]").val(results.CaseInfo[$i].Date_Ext_Of_Time_2);
+					x[27].innerHTML = results.CaseInfo[$i].Date_Summons_Printed;
+					$("input[name=Date_Summons_Printed]").val(results.CaseInfo[$i].Date_Summons_Printed);
+					x[28].innerHTML = results.CaseInfo[$i].Date_Ext_Of_Time_3;
+					$("input[name=Date_Ext_Of_Time_3]").val(results.CaseInfo[$i].Date_Ext_Of_Time_3);
+					
+					x[29].innerHTML = results.CaseInfo[$i].Date_Index_Number_Purchased;
+					$("input[name=Date_Index_Number_Purchased]").val(results.CaseInfo[$i].Date_Index_Number_Purchased);
+					
+					x[30].innerHTML = results.CaseInfo[$i].Defendant_Discovery_Due_Date;
+					$("input[name=Defendant_Discovery_Due_Date]").val(results.CaseInfo[$i].Defendant_Discovery_Due_Date);
+					
+					x[31].innerHTML = results.CaseInfo[$i].Date_Summons_Sent_Court;
+					$("input[name=Date_Ext_Of_Time_3]").val(results.CaseInfo[$i].Date_Ext_Of_Time_3);
+					
+					x[32].innerHTML = results.CaseInfo[$i].Date_Disc_Conf_Letter_Printed;
+					$("input[name=Date_Ext_Of_Time_3]").val(results.CaseInfo[$i].Date_Ext_Of_Time_3);
+					
+					x[33].innerHTML = results.CaseInfo[$i].Served_On_Date;
+					$("input[name=Served_On_Date]").val(results.CaseInfo[$i].Served_On_Date);
+					
+					x[34].innerHTML = results.CaseInfo[$i].stips_signed_and_returned;
+					$("input[name=stips_signed_and_returned]").val(results.CaseInfo[$i].stips_signed_and_returned);
+					
+					x[35].innerHTML = results.CaseInfo[$i].Served_To;
+					$("input[name=Served_To]").val(results.CaseInfo[$i].Served_To);
+					
+					x[36].innerHTML = results.CaseInfo[$i].stips_signed_and_returned_2;
+					$("input[name=stips_signed_and_returned_2]").val(results.CaseInfo[$i].stips_signed_and_returned_2);
+					
+					x[37].innerHTML = results.CaseInfo[$i].Served_On_Time;
+					$("input[name=Served_On_Time]").val(results.CaseInfo[$i].Served_On_Time);
+					
+					x[38].innerHTML = results.CaseInfo[$i].stips_signed_and_returned_3;
+					$("input[name=stips_signed_and_returned_3]").val(results.CaseInfo[$i].stips_signed_and_returned_3);
+					
+					x[39].innerHTML = results.CaseInfo[$i].Date_Afidavit_Filed;
+					$("input[name=Date_Afidavit_Filed]").val(results.CaseInfo[$i].Date_Afidavit_Filed);
+					
+					x[40].innerHTML = results.CaseInfo[$i].Date_Closed;
+					$("input[name=Date_Closed]").val(results.CaseInfo[$i].Date_Closed);
+					 
+					x[41].innerHTML = results.CaseInfo[$i].Date_Answer_Received;
+					$("input[name=Date_Answer_Received]").val(results.CaseInfo[$i].Date_Answer_Received);
+					
+					x[42].innerHTML = results.CaseInfo[$i].AAA_Conciliation_Date;
+					$("input[name=AAA_Conciliation_Date]").val(results.CaseInfo[$i].AAA_Conciliation_Date);
+					
+					x[43].innerHTML = results.CaseInfo[$i].Our_Discovery_Demands;
+					$("input[name=Our_Discovery_Demands]").val(results.CaseInfo[$i].Our_Discovery_Demands);
+					
+					x[44].innerHTML = results.CaseInfo[$i].Arb_Award_Date;
+					$("input[name=Arb_Award_Date]").val(results.CaseInfo[$i].Arb_Award_Date);
+					
+					x[45].innerHTML = results.CaseInfo[$i].Date_Demands_Printed;
+					$("input[name=Date_Demands_Printed]").val(results.CaseInfo[$i].Date_Demands_Printed);
+				}  
+			},
+			error: function(result){ console.log("error"); }
+		
+		});
 	
 </script>
 <script>

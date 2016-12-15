@@ -16,17 +16,60 @@ Class Search_model extends CI_Model{
 		
 		$this->db->select('t1.*, DATE_FORMAT(t1.Accident_Date,"%m-%Y-%d") as Accident_DateNoTimr, t2.Provider_Name, t3.InsuranceCompany_Name, t4.Defendant_Name, t5.Adjuster_LastName, t5.Adjuster_FirstName, t6.Attorney_Name, t7.Court_Name' );
 		$this->db->from('dbo_tblcase as t1');
-		$this->db->where('Case_AutoId',$Case_AutoId);
+		
 		$this->db->join('dbo_tblprovider as t2', 't1.Provider_Id = t2.Provider_Id', 'LEFT');
 		$this->db->join('dbo_tblinsurancecompany as t3', 't1.InsuranceCompany_Id = t3.InsuranceCompany_Id', 'LEFT');
 		$this->db->join('dbo_tbldefendant as t4', 't1.Defendant_Id = t4.Defendant_id', 'LEFT');
 		$this->db->join('dbo_tbladjusters as t5', 't1.Adjuster_Id = t5.Adjuster_Id', 'LEFT');
 		$this->db->join('dbo_tblplaintiffattorney as t6', 't1.Plaintiff_Id = t6.Attorney_id', 'LEFT');
 		$this->db->join('dbo_tblcourt as t7', 't1.Court_Id = t7.Court_Id', 'LEFT');
+		$this->db->where('Case_AutoId',$Case_AutoId);
 		$query= $this->db->get();
 		$data=$query->result_array();
 		//echo "<pre>"; print_r($data); exit();
 		return $data;
+	}
+	public function get_CaseInfo_ById2($Case_AutoId){
+		
+		$this->db->select('t1.*, DATE_FORMAT(t1.Accident_Date,"%m-%Y-%d") as Accident_DateNoTimr, t2.Provider_Name, t3.InsuranceCompany_Name, t4.Defendant_Name, t5.Adjuster_LastName, t5.Adjuster_FirstName, t6.Attorney_Name, t7.Court_Name' );
+		$this->db->from('dbo_tblcase as t1');
+		
+		$this->db->join('dbo_tblprovider as t2', 't1.Provider_Id = t2.Provider_Id', 'LEFT');
+		$this->db->join('dbo_tblinsurancecompany as t3', 't1.InsuranceCompany_Id = t3.InsuranceCompany_Id', 'LEFT');
+		$this->db->join('dbo_tbldefendant as t4', 't1.Defendant_Id = t4.Defendant_id', 'LEFT');
+		$this->db->join('dbo_tbladjusters as t5', 't1.Adjuster_Id = t5.Adjuster_Id', 'LEFT');
+		$this->db->join('dbo_tblplaintiffattorney as t6', 't1.Plaintiff_Id = t6.Attorney_id', 'LEFT');
+		$this->db->join('dbo_tblcourt as t7', 't1.Court_Id = t7.Court_Id', 'LEFT');
+		$this->db->where('Case_AutoId',$Case_AutoId);
+		$query= $this->db->get();
+		$data=$query->result();
+		//echo "<pre>"; print_r($data); exit();
+		return $data;
+	}
+	public function get_Transactions($Case_Id){
+		$this->db->select('t1.*,  t2.Provider_Name' );
+		$this->db->from('dbo_tbltransactions as t1');
+		$this->db->join('dbo_tblprovider as t2', 't1.Provider_Id = t2.Provider_Id', 'LEFT');
+		$this->db->where('Case_Id',$Case_Id);
+		$query= $this->db->get();
+		$data=$query->result();
+		//echo "<pre>"; print_r($data); exit();
+		return $data;
+	}
+	public function delete_Transactions($CheckedTransactions){
+		foreach($CheckedTransactions as $row){
+			$this->db->where("Transactions_Id", $row);
+			//echo "ID: ".$row;
+			$this->db->delete('dbo_tbltransactions');
+		}
+	}
+	public function add_Transaction($data){
+		$query = $this->db->insert('dbo_tbltransactions',$data); 
+		if($query){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	public function get_Provider()
@@ -140,7 +183,8 @@ Class Search_model extends CI_Model{
 		$this->db->join('dbo_tblprovider as t2', 't1.Provider_Id = t2.Provider_Id', 'LEFT');
 		$this->db->join('dbo_tblinsurancecompany as t3', 't1.InsuranceCompany_Id = t3.InsuranceCompany_Id', 'LEFT');
 		if($Recieveddata['Case_Id'] !=""){
-			$this->db->where('t1.Case_Id', $Recieveddata['Case_Id']);
+			//$this->db->where('t1.Case_Id', $Recieveddata['Case_Id']);
+			$this->db->where("t1.Case_Id LIKE '".$Recieveddata['Case_Id']."%'");
 		}
 		if($Recieveddata['InjuredParty_LastName'] !=""){
 			$this->db->where('t1.InjuredParty_LastName', $Recieveddata['InjuredParty_LastName']);

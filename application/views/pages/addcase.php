@@ -198,8 +198,9 @@
                 
                 
                 <div class="form-group form-horizontal col-lg-12 set-bg">
-                	<div class="table-responsive">
-                        <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped add-case-table">
+                
+                	<div class="table-responsive1">
+                        <table cellpadding="1" cellspacing="1" class="table table-bordered add-case-table">
                             <thead>
                             <tr>
                                 <th>D.O.S-Start</th>
@@ -214,11 +215,11 @@
                             </thead>
                             <tbody>
                             <tr class="first-row">
-                                <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start"></td>
-                                <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start"></td>
+                                <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datetimepicker"></td>
+                                <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datetimepicker"></td>
                                 <td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm"></td>
                                 <td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm"></td>
-                                <td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datepicker_recurring_start"></td>
+                                <td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datetimepicker"></td>
                                 <td><select class="form-control input-sm" id="serviceType" name="serviceType">
                                         <option selected="selected" value=""></option>
                                         <?php foreach($Service as $row){?>
@@ -368,11 +369,11 @@
 		countForRows++;
 		  
 		var addNewRow = '<tr class="r'+value+'">';
-		    addNewRow += '<td><input name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start"></td>';
-            addNewRow += '<td><input name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start"></td>'
+		    addNewRow += '<td><input name="dateOfServiceStart" class="form-control input-sm datetimepicker"></td>';
+            addNewRow += '<td><input name="dateOfServiceEnd" class="form-control input-sm datetimepicker"></td>'
             addNewRow += '<td><input type="text" name="claimAmt" class="form-control input-sm"></td>'
             addNewRow += '<td><input type="text" name="paidAmt" class="form-control input-sm"></td>'
-            addNewRow += '<td><input class="form-control input-sm datepicker_recurring_start" name="dateBillSent"></td>';
+            addNewRow += '<td><input class="form-control input-sm datetimepicker" name="dateBillSent"></td>';
 			addNewRow += '<td><select class="form-control input-sm" name="serviceType"><option>-- Select Service--</option><?php foreach($Service as $row){?><option value="<?php echo $row['ServiceType_ID']; ?>"> <?php echo $row['ServiceType']; ?> </option><?php }?></select></td>';
 			
 			addNewRow += '<td><select class="form-control input-sm" name="denialReasons"><option>-- Select Denial reason --</option><?php foreach($DenialReasons as $row){?><option value="<?php echo $row['DenialReasons_Id']; ?>"> <?php echo $row['DenialReasons_Type']; ?> </option><?php }?></select></td>';
@@ -531,6 +532,11 @@
 		$(this).mask("999999/99");
 	});
 	
+	/*$('body').on('focus',".datetimepicker", function(){
+		$(this).datetimepicker({
+			format:'YYYY/MM/DD HH:mm:ss'
+		})
+	});*/
 	$('body').on('focus',".datetimepicker", function(){
 		$(this).datetimepicker({
 			format:'YYYY/MM/DD HH:mm:ss'
