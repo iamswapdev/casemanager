@@ -417,11 +417,11 @@ for($i=0; $i<=13; $i++){
                             </thead>
                             <tbody>
                             <tr class="first-row">
-                                <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datetimepicker" value="<?php echo str_replace(" 12:00AM","",$DateOfService_Start);?>"></td>
-                                <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start" value="<?php echo str_replace(" 12:00AM","",$DateOfService_End);?>"></td>
+                                <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datetimepicker_Dos_Doe" value="<?php echo str_replace(" 12:00AM","",$DateOfService_Start);?>"></td>
+                                <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datetimepicker_Dos_Doe" value="<?php echo str_replace(" 12:00AM","",$DateOfService_End);?>"></td>
                                 <td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm" value="<?php echo $Claim_Amount;?>"></td>
                                 <td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm" value="<?php echo $Paid_Amount;?>"></td>
-                                <td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datepicker_recurring_start" value="<?php echo $Date_BillSent;?>"></td>
+                                <td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datetimepicker_Dos_Doe" value="<?php echo $Date_BillSent;?>"></td>
                             </tr>
                             </tbody>
                         </table>
@@ -614,6 +614,11 @@ for($i=0; $i<=13; $i++){
 	});
 	$('body').on('focus',".phone-format", function(){
 		$(this).mask("999-999-9999");
+	});
+	$('body').on('focus',".datetimepicker_Dos_Doe", function(){
+		$(this).datetimepicker({
+			format:'MM/DD/YYYY HH:mm:ss'
+		})
 	});
 	
 </script>

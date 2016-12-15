@@ -215,11 +215,11 @@
                             </thead>
                             <tbody>
                             <tr class="first-row">
-                                <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datetimepicker"></td>
-                                <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datetimepicker"></td>
+                                <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datetimepicker_Dos_Doe"></td>
+                                <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datetimepicker_Dos_Doe"></td>
                                 <td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm"></td>
                                 <td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm"></td>
-                                <td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datetimepicker"></td>
+                                <td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datetimepicker_Dos_Doe"></td>
                                 <td><select class="form-control input-sm" id="serviceType" name="serviceType">
                                         <option selected="selected" value=""></option>
                                         <?php foreach($Service as $row){?>
@@ -369,11 +369,11 @@
 		countForRows++;
 		  
 		var addNewRow = '<tr class="r'+value+'">';
-		    addNewRow += '<td><input name="dateOfServiceStart" class="form-control input-sm datetimepicker"></td>';
-            addNewRow += '<td><input name="dateOfServiceEnd" class="form-control input-sm datetimepicker"></td>'
+		    addNewRow += '<td><input name="dateOfServiceStart" class="form-control input-sm datetimepicker_Dos_Doe"></td>';
+            addNewRow += '<td><input name="dateOfServiceEnd" class="form-control input-sm datetimepicker_Dos_Doe"></td>'
             addNewRow += '<td><input type="text" name="claimAmt" class="form-control input-sm"></td>'
             addNewRow += '<td><input type="text" name="paidAmt" class="form-control input-sm"></td>'
-            addNewRow += '<td><input class="form-control input-sm datetimepicker" name="dateBillSent"></td>';
+            addNewRow += '<td><input class="form-control input-sm datetimepicker_Dos_Doe" name="dateBillSent"></td>';
 			addNewRow += '<td><select class="form-control input-sm" name="serviceType"><option>-- Select Service--</option><?php foreach($Service as $row){?><option value="<?php echo $row['ServiceType_ID']; ?>"> <?php echo $row['ServiceType']; ?> </option><?php }?></select></td>';
 			
 			addNewRow += '<td><select class="form-control input-sm" name="denialReasons"><option>-- Select Denial reason --</option><?php foreach($DenialReasons as $row){?><option value="<?php echo $row['DenialReasons_Id']; ?>"> <?php echo $row['DenialReasons_Type']; ?> </option><?php }?></select></td>';
@@ -540,6 +540,11 @@
 	$('body').on('focus',".datetimepicker", function(){
 		$(this).datetimepicker({
 			format:'YYYY/MM/DD HH:mm:ss'
+		})
+	});
+	$('body').on('focus',".datetimepicker_Dos_Doe", function(){
+		$(this).datetimepicker({
+			format:'MM/DD/YYYY HH:mm:ss'
 		})
 	});
 	$('body').on('focus',".datepicker_recurring_start", function(){

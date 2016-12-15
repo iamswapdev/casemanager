@@ -65,23 +65,23 @@ for($i=0; $i<=13; $i++){
 			if(substr($DateOfService_Start, 4, 1) == " "){
 				$DateOfService_Start7 = substr_replace($DateOfService_Start,"0",4,1);
 				if($i == 13){
-					$DateOfService_Start2 = str_replace($months[$i]." ","01-",$DateOfService_Start7);
+					$DateOfService_Start2 = str_replace($months[$i]." ","01/",$DateOfService_Start7);
 				}else{
-					$DateOfService_Start2 = str_replace($months[$i]." ","0".$i."-",$DateOfService_Start7);
+					$DateOfService_Start2 = str_replace($months[$i]." ","0".$i."/",$DateOfService_Start7);
 				}
 				
 			}else{
 				if($i == 13){
-					$DateOfService_Start2 = str_replace($months[$i]." ","01-",$DateOfService_Start);
+					$DateOfService_Start2 = str_replace($months[$i]." ","01/",$DateOfService_Start);
 				}else{
-					$DateOfService_Start2 = str_replace($months[$i]." ","0".$i."-",$DateOfService_Start);
+					$DateOfService_Start2 = str_replace($months[$i]." ","0".$i."/",$DateOfService_Start);
 				}
 				
 			}
 		}else{
-			$DateOfService_Start2 = str_replace($months[$i]." ",$i."-",$DateOfService_Start);
+			$DateOfService_Start2 = str_replace($months[$i]." ",$i."/",$DateOfService_Start);
 		}
-		$DateOfService_Start3 = substr_replace($DateOfService_Start2,"-",strpos($DateOfService_Start2," "),1);
+		$DateOfService_Start3 = substr_replace($DateOfService_Start2,"/",strpos($DateOfService_Start2," "),1);
 		$DateOfService_Start = $DateOfService_Start3;
 		break;
 	}
@@ -93,21 +93,21 @@ for($i=0; $i<=13; $i++){
 			if(substr($DateOfService_End, 4, 1) == " "){
 				$DateOfService_End7 = substr_replace($DateOfService_End,"0",4,1);
 				if($i == 13){
-					$DateOfService_End2 = str_replace($months[$i]." ","01-",$DateOfService_End7);
+					$DateOfService_End2 = str_replace($months[$i]." ","01/",$DateOfService_End7);
 				}else{
-					$DateOfService_End2 = str_replace($months[$i]." ","0".$i."-",$DateOfService_End7);
+					$DateOfService_End2 = str_replace($months[$i]." ","0".$i."/",$DateOfService_End7);
 				}
 			}else{
 				if($i == 13){
-					$DateOfService_End2 = str_replace($months[$i]." ","01-",$DateOfService_End);
+					$DateOfService_End2 = str_replace($months[$i]." ","01/",$DateOfService_End);
 				}else{
-					$DateOfService_End2 = str_replace($months[$i]." ","0".$i."-",$DateOfService_End);
+					$DateOfService_End2 = str_replace($months[$i]." ","0".$i."/",$DateOfService_End);
 				}
 			}
 		}else{
-			$DateOfService_End2 = str_replace($months[$i]." ",$i."-",$DateOfService_End);
+			$DateOfService_End2 = str_replace($months[$i]." ",$i."/",$DateOfService_End);
 		}
-		$DateOfService_End3 = substr_replace($DateOfService_End2,"-",strpos($DateOfService_End2," "),1);
+		$DateOfService_End3 = substr_replace($DateOfService_End2,"/",strpos($DateOfService_End2," "),1);
 		$DateOfService_End = $DateOfService_End3;
 		break;
 	}
@@ -266,11 +266,11 @@ for($i=0; $i<=13; $i++){
                                 </thead>
 									<tbody>
 									<tr class="first-row">
-										<td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start" value="<?php echo str_replace(" 12:00AM","",$DateOfService_Start);?>"></td>
-										<td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start" value="<?php  echo str_replace(" 12:00AM","",$DateOfService_End);?>"></td>
+										<td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datetimepicker_Dos_Doe" value="<?php echo substr_replace($DateOfService_Start,"",11,8);?>"></td>
+										<td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datetimepicker_Dos_Doe" value="<?php  echo substr_replace($DateOfService_End,"",11,8);?>"></td>
 										<td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm" value="<?php echo $Claim_Amount;?>"></td>
 										<td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm" value="<?php echo $Paid_Amount;?>"></td>
-										<td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datepicker_recurring_start" value="<?php echo $Date_BillSent;?>"></td>
+										<td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datetimepicker_Dos_Doe" value="<?php echo $Date_BillSent;?>"></td>
                                         <td><select class="form-control input-sm" id="serviceType" name="serviceType">
                                         <option>-- Select Service--</option>
                                         <?php foreach($Service as $row){?>
@@ -313,12 +313,12 @@ for($i=0; $i<=13; $i++){
                                 
                                 </thead>
 									<tbody>
-									<tr class="first-row">
-										<td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start" value="<?php echo str_replace(" 12:00AM","",$DateOfService_Start);?>"></td>
-										<td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start" value="<?php echo str_replace(" 12:00AM","",$DateOfService_End);?>"></td>
+									<tr>
+										<td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datetimepicker_Dos_Doe" value="<?php echo str_replace(" 12:00AM","",$DateOfService_Start);?>"></td>
+										<td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datetimepicker_Dos_Doe" value="<?php echo str_replace(" 12:00AM","",$DateOfService_End);?>"></td>
 										<td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm" value="<?php echo $Claim_Amount;?>"></td>
 										<td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm" value="<?php echo $Paid_Amount;?>"></td>
-										<td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datepicker_recurring_start" value="<?php echo $Date_BillSent;?>"></td>
+										<td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datetimepicker_Dos_Doe" value="<?php echo $Date_BillSent;?>"></td>
 									</tr>
                                 
                                 </tbody>
@@ -1282,11 +1282,11 @@ $(document).ready(function(e) {
 		countForRows++;
 		  
 		var addNewRow = '<tr class="r'+value+'">';
-		    addNewRow += '<td><input class="form-control input-sm datepicker_recurring_start" name="dateOfServiceStart"></td>';
-            addNewRow += '<td><input class="form-control input-sm datepicker_recurring_start" name="dateOfServiceStart"></td>'
+		    addNewRow += '<td><input class="form-control input-sm datetimepicker_Dos_Doe" name="dateOfServiceStart"></td>';
+            addNewRow += '<td><input class="form-control input-sm datetimepicker_Dos_Doe" name="dateOfServiceStart"></td>'
             addNewRow += '<td><input type="text" name="claimAmt" class="form-control input-sm"></td>'
             addNewRow += '<td><input type="text" name="paidAmt" class="form-control input-sm"></td>'
-            addNewRow += '<td><input class="form-control input-sm datepicker_recurring_start" name="dateBillSent"></td>';
+            addNewRow += '<td><input class="form-control input-sm datetimepicker_Dos_Doe" name="dateBillSent"></td>';
 			addNewRow += '<td><select class="form-control input-sm" name="serviceType"><option>-- Select Service--</option><?php foreach($Service as $row){?><option value="<?php echo $row['ServiceType_ID']; ?>"> <?php echo $row['ServiceType']; ?> </option><?php }?></select></td>';
 			
 			addNewRow += '<td><select class="form-control input-sm" name="denialReasons"><option>-- Select Denial reason --</option><?php foreach($DenialReasons as $row){?><option value="<?php echo $row['DenialReasons_Id']; ?>"> <?php echo $row['DenialReasons_Type']; ?> </option><?php }?></select></td>';
@@ -1748,6 +1748,11 @@ $(document).ready(function(e) {
 		$(this).datetimepicker({
 			format:'HH:mm:ss'
 		});
+	});
+	$('body').on('focus',".datetimepicker_Dos_Doe", function(){
+		$(this).datetimepicker({
+			format:'MM/DD/YYYY HH:mm:ss'
+		})
 	});
 	
 });
