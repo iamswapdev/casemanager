@@ -3789,13 +3789,13 @@ form#caseInfoSerach_form {
 	text-align:center !important;
 }
 .work-area-info tr th:nth-child(2){
-	width:175px;
+	width:250px;
 }
 .work-area-info tr th:nth-child(5){
-	width:140px;
+	width:230px;
 }
 .work-area-info tr td:nth-child(6){
-	width:145px;
+	width:250px;
 }
 .work-area-info-tab2 th{
 	height:25px;
@@ -3861,4 +3861,10 @@ label {
 .btn.btn-primary.update, .btn.cancel{
 	padding: 0px;
     margin-bottom: 5px 0px 5px 0px !important;
+}
+.settlement-title-info{
+	background-color:#edecd1;
+}
+.sett-with-name{
+	margin-top:15px;
 }

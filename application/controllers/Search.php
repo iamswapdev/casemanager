@@ -3,6 +3,7 @@ session_cache_limiter('private_no_expire');
 
 class Search extends CI_Controller{
 	public $username = "";
+	public $Case_Id = "";
 	Public function __construct(){
 		parent::__construct();
 		$this->load->library('session');
@@ -91,7 +92,6 @@ class Search extends CI_Controller{
 			$data['EventStatus']= $this->dataentry_model->get_EventStatusArray();
 			$data['Transactions'] = $this->search_model->Transanction_Info();
 			
-			
 			$data['CaseInfo']= $this->search_model->get_CaseInfo_ById($Case_AutoId);
 			$Provider_Id = $data['CaseInfo'][0]['Provider_Id'];
 			$InsuranceCompany_Id = $data['CaseInfo'][0]['InsuranceCompany_Id'];
@@ -102,7 +102,6 @@ class Search extends CI_Controller{
 			$data['InsuranceCompany_Info']= $this->search_model->get_Insurance_ById($InsuranceCompany_Id);
 			$data['Defendant_Info']= $this->search_model->get_Defendant_ById($Defendant_Id);
 			$data['Adjuster_Info']= $this->search_model->get_Adjuster_ById($Adjuster_Id);
-			//echo "<pre>"; print_r($data['CaseInfo']); exit();
 			
 			$data3 = array(
 				"Notes_Type" => "ACTIVITY",
@@ -117,6 +116,12 @@ class Search extends CI_Controller{
 		}else{
 			$this->load->view('pages/login');
 		}
+	}
+/* GET SETTLED BY INFO BY CASE ID*/
+	public function get_Settled_By($Case_Id){
+		$data = $this->search_model->getSettled_By($Case_Id);
+		//echo "<pre>";print_r($data);
+		echo json_encode($data);
 	}
 	public function getTreatement($Case_Id){
 		$list = $this->search_model->get_Treatment($Case_Id);
@@ -135,7 +140,7 @@ class Search extends CI_Controller{
 			$row[] = "<input type='text' name='Claim_Amount_treat' class='form-control input-sm ' value='".$result->Claim_Amount."' disabled>";
 			$row[] = "<input type='text' name='Paid_Amount_treat' class='form-control input-sm ' value='".$result->Paid_Amount."' disabled>";
 			$row[] = "<input type='text' name='Date_BillSent_treat' class='form-control input-sm datetimepicker_Dos_Doe' value='".$result->Date_BillSent."' disabled>";
-			$row[] = "<input type='text' name='SERVICE_TYPE_treat' class='form-control input-sm' value='".$result->SERVICE_TYPE."' disabled>";
+			$row[] = "<div class='SERVICE_TYPE_treat_div'> <input type='text' name='SERVICE_TYPE_treat' class='form-control input-sm' value='".$result->SERVICE_TYPE."' disabled><input type='hidden' name='SERVICE_TYPE_treat_hidden' value='".$result->SERVICE_TYPE."'> </div>";
 			$row[] = "<input type='text' name='DENIALREASONS_TYPE_treat' class='form-control input-sm' value='".$result->DENIALREASONS_TYPE."' disabled>";
 			$row[] = "<input type='checkbox' name='DeleteTreatement[]' class='DeleteTreatement DeleteTreatement".$result->Treatment_Id."' value=".$result->Treatment_Id."> <input type='hidden' name='Treatment_Id' value='".$result->Treatment_Id."' >";
 			$data[] = $row;
@@ -550,12 +555,17 @@ class Search extends CI_Controller{
 		$this->search_model->updateSettlement($data,$Case_Id);
 		//echo "<pre>"; print_r($data);
 	}
-	public function reset_Settlement(){
-		$Case_AutoId = $this->input->post("Case_AutoId");
+	public function reset_Settlement($Case_AutoId){
 		$this->search_model->resetSettlement($Case_AutoId);
+	}
+	public function get_Current_Status($Case_AutoId){
+		$data = $this->search_model->getCurrent_Status($Case_AutoId);
+		//echo "<pre>";print_r($data);
+		echo json_encode($data);
 	}
 
 /**************************** PAYMENET TAB-7 ************************************************************************************/
+/*GET SETTLEMENT QUICK VIEW TABLE*/
 	public function SettlementQuickView($Case_AutoId){
 		$list= $this->search_model->get_CaseInfo_ById2($Case_AutoId);
 		//echo "<pre>";print_r($list);exit();
@@ -816,6 +826,7 @@ class Search extends CI_Controller{
 		echo json_encode($output);
 	}
 	public function testmethod(){
+		echo "Case_Id: ".$this->Case_Id; exit();
 		$date = date('Y-m-d H:i:s');
 		echo "date:".date('Y');
 		//2014-06-17 00:00:00.00000

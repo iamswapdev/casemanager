@@ -46,6 +46,26 @@ Class Search_model extends CI_Model{
 		//echo "<pre>"; print_r($data); exit();
 		return $data;
 	}
+	public function get_SettlementQuickView($Case_Id){
+		$this->db->select('t1.*, t3.Provider_Name, t4.InsuranceCompany_Name' );
+		$this->db->from('dbo_tblsettlements as t1');
+		$this->db->join('dbo_tblcase as t2', 't2.Case_Id = t2.Provider_Id', 'LEFT');
+		$this->db->join('dbo_tblprovider as t3', 't2.Provider_Id = t3.Provider_Id', 'LEFT');
+		$this->db->join('dbo_tblinsurancecompany as t4', 't2.InsuranceCompany_Id = t4.InsuranceCompany_Id', 'LEFT');
+		$this->db->where('t1.Case_Id',$Case_Id);
+		$query= $this->db->get();
+		$data=$query->result();
+		//echo "<pre>"; print_r($data); exit();
+		return $data;
+	}
+	public function getCurrent_Status($Case_AutoId){
+		$this->db->select("Status");
+		$this->db->from("dbo_tblcase");
+		$this->db->where("Case_AutoId", $Case_AutoId);
+		$query = $this->db->get();
+		$data = $query->result_array();
+		return $data;
+	}
 	public function getPrivious_Value($Field_Name, $Case_Id){
 		$this->db->select($Field_Name);
 		$this->db->from('dbo_tblcase');
@@ -60,6 +80,13 @@ Class Search_model extends CI_Model{
 		$query= $this->db->get();
 		$data=$query->result();
 		//echo "<pre>"; print_r($data); exit();
+		return $data;
+	}
+/* GET SETTLED BY INFO*/
+	public function getSettled_By($Case_Id){
+		$this->db->where('Case_Id',$Case_Id);
+		$query= $this->db->get("dbo_tblsettlements");
+		$data=$query->result_array();
 		return $data;
 	}
 	public function delete_Transactions($CheckedTransactions){
@@ -362,7 +389,7 @@ Class Search_model extends CI_Model{
 /* Reset Settlement Make case status from PAID to OPEN*/
 	public function resetSettlement($Case_AutoId){
 		$status_to_open = array(
-			"Status" => "OPEN"
+			"Status" => "OPEN "
 		);
 		$this->db->set($status_to_open);
 		$this->db->where("Case_AutoId", $Case_AutoId);

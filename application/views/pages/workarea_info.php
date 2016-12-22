@@ -57,7 +57,7 @@
 <div id="wrapper"> 
 <div class="content animate-panel">
 <?php $months = array("Just", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "jan");
-foreach($CaseInfo as $row){$Case_AutoId = $row['Case_AutoId']; $Case_Id = $row['Case_Id']; $Claim_Amount = $row['Claim_Amount']; $Paid_Amount = $row['Paid_Amount']; $DateOfService_Start = $row['DateOfService_Start']; $DateOfService_End = $row['DateOfService_End']; $Date_BillSent = $row['Date_BillSent']; $Provider_Name_fix = $row['Provider_Name']; $Provider_Id_fix = $row['Provider_Id']; }
+foreach($CaseInfo as $row){$Case_AutoId = $row['Case_AutoId']; $Case_Id = $row['Case_Id']; $Claim_Amount = $row['Claim_Amount']; $Paid_Amount = $row['Paid_Amount']; $DateOfService_Start = $row['DateOfService_Start']; $DateOfService_End = $row['DateOfService_End']; $Date_BillSent = $row['Date_BillSent']; $Provider_Name_fix = $row['Provider_Name']; $Provider_Id_fix = $row['Provider_Id']; $Check_Status=$row['Status']; }
 
 for($i=0; $i<=13; $i++){
 	if(substr($DateOfService_Start, 0, 3) == $months[$i]){
@@ -141,7 +141,7 @@ for($i=0; $i<=13; $i++){
                       	<!--<div class="col-md-2"><div class="col-md-6 case-info-id">Old Case Id:</div><div class="col-md-6 old-case-id case-info-id-data"></div></div>-->
                         <div class="col-md-2"><div class="col-md-5 case-info-id">Case Id:</div><div class="col-md-6 case-id case-info-id-data"></div></div>
                     </div>
-						<div class="form-group form-horizontal col-md-6">                
+						<div class="form-group form-horizontal col-md-10">                
 						<div class="table-responsive">
 							<table cellpadding="1" cellspacing="1" class="table tdAlignLeft work-area-info">
 								<tbody>
@@ -310,11 +310,11 @@ for($i=0; $i<=13; $i++){
                                 </thead>
 									<tbody>
 									<tr>
-										<td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datetimepicker_Dos_Doe" value="<?php echo str_replace(" 12:00AM","",$DateOfService_Start);?>"></td>
-										<td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datetimepicker_Dos_Doe" value="<?php echo str_replace(" 12:00AM","",$DateOfService_End);?>"></td>
+										<td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datetimepicker_Dos_Doe" value="<?php echo substr($DateOfService_Start, 0, 10);?>"></td>
+										<td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datetimepicker_Dos_Doe" value="<?php echo substr($DateOfService_End,0, 10);?>"></td>
 										<td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm" value="<?php echo $Claim_Amount;?>"></td>
 										<td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm" value="<?php echo $Paid_Amount;?>"></td>
-										<td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datetimepicker_Dos_Doe" value="<?php echo $Date_BillSent;?>"></td>
+										<td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datetimepicker_Dos_Doe" value="<?php echo substr($Date_BillSent, 0, 10);;?>"></td>
 									</tr>
                                 
                                 </tbody>
@@ -636,38 +636,47 @@ for($i=0; $i<=13; $i++){
 						<div class="hpanel">
 						<div class="panel-heading"></div>
 						<div class="panel-body tab-panel">
-							<div class="form-group form-horizontal col-md-12">
-								<br><h5 class="h4-title">SETTLEMENT DETAIL</h5>
+                        	<div class="form-group form-horizontal col-md-12">
+                            	<br><h5 class="h4-title">SETTLEMENT DETAIL</h5>
+                            </div>
+                            <div class="form-horizontal col-md-12 settlement-title-info">
                                 <div class="col-md-2"></div>
                                 <div class="col-md-1 case-info-tab6-title">CASE ID</div>
                                 <div class="col-md-2 case-info-tab6-title">PROVIDER</div>
                                 <div class="col-md-2 case-info-tab6-title">INJURED PARTY</div>
-                                <div class="col-md-1"></div>
-                                <div class="col-md-2 case-info-tab6-title">SETTLED BY</div>
+                                <div class="col-md-1 settled-status-open settled-by-show"></div>
+                                <div class="col-md-2 case-info-tab6-title settled-by settled-status-open settled-by-show">SETTLED BY</div>
+                                
 							</div>
-							<div class="form-group form-horizontal col-md-12">
+							<div class="form-horizontal col-md-12 settlement-title-info">
                             	<div class="col-md-2"></div>
 								<div class="col-md-1 case-info-tab6" id="CaseId-tab-6"></div>
                                 <div class="col-md-2 case-info-tab6" id="ProviderName-tab-6"></div>
                                 <div class="col-md-2 case-info-tab6" id="InjuredPartyName-tab-6"></div>
-                                <div class="col-md-1"></div>
-                                <div class="col-md-2 case-info-tab6" id="InjuredPartyName-tab-6">Admin</div>
+                                
+                                <div class="col-md-1 settled-status-open settled-by-show"></div>
+                                <div class="col-md-2 case-info-tab6 settled-by-info settled-status-open settled-by-show" id="InjuredPartyName-tab-6"></div>
+                               
 							</div>
-                            <form method="post" id="settlement_form" style="display:none;">
-							<div class="form-group form-horizontal col-md-12">
+                            <form method="post" id="settlement_form_open">
+							<div class="form-group form-horizontal col-md-12 settled-status-open">
 								<label class="col-md-2 control-label">ADJUSTER</label>
 								<div class="col-md-6">
 									<select class="form-control input-sm" id="adjusterIdTab-6" name="adjusterIdTab-6"><option selected="selected" value=""></option><?php foreach ($Adjuster_Name_Insurance as $row) {?><option value="<?php echo $row['Adjuster_Id']; ?>"> <?php echo $row['Adjuster_LastName']." ".$row['Adjuster_FirstName']." => [ADJ.PH#: ".$row['Adjuster_Phone']." / INS CPY: ". $row['InsuranceCompany_Name']." / ADJ FAX#: ".$row['Adjuster_Fax']."]"; ?> </option><?php  }?></select>
                                     <input type="hidden" name="SettledWithAdjuster">
 								</div>
 							</div>
-							<div class="form-group form-horizontal col-md-12">
+							<div class="form-group form-horizontal col-md-12 settled-status-open">
 								<label class="col-md-2 control-label">ATTORNEY</label>
 								<div class="col-md-6">
 									<select class="form-control input-sm" id="defendantIdTab-6" name="defendantIdTab-6"><option selected="selected" value=""></option><?php foreach($Defendant_Name as $row){?><option value="<?php echo $row['Defendant_id']; ?>"><?php echo $row['Defendant_Name']." => ".$row['Defendant_Address'];?></option><?php }?></select>
                                     <input type="hidden" name="SettledWithAttorney">
 								</div>
 							</div>
+                            <div class="form-group form-horizontal col-md-12 sett-with-name settled-by-show">
+                            	<label class="control-label col-md-2">Settle with: </label>
+                                <div class="col-md-8 case-info-tab6 settled-by-info"></div>
+                            </div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-2 claim-paid-balance"><label class="control-label settlement-title">CLAIM AMOUNT</label> </div>
@@ -698,12 +707,12 @@ for($i=0; $i<=13; $i++){
 								<div class="col-md-1"><label class="control-label col-md-12">INTEREST</label> </div>
 								<div class="col-md-1"><input step="0.01" type="number" id="FltInterestTab6" name="Settlement_Int"  class="form-control input-sm Amount" value="100.00" ></div>
 								<div class="col-md-1"><input step="0.01" type="number" id="FltInterestPercTab6" name="FltInterestPercTab6"  class="form-control input-sm percentage" value="100.00" ></div>
-								<div class="col-md-1 start-date-settlement"><label class="control-label col-md-12">START DATE</label> </div>
-								<div class="col-md-1"><input type="text" id="CopundIntStartData" name="CopundIntStartData"  class="form-control input-sm datepicker_recurring_start" ></div>
-								<div class="col-md-1 end-date-settlement"><label class="control-label col-md-12">END DATE</label> </div>
-								<div class="col-md-1"><input type="text" id="CopundIntEndData" name="CopundIntEndData"  class="form-control input-sm datepicker_recurring_start" ></div>
+								<div class="col-md-1 start-date-settlement settled-status-open"><label class="control-label col-md-12">START DATE</label> </div>
+								<div class="col-md-1 settled-status-open"><input type="text" id="CopundIntStartData" name="CopundIntStartData"  class="form-control input-sm datepicker_recurring_start" ></div>
+								<div class="col-md-1 end-date-settlement settled-status-open"><label class="control-label col-md-12">END DATE</label> </div>
+								<div class="col-md-1 settled-status-open"><input type="text" id="CopundIntEndData" name="CopundIntEndData"  class="form-control input-sm datepicker_recurring_start" ></div> 
 							</div>
-							<div class="form-group form-horizontal col-md-12">
+							<div class="form-group form-horizontal col-md-12 settled-status-open">
 								<div class="col-md-3"></div>
 								<div class="col-md-2"><button type="button" class="CalSimpleInterest">Calculate Simple interest</button></div>
 							</div>
@@ -725,13 +734,13 @@ for($i=0; $i<=13; $i++){
 								<div class="col-md-1"><input step="0.01" type="number" id="TotalAmount" name="Settlement_Total"  class="form-control input-sm Amount" ></div>
 								<div class="col-md-1"><input step="0.01" type="number" id="TotalAmountPerc" name="TotalAmountPerc"  class="form-control input-sm percentage" ></div>
 							</div>
-							<div class="form-group form-horizontal col-md-12">
+							<div class="form-group form-horizontal col-md-12 settled-status-open">
 								<div class="col-md-2"></div>
 								<div class="col-md-2 recalculate-btn"><button>Re-Calculate Amount</button></div>
 								<div class="add-amt-btn col-md-1"><button>Add Amount</button></div>
 								<div class="reset-amt-btn col-md-1"><button>Reset Values</button></div>
 							</div>
-                            <div class="form-group form-horizontal col-md-12">
+                            <div class="form-group form-horizontal col-md-12 settled-status-open">
 								<label class="col-md-2 control-label">SETTLED TYPE</label>
 								<div class="col-md-2">
 									<select class="form-control input-sm" id="" name="" required>
@@ -743,7 +752,7 @@ for($i=0; $i<=13; $i++){
 									</select>
 								</div>
 							</div>
-                            <div class="form-group form-horizontal col-md-12">
+                            <div class="form-group form-horizontal col-md-12 settled-status-open">
 								<label class="col-md-2 control-label">Notes</label>
 								<div class="col-md-4">
 									<textarea rows="3"  id="memo" name="Settlement_Notes" class="form-control" required></textarea>
@@ -756,67 +765,7 @@ for($i=0; $i<=13; $i++){
 							</div>
                             </form>
                             
-       <!-- SETTLED FORM -->
-                            <form method="post" id="settlement_form" style="display:block;">
-							<div class="form-group form-horizontal col-md-12">
-								<div class="col-md-2"></div>
-								<div class="col-md-2 claim-paid-balance"><label class="control-label settlement-title">CLAIM AMOUNT</label> </div>
-								<div class="col-md-2 claim-paid-balance"><label class="control-label settlement-title">PAYMENTS</label> </div>
-								<div class="col-md-2 claim-paid-balance"><label class="control-label settlement-title">BALANCE</label> </div>
-							</div>
-                            <div class="form-group form-horizontal col-md-12">
-                            	<label class="control-label col-md-2">Settle with: </label>
-                                <div class="col-md-8">PATRICK GESSNER =>[ADJ.PH#: 718-361-1221 / INS.CPY: HEREFORD INSURANCE COMPANY / ADJ FAX#: 347-418-3844]</div>
-                            </div>
-							<div class="form-group form-horizontal col-md-12">
-								<div class="col-md-2"></div>
-								<div class="col-md-2 claim-paid-balance"><input step="0.0001" type="number" id="ClaimAmtTab6" name="ClaimAmtTab6" class="form-control input-sm Amount" ></div> 	 	
-								<div class="col-md-2 claim-paid-balance"><input step="0.0001" type="number" id="PaymentsTab6" name="PaymentsTab6" class="form-control input-sm Amount" ></div>
-								<div class="col-md-2 claim-paid-balance"><input step="0.0001" type="number" id="BalanceTab6" name="BalanceTab6"  class="form-control input-sm Amount" ></div>
-							</div>
-							<div class="form-group form-horizontal col-md-12">
-								<div class="col-md-2"></div>
-                                <div class="col-md-2 claim-paid-balance">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-								<div class="col-md-2 claim-paid-balance"><label class="control-label">PERCENTAGE (%)</label> </div>
-							</div>
-							<div class="form-group form-horizontal col-md-12">
-                            	<input type="hidden" name="Case_Id" value="<?php echo $Case_Id;?>">
-                                <input type="hidden" name="Case_AutoId" value="<?php echo $Case_AutoId;?>">
-								<div class="col-md-2"></div>
-								<div class="col-md-1"><label class="control-label">SETTLEMENT AMOUNT</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltSettlement_AmountTab6" name="Settlement_Amount"  class="form-control input-sm Amount" ></div>
-								<div class="col-md-1"><input step="0.01" type="number" id="settlementPercentageTab6" name="settlementPercentageTab6"  class="form-control input-sm percentage" value="100.00"></div>
-							</div>
-							<div class="form-group form-horizontal col-md-12">
-								<div class="col-md-2"></div>
-								<div class="col-md-1"><label class="control-label col-md-12">INTEREST</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltInterestTab6" name="Settlement_Int"  class="form-control input-sm Amount" value="100.00" ></div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltInterestPercTab6" name="FltInterestPercTab6"  class="form-control input-sm percentage" value="100.00" ></div>
-							</div>
-							<div class="form-group form-horizontal col-md-12">
-								<div class="col-md-2"></div>
-								<div class="col-md-1"><label class="control-label">ATTORNEY'S FEE 	</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltAttorneyFeeTab6" name="Settlement_Af"  class="form-control input-sm Amount" ></div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltAttorneyPercTab6" name="FltAttorneyPercTab6"  class="form-control input-sm percentage" ></div>
-							</div>
-							<div class="form-group form-horizontal col-md-12">
-								<div class="col-md-2"></div>
-								<div class="col-md-1"><label class="control-label">FILING FEE</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltFillingFeeTab6" name="Settlement_Ff"  class="form-control input-sm Amount" ></div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltFillingFeePercTab6" name="FltFillingFeePercTab6"  class="form-control input-sm percentage" ></div>
-							</div>
-							<div class="form-group form-horizontal col-md-12">
-								<div class="col-md-2"></div>
-								<div class="col-md-1"><label class="control-label settlement-title">TOTAL AMOUNT</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="TotalAmount" name="Settlement_Total"  class="form-control input-sm Amount" ></div>
-								<div class="col-md-1"><input step="0.01" type="number" id="TotalAmountPerc" name="TotalAmountPerc"  class="form-control input-sm percentage" ></div>
-							</div>
-                            <div class="form-group form-horizontal col-md-12">
-								<div class="col-md-2"></div>
-								<div class="col-md-2 finalize-sett-button"><button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Finalize Settlement</button></div>
-								<div class="col-md-1"><button type="button" class="reset-settlement">Reset</button></div>
-							</div>
-                            </form>
+<!--------------- SETTLED FORM ---------------------------------------------------------------------------------->
 						</div><!-- End of panel-body tab-panel-->
 						</div><!-- End hpanel -->
 						</div><!-- End col-lg-12-->
@@ -1520,7 +1469,7 @@ for($i=0; $i<=13; $i++){
 <script>
 $(document).ready(function(e) {
 	Update_Settlement();
-	
+	var current_case_status ="";
 	var NewRow = $('#Treatement_Info_table').dataTable( {
 		"ajax": "<?php echo base_url();?>search/getTreatement/<?php echo $Case_Id;?>",
 		"iDisplayLength": 10,
@@ -1534,6 +1483,7 @@ $(document).ready(function(e) {
 /**************************** CASEINFORMATION TAB-1 ************************************************************************************/
 	var countForRows = 0;
 	var value = 0;
+/**** ADD TREATEMENT ROW**********/
 	$("#addOtherInfo").click(function(){
 		var parentR = $(this).parent().parent().parent();
 		
@@ -1575,8 +1525,7 @@ $(document).ready(function(e) {
 				callSuccess();
 		});
 	});
-	 //$('#addOtherInfo').click();
-	
+/**** DELETE TREATEMENT ROW **********/
 	 $('#DeleteButton').click(function(){
 		var final = '';
 		$('.ads_Checkbox:checked').each(function(){        
@@ -1589,7 +1538,7 @@ $(document).ready(function(e) {
 		}
 		
 	});
-	/**** DELETE NOTES **********/
+/**** DELETE TREATEMENT **********/
 	$('body').on( 'click', '#deleteTreatementButton', function () {
 		var DeletedTreatementId = [];
 		$('.DeleteTreatement:checked').each(function(i){
@@ -1628,47 +1577,7 @@ $(document).ready(function(e) {
 		
 		});
 	});
-	
-	
-	
-	$("#addNotes_form").submit(function(e){
-		// setup some local variables
-		var notesDescription = $(this).find("textarea").val();
-		var notesType = $(this).find('input[name=notesType]:checked').val();
-		var notesAccidentDate = $(this).find("input[name=notesAccidentDate]").val();
-		//console.log("notesAccidentDate: "+notesAccidentDate);
-		var caseId = "<?php echo $Case_Id;?>";
-		var Case_AutoId = "<?php echo $Case_AutoId;?>";
-			// fire off the request to /form.php
-
-			request = $.ajax({
-				url:"<?php echo base_url(); ?>search/addNotes",
-				type: "post",
-				data: {notesDescription:notesDescription, caseId:caseId,notesAccidentDate:notesAccidentDate,notesType:notesType,Case_AutoId:Case_AutoId }
-			});
-
-			// callback handler that will be called on success
-			request.done(function (response, textStatus, jqXHR) {
-				$('input[type=text]').val('');
-				$('textarea').val('');
-				$("select").val('');
-				$("#NotesTab1").dataTable().fnDestroy();
-				$('#NotesTab1').dataTable( {
-					"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
-					"iDisplayLength": 5,
-					"aLengthMenu": [5, 10, 20, 25, 50, "All"]
-				});
-				$("#NotesTab3").dataTable().fnDestroy();
-				$('#NotesTab3').dataTable( {
-					"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
-					"iDisplayLength": 10,
-					"aLengthMenu": [5, 10, 20, 25, 50, "All"]
-				});
-				//$("#myModal").modal("show");
-				callSuccess();
-			});
-			e.preventDefault();	//STOP default action
-	});
+/**** EDIT TREATEMENT **********/
 	$('tbody').on( 'click', '.editTreatment', function () {
 		var parentR = $(this).parent();
 		var div = $(parentR).find(".update-Treatment").css("display", "block");
@@ -1680,15 +1589,29 @@ $(document).ready(function(e) {
 		$(this).parent().parent().find("input[name=Date_BillSent_treat]").prop("disabled", false);
 		$(this).parent().parent().find("input[name=DENIALREASONS_TYPE_treat]").prop("disabled", false);
 		$(this).parent().parent().find("input[name=SERVICE_TYPE_treat]").prop("disabled", false);
+		
     } );
+/**** CANCEL TREATEMENT **********/
 	$('tbody').on( 'click', '.cancel', function () {
 		var parentR = $(this).parent().parent();
 		
 		var div = $(parentR).find(".update-Treatment").css("display", "none");
 		var div = $(parentR).find(".editTreatment").css("display", "block");
 		$(parentR).css("text-align", "center");
+		$("#Treatement_Info_table").dataTable().fnDestroy();
+		$('#Treatement_Info_table').dataTable( {
+			"ajax": "<?php echo base_url();?>search/getTreatement/<?php echo $Case_Id;?>",
+			"iDisplayLength": 10,
+			"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+			"bSort": false,
+			"searching": false,
+			"lengthChange": false,
+			"bInfo": false,
+			"bPaginate": false
+		});
 		
     } );
+/**** UPDATE TREATEMENT **********/
 	$('tbody').on( 'click', '.update', function () {
 		var parentR = $(this).parent().parent().parent();
 		
@@ -1727,6 +1650,48 @@ $(document).ready(function(e) {
 		var div = $(parentR).find(".update-Treatment").css("display", "none");
 		var div = $(parentR).find(".editTreatment").css("display", "block");
 	});
+	
+	
+/**** ADD NOTES **********/
+	$("#addNotes_form").submit(function(e){
+		// setup some local variables
+		var notesDescription = $(this).find("textarea").val();
+		var notesType = $(this).find('input[name=notesType]:checked').val();
+		var notesAccidentDate = $(this).find("input[name=notesAccidentDate]").val();
+		//console.log("notesAccidentDate: "+notesAccidentDate);
+		var caseId = "<?php echo $Case_Id;?>";
+		var Case_AutoId = "<?php echo $Case_AutoId;?>";
+			// fire off the request to /form.php
+
+			request = $.ajax({
+				url:"<?php echo base_url(); ?>search/addNotes",
+				type: "post",
+				data: {notesDescription:notesDescription, caseId:caseId,notesAccidentDate:notesAccidentDate,notesType:notesType,Case_AutoId:Case_AutoId }
+			});
+
+			// callback handler that will be called on success
+			request.done(function (response, textStatus, jqXHR) {
+				$('input[type=text]').val('');
+				$('textarea').val('');
+				$("select").val('');
+				$("#NotesTab1").dataTable().fnDestroy();
+				$('#NotesTab1').dataTable( {
+					"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
+					"iDisplayLength": 5,
+					"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+				});
+				$("#NotesTab3").dataTable().fnDestroy();
+				$('#NotesTab3').dataTable( {
+					"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
+					"iDisplayLength": 10,
+					"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+				});
+				//$("#myModal").modal("show");
+				callSuccess();
+			});
+			e.preventDefault();	//STOP default action
+	});
+	
 	
 	$(".fa-edit").click(function(){
 		$(this).parent().find(".fa-save").css("display", "block");
@@ -2005,13 +1970,14 @@ $(document).ready(function(e) {
 	});
 /************************************************************************************************************************************/
 /************************************************* SETTLEMENT TAB-6 *************************************************************/
+
 	$('#adjusterIdTab-6').on('change', function() {
 		$("input[name=SettledWithAdjuster]").val($("#adjusterIdTab-6 option:selected").text());
 	});
 	$('#defendantIdTab-6').on('change', function() {
 		$("input[name=SettledWithAttorney]").val($("#defendantIdTab-6 option:selected").text());
 	});
-	$("#settlement_form").validate({
+	$("#settlement_form_open").validate({
 		rules:{
 			Settlement_Notes:{
 				required: true
@@ -2047,6 +2013,8 @@ $(document).ready(function(e) {
 				request.done(function (response, textStatus, jqXHR) {
 					
 					Update_Settlement();
+					checkstatus_open();
+					$(".settled-by-show").css("display","block");
 					callSuccess();
 				});
 			}else{
@@ -2055,20 +2023,66 @@ $(document).ready(function(e) {
 			
 		}
 	});
-	$(".reset-settlement").click(function(){
-		request =$.ajax({
-			url:"<?php echo base_url();?>search/reset_Settlement",
-			type: "post",
-			data:{
-				Case_AutoId: "<?php echo $Case_AutoId;?>"
+	$(".reset-settlement").click(function(e){
+		
+		$.ajax({
+			type:'POST',
+			url: "<?php echo base_url();?>search/reset_Settlement/<?php echo $Case_AutoId;?>", 
+			success: function(data){
+				Update_Settlement();
+				checkstatus_open();
+        	},
+			error: function(result){ console.log("error"); }
+		
+		});
+		e.preventDefault();	//STOP default action
+	});
+	function checkstatus_open(){
+		$.ajax({
+			type:'POST',
+			url: "<?php echo base_url();?>search/get_Current_Status/<?php echo $Case_AutoId;?>", 
+			success: function(data){
+				results = JSON.parse(data);
+			//	Update_Settlement();
+				current_case_status = results[0].Status;
+				console.log("current_case_status after ajax call :"+current_case_status);
+				if(current_case_status == "OPEN "){
+					$(".settled-status-open").css("display", "block");
+					$(".settled-by-show").css("display","none");
+					console.log("current_case_status if open:"+current_case_status);
+				}else{
+					$(".settled-status-open").css("display", "none");
+					console.log("current_case_status if others:"+current_case_status);
+				}
+				current_case_status ="";
+        	},
+			error: function(result){ console.log("error"); }
+		
+		});
+		$.ajax({
+			type:'POST',
+			url:"<?php echo base_url(); ?>search/get_Settled_By/<?php echo $Case_Id;?>",
+			success:function(data){
+				results = JSON.parse(data);
+				$.each(results[0], function(k, v) {
+					console.log(k + ' is ' + v);
+				});
+				 var settledBy = document.getElementsByClassName("settled-by-info");
+				for($i in results){
+					 settledBy[0].innerHTML = results[$i].User_Id;
+					 settledBy[1].innerHTML = results[$i].SettledWith ;
+					console.log("ssss:"+results[$i].User_Id);
+				}
 			}
 		});
-		request.done(function(){
-			Update_Settlement();
-		});
+		//e.preventDefault();	//STOP default action
+	}
+	$('#tab6').click(function(e){
+		checkstatus_open();
 	});
 /*************************************************** Payment TAB-8 ***************************************************************/	
-		
+	
+	
 	$('#SettlementQuickView').dataTable( {
 		"ajax": "<?php echo base_url();?>search/SettlementQuickView/<?php echo $Case_AutoId;?>",
 		"iDisplayLength": 10,
@@ -2353,19 +2367,22 @@ $(document).ready(function(e) {
 		//$(this).mask("999-999-999");
 	});
 	//$("#myModal").modal("show");
+/*DATE TIME PICKER SECTION*/
 	$('body').on('focus',".datetimepicker_start", function(){
 		$(this).datetimepicker({
 			format:'YYYY/MM/DD HH:mm:ss'
 		})
 	});
+/*ONLY TIME PICKER SECTION*/
 	$('body').on('focus',".datetimepicker_only_time", function(){
 		$(this).datetimepicker({
 			format:'HH:mm:ss'
 		});
 	});
+/*ONLY DATE PICKER SECTION*/
 	$('body').on('focus',".datetimepicker_Dos_Doe", function(){
 		$(this).datetimepicker({
-			format:'YYYY/MM/DD HH:mm:ss'
+			format:'MM/DD/YYYY'
 		})
 	});
 	
@@ -2563,6 +2580,23 @@ $(document).ready(function(e) {
 		});
 	}
 		
+	$.ajax({
+		type:'POST',
+		url:"<?php echo base_url(); ?>search/get_Settled_By/<?php echo $Case_Id;?>",
+		success:function(data){
+			results = JSON.parse(data);
+			$.each(results[0], function(k, v) {
+				console.log(k + ' is ' + v);
+			});
+			 var settledBy = document.getElementsByClassName("settled-by-info");
+			for($i in results){
+				 settledBy[0].innerHTML = results[$i].User_Id;
+				 settledBy[1].innerHTML = results[$i].SettledWith ;
+				console.log("ssss:"+results[$i].User_Id);
+			}
+		}
+	});
+	
 		$('.fromdate').datepicker({
 			dateFormat: 'yy-mm-dd',
 			changeMonth: true,
