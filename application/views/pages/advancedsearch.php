@@ -57,19 +57,7 @@
 					<div class="col-md-2">
 						<input type="text" id="sCaseId" name="sCaseId" class="form-control input-sm">
 					</div>
-                    <label class="col-md-2 control-label">INJURED NAME</label>
-					<div class="col-md-2">
-						<input type="text" id="sInjuredName" name="sInjuredName" placeholder="Last Name First Name" class="form-control input-sm">
-					</div>
-                    <label class="col-md-2 control-label">INSURED NAME</label>
-					<div class="col-md-2">
-						<input type="text" id="sInsuredName" name="sInsuredName" placeholder="Last Name First Name" class="form-control input-sm">
-					</div>
-				</div>
-
-				<div class="form-group form-horizontal col-md-12">
-					
-					<label class="col-md-2 control-label">POLICY NUMBER</label>
+                    <label class="col-md-2 control-label">POLICY NUMBER</label>
 					<div class="col-md-2">
 						<input type="text" id="spolicyNumber" name="spolicyNumber" class="form-control input-sm">
 					</div>
@@ -77,14 +65,14 @@
 					<div class="col-md-2">
 						<input type="text" id="sInsuranceClaimNo" name="sInsuranceClaimNo" class="form-control input-sm">
 					</div>
-					<label class="col-md-2 control-label">INDEX#/AAA#</label>
+				</div>
+
+				<div class="form-group form-horizontal col-md-12">
+                    <label class="col-md-2 control-label">INDEX#/AAA#</label>
 					<div class="col-md-2">
 						<input type="text" id="sIndexaaa" name="sIndexaaa" class="form-control input-sm phone-format">
 					</div>
-
-				</div>
-				<div class="form-group form-horizontal col-md-12">
-					<label class="col-md-2 control-label">STATUS</label>
+                    <label class="col-md-2 control-label">STATUS</label>
 					<div class="col-md-2">
 						<select class="form-control input-sm" id="sStatus" name="sStatus">
                             <option selected="selected" value=""></option>
@@ -102,6 +90,8 @@
                             <?php }?>
                         </select>
 					</div>
+				</div>
+				<div class="form-group form-horizontal col-md-12">
 					<label class="col-md-2 control-label">COURT TYPE</label>
 					<div class="col-md-2">
 						<select class="form-control input-sm" id="sCourtId" name="sCourtId"  >
@@ -111,9 +101,7 @@
                             <?php }?>
                         </select>
 					</div>
-				</div>
-				<div class="form-group form-horizontal col-md-12">
-					<label class="col-md-2 control-label">CASE STATUS</label>
+                    <label class="col-md-2 control-label">CASE STATUS</label>
 					<div class="col-md-2">
 						<select class="form-control input-sm" id="sCaseStatus" name="sCaseStatus">
                             <option selected="selected" value=""></option>
@@ -131,6 +119,8 @@
                             <?php }?>
                         </select>
 					</div>
+				</div>
+				<div class="form-group form-horizontal col-md-12">
 					<label class="col-md-2 control-label">DEFENDANT NAME</label>
 					<div class="col-md-2">
 						<select class="form-control input-sm" id="sDefendantId" name="sDefendantId" >
@@ -140,9 +130,7 @@
                             <?php }?>
                         </select>
 					</div>
-				</div>
-                <div class="form-group form-horizontal col-md-12">
-                	<label class="col-md-2 control-label">ADJUSTER NAME</label>
+                    <label class="col-md-2 control-label">ADJUSTER NAME</label>
 					<div class="col-md-2">
 						<select class="form-control input-sm" id="sAdjusterId" name="sAdjusterId" >
                             <option selected="selected" value=""></option>
@@ -151,11 +139,7 @@
                             <?php }?>
                         </select>
 					</div>
-                    <label class="col-md-2 control-label">ACCIDENT DATE</label>
-					<div class="col-md-2">
-						<input id="sAccidentDate" name="sAccidentDate"  class="form-control input-sm datepicker_recurring_start">
-					</div>
-                </div>
+				</div>
                 <div class="form-group form-horizontal col-md-12">
 					<div class="col-md-2"></div>
 					<div class="col-md-4">
@@ -164,6 +148,24 @@
 					</div>
 				</div>
 			</form>
+            <form method="get" id="caseInfoSerach_form2" class="form-horizontal label-font">
+            	<div class="form-group form-horizontal col-md-12">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-2 control-label">
+                    	<button type="button" id="searchbutton2" class="btn btn-primary">Search</button>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" id="SearchByDropDown" class="form-control input-sm" name="sInjuredName">
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-control input-sm" id="SearchDropDown">
+                            <option selected="selected" value="sInjuredName">InjuredParty Name</option>
+                            <option value="sInsuredName">InsuredParty Name</option>
+                            <option value="sAccidentDate">AccidentDate</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
 			
 			<h5 class="h4-title">Search Results</h5>
 			<div class="form-group form-horizontal col-md-12 table-responsive">
@@ -251,7 +253,7 @@
 			$("select").val('');
 			$("#AdvancedSearchTable").dataTable().fnDestroy();
 			$('#AdvancedSearchTable').dataTable( {
-				"ajax": 'getSearchTable',
+				"ajax": '<?php echo base_url();?>search/getSearchTable',
 				"pageLength": 100
 			});
 		});
@@ -261,17 +263,11 @@
 				"ajax": 'getSearchTable',
 				"pageLength": 100,
 				"searching": false
+				//"bSort": false
 			});
 		});
 		
 		$("#caseInfoSerach_form").validate({
-		
-			/*rules: {
-				sCaseId:{
-					required: true
-				}	
-			},*/
-					
 			submitHandler: function (form) {
 				// setup some local variables
 				var $form = $(form);
@@ -280,18 +276,17 @@
 				// serialize the data in the form
 				var serializedData = $form.serialize();
 				
-				var dataArray = $form.serializeArray(),
+				/*var dataArray = $form.serializeArray(),
 				len = dataArray.length,
-				dataObj = {};
+				dataObj = {};*/
+				var dataArray = $form.serializeArray();
+				len = dataArray.length;
+				dataObj = [];
 				
 				for (i=0; i<len; i++) {
 				  dataObj[dataArray[i].name] = dataArray[i].value;
 				}
-				//dataObj['title']);
-	
-				//$inputs.prop("disabled", true);
-	
-	
+				//console.log("dataObj['sIndexaaa']:"+dataObj['sIndexaaa']);
 				$("#AdvancedSearchTable").dataTable().fnDestroy();
 				$('#AdvancedSearchTable').dataTable( {
 					"searching": false,
@@ -299,10 +294,6 @@
 						"url": "getSearchTable_2",
 						"data": {
 							"sCaseId": dataObj['sCaseId'],
-							"InjuredParty_LastName": dataObj['sInjuredName'].split(' ')[0],
-							"InjuredParty_FirstName": dataObj['sInjuredName'].split(' ')[1],
-							"InsuredParty_LastName": dataObj['sInsuredName'].split(' ')[0],
-							"InsuredParty_FirstName": dataObj['sInsuredName'].split(' ')[1],
 							"spolicyNumber": dataObj['spolicyNumber'],
 							"sInsuranceClaimNo": dataObj['sInsuranceClaimNo'],
 							"sIndexaaa": dataObj['sIndexaaa'],
@@ -312,8 +303,7 @@
 							"sCaseStatus": dataObj['sCaseStatus'],
 							"sProviderId": dataObj['sProviderId'],
 							"sDefendantId": dataObj['sDefendantId'],
-							"sAdjusterId": dataObj['sAdjusterId'],
-							"AccidentDate": dataObj['sAccidentDate'].replace(/\//g , "-")
+							"sAdjusterId": dataObj['sAdjusterId']
 						},
 						"type": "POST"
 					  },
@@ -322,6 +312,65 @@
 				});
 	
 			}
+		});
+		$('#SearchDropDown').on('change', function() {
+			var dropdownName =$("#SearchDropDown option:selected").val();
+			$("#SearchByDropDown").attr('name', dropdownName);
+			if(dropdownName == "sAccidentDate"){
+				$("#SearchByDropDown").datepicker({
+					"format": 'yyyy-mm-dd',
+					"autoclose": true,
+					"todayHighlight": true,
+					"selectOtherMonths": true,
+					"timeFormat": 'hh:mm'
+				});
+			}else{
+				console.log("elseeee");
+				$("#SearchByDropDown").datepicker("destroy");
+				//$("#SearchByDropDown").datepicker().datepicker('disable');
+			}
+		});
+		$("#searchbutton2").click(function(){
+			var inputName = $("#SearchByDropDown").attr('name');
+			var sInjuredName_Last ="";
+			var sInjuredName_First ="";
+			var sInsuredName_Last = "";
+			var sInsuredName_First ="";
+			var sAccidentDate = "";
+			if(inputName == "sInjuredName"){
+				var sInjuredName2 = $("#SearchByDropDown").val();
+				sInjuredName_Last = sInjuredName2.split(' ')[0];
+				sInjuredName_First = sInjuredName2.split(' ')[1];
+				console.log("sInjuredName_Last:"+sInjuredName_Last);
+				console.log("sInjuredName_First:"+sInjuredName_First);
+			}else if(inputName == "sInsuredName"){
+				var sInsuredName2 = $("#SearchByDropDown").val();
+				sInsuredName_Last = sInsuredName2.split(' ')[0];
+				sInsuredName_First = sInsuredName2.split(' ')[1];
+				console.log("sInsuredName_Last:"+sInsuredName_Last);
+				console.log("sInsuredName_First:"+sInsuredName_First);
+			}else{
+				var sAccidentDate2 = $("#SearchByDropDown").val();
+				sAccidentDate = sAccidentDate2.replace(/\//g , "-")
+				console.log("sAccidentDate:"+sAccidentDate);
+			}
+			$("#AdvancedSearchTable").dataTable().fnDestroy();
+			$('#AdvancedSearchTable').dataTable( {
+				"searching": false,
+			  "ajax": {
+					"url": "getSearchTable_2",
+					"data": {
+						"InjuredParty_LastName": sInjuredName_Last,
+						"InjuredParty_FirstName": sInjuredName_First,
+						"InsuredParty_LastName": sInsuredName_Last,
+						"InsuredParty_FirstName": sInsuredName_First,
+						"AccidentDate": sAccidentDate
+					},
+					"type": "POST"
+				  },
+				  "pageLength": 100
+				  
+			});
 		});
 		
 		/* *************************************************** */

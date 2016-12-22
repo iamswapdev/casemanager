@@ -66,7 +66,7 @@
 			<form id="addCaseForm" role="form" action="add_CaseInfo" method="post" >
 				
 				<div class="form-group form-horizontal col-md-12">
-                	<h5 class="h5-title">CASE INFORMATION</h5>
+                	<h5 class="h4-title">CASE INFORMATION</h5>
 					<!--<p>(Note: All amounts are in USD wherever applicable.)</p>-->
 					<label class="col-md-2 control-label">Initial Status</label>
 					<div class="col-md-6 radio">
@@ -96,7 +96,7 @@
 
 				
 				<div class="form-group form-horizontal col-md-12">
-                	<h5 class="h5-title">Injured Party Information</h5>
+                	<h5 class="h4-title">Injured Party Information</h5>
 					<label class="col-md-2 control-label">Last Name <span class="required-field">*</span></label>
 					<div class="col-md-2">
 						<input type="text" id="injuredPartyLastName" name="injuredPartyLastName" placeholder="Last Name" class="form-control input-sm" required> 
@@ -110,7 +110,7 @@
 
 				
 				<div class="form-group form-horizontal col-md-12">
-                	<h5 class="h5-title">Insured Party Information </h5>
+                	<h5 class="h4-title">Insured Party Information </h5>
 					<div class="col-md-2">
 					</div>
 					<div class="col-md-6 checkbox">
@@ -132,7 +132,7 @@
 
 				
 				<div class="form-group form-horizontal col-md-12">
-                	<h5 class="h5-title">Insurance Information</h5>
+                	<h5 class="h4-title">Insurance Information</h5>
 					<label class="col-md-2 control-label">Name</label>
 					<div class="col-md-2">	
 						<input type="text" id="insuranceName" name="insuranceName" class="form-control input-sm">
@@ -162,7 +162,7 @@
                 
 				
 				<div class="form-group form-horizontal col-md-12">
-                	<h5 class="h5-title">Accident Information</h5>
+                	<h5 class="h4-title">Accident Information</h5>
 					<label class="col-md-2 control-label">D.O.A <span class="required-field">*</span></label>
 					<div class="col-md-2"> <input id="accidentDate" name="accidentDate"  class="form-control input-sm datetimepicker" required> </div>
 					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
@@ -170,7 +170,7 @@
 
 				
 				<div class="form-group form-horizontal col-lg-12">
-                	<h5 class="h5-title">Other Information </h5>
+                	<h5 class="h4-title">Other Information </h5>
 					<label class="col-md-2 control-label">Status</label>
 					<div class="col-md-2">
 						<select class="form-control input-sm" id="status" name="status">
@@ -492,8 +492,7 @@
 				$('#courtId').val('');
 				$('#serviceType').val('');
 				$('#denialReasons').val('');   
-				//$("#myModal").modal("show");
-					callSuccess();
+				callSuccess();
 			});
 
 			// callback handler that will be called on failure

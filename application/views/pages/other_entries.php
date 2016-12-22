@@ -373,47 +373,65 @@
 	var t = $('#example1').dataTable( {
 		"ajax": 'DenialReasons',
 		"iDisplayLength": 20,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"bSort": false,
+		"searching": false
 	});
 	$('#example2').dataTable( {
 		"ajax": 'Court',
 		"iDisplayLength": 20,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"bSort": false,
+		"searching": false
 	});
 	$('#example3').dataTable( {
 		"ajax": 'ImageType',
 		"iDisplayLength": 20,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"bSort": false,
+		"searching": false
 	});
 	$('#example4').dataTable( {
 		"ajax": 'Status',
 		"iDisplayLength": 20,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"bSort": false,
+		"searching": false
 	});
 	$('#example5').dataTable( {
 		"ajax": 'CaseStatus',
 		"iDisplayLength": 20,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"bSort": false,
+		"searching": false
 	});
 	$('#example6').dataTable( {
 		"ajax": 'Doc',
 		"iDisplayLength": 20,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"bSort": false,
+		"searching": false
 	});
 	$('#example7').dataTable( {
 		"ajax": 'Service',
 		"iDisplayLength": 20,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"bSort": false,
+		"searching": false
 	});
 	$('#example8').dataTable( {
 		"ajax": 'EventType',
 		"iDisplayLength": 20,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"bSort": false,
+		"searching": false
 	});
 	var table = $('#example9').dataTable( {
 		"ajax": 'EventStatus',
 		"iDisplayLength": 20,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"bSort": false,
+		"searching": false
 	});
 	$('tbody').on( 'click', '.editRecord', function () {
 		var parentR = $(this).parent();

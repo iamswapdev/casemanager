@@ -17,9 +17,22 @@ Class Dataentry_model extends CI_Model{
 		$Case_AutoId1 = $Case_AutoId[0]['Case_AutoId'];
 		$data1 = $data;
 		$data["Case_Id"] = "AR16-".($Case_AutoId1+1);
+		$data["Case_Id"] = "AR".substr(date("Y"), 2, 2)."-".($Case_AutoId1+1);
 		
 		$query = $this->db->insert('dbo_tblcase',$data); 
 		return true;
+	}
+/*add Settlement*/
+	public function addSettlement($data){
+		$this->db->order_by("Case_AutoId", "desc");
+		$this->db->select("Case_Id");
+		$this->db->limit('1');
+		$query1 = $this->db->get("dbo_tblcase");
+		$Case_Id = $query1->result_array();
+		$Case_Id1 = $Case_Id[0]['Case_Id'];
+		$data["Case_Id"] = $Case_Id1;
+		$this->db->insert("dbo_tblsettlements", $data);
+		return $Case_Id1;
 	}
 	public function Update_CaseInfo($data, $Case_AutoId){
 		$this->db->set($data);

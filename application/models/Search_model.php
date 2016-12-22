@@ -46,6 +46,12 @@ Class Search_model extends CI_Model{
 		//echo "<pre>"; print_r($data); exit();
 		return $data;
 	}
+	public function getPrivious_Value($Field_Name, $Case_Id){
+		$this->db->select($Field_Name);
+		$this->db->from('dbo_tblcase');
+		$this->db->where("Case_Id", $Case_Id);
+		$this->db->get();
+	}
 	public function get_Transactions($Case_Id){
 		$this->db->select('t1.*,  t2.Provider_Name' );
 		$this->db->from('dbo_tbltransactions as t1');
@@ -71,7 +77,23 @@ Class Search_model extends CI_Model{
 			return false;
 		}
 	}
-	
+/*UPDATE TREATEMENT RECORDS*/
+	public function updateTreatement($data, $Treatment_Id){
+		$this->db->set($data);
+		$this->db->where("Treatment_Id", $Treatment_Id);
+		$this->db->update("dbo_tbltreatment", $data);
+	}
+/*ADD TREATEMENT RECORDS*/
+	public function addTreatement($data){
+		$this->db->insert("dbo_tbltreatment", $data);
+	}
+/**/
+	public function delete_Treatement($data){
+		foreach($data as $id){
+			$this->db->where('Treatment_Id', $id);
+			$this->db->delete('dbo_tbltreatment');
+		}
+	}
 	public function get_Provider()
 	{
 		$this->db->order_by("Provider_Name", "asc");
@@ -79,11 +101,25 @@ Class Search_model extends CI_Model{
 		$data=$query->result_array();
 		return $data;
 	}
+	public function get_Provider_ById($Provider_Id){
+		$this->db->order_by("Provider_Name", "asc");
+		$this->db->where("Provider_Id", $Provider_Id);
+		$query = $this->db->get('dbo_tblprovider'); 
+		$data=$query->result();
+		return $data;
+	}
 	public function get_Insurance()
 	{
 		$this->db->order_by("InsuranceCompany_Name", "asc");
 		$query=$this->db->get('dbo_tblinsurancecompany');
 		$data=$query->result_array();
+		return $data;
+	}
+	public function get_Insurance_ById($InsuranceCompany_Id){
+		$this->db->order_by("InsuranceCompany_Name", "asc");
+		$this->db->where("InsuranceCompany_Id", $InsuranceCompany_Id);
+		$query=$this->db->get('dbo_tblinsurancecompany');
+		$data=$query->result();
 		return $data;
 	}
 	public function get_StatusArray()
@@ -105,6 +141,14 @@ Class Search_model extends CI_Model{
 		$this->db->order_by("Defendant_Name", "asc");
 		$query=$this->db->get('dbo_tbldefendant');
 		$data=$query->result_array();
+		return $data;
+	}
+	public function get_Defendant_ById($Defendant_id)
+	{
+		$this->db->order_by("Defendant_Name", "asc");
+		$this->db->where("Defendant_id" ,$Defendant_id);
+		$query=$this->db->get('dbo_tbldefendant');
+		$data=$query->result();
 		return $data;
 	}
 	public function get_ServiceArray()
@@ -133,6 +177,14 @@ Class Search_model extends CI_Model{
 		$data=$query->result_array();
 		return $data;
 	}
+	public function get_Adjuster_ById($Adjuster_Id)
+	{
+		$this->db->order_by("Adjuster_LastName", "asc");
+		$this->db->where("Adjuster_Id", $Adjuster_Id);
+		$query=$this->db->get('dbo_tbladjusters');
+		$data=$query->result();
+		return $data;
+	}
 	public function get_CourtArray()
 	{
 		$this->db->order_by("Court_Name", "asc");
@@ -159,9 +211,9 @@ Class Search_model extends CI_Model{
 		$this->db->insert("dbo_tblnotes", $data);
 		return true;
 	}
-	public function update_CaseInfo($data, $Case_Id){
+	public function update_CaseInfo($data, $Case_AutoId){
 		$this->db->set($data);
-		$this->db->where("Case_Id", $Case_Id);
+		$this->db->where("Case_AutoId", $Case_AutoId);
 		$query = $this->db->update("dbo_tblcase", $data);
 		if($query){
 			return true;
@@ -187,25 +239,32 @@ Class Search_model extends CI_Model{
 			$this->db->where("t1.Case_Id LIKE '".$Recieveddata['Case_Id']."%'");
 		}
 		if($Recieveddata['InjuredParty_LastName'] !=""){
-			$this->db->where('t1.InjuredParty_LastName', $Recieveddata['InjuredParty_LastName']);
+			$this->db->where("t1.InjuredParty_LastName LIKE '".$Recieveddata['InjuredParty_LastName']."%'");
+			//$this->db->where('t1.InjuredParty_LastName', $Recieveddata['InjuredParty_LastName']);
 		}
 		if($Recieveddata['InjuredParty_FirstName'] !=""){
-			$this->db->where('t1.InjuredParty_FirstName', $Recieveddata['InjuredParty_FirstName']);
+			$this->db->where("t1.InjuredParty_FirstName LIKE '".$Recieveddata['InjuredParty_FirstName']."%'");
+			//$this->db->where('t1.InjuredParty_FirstName', $Recieveddata['InjuredParty_FirstName']);
 		}
 		if($Recieveddata['InsuredParty_LastName'] !=""){
-			$this->db->where('t1.InsuredParty_LastName', $Recieveddata['InsuredParty_LastName']);
+			$this->db->where("t1.InsuredParty_LastName LIKE '".$Recieveddata['InsuredParty_LastName']."%'");
+			//$this->db->where('t1.InsuredParty_LastName', $Recieveddata['InsuredParty_LastName']);
 		}
 		if($Recieveddata['InsuredParty_FirstName'] !=""){
-			$this->db->where('t1.InsuredParty_FirstName', $Recieveddata['InsuredParty_FirstName']);
+			$this->db->where("t1.InsuredParty_FirstName LIKE '".$Recieveddata['InsuredParty_FirstName']."%'");
+			//$this->db->where('t1.InsuredParty_FirstName', $Recieveddata['InsuredParty_FirstName']);
 		}
 		if($Recieveddata['Policy_Number'] !=""){
-			$this->db->where('t1.Policy_Number', $Recieveddata['Policy_Number']);
+			$this->db->where("t1.Policy_Number LIKE '".$Recieveddata['Policy_Number']."%'");
+			//$this->db->where('t1.Policy_Number', $Recieveddata['Policy_Number']);
 		}
 		if($Recieveddata['Ins_Claim_Number'] !=""){
-			$this->db->where('t1.Ins_Claim_Number', $Recieveddata['Ins_Claim_Number']);
+			$this->db->where("t1.Ins_Claim_Number LIKE '".$Recieveddata['Ins_Claim_Number']."%'");
+			//$this->db->where('t1.Ins_Claim_Number', $Recieveddata['Ins_Claim_Number']);
 		}
 		if($Recieveddata['IndexOrAAA_Number'] !=""){
-			$this->db->where('t1.IndexOrAAA_Number', $Recieveddata['IndexOrAAA_Number']);
+			$this->db->where("t1.IndexOrAAA_Number LIKE '".$Recieveddata['IndexOrAAA_Number']."%");
+			//$this->db->where('t1.IndexOrAAA_Number', $Recieveddata['IndexOrAAA_Number']);
 		}
 		if($Recieveddata['Status'] !=""){
 			$this->db->where('t1.Status', $Recieveddata['Status']);
@@ -242,11 +301,10 @@ Class Search_model extends CI_Model{
 		$this->db->update("dbo_tblnotes");
 	}
 	public function AdjusterInsurance(){
-		$this->db->order_by('t2.Adjuster_LastName');
-		$this->db->select('t2.Adjuster_Id, t2.Adjuster_LastName, t2.Adjuster_FirstName, t3.InsuranceCompany_Name ');
-		$this->db->from('dbo_tblcase as t1');
-		$this->db->join('dbo_tbladjusters as t2', 't1.Adjuster_Id = t2.Adjuster_Id', 'LEFT');
-		$this->db->join('dbo_tblinsurancecompany as t3', 't1.InsuranceCompany_Id = t3.InsuranceCompany_Id', 'LEFT');
+		$this->db->order_by('t1.Adjuster_LastName');
+		$this->db->select('t1.*, t2.*');
+		$this->db->from('dbo_tbladjusters as t1');
+		$this->db->join('dbo_tblinsurancecompany as t2', 't1.InsuranceCompany_Id = t2.InsuranceCompany_Id', 'LEFT');
 		$query= $this->db->get();
 		$data=$query->result_array();
 		//echo "<pre>"; print_r($data); exit();
@@ -286,6 +344,35 @@ Class Search_model extends CI_Model{
 		$this->db->set($data);
 		$this->db->where("Event_id", $data['Event_id']);
 		$this->db->update("dbo_tblevent");
+	}
+	
+
+/*UPDATE SETTLEMENT*/
+	public function updateSettlement($data, $Case_Id){
+		$this->db->set($data);
+		$this->db->where("Case_Id", $Case_Id);
+		$this->db->update("dbo_tblsettlements", $data);
+		$status_to_paid = array(
+			"Status" => "PAID"
+		);
+		$this->db->set($status_to_paid);
+		$this->db->where("Case_Id", $Case_Id);
+		$this->db->update("dbo_tblcase", $status_to_paid);
+	}
+/* Reset Settlement Make case status from PAID to OPEN*/
+	public function resetSettlement($Case_AutoId){
+		$status_to_open = array(
+			"Status" => "OPEN"
+		);
+		$this->db->set($status_to_open);
+		$this->db->where("Case_AutoId", $Case_AutoId);
+		$this->db->update("dbo_tblcase", $status_to_open);
+	}
+/* Get Treatments*/
+	public function get_Treatment($Case_Id){
+		$this->db->where("Case_Id", $Case_Id);
+		$data = $this->db->get("dbo_tbltreatment");
+		return $data->result();
 	}
 
 }

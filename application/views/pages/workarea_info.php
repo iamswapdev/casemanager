@@ -57,7 +57,7 @@
 <div id="wrapper"> 
 <div class="content animate-panel">
 <?php $months = array("Just", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "jan");
-foreach($CaseInfo as $row){$Case_AutoId = $row['Case_AutoId']; $Case_Id = $row['Case_Id']; $Claim_Amount = $row['Claim_Amount']; $Paid_Amount = $row['Paid_Amount']; $DateOfService_Start = $row['DateOfService_Start']; $DateOfService_End = $row['DateOfService_End']; $Date_BillSent = $row['Date_BillSent']; }
+foreach($CaseInfo as $row){$Case_AutoId = $row['Case_AutoId']; $Case_Id = $row['Case_Id']; $Claim_Amount = $row['Claim_Amount']; $Paid_Amount = $row['Paid_Amount']; $DateOfService_Start = $row['DateOfService_Start']; $DateOfService_End = $row['DateOfService_End']; $Date_BillSent = $row['Date_BillSent']; $Provider_Name_fix = $row['Provider_Name']; $Provider_Id_fix = $row['Provider_Id']; }
 
 for($i=0; $i<=13; $i++){
 	if(substr($DateOfService_Start, 0, 3) == $months[$i]){
@@ -141,14 +141,14 @@ for($i=0; $i<=13; $i++){
                       	<!--<div class="col-md-2"><div class="col-md-6 case-info-id">Old Case Id:</div><div class="col-md-6 old-case-id case-info-id-data"></div></div>-->
                         <div class="col-md-2"><div class="col-md-5 case-info-id">Case Id:</div><div class="col-md-6 case-id case-info-id-data"></div></div>
                     </div>
-						<div class="form-group form-horizontal col-md-10">                
+						<div class="form-group form-horizontal col-md-6">                
 						<div class="table-responsive">
-							<table cellpadding="1" cellspacing="1" class="table tdAlignLeft">
+							<table cellpadding="1" cellspacing="1" class="table tdAlignLeft work-area-info">
 								<tbody>
 								<tr> 
                                 	<th><input type="hidden" name="selectRecordNo" value="1"><input type="hidden" name="recordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>PROVIDER</th>
-									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Provider_Id" name="Provider_Id"><option selected="selected" value=""></option><?php foreach($Provider_Name1 as $row){?><option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option><?php }?></select></div></td>
+									<td><div class="visible" style="display:block;"><input type="hidden" id="Hidden_Provider_Id"><a class="info-link VisibleInfo" id="ProviderInfoLink"></a></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Provider_Id" name="Provider_Id"><option selected="selected" value=""></option><?php foreach($Provider_Name1 as $row){?><option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option><?php }?></select></div></td>
                                     <th><input type="hidden" name="recordNo" value="2"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save fa-save1" style="display:none"></i></th>
 									<th>CASE STATUS</th>
 									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Initial_Status" name="Initial_Status"><option selected="selected" value=""></option><?php foreach($CaseStatus as $row){?><option value="<?php echo $row['id']; ?>"> <?php echo $row['name']; ?> </option><?php }?></select></div></td>
@@ -157,7 +157,7 @@ for($i=0; $i<=13; $i++){
 								<tr>  
                                 	<th><input type="hidden" name="recordNo" value="3"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save fa-save1" style="display:none"></i></th>
 									<th>INJURED NAME</th>
-									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><label>Last Name: </label><input type="text" class="input-sm" name="InjuredParty_LastName" /><label>First Name: </label><input type="text" class="input-sm" name="InjuredParty_FirstName" /></div></td>
+									<td><div class="visible" style="display:block;"><input type="hidden" id="Hidden_Case_AutoId"><a class="info-link VisibleInfo" id="InjuredInfoLink"></a></div><div class="editHidden" style="display:none;"><label>Last Name: </label><input type="text" class="input-sm" name="InjuredParty_LastName" /><label>First Name: </label><input type="text" class="input-sm" name="InjuredParty_FirstName" /></div></td>
                                     <th><input type="hidden" name="recordNo" value="4"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>CURRENT STATUS</th>
 									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Last_Status" name="Last_Status"><option selected="selected" value=""></option><?php foreach($Status as $row){?><option value="<?php echo $row['Status_Id']; ?>"> <?php echo $row['Status_Type']; ?> </option><?php }?></select></div></td>
@@ -166,25 +166,25 @@ for($i=0; $i<=13; $i++){
                                 <tr> 
                                 	<th><input type="hidden" name="recordNo" value="5"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>INSURED NAME</th>
-									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><label>Last Name: </label><input type="text" class="input-sm" name="InsuredParty_LastName" /><label>First Name: </label><input type="text" class="input-sm" name="InsuredParty_FirstName" /></div></td>
-                                    <th><input type="hidden" name="recordNo" value="6"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+									<td><div class="visible" style="display:block;"><a class="info-link VisibleInfo" id="InsuredInfoLink"></a></div><div class="editHidden" style="display:none;"><label>Last Name: </label><input type="text" class="input-sm" name="InsuredParty_LastName" /><label>First Name: </label><input type="text" class="input-sm" name="InsuredParty_FirstName" /></div></td>
+                                    <th><input type="hidden" name="recordNo" value="6"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>INS. CLAIM #</th>
 									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Ins_Claim_Number" /></div></td>
 								</tr>
                                 
                                 <tr> 
-                                	<th><input type="hidden" name="recordNo" value="7"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+                                	<th><input type="hidden" name="recordNo" value="7"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>POLICY #</th>
 									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Policy_Number" /></div></td>
-                                    <th><input type="hidden" name="recordNo" value="8"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+                                    <th><input type="hidden" name="recordNo" value="8"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>INDEX / AAA #</th>
-									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="phone-format input-sm" name="IndexOrAAA_Number" /></div></td>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="IndexOrAAA_Number" /></div></td>
 								</tr>
                                 
                                 <tr> 
                                 	<th><input type="hidden" name="recordNo" value="9"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>INSURANCE COMPANY</th>
-									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="InsuranceCompany_Id" name="InsuranceCompany_Id"><option selected="selected" value=""></option><?php foreach($InsuranceCompany_Name as $row){?><option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option><?php }?></select></div></td>
+									<td><div class="visible" style="display:block;"><input type="hidden" id="Hidden_InsuranceCompany_Id"><a class="info-link VisibleInfo" id="InsuranceCompanyInfoLink"></a></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="InsuranceCompany_Id" name="InsuranceCompany_Id"><option selected="selected" value=""></option><?php foreach($InsuranceCompany_Name as $row){?><option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option><?php }?></select></div></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -193,14 +193,14 @@ for($i=0; $i<=13; $i++){
                                 <tr> 
                                 	<th><input type="hidden" name="recordNo" name="recordNo" value="10"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>DEF ATTORNEY NAME</th>
-									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Defendant_Id" name="Defendant_Id" required><option selected="selected" value=""></option><?php foreach($Defendant_Name as $row){?><option value="<?php echo $row['Defendant_id']; ?>"><?php echo $row['Defendant_Name'];?></option><?php }?></select></div></td>
+									<td><div class="visible" style="display:block;"><input type="hidden" id="Hidden_Defendant_Id"><a class="info-link VisibleInfo" id="DefendantInfoLink"></a></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Defendant_Id" name="Defendant_Id" required><option selected="selected" value=""></option><?php foreach($Defendant_Name as $row){?><option value="<?php echo $row['Defendant_id']; ?>"><?php echo $row['Defendant_Name'];?></option><?php }?></select></div></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
 								</tr>
                                 
                                 <tr> 
-                                	<th><input type="hidden" name="recordNo" value="11"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+                                	<th><input type="hidden" name="recordNo" value="11"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>DEF ATTORNEY FILE #</th>
 									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Attorney_FileNumber" /></div></td>
                                     <th><input type="hidden" name="recordNo" value="12"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
@@ -209,10 +209,10 @@ for($i=0; $i<=13; $i++){
 								</tr>
                                 
                                 <tr> 
-                                	<th><input type="hidden" name="recordNo" value="13"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+                                	<th><input type="hidden" name="recordNo" value="13"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>CLAIM AMOUNT</th>
 									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Claim_Amount" /></div></td>
-                                    <th><input type="hidden" name="recordNo" value="14"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+                                    <th><input type="hidden" name="recordNo" value="14"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>PAID/BALANCE</th>
 									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Paid_Amount" /></div></td>
 								</tr>
@@ -221,18 +221,18 @@ for($i=0; $i<=13; $i++){
                                 	<th><input type="hidden" name="recordNo" value="15"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit1"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>ASSIGN TO WORK DESK</th>
 									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="caseStatusId" name="caseStatusId"><option selected="selected" value=""></option><?php foreach($CaseStatus as $row){?><option value="<?php echo $row['id']; ?>"> <?php echo $row['name']; ?> </option><?php }?></select></div></td>
-                                    <th><input type="hidden" name="recordNo" value="16"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+                                    <th><input type="hidden" name="recordNo" value="16"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>OLD CASE ID</th>
 									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Old_Case_Id" /></div></td>
 								</tr>
                                 
                                 <tr> 
-                                	<th><input type="hidden" name="recordNo" value="17"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+                                	<th><input type="hidden" name="recordNo" value="17"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>DATE OF ACCIDENT</th>
 									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm datetimepicker_start" name="Accident_Date" /></div></td>
                                     <th><input type="hidden" name="recordNo" value="18"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>ADJUSTER</th>
-									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Adjuster_Id" name="Adjuster_Id"><option selected="selected" value=""></option><?php foreach($Adjuster_Name as $row){?><option value="<?php echo $row['Adjuster_Id']; ?>"> <?php echo $row['Adjuster_LastName'].", ".$row['Adjuster_FirstName']; ?> </option><?php }?></select></div></td>
+									<td><div class="visible" style="display:block;"><input type="hidden" id="Hidden_Adjuster_Id"><a class="info-link VisibleInfo" id="AdjusterInfoLink"></a></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Adjuster_Id" name="Adjuster_Id"><option selected="selected" value=""></option><?php foreach($Adjuster_Name as $row){?><option value="<?php echo $row['Adjuster_Id']; ?>"> <?php echo $row['Adjuster_LastName'].", ".$row['Adjuster_FirstName']; ?> </option><?php }?></select></div></td>
 								</tr>
                                 
                                 <tr> 
@@ -248,12 +248,12 @@ for($i=0; $i<=13; $i++){
 							</table>
 						</div>
 						</div>
-                        <div class="form-group form-horizontal col-lg-12 set-bg">
-							<div class="table-responsive">
-								<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped add-case-table">
-									<thead>
-									<tr>
-										<th>D.O.S-Start</th>
+                        <div class="form-group form-horizontal col-lg-12">
+                            	<table id="Treatement_Info_table" class="table dataTable tdAlignLeft-bottom">
+                                    <thead>
+                                    <tr>
+                                    	<th></th>
+                                        <th>D.O.S-Start</th>
 										<th>D.O.S.-End</th>
 										<th>Claim Amt.</th>
 										<th>Paid Amt.</th>
@@ -261,39 +261,35 @@ for($i=0; $i<=13; $i++){
                                         <th>Service Type</th>
                                         <th>Denial Reason</th>
                                         <th>Delete</th>
-									</tr>
-                                
-                                </thead>
-									<tbody>
-									<tr class="first-row">
-										<td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datetimepicker_Dos_Doe" value="<?php echo substr_replace($DateOfService_Start,"",11,8);?>"></td>
-										<td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datetimepicker_Dos_Doe" value="<?php  echo substr_replace($DateOfService_End,"",11,8);?>"></td>
-										<td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm" value="<?php echo $Claim_Amount;?>"></td>
-										<td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm" value="<?php echo $Paid_Amount;?>"></td>
-										<td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datetimepicker_Dos_Doe" value="<?php echo $Date_BillSent;?>"></td>
-                                        <td><select class="form-control input-sm" id="serviceType" name="serviceType">
-                                        <option>-- Select Service--</option>
-                                        <?php foreach($Service as $row){?>
-                                        <option value="<?php echo $row['ServiceType_ID']; ?>"> <?php echo $row['ServiceType']; ?> </option>
-                                        <?php }?>
-                                    </select></td>
-                                        <td><select class="form-control input-sm" id="denialReasons" name="denialReasons" >
-                                                <option>-- Select Denial reason --</option>
-                                                <?php foreach($DenialReasons as $row){?>
-                                                <option value="<?php echo $row['DenialReasons_Id']; ?>"> <?php echo $row['DenialReasons_Type']; ?> </option>
-                                                <?php }?>
-                                            </select></td>
-                                        <td><span><button type="button" id="addOtherInfo" class="btn btn-primary create">Add</button></span></td>
-									</tr>
-                                
-                                </tbody>
-								</table>
-							</div>
+                                    </tr>
+                                    </thead>
+                                    <tfoot>
+                                      <tr class="first-row">
+                                            <td></td>
+                                            <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datetimepicker_Dos_Doe"></td>
+                                            <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datetimepicker_Dos_Doe"></td>
+                                            <td><input type="number" step="0.01" id="claimAmt" name="Claim_Amount_treat" class="form-control input-sm"></td>
+                                            <td><input type="number" step="0.01" id="paidAmt" name="Paid_Amount_treat" class="form-control input-sm"></td>
+                                            <td><input id="dateBillSent" name="Date_BillSent_treat" class="form-control input-sm datetimepicker_Dos_Doe"></td>
+                                            <td><select class="form-control input-sm" id="serviceType" name="serviceType">
+                                            <option>-- Select Service--</option>
+                                            <?php foreach($Service as $row){?>
+                                            <option value="<?php echo $row['ServiceType']; ?>"> <?php echo $row['ServiceType']; ?> </option>
+                                            <?php }?>
+                                        </select></td>
+                                            <td><select class="form-control input-sm" id="denialReasons" name="denialReasons" >
+                                                    <option>-- Select Denial reason --</option>
+                                                    <?php foreach($DenialReasons as $row){?>
+                                                    <option value="<?php echo $row['DenialReasons_Type']; ?>"> <?php echo $row['DenialReasons_Type']; ?> </option>
+                                                    <?php }?>
+                                                </select></td>
+                                            <td><span><button type="button" id="addOtherInfo" class="btn btn-primary create">Add</button></span></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
 						</div>
                         <div class="form-group form-horizontal col-lg-12">
-                            <div class="col-md-2">
-                                <button type="button" id="DeleteButton" class="btn w-xs btn-primary" style="display:none;">Delete Checked</button>
-                            </div>
+                            <div class="col-md-2"><button type="button" id="deleteTreatementButton" class="btn btn-primary"><i class="fa fa-trash-o"></i> Delete Checked</button></div>
                         </div>
                         <div class="form-group form-horizontal col-lg-12">
                         	<br><h5 class="h4-title">Payment Summary Information</h5>
@@ -331,7 +327,7 @@ for($i=0; $i<=13; $i++){
 							<label class="col-md-2 control-label">Description</label>
 							<div class="col-md-4">
                                 <textarea rows="3"  id="notesDescription" name="notesDescription" class="form-control" ></textarea>
-                                <input type="hidden" name="notesAccidentDate"  class="notesAccidentDate datepicker_recurring_start">
+                                <input type="hidden" name="notesAccidentDate"  class="notesAccidentDate">
                             </div>
 						</div>				
                         <div class="form-group form-horizontal col-lg-12">
@@ -342,7 +338,7 @@ for($i=0; $i<=13; $i++){
                                 <label><input type="radio" class="horizontal" value="GENERAL" id="general" name="notesType">GENERAL</label>
                                 <label><input type="radio" class="horizontal" value="POPUP" id="popup" name="notesType">POPUP</label>
                                 <label><input type="radio" class="horizontal" value="PROVIDER" id="provider" name="notesType">PROVIDER</label>
-                                &nbsp;&nbsp;<button type="submit" class="btn btn-primary">Add Notes</button>
+                                &nbsp;&nbsp;<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Add Notes</button>
                             </div>
                         </div>
                         <div class="form-group form-horizontal col-lg-12">
@@ -368,7 +364,7 @@ for($i=0; $i<=13; $i++){
                         
                         <h5 class="h4-title">Notes Details</h5>
                             <div class="col-md-12">
-                                <table id="example1" class="table dataTable table-bordered table-striped tdAlignLeft-bottom">
+                                <table id="NotesTab1" class="table dataTable table-bordered table-striped tdAlignLeft-bottom">
                                     <thead>
                                     <tr>
                                     	<th>Notes Desc.</th>
@@ -400,115 +396,115 @@ for($i=0; $i<=13; $i++){
 							<div class="form-group form-horizontal col-md-8">
 								<h5 class="h4-title">Workarea Information</h5>
 								<div class="table-responsive">
-									<table cellpadding="1" cellspacing="1" class="table tdAlignLeft">
+									<table cellpadding="1" cellspacing="1" class="table tdAlignLeft work-area-info-tab2">
 										<tbody>
 										<tr>
 											<th></th>		
-											<th>21 DATE FILE OPENED</th>
+											<th>DATE FILE OPENED</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Opened" /></div></td>
 											<th><input type="hidden" name="recordNo" value="22"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-											<th>22 PLAINTIFF DISCOVERY COMPLETED</th>
+											<th>PLAINTIFF DISCOVERY COMPLETED</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Plaintiff_Discovery_Due_Date" /></div></td>
 										</tr>
 										<tr>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="23"></i><i title="Save" class="fa fa-save" style="display:none"></i></th> 
-											<th>23DATE OF ACCIDENT</th>
+											<th>DATE OF ACCIDENT</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Accident_Date" /></div></td>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="24"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-											<th>24 DATE REPLY TO DISC CONF LETTER Recd</th>
+											<th>DATE REPLY TO DISC CONF LETTER Recd</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Reply_To_Disc_Conf_Letter_Recd" /></div></td>
 										</tr>
 										<tr> 
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="25"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>			
-											<th>25 DATE BILL SUBMITED</th>
+											<th>DATE BILL SUBMITED</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Bill_Submitted" /></div></td>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="26"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-											<th>26 DATE EXT OF TIME 1</th>
+											<th>DATE EXT OF TIME 1</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Ext_Of_Time" /></div></td>
 										</tr>
 										<tr> 
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="27"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>	 			 
-											<th>27 DATE STATUS CHANGED</th>
+											<th>DATE STATUS CHANGED</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Status_Changed" /></div></td>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="28"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-											<th>28 DATE EXT OF TIME 2</th>
+											<th>DATE EXT OF TIME 2</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Ext_Of_Time_2" /></div></td>
 										</tr>
 										<tr>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="29"></i><i title="Save" class="fa fa-save" style="display:none"></i></th> 			 
-											<th>29 DATE SUMMONS PRINTED</th>
+											<th>DATE SUMMONS PRINTED</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Summons_Printed" /></div></td>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="30"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-											<th>30 DATE EXT OF TIME 3</th>
+											<th>DATE EXT OF TIME 3</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Ext_Of_Time_3" /></div></td>
 										</tr>
 										<tr>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="31"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>			
-											<th>31 DATE INDEX NUMBER PURCHASED </th>
+											<th>DATE INDEX NUMBER PURCHASED </th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Index_Number_Purchased" /></div></td>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="32"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-											<th>32 DEFENDANT'S DISCOVERY RECEIVED</th>
+											<th>DEFENDANT'S DISCOVERY RECEIVED</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Defendant_Discovery_Due_Date" /></div></td>
 										</tr>
 										<tr> 
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="33"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>			
-											<th>33 DATE SUMMONS SENT TO COURT</th>
+											<th>DATE SUMMONS SENT TO COURT</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Summons_Sent_Court" /></div></td>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="34"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-											<th>34 DATE DISCOVERY CONF LETTER PRINTED</th>
+											<th>DATE DISCOVERY CONF LETTER PRINTED</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Disc_Conf_Letter_Printed" /></div></td>
 										</tr>
 										<tr>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="35"></i><i title="Save" class="fa fa-save" style="display:none"></i></th> 			
-											<th>35 DATE SUMMONS SERVED</th>
+											<th>DATE SUMMONS SERVED</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Served_On_Date" /></div></td>
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="36"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-											<th>36 STIPS SIGNED & RETURNED 1</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="stips_signed_and_returned" /></div></td>
+											<th><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="36"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+											<th>STIPS SIGNED & RETURNED 1</th>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select name="stips_signed_and_returned" id="stips_signed_and_returned" class="form-control input-sm"><option selected="selected" value="0">No</option><option value="1">Yes</option></select></div></td>
 										</tr>
 										<tr>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="37"></i><i title="Save" class="fa fa-save" style="display:none"></i></th> 			
-											<th>37 SERVED TO</th>
+											<th>SERVED TO</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Served_To" /></div></td>
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="38"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-											<th>38 STIPS SIGNED & RETURNED 2</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="stips_signed_and_returned_2" /></div></td>
+											<th><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="38"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+											<th>STIPS SIGNED & RETURNED 2</th>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select name="stips_signed_and_returned_2" id="stips_signed_and_returned_2" class="form-control input-sm"><option selected="selected" value="0">No</option><option value="1">Yes</option></select></div></td>
 										</tr>
 										<tr> 
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="39"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>			
-											<th>39 SUMMONS SERVE TIME</th>
+											<th>SUMMONS SERVE TIME</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_only_time" name="Served_On_Time" /></div></td>
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="40"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-											<th>40 STIPS SIGNED & RETURNED 3</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="stips_signed_and_returned_3" /></div></td>
+											<th><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="40"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+											<th>STIPS SIGNED & RETURNED 3</th>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select name="stips_signed_and_returned_3" id="stips_signed_and_returned_3" class="form-control input-sm"><option selected="selected" value="0">No</option><option value="1">Yes</option></select></div></td>
 										</tr>
 										<tr>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="41"></i><i title="Save" class="fa fa-save" style="display:none"></i></th> 	 			
-											<th>41 DATE AFFIDAVIT FILED</th>
+											<th>DATE AFFIDAVIT FILED</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Afidavit_Filed" /></div></td>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="42"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-											<th>42 DATE SUMMONS CLOSED</th>
+											<th>DATE SUMMONS CLOSED</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Closed" /></div></td>
 										</tr>
 										<tr>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="43"></i><i title="Save" class="fa fa-save" style="display:none"></i></th> 	 			
-											<th>43 DATE ANSWER RCVD</th>
+											<th>DATE ANSWER RCVD</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Answer_Received" /></div></td>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="44"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-											<th>44 AAA CONCILIATION DATE</th>
+											<th>AAA CONCILIATION DATE</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="AAA_Conciliation_Date" /></div></td>
 										</tr>
 										<tr>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="45"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>			
-											<th>45 OUR DISCOVERY DEMAND</th>
+											<th>OUR DISCOVERY DEMAND</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Our_Discovery_Demands" /></div></td>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="46"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-											<th>46 ARB AWARD DATE</th>
+											<th>ARB AWARD DATE</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Arb_Award_Date" /></div></td>
 										</tr>
 										<tr>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="47"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>			
-											<th>47 DATE DEMAND PRINTED</th>
+											<th>DATE DEMAND PRINTED</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Demands_Printed" /></div></td>
 											<td></td>
 											<td></td>
@@ -550,7 +546,7 @@ for($i=0; $i<=13; $i++){
 									<label><input type="radio" class="horizontal" value="GENERAL" id="general" name="notesType">GENERAL</label>
 									<label><input type="radio" class="horizontal" value="POPUP" id="popup" name="notesType">POPUP</label>
 									<label><input type="radio" class="horizontal" value="PROVIDER" id="provider" name="notesType">PROVIDER</label>
-                                    &nbsp;&nbsp;<button type="submit" class="btn btn-primary">Add Notes</button>
+                                    &nbsp;&nbsp;<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Add Notes</button>
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-lg-12">
@@ -568,13 +564,13 @@ for($i=0; $i<=13; $i++){
 							</div>
                             <div class="form-group form-horizontal col-lg-12">
                             	<div class="col-md-11"></div>
-                            	<div class="col-md-1"><button type="button" id="deleteNotesButton" class="btn btn-primary">Delete</button></div>
+                            	<div class="col-md-1"><button type="button" id="deleteNotesButton" class="btn btn-primary"><i class="fa fa-trash-o"></i> Delete</button></div>
                             </div>
                             </form>
 							<div class="form-group form-horizontal col-lg-12">
 								<h5 class="h4-title">Notes Details</h5>
 									<div class="col-md-12">
-										<table id="example2" class="table dataTable table-bordered tdAlignLeft-bottom table-striped">
+										<table id="NotesTab3" class="table dataTable table-bordered tdAlignLeft-bottom table-striped">
 											<thead>
 											<tr>
                                             	<th>Edit</th>
@@ -646,53 +642,62 @@ for($i=0; $i<=13; $i++){
                                 <div class="col-md-1 case-info-tab6-title">CASE ID</div>
                                 <div class="col-md-2 case-info-tab6-title">PROVIDER</div>
                                 <div class="col-md-2 case-info-tab6-title">INJURED PARTY</div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-2 case-info-tab6-title">SETTLED BY</div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
                             	<div class="col-md-2"></div>
 								<div class="col-md-1 case-info-tab6" id="CaseId-tab-6"></div>
                                 <div class="col-md-2 case-info-tab6" id="ProviderName-tab-6"></div>
                                 <div class="col-md-2 case-info-tab6" id="InjuredPartyName-tab-6"></div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-2 case-info-tab6" id="InjuredPartyName-tab-6">Admin</div>
 							</div>
+                            <form method="post" id="settlement_form" style="display:none;">
 							<div class="form-group form-horizontal col-md-12">
 								<label class="col-md-2 control-label">ADJUSTER</label>
 								<div class="col-md-6">
-									<select class="form-control input-sm" id="adjusterIdTab-6" name="adjusterIdTab-6"><option selected="selected" value=""></option><?php foreach ($Adjuster_Name_Insurance as $row) {?><option value="<?php echo $row['Adjuster_Id']; ?>"> <?php echo $row['Adjuster_LastName']." ".$row['Adjuster_LastName']." => ". $row['InsuranceCompany_Name']; ?> </option><?php  }?></select>
+									<select class="form-control input-sm" id="adjusterIdTab-6" name="adjusterIdTab-6"><option selected="selected" value=""></option><?php foreach ($Adjuster_Name_Insurance as $row) {?><option value="<?php echo $row['Adjuster_Id']; ?>"> <?php echo $row['Adjuster_LastName']." ".$row['Adjuster_FirstName']." => [ADJ.PH#: ".$row['Adjuster_Phone']." / INS CPY: ". $row['InsuranceCompany_Name']." / ADJ FAX#: ".$row['Adjuster_Fax']."]"; ?> </option><?php  }?></select>
+                                    <input type="hidden" name="SettledWithAdjuster">
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<label class="col-md-2 control-label">ATTORNEY</label>
 								<div class="col-md-6">
 									<select class="form-control input-sm" id="defendantIdTab-6" name="defendantIdTab-6"><option selected="selected" value=""></option><?php foreach($Defendant_Name as $row){?><option value="<?php echo $row['Defendant_id']; ?>"><?php echo $row['Defendant_Name']." => ".$row['Defendant_Address'];?></option><?php }?></select>
+                                    <input type="hidden" name="SettledWithAttorney">
 								</div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
-								<div class="col-md-2"><label class="control-label settlement-title">CLAIM AMOUNT</label> </div>
-								<div class="col-md-2"><label class="control-label settlement-title">PAYMENTS</label> </div>
-								<div class="col-md-2"><label class="control-label settlement-title">BALANCE</label> </div>
+								<div class="col-md-2 claim-paid-balance"><label class="control-label settlement-title">CLAIM AMOUNT</label> </div>
+								<div class="col-md-2 claim-paid-balance"><label class="control-label settlement-title">PAYMENTS</label> </div>
+								<div class="col-md-2 claim-paid-balance"><label class="control-label settlement-title">BALANCE</label> </div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
-								<div class="col-md-2"><input step="0.0001" type="number" id="ClaimAmtTab6" name="ClaimAmtTab6" class="form-control input-sm Amount" ></div> 	 	
-								<div class="col-md-2"><input step="0.0001" type="number" id="PaymentsTab6" name="PaymentsTab6" class="form-control input-sm Amount" ></div>
-								<div class="col-md-2"><input step="0.0001" type="number" id="BalanceTab6" name="BalanceTab6"  class="form-control input-sm Amount" ></div>
+								<div class="col-md-2 claim-paid-balance"><input step="0.0001" type="number" id="ClaimAmtTab6" name="ClaimAmtTab6" class="form-control input-sm Amount" ></div> 	 	
+								<div class="col-md-2 claim-paid-balance"><input step="0.0001" type="number" id="PaymentsTab6" name="PaymentsTab6" class="form-control input-sm Amount" ></div>
+								<div class="col-md-2 claim-paid-balance"><input step="0.0001" type="number" id="BalanceTab6" name="BalanceTab6"  class="form-control input-sm Amount" ></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
-								<div class="col-md-2"></div>
-								<div class="col-md-1"><label class="control-label">PERCENTAGE (%)</label> </div>
+                                <div class="col-md-2 claim-paid-balance">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+								<div class="col-md-2 claim-paid-balance"><label class="control-label">PERCENTAGE (%)</label> </div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
+                            	<input type="hidden" name="Case_Id" value="<?php echo $Case_Id;?>">
+                                <input type="hidden" name="Case_AutoId" value="<?php echo $Case_AutoId;?>">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label">SETTLEMENT AMOUNT</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltSettlement_AmountTab6" name="FltSettlement_AmountTab6"  class="form-control input-sm Amount" ></div>
-								<div class="col-md-1"><input step="0.01" type="number" id="settlementPercentageTab6" name="settlementPercentageTab6"  class="form-control input-sm percentage" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltSettlement_AmountTab6" name="Settlement_Amount"  class="form-control input-sm Amount" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="settlementPercentageTab6" name="settlementPercentageTab6"  class="form-control input-sm percentage" value="100.00"></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label col-md-12">INTEREST</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltInterestTab6" name="FltInterestTab6"  class="form-control input-sm Amount" ></div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltInterestPercTab6" name="FltInterestPercTab6"  class="form-control input-sm percentage" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltInterestTab6" name="Settlement_Int"  class="form-control input-sm Amount" value="100.00" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltInterestPercTab6" name="FltInterestPercTab6"  class="form-control input-sm percentage" value="100.00" ></div>
 								<div class="col-md-1 start-date-settlement"><label class="control-label col-md-12">START DATE</label> </div>
 								<div class="col-md-1"><input type="text" id="CopundIntStartData" name="CopundIntStartData"  class="form-control input-sm datepicker_recurring_start" ></div>
 								<div class="col-md-1 end-date-settlement"><label class="control-label col-md-12">END DATE</label> </div>
@@ -700,32 +705,31 @@ for($i=0; $i<=13; $i++){
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-3"></div>
-								<div class="col-md-2"><button>Calculate compound interest</button></div>
-								<div class="col-md-2"><button>Calculate Simple interest</button></div>
+								<div class="col-md-2"><button type="button" class="CalSimpleInterest">Calculate Simple interest</button></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label">ATTORNEY'S FEE 	</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltAttorneyFeeTab6" name="FltAttorneyFeeTab6"  class="form-control input-sm Amount" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltAttorneyFeeTab6" name="Settlement_Af"  class="form-control input-sm Amount" ></div>
 								<div class="col-md-1"><input step="0.01" type="number" id="FltAttorneyPercTab6" name="FltAttorneyPercTab6"  class="form-control input-sm percentage" ></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label">FILING FEE</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltFillingFeeTab6" name="FltFillingFeeTab6"  class="form-control input-sm Amount" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltFillingFeeTab6" name="Settlement_Ff"  class="form-control input-sm Amount" ></div>
 								<div class="col-md-1"><input step="0.01" type="number" id="FltFillingFeePercTab6" name="FltFillingFeePercTab6"  class="form-control input-sm percentage" ></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label settlement-title">TOTAL AMOUNT</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="TotalAmount" name="TotalAmount"  class="form-control input-sm Amount" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="TotalAmount" name="Settlement_Total"  class="form-control input-sm Amount" ></div>
 								<div class="col-md-1"><input step="0.01" type="number" id="TotalAmountPerc" name="TotalAmountPerc"  class="form-control input-sm percentage" ></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
-								<div class="col-md-3"></div>
-								<div class="col-md-2"><button>Re-Calculate Amount</button></div>
-								<div class="col-md-1"><button>Add Amount</button></div>
-								<div class="col-md-1"><button>Reset Values</button></div>
+								<div class="col-md-2"></div>
+								<div class="col-md-2 recalculate-btn"><button>Re-Calculate Amount</button></div>
+								<div class="add-amt-btn col-md-1"><button>Add Amount</button></div>
+								<div class="reset-amt-btn col-md-1"><button>Reset Values</button></div>
 							</div>
                             <div class="form-group form-horizontal col-md-12">
 								<label class="col-md-2 control-label">SETTLED TYPE</label>
@@ -742,14 +746,77 @@ for($i=0; $i<=13; $i++){
                             <div class="form-group form-horizontal col-md-12">
 								<label class="col-md-2 control-label">Notes</label>
 								<div class="col-md-4">
-									<textarea rows="3"  id="memo" name="memo" class="form-control" ></textarea>
+									<textarea rows="3"  id="memo" name="Settlement_Notes" class="form-control" required></textarea>
 								</div>
 							</div>
                             <div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
-								<div class="col-md-2"><button>Finalize Settlement</button></div>
-								<div class="col-md-1"><button>Reset</button></div>
+								<div class="col-md-2 finalize-sett-button"><button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Finalize Settlement</button></div>
+								<div class="col-md-1"><button type="button" class="reset-settlement">Reset</button></div>
 							</div>
+                            </form>
+                            
+       <!-- SETTLED FORM -->
+                            <form method="post" id="settlement_form" style="display:block;">
+							<div class="form-group form-horizontal col-md-12">
+								<div class="col-md-2"></div>
+								<div class="col-md-2 claim-paid-balance"><label class="control-label settlement-title">CLAIM AMOUNT</label> </div>
+								<div class="col-md-2 claim-paid-balance"><label class="control-label settlement-title">PAYMENTS</label> </div>
+								<div class="col-md-2 claim-paid-balance"><label class="control-label settlement-title">BALANCE</label> </div>
+							</div>
+                            <div class="form-group form-horizontal col-md-12">
+                            	<label class="control-label col-md-2">Settle with: </label>
+                                <div class="col-md-8">PATRICK GESSNER =>[ADJ.PH#: 718-361-1221 / INS.CPY: HEREFORD INSURANCE COMPANY / ADJ FAX#: 347-418-3844]</div>
+                            </div>
+							<div class="form-group form-horizontal col-md-12">
+								<div class="col-md-2"></div>
+								<div class="col-md-2 claim-paid-balance"><input step="0.0001" type="number" id="ClaimAmtTab6" name="ClaimAmtTab6" class="form-control input-sm Amount" ></div> 	 	
+								<div class="col-md-2 claim-paid-balance"><input step="0.0001" type="number" id="PaymentsTab6" name="PaymentsTab6" class="form-control input-sm Amount" ></div>
+								<div class="col-md-2 claim-paid-balance"><input step="0.0001" type="number" id="BalanceTab6" name="BalanceTab6"  class="form-control input-sm Amount" ></div>
+							</div>
+							<div class="form-group form-horizontal col-md-12">
+								<div class="col-md-2"></div>
+                                <div class="col-md-2 claim-paid-balance">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+								<div class="col-md-2 claim-paid-balance"><label class="control-label">PERCENTAGE (%)</label> </div>
+							</div>
+							<div class="form-group form-horizontal col-md-12">
+                            	<input type="hidden" name="Case_Id" value="<?php echo $Case_Id;?>">
+                                <input type="hidden" name="Case_AutoId" value="<?php echo $Case_AutoId;?>">
+								<div class="col-md-2"></div>
+								<div class="col-md-1"><label class="control-label">SETTLEMENT AMOUNT</label> </div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltSettlement_AmountTab6" name="Settlement_Amount"  class="form-control input-sm Amount" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="settlementPercentageTab6" name="settlementPercentageTab6"  class="form-control input-sm percentage" value="100.00"></div>
+							</div>
+							<div class="form-group form-horizontal col-md-12">
+								<div class="col-md-2"></div>
+								<div class="col-md-1"><label class="control-label col-md-12">INTEREST</label> </div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltInterestTab6" name="Settlement_Int"  class="form-control input-sm Amount" value="100.00" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltInterestPercTab6" name="FltInterestPercTab6"  class="form-control input-sm percentage" value="100.00" ></div>
+							</div>
+							<div class="form-group form-horizontal col-md-12">
+								<div class="col-md-2"></div>
+								<div class="col-md-1"><label class="control-label">ATTORNEY'S FEE 	</label> </div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltAttorneyFeeTab6" name="Settlement_Af"  class="form-control input-sm Amount" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltAttorneyPercTab6" name="FltAttorneyPercTab6"  class="form-control input-sm percentage" ></div>
+							</div>
+							<div class="form-group form-horizontal col-md-12">
+								<div class="col-md-2"></div>
+								<div class="col-md-1"><label class="control-label">FILING FEE</label> </div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltFillingFeeTab6" name="Settlement_Ff"  class="form-control input-sm Amount" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltFillingFeePercTab6" name="FltFillingFeePercTab6"  class="form-control input-sm percentage" ></div>
+							</div>
+							<div class="form-group form-horizontal col-md-12">
+								<div class="col-md-2"></div>
+								<div class="col-md-1"><label class="control-label settlement-title">TOTAL AMOUNT</label> </div>
+								<div class="col-md-1"><input step="0.01" type="number" id="TotalAmount" name="Settlement_Total"  class="form-control input-sm Amount" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="TotalAmountPerc" name="TotalAmountPerc"  class="form-control input-sm percentage" ></div>
+							</div>
+                            <div class="form-group form-horizontal col-md-12">
+								<div class="col-md-2"></div>
+								<div class="col-md-2 finalize-sett-button"><button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Finalize Settlement</button></div>
+								<div class="col-md-1"><button type="button" class="reset-settlement">Reset</button></div>
+							</div>
+                            </form>
 						</div><!-- End of panel-body tab-panel-->
 						</div><!-- End hpanel -->
 						</div><!-- End col-lg-12-->
@@ -948,7 +1015,7 @@ for($i=0; $i<=13; $i++){
 						<div class="panel-heading"></div>
 						<div class="panel-body tab-panel">
 							<div class="form-group form-horizontal col-md-12">
-                            	<h5 class="h4-title">PAYMENT DETAILS</h5>
+                            	<h5 class="h4-title">Settlement Quick View</h5>
                                 <div class="col-md-12">
                                     <table id="SettlementQuickView" class="table dataTable table-bordered table-striped">
                                         <thead>
@@ -976,6 +1043,7 @@ for($i=0; $i<=13; $i++){
                                     
                                 </div>
                             </div>
+                            <!--<form action="/casemanager/ search/testmethod" method="post">-->
                             <div class="form-group form-horizontal col-md-12">
                             	<h5 class="h4-title">PAYMENT DETAILS</h5>
                                 <div class="col-md-12">
@@ -997,14 +1065,17 @@ for($i=0; $i<=13; $i++){
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
-                                <div class="col-md-2"><button type="button" id="deleteTransactionsButton" name="deleteTransactionsButton" class="btn btn-primary">Deleted Checked</button></div>
+                                <div class="col-md-2"><button type="button" id="deleteTransactionsButton" name="deleteTransactionsButton" class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted Checked</button></div>
                             </div>
-                            <form method="post" id="add_Transactions_Form" action="<?php echo base_url();?>search/addTransactions">
+                            <!--</form>-->
+                            <form method="post" id="add_Transactions_Form" >
                             <div class="form-group form-horizontal col-md-12">
                             	<input type="hidden" name="Case_Id" value="<?php echo $Case_Id;?>">
+                                <input type="hidden" name="Provider_Name_Trans" value="<?php echo $Provider_Name_fix;?>">
+                                <input type="hidden" name="Provider_Id_Trans" value="<?php echo $Provider_Id_fix;?>">
                             	<label class="col-md-2 control-label">Transaction Amount</label>
                                 <div class="col-md-2">
-                                	<input type="text" id="Transactions_Amount" name="Transactions_Amount"  class="form-control input-sm" >
+                                	<input type="number" id="Transactions_Amount" name="Transactions_Amount"  class="form-control input-sm" >
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
@@ -1124,7 +1195,7 @@ for($i=0; $i<=13; $i++){
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Assigned To: </label>
                                 <div class="col-md-2">
-                                    <input name="AssignUser"  class="form-control input-sm">
+                                    <input type="text" name="AssignUser"  class="form-control input-sm">
                                 </div>
                                 <div class="col-md-4">
                                 	<select class="form-control input-sm" id="selectAssignUser" name="selectAssignUser"><option selected="selected" value="">Select User to Assign</option><?php foreach($EventStatus as $row){?><option value="<?php echo $row['EventStatusId']; ?>"><?php echo $row['EventStatusName'];?></option><?php  }?></select>
@@ -1132,7 +1203,7 @@ for($i=0; $i<=13; $i++){
                             </div>
                             <div class="form-group form-horizontal col-md-12">
                             	<div class="col-md-2"></div>
-                                <div class="col-md-2"><button type="submit" class="btn btn-primary">Save</button></div>
+                                <div class="col-md-2"><button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Save</button></div>
                             </div>
                             </form>
                             <!--<form action="/casemanager/search/deleteEvents" method="post">-->
@@ -1163,7 +1234,7 @@ for($i=0; $i<=13; $i++){
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
-                                <div class="col-md-2"><button type="button" id="deleteEventsButton" name="deleteEventsButton" class="btn btn-primary">Deleted Checked</button></div>
+                                <div class="col-md-2"><button type="button" id="deleteEventsButton" name="deleteEventsButton" class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted Checked</button></div>
                             </div>
                             <!--</form>-->
                             
@@ -1179,6 +1250,7 @@ for($i=0; $i<=13; $i++){
 		</div><!-- End col-lg-12-->
 	</div><!-- End row-->
     
+    <!-- EDIT Notes -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -1203,7 +1275,7 @@ for($i=0; $i<=13; $i++){
                                     <div class="form-group form-horizontal col-md-12">
                                     	<label class="col-md-3 control-label">Edited Date</label>
                                         <div class="col-md-4">
-                                            <input type="text" class="mNoteDate input-sm datepicker_recurring_start" id="mEditedDate" name="Notes_Date">
+                                            <input type="text" class="mNoteDate input-sm datetimepicker_start" id="mEditedDate" name="Notes_Date">
                                         </div>
                                     </div>
                                     <div class="form-group form-horizontal col-md-12">
@@ -1226,7 +1298,183 @@ for($i=0; $i<=13; $i++){
                             </div>
                         </div>
                     </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- SHOW PROVIDER INFO-->
+    <div class="modal fade" id="showProviderInfoLink" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="table-responsive">
+                <table id="Provider_Info_table" class="table dataTable table-bordered table-striped tdAlignLeft-bottom">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Zip</th>
+                        <th>Phone</th>
+                        <th>Fax</th>
+                        <th>Email</th>
+                        <th>Type</th>
+                    </tr>
                 
+                </thead>
+                </table>
+                </div>
+				<div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"> Close </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- SHOW INSURANCE INFO-->
+    <div class="modal fade" id="showInsuranceCompanyInfoLink" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="table-responsive">
+                <table id="InsuranceCompany_Info_table" class="table dataTable table-bordered table-striped tdAlignLeft-bottom">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Local Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Zip</th>
+                        <th>Phone</th>
+                        <th>Fax</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                </table>
+                </div>
+				<div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"> Close </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- SHOW DEFENDANT INFO-->
+    <div class="modal fade" id="showDefendantInfoLink" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="table-responsive">
+                <table id="Defendant_Info_table" class="table dataTable table-bordered table-striped tdAlignLeft-bottom">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Local Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Zip</th>
+                        <th>Phone</th>
+                        <th>Fax</th>
+                        <th>Email</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                </table>
+                </div>
+				<div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"> Close </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- SHOW ADJUSTER INFO-->
+    <div class="modal fade" id="showAdjusterInfoLink" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="table-responsive">
+                <table id="Adjuster_Info_table" class="table dataTable table-bordered table-striped tdAlignLeft-bottom">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Local Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Zip</th>
+                        <th>Phone</th>
+                        <th>Ext</th>
+                        <th>Fax</th>
+                        <th>Email</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                </table>
+                </div>
+				<div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"> Close </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SHOW INJURED PARTY INFO-->
+    <div class="modal fade" id="showInjuredInfoLink" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="table-responsive">
+                <table id="Injured_Info_table" class="table dataTable table-bordered table-striped tdAlignLeft-bottom">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Local Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Zip</th>
+                        <th>Phone</th>
+                    </tr>
+                </thead>
+                </table>
+                </div>
+				<div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"> Close </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- SHOW INSURED PARTY INFO-->
+    <div class="modal fade" id="showInsuredInfoLink" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="table-responsive">
+                <table id="Insured_Info_table" class="table dataTable table-bordered table-striped tdAlignLeft-bottom">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Local Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Zip</th>
+                    </tr>
+                </thead>
+                </table>
+                </div>
+				<div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"> Close </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- SELECT EITHER ADJUSTER OR ATTORNEY -->
+    <div class="modal fade hmodal-warning" id="AdjOrAtt" tabindex="-1" role="dialog"  aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="color-line"></div>
+                <div class="modal-header">
+                    <h4 class="modal-title">Select either Adjuster or Attoreny</h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"> Close </button>
+                </div>
             </div>
         </div>
     </div>
@@ -1271,31 +1519,63 @@ for($i=0; $i<=13; $i++){
 
 <script>
 $(document).ready(function(e) {
+	Update_Settlement();
+	
+	var NewRow = $('#Treatement_Info_table').dataTable( {
+		"ajax": "<?php echo base_url();?>search/getTreatement/<?php echo $Case_Id;?>",
+		"iDisplayLength": 10,
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"bSort": false,
+		"searching": false,
+		"lengthChange": false,
+		"bInfo": false,
+		"bPaginate": false
+	});
 /**************************** CASEINFORMATION TAB-1 ************************************************************************************/
 	var countForRows = 0;
 	var value = 0;
 	$("#addOtherInfo").click(function(){
-		if(countForRows >= 0){
-			console.log("ccc: "+countForRows);
-			$("#DeleteButton").css("display", "block");
-		}
-		countForRows++;
-		  
-		var addNewRow = '<tr class="r'+value+'">';
-		    addNewRow += '<td><input class="form-control input-sm datetimepicker_Dos_Doe" name="dateOfServiceStart"></td>';
-            addNewRow += '<td><input class="form-control input-sm datetimepicker_Dos_Doe" name="dateOfServiceStart"></td>'
-            addNewRow += '<td><input type="text" name="claimAmt" class="form-control input-sm"></td>'
-            addNewRow += '<td><input type="text" name="paidAmt" class="form-control input-sm"></td>'
-            addNewRow += '<td><input class="form-control input-sm datetimepicker_Dos_Doe" name="dateBillSent"></td>';
-			addNewRow += '<td><select class="form-control input-sm" name="serviceType"><option>-- Select Service--</option><?php foreach($Service as $row){?><option value="<?php echo $row['ServiceType_ID']; ?>"> <?php echo $row['ServiceType']; ?> </option><?php }?></select></td>';
-			
-			addNewRow += '<td><select class="form-control input-sm" name="denialReasons"><option>-- Select Denial reason --</option><?php foreach($DenialReasons as $row){?><option value="<?php echo $row['DenialReasons_Id']; ?>"> <?php echo $row['DenialReasons_Type']; ?> </option><?php }?></select></td>';
-			addNewRow += '<td><input class="ads_Checkbox" type="checkbox" name="delete[]" value="'+value+'"></td>';
-			value++;
-			addNewRow += '</tr>';
-						  
-		$(addNewRow).insertBefore(".first-row");
+		var parentR = $(this).parent().parent().parent();
+		
+		var DateOfService_Start = $(parentR).find("input[name=dateOfServiceStart]").val();
+		var DateOfService_End = $(parentR).find("input[name=dateOfServiceEnd]").val();
+		var Claim_Amount = $(parentR).find("input[name=Claim_Amount_treat]").val();
+		var Paid_Amount = $(parentR).find("input[name=Paid_Amount_treat]").val();
+		var Date_BillSent = $(parentR).find("input[name=Date_BillSent_treat]").val();
+		var denialReasons = $(parentR).find("#denialReasons").val();
+		var serviceType = $(parentR).find("#serviceType").val();
+		
+		
+		var string = "&DateOfService_Start="+DateOfService_Start+"&DateOfService_End="+DateOfService_End+"&Claim_Amount="+Claim_Amount+"&Paid_Amount="+Paid_Amount+"&Date_BillSent="+Date_BillSent+"&denialReasons="+denialReasons+"&serviceType="+serviceType+"&Case_Id=<?php echo $Case_Id;?>";
+		
+		request = $.ajax({
+			url:"<?php echo base_url(); ?>search/add_Treatement",
+			type: "post",
+			data: string
+		});
+
+		request.done(function (response, textStatus, jqXHR) {
+			console.log("Successssss ");
+			$("#Treatement_Info_table").dataTable().fnDestroy();
+			$('#Treatement_Info_table').dataTable( {
+				"ajax": "<?php echo base_url();?>search/getTreatement/<?php echo $Case_Id;?>",
+				"iDisplayLength": 10,
+				"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+				"bSort": false,
+				"searching": false,
+				"lengthChange": false,
+				"bInfo": false,
+				"bPaginate": false
+			});
+			$(parentR).find("input[name=dateOfServiceStart]").val("");
+			$(parentR).find("input[name=dateOfServiceEnd]").val("");
+			$(parentR).find("input[name=Claim_Amount_treat]").val("");
+			$(parentR).find("input[name=Paid_Amount_treat]").val("");
+			$(parentR).find("input[name=Date_BillSent_treat]").val("");
+				callSuccess();
+		});
 	});
+	 //$('#addOtherInfo').click();
 	
 	 $('#DeleteButton').click(function(){
 		var final = '';
@@ -1309,6 +1589,48 @@ $(document).ready(function(e) {
 		}
 		
 	});
+	/**** DELETE NOTES **********/
+	$('body').on( 'click', '#deleteTreatementButton', function () {
+		var DeletedTreatementId = [];
+		$('.DeleteTreatement:checked').each(function(i){
+			var values = $(this).val();
+			DeletedTreatementId.push(values);
+		});
+		swal({
+			title: "Are you sure?",
+			text: "You will not be able to recover these records",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#DD6B55",
+			confirmButtonText: "Yes, delete it!",
+			cancelButtonText: "No, cancel it!",
+			closeOnConfirm: false,
+			closeOnCancel: false },
+		function (isConfirm) {
+			if (isConfirm) {
+				request = $.ajax({
+					url:"<?php echo base_url();?>search/deleteTreatement",
+					type: "post",
+					data: {DeletedTreatementId:DeletedTreatementId}
+				});
+		
+				request.done(function (response, textStatus, jqXHR) {
+					$('.DeleteTreatement:checked').each(function(i){
+						var values = $(this).val();
+						var row = $(".DeleteTreatement"+values).parent().parent();
+						$(row).remove();
+					});
+				});
+				swal("Deleted!", "Your records has been deleted.", "success");
+			} else {
+				swal("Cancelled", "Your records are safe :)", "error");
+			}
+		
+		});
+	});
+	
+	
+	
 	$("#addNotes_form").submit(function(e){
 		// setup some local variables
 		var notesDescription = $(this).find("textarea").val();
@@ -1330,13 +1652,82 @@ $(document).ready(function(e) {
 				$('input[type=text]').val('');
 				$('textarea').val('');
 				$("select").val('');
+				$("#NotesTab1").dataTable().fnDestroy();
+				$('#NotesTab1').dataTable( {
+					"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
+					"iDisplayLength": 5,
+					"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+				});
+				$("#NotesTab3").dataTable().fnDestroy();
+				$('#NotesTab3').dataTable( {
+					"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
+					"iDisplayLength": 10,
+					"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+				});
 				//$("#myModal").modal("show");
-				 $('#example1').dataTable().fnAddData( [ notesDescription,"admin",notesAccidentDate,"",notesType ] );
 				callSuccess();
-				$("#updateProviderInfo").css("display", "none");
 			});
 			e.preventDefault();	//STOP default action
 	});
+	$('tbody').on( 'click', '.editTreatment', function () {
+		var parentR = $(this).parent();
+		var div = $(parentR).find(".update-Treatment").css("display", "block");
+		$(this).css("display", "none");
+		$(this).parent().parent().find("input[name=dateOfServiceStart]").prop("disabled", false);
+		$(this).parent().parent().find("input[name=dateOfServiceEnd]").prop("disabled", false);
+		$(this).parent().parent().find("input[name=Claim_Amount_treat]").prop("disabled", false);
+		$(this).parent().parent().find("input[name=Paid_Amount_treat]").prop("disabled", false);
+		$(this).parent().parent().find("input[name=Date_BillSent_treat]").prop("disabled", false);
+		$(this).parent().parent().find("input[name=DENIALREASONS_TYPE_treat]").prop("disabled", false);
+		$(this).parent().parent().find("input[name=SERVICE_TYPE_treat]").prop("disabled", false);
+    } );
+	$('tbody').on( 'click', '.cancel', function () {
+		var parentR = $(this).parent().parent();
+		
+		var div = $(parentR).find(".update-Treatment").css("display", "none");
+		var div = $(parentR).find(".editTreatment").css("display", "block");
+		$(parentR).css("text-align", "center");
+		
+    } );
+	$('tbody').on( 'click', '.update', function () {
+		var parentR = $(this).parent().parent().parent();
+		
+		var DateOfService_Start = $(parentR).find("input[name=dateOfServiceStart]").val();
+		var DateOfService_End = $(parentR).find("input[name=dateOfServiceEnd]").val();
+		var Claim_Amount = $(parentR).find("input[name=Claim_Amount_treat]").val();
+		var Paid_Amount = $(parentR).find("input[name=Paid_Amount_treat]").val();
+		var Date_BillSent = $(parentR).find("input[name=Date_BillSent_treat]").val();
+		var Treatment_Id = $(parentR).find("input[name=Treatment_Id]").val();
+		
+		var string = "&DateOfService_Start="+DateOfService_Start+"&DateOfService_End="+DateOfService_End+"&Claim_Amount="+Claim_Amount+"&Paid_Amount="+Paid_Amount+"&Date_BillSent="+Date_BillSent+"&Treatment_Id="+Treatment_Id;
+		
+		request = $.ajax({
+			url:"<?php echo base_url(); ?>search/update_Treatement",
+			type: "post",
+			data: string
+		});
+
+		request.done(function (response, textStatus, jqXHR) {
+			console.log("Successssss ");
+			$("#Treatement_Info_table").dataTable().fnDestroy();
+			$('#Treatement_Info_table').dataTable( {
+				"ajax": "<?php echo base_url();?>search/getTreatement/<?php echo $Case_Id;?>",
+				"iDisplayLength": 10,
+				"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+				"bSort": false,
+				"searching": false,
+				"lengthChange": false,
+				"bInfo": false,
+				"bPaginate": false
+			});
+			callSuccess();
+		});
+		
+		
+		var div = $(parentR).find(".update-Treatment").css("display", "none");
+		var div = $(parentR).find(".editTreatment").css("display", "block");
+	});
+	
 	$(".fa-edit").click(function(){
 		$(this).parent().find(".fa-save").css("display", "block");
 		$(this).css("display", "none");
@@ -1347,6 +1738,7 @@ $(document).ready(function(e) {
 	});
 	
 /*********** fa-save ***********/
+	var info1 = document.getElementsByClassName("VisibleInfo");
 	$(".fa-save").click(function(){
 		$(this).parent().find(".fa-edit").css("display", "block");
 		$(this).css("display", "none");
@@ -1355,20 +1747,23 @@ $(document).ready(function(e) {
 		var x = document.getElementsByClassName("visible");
 		var recordNo = $(this).parent().find("input[name=recordNo]").val();
 		var selectRecordNo = $(this).parent().find("input[name=selectRecordNo]").val();
-		var string = "recordNo="+recordNo+"&Case_Id=<?php echo $Case_Id;?>";
+		console.log("selectRecordNo:"+selectRecordNo);
+		var string = "recordNo="+recordNo+"&Case_AutoId=<?php echo $Case_AutoId;?>"+"&Case_Id=<?php echo $Case_Id;?>";
 		
 		if(recordNo ==3){
 			var InjuredParty_LastName = $(editHidden).find("input[name=InjuredParty_LastName]").val();
 			var InjuredParty_FirstName = $(editHidden).find("input[name=InjuredParty_FirstName]").val();
-   			x[2].innerHTML = InjuredParty_LastName+", "+InjuredParty_FirstName;
+   			//x[2].innerHTML = InjuredParty_LastName+", "+InjuredParty_FirstName;
+			info1[1].innerHTML = InjuredParty_LastName+", "+InjuredParty_FirstName;
 			string += "&InjuredParty_LastName="+InjuredParty_LastName+"&InjuredParty_FirstName="+InjuredParty_FirstName;
 		}else if(recordNo ==5){
 			var InsuredParty_LastName = $(editHidden).find("input[name=InsuredParty_LastName]").val();
 			var InsuredParty_FirstName = $(editHidden).find("input[name=InsuredParty_FirstName]").val();
-			x[4].innerHTML = InsuredParty_LastName+", "+InsuredParty_FirstName;
+			//x[4].innerHTML = InsuredParty_LastName+", "+InsuredParty_FirstName;
+			info1[2].innerHTML = InsuredParty_LastName+", "+InsuredParty_FirstName;
 			string += "&InsuredParty_LastName="+InsuredParty_LastName+"&InsuredParty_FirstName="+InsuredParty_FirstName;
 		}else{
-			if(selectRecordNo !=1){
+			if(selectRecordNo ==0){
 				var inputName = $(editHidden).find("input").attr("name");
 				var inputValue = $(editHidden).find("input[name="+inputName+"]").val();
 				console.log("recordNo: "+recordNo+" inputName= "+inputName+" inputValue: "+inputValue);
@@ -1390,9 +1785,32 @@ $(document).ready(function(e) {
 					string += "&inputName="+selectId+"&inputValue="+selectText;
 				}else{
 					//string += "&"+selectId+"="+selectValue;
+					if(recordNo == 1 || recordNo ==9 || recordNo == 10 || recordNo ==18){
+						$("#Hidden_"+selectId).val(inputValue);
+					}
 					string += "&inputName="+selectId+"&inputValue="+selectValue;
 				}
-				x[recordNo-1].innerHTML = $("#"+selectId+" option:selected").text();
+				if(recordNo == 1 || recordNo ==9 || recordNo == 10 || recordNo ==18){
+					var hh ="Hidden_" + selectId;
+					console.log("HH: "+hh);
+					$("#Hidden_"+selectId).val(selectValue);
+					if(recordNo == 1){
+						info1[0].innerHTML = $("#"+selectId+" option:selected").text();
+					}else if(recordNo == 9){
+						info1[3].innerHTML = $("#"+selectId+" option:selected").text();
+					}else if(recordNo == 10){
+						info1[4].innerHTML = $("#"+selectId+" option:selected").text();
+					}else if(recordNo == 18){
+						info1[5].innerHTML = $("#"+selectId+" option:selected").text();
+					}
+				}else{
+					if(recordNo >=22){
+						x[recordNo-2].innerHTML = $("#"+selectId+" option:selected").text();
+					}else{
+						x[recordNo-1].innerHTML = $("#"+selectId+" option:selected").text();
+					}
+				}
+				
 			}
 		}
 		
@@ -1405,21 +1823,37 @@ $(document).ready(function(e) {
 		});
 		request.done(function (response, textStatus, jqXHR) {
 			//console.log("Successssss :"+response);
+			$("#NotesTab1").dataTable().fnDestroy();
+			$('#NotesTab1').dataTable( {
+				"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
+				"iDisplayLength": 5,
+				"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+			});
+			$("#NotesTab3").dataTable().fnDestroy();
+			$('#NotesTab3').dataTable( {
+				"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
+				"iDisplayLength": 10,
+				"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+			});
 			callSuccess();
 		});
 		$(editHidden).css("display", "none");
 		$(visible).css("display", "block");
-	});
-/**************************** EDIT CASE INFO TAB-2 ***********************************************************************/
-	$('#example2').dataTable( {
+	});	
+	
+/**************************** NOTES TAB-3 ************************************************************************************/
+	//$(".notesAccidentDate").datepicker().datepicker("setDate", new Date());
+	$('#NotesTab3').dataTable( {
 		"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
 		"iDisplayLength": 10,
     	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 	});
-	
-/**************************** NOTES TAB-3 ************************************************************************************/
-	$(".notesAccidentDate").datepicker().datepicker("setDate", new Date());
-	var t = $('#example1').dataTable( {
+	var dateNow = new Date();
+        $('.notesAccidentDate').datetimepicker({
+            defaultDate:dateNow,
+			format:'YYYY/MM/DD HH:mm:ss'
+        });
+	$('#NotesTab1').dataTable( {
 		"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
 		"iDisplayLength": 5,
     	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
@@ -1427,33 +1861,44 @@ $(document).ready(function(e) {
 
 /**** ADD NOTES INFO *********/
 	$("#addNotes_form2").submit(function(e){
-			console.log("addNotes_form2: ");
-			var notesDescription = $(this).find("textarea").val();
-			var notesType = $(this).find('input[name=notesType]:checked').val();
-			var notesAccidentDate = $(this).find(".notesAccidentDate").val();
-			console.log("notesAccidentDate: "+notesAccidentDate);
-			var caseId = "<?php echo $Case_Id;?>";
-			var Case_AutoId = "<?php echo $Case_AutoId;?>";
-				// fire off the request to /form.php
-	
-				request = $.ajax({
-					url:"<?php echo base_url(); ?>search/addNotes",
-					type: "post",
-					data: {notesDescription:notesDescription, caseId:caseId,notesAccidentDate:notesAccidentDate,notesType:notesType,Case_AutoId:Case_AutoId }
+		console.log("addNotes_form2: ");
+		var notesDescription = $(this).find("textarea").val();
+		var notesType = $(this).find('input[name=notesType]:checked').val();
+		var notesAccidentDate = $(this).find(".notesAccidentDate").val();
+		console.log("notesAccidentDate: "+notesAccidentDate);
+		var caseId = "<?php echo $Case_Id;?>";
+		var Case_AutoId = "<?php echo $Case_AutoId;?>";
+			// fire off the request to /form.php
+
+			request = $.ajax({
+				url:"<?php echo base_url(); ?>search/addNotes",
+				type: "post",
+				data: {notesDescription:notesDescription, caseId:caseId,notesAccidentDate:notesAccidentDate,notesType:notesType,Case_AutoId:Case_AutoId }
+			});
+
+			// callback handler that will be called on success
+			request.done(function (response, textStatus, jqXHR) {
+				$('input[type=text]').val('');
+				$('textarea').val('');
+				$("select").val('');
+				//$("#myModal").modal("show");
+				$("#NotesTab1").dataTable().fnDestroy();
+				$('#NotesTab1').dataTable( {
+					"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
+					"iDisplayLength": 5,
+					"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 				});
-	
-				// callback handler that will be called on success
-				request.done(function (response, textStatus, jqXHR) {
-					$('input[type=text]').val('');
-					$('textarea').val('');
-					$("select").val('');
-					//$("#myModal").modal("show");
-					 $('#example2').dataTable().fnAddData( [ notesDescription,"admin",notesAccidentDate,"",notesType,"" ] );
-					callSuccess();
-					$("#updateProviderInfo").css("display", "none");
+				$("#NotesTab3").dataTable().fnDestroy();
+				$('#NotesTab3').dataTable( {
+					"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
+					"iDisplayLength": 10,
+					"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 				});
-				e.preventDefault();	//STOP default action
-		});
+				callSuccess();
+			});
+			e.preventDefault();	//STOP default action
+	});
+	
 /**** EDIT NOTES INFO *********/
 	$('tbody').on( 'click', '.editNotes', function () {
 		console.log("ccc");
@@ -1506,6 +1951,18 @@ $(document).ready(function(e) {
 						var row = $(".DeleteNotes"+values).parent().parent();
 						$(row).remove();
 					});
+					$("#NotesTab1").dataTable().fnDestroy();
+					$('#NotesTab1').dataTable( {
+						"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
+						"iDisplayLength": 5,
+						"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+					});
+					$("#NotesTab3").dataTable().fnDestroy();
+					$('#NotesTab3').dataTable( {
+						"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
+						"iDisplayLength": 10,
+						"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+					});
 					console.log("suuuuu:"+response);
 				});
 				swal("Deleted!", "Your records has been deleted.", "success");
@@ -1529,34 +1986,119 @@ $(document).ready(function(e) {
 			success:function(data){
 				//results = JSON.parse(data);	
 				//callSuccess();
+				$("#NotesTab1").dataTable().fnDestroy();
+				$('#NotesTab1').dataTable( {
+					"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
+					"iDisplayLength": 5,
+					"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+				});
+				$("#NotesTab3").dataTable().fnDestroy();
+				$('#NotesTab3').dataTable( {
+					"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
+					"iDisplayLength": 10,
+					"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+				});
 			},
 			error: function(result){ console.log("error"); }
 		});
 		
 	});
 /************************************************************************************************************************************/
+/************************************************* SETTLEMENT TAB-6 *************************************************************/
+	$('#adjusterIdTab-6').on('change', function() {
+		$("input[name=SettledWithAdjuster]").val($("#adjusterIdTab-6 option:selected").text());
+	});
+	$('#defendantIdTab-6').on('change', function() {
+		$("input[name=SettledWithAttorney]").val($("#defendantIdTab-6 option:selected").text());
+	});
+	$("#settlement_form").validate({
+		rules:{
+			Settlement_Notes:{
+				required: true
+			}
+		},
+		submitHandler: function (form) {
+			// setup some local variables
+			var $form = $(form);
+			// let's select and cache all the fields
+			var $inputs = $form.find("input, select, button, textarea");
+			// serialize the data in the form
+			var serializedData = $form.serialize();
+			var flag = 0;
+			if($("input[name=SettledWithAdjuster]").val() == ""){
+				flag = 0;
+				if($("input[name=SettledWithAttorney]").val() == ""){
+					flag = 0;
+				}else{
+					flag = 1;
+				}
+			}else{
+				flag = 1;
+			}
+
+			if(flag == 1){
+				request = $.ajax({
+					url:"<?php echo base_url(); ?>search/update_Settlement",
+					type: "post",
+					data: serializedData
+				});
 	
+				// callback handler that will be called on success
+				request.done(function (response, textStatus, jqXHR) {
+					
+					Update_Settlement();
+					callSuccess();
+				});
+			}else{
+				$("#AdjOrAtt").modal("show");
+			}
+			
+		}
+	});
+	$(".reset-settlement").click(function(){
+		request =$.ajax({
+			url:"<?php echo base_url();?>search/reset_Settlement",
+			type: "post",
+			data:{
+				Case_AutoId: "<?php echo $Case_AutoId;?>"
+			}
+		});
+		request.done(function(){
+			Update_Settlement();
+		});
+	});
 /*************************************************** Payment TAB-8 ***************************************************************/	
 		
 	$('#SettlementQuickView').dataTable( {
 		"ajax": "<?php echo base_url();?>search/SettlementQuickView/<?php echo $Case_AutoId;?>",
 		"iDisplayLength": 10,
-		"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+		"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"bSort": false,
+		"searching": false,
+		"lengthChange": false
 	});
 	$('#TransactionTable').dataTable( {
 		"ajax": "<?php echo base_url();?>search/getTransactions/<?php echo $Case_Id;?>",
 		"iDisplayLength": 10,
-		"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+		"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"bSort": false,
+		"searching": false,
 	});
 	/******** DELETE TRANSACTIONS ********/
 	$('body').on( 'click', '#deleteTransactionsButton', function () {
 		var checkedNo = [];
+		var Transaction_Amt = [];
+		var Transaction_Type = [];
+		var Transactions_Description =[];
 		
 		$('.deleteCheckedTransactions:checked').each(function(i){
 			var values = $(this).val();
+			Transaction_Amt.push($(this).parent().parent().find("input[name=Transactions_Amount]").val());
+			Transaction_Type.push($(this).parent().parent().find("input[name=Transactions_Type]").val());
+			Transactions_Description.push($(this).parent().parent().find("input[name=Transactions_Description]").val());
 			checkedNo.push(values);
 		});
-		console.log("deleteTransactionsButton:"+checkedNo.length);
+		
 		if(checkedNo.length !=0){
 			swal({
 				title: "Are you sure?",
@@ -1573,7 +2115,13 @@ $(document).ready(function(e) {
 					request = $.ajax({
 						url:"<?php echo base_url();?>search/deleteTransactions",
 						type: "post",
-						data: {deleteCheckedTransactions:checkedNo}
+						data: {
+								deleteCheckedTransactions:checkedNo, 
+								CheckedTransactionsAmt:Transaction_Amt, 
+								CheckedTransactionsType:Transaction_Type,
+								CheckedTransactionsDesc: Transactions_Description,
+								Case_Id: "<?php echo $Case_Id;?>"
+							}
 					});
 			
 					request.done(function (response, textStatus, jqXHR) {
@@ -1583,11 +2131,69 @@ $(document).ready(function(e) {
 							var row = $(".deleteCheckedTransactions"+values).parent().parent();
 							$(row).remove();
 						});
+						$("#NotesTab3").dataTable().fnDestroy();
+						$('#NotesTab3').dataTable( {
+							"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
+							"iDisplayLength": 10,
+							"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+						});
+						$("#NotesTab1").dataTable().fnDestroy();
+						$('#NotesTab1').dataTable( {
+							"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
+							"iDisplayLength": 5,
+							"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+						});
 					});
 					swal("Deleted!", "Your records has been deleted.", "success");
 				} else {
 					swal("Cancelled", "Your records are safe :)", "error");
 				}
+			});
+		}
+	});
+	$("#add_Transactions_Form").validate({
+	
+		submitHandler: function (form) {
+			// setup some local variables
+			var $form = $(form);
+			// let's select and cache all the fields
+			var $inputs = $form.find("input, select, button, textarea");
+			// serialize the data in the form
+			var serializedData = $form.serialize();
+
+			request = $.ajax({
+				url:"<?php echo base_url(); ?>search/addTransactions",
+				type: "post",
+				data: serializedData
+			});
+
+			// callback handler that will be called on success
+			request.done(function (response, textStatus, jqXHR) {
+				results = JSON.parse(response);
+				
+				$('input[type=text]').val('');
+				$('textarea').val('');
+				$("select").val('');
+				//$("#myModal").modal("show");
+				$("#TransactionTable").dataTable().fnDestroy();
+				$('#TransactionTable').dataTable( {
+					"ajax": "<?php echo base_url();?>search/getTransactions/<?php echo $Case_Id;?>",
+					"iDisplayLength": 10,
+					"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+				});
+				$("#NotesTab3").dataTable().fnDestroy();
+				$('#NotesTab3').dataTable( {
+					"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
+					"iDisplayLength": 10,
+					"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+				});
+				$("#NotesTab1").dataTable().fnDestroy();
+				$('#NotesTab1').dataTable( {
+					"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
+					"iDisplayLength": 5,
+					"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+				});
+				callSuccess();
 			});
 		}
 	});
@@ -1617,6 +2223,8 @@ $(document).ready(function(e) {
 	$("input[name=EventType]").prop("disabled", true);
 	$("input[name=EventStatus]").prop("disabled", true);
 	$("input[name=AssignUser]").prop("disabled", true);
+	$("#FltSettlement_AmountTab6").prop("disabled", true);
+	$("#settlementPercentageTab6").prop("disabled", true);
 
 /******** DELETE EVENTS ********/
 	$('body').on( 'click', '#deleteEventsButton', function () {
@@ -1714,6 +2322,12 @@ $(document).ready(function(e) {
 		
 					// callback handler that will be called on success
 					request.done(function (response, textStatus, jqXHR) {
+						$("#eventTable").dataTable().fnDestroy();
+						$('#eventTable').dataTable( {
+							"ajax": "<?php echo base_url();?>search/getEvents/<?php echo $Case_Id;?>",
+							"iDisplayLength": 10,
+							"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+						});
 						callSuccess();
 					});
 				}
@@ -1751,7 +2365,7 @@ $(document).ready(function(e) {
 	});
 	$('body').on('focus',".datetimepicker_Dos_Doe", function(){
 		$(this).datetimepicker({
-			format:'MM/DD/YYYY HH:mm:ss'
+			format:'YYYY/MM/DD HH:mm:ss'
 		})
 	});
 	
@@ -1759,9 +2373,13 @@ $(document).ready(function(e) {
 	
 /**********************************************************************************************************************************/
 /* Bind Case info By CASE_ID clicking Tab-2 */ 
-	var x = document.getElementsByClassName("visible");
-	var y = document.getElementsByClassName("case-id");
-	var y2 = document.getElementsByClassName("old-case-id");
+	
+	function Update_Settlement(){
+		var x = document.getElementsByClassName("visible");
+		var y = document.getElementsByClassName("case-id");
+		var y2 = document.getElementsByClassName("old-case-id");
+		var info = document.getElementsByClassName("VisibleInfo");
+		
 		$.ajax({
 			type:'POST',
 			url:"<?php echo base_url(); ?>search/getCaseInfo/<?php echo $Case_AutoId;?>",
@@ -1778,16 +2396,21 @@ $(document).ready(function(e) {
 					document.getElementById("CaseId-tab-6").innerHTML = results.CaseInfo[$i].Case_Id;
 					//y2[0].innerHTML =  results.CaseInfo[$i].Old_Case_Id;
 					//document.getElementsByClassName("old-case-id").innerHTML =  results.CaseInfo[$i].Old_Case_Id;
-					x[0].innerHTML = results.CaseInfo[$i].Provider_Name;
+					//x[0].innerHTML = results.CaseInfo[$i].Provider_Name;
+					
+					info[0].innerHTML = results.CaseInfo[$i].Provider_Name;
+					$("#Hidden_Provider_Id").val(results.CaseInfo[$i].Provider_Id);
 					document.getElementById("ProviderName-tab-6").innerHTML = results.CaseInfo[$i].Provider_Name;
 					x[1].innerHTML = results.CaseInfo[$i].Initial_Status;
-					x[2].innerHTML = results.CaseInfo[$i].InjuredParty_LastName +", "+results.CaseInfo[$i].InjuredParty_FirstName ;
+					//x[2].innerHTML = results.CaseInfo[$i].InjuredParty_LastName +", "+results.CaseInfo[$i].InjuredParty_FirstName ;
+					info[1].innerHTML = results.CaseInfo[$i].InjuredParty_LastName +", "+results.CaseInfo[$i].InjuredParty_FirstName ;
 					$("input[name=InjuredParty_LastName]").val(results.CaseInfo[$i].InjuredParty_LastName);
 					$("input[name=InjuredParty_FirstName]").val(results.CaseInfo[$i].InjuredParty_FirstName);
 					document.getElementById("InjuredPartyName-tab-6").innerHTML = results.CaseInfo[$i].InjuredParty_LastName  +" "+results.CaseInfo[$i].InjuredParty_FirstName
 					
-					x[3].innerHTML = results.CaseInfo[$i].Last_Status;
-					x[4].innerHTML = results.CaseInfo[$i].InsuredParty_LastName +", "+results.CaseInfo[$i].InsuredParty_FirstName ;
+					x[3].innerHTML = results.CaseInfo[$i].Status;
+					//x[4].innerHTML = results.CaseInfo[$i].InsuredParty_LastName +", "+results.CaseInfo[$i].InsuredParty_FirstName ;
+					info[2].innerHTML = results.CaseInfo[$i].InsuredParty_LastName +", "+results.CaseInfo[$i].InsuredParty_FirstName ;
 					$("input[name=InsuredParty_LastName]").val(results.CaseInfo[$i].InsuredParty_LastName);
 					$("input[name=InsuredParty_FirstName]").val(results.CaseInfo[$i].InsuredParty_FirstName);
 					
@@ -1800,8 +2423,12 @@ $(document).ready(function(e) {
 					x[7].innerHTML = results.CaseInfo[$i].IndexOrAAA_Number;
 					$("input[name=IndexOrAAA_Number]").val(results.CaseInfo[$i].IndexOrAAA_Number);
 					
-					x[8].innerHTML = results.CaseInfo[$i].InsuranceCompany_Name;
-					x[9].innerHTML = results.CaseInfo[$i].Defendant_Name;
+					//x[8].innerHTML = results.CaseInfo[$i].InsuranceCompany_Name;
+					info[3].innerHTML = results.CaseInfo[$i].InsuranceCompany_Name;
+					$("#Hidden_InsuranceCompany_Id").val(results.CaseInfo[$i].InsuranceCompany_Id);
+					//x[9].innerHTML = results.CaseInfo[$i].Defendant_Name;
+					info[4].innerHTML = results.CaseInfo[$i].Defendant_Name;
+					$("#Hidden_Defendant_Id").val(results.CaseInfo[$i].Defendant_Id);
 					
 					x[10].innerHTML = results.CaseInfo[$i].Attorney_FileNumber;
 					$("input[name=Attorney_FileNumber]").val(results.CaseInfo[$i].Attorney_FileNumber);
@@ -1818,10 +2445,13 @@ $(document).ready(function(e) {
 					var settlementPercentage = (results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT * 100)/ balance;
 					$("#settlementPercentageTab6").val(settlementPercentage.toFixed(2));
 					$("#FltAttorneyFeeTab6").val(results.CaseInfo[$i].FLT_ATTORNEY_FEE);
-					$("#FltInterestTab6").val(results.CaseInfo[$i].FLT_INTERATE_RATE);
+					//$("#FltInterestTab6").val(results.CaseInfo[$i].FLT_INTERATE_RATE);
 					$("#FltFillingFeeTab6").val(results.CaseInfo[$i].FLT_FILING_FEE);
 					var TotalAmount =  parseFloat(results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT) + parseFloat(results.CaseInfo[$i].FLT_INTERATE_RATE) + parseFloat(results.CaseInfo[$i].FLT_ATTORNEY_FEE) + parseFloat(results.CaseInfo[$i].FLT_FILING_FEE);
 					$("#TotalAmount").val(TotalAmount.toFixed(2));
+					$("#ClaimAmtTab6").prop("disabled", true);
+					$("#PaymentsTab6").prop("disabled", true);
+					$("#BalanceTab6").prop("disabled", true);
 					
 					x[13].innerHTML = results.CaseInfo[$i].Paid_Amount;
 					$("input[name=Paid_Amount]").val(results.CaseInfo[$i].Paid_Amount);
@@ -1835,8 +2465,9 @@ $(document).ready(function(e) {
 					x[16].innerHTML = results.CaseInfo[$i].Accident_Date;
 					$("input[name=Accident_Date]").val(results.CaseInfo[$i].Accident_Date);
 					
-					x[17].innerHTML = results.CaseInfo[$i].Adjuster_LastName+ ", "+results.CaseInfo[$i].Adjuster_FirstName;
-					
+					//x[17].innerHTML = results.CaseInfo[$i].Adjuster_LastName+ ", "+results.CaseInfo[$i].Adjuster_FirstName;
+					info[5].innerHTML = results.CaseInfo[$i].Adjuster_LastName+ ", "+results.CaseInfo[$i].Adjuster_FirstName;
+					$("#Hidden_Adjuster_Id").val(results.CaseInfo[$i].Adjuster_Id);
 					x[18].innerHTML = results.CaseInfo[$i].Attorney_Name;
 					
 					x[21].innerHTML = results.CaseInfo[$i].Date_Opened;
@@ -1875,20 +2506,35 @@ $(document).ready(function(e) {
 					x[33].innerHTML = results.CaseInfo[$i].Served_On_Date;
 					$("input[name=Served_On_Date]").val(results.CaseInfo[$i].Served_On_Date);
 					
-					x[34].innerHTML = results.CaseInfo[$i].stips_signed_and_returned;
-					$("input[name=stips_signed_and_returned]").val(results.CaseInfo[$i].stips_signed_and_returned);
+					$("#stips_signed_and_returned").val(results.CaseInfo[$i].stips_signed_and_returned);
+					if(results.CaseInfo[$i].stips_signed_and_returned == 1){
+						x[34].innerHTML = "Yes";
+					}else{
+						x[34].innerHTML = "No";
+					}
 					
 					x[35].innerHTML = results.CaseInfo[$i].Served_To;
 					$("input[name=Served_To]").val(results.CaseInfo[$i].Served_To);
 					
-					x[36].innerHTML = results.CaseInfo[$i].stips_signed_and_returned_2;
-					$("input[name=stips_signed_and_returned_2]").val(results.CaseInfo[$i].stips_signed_and_returned_2);
+					//x[36].innerHTML = results.CaseInfo[$i].stips_signed_and_returned_2;
+					$("#stips_signed_and_returned_2").val(results.CaseInfo[$i].stips_signed_and_returned_2);
+					if(results.CaseInfo[$i].stips_signed_and_returned_2 == 1){
+						x[36].innerHTML = "Yes";
+					}else{
+						x[36].innerHTML = "No";
+					}
+					
 					
 					x[37].innerHTML = results.CaseInfo[$i].Served_On_Time;
 					$("input[name=Served_On_Time]").val(results.CaseInfo[$i].Served_On_Time);
 					
-					x[38].innerHTML = results.CaseInfo[$i].stips_signed_and_returned_3;
-					$("input[name=stips_signed_and_returned_3]").val(results.CaseInfo[$i].stips_signed_and_returned_3);
+					//x[38].innerHTML = results.CaseInfo[$i].stips_signed_and_returned_3;
+					$("#stips_signed_and_returned_3").val(results.CaseInfo[$i].stips_signed_and_returned_3);
+					if(results.CaseInfo[$i].stips_signed_and_returned_3 == 1){
+						x[38].innerHTML = "Yes";
+					}else{
+						x[38].innerHTML = "No";
+					}
 					
 					x[39].innerHTML = results.CaseInfo[$i].Date_Afidavit_Filed;
 					$("input[name=Date_Afidavit_Filed]").val(results.CaseInfo[$i].Date_Afidavit_Filed);
@@ -1914,6 +2560,147 @@ $(document).ready(function(e) {
 			},
 			error: function(result){ console.log("error"); }
 		
+		});
+	}
+		
+		$('.fromdate').datepicker({
+			dateFormat: 'yy-mm-dd',
+			changeMonth: true,
+			changeYear: true,
+		});
+		$('.todate').datepicker({
+			dateFormat: 'yy-mm-dd',
+			changeMonth: true,
+			changeYear: true,
+		});
+		$('.fromdate').datepicker().bind("change", function () {
+			var minValue = $(this).val();
+			minValue = $.datepicker.parseDate("yy-mm-dd", minValue);
+			$('.todate').datepicker("option", "minDate", minValue);
+			calculate();
+		});
+		$('.todate').datepicker().bind("change", function () {
+			var maxValue = $(this).val();
+			maxValue = $.datepicker.parseDate("yy-mm-dd", maxValue);
+			$('.fromdate').datepicker("option", "maxDate", maxValue);
+			calculate();
+		});
+		
+		function calculate() {
+			var d1 = $('.fromdate').datepicker('getDate');
+			var d2 = $('.todate').datepicker('getDate');
+			var oneDay = 24*60*60*1000;
+			var diff = 0;
+			if (d1 && d2) {
+		  
+			  diff = Math.round(Math.abs((d2.getTime() - d1.getTime())/(oneDay)));
+			}
+			alert("diff:"+diff);
+		}
+		$(".CalSimpleInterest").click(function(){
+			
+		});
+		var interest = $("#FltInterestTab6").val();
+		var rr = $("#FltAttorneyFeeTab6").val(($("#FltSettlement_AmountTab6").val() + $("#FltInterestTab6").val())/5);
+		//console.log("rr:"+rr);
+		
+		$("#FltInterestPercTab6").keyup(function(){
+			var interestPerc = $(this).val();
+			if ($(this).val() > 100){
+				$(this).val("100.00");
+				$("#FltInterestTab6").val(interest);
+				console.log("calInt:"+calInt);
+			}else{
+				calInt = (parseFloat(interestPerc) / 100) * interest;
+				$("#FltInterestTab6").val(calInt);
+				console.log("calInt:"+calInt);
+			}
+			
+		});
+		$(".info-link").click(function(){
+			var id = $(this).attr("id");
+			var hiddenField = $(this).prev().val();
+			console.log("hiddenField:"+hiddenField);
+			if($(this).attr("id") == "ProviderInfoLink"){
+				console.log("ProviderInfoLink:");
+				$("#Provider_Info_table").dataTable().fnDestroy();
+				$('#Provider_Info_table').dataTable( {
+					"ajax": "<?php echo base_url();?>search/getProvider_ById/"+hiddenField,
+					"iDisplayLength": 10,
+					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+					"bSort": false,
+					"searching": false,
+					"lengthChange": false,
+					"bInfo": false,
+					"bPaginate": false
+				});
+			}else if($(this).attr("id") == "InsuranceCompanyInfoLink"){
+				console.log("InsuranceCompanyInfoLink:");
+				$("#InsuranceCompany_Info_table").dataTable().fnDestroy();
+				$('#InsuranceCompany_Info_table').dataTable( {
+					"ajax": "<?php echo base_url();?>search/getInsurance_ById/"+hiddenField,
+					"iDisplayLength": 10,
+					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+					"bSort": false,
+					"searching": false,
+					"lengthChange": false,
+					"bInfo": false,
+					"bPaginate": false
+				});
+			}else if($(this).attr("id") == "DefendantInfoLink"){
+				console.log("DefendantInfoLink:");
+				$("#Defendant_Info_table").dataTable().fnDestroy();
+				$('#Defendant_Info_table').dataTable( {
+					"ajax": "<?php echo base_url();?>search/getDefendant_ById/"+hiddenField,
+					"iDisplayLength": 10,
+					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+					"bSort": false,
+					"searching": false,
+					"lengthChange": false,
+					"bInfo": false,
+					"bPaginate": false
+				});
+			}else if($(this).attr("id") == "AdjusterInfoLink"){
+				console.log("AdjusterInfoLink:");
+				$("#Adjuster_Info_table").dataTable().fnDestroy();
+				$('#Adjuster_Info_table').dataTable( {
+					"ajax": "<?php echo base_url();?>search/getAdjuster_ById/"+hiddenField,
+					"iDisplayLength": 10,
+					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+					"bSort": false,
+					"searching": false,
+					"lengthChange": false,
+					"bInfo": false,
+					"bPaginate": false
+				});
+			}else if($(this).attr("id") == "InjuredInfoLink"){
+				console.log("InjuredInfoLink:");
+				$("#Injured_Info_table").dataTable().fnDestroy();
+				$('#Injured_Info_table').dataTable( {
+					"ajax": "<?php echo base_url();?>search/getInjured_ById/<?php echo $Case_AutoId;?>",
+					"iDisplayLength": 10,
+					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+					"bSort": false,
+					"searching": false,
+					"lengthChange": false,
+					"bInfo": false,
+					"bPaginate": false
+				});
+			}else if($(this).attr("id") == "InsuredInfoLink"){
+				console.log("InjuredInfoLink:");
+				$("#Insured_Info_table").dataTable().fnDestroy();
+				$('#Insured_Info_table').dataTable( {
+					"ajax": "<?php echo base_url();?>search/getInsured_ById/<?php echo $Case_AutoId;?>",
+					"iDisplayLength": 10,
+					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+					"bSort": false,
+					"searching": false,
+					"lengthChange": false,
+					"bInfo": false,
+					"bPaginate": false
+				});
+			}
+			$("#show"+id).modal("show");
 		});
 	
 </script>

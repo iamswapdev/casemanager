@@ -2633,9 +2633,17 @@ h6 {
 	top:16px;
 }
 .set-bg{
-	background-color:#4ea4de;
+	background-color:#d2b48c;
 	color:#fff;
 	padding-bottom: 6px;
+}
+.set-bg th{
+	background-color:#d2b48c !important;
+	color:#000 !important;
+	text-align:center !important;
+}
+.set-bg td{
+	background-color:#fafad2 !important;
 }
 .tab-panel{
 	border: 1px solid #e4e5e7!important;
@@ -2941,7 +2949,7 @@ h6 {
   border-bottom: none;
   background-color:#4ea4de;
   color: #fff;
-  text-align: center;
+  text-align: center !important;
 }
 .no-padding table {
   margin-bottom: 0;
@@ -3780,4 +3788,77 @@ form#caseInfoSerach_form {
 .add-case-table.edit-case-table th{
 	text-align:center !important;
 }
-	
+.work-area-info tr th:nth-child(2){
+	width:175px;
+}
+.work-area-info tr th:nth-child(5){
+	width:140px;
+}
+.work-area-info tr td:nth-child(6){
+	width:145px;
+}
+.work-area-info-tab2 th{
+	height:25px;
+}
+.work-area-info-tab2 td:nth-child(3), .work-area-info-tab2 td:nth-child(6){
+	width: 190px;
+}
+.work-area-info-tab2 th:nth-child(2), .work-area-info-tab2 th:nth-child(5){
+	width: 200px;
+}
+.work-area-info-tab2 th:nth-child(1), .work-area-info-tab2 th:nth-child(4){
+	width: 30px;
+}
+label {
+    color: #000;
+}
+.info-link{
+	color:#00F;
+}
+#showInsuredInfoLink .modal-content, #showInjuredInfoLink .modal-content, #showAdjusterInfoLink .modal-content, #showDefendantInfoLink .modal-content, #showInsuranceCompanyInfoLink .modal-content, #showProviderInfoLink .modal-content{
+	width:1000px;
+}
+.modal-content th{
+	text-align:center;
+}
+#settlement_form .col-md-1{
+	width: 65px !important;
+    padding: 0px !important;
+	margin: 0px 6px 0px 0px;
+}
+.finalize-sett-button{
+	width:167px !important;
+}
+.recalculate-btn{
+	margin-left: 55px;
+    width: 175px;
+}
+.add-amt-btn, reset-amt-btn{
+	width:100px !important;
+}
+.claim-paid-balance{
+	width:130px !important;
+}
+#SettlementQuickView th, #TransactionTable th, #eventTable th{
+	text-align:center !important;
+}
+#Treatement_Info_table td{
+	padding:3px 30px 3px 30px;
+	text-align:center !important;
+}
+#Treatement_Info_table th{
+	background-color: #d2b48c;
+	color:#000;
+	text-align:center;
+}
+#Treatement_Info_table td{
+	background-color: #fafad2;
+	border:1px solid #d2b48c;
+}
+#Treatement_Info_table tfoot td{
+	background-color: #d2b48c;
+}
+.btn.btn-primary.update, .btn.cancel{
+	padding: 0px;
+    margin-bottom: 5px 0px 5px 0px !important;
+}

@@ -6,6 +6,7 @@ session_cache_limiter('private_no_expire');
 		Public function __construct(){
 			parent::__construct();
 			$this->load->library('session');
+			//$this->load->driver('session');
 			$this->load->model('dataentry_model');
 		}
 		public function index(){
@@ -19,133 +20,143 @@ session_cache_limiter('private_no_expire');
 
 /* ************************************  Start of Addcase  *************************************************************************/
 		
-		public function addcase(){
-			$this->session->all_userdata();
-			//$username = $this->session->session_data['username'];
-			//echo $username; exit();
-			if(isset($this->session->userdata['logged_in'])){
-				
-				$data['Provider_Name']= $this->dataentry_model->get_Provider();
-				$data['InsuranceCompany_Name']= $this->dataentry_model->get_Insurance();
-				$data['Status']= $this->dataentry_model->get_StatusArray();
-				$data['Court']= $this->dataentry_model->get_CourtArray();
-				$data['Service']= $this->dataentry_model->get_ServiceArray();
-				$data['DenialReasons']= $this->dataentry_model->get_DenialReasonsArray();
-				
-				$this->load->view('pages/addcase',$data);
-			}else{
-				$this->load->view('pages/login');
-			}
+	public function addcase(){
+		$this->session->all_userdata();
+		//$username = $this->session->userdata('username');
+		//echo "ggg:".$username; exit();
+		if(isset($this->session->userdata['logged_in'])){
+			
+			$data['Provider_Name']= $this->dataentry_model->get_Provider();
+			$data['InsuranceCompany_Name']= $this->dataentry_model->get_Insurance();
+			$data['Status']= $this->dataentry_model->get_StatusArray();
+			$data['Court']= $this->dataentry_model->get_CourtArray();
+			$data['Service']= $this->dataentry_model->get_ServiceArray();
+			$data['DenialReasons']= $this->dataentry_model->get_DenialReasonsArray();
+			
+			$this->load->view('pages/addcase',$data);
+		}else{
+			$this->load->view('pages/login');
 		}
-		public function editcase($Case_AutoId){
-			$this->session->all_userdata();
-			if(isset($this->session->userdata['logged_in'])){
-				//echo "rererere";
-				//$data = array(
-				//	$Case_AutoId = $this->input->post('Case_AutoId')
-				//);
-				$case['CaseInfo']= $this->dataentry_model->get_CaseInfo($Case_AutoId);
-				/*$data['Provider_Name']= $this->dataentry_model->get_Provider();
-				$data['InsuranceCompany_Name']= $this->dataentry_model->get_Insurance();
-				$data['Status']= $this->dataentry_model->get_StatusArray();
-				$data['Court']= $this->dataentry_model->get_CourtArray();
-				$data['Service']= $this->dataentry_model->get_ServiceArray();
-				$data['DenialReasons']= $this->dataentry_model->get_DenialReasonsArray();
-				
-				$this->load->view('pages/addcase',$data);*/
-				//echo "<pre>";print_r($case);exit();
-			}else{
-				$this->load->view('pages/login');
-			}
+	}
+
+	public function editcase($Case_AutoId){
+		$this->session->all_userdata();
+		if(isset($this->session->userdata['logged_in'])){
+			//echo "rererere";
+			//$data = array(
+			//	$Case_AutoId = $this->input->post('Case_AutoId')
+			//);
+			$case['CaseInfo']= $this->dataentry_model->get_CaseInfo($Case_AutoId);
+			/*$data['Provider_Name']= $this->dataentry_model->get_Provider();
+			$data['InsuranceCompany_Name']= $this->dataentry_model->get_Insurance();
+			$data['Status']= $this->dataentry_model->get_StatusArray();
+			$data['Court']= $this->dataentry_model->get_CourtArray();
+			$data['Service']= $this->dataentry_model->get_ServiceArray();
+			$data['DenialReasons']= $this->dataentry_model->get_DenialReasonsArray();
+			
+			$this->load->view('pages/addcase',$data);*/
+			//echo "<pre>";print_r($case);exit();
+		}else{
+			$this->load->view('pages/login');
 		}
-		public function Update_CaseInfo(){
-			$Case_AutoId = $this->input->post('Case_AutoId');
+	}
+	public function Update_CaseInfo(){
+		$Case_AutoId = $this->input->post('Case_AutoId');
+		$data = array(
+				'Initial_Status' => $this->input->post('initialStatus'),
+				'Provider_Id' => $this->input->post('providerNameHidden'),
+				'InjuredParty_LastName' => $this->input->post('InjuredPartyLastName'),
+				'InjuredParty_FirstName' => $this->input->post('InjuredPartyFirstName'),
+				'InsuredParty_LastName' => $this->input->post('InsuredPartyLastName'),
+				'InsuredParty_FirstName' => $this->input->post('InsuredPartyFirstName'),
+				'InsuranceCompany_Id' => $this->input->post('insuranceNameHidden'),
+				'Policy_Number' => $this->input->post('policyNumber'),
+				'Ins_Claim_Number' => $this->input->post('insClaimNumber'),
+				'Adjuster_Id' => $this->input->post('Adjuster_Id'),
+				'Accident_Date' => $this->input->post('accidentDate'),
+				'Status' => $this->input->post('Status'),
+				'IndexOrAAA_Number' => $this->input->post('indexOrAAANumber'),
+				'Court_Id' => $this->input->post('courtId'),
+				'DateOfService_Start' => $this->input->post('dateOfServiceStart'),
+				'DateOfService_End' => $this->input->post('dateOfServiceEnd'),
+				'Claim_Amount' => $this->input->post('claimAmt'),
+				'Paid_Amount' => $this->input->post('paidAmt'),
+				'Date_BillSent' => $this->input->post('dateBillSent'),
+				'DenialReasons_Type' => $this->input->post('denialReasons'),
+				'Memo' => $this->input->post('memo'),
+				'InjuredParty_Address' => $this->input->post('InjuredParty_Address'),
+				'InjuredParty_City' => $this->input->post('InjuredParty_City'),
+				'InjuredParty_State' => $this->input->post('InjuredParty_State'),
+				'InjuredParty_Zip' => $this->input->post('InjuredParty_Zip'),
+				'InjuredParty_Phone' => $this->input->post('InjuredParty_Phone'),
+				'InjuredParty_Misc' => $this->input->post('InjuredParty_Misc'),
+				'InjuredParty_Type' => $this->input->post('InjuredParty_Type'),
+				'InsuredParty_Address' => $this->input->post('InsuredParty_Address'),
+				'InsuredParty_City' => $this->input->post('InsuredParty_City'),
+				'InsuredParty_State' => $this->input->post('InsuredParty_State'),
+				'InsuredParty_Zip' => $this->input->post('InsuredParty_Zip'),
+				'InsuredParty_Misc' => $this->input->post('InsuredParty_Misc'),
+				'InsuredParty_Type' => $this->input->post('InsuredParty_Type'),
+				'Accident_Address' => $this->input->post('Accident_Address'),
+				'Accident_City' => $this->input->post('Accident_City'),
+				'Accident_State' => $this->input->post('Accident_State'),
+				'Accident_Zip' => $this->input->post('Accident_Zip'),
+				'status' => $this->input->post('status')
+		);
+		$success = $this->dataentry_model->Update_CaseInfo($data,$Case_AutoId);
+		//echo "<pre> "; print_r($data); exit();
+		//echo json_encode($success);
+		if($success){
+			echo json_encode($data);
+			//$this->load->view('pages/submitted');
+		}
+	}
+/**ADD NEW AND SETTLEMENT TO OPEN STATUS*/
+	public function add_CaseInfo(){
+		$this->session->all_userdata();
+		if(isset($this->session->userdata['logged_in'])){
+			
 			$data = array(
-					'Initial_Status' => $this->input->post('initialStatus'),
-					'Provider_Id' => $this->input->post('providerNameHidden'),
-					'InjuredParty_LastName' => $this->input->post('InjuredPartyLastName'),
-					'InjuredParty_FirstName' => $this->input->post('InjuredPartyFirstName'),
-					'InsuredParty_LastName' => $this->input->post('InsuredPartyLastName'),
-					'InsuredParty_FirstName' => $this->input->post('InsuredPartyFirstName'),
-					'InsuranceCompany_Id' => $this->input->post('insuranceNameHidden'),
-					'Policy_Number' => $this->input->post('policyNumber'),
-					'Ins_Claim_Number' => $this->input->post('insClaimNumber'),
-					'Adjuster_Id' => $this->input->post('Adjuster_Id'),
-					'Accident_Date' => $this->input->post('accidentDate'),
-					'Status' => $this->input->post('Status'),
-					'IndexOrAAA_Number' => $this->input->post('indexOrAAANumber'),
-					'Court_Id' => $this->input->post('courtId'),
-					'DateOfService_Start' => $this->input->post('dateOfServiceStart'),
-					'DateOfService_End' => $this->input->post('dateOfServiceEnd'),
-					'Claim_Amount' => $this->input->post('claimAmt'),
-					'Paid_Amount' => $this->input->post('paidAmt'),
-					'Date_BillSent' => $this->input->post('dateBillSent'),
-					'DenialReasons_Type' => $this->input->post('denialReasons'),
-					'Memo' => $this->input->post('memo'),
-					'InjuredParty_Address' => $this->input->post('InjuredParty_Address'),
-					'InjuredParty_City' => $this->input->post('InjuredParty_City'),
-					'InjuredParty_State' => $this->input->post('InjuredParty_State'),
-					'InjuredParty_Zip' => $this->input->post('InjuredParty_Zip'),
-					'InjuredParty_Phone' => $this->input->post('InjuredParty_Phone'),
-					'InjuredParty_Misc' => $this->input->post('InjuredParty_Misc'),
-					'InjuredParty_Type' => $this->input->post('InjuredParty_Type'),
-					'InsuredParty_Address' => $this->input->post('InsuredParty_Address'),
-					'InsuredParty_City' => $this->input->post('InsuredParty_City'),
-					'InsuredParty_State' => $this->input->post('InsuredParty_State'),
-					'InsuredParty_Zip' => $this->input->post('InsuredParty_Zip'),
-					'InsuredParty_Misc' => $this->input->post('InsuredParty_Misc'),
-					'InsuredParty_Type' => $this->input->post('InsuredParty_Type'),
-					'Accident_Address' => $this->input->post('Accident_Address'),
-					'Accident_City' => $this->input->post('Accident_City'),
-					'Accident_State' => $this->input->post('Accident_State'),
-					'Accident_Zip' => $this->input->post('Accident_Zip'),
-					'status' => $this->input->post('status')
+				'Initial_Status' => $this->input->post('initialStatus'),
+				'Provider_Id' => $this->input->post('providerNameHidden'),
+				'InjuredParty_LastName' => $this->input->post('injuredPartyLastName'),
+				'InjuredParty_FirstName' => $this->input->post('injuredPartyFirstName'),
+				'InsuredParty_LastName' => $this->input->post('insuredPartyLastName'),
+				'InsuredParty_FirstName' => $this->input->post('insuredPartyFirstName'),
+				'InsuranceCompany_Id' => $this->input->post('insuranceNameHidden'),
+				'Policy_Number' => $this->input->post('policyNumber'),
+				'Ins_Claim_Number' => $this->input->post('insClaimNumber'),
+				'Accident_Date' => $this->input->post('accidentDate'),
+				'Status' => $this->input->post('Status'),
+				'IndexOrAAA_Number' => $this->input->post('indexOrAAANumber'),
+				'Court_Id' => $this->input->post('courtId'),
+				'DateOfService_Start' => $this->input->post('dateOfServiceStart'),
+				'DateOfService_End' => $this->input->post('dateOfServiceEnd'),
+				'Claim_Amount' => $this->input->post('claimAmt'),
+				'Paid_Amount' => $this->input->post('paidAmt'),
+				'Date_BillSent' => $this->input->post('dateBillSent'),
+				'DenialReasons_Type' => $this->input->post('denialReasons'),
+				'Memo' => $this->input->post('memo'),
 			);
-			$success = $this->dataentry_model->Update_CaseInfo($data,$Case_AutoId);
-			//echo "<pre> "; print_r($data); exit();
-			//echo json_encode($success);
-			if($success){
-				echo json_encode($data);
-				//$this->load->view('pages/submitted');
-			}
+			$success = $this->dataentry_model->insert_CaseInfo($data);
+			
+			$data2 = array(
+				"Settlement_Amount" => 00.00,
+				"Settlement_Int" => 00.00,
+				"Settlement_Af" => 00.00,
+				"Settlement_Ff" => 00.00,
+				"Settlement_Total" => 00.00,
+				"Settlement_Date" => date('Y-m-d H:i:s'),
+				"User_Id" => $this->session->userdata['logged_in']['username'],
+				"Settlement_Notes" => "",
+				"SettledWith" => ""
+			);
+			
+			$this->dataentry_model->addSettlement($data2);
+		}else{
+			$this->load->view('pages/login');
 		}
-		public function add_CaseInfo(){
-			$this->session->all_userdata();
-			if(isset($this->session->userdata['logged_in'])){
-				
-				$data = array(
-					'Initial_Status' => $this->input->post('initialStatus'),
-					'Provider_Id' => $this->input->post('providerNameHidden'),
-					'InjuredParty_LastName' => $this->input->post('injuredPartyLastName'),
-					'InjuredParty_FirstName' => $this->input->post('injuredPartyFirstName'),
-					'InsuredParty_LastName' => $this->input->post('insuredPartyLastName'),
-					'InsuredParty_FirstName' => $this->input->post('insuredPartyFirstName'),
-					'InsuranceCompany_Id' => $this->input->post('insuranceNameHidden'),
-					'Policy_Number' => $this->input->post('policyNumber'),
-					'Ins_Claim_Number' => $this->input->post('insClaimNumber'),
-					'Accident_Date' => $this->input->post('accidentDate'),
-					'Status' => $this->input->post('Status'),
-					'IndexOrAAA_Number' => $this->input->post('indexOrAAANumber'),
-					'Court_Id' => $this->input->post('courtId'),
-					'DateOfService_Start' => $this->input->post('dateOfServiceStart'),
-					'DateOfService_End' => $this->input->post('dateOfServiceEnd'),
-					'Claim_Amount' => $this->input->post('claimAmt'),
-					'Paid_Amount' => $this->input->post('paidAmt'),
-					'Date_BillSent' => $this->input->post('dateBillSent'),
-					'DenialReasons_Type' => $this->input->post('denialReasons'),
-					'Memo' => $this->input->post('memo')
-				);
-				$success = $this->dataentry_model->insert_CaseInfo($data);
-				//echo "<pre> "; print_r($data); exit();
-				//echo json_encode($success);
-				if($success){
-					return true;
-					$this->load->view('pages/submitted');
-				}
-			}else{
-				$this->load->view('pages/login');
-			}
-		}
+	}
 		
 /* ************************************  Start of Provider  *************************************************************************/
 

@@ -2,7 +2,7 @@
 session_cache_limiter('private_no_expire');
 
 class Search extends CI_Controller{
-
+	public $username = "";
 	Public function __construct(){
 		parent::__construct();
 		$this->load->library('session');
@@ -11,6 +11,7 @@ class Search extends CI_Controller{
 	}
 	public function index(){
 		$this->session->all_userdata();
+		$this->$username = $this->session->userdata['logged_in']['username'];
 		if(isset($this->session->userdata['logged_in'])){
 			$data['SearchResult']=$this->search_model->get_SearchResult();
 			$this->load->view('pages/search',$data);
@@ -72,6 +73,8 @@ class Search extends CI_Controller{
 		}
 	public function viewcase($Case_AutoId){
 		$this->session->all_userdata();
+		//echo "<pre>"; echo $this->session->userdata['logged_in']['username']; exit();
+		//print_r($this->session->all_userdata());
 		if(isset($this->session->userdata['logged_in'])){
 			$data['Provider_Name1']= $this->search_model->get_Provider();
 			$data['InsuranceCompany_Name']= $this->search_model->get_Insurance();
@@ -88,12 +91,229 @@ class Search extends CI_Controller{
 			$data['EventStatus']= $this->dataentry_model->get_EventStatusArray();
 			$data['Transactions'] = $this->search_model->Transanction_Info();
 			
+			
 			$data['CaseInfo']= $this->search_model->get_CaseInfo_ById($Case_AutoId);
-			//echo "<pre>"; print_r($data['Adjuster_Name_Insurance']); exit();
+			$Provider_Id = $data['CaseInfo'][0]['Provider_Id'];
+			$InsuranceCompany_Id = $data['CaseInfo'][0]['InsuranceCompany_Id'];
+			$Defendant_Id = $data['CaseInfo'][0]['Defendant_Id'];
+			$Adjuster_Id = $data['CaseInfo'][0]['Adjuster_Id'];
+			
+			//$data['Provider_Info']= $this->search_model->get_Provider_ById($Provider_Id);
+			$data['InsuranceCompany_Info']= $this->search_model->get_Insurance_ById($InsuranceCompany_Id);
+			$data['Defendant_Info']= $this->search_model->get_Defendant_ById($Defendant_Id);
+			$data['Adjuster_Info']= $this->search_model->get_Adjuster_ById($Adjuster_Id);
+			//echo "<pre>"; print_r($data['CaseInfo']); exit();
+			
+			$data3 = array(
+				"Notes_Type" => "ACTIVITY",
+				"Notes_Desc" => "File Viewed",
+				"Notes_Date" => $date = date('Y-m-d H:i:s'),
+				"Case_Id" => $data['CaseInfo'][0]['Case_Id'],
+				"User_Id" => $this->session->userdata['logged_in']['username']
+			);
+			$this->search_model->add_Notes($data3);
+			
 			$this->load->view('pages/workarea_info',$data);
 		}else{
 			$this->load->view('pages/login');
 		}
+	}
+	public function getTreatement($Case_Id){
+		$list = $this->search_model->get_Treatment($Case_Id);
+		//echo "<pre>"; print_r($list); exit();  date_format(substr($result->DateOfService_Start, 0,9),'m/d/Y H:i:s"')
+		//substr(date_format($result->DateOfService_Start, 'm/d/Y H:i:s'), 0,9) 2010-11-30 00:00:00.000000
+		//date_format(date_create(substr($result->DateOfService_Start,0,18)),'m/d/Y')
+		
+		$data = array();
+		$no=0;
+		foreach ($list as $result) {
+			$row = array();
+			$no++;
+			$row[] ="<button type='button' class='btn editTreatment'>Edit</button> <div class='update-Treatment' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn cancel'>Cancel</button></div>";
+			$row[] = "<input type='text' name='dateOfServiceStart' class='form-control input-sm datetimepicker_Dos_Doe' value='".date_format(date_create(substr($result->DateOfService_Start, 0, 10)), 'm/d/Y')."' disabled>";
+			$row[] = "<input type='text' name='dateOfServiceEnd' class='form-control input-sm datetimepicker_Dos_Doe' value='".date_format(date_create(substr($result->DateOfService_End, 0, 10)), 'm/d/Y')."' disabled>";
+			$row[] = "<input type='text' name='Claim_Amount_treat' class='form-control input-sm ' value='".$result->Claim_Amount."' disabled>";
+			$row[] = "<input type='text' name='Paid_Amount_treat' class='form-control input-sm ' value='".$result->Paid_Amount."' disabled>";
+			$row[] = "<input type='text' name='Date_BillSent_treat' class='form-control input-sm datetimepicker_Dos_Doe' value='".$result->Date_BillSent."' disabled>";
+			$row[] = "<input type='text' name='SERVICE_TYPE_treat' class='form-control input-sm' value='".$result->SERVICE_TYPE."' disabled>";
+			$row[] = "<input type='text' name='DENIALREASONS_TYPE_treat' class='form-control input-sm' value='".$result->DENIALREASONS_TYPE."' disabled>";
+			$row[] = "<input type='checkbox' name='DeleteTreatement[]' class='DeleteTreatement DeleteTreatement".$result->Treatment_Id."' value=".$result->Treatment_Id."> <input type='hidden' name='Treatment_Id' value='".$result->Treatment_Id."' >";
+			$data[] = $row;
+		}
+		$output = array(
+			"data" => $data
+		);
+		//echo "<pre>"; print_r($output); exit();
+		echo json_encode($output);
+	}
+/*UPDATE TREATEMENT RECORDS*/
+	public function update_Treatement(){
+		$Treatment_Id = $this->input->post("Treatment_Id");
+		$data = array(
+			"DateOfService_Start" => $this->input->post('DateOfService_Start'),
+			"DateOfService_End" => $this->input->post('DateOfService_End'),
+			"Claim_Amount" => $this->input->post('Claim_Amount'),
+			"Paid_Amount" => $this->input->post('Paid_Amount'),
+			"Date_BillSent" => $this->input->post('Date_BillSent')
+		);
+		$this->search_model->updateTreatement($data, $Treatment_Id);
+		echo json_encode($data);
+	}
+/*ADD TREATEMENT RECORDS*/
+	public function add_Treatement(){
+		$data = array(
+			"DateOfService_Start" => $this->input->post('DateOfService_Start'),
+			"DateOfService_End" => $this->input->post('DateOfService_End'),
+			"Claim_Amount" => $this->input->post('Claim_Amount'),
+			"Paid_Amount" => $this->input->post('Paid_Amount'),
+			"Date_BillSent" => $this->input->post('Date_BillSent'),
+			"Case_Id" => $this->input->post("Case_Id"),
+			"DENIALREASONS_TYPE" =>$this->input->post("denialReasons"),
+			"SERVICE_TYPE" => $this->input->post("serviceType")
+		);
+		$this->search_model->addTreatement($data);
+	}
+/*ADD TREATEMENT RECORDS*/
+	public function deleteTreatement(){
+		$data = $this->input->post('DeletedTreatementId');
+		$this->search_model->delete_Treatement($data);
+	}
+	public function getProvider_ById($Provider_Id){
+		$list=$this->search_model->get_Provider_ById($Provider_Id);
+		$data = array();
+		$no=0;
+		foreach ($list as $result) {
+			$row = array();
+			$no++;
+			$row[] = $result->Provider_Name;
+			$row[] = $result->Provider_Perm_Address;
+			$row[] = $result->Provider_Perm_City;
+			$row[] = $result->Provider_Perm_State;
+			$row[] = $result->Provider_Perm_Zip;
+			$row[] = $result->Provider_Perm_Phone;
+			$row[] = $result->Provider_Perm_Fax;
+			$row[] = $result->Provider_Email;
+			$row[] = $result->Provider_Type;
+			
+			$data[] = $row;
+		}
+		$output = array(
+			"data" => $data
+		);
+		echo json_encode($output);
+	}
+	public function getInsurance_ById($InsuranceCompany_Id){
+		$list=$this->search_model->get_Insurance_ById($InsuranceCompany_Id);
+		$data = array();
+		$no=0;
+		foreach ($list as $result) {
+			$row = array();
+			$no++;
+			$row[] = $result->InsuranceCompany_Name;
+			$row[] = $result->InsuranceCompany_Local_Address;
+			$row[] = $result->InsuranceCompany_Local_City;
+			$row[] = $result->InsuranceCompany_Local_State;
+			$row[] = $result->InsuranceCompany_Local_Zip;
+			$row[] = $result->InsuranceCompany_Local_Phone;
+			$row[] = $result->InsuranceCompany_Local_Fax;
+			$row[] = $result->InsuranceCompany_Email;
+			
+			$data[] = $row;
+		}
+		$output = array(
+			"data" => $data
+		);
+		echo json_encode($output);
+	}
+	public function getDefendant_ById($Defendant_Id){
+		$list=$this->search_model->get_Defendant_ById($Defendant_Id);
+		$data = array();
+		$no=0;
+		foreach ($list as $result) {
+			$row = array();
+			$no++;
+			$row[] = $result->Defendant_Name;
+			$row[] = $result->Defendant_Address;
+			$row[] = $result->Defendant_City;
+			$row[] = $result->Defendant_State;
+			$row[] = $result->Defendant_Zip;
+			$row[] = $result->Defendant_Phone;
+			$row[] = $result->Defendant_Fax;
+			$row[] = $result->Defendant_Email;
+			$row[] = "Defendant ".$result->active;
+			
+			$data[] = $row;
+		}
+		$output = array(
+			"data" => $data
+		);
+		echo json_encode($output);
+	}
+	public function getAdjuster_ById($Adjuster_Id){
+		$list=$this->search_model->get_Adjuster_ById($Adjuster_Id);
+		$data = array();
+		$no=0;
+		foreach ($list as $result) {
+			$row = array();
+			$no++;
+			$row[] = $result->Adjuster_LastName." ". $result->Adjuster_FirstName;
+			$row[] = "";
+			$row[] = "";
+			$row[] = "";
+			$row[] = "";
+			$row[] = $result->Adjuster_Phone;
+			$row[] = $result->Adjuster_Phone_Ext;
+			$row[] = $result->Adjuster_Fax;
+			$row[] = $result->Adjuster_Email;
+			$row[] = "Adjuster".$result->IS_BIT;
+			
+			$data[] = $row;
+		}
+		$output = array(
+			"data" => $data
+		);
+		echo json_encode($output);
+	}
+	public function getInjured_ById($Case_AutoId){
+		$list=$this->search_model->get_CaseInfo_ById2($Case_AutoId);
+		$data = array();
+		$no=0;
+		foreach ($list as $result) {
+			$row = array();
+			$no++;
+			$row[] = $result->InjuredParty_LastName." ". $result->InjuredParty_FirstName;
+			$row[] = $result->InjuredParty_Address;
+			$row[] = $result->InjuredParty_City;
+			$row[] = $result->InjuredParty_State;
+			$row[] = $result->InjuredParty_Zip;
+			$row[] = $result->InjuredParty_Phone;
+			
+			$data[] = $row;
+		}
+		$output = array(
+			"data" => $data
+		);
+		echo json_encode($output);
+	}
+	public function getInsured_ById($Case_AutoId){
+		$list=$this->search_model->get_CaseInfo_ById2($Case_AutoId);
+		$data = array();
+		$no=0;
+		foreach ($list as $result) {
+			$row = array();
+			$no++;
+			$row[] = $result->InsuredParty_LastName." ". $result->InsuredParty_FirstName;
+			$row[] = $result->InsuredParty_Address;
+			$row[] = $result->InsuredParty_City;
+			$row[] = $result->InsuredParty_State;
+			$row[] = $result->InsuredParty_Zip;
+			
+			$data[] = $row;
+		}
+		$output = array(
+			"data" => $data
+		);
+		echo json_encode($output);
 	}
 	
 	
@@ -123,6 +343,19 @@ class Search extends CI_Controller{
 		);
 		echo json_encode($output);
 	}
+/**** ADD NOTES ***********/
+	public function addNotes(){
+		$data = array(
+			"Notes_Type" => $this->input->post("notesType"),
+			"Notes_Desc" => $this->input->post("notesDescription"),
+			"Notes_Date" => $this->input->post("notesAccidentDate"),
+			"Case_Id" => $this->input->post("caseId"),
+			"User_Id" => $this->session->userdata['logged_in']['username']
+		);
+		$this->search_model->add_Notes($data);
+		echo json_encode($data);
+		//return true;
+	}
 	public function getCaseInfo($Case_AutoId){
 		$data['CaseInfo']= $this->search_model->get_CaseInfo_ById($Case_AutoId);
 		//echo json_encode($data['CaseInfo'][0]);
@@ -130,6 +363,7 @@ class Search extends CI_Controller{
 	}
 	public function updateCaseInfo(){
 		$recordNo = $this->input->post("recordNo");
+		$Case_AutoId = $this->input->post("Case_AutoId");
 		$Case_Id = $this->input->post("Case_Id");
 		if($recordNo == 3){
 			$data = array(
@@ -147,13 +381,76 @@ class Search extends CI_Controller{
 			);
 		}
 		
-		$success = $this->search_model->update_CaseInfo($data, $Case_Id);
-		/*if($success){
-			return true;
+		if($recordNo ==3){
+			$PreviousValue1 = $this->get_Changed_Value("InjuredParty_LastName", $Case_AutoId);
+			$PreviousValue2 = $this->get_Changed_Value("InjuredParty_FirstName", $Case_AutoId);
+		}else if($recordNo ==5){
+			$PreviousValue1 = $this->get_Changed_Value("InsuredParty_LastName", $Case_AutoId);
+			$PreviousValue2 = $this->get_Changed_Value("InsuredParty_FirstName", $Case_AutoId);
 		}else{
-			return false;
-		}*/
-		echo json_encode($data);
+			$PreviousValue = $this->get_Changed_Value($this->input->post("inputName"), $Case_AutoId);
+		}
+		
+		
+		
+		$success = $this->search_model->update_CaseInfo($data, $Case_AutoId);
+
+		
+		if($recordNo ==3){
+			$NewValue1 = $this->get_Changed_Value("InjuredParty_LastName", $Case_AutoId);
+			$NewValue2 = $this->get_Changed_Value("InjuredParty_FirstName", $Case_AutoId);
+		}else if($recordNo ==5){
+			$NewValue1 = $this->get_Changed_Value("InsuredParty_LastName", $Case_AutoId);
+			$NewValue2 = $this->get_Changed_Value("InsuredParty_FirstName", $Case_AutoId);
+		}else{
+			$NewValue = $this->get_Changed_Value($this->input->post("inputName"), $Case_AutoId);
+		}
+		$data3 = array(
+			"Notes_Type" => "ACTIVITY",
+			"Notes_Desc" => $this->input->post("inputName")." Changed from ".$PreviousValue." To ".$NewValue,
+			"Notes_Date" => $date = date('Y-m-d H:i:s'),
+			"Case_Id" => $Case_Id,
+			"User_Id" => $this->session->userdata['logged_in']['username']
+		);
+		if($recordNo == 3){
+			$data3['Notes_Desc'] = "InjuredParty Name Changed from ".$PreviousValue1." ".$PreviousValue2." To ".$NewValue1." ".$NewValue2;
+		}else if($recordNo ==5){
+			$data3['Notes_Desc'] = "InsuredParty Name Changed from ".$PreviousValue1." ".$PreviousValue2." To ".$NewValue1." ".$NewValue2;
+		}else if($recordNo ==36 || $recordNo ==38 || $recordNo ==40){
+			if($PreviousValue == 1){
+				$PreviousValue = "Yes";
+			}else{
+				$PreviousValue ="No";
+			}
+			if($NewValue == 1){
+				$NewValue = "Yes";
+			}else{
+				$NewValue ="No";
+			}
+			$data3['Notes_Desc'] = $this->input->post("inputName")." Changed from ".$PreviousValue." To ".$NewValue;
+		}else{
+			$data3['Notes_Desc'] = $this->input->post("inputName")." Changed from ".$PreviousValue." To ".$NewValue;
+		}
+		$this->search_model->add_Notes($data3);
+	}
+	public function get_Changed_Value($Field_Name, $Case_AutoId){
+		$list= $this->search_model->get_CaseInfo_ById($Case_AutoId);
+		//echo "<pre>"; print_r($list);
+		if($Field_Name == "Provider_Id"){
+			return $list[0]["Provider_Name"];
+		}else if($Field_Name == "InsuranceCompany_Id"){
+			return $list[0]["InsuranceCompany_Name"];
+		}else if($Field_Name == "Defendant_Id"){
+			return $list[0]["Defendant_Name"];
+		}else if($Field_Name == "Court_Id"){
+			return $list[0]["Court_Name"];
+		}else if($Field_Name == "Adjuster_Id"){
+			return $list[0]["Adjuster_LastName"]." ".$list[0]["Adjuster_FirstName"];
+		}else if($Field_Name == "Plaintiff_Id"){
+			return $list[0]["Attorney_Name"];
+		}else{
+			return $list[0][$Field_Name];
+		}
 	}
 	
 	public function getSearchTable_2(){
@@ -204,19 +501,7 @@ class Search extends CI_Controller{
 		);
 		echo json_encode($output);
 	}
-/**** ADD NOTES ***********/
-	public function addNotes(){
-		$data = array(
-			"Notes_Type" => $this->input->post("notesType"),
-			"Notes_Desc" => $this->input->post("notesDescription"),
-			"Notes_Date" => $this->input->post("notesAccedentDate"),
-			"Case_Id" => $this->input->post("caseId")
-			
-		);
-		$this->search_model->add_Notes($data);
-		echo json_encode($data);
-		//return true;
-	}
+
 /***** DELETE NOTES ********/
 	public function deleteNotesFromTab3(){
 		$data = $this->input->post('DeletedNotesId');
@@ -244,6 +529,32 @@ class Search extends CI_Controller{
 /**************************** TEMPLATE TAB-5 ************************************************************************************/
 
 /**************************** SETTLEMENT TAB-6 ************************************************************************************/
+	
+	public function update_Settlement(){
+		$data = array(
+			"Settlement_Amount" =>$this->input->post('Settlement_Amount'),
+			"Settlement_Int" => $this->input->post('Settlement_Int'),
+			"Settlement_Af" => $this->input->post('Settlement_Af'),
+			"Settlement_Ff" => $this->input->post('Settlement_Ff'),
+			"Settlement_Total" => $this->input->post('Settlement_Total'),
+			"Settlement_Date" => date('Y-m-d H:i:s'),
+			"User_Id" => $this->session->userdata['logged_in']['username'],
+			"Settlement_Notes" => $this->input->post('Settlement_Notes')
+		);
+		if($this->input->post('SettledWithAdjuster') != ""){
+			$data['SettledWith'] = $this->input->post('SettledWithAdjuster');
+		}else{
+			$data['SettledWith'] = $this->input->post('SettledWithAttorney');
+		}
+		$Case_Id = $this->input->post('Case_Id');
+		$this->search_model->updateSettlement($data,$Case_Id);
+		//echo "<pre>"; print_r($data);
+	}
+	public function reset_Settlement(){
+		$Case_AutoId = $this->input->post("Case_AutoId");
+		$this->search_model->resetSettlement($Case_AutoId);
+	}
+
 /**************************** PAYMENET TAB-7 ************************************************************************************/
 	public function SettlementQuickView($Case_AutoId){
 		$list= $this->search_model->get_CaseInfo_ById2($Case_AutoId);
@@ -289,7 +600,7 @@ class Search extends CI_Controller{
 			$row[] = "<input type='text' name='Transactions_Description' class='form-control input-sm input-height' value='".$result->Transactions_Description."' >";
 			$row[] = "<input type='text' name='ServiceType' class='form-control input-sm input-height' value='".$result->Transactions_Fee."' >";
 			$row[] = "<input type='text' name='Transactions_status' class='form-control input-sm input-height' value='".$result->Transactions_status."' >";
-			$row[] = "<input type='checkbox' name='deleteCheckedTransactions' class='deleteCheckedTransactions deleteCheckedTransactions".$result->Transactions_Id."' value='".$result->Transactions_Id."' >";
+			$row[] = "<input type='checkbox' name='deleteCheckedTransactions[]' class='deleteCheckedTransactions deleteCheckedTransactions".$result->Transactions_Id."' value='".$result->Transactions_Id."' >";
 			
 			$data[] = $row;
 		}
@@ -306,21 +617,59 @@ class Search extends CI_Controller{
 			"Transactions_Type" => $this->input->post('Transactions_Type'),
 			"Transactions_status" => $this->input->post('Transactions_status'),
 			"Transactions_Description" => $this->input->post('Transactions_Description'),
+			"Provider_Id" => $this->input->post('Provider_Id_Trans')
 		);
 		$success = $this->search_model->add_Transaction($data);
 		if($success){
-			return true;
+			$list= $this->search_model->get_Transactions($data['Case_Id']);
+			//echo "<pre>";print_r($list);exit();
+			$data2 = array();
+			foreach ($list as $result) {
+				$row = array();
+				$row[] = "<input type='text' name='Provider_Name' class='form-control input-sm input-height' value='".$result->Provider_Name."' >";
+				$row[] = "<input type='text' name='Transactions_Type' class='form-control input-sm input-height' value='".$result->Transactions_Type."' >";
+				$row[] = "<input type='text' name='Transactions_Date' class='form-control input-sm input-height' value='".$result->Transactions_Date."' >";
+				$row[] = "<input type='text' name='Transactions_Amount' class='form-control input-sm input-height' value='".$result->Transactions_Amount."' >";
+				$row[] = "<input type='text' name='Transactions_Description' class='form-control input-sm input-height' value='".$result->Transactions_Description."' >";
+				$row[] = "<input type='text' name='Transactions_Fee' class='form-control input-sm input-height' value='".$result->Transactions_Fee."' >";
+				$row[] = "<input type='text' name='Transactions_status' class='form-control input-sm input-height' value='".$result->Transactions_status."' >";
+				$row[] = "<input type='checkbox' name='deleteCheckedTransactions[]' class='deleteCheckedTransactions deleteCheckedTransactions".$result->Transactions_Id."' value='".$result->Transactions_Id."' >";
+				
+				$data2[] = $row;
+			}
+			$output = array(
+				"data" => $data2
+			);
+			$data3 = array(
+				"Notes_Type" => "ACTIVITY",
+				"Notes_Desc" => "Payment/Transaction posted : $".$data['Transactions_Amount']." (".$data['Transactions_Type'].") Desc->".$data['Transactions_Description'],
+				"Notes_Date" => $date = date('Y-m-d H:i:s'),
+				"Case_Id" => $data['Case_Id'],
+				"User_Id" => $this->session->userdata['logged_in']['username']
+			);
+			$this->search_model->add_Notes($data3);
+			echo json_encode($output);
 		}else{
 			return false;
 		}
 	}
 	public function deleteTransactions(){
 		$CheckedTransactions = $this->input->post('deleteCheckedTransactions');
+		$CheckedTransactionsAmt = $this->input->post('CheckedTransactionsAmt');
+		$CheckedTransactionsType = $this->input->post('CheckedTransactionsType');
+		$CheckedTransactionsDesc = $this->input->post('CheckedTransactionsDesc');
+		$Case_Id = $this->input->post('Case_Id');
 		$delete_success = $this->search_model->delete_Transactions($CheckedTransactions);
-		if($delete_success){
-			return true;
-		}else{
-			return false;
+		
+		for($i=0; $i<count($CheckedTransactions); $i++){
+			$data[$i] = array(
+				"Notes_Type" => "ACTIVITY",
+				"Notes_Desc" => "Payment/Transaction deleted : $".$CheckedTransactionsAmt[$i]." (".$CheckedTransactionsType[$i].") Desc->".$CheckedTransactionsDesc[$i],
+				"Notes_Date" => $date = date('Y-m-d H:i:s'),
+				"Case_Id" => $Case_Id,
+				"User_Id" => $this->session->userdata['logged_in']['username']
+			);
+			$this->search_model->add_Notes($data[$i]);
 		}
 	}
 /**************************** EVENT TAB-8 ************************************************************************************/
@@ -389,10 +738,10 @@ class Search extends CI_Controller{
 			$row = array();
 			$no++;
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$no."</a>";
-			$row[] = "<a href='editcase/".$result->Case_AutoId."'><i title='Edit' class='fa fa-edit'></i></a>";
-			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Case_Id."</a>";
-			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->InjuredParty_LastName." ".$result->InjuredParty_FirstName."</a>";
-			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Provider_Name."</a>";
+			$row[] = "<a href='".base_url()."search/editcase/".$result->Case_AutoId."'><i title='Edit' class='fa fa-edit'></i></a>";
+			$row[] = "<a href='".base_url()."search/viewcase/".$result->Case_AutoId."'>".$result->Case_Id."</a>";
+			$row[] = "<a href='".base_url()."search/viewcase/".$result->Case_AutoId."'>".$result->InjuredParty_LastName." ".$result->InjuredParty_FirstName."</a>";
+			$row[] = "<a href='".base_url()."search/viewcase/".$result->Case_AutoId."'>".$result->Provider_Name."</a>";
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->InsuranceCompany_Name."</a>";
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Accident_Date."</a>";
 			$DateOfService_Start = substr_replace($result->DateOfService_Start,"",11,8);
@@ -465,6 +814,21 @@ class Search extends CI_Controller{
 		);
 		
 		echo json_encode($output);
+	}
+	public function testmethod(){
+		$date = date('Y-m-d H:i:s');
+		echo "date:".date('Y');
+		//2014-06-17 00:00:00.00000
+		$q = date_create("2014-06-17");
+		$w = date_format($q, "m/d/Y");
+		echo "<br>JJJ:".substr(date("Y"), 2, 2);
+		
+		$date2="2013-03-15 00:00:00:000";
+		$date3= date_create(substr($date2,0,19));
+		echo "New format:".date_format(date_create(substr($date2,0,19)),"m/d/Y H:i:s");
+		//echo "<br>NNN:".substr(date_format($date2, 'm/d/Y H:i:s'), 0,10);
+		echo "base_url:".base_url();
+		
 	}
 /*****************************************************************************************************************************************/
 }
