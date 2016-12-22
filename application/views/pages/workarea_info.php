@@ -644,8 +644,8 @@ for($i=0; $i<=13; $i++){
                                 <div class="col-md-1 case-info-tab6-title">CASE ID</div>
                                 <div class="col-md-2 case-info-tab6-title">PROVIDER</div>
                                 <div class="col-md-2 case-info-tab6-title">INJURED PARTY</div>
-                                <div class="col-md-1 settled-status-open settled-by-show"></div>
-                                <div class="col-md-2 case-info-tab6-title settled-by settled-status-open settled-by-show">SETTLED BY</div>
+                                <div class="col-md-1 settled-by-show"></div>
+                                <div class="col-md-2 case-info-tab6-title settled-by settled-by-show">SETTLED BY</div>
                                 
 							</div>
 							<div class="form-horizontal col-md-12 settlement-title-info">
@@ -654,8 +654,8 @@ for($i=0; $i<=13; $i++){
                                 <div class="col-md-2 case-info-tab6" id="ProviderName-tab-6"></div>
                                 <div class="col-md-2 case-info-tab6" id="InjuredPartyName-tab-6"></div>
                                 
-                                <div class="col-md-1 settled-status-open settled-by-show"></div>
-                                <div class="col-md-2 case-info-tab6 settled-by-info settled-status-open settled-by-show" id="InjuredPartyName-tab-6"></div>
+                                <div class="col-md-1 settled-by-show"></div>
+                                <div class="col-md-2 case-info-tab6 settled-by-info settled-by-show" id="InjuredPartyName-tab-6"></div>
                                
 							</div>
                             <form method="post" id="settlement_form_open">
@@ -699,13 +699,13 @@ for($i=0; $i<=13; $i++){
                                 <input type="hidden" name="Case_AutoId" value="<?php echo $Case_AutoId;?>">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label">SETTLEMENT AMOUNT</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltSettlement_AmountTab6" name="Settlement_Amount"  class="form-control input-sm Amount" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltSettlement_AmountTab6" name="Settlement_Amount"  class="form-control input-sm Amount settled-by-info" ></div>
 								<div class="col-md-1"><input step="0.01" type="number" id="settlementPercentageTab6" name="settlementPercentageTab6"  class="form-control input-sm percentage" value="100.00"></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label col-md-12">INTEREST</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltInterestTab6" name="Settlement_Int"  class="form-control input-sm Amount" value="100.00" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltInterestTab6" name="Settlement_Int"  class="form-control input-sm Amount settled-by-info" ></div>
 								<div class="col-md-1"><input step="0.01" type="number" id="FltInterestPercTab6" name="FltInterestPercTab6"  class="form-control input-sm percentage" value="100.00" ></div>
 								<div class="col-md-1 start-date-settlement settled-status-open"><label class="control-label col-md-12">START DATE</label> </div>
 								<div class="col-md-1 settled-status-open"><input type="text" id="CopundIntStartData" name="CopundIntStartData"  class="form-control input-sm datepicker_recurring_start" ></div>
@@ -760,7 +760,7 @@ for($i=0; $i<=13; $i++){
 							</div>
                             <div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
-								<div class="col-md-2 finalize-sett-button"><button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Finalize Settlement</button></div>
+								<div class="col-md-2 finalize-sett-button"><button type="submit" class="btn btn-primary" id="finalizeButton"><i class="fa fa-check"></i> Finalize Settlement</button></div>
 								<div class="col-md-1"><button type="button" class="reset-settlement">Reset</button></div>
 							</div>
                             </form>
@@ -1590,6 +1590,7 @@ $(document).ready(function(e) {
 		$(this).parent().parent().find("input[name=DENIALREASONS_TYPE_treat]").prop("disabled", false);
 		$(this).parent().parent().find("input[name=SERVICE_TYPE_treat]").prop("disabled", false);
 		
+		
     } );
 /**** CANCEL TREATEMENT **********/
 	$('tbody').on( 'click', '.cancel', function () {
@@ -2016,6 +2017,7 @@ $(document).ready(function(e) {
 					checkstatus_open();
 					$(".settled-by-show").css("display","block");
 					callSuccess();
+					$("#finalizeButton").prop('disabled', true);
 				});
 			}else{
 				$("#AdjOrAtt").modal("show");
@@ -2031,6 +2033,8 @@ $(document).ready(function(e) {
 			success: function(data){
 				Update_Settlement();
 				checkstatus_open();
+				$("#finalizeButton").prop('disabled', false);
+				load_sett_data();
         	},
 			error: function(result){ console.log("error"); }
 		
@@ -2059,27 +2063,51 @@ $(document).ready(function(e) {
 			error: function(result){ console.log("error"); }
 		
 		});
+		load_sett_data();
+		//e.preventDefault();	//STOP default action
+	}
+	$('#tab6').click(function(e){
+		checkstatus_open();
+	});
+	function load_sett_data(){
 		$.ajax({
 			type:'POST',
 			url:"<?php echo base_url(); ?>search/get_Settled_By/<?php echo $Case_Id;?>",
 			success:function(data){
 				results = JSON.parse(data);
 				$.each(results[0], function(k, v) {
-					console.log(k + ' is ' + v);
+					//console.log(k + ' is ' + v);
 				});
 				 var settledBy = document.getElementsByClassName("settled-by-info");
 				for($i in results){
+					console.log("Settlement_Amount:"+results[$i].Settlement_Amount);
+					console.log("Settlement_Int:"+results[$i].Settlement_Int);
+					$("#FltInterestTab6").val(results[$i].Settlement_Int);
+					console.log("Settlement_Af:"+results[$i].Settlement_Af);
+					console.log("Settlement_Ff:"+results[$i].Settlement_Ff);
+					console.log("Settlement_Total:"+results[$i].Settlement_Total);
+					
+					
 					 settledBy[0].innerHTML = results[$i].User_Id;
-					 settledBy[1].innerHTML = results[$i].SettledWith ;
-					console.log("ssss:"+results[$i].User_Id);
+					 settledBy[1].innerHTML = results[$i].SettledWith;
+					 settledBy[2].innerHTML = results[$i].Settlement_Amount;
+					 settledBy[3].innerHTML = results[$i].Settlement_Int;
+					 
+					 $("#FltSettlement_AmountTab6").val(results[$i].Settlement_Amount);
+					//var settlementPercentage = (results[$i].Settlement_Amount * 100)/ balance;
+					//$("#settlementPercentageTab6").val(settlementPercentage.toFixed(2));
+					$("#FltAttorneyFeeTab6").val(results[$i].Settlement_Af);
+					
+					$("#FltFillingFeeTab6").val(results[$i].Settlement_Ff);
+					var TotalAmount =  parseFloat(results[$i].Settlement_Amount) + parseFloat(results[$i].Settlement_Int) + parseFloat(results[$i].Settlement_Af) + parseFloat(results[$i].Settlement_Ff);
+					
+					$("#TotalAmount").val(TotalAmount.toFixed(2));
+					
+					
 				}
 			}
 		});
-		//e.preventDefault();	//STOP default action
 	}
-	$('#tab6').click(function(e){
-		checkstatus_open();
-	});
 /*************************************************** Payment TAB-8 ***************************************************************/	
 	
 	
@@ -2458,14 +2486,16 @@ $(document).ready(function(e) {
 					$("#PaymentsTab6").val(results.CaseInfo[$i].Paid_Amount);
 					var balance = results.CaseInfo[$i].Claim_Amount - results.CaseInfo[$i].Paid_Amount;
 					$("#BalanceTab6").val(balance.toFixed(2));
-					$("#FltSettlement_AmountTab6").val(results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT);
+					
+					/*$("#FltSettlement_AmountTab6").val(results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT.toFixed(2));
 					var settlementPercentage = (results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT * 100)/ balance;
 					$("#settlementPercentageTab6").val(settlementPercentage.toFixed(2));
 					$("#FltAttorneyFeeTab6").val(results.CaseInfo[$i].FLT_ATTORNEY_FEE);
 					//$("#FltInterestTab6").val(results.CaseInfo[$i].FLT_INTERATE_RATE);
 					$("#FltFillingFeeTab6").val(results.CaseInfo[$i].FLT_FILING_FEE);
 					var TotalAmount =  parseFloat(results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT) + parseFloat(results.CaseInfo[$i].FLT_INTERATE_RATE) + parseFloat(results.CaseInfo[$i].FLT_ATTORNEY_FEE) + parseFloat(results.CaseInfo[$i].FLT_FILING_FEE);
-					$("#TotalAmount").val(TotalAmount.toFixed(2));
+					$("#TotalAmount").val(TotalAmount.toFixed(2));*/
+					
 					$("#ClaimAmtTab6").prop("disabled", true);
 					$("#PaymentsTab6").prop("disabled", true);
 					$("#BalanceTab6").prop("disabled", true);
@@ -2579,8 +2609,8 @@ $(document).ready(function(e) {
 		
 		});
 	}
-		
-	$.ajax({
+	
+	/*$.ajax({
 		type:'POST',
 		url:"<?php echo base_url(); ?>search/get_Settled_By/<?php echo $Case_Id;?>",
 		success:function(data){
@@ -2595,7 +2625,7 @@ $(document).ready(function(e) {
 				console.log("ssss:"+results[$i].User_Id);
 			}
 		}
-	});
+	});*/
 	
 		$('.fromdate').datepicker({
 			dateFormat: 'yy-mm-dd',
