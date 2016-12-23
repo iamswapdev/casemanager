@@ -3877,4 +3877,31 @@ label {
 .col-sm-4.text-center .dt-button.buttons-copy.buttons-html5.btn-sm{
 	background-color: #34495e !important;
 }
-
+#Treatement_Info_table .dos-input, .payment-summary .dos-input{
+	width:90px;
+}
+#Treatement_Info_table .amt-input, .payment-summary .amt-input{
+	width:85px;
+}
+.deleteTreatementButton{
+	padding-left:175px;
+}
+.payment-summary-delete{
+	margin-bottom: -2px;
+    margin-top: -7px;
+}
+.payment-summary td input{
+	margin:auto;
+}
+#AdvancedSearchTable_filter label{
+	font-size:20px;
+	font-weight:bold;
+}
+#caseInfoSerach_form select{
+	border: 1px solid;
+    border-color: #999 !important;
+}
+#AdvancedSearchTable_filter input{
+	border: 1px solid;
+    border-color: #999 !important;
+}

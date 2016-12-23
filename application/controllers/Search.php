@@ -135,11 +135,11 @@ class Search extends CI_Controller{
 			$row = array();
 			$no++;
 			$row[] ="<button type='button' class='btn editTreatment'>Edit</button> <div class='update-Treatment' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn cancel'>Cancel</button></div>";
-			$row[] = "<input type='text' name='dateOfServiceStart' class='form-control input-sm datetimepicker_Dos_Doe dos-date' value='".date_format(date_create(substr($result->DateOfService_Start, 0, 10)), 'm/d/Y')."' disabled>";
-			$row[] = "<input type='text' name='dateOfServiceEnd' class='form-control input-sm datetimepicker_Dos_Doe dos-date' value='".date_format(date_create(substr($result->DateOfService_End, 0, 10)), 'm/d/Y')."' disabled>";
-			$row[] = "<input type='text' name='Claim_Amount_treat' class='form-control input-sm amt' value='".$result->Claim_Amount."' disabled>";
-			$row[] = "<input type='text' name='Paid_Amount_treat' class='form-control input-sm amt' value='".$result->Paid_Amount."' disabled>";
-			$row[] = "<input type='text' name='Date_BillSent_treat' class='form-control input-sm datetimepicker_Dos_Doe dos-date' value='".$result->Date_BillSent."' disabled>";
+			$row[] = "<input type='text' name='dateOfServiceStart' class='form-control input-sm datetimepicker_Dos_Doe dos-date dos-input' value='".date_format(date_create(substr($result->DateOfService_Start, 0, 10)), 'm/d/Y')."' disabled>";
+			$row[] = "<input type='text' name='dateOfServiceEnd' class='form-control input-sm datetimepicker_Dos_Doe dos-date dos-input' value='".date_format(date_create(substr($result->DateOfService_End, 0, 10)), 'm/d/Y')."' disabled>";
+			$row[] = "<input type='text' name='Claim_Amount_treat' class='form-control input-sm amt-input' value='".$result->Claim_Amount."' disabled>";
+			$row[] = "<input type='text' name='Paid_Amount_treat' class='form-control input-sm amt-input' value='".$result->Paid_Amount."' disabled>";
+			$row[] = "<input type='text' name='Date_BillSent_treat' class='form-control input-sm datetimepicker_Dos_Doe dos-input' value='".$result->Date_BillSent."' disabled>";
 			$row[] = "<div class='SERVICE_TYPE_treat_div'> <input type='text' name='SERVICE_TYPE_treat' class='form-control input-sm' value='".$result->SERVICE_TYPE."' disabled><input type='hidden' name='SERVICE_TYPE_treat_hidden' value='".$result->SERVICE_TYPE."'> </div>";
 			$row[] = "<input type='text' name='DENIALREASONS_TYPE_treat' class='form-control input-sm' value='".$result->DENIALREASONS_TYPE."' disabled>";
 			$row[] = "<input type='checkbox' name='DeleteTreatement[]' class='DeleteTreatement DeleteTreatement".$result->Treatment_Id."' value=".$result->Treatment_Id."> <input type='hidden' name='Treatment_Id' value='".$result->Treatment_Id."' >";
@@ -363,7 +363,78 @@ class Search extends CI_Controller{
 	}
 	public function getCaseInfo($Case_AutoId){
 		$data['CaseInfo']= $this->search_model->get_CaseInfo_ById($Case_AutoId);
-		//echo json_encode($data['CaseInfo'][0]);
+		//echo "<pre>"; print_r($data['CaseInfo']); exit();
+		//echo $data['CaseInfo'][0]['Date_Summons_Printed'];
+		if($data['CaseInfo'][0]['Accident_Date'] !=""){
+			$data['CaseInfo'][0]['Accident_Date'] = date_format(date_create(substr($data['CaseInfo'][0]['Accident_Date'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['Date_Status_Changed'] !=""){
+			$data['CaseInfo'][0]['Date_Status_Changed'] = date_format(date_create(substr($data['CaseInfo'][0]['Date_Status_Changed'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['Date_Answer_Received'] !=""){
+			$data['CaseInfo'][0]['Date_Answer_Received'] = date_format(date_create(substr($data['CaseInfo'][0]['Date_Answer_Received'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['Motion_Date'] !=""){
+			$data['CaseInfo'][0]['Motion_Date'] = date_format(date_create(substr($data['CaseInfo'][0]['Motion_Date'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['Date_Ext_Of_Time_2'] !=""){
+			$data['CaseInfo'][0]['Date_Ext_Of_Time_2'] = date_format(date_create(substr($data['CaseInfo'][0]['Date_Ext_Of_Time_2'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['DateOfService_Start'] !=""){
+			$data['CaseInfo'][0]['DateOfService_Start'] = date_format(date_create(substr($data['CaseInfo'][0]['DateOfService_Start'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['DateOfService_End'] !=""){
+			$data['CaseInfo'][0]['DateOfService_End'] = date_format(date_create(substr($data['CaseInfo'][0]['DateOfService_End'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['Date_Summons_Printed'] !=""){
+			$data['CaseInfo'][0]['Date_Summons_Printed'] = date_format(date_create(substr($data['CaseInfo'][0]['Date_Summons_Printed'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['Plaintiff_Discovery_Due_Date'] !=""){
+			$data['CaseInfo'][0]['Plaintiff_Discovery_Due_Date'] = date_format(date_create(substr($data['CaseInfo'][0]['Plaintiff_Discovery_Due_Date'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['Defendant_Discovery_Due_Date'] !=""){
+			$data['CaseInfo'][0]['Defendant_Discovery_Due_Date'] = date_format(date_create(substr($data['CaseInfo'][0]['Defendant_Discovery_Due_Date'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['Date_Bill_Submitted'] !=""){
+			$data['CaseInfo'][0]['Date_Bill_Submitted'] = date_format(date_create(substr($data['CaseInfo'][0]['Date_Bill_Submitted'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['Date_Index_Number_Purchased'] !=""){
+			$data['CaseInfo'][0]['Date_Index_Number_Purchased'] = date_format(date_create(substr($data['CaseInfo'][0]['Date_Index_Number_Purchased'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['Date_Afidavit_Filed'] !=""){
+			$data['CaseInfo'][0]['Date_Afidavit_Filed'] = date_format(date_create(substr($data['CaseInfo'][0]['Date_Afidavit_Filed'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['Date_Ext_Of_Time'] !=""){
+			$data['CaseInfo'][0]['Date_Ext_Of_Time'] = date_format(date_create(substr($data['CaseInfo'][0]['Date_Ext_Of_Time'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['Date_Summons_Sent_Court'] !=""){
+			$data['CaseInfo'][0]['Date_Summons_Sent_Court'] = date_format(date_create(substr($data['CaseInfo'][0]['Date_Summons_Sent_Court'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['Date_Ext_Of_Time_3'] !=""){
+			$data['CaseInfo'][0]['Date_Ext_Of_Time_3'] = date_format(date_create(substr($data['CaseInfo'][0]['Date_Ext_Of_Time_3'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['Served_On_Date'] !=""){
+			$data['CaseInfo'][0]['Served_On_Date'] = date_format(date_create(substr($data['CaseInfo'][0]['Served_On_Date'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['Date_Closed'] !=""){
+			$data['CaseInfo'][0]['Date_Closed'] = date_format(date_create(substr($data['CaseInfo'][0]['Date_Closed'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['Date_Demands_Printed'] !=""){
+			$data['CaseInfo'][0]['Date_Demands_Printed'] = date_format(date_create(substr($data['CaseInfo'][0]['Date_Demands_Printed'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['Date_Disc_Conf_Letter_Printed'] !=""){
+			$data['CaseInfo'][0]['Date_Disc_Conf_Letter_Printed'] = date_format(date_create(substr($data['CaseInfo'][0]['Date_Disc_Conf_Letter_Printed'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['Date_Reply_To_Disc_Conf_Letter_Recd'] !=""){
+			$data['CaseInfo'][0]['Date_Reply_To_Disc_Conf_Letter_Recd'] = date_format(date_create(substr($data['CaseInfo'][0]['Date_Reply_To_Disc_Conf_Letter_Recd'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['Arb_Award_Date'] !=""){
+			$data['CaseInfo'][0]['Arb_Award_Date'] = date_format(date_create(substr($data['CaseInfo'][0]['Arb_Award_Date'],0,19)),"m/d/Y");
+		}
+		if($data['CaseInfo'][0]['AAA_Conciliation_Date'] !=""){
+			$data['CaseInfo'][0]['AAA_Conciliation_Date'] = date_format(date_create(substr($data['CaseInfo'][0]['AAA_Conciliation_Date'],0,19)),"m/d/Y");
+		}
+		
 		echo json_encode($data);
 	}
 	public function updateCaseInfo(){
@@ -826,17 +897,18 @@ class Search extends CI_Controller{
 		echo json_encode($output);
 	}
 	public function testmethod(){
-		echo "Case_Id: ".$this->Case_Id; exit();
+		/*echo "Case_Id: ".$this->Case_Id; exit();
 		$date = date('Y-m-d H:i:s');
 		echo "date:".date('Y');
 		//2014-06-17 00:00:00.00000
 		$q = date_create("2014-06-17");
 		$w = date_format($q, "m/d/Y");
-		echo "<br>JJJ:".substr(date("Y"), 2, 2);
+		echo "<br>JJJ:".substr(date("Y"), 2, 2);*/
 		
-		$date2="2013-03-15 00:00:00:000";
+		$date2="";
 		$date3= date_create(substr($date2,0,19));
-		echo "New format:".date_format(date_create(substr($date2,0,19)),"m/d/Y H:i:s");
+		echo "<br>Data:".$date2;
+		echo "<br><br>New format:".date_format(date_create(substr($date2,0,19)),"m/d/Y")."<br></br>";
 		//echo "<br>NNN:".substr(date_format($date2, 'm/d/Y H:i:s'), 0,10);
 		echo "base_url:".base_url();
 		

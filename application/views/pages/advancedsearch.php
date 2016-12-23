@@ -228,11 +228,8 @@
             "lengthMenu": [ [10, 25, 50,100,200, -1], [10, 25, 50,100,200, "All"] ],
 			"pageLength": 50,
             buttons: [
-                {extend: 'copy',className: 'btn-sm'},
-                {extend: 'csv',title: 'ExampleFile', className: 'btn-sm'},
-                {extend: 'pdf', title: 'ExampleFile', className: 'btn-sm'},
-                {extend: 'print',className: 'btn-sm'}
-            ]
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
 
 		});
 		$('body').on('focus',".phone-format", function(){
@@ -258,8 +255,12 @@
 				"ajax": 'getSearchTable',
 				"aLengthMenu": [5, 10, 20, 25, 50, 100, 200, "All"],
 				"pageLength": 50,
-				dom: 'Bfrtip',
-				buttons: [ 'pageLength', 'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5', 'print' ]
+				dom: "<'row'<'col-sm-4 demo'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
+						"lengthMenu": [ [10, 25, 50,100,200, -1], [10, 25, 50,100,200, "All"] ],
+						"pageLength": 50,
+						buttons: [
+						'copy', 'csv', 'excel', 'pdf', 'print'
+					]
 			});
 		});
 		/*$(function () {
@@ -317,8 +318,12 @@
 					},
 					"aLengthMenu": [5, 10, 20, 25, 50, 100, 200, "All"],
 					"pageLength": 50,
-					dom: 'Bfrtip',
-					buttons: [ 'pageLength', 'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5', 'print' ]
+					dom: "<'row'<'col-sm-4 demo'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
+						"lengthMenu": [ [10, 25, 50,100,200, -1], [10, 25, 50,100,200, "All"] ],
+						"pageLength": 50,
+						buttons: [
+						'copy', 'csv', 'excel', 'pdf', 'print'
+					]
 					  
 				});
 	
