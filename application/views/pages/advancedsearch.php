@@ -17,9 +17,12 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/animate.css/animate.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.min.css" />
 
+	<!-- DATATABLES CSS -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/advanced-datatable/buttons.dataTables.min.css" />
+    
     <!-- App styles -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/helper.css" />
@@ -52,25 +55,15 @@
 			<form method="get" id="caseInfoSerach_form" class="form-horizontal label-font">
 
 				<div class="form-group form-horizontal col-md-12">
-                <h5 class="h4-title">Search</h5>
-					<label class="col-md-2 control-label">CASE ID</label>
+                	<h5 class="h4-title">Search</h5>
+                    <label class="col-md-2 control-label">PROVIDER</label>
 					<div class="col-md-2">
-						<input type="text" id="sCaseId" name="sCaseId" class="form-control input-sm">
-					</div>
-                    <label class="col-md-2 control-label">POLICY NUMBER</label>
-					<div class="col-md-2">
-						<input type="text" id="spolicyNumber" name="spolicyNumber" class="form-control input-sm">
-					</div>
-					<label class="col-md-2 control-label">INS. CLAIM #</label>
-					<div class="col-md-2">
-						<input type="text" id="sInsuranceClaimNo" name="sInsuranceClaimNo" class="form-control input-sm">
-					</div>
-				</div>
-
-				<div class="form-group form-horizontal col-md-12">
-                    <label class="col-md-2 control-label">INDEX#/AAA#</label>
-					<div class="col-md-2">
-						<input type="text" id="sIndexaaa" name="sIndexaaa" class="form-control input-sm phone-format">
+						<select class="form-control input-sm" id="sProviderId" name="sProviderId">
+                            <option selected="selected" value=""></option>
+                            <?php foreach($Provider_Name as $row){?>
+                            <option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option>
+                            <?php }?>
+                        </select>
 					</div>
                     <label class="col-md-2 control-label">STATUS</label>
 					<div class="col-md-2">
@@ -78,26 +71,6 @@
                             <option selected="selected" value=""></option>
                             <?php foreach($Status as $row){?>
                             <option value="<?php echo $row['Status_Type']; ?>"> <?php echo $row['Status_Type']; ?> </option>
-                            <?php }?>
-                        </select>
-					</div>
-					<label class="col-md-2 control-label">INSURANCE COMP.</label>
-					<div class="col-md-2">
-						<select class="form-control input-sm" id="sInsuranceCompanyId" name="sInsuranceCompanyId">
-                       	 	<option selected="selected" value=""></option>
-                            <?php foreach($InsuranceCompany_Name as $row){?>
-                            <option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option>
-                            <?php }?>
-                        </select>
-					</div>
-				</div>
-				<div class="form-group form-horizontal col-md-12">
-					<label class="col-md-2 control-label">COURT TYPE</label>
-					<div class="col-md-2">
-						<select class="form-control input-sm" id="sCourtId" name="sCourtId"  >
-                            <option selected="selected" value=""></option>
-                            <?php foreach($Court as $row){?>
-                            <option value="<?php echo $row['Court_Id']; ?>"> <?php echo $row['Court_Name']; ?> </option>
                             <?php }?>
                         </select>
 					</div>
@@ -110,18 +83,27 @@
                             <?php }?>
 						</select>
 					</div>
-					<label class="col-md-2 control-label">PROVIDER</label>
+				</div>
+				<div class="form-group form-horizontal col-md-12">
+                	<label class="col-md-2 control-label">INSURANCE COMP.</label>
 					<div class="col-md-2">
-						<select class="form-control input-sm" id="sProviderId" name="sProviderId">
-                            <option selected="selected" value=""></option>
-                            <?php foreach($Provider_Name as $row){?>
-                            <option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option>
+						<select class="form-control input-sm" id="sInsuranceCompanyId" name="sInsuranceCompanyId">
+                       	 	<option selected="selected" value=""></option>
+                            <?php foreach($InsuranceCompany_Name as $row){?>
+                            <option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option>
                             <?php }?>
                         </select>
 					</div>
-				</div>
-				<div class="form-group form-horizontal col-md-12">
-					<label class="col-md-2 control-label">DEFENDANT NAME</label>
+					<label class="col-md-2 control-label">COURT TYPE</label>
+					<div class="col-md-2">
+						<select class="form-control input-sm" id="sCourtId" name="sCourtId"  >
+                            <option selected="selected" value=""></option>
+                            <?php foreach($Court as $row){?>
+                            <option value="<?php echo $row['Court_Id']; ?>"> <?php echo $row['Court_Name']; ?> </option>
+                            <?php }?>
+                        </select>
+					</div>
+                    <label class="col-md-2 control-label">DEFENDANT NAME</label>
 					<div class="col-md-2">
 						<select class="form-control input-sm" id="sDefendantId" name="sDefendantId" >
                             <option selected="selected" value=""></option>
@@ -130,6 +112,9 @@
                             <?php }?>
                         </select>
 					</div>
+				</div>
+				<div class="form-group form-horizontal col-md-12">
+					
                     <label class="col-md-2 control-label">ADJUSTER NAME</label>
 					<div class="col-md-2">
 						<select class="form-control input-sm" id="sAdjusterId" name="sAdjusterId" >
@@ -148,24 +133,6 @@
 					</div>
 				</div>
 			</form>
-            <form method="get" id="caseInfoSerach_form2" class="form-horizontal label-font">
-            	<div class="form-group form-horizontal col-md-12">
-                    <div class="col-md-6"></div>
-                    <div class="col-md-2 control-label">
-                    	<button type="button" id="searchbutton2" class="btn btn-primary">Search</button>
-                    </div>
-                    <div class="col-md-2">
-                        <input type="text" id="SearchByDropDown" class="form-control input-sm" name="sInjuredName">
-                    </div>
-                    <div class="col-md-2">
-                        <select class="form-control input-sm" id="SearchDropDown">
-                            <option selected="selected" value="sInjuredName">InjuredParty Name</option>
-                            <option value="sInsuredName">InsuredParty Name</option>
-                            <option value="sAccidentDate">AccidentDate</option>
-                        </select>
-                    </div>
-                </div>
-            </form>
 			
 			<h5 class="h4-title">Search Results</h5>
 			<div class="form-group form-horizontal col-md-12 table-responsive">
@@ -220,8 +187,23 @@
     <script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
+    
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/dataTables.buttons.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/buttons.flash.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/jszip.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/pdfmake.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/vfs_fonts.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/buttons.html5.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/buttons.print.min.js"></script>
+    
+    
+    
+    
     <script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+    
+    
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/mask-phone/maskPhone.js"></script>
     
@@ -232,7 +214,27 @@
 
 <script>
 	$(document).ready(function(e) {
-        //$("tr:nth-child(7)").addClass("DOA-width");
+		// Initialize Example 1
+		/*$('#AdvancedSearchTable').dataTable( {
+			"ajax": 'getSearchTable',
+			"aLengthMenu": [5, 10, 20, 25, 50, 100, 200, "All"],
+			"pageLength": 50,
+			dom: 'Bfrtip',
+			buttons: [ 'pageLength', 'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5', 'print' ]
+		});*/
+		$('#AdvancedSearchTable').dataTable( {
+			"ajax": 'getSearchTable',
+			dom: "<'row'<'col-sm-4 demo'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
+            "lengthMenu": [ [10, 25, 50,100,200, -1], [10, 25, 50,100,200, "All"] ],
+			"pageLength": 50,
+            buttons: [
+                {extend: 'copy',className: 'btn-sm'},
+                {extend: 'csv',title: 'ExampleFile', className: 'btn-sm'},
+                {extend: 'pdf', title: 'ExampleFile', className: 'btn-sm'},
+                {extend: 'print',className: 'btn-sm'}
+            ]
+
+		});
 		$('body').on('focus',".phone-format", function(){
 			$(this).mask("999999/99");
 			//$(this).mask("999-999-999");
@@ -253,19 +255,26 @@
 			$("select").val('');
 			$("#AdvancedSearchTable").dataTable().fnDestroy();
 			$('#AdvancedSearchTable').dataTable( {
-				"ajax": '<?php echo base_url();?>search/getSearchTable',
-				"pageLength": 100
+				"ajax": 'getSearchTable',
+				"aLengthMenu": [5, 10, 20, 25, 50, 100, 200, "All"],
+				"pageLength": 50,
+				dom: 'Bfrtip',
+				buttons: [ 'pageLength', 'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5', 'print' ]
 			});
 		});
-		$(function () {
+		/*$(function () {
 			// Initialize Example 1
 			$('#AdvancedSearchTable').dataTable( {
 				"ajax": 'getSearchTable',
-				"pageLength": 100,
-				"searching": false
+				"sDom": 'T<"clear">lfrtip',
+				"pageLength": 50,
+				dom: 'Bfrtip',
+				buttons: [
+					'copy', 'csv', 'excel', 'pdf', 'print'
+				]
 				//"bSort": false
 			});
-		});
+		});*/
 		
 		$("#caseInfoSerach_form").validate({
 			submitHandler: function (form) {
@@ -289,8 +298,7 @@
 				//console.log("dataObj['sIndexaaa']:"+dataObj['sIndexaaa']);
 				$("#AdvancedSearchTable").dataTable().fnDestroy();
 				$('#AdvancedSearchTable').dataTable( {
-					"searching": false,
-				  "ajax": {
+					"ajax": {
 						"url": "getSearchTable_2",
 						"data": {
 							"sCaseId": dataObj['sCaseId'],
@@ -306,72 +314,17 @@
 							"sAdjusterId": dataObj['sAdjusterId']
 						},
 						"type": "POST"
-					  },
-					  "pageLength": 100
+					},
+					"aLengthMenu": [5, 10, 20, 25, 50, 100, 200, "All"],
+					"pageLength": 50,
+					dom: 'Bfrtip',
+					buttons: [ 'pageLength', 'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5', 'print' ]
 					  
 				});
 	
 			}
 		});
-		$('#SearchDropDown').on('change', function() {
-			var dropdownName =$("#SearchDropDown option:selected").val();
-			$("#SearchByDropDown").attr('name', dropdownName);
-			if(dropdownName == "sAccidentDate"){
-				$("#SearchByDropDown").datepicker({
-					"format": 'yyyy-mm-dd',
-					"autoclose": true,
-					"todayHighlight": true,
-					"selectOtherMonths": true,
-					"timeFormat": 'hh:mm'
-				});
-			}else{
-				console.log("elseeee");
-				$("#SearchByDropDown").datepicker("destroy");
-				//$("#SearchByDropDown").datepicker().datepicker('disable');
-			}
-		});
-		$("#searchbutton2").click(function(){
-			var inputName = $("#SearchByDropDown").attr('name');
-			var sInjuredName_Last ="";
-			var sInjuredName_First ="";
-			var sInsuredName_Last = "";
-			var sInsuredName_First ="";
-			var sAccidentDate = "";
-			if(inputName == "sInjuredName"){
-				var sInjuredName2 = $("#SearchByDropDown").val();
-				sInjuredName_Last = sInjuredName2.split(' ')[0];
-				sInjuredName_First = sInjuredName2.split(' ')[1];
-				console.log("sInjuredName_Last:"+sInjuredName_Last);
-				console.log("sInjuredName_First:"+sInjuredName_First);
-			}else if(inputName == "sInsuredName"){
-				var sInsuredName2 = $("#SearchByDropDown").val();
-				sInsuredName_Last = sInsuredName2.split(' ')[0];
-				sInsuredName_First = sInsuredName2.split(' ')[1];
-				console.log("sInsuredName_Last:"+sInsuredName_Last);
-				console.log("sInsuredName_First:"+sInsuredName_First);
-			}else{
-				var sAccidentDate2 = $("#SearchByDropDown").val();
-				sAccidentDate = sAccidentDate2.replace(/\//g , "-")
-				console.log("sAccidentDate:"+sAccidentDate);
-			}
-			$("#AdvancedSearchTable").dataTable().fnDestroy();
-			$('#AdvancedSearchTable').dataTable( {
-				"searching": false,
-			  "ajax": {
-					"url": "getSearchTable_2",
-					"data": {
-						"InjuredParty_LastName": sInjuredName_Last,
-						"InjuredParty_FirstName": sInjuredName_First,
-						"InsuredParty_LastName": sInsuredName_Last,
-						"InsuredParty_FirstName": sInsuredName_First,
-						"AccidentDate": sAccidentDate
-					},
-					"type": "POST"
-				  },
-				  "pageLength": 100
-				  
-			});
-		});
+		
 		
 		/* *************************************************** */
     });

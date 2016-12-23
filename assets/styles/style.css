@@ -3686,6 +3686,8 @@ tr{
 .tdAlignLeft td{
 	background-color:#feffef;
 	color:#a23e26;
+	font-weight: 600;
+    font-size: 15px;
 }
 .case-info-id{
 	color:#F00;
@@ -3868,3 +3870,18 @@ label {
 .sett-with-name{
 	margin-top:15px;
 }
+.demo.col-sm-4 {
+	width: 276px!important;	
+}
+#AdvancedSearchTable_wrapper .text-center{
+	width: 50%;
+}
+.col-sm-4.text-center .dt-button.buttons-copy.buttons-html5.btn-sm{
+	background-color: #34495e !important;
+}
+#AdvancedSearchTable_filter label{
+	font-size: 22px;
+    color: #000;
+}
+
+

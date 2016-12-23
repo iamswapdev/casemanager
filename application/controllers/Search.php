@@ -135,11 +135,11 @@ class Search extends CI_Controller{
 			$row = array();
 			$no++;
 			$row[] ="<button type='button' class='btn editTreatment'>Edit</button> <div class='update-Treatment' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn cancel'>Cancel</button></div>";
-			$row[] = "<input type='text' name='dateOfServiceStart' class='form-control input-sm datetimepicker_Dos_Doe' value='".date_format(date_create(substr($result->DateOfService_Start, 0, 10)), 'm/d/Y')."' disabled>";
-			$row[] = "<input type='text' name='dateOfServiceEnd' class='form-control input-sm datetimepicker_Dos_Doe' value='".date_format(date_create(substr($result->DateOfService_End, 0, 10)), 'm/d/Y')."' disabled>";
-			$row[] = "<input type='text' name='Claim_Amount_treat' class='form-control input-sm ' value='".$result->Claim_Amount."' disabled>";
-			$row[] = "<input type='text' name='Paid_Amount_treat' class='form-control input-sm ' value='".$result->Paid_Amount."' disabled>";
-			$row[] = "<input type='text' name='Date_BillSent_treat' class='form-control input-sm datetimepicker_Dos_Doe' value='".$result->Date_BillSent."' disabled>";
+			$row[] = "<input type='text' name='dateOfServiceStart' class='form-control input-sm datetimepicker_Dos_Doe dos-date' value='".date_format(date_create(substr($result->DateOfService_Start, 0, 10)), 'm/d/Y')."' disabled>";
+			$row[] = "<input type='text' name='dateOfServiceEnd' class='form-control input-sm datetimepicker_Dos_Doe dos-date' value='".date_format(date_create(substr($result->DateOfService_End, 0, 10)), 'm/d/Y')."' disabled>";
+			$row[] = "<input type='text' name='Claim_Amount_treat' class='form-control input-sm amt' value='".$result->Claim_Amount."' disabled>";
+			$row[] = "<input type='text' name='Paid_Amount_treat' class='form-control input-sm amt' value='".$result->Paid_Amount."' disabled>";
+			$row[] = "<input type='text' name='Date_BillSent_treat' class='form-control input-sm datetimepicker_Dos_Doe dos-date' value='".$result->Date_BillSent."' disabled>";
 			$row[] = "<div class='SERVICE_TYPE_treat_div'> <input type='text' name='SERVICE_TYPE_treat' class='form-control input-sm' value='".$result->SERVICE_TYPE."' disabled><input type='hidden' name='SERVICE_TYPE_treat_hidden' value='".$result->SERVICE_TYPE."'> </div>";
 			$row[] = "<input type='text' name='DENIALREASONS_TYPE_treat' class='form-control input-sm' value='".$result->DENIALREASONS_TYPE."' disabled>";
 			$row[] = "<input type='checkbox' name='DeleteTreatement[]' class='DeleteTreatement DeleteTreatement".$result->Treatment_Id."' value=".$result->Treatment_Id."> <input type='hidden' name='Treatment_Id' value='".$result->Treatment_Id."' >";
