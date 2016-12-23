@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,11 +19,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/select2-bootstrap/select2-bootstrap.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.min.css" />
-    
-    
-    <!-- DATATABLES CSS -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.css" />
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/advanced-datatable/buttons.dataTables.min.css" />
     
     <!-- DATETIMEPICKER CSS -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/datetimepicker/jscss/css/bootstrap-datetimepicker.css" />
@@ -270,11 +265,11 @@ for($i=0; $i<=13; $i++){
                                     <tfoot>
                                       <tr class="first-row">
                                             <td></td>
-                                            <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datetimepicker_Dos_Doe dos-date"></td>
-                                            <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datetimepicker_Dos_Doe dos-date"></td>
-                                            <td><input type="number" step="0.01" id="claimAmt" name="Claim_Amount_treat" class="form-control input-sm amt"></td>
-                                            <td><input type="number" step="0.01" id="paidAmt" name="Paid_Amount_treat" class="form-control input-sm amt"></td>
-                                            <td><input id="dateBillSent" name="Date_BillSent_treat" class="form-control input-sm datetimepicker_Dos_Doe dos-date"></td>
+                                            <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datetimepicker_Dos_Doe"></td>
+                                            <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datetimepicker_Dos_Doe"></td>
+                                            <td><input type="number" step="0.01" id="claimAmt" name="Claim_Amount_treat" class="form-control input-sm"></td>
+                                            <td><input type="number" step="0.01" id="paidAmt" name="Paid_Amount_treat" class="form-control input-sm"></td>
+                                            <td><input id="dateBillSent" name="Date_BillSent_treat" class="form-control input-sm datetimepicker_Dos_Doe"></td>
                                             <td><select class="form-control input-sm" id="serviceType" name="serviceType">
                                             <option>-- Select Service--</option>
                                             <?php foreach($Service as $row){?>
@@ -301,13 +296,13 @@ for($i=0; $i<=13; $i++){
                         
 						<div class="form-group form-horizontal col-lg-12 set-bg">
 							<div class="table-responsive">
-								<table cellpadding="1" cellspacing="1" id="Payment_Summary_Info_table" class="table table-bordered table-striped add-case-table">
+								<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped add-case-table">
 									<thead>
 									<tr>
 										<th>D.O.S-Start</th>
 										<th>D.O.S.-End</th>
-										<th>Total Claim Amt.</th>
-										<th>Total Paid Amt.</th>
+										<th>Claim Amt.</th>
+										<th>Paid Amt.</th>
 										<th>Date Bill Sent</th>
 									</tr>
                                 
@@ -405,63 +400,63 @@ for($i=0; $i<=13; $i++){
 										<tr>
 											<th></th>		
 											<th>DATE FILE OPENED</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Opened" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Opened" /></div></td>
 											<th><input type="hidden" name="recordNo" value="22"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 											<th>PLAINTIFF DISCOVERY COMPLETED</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Plaintiff_Discovery_Due_Date" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Plaintiff_Discovery_Due_Date" /></div></td>
 										</tr>
 										<tr>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="23"></i><i title="Save" class="fa fa-save" style="display:none"></i></th> 
 											<th>DATE OF ACCIDENT</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Accident_Date" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Accident_Date" /></div></td>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="24"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 											<th>DATE REPLY TO DISC CONF LETTER Recd</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Reply_To_Disc_Conf_Letter_Recd" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Reply_To_Disc_Conf_Letter_Recd" /></div></td>
 										</tr>
 										<tr> 
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="25"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>			
 											<th>DATE BILL SUBMITED</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Bill_Submitted" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Bill_Submitted" /></div></td>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="26"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 											<th>DATE EXT OF TIME 1</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Ext_Of_Time" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Ext_Of_Time" /></div></td>
 										</tr>
 										<tr> 
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="27"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>	 			 
 											<th>DATE STATUS CHANGED</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Status_Changed" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Status_Changed" /></div></td>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="28"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 											<th>DATE EXT OF TIME 2</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Ext_Of_Time_2" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Ext_Of_Time_2" /></div></td>
 										</tr>
 										<tr>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="29"></i><i title="Save" class="fa fa-save" style="display:none"></i></th> 			 
 											<th>DATE SUMMONS PRINTED</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Summons_Printed" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Summons_Printed" /></div></td>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="30"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 											<th>DATE EXT OF TIME 3</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Ext_Of_Time_3" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Ext_Of_Time_3" /></div></td>
 										</tr>
 										<tr>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="31"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>			
 											<th>DATE INDEX NUMBER PURCHASED </th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Index_Number_Purchased" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Index_Number_Purchased" /></div></td>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="32"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 											<th>DEFENDANT'S DISCOVERY RECEIVED</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Defendant_Discovery_Due_Date" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Defendant_Discovery_Due_Date" /></div></td>
 										</tr>
 										<tr> 
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="33"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>			
 											<th>DATE SUMMONS SENT TO COURT</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Summons_Sent_Court" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Summons_Sent_Court" /></div></td>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="34"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 											<th>DATE DISCOVERY CONF LETTER PRINTED</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Disc_Conf_Letter_Printed" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Disc_Conf_Letter_Printed" /></div></td>
 										</tr>
 										<tr>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="35"></i><i title="Save" class="fa fa-save" style="display:none"></i></th> 			
 											<th>DATE SUMMONS SERVED</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Served_On_Date" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Served_On_Date" /></div></td>
 											<th><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="36"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 											<th>STIPS SIGNED & RETURNED 1</th>
 											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select name="stips_signed_and_returned" id="stips_signed_and_returned" class="form-control input-sm"><option selected="selected" value="0">No</option><option value="1">Yes</option></select></div></td>
@@ -485,31 +480,31 @@ for($i=0; $i<=13; $i++){
 										<tr>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="41"></i><i title="Save" class="fa fa-save" style="display:none"></i></th> 	 			
 											<th>DATE AFFIDAVIT FILED</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Afidavit_Filed" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Afidavit_Filed" /></div></td>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="42"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 											<th>DATE SUMMONS CLOSED</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Closed" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Closed" /></div></td>
 										</tr>
 										<tr>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="43"></i><i title="Save" class="fa fa-save" style="display:none"></i></th> 	 			
 											<th>DATE ANSWER RCVD</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Answer_Received" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Answer_Received" /></div></td>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="44"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 											<th>AAA CONCILIATION DATE</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="AAA_Conciliation_Date" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="AAA_Conciliation_Date" /></div></td>
 										</tr>
 										<tr>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="45"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>			
 											<th>OUR DISCOVERY DEMAND</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Our_Discovery_Demands" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Our_Discovery_Demands" /></div></td>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="46"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 											<th>ARB AWARD DATE</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Arb_Award_Date" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Arb_Award_Date" /></div></td>
 										</tr>
 										<tr>
 											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="47"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>			
 											<th>DATE DEMAND PRINTED</th>
-											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Demands_Printed" /></div></td>
+											<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_start" name="Date_Demands_Printed" /></div></td>
 											<td></td>
 											<td></td>
 											<td></td>
@@ -1456,15 +1451,6 @@ for($i=0; $i<=13; $i++){
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
-    
-    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/jquery.dataTables.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/dataTables.buttons.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/buttons.flash.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/jszip.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/pdfmake.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/vfs_fonts.js"></script>
-    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/buttons.html5.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/buttons.print.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
 	<script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
     
@@ -1836,8 +1822,7 @@ $(document).ready(function(e) {
 	$('#NotesTab1').dataTable( {
 		"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
 		"iDisplayLength": 5,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
-		"bSort": false,
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 	});
 
 /**** ADD NOTES INFO *********/
