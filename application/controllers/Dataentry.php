@@ -139,14 +139,16 @@ session_cache_limiter('private_no_expire');
 				'Memo' => $this->input->post('memo'),
 			);
 			$success = $this->dataentry_model->insert_CaseInfo($data);
-			
+			$sett_amt = $this->input->post('claimAmt') - $this->input->post('paidAmt');
+			$Attorney_fee = $sett_amt / 5;
+			$Totaal = $sett_amt + $Attorney_fee;
 			$data2 = array(
-				"Settlement_Amount" => 00.00,
+				"Settlement_Amount" => $sett_amt,
 				"Settlement_Int" => 00.00,
-				"Settlement_Af" => 00.00,
+				"Settlement_Af" => $Attorney_fee,
 				"Settlement_Ff" => 00.00,
-				"Settlement_Total" => 00.00,
-				"Settlement_Date" => date('Y-m-d H:i:s'),
+				"Settlement_Total" => $Total,
+				"Settlement_Date" => date('Y-m-d'),
 				"User_Id" => $this->session->userdata['logged_in']['username'],
 				"Settlement_Notes" => "",
 				"SettledWith" => ""

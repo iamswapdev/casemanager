@@ -663,7 +663,7 @@ class Search extends CI_Controller{
 			$row[] = $result->Settlement_Af;
 			$row[] = $result->Settlement_Ff;
 			$row[] = $result->Settlement_Total;
-			$row[] = $result->Settlement_Date;
+			$row[] = date_format(date_create(substr($result->Settlement_Date,0,10)),"m/d/Y");
 			$row[] = $result->SettledWith;
 			$row[] = $result->User_Id;
 			

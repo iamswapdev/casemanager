@@ -24,6 +24,7 @@
     <!-- DATETIMEPICKER CSS -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/datetimepicker/jscss/css/bootstrap-datetimepicker.css" />
     
+    <!-- ALERT CSS -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.css" />
     
@@ -713,7 +714,7 @@ for($i=0; $i<=13; $i++){
 							</div>
 							<div class="form-group form-horizontal col-md-12 settled-status-open">
 								<div class="col-md-3"></div>
-								<div class="col-md-2"><button type="button" class="CalSimpleInterest">Calculate Simple interest</button></div>
+								<div class="col-md-2"><button type="button" class="CalSimpleInterest" id="CalculateSI">Calculate Simple interest</button></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
@@ -1459,9 +1460,11 @@ for($i=0; $i<=13; $i++){
     <script src="<?php echo base_url();?>assets/datetimepicker/jscss/js/moment-with-locales.js"></script>
     <script src="<?php echo base_url();?>assets/datetimepicker/jscss/js/bootstrap-datetimepicker.js"></script>
     
+    <!-- ALERT SCRIPTS -->
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.js"></script>
+    
     <!-- App scripts --> 
     <script src="<?php echo base_url();?>assets/scripts/homer.js"></script> 
 
@@ -2007,6 +2010,18 @@ $(document).ready(function(e) {
 	});
 /************************************************************************************************************************************/
 /************************************************* SETTLEMENT TAB-6 *************************************************************/
+	$("#CalculateSI").click( function(){
+		alert("Number of days between the dates shown are: " + daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndData').val())));
+	}); 
+    
+    function parseDate(str) {
+		var mdy = str.split('/')
+		return new Date(mdy[2], mdy[0]-1, mdy[1]);
+	}
+
+	function daydiff(first, second) {
+		return (second-first)/(1000*60*60*24)
+	}
 
 	$('#adjusterIdTab-6').on('change', function() {
 		$("input[name=SettledWithAdjuster]").val($("#adjusterIdTab-6 option:selected").text());
@@ -2052,6 +2067,7 @@ $(document).ready(function(e) {
 					Update_Settlement();
 					checkstatus_open();
 					$(".settled-by-show").css("display","block");
+					load_sett_data();
 					callSuccess();
 					$("#finalizeButton").prop('disabled', true);
 				});
@@ -2062,22 +2078,42 @@ $(document).ready(function(e) {
 		}
 	});
 	$(".reset-settlement").click(function(e){
-		
-		$.ajax({
-			type:'POST',
-			url: "<?php echo base_url();?>search/reset_Settlement/<?php echo $Case_AutoId;?>", 
-			success: function(data){
-				Update_Settlement();
-				checkstatus_open();
-				$("#finalizeButton").prop('disabled', false);
-				load_sett_data();
-        	},
-			error: function(result){ console.log("error"); }
-		
+		swal({
+			title: "Are you sure?",
+			text: "Your Settlement Data will Reset",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#DD6B55",
+			confirmButtonText: "Yes, Reset it!",
+			cancelButtonText: "No, cancel plx!",
+			closeOnConfirm: false,
+			closeOnCancel: false },
+		function (isConfirm) {
+			if (isConfirm) {
+				swal("Reset!", "Settlement successfully Reset", "success");
+				$.ajax({
+					type:'POST',
+					url: "<?php echo base_url();?>search/reset_Settlement/<?php echo $Case_AutoId;?>", 
+					success: function(data){
+						Update_Settlement();
+						checkstatus_open();
+						$("#finalizeButton").prop('disabled', false);
+						load_sett_data();
+					},
+					error: function(result){ console.log("error"); }
+				
+				});
+				e.preventDefault();	//STOP default action
+			} else {
+				swal("Cancelled", "Your Settlement Data is safe :)", "error");
+			}
 		});
-		e.preventDefault();	//STOP default action
+
+
+		
 	});
 	function checkstatus_open(){
+		console.log("current_case_status BEFORE ajax call :"+current_case_status+"Z");
 		$.ajax({
 			type:'POST',
 			url: "<?php echo base_url();?>search/get_Current_Status/<?php echo $Case_AutoId;?>", 
@@ -2085,8 +2121,11 @@ $(document).ready(function(e) {
 				results = JSON.parse(data);
 			//	Update_Settlement();
 				current_case_status = results[0].Status;
-				console.log("current_case_status after ajax call :"+current_case_status);
+				console.log("current_case_status AFTER ajax call :"+current_case_status+"Z");
 				if(current_case_status == "OPEN "){
+					current_case_status = "OPEN";
+				}
+				if(current_case_status == "OPEN"){
 					$(".settled-status-open").css("display", "block");
 					$(".settled-by-show").css("display","none");
 					console.log("current_case_status if open:"+current_case_status);
@@ -2104,6 +2143,7 @@ $(document).ready(function(e) {
 	}
 	$('#tab6').click(function(e){
 		checkstatus_open();
+		load_sett_data();
 	});
 	function load_sett_data(){
 		$.ajax({
@@ -2135,9 +2175,22 @@ $(document).ready(function(e) {
 					$("#FltAttorneyFeeTab6").val(results[$i].Settlement_Af);
 					
 					$("#FltFillingFeeTab6").val(results[$i].Settlement_Ff);
-					var TotalAmount =  parseFloat(results[$i].Settlement_Amount) + parseFloat(results[$i].Settlement_Int) + parseFloat(results[$i].Settlement_Af) + parseFloat(results[$i].Settlement_Ff);
+					var TotalAmount =  results[$i].Settlement_Amount + results[$i].Settlement_Int + results[$i].Settlement_Af + results[$i].Settlement_Ff;
+					console.log("load_sett_data TotalAmount:"+TotalAmount);
 					
-					$("#TotalAmount").val(TotalAmount.toFixed(2));
+					$("#TotalAmount").val(TotalAmount);
+					
+					/*var balance = results.CaseInfo[$i].Claim_Amount - results.CaseInfo[$i].Paid_Amount;
+					$("#BalanceTab6").val(balance.toFixed(2));
+					
+					$("#FltSettlement_AmountTab6").val(results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT.toFixed(2));
+					var settlementPercentage = (results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT * 100)/ balance;
+					$("#settlementPercentageTab6").val(settlementPercentage.toFixed(2));
+					$("#FltAttorneyFeeTab6").val(results.CaseInfo[$i].FLT_ATTORNEY_FEE);
+					//$("#FltInterestTab6").val(results.CaseInfo[$i].FLT_INTERATE_RATE);
+					$("#FltFillingFeeTab6").val(results.CaseInfo[$i].FLT_FILING_FEE);
+					var TotalAmount =  parseFloat(results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT) + parseFloat(results.CaseInfo[$i].FLT_INTERATE_RATE) + parseFloat(results.CaseInfo[$i].FLT_ATTORNEY_FEE) + parseFloat(results.CaseInfo[$i].FLT_FILING_FEE);
+					$("#TotalAmount").val(TotalAmount.toFixed(2));*/
 					
 					
 				}

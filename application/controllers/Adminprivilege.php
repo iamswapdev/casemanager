@@ -55,13 +55,14 @@ session_cache_limiter('private_no_expire');
 		public function getAdj(){
 			$list=$this->admin_privilege_model->get_ManageUserData();
 			$data = array();
-			foreach ($list as $customers) {
+			foreach ($list as $result) {
 				
 				$row = array();
-				
-				$row[] = $customers->UserName;
-				$row[] = $customers->DisplayName;
-				$row[] = $customers->RoleName;
+				$row[] = $result->RoleName;
+				$row[] = $result->UserName;
+				$row[] = $result->DisplayName;
+				$row[] = $result->RoleName;
+				$row[] = "<input type='checkbox' name='deleteCheckedUsers[]' class='deleteCheckedUsers deleteCheckedUsers".$result->UserId."' value='".$result->UserId."' >";
 				
 				$data[] = $row;
 			}
@@ -73,6 +74,10 @@ session_cache_limiter('private_no_expire');
 			//print_r($data); exit();
 			echo json_encode($output);
 			//$this->load->view('pages/adj',$data);
+		}
+		public function deleteUsers(){
+			$CheckedUsers = $this->input->post('deleteCheckedUsers');
+			$delete_success = $this->admin_privilege_model->delete_Users($CheckedUsers);
 		}
 		public function addnewrole(){
 			$this->session->all_userdata();

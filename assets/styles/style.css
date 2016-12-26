@@ -3942,3 +3942,8 @@ textarea{
 #Payment_Info_table tr td:nth-child(9){
 	border:none;
 }
+#CreateUser_modal .modal-header{
+	text-align: center;
+    color: #033151;
+    font-weight: bold;
+}

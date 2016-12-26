@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/animate.css/animate.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.css" />
+    
+    <!-- ALERT CSS -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.css" />
 
     <!-- App styles -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
@@ -51,15 +55,17 @@
 		<div class="panel-body tab-panel">
 			<h4 class="h4-title"> Manage Users</h4>
 			<div class="operation-buttons">
-				<button type="button" class="btn btn-primary" title="Create User" data-toggle="modal" data-target="#myModal"><i class="fa fa-group"></i></button>
-				<button type="button" class="btn btn-primary delete" title="Delete User"><i class="fa fa-trash-o"></i></button>
+				<button type="button" class="btn btn-primary" title="Create User" data-toggle="modal" data-target="#CreateUser_modal"><i class="fa fa-group"></i> Create User</button>
+				<button type="button" id="deleteUsersButton" class="btn btn-primary delete" title="Delete User"><i class="fa fa-trash-o"></i>  Delete User</button>
 			</div>
 			<table id="example1" class="table dataTable table-bordered table-striped">
 				<thead>
 				<tr>
-					<th>Desk Info</th>
+                	<th>Desk Info</th>
 					<th>User Name</th>
 					<th>Display Name</th>
+                    <th>Role</th>
+                    <th>Delete</th>
 				</tr>
 				</thead>
 			</table>
@@ -68,8 +74,97 @@
 		</div><!-- End hpanel -->
 		</div><!-- End col-lg-12-->
 	</div><!-- End row-->
-
-   
+	
+    <!--<div class="modal fade hmodal-warning" id="CreateUser_modal" tabindex="-1" role="dialog"  aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="color-line"></div>
+                <form method="post" action="" id="CreateUser_form">
+                	
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"> Close </button>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <div id="CreateUser_modal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h5 class="modal-title">Create User</h5>
+          </div>
+          <div class="modal-body">
+          	<div class="row">
+                <div class="col-lg-12">
+                <div class="hpanel">
+                <div class="panel-heading"></div>
+                <div class="panel-body tab-panel">
+                	<form method="post" id="CreateUser_form">
+                        <div class="form-group form-horizontal col-md-12">
+                            <label class="control-label col-md-3">User Name</label>
+                            <div class="col-md-5">
+                                <input type="text" id="" name="username"  class="form-control input-sm" />
+                            </div>
+                        </div>
+                        <div class="form-group form-horizontal col-md-12">
+                            <label class="control-label col-md-3">Role</label>
+                            <div class="col-md-5">
+                                <select name="dropRoles" id="dropRoles" class="form-control input-sm col-md-3">
+                                    <option value="1">Administrator</option>
+                                    <option value="8">Adv-Staff</option>
+                                    <option value="3">Insurer</option>
+                                    <option value="11">OffCounsel</option>
+                                    <option value="5">OutSource-Staff</option>
+                                    <option value="2">Provider</option>
+                                    <option value="4">Staff</option>
+                                    <option value="12">Stefan Only</option>
+                                    <option value="7">Test</option>
+                                    <option value="9">test1</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-horizontal col-md-12">
+                            <label class="control-label col-md-3">Email</label>
+                            <div class="col-md-5">
+                                <input type="text" id="" name="username"  class="form-control input-sm" />
+                            </div>
+                        </div>
+                        <div class="form-group form-horizontal col-md-12">
+                            <label class="control-label col-md-3">Password</label>
+                            <div class="col-md-5">
+                                <input type="text" id="" name="username"  class="form-control input-sm" />
+                            </div>
+                        </div>
+                        <div class="form-group form-horizontal col-md-12">
+                            <label class="control-label col-md-3">Confirm Password</label>
+                            <div class="col-md-5">
+                                <input type="text" id="" name="username"  class="form-control input-sm" />
+                            </div>
+                        </div>
+                        <div class="form-group form-horizontal col-md-12">
+                        	<div class="col-md-3"></div>
+                        	<div class="col-md-5">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div><!-- End of panel-body tab-panel-->
+                </div><!-- End hpanel -->
+                </div><!-- End col-lg-12-->
+            </div><!-- End row-->
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+    
+      </div>
+    </div>
 
 </div>
 
@@ -96,6 +191,11 @@
 <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+	
+    <!-- ALERT SCRIPTS -->
+    <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.js"></script>
 
 <!-- App scripts -->
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
@@ -104,15 +204,115 @@
 <script>
 
     $(function () {
-
         // Initialize Example 1
         $('#example1').dataTable( {
             "ajax": 'getAdj'
         });
-
-        
-
     });
+/******** DELETE USERS ********/
+	$('body').on( 'click', '#deleteUsersButton', function () {
+		var checkedNo = [];
+		$('.deleteCheckedUsers:checked').each(function(i){
+			var values = $(this).val();
+			checkedNo.push(values);
+		});
+		
+		if(checkedNo.length !=0){
+			swal({
+				title: "Are you sure?",
+				text: "You will not be able to recover these records",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "Yes, delete it!",
+				cancelButtonText: "No, cancel it!",
+				closeOnConfirm: false,
+				closeOnCancel: false },
+			function (isConfirm) {
+				if (isConfirm) {
+					request = $.ajax({
+						url:"<?php echo base_url();?>adminprivilege/deleteUsers",
+						type: "post",
+						data: {
+								deleteCheckedUsers:checkedNo
+							}
+					});
+			
+					request.done(function (response, textStatus, jqXHR) {
+						
+						$('.deleteCheckedUsers:checked').each(function(i){
+							var values = $(this).val();
+							var row = $(".deleteCheckedUsers"+values).parent().parent();
+							$(row).remove();
+						});
+						$("#example1").dataTable().fnDestroy();
+						$('#example1').dataTable( {
+							"ajax": 'getAdj'
+						});
+					});
+					swal("Deleted!", "Your records has been deleted.", "success");
+				} else {
+					swal("Cancelled", "Your records are safe :)", "error");
+				}
+			});
+		}
+	});
+	
+/* Add USERS */
+	$("#CreateUser_form").validate({
+	
+		rules: {
+			UserName:{
+				required: true
+			},
+			Role: {
+				required: true
+			},
+			Email: {
+				required: true,
+				email: true
+			},
+			Password:{
+				required: true
+			},
+			ConfirmPassword:{
+				required: true
+			}		
+		},
+				
+		submitHandler: function (form) {
+			var $form = $(form);
+			// let's select and cache all the fields
+			var $inputs = $form.find("input, select, button, textarea");
+			// serialize the data in the form
+			var serializedData = $form.serialize();
+			request = $.ajax({
+				url:"<?php echo base_url(); ?>dataentry/add_Users_Form",
+				type: "post",
+				data: serializedData
+			});
+
+			// callback handler that will be called on success
+			request.done(function (response, textStatus, jqXHR) {
+				$('input[type=text]').val('');
+				$('textarea').val('');
+				$("select").val('');
+				//$("#myModal").modal("show");
+			});
+
+			// callback handler that will be called on failure
+			request.fail(function (jqXHR, textStatus, errorThrown) {
+				console.error(
+					"The following error occured: " + textStatus, errorThrown);
+			});
+
+			request.always(function () {
+				// reenable the inputs
+				$inputs.prop("disabled", false);
+			});
+
+		}
+	});
 
 </script>
 <script>
