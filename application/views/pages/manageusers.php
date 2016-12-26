@@ -294,7 +294,10 @@
 			});
 
 			// callback handler that will be called on success
-			if($("input[name=UserPassword1]").val() == $("input[name=UserPassword]")){
+			console.log('P1: '+$("input[name=UserPassword1]").val());
+			console.log("P2: "+$("input[name=UserPassword]").val());
+			
+			if($("input[name=UserPassword1]").val() == $("input[name=UserPassword]").val()){
 				request.done(function (response, textStatus, jqXHR) {
 					$('input').val('');
 					$('textarea').val('');
@@ -316,6 +319,7 @@
 					$inputs.prop("disabled", false);
 				});
 			}else{
+				alert("dsd");
 				$("input[name=UserPassword1]").val("");
 				$("input[name=UserPassword]").val("");
 			}
