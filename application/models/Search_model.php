@@ -47,9 +47,10 @@ Class Search_model extends CI_Model{
 		return $data;
 	}
 	public function get_SettlementQuickView($Case_Id){
-		$this->db->select('t1.*, t3.Provider_Name, t4.InsuranceCompany_Name' );
+		$this->db->select('t1.*, t2.*, t3.Provider_Name, t4.InsuranceCompany_Name' );
+		
 		$this->db->from('dbo_tblsettlements as t1');
-		$this->db->join('dbo_tblcase as t2', 't2.Case_Id = t2.Provider_Id', 'LEFT');
+		$this->db->join('dbo_tblcase as t2', 't2.Case_Id = t1.Case_Id');
 		$this->db->join('dbo_tblprovider as t3', 't2.Provider_Id = t3.Provider_Id', 'LEFT');
 		$this->db->join('dbo_tblinsurancecompany as t4', 't2.InsuranceCompany_Id = t4.InsuranceCompany_Id', 'LEFT');
 		$this->db->where('t1.Case_Id',$Case_Id);

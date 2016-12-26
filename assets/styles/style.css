@@ -3743,6 +3743,8 @@ tr{
 }
 textarea.form-control {
     color: #000;
+	border: 1px solid;
+    border-color: #a4a4a4 !important;
 }
 .view-case-navigation{
 	font-size:18px;
@@ -3842,20 +3844,20 @@ label {
 #SettlementQuickView th, #TransactionTable th, #eventTable th{
 	text-align:center !important;
 }
-#Treatement_Info_table td{
+#Treatement_Info_table td, #Payment_Info_table td{
 	padding:3px 30px 3px 30px;
 	text-align:center !important;
 }
-#Treatement_Info_table th{
+#Treatement_Info_table th, #Payment_Info_table th{
 	background-color: #d2b48c;
 	color:#000;
 	text-align:center;
 }
-#Treatement_Info_table td{
+#Treatement_Info_table td, #Payment_Info_table td{
 	background-color: #fafad2;
 	border:1px solid #d2b48c;
 }
-#Treatement_Info_table tfoot td{
+#Treatement_Info_table tfoot td, #Payment_Info_table tfoot td{
 	background-color: #d2b48c;
 }
 .btn.btn-primary.update, .btn.cancel{
@@ -3887,8 +3889,8 @@ label {
 	padding-left:175px;
 }
 .payment-summary-delete{
-	margin-bottom: -2px;
-    margin-top: -7px;
+	margin-bottom: -9px;
+    margin-top: -10px;
 }
 .payment-summary td input{
 	margin:auto;
@@ -3904,4 +3906,39 @@ label {
 #AdvancedSearchTable_filter input{
 	border: 1px solid;
     border-color: #999 !important;
+}
+.input-sm{
+	border: 1px solid;
+    border-color: #a4a4a4 !important;
+}
+textarea{
+	border: 1px solid;
+    border-color: #a4a4a4 !important;
+}
+#Payment_Info_table tr th:nth-child(1){
+	width:67px;
+}
+#Payment_Info_table tr th:nth-child(2){
+	width:197px;
+}
+#Payment_Info_table tr th:nth-child(3){
+	width:211px;
+}
+#Payment_Info_table tr th:nth-child(4){
+	width:202px;
+}
+#Payment_Info_table tr th:nth-child(5){
+	width:214px;
+}
+#Payment_Info_table tr td:nth-child(6){
+	border:none;
+}
+#Payment_Info_table tr td:nth-child(7){
+	border:none;
+}
+#Payment_Info_table tr td:nth-child(8){
+	border:none;
+}
+#Payment_Info_table tr td:nth-child(9){
+	border:none;
 }

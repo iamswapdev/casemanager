@@ -212,7 +212,7 @@ for($i=0; $i<=13; $i++){
 									<th>CLAIM AMOUNT</th>
 									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Claim_Amount" /></div></td>
                                     <th><input type="hidden" name="recordNo" value="14"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-									<th>PAID/BALANCE</th>
+									<th>PAID</th>
 									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Paid_Amount" /></div></td>
 								</tr>
                                 
@@ -292,29 +292,33 @@ for($i=0; $i<=13; $i++){
                         	<div class="col-md-8"></div>
                             <div class="col-md-2 deleteTreatementButton"><button type="button" id="deleteTreatementButton" class="btn btn-primary"><i class="fa fa-trash-o"></i> Delete Checked</button></div>
                         </div>
-						<div class="form-group form-horizontal col-lg-12 set-bg">
-							<div class="table-responsive">
-								<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped add-case-table payment-summary">
-									<thead>
-									<tr>
+                        <div class="form-group form-horizontal col-lg-12">
+                            	<table id="Payment_Info_table" class="table dataTable tdAlignLeft-bottom payment-summary">
+                                    <thead>
+                                    <tr>
+                                    	<th></th>
 										<th>D.O.S-Start</th>
 										<th>D.O.S.-End</th>
 										<th>Total Claim Amt.</th>
 										<th>Total Paid Amt.</th>
-									</tr>
-                                
-                                </thead>
-									<tbody>
-									<tr>
-										<td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datetimepicker_Dos_Doe dos-input" value="<?php echo substr($DateOfService_Start, 0, 10);?>"></td>
-										<td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datetimepicker_Dos_Doe dos-input" value="<?php echo substr($DateOfService_End,0, 10);?>"></td>
-										<td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm amt-input" value="<?php echo $Claim_Amount;?>"></td>
-										<td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm amt-input" value="<?php echo $Paid_Amount;?>"></td>
-									</tr>
-                                
-                                </tbody>
-								</table>
-							</div>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                      <tr class="first-row">
+                                            <td></td>
+                                            <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datetimepicker_Dos_Doe dos-input" value="<?php echo substr($DateOfService_Start, 0, 10);?>"></td>
+                                            <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datetimepicker_Dos_Doe dos-input" value="<?php echo substr($DateOfService_End,0, 10);?>"></td>
+                                            <td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm amt-input" value="<?php echo $Claim_Amount;?>"></td>
+                                            <td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm amt-input" value="<?php echo $Paid_Amount;?>"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                      </tr>
+                                </table>
 						</div>
                         <form id="addNotes_form" method="post">
 						<div class="form-group form-horizontal col-lg-12">
@@ -1475,6 +1479,7 @@ $(document).ready(function(e) {
 		"bInfo": false,
 		"bPaginate": false
 	});
+	$("#Payment_Info_table input").prop("disabled", true);
 /**************************** CASEINFORMATION TAB-1 ************************************************************************************/
 	var countForRows = 0;
 	var value = 0;
@@ -1575,6 +1580,7 @@ $(document).ready(function(e) {
 /**** EDIT TREATEMENT **********/
 	$('tbody').on( 'click', '.editTreatment', function () {
 		var parentR = $(this).parent();
+		var currentRow = $(this).parent().parent();
 		var div = $(parentR).find(".update-Treatment").css("display", "block");
 		$(this).css("display", "none");
 		$(this).parent().parent().find("input[name=dateOfServiceStart]").prop("disabled", false);
@@ -1584,7 +1590,27 @@ $(document).ready(function(e) {
 		$(this).parent().parent().find("input[name=Date_BillSent_treat]").prop("disabled", false);
 		$(this).parent().parent().find("input[name=DENIALREASONS_TYPE_treat]").prop("disabled", false);
 		$(this).parent().parent().find("input[name=SERVICE_TYPE_treat]").prop("disabled", false);
-		var string = "";
+		
+		var serviceTypeValue = $(currentRow).find("input[name=SERVICE_TYPE_treat_hidden]").val();
+		var denialReasonTypeValue = $(currentRow).find("input[name=DENIALREASONS_TYPE_treat_hidden]").val();
+		
+		var string="<select class='form-control input-sm current-serviceType' id='serviceType' name='serviceType'>";
+		string += "<option value=''></option>";
+		<?php foreach($Service as $row){?>
+		string += "<option value='<?php echo $row['ServiceType']; ?>'><?php echo $row['ServiceType']; ?></option>";
+		<?php }?>
+		string += "</select>";
+		$(currentRow).find( '.SERVICE_TYPE_treat_div' ).html( string );
+		$(currentRow).find(".current-serviceType").val(serviceTypeValue);
+		
+		var string2="<select class='form-control input-sm current-denialReasonType' name='denialReasonType'>";
+		string2 += "<option value=''></option>";
+		<?php foreach($DenialReasons as $row){?>
+		string2 += "<option value='<?php echo $row['DenialReasons_Type']; ?>'><?php echo $row['DenialReasons_Type']; ?></option>";
+		<?php }?>
+		string2 += "</select>";
+		$(currentRow).find( '.DENIALREASONS_TYPE_treat_div' ).html( string2);
+		$(currentRow).find(".current-denialReasonType").val(denialReasonTypeValue);
 		
 		
     } );
@@ -1618,8 +1644,10 @@ $(document).ready(function(e) {
 		var Paid_Amount = $(parentR).find("input[name=Paid_Amount_treat]").val();
 		var Date_BillSent = $(parentR).find("input[name=Date_BillSent_treat]").val();
 		var Treatment_Id = $(parentR).find("input[name=Treatment_Id]").val();
+		var currentServiceType = $(parentR).find(".current-serviceType").val();
+		var currentDenialReasonType = $(parentR).find(".current-denialReasonType").val();
 		
-		var string = "&DateOfService_Start="+DateOfService_Start+"&DateOfService_End="+DateOfService_End+"&Claim_Amount="+Claim_Amount+"&Paid_Amount="+Paid_Amount+"&Date_BillSent="+Date_BillSent+"&Treatment_Id="+Treatment_Id;
+		var string = "&DateOfService_Start="+DateOfService_Start+"&DateOfService_End="+DateOfService_End+"&Claim_Amount="+Claim_Amount+"&Paid_Amount="+Paid_Amount+"&Date_BillSent="+Date_BillSent+"&Treatment_Id="+Treatment_Id+"&currentServiceType="+currentServiceType+ "&currentDenialReasonType="+currentDenialReasonType;
 		
 		request = $.ajax({
 			url:"<?php echo base_url(); ?>search/update_Treatement",
@@ -2120,7 +2148,7 @@ $(document).ready(function(e) {
 	
 	
 	$('#SettlementQuickView').dataTable( {
-		"ajax": "<?php echo base_url();?>search/SettlementQuickView/<?php echo $Case_AutoId;?>",
+		"ajax": "<?php echo base_url();?>search/SettlementQuickView/<?php echo $Case_Id;?>",
 		"iDisplayLength": 10,
 		"aLengthMenu": [5, 10, 20, 25, 50, "All"],
 		"bSort": false,
@@ -2134,7 +2162,7 @@ $(document).ready(function(e) {
 		"bSort": false,
 		"searching": false,
 	});
-	/******** DELETE TRANSACTIONS ********/
+/******** DELETE TRANSACTIONS ********/
 	$('body').on( 'click', '#deleteTransactionsButton', function () {
 		var checkedNo = [];
 		var Transaction_Amt = [];
@@ -2202,6 +2230,7 @@ $(document).ready(function(e) {
 			});
 		}
 	});
+/*ADD TRANSACTIONS*/
 	$("#add_Transactions_Form").validate({
 	
 		submitHandler: function (form) {
@@ -2218,7 +2247,6 @@ $(document).ready(function(e) {
 				data: serializedData
 			});
 
-			// callback handler that will be called on success
 			request.done(function (response, textStatus, jqXHR) {
 				results = JSON.parse(response);
 				

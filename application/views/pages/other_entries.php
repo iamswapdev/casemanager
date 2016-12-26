@@ -532,14 +532,14 @@
 
 		request.done(function (response, textStatus, jqXHR) {
 			console.log("Successssss "+response);
-			
-			/*results = JSON.parse(response);
-				var optionsAsString = "";
-				for($i in results.dd){
-					t.row.add( [
-						results.dd[$i].0,results.0[$i].1,results.0[$i].2
-					] ).draw( false );
-				}*/
+			/*$("#example"+tabIdentity).dataTable().fnDestroy();
+			$('#example'+tabIdentity).dataTable( {
+				"ajax": 'EventType',
+				"iDisplayLength": 20,
+				"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+				"bSort": false,
+				"searching": false
+			});*/
 			callSuccess();
 			
 		});

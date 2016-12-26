@@ -123,6 +123,7 @@ class Search extends CI_Controller{
 		//echo "<pre>";print_r($data);
 		echo json_encode($data);
 	}
+/*GET TREATEMENT TABLE*/
 	public function getTreatement($Case_Id){
 		$list = $this->search_model->get_Treatment($Case_Id);
 		//echo "<pre>"; print_r($list); exit();  date_format(substr($result->DateOfService_Start, 0,9),'m/d/Y H:i:s"')
@@ -141,7 +142,10 @@ class Search extends CI_Controller{
 			$row[] = "<input type='text' name='Paid_Amount_treat' class='form-control input-sm amt-input' value='".$result->Paid_Amount."' disabled>";
 			$row[] = "<input type='text' name='Date_BillSent_treat' class='form-control input-sm datetimepicker_Dos_Doe dos-input' value='".$result->Date_BillSent."' disabled>";
 			$row[] = "<div class='SERVICE_TYPE_treat_div'> <input type='text' name='SERVICE_TYPE_treat' class='form-control input-sm' value='".$result->SERVICE_TYPE."' disabled><input type='hidden' name='SERVICE_TYPE_treat_hidden' value='".$result->SERVICE_TYPE."'> </div>";
-			$row[] = "<input type='text' name='DENIALREASONS_TYPE_treat' class='form-control input-sm' value='".$result->DENIALREASONS_TYPE."' disabled>";
+			
+			
+			
+			$row[] = "<div class='DENIALREASONS_TYPE_treat_div'> <input type='text' name='DENIALREASONS_TYPE_treat' class='form-control input-sm' value='".$result->DENIALREASONS_TYPE."' disabled> <input type='hidden' name='DENIALREASONS_TYPE_treat_hidden' value='".$result->DENIALREASONS_TYPE."'> </div>";
 			$row[] = "<input type='checkbox' name='DeleteTreatement[]' class='DeleteTreatement DeleteTreatement".$result->Treatment_Id."' value=".$result->Treatment_Id."> <input type='hidden' name='Treatment_Id' value='".$result->Treatment_Id."' >";
 			$data[] = $row;
 		}
@@ -159,7 +163,9 @@ class Search extends CI_Controller{
 			"DateOfService_End" => $this->input->post('DateOfService_End'),
 			"Claim_Amount" => $this->input->post('Claim_Amount'),
 			"Paid_Amount" => $this->input->post('Paid_Amount'),
-			"Date_BillSent" => $this->input->post('Date_BillSent')
+			"Date_BillSent" => $this->input->post('Date_BillSent'),
+			"SERVICE_TYPE" => $this->input->post('currentServiceType'),
+			"DENIALREASONS_TYPE" => $this->input->post('currentDenialReasonType')
 		);
 		$this->search_model->updateTreatement($data, $Treatment_Id);
 		echo json_encode($data);
@@ -637,8 +643,8 @@ class Search extends CI_Controller{
 
 /**************************** PAYMENET TAB-7 ************************************************************************************/
 /*GET SETTLEMENT QUICK VIEW TABLE*/
-	public function SettlementQuickView($Case_AutoId){
-		$list= $this->search_model->get_CaseInfo_ById2($Case_AutoId);
+	public function SettlementQuickView($Case_Id){
+		$list= $this->search_model->get_SettlementQuickView($Case_Id);
 		//echo "<pre>";print_r($list);exit();
 		$data = array();
 		foreach ($list as $result) {
@@ -652,14 +658,14 @@ class Search extends CI_Controller{
 			$row[] = $result->Paid_Amount;
 			$row[] = $result->Last_Status;
 			$row[] = $result->Last_Status;
-			$row[] = $result->FLT_SETTLEMENT_AMOUNT;
-			$row[] = $result->FLT_INTERATE_RATE;
-			$row[] = $result->FLT_ATTORNEY_FEE;
-			$row[] = $result->FLT_FILING_FEE;
-			$row[] = $result->Case_Id;
-			$row[] = $result->Case_Id;
-			$row[] = $result->Case_Id;
-			$row[] = $result->Case_Id;
+			$row[] = $result->Settlement_Amount;
+			$row[] = $result->Settlement_Int;
+			$row[] = $result->Settlement_Af;
+			$row[] = $result->Settlement_Ff;
+			$row[] = $result->Settlement_Total;
+			$row[] = $result->Settlement_Date;
+			$row[] = $result->SettledWith;
+			$row[] = $result->User_Id;
 			
 			$data[] = $row;
 		}
@@ -910,7 +916,9 @@ class Search extends CI_Controller{
 		echo "<br>Data:".$date2;
 		echo "<br><br>New format:".date_format(date_create(substr($date2,0,19)),"m/d/Y")."<br></br>";
 		//echo "<br>NNN:".substr(date_format($date2, 'm/d/Y H:i:s'), 0,10);
-		echo "base_url:".base_url();
+		echo "<br>base_url:".base_url();
+		echo "<br>Time zone:".date_default_timezone_get();
+		echo "<br>Current Time: ".date('h:i:sa');
 		
 	}
 /*****************************************************************************************************************************************/
