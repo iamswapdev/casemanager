@@ -79,6 +79,16 @@ session_cache_limiter('private_no_expire');
 			$CheckedUsers = $this->input->post('deleteCheckedUsers');
 			$delete_success = $this->admin_privilege_model->delete_Users($CheckedUsers);
 		}
+		public function add_Users_Form(){
+			$data = array(
+				"UserName" => $this->input->post("UserName"),
+				"UserPassword" => $this->input->post("UserPassword"),
+				"RoleId" => $this->input->post("RoleId"),
+				"Email" => $this->input->post("Email"),
+				"DisplayName" => $this->input->post("UserName")
+			);
+			$this->admin_privilege_model->add_Users($data);
+		}
 		public function addnewrole(){
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){

@@ -48,6 +48,9 @@
 				$this->db->delete('dbo_issuetracker_users');
 			}
 		}
+		public function add_Users($data){
+			$this->db->insert("dbo_issuetracker_users", $data);
+		}
 		public function get_AllRoles()
 		{
 			$query=$this->db->get('dbo_issuetracker_roles');	

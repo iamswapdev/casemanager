@@ -107,13 +107,13 @@
                         <div class="form-group form-horizontal col-md-12">
                             <label class="control-label col-md-3">User Name</label>
                             <div class="col-md-5">
-                                <input type="text" id="" name="username"  class="form-control input-sm" />
+                                <input type="text" name="UserName"  class="form-control input-sm" required />
                             </div>
                         </div>
                         <div class="form-group form-horizontal col-md-12">
                             <label class="control-label col-md-3">Role</label>
                             <div class="col-md-5">
-                                <select name="dropRoles" id="dropRoles" class="form-control input-sm col-md-3">
+                                <select name="RoleId" id="RoleId" class="form-control input-sm col-md-3" required>
                                     <option value="1">Administrator</option>
                                     <option value="8">Adv-Staff</option>
                                     <option value="3">Insurer</option>
@@ -130,19 +130,19 @@
                         <div class="form-group form-horizontal col-md-12">
                             <label class="control-label col-md-3">Email</label>
                             <div class="col-md-5">
-                                <input type="text" id="" name="username"  class="form-control input-sm" />
+                                <input type="email" name="Email"  class="form-control input-sm" required />
                             </div>
                         </div>
                         <div class="form-group form-horizontal col-md-12">
                             <label class="control-label col-md-3">Password</label>
                             <div class="col-md-5">
-                                <input type="text" id="" name="username"  class="form-control input-sm" />
+                                <input type="password"  name="UserPassword1"  class="form-control input-sm" required />
                             </div>
                         </div>
                         <div class="form-group form-horizontal col-md-12">
                             <label class="control-label col-md-3">Confirm Password</label>
                             <div class="col-md-5">
-                                <input type="text" id="" name="username"  class="form-control input-sm" />
+                                <input type="password" name="UserPassword"  class="form-control input-sm" required />
                             </div>
                         </div>
                         <div class="form-group form-horizontal col-md-12">
@@ -192,6 +192,7 @@
 <script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 	
+    <script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- ALERT SCRIPTS -->
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>
@@ -265,7 +266,7 @@
 			UserName:{
 				required: true
 			},
-			Role: {
+			RoleId: {
 				required: true
 			},
 			Email: {
@@ -287,29 +288,38 @@
 			// serialize the data in the form
 			var serializedData = $form.serialize();
 			request = $.ajax({
-				url:"<?php echo base_url(); ?>dataentry/add_Users_Form",
+				url:"<?php echo base_url(); ?>adminprivilege/add_Users_Form",
 				type: "post",
 				data: serializedData
 			});
 
 			// callback handler that will be called on success
-			request.done(function (response, textStatus, jqXHR) {
-				$('input[type=text]').val('');
-				$('textarea').val('');
-				$("select").val('');
-				//$("#myModal").modal("show");
-			});
-
-			// callback handler that will be called on failure
-			request.fail(function (jqXHR, textStatus, errorThrown) {
-				console.error(
-					"The following error occured: " + textStatus, errorThrown);
-			});
-
-			request.always(function () {
-				// reenable the inputs
-				$inputs.prop("disabled", false);
-			});
+			if($("input[name=UserPassword1]").val() == $("input[name=UserPassword]")){
+				request.done(function (response, textStatus, jqXHR) {
+					$('input').val('');
+					$('textarea').val('');
+					$("select").val('');
+					$("#CreateUser_modal").modal("hide");
+					$("#example1").dataTable().fnDestroy();
+					$('#example1').dataTable( {
+						"ajax": 'getAdj'
+					});
+				});
+	
+				request.fail(function (jqXHR, textStatus, errorThrown) {
+					console.error(
+						"The following error occured: " + textStatus, errorThrown);
+				});
+	
+				request.always(function () {
+					// reenable the inputs
+					$inputs.prop("disabled", false);
+				});
+			}else{
+				$("input[name=UserPassword1]").val("");
+				$("input[name=UserPassword]").val("");
+			}
+			
 
 		}
 	});
