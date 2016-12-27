@@ -53,22 +53,25 @@
 		<div class="hpanel">
 		<div class="panel-heading"></div>
 		<div class="panel-body tab-panel">
-			<h4 class="h4-title"> Manage Users</h4>
-			<div class="operation-buttons">
-				<button type="button" class="btn btn-primary" title="Create User" data-toggle="modal" data-target="#CreateUser_modal"><i class="fa fa-group"></i> Create User</button>
-				<button type="button" id="deleteUsersButton" class="btn btn-primary delete" title="Delete User"><i class="fa fa-trash-o"></i>  Delete User</button>
-			</div>
-			<table id="example1" class="table dataTable table-bordered table-striped">
-				<thead>
-				<tr>
-                	<th>Desk Info</th>
-					<th>User Name</th>
-					<th>Display Name</th>
-                    <th>Role</th>
-                    <th>Delete</th>
-				</tr>
-				</thead>
-			</table>
+        	<div class="form-group form-horizontal col-md-12">
+            	<h4 class="h4-title"> Manage Users</h4>
+                <div class="operation-buttons">
+                    <button type="button" class="btn btn-primary" title="Create User" data-toggle="modal" data-target="#CreateUser_modal"><i class="fa fa-group"></i> Create User</button>
+                    <button type="button" id="deleteUsersButton" class="btn btn-primary delete" title="Delete User"><i class="fa fa-trash-o"></i>  Delete User</button>
+                </div>
+                <table id="example1" class="table dataTable table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>Desk Info</th>
+                        <th>User Name</th>
+                        <th>Display Name</th>
+                        <th>Role</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+			
 			
 		</div><!-- End of panel-body tab-panel-->
 		</div><!-- End hpanel -->
@@ -114,16 +117,9 @@
                             <label class="control-label col-md-3">Role</label>
                             <div class="col-md-5">
                                 <select name="RoleId" id="RoleId" class="form-control input-sm col-md-3" required>
-                                    <option value="1">Administrator</option>
-                                    <option value="8">Adv-Staff</option>
-                                    <option value="3">Insurer</option>
-                                    <option value="11">OffCounsel</option>
-                                    <option value="5">OutSource-Staff</option>
-                                    <option value="2">Provider</option>
-                                    <option value="4">Staff</option>
-                                    <option value="12">Stefan Only</option>
-                                    <option value="7">Test</option>
-                                    <option value="9">test1</option>
+                                	<?php foreach($Roles as $row){?>
+                                    	<option value="<?php echo $row['RoleId'];?>"><?php echo $row['RoleName']?></option>
+									<?php }?>
                                 </select>
                             </div>
                         </div>
@@ -207,7 +203,9 @@
     $(function () {
         // Initialize Example 1
         $('#example1').dataTable( {
-            "ajax": 'getAdj'
+            "ajax": 'getAdj',
+			"iDisplayLength": 20,
+			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
         });
     });
 /******** DELETE USERS ********/
@@ -248,7 +246,9 @@
 						});
 						$("#example1").dataTable().fnDestroy();
 						$('#example1').dataTable( {
-							"ajax": 'getAdj'
+							"ajax": 'getAdj',
+							"iDisplayLength": 20,
+							"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 						});
 					});
 					swal("Deleted!", "Your records has been deleted.", "success");
@@ -305,8 +305,11 @@
 					$("#CreateUser_modal").modal("hide");
 					$("#example1").dataTable().fnDestroy();
 					$('#example1').dataTable( {
-						"ajax": 'getAdj'
+						"ajax": 'getAdj',
+						"iDisplayLength": 20,
+						"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 					});
+					callSuccess();
 				});
 	
 				request.fail(function (jqXHR, textStatus, errorThrown) {
@@ -319,14 +322,17 @@
 					$inputs.prop("disabled", false);
 				});
 			}else{
-				alert("dsd");
-				$("input[name=UserPassword1]").val("");
+				alert("Please Confirm the password");
 				$("input[name=UserPassword]").val("");
 			}
-			
-
 		}
 	});
+	function callSuccess() {
+		swal({
+			title: "Successfully submitted",
+			type: "success"
+		});
+	}
 
 </script>
 <script>

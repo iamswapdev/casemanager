@@ -1545,7 +1545,7 @@ body {
   height: 100%;
 }
 #header {
-  background-color: #4ea4de;
+  background-color: #055286;
   display: block;
   height: 40px;
   margin: 0;
@@ -2202,7 +2202,7 @@ body {
   font-size: 14px;
 }
 #logo.light-version {
-  background-color: #4ea4de;
+  background-color: #055286;
   border-bottom: 1px solid #e4e5e7;
   text-align: left;
 }
@@ -2245,7 +2245,7 @@ body {
 }
 /* Menu */
 #side-menu {
-  background: #4ea4de;
+  background: #055286;
 }
 #side-menu li a {
   color: #fff;
@@ -2309,7 +2309,7 @@ body {
   border-right: 1px solid #e4e5e7;
   border-left: 1px solid #e4e5e7;
   margin-right: 15px;
-  background: #4ea4de;
+  background: #055286;
   cursor: pointer;
   height:38px;
 }
@@ -3797,7 +3797,7 @@ form#caseInfoSerach_form {
 	width:230px;
 }
 .work-area-info tr td:nth-child(6){
-	width:250px;
+	width:375px;
 }
 .work-area-info-tab2 th{
 	height:25px;
@@ -3832,11 +3832,11 @@ label {
 	width:167px !important;
 }
 .recalculate-btn{
-	margin-left: 55px;
+	margin-left: 0px;
     width: 175px;
 }
 .add-amt-btn, reset-amt-btn{
-	width:100px !important;
+	width:125px;
 }
 .claim-paid-balance{
 	width:130px !important;
@@ -3931,7 +3931,7 @@ textarea{
 	width:214px;
 }
 #Payment_Info_table tr td:nth-child(6){
-	border:none;
+	width:190px;
 }
 #Payment_Info_table tr td:nth-child(7){
 	border:none;
@@ -3946,4 +3946,7 @@ textarea{
 	text-align: center;
     color: #033151;
     font-weight: bold;
+}
+input[name=Served_To] {
+    width: 100%;
 }

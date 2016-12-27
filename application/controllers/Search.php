@@ -84,7 +84,7 @@ class Search extends CI_Controller{
 			$data['Service']= $this->search_model->get_ServiceArray();
 			$data['DenialReasons']= $this->search_model->get_DenialReasonsArray();
 			$data['CaseStatus']= $this->search_model->get_CaseStatus();
-			$data['Adjuster_Name']= $this->dataentry_model->get_Adjuster();
+			$data['Adjuster_Name']= $this->dataentry_model->get_Adjuster_FirstName();
 			$data['Plantiff']= $this->dataentry_model->get_Plantiff();
 			$data['Defendant_Name']= $this->dataentry_model->get_Defendant();
 			$data['Adjuster_Name_Insurance']= $this->search_model->AdjusterInsurance();
@@ -283,6 +283,27 @@ class Search extends CI_Controller{
 		$output = array(
 			"data" => $data
 		);
+		//echo "<pre>:";print_r($output);
+		echo json_encode($output);
+	}
+	public function getAdjuster_ById2($Adjuster_Id){
+		$list=$this->search_model->get_Adjuster_ById2($Adjuster_Id);
+		$data = array();
+		$no=0;
+		foreach ($list as $result) {
+			$row = array();
+			$no++;
+			$row[] = $result->Adjuster_FirstName;
+			$row[] = $result->Adjuster_LastName;
+			$row[] = $result->Adjuster_Phone;
+			$row[] = $result->Adjuster_Phone_Ext;
+			
+			$data[] = $row;
+		}
+		$output = array(
+			"data" => $data
+		);
+		//echo "<pre>:";print_r($output);
 		echo json_encode($output);
 	}
 	public function getInjured_ById($Case_AutoId){

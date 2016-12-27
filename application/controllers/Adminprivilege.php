@@ -44,8 +44,8 @@ session_cache_limiter('private_no_expire');
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
 				//$this->load->model('admin_privilege_model');
-				
-				$this->load->view('pages/manageusers');
+				$data['Roles']=$this->admin_privilege_model->get_AllRoles();
+				$this->load->view('pages/manageusers', $data);
 			}else{
 				//echo "session deleted";
 				$this->load->view('pages/login');
@@ -58,7 +58,7 @@ session_cache_limiter('private_no_expire');
 			foreach ($list as $result) {
 				
 				$row = array();
-				$row[] = $result->RoleName;
+				$row[] = $result->UserName;
 				$row[] = $result->UserName;
 				$row[] = $result->DisplayName;
 				$row[] = $result->RoleName;

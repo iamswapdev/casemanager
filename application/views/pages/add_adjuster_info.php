@@ -276,7 +276,6 @@
 			title: "Successfully submitted",
 			type: "success"
 		});
-	
 	}
 
 /* Add Adjuster information - Tab-1*/ /*---------- Tab-1 --------------------*/

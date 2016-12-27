@@ -141,6 +141,13 @@ Class Dataentry_model extends CI_Model{
 		$data=$query->result_array();
 		return $data;
 	}
+	public function get_Adjuster_FirstName()
+	{
+		$this->db->order_by("Adjuster_FirstName", "asc");
+		$query=$this->db->get('dbo_tbladjusters');
+		$data=$query->result_array();
+		return $data;
+	}
 	public function insert_AdjusterInfo($data)
 	{
 		$query = $this->db->insert('dbo_tbladjusters',$data); 

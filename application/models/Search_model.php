@@ -14,7 +14,7 @@ Class Search_model extends CI_Model{
 	}
 	public function get_CaseInfo_ById($Case_AutoId){
 		
-		$this->db->select('t1.*, DATE_FORMAT(t1.Accident_Date,"%m-%Y-%d") as Accident_DateNoTimr, t2.Provider_Name, t3.InsuranceCompany_Name, t4.Defendant_Name, t5.Adjuster_LastName, t5.Adjuster_FirstName, t6.Attorney_Name, t7.Court_Name' );
+		$this->db->select('t1.*, DATE_FORMAT(t1.Accident_Date,"%m-%Y-%d") as Accident_DateNoTimr, t2.Provider_Name, t3.InsuranceCompany_Name, t4.Defendant_Name, t5.Adjuster_LastName, t5.Adjuster_FirstName, t5.Adjuster_Phone, t5.Adjuster_Phone_Ext, t6.Attorney_Name, t7.Court_Name' );
 		$this->db->from('dbo_tblcase as t1');
 		
 		$this->db->join('dbo_tblprovider as t2', 't1.Provider_Id = t2.Provider_Id', 'LEFT');
@@ -208,6 +208,14 @@ Class Search_model extends CI_Model{
 	public function get_Adjuster_ById($Adjuster_Id)
 	{
 		$this->db->order_by("Adjuster_LastName", "asc");
+		$this->db->where("Adjuster_Id", $Adjuster_Id);
+		$query=$this->db->get('dbo_tbladjusters');
+		$data=$query->result();
+		return $data;
+	}
+	public function get_Adjuster_ById2($Adjuster_Id)
+	{
+		$this->db->order_by("Adjuster_FirstName", "asc");
 		$this->db->where("Adjuster_Id", $Adjuster_Id);
 		$query=$this->db->get('dbo_tbladjusters');
 		$data=$query->result();

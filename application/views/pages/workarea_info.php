@@ -213,7 +213,7 @@ for($i=0; $i<=13; $i++){
 									<th>CLAIM AMOUNT</th>
 									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Claim_Amount" /></div></td>
                                     <th><input type="hidden" name="recordNo" value="14"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
-									<th>PAID</th>
+									<th>PAID / Balance</th>
 									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Paid_Amount" /></div></td>
 								</tr>
                                 
@@ -232,7 +232,7 @@ for($i=0; $i<=13; $i++){
 									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm datetimepicker_Dos_Doe" name="Accident_Date" /></div></td>
                                     <th><input type="hidden" name="recordNo" value="18"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>ADJUSTER</th>
-									<td><div class="visible" style="display:block;"><input type="hidden" id="Hidden_Adjuster_Id"><a class="info-link VisibleInfo" id="AdjusterInfoLink"></a></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Adjuster_Id" name="Adjuster_Id"><option selected="selected" value=""></option><?php foreach($Adjuster_Name as $row){?><option value="<?php echo $row['Adjuster_Id']; ?>"> <?php echo $row['Adjuster_LastName'].", ".$row['Adjuster_FirstName']; ?> </option><?php }?></select></div></td>
+									<td><div class="visible" style="display:block;"><input type="hidden" id="Hidden_Adjuster_Id"><a class="info-link VisibleInfo" id="AdjusterInfoLink"></a></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Adjuster_Id" name="Adjuster_Id"><?php foreach($Adjuster_Name as $row){?><option value="<?php echo $row['Adjuster_Id']; ?>"> <?php echo $row['Adjuster_FirstName']." ".$row['Adjuster_LastName']; ?> </option><?php }?></select></div></td>
 								</tr>
                                 
                                 <tr> 
@@ -302,7 +302,7 @@ for($i=0; $i<=13; $i++){
 										<th>D.O.S.-End</th>
 										<th>Total Claim Amt.</th>
 										<th>Total Paid Amt.</th>
-                                        <th></th>
+                                        <th>Balance</th>
                                         <th></th>
                                         <th></th>
                                         <th></th>
@@ -314,7 +314,7 @@ for($i=0; $i<=13; $i++){
                                             <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datetimepicker_Dos_Doe dos-input" value="<?php echo substr($DateOfService_End,0, 10);?>"></td>
                                             <td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm amt-input" value="<?php echo $Claim_Amount;?>"></td>
                                             <td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm amt-input" value="<?php echo $Paid_Amount;?>"></td>
-                                            <td></td>
+                                            <td><input type="number" step="0.01" id="balance" name="balance" class="form-control input-sm amt-input" value="<?php echo $Claim_Amount-$Paid_Amount;?>"></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -699,13 +699,13 @@ for($i=0; $i<=13; $i++){
                                 <input type="hidden" name="Case_AutoId" value="<?php echo $Case_AutoId;?>">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label">SETTLEMENT AMOUNT</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltSettlement_AmountTab6" name="Settlement_Amount"  class="form-control input-sm Amount settled-by-info" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltSettlement_AmountTab6" name="Settlement_Amount"  class="form-control input-sm Amount settled-by-info"></div>
 								<div class="col-md-1"><input step="0.01" type="number" id="settlementPercentageTab6" name="settlementPercentageTab6"  class="form-control input-sm percentage" value="100.00"></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label col-md-12">INTEREST</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltInterestTab6" name="Settlement_Int"  class="form-control input-sm Amount settled-by-info" ></div>
+								<div class="col-md-1"><input type="text" id="FltInterestTab6" name="Settlement_Int"  class="form-control input-sm Amount settled-by-info" /></div>
 								<div class="col-md-1"><input step="0.01" type="number" id="FltInterestPercTab6" name="FltInterestPercTab6"  class="form-control input-sm percentage" value="100.00" ></div>
 								<div class="col-md-1 start-date-settlement settled-status-open"><label class="control-label col-md-12">START DATE</label> </div>
 								<div class="col-md-1 settled-status-open"><input type="text" id="CopundIntStartData" name="CopundIntStartData"  class="form-control input-sm datepicker_recurring_start" ></div>
@@ -735,7 +735,7 @@ for($i=0; $i<=13; $i++){
 								<div class="col-md-1"><input step="0.01" type="number" id="TotalAmountPerc" name="TotalAmountPerc"  class="form-control input-sm percentage" ></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12 settled-status-open">
-								<div class="col-md-2"></div>
+								<div class="col-md-3"></div>
 								<div class="col-md-2 recalculate-btn"><button>Re-Calculate Amount</button></div>
 								<div class="add-amt-btn col-md-1"><button>Add Amount</button></div>
 								<div class="reset-amt-btn col-md-1"><button>Reset Values</button></div>
@@ -760,7 +760,7 @@ for($i=0; $i<=13; $i++){
 							</div>
                             <div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
-								<div class="col-md-2 finalize-sett-button"><button type="submit" class="btn btn-primary" id="finalizeButton"><i class="fa fa-check"></i> Finalize Settlement</button></div>
+								<div class="col-md-2 finalize-sett-button"><button type="submit" class="btn btn-primary" id="finalizeButton" <?php //if($Check_Status !="OPEN" || $Check_Status !="OPEN "){echo "disabled";}?>><i class="fa fa-check"></i> Finalize Settlement</button></div>
 								<div class="col-md-1"><button type="button" class="reset-settlement">Reset</button></div>
 							</div>
                             </form>
@@ -1796,7 +1796,24 @@ $(document).ready(function(e) {
 					}else if(recordNo == 10){
 						info1[4].innerHTML = $("#"+selectId+" option:selected").text();
 					}else if(recordNo == 18){
-						info1[5].innerHTML = $("#"+selectId+" option:selected").text();
+						$.ajax({
+							type:'POST',
+							url:"<?php echo base_url(); ?>search/getAdjuster_ById2/"+selectValue,
+							success:function(data){
+								results = JSON.parse(data);
+								var adjPhone = results.data[0][2];
+								var adjExt = results.data[0][3];
+								if(adjPhone == null){
+									adjPhone ="";
+								}
+								if(adjExt == null){
+									adjExt ="";
+								}
+									info1[5].innerHTML = results.data[0][0]+ " "+results.data[0][1]+" [Phone#: "+adjPhone+"] [Ext#: "+adjExt+"]";
+								//info1[5].innerHTML = $("#"+selectId+" option:selected").text();
+							},
+							error: function(result){ console.log("error"); }
+						});
 					}
 				}else{
 					if(recordNo >=22){
@@ -2011,7 +2028,14 @@ $(document).ready(function(e) {
 /************************************************************************************************************************************/
 /************************************************* SETTLEMENT TAB-6 *************************************************************/
 	$("#CalculateSI").click( function(){
-		alert("Number of days between the dates shown are: " + daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndData').val())));
+		var Day_Diff = daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndData').val()));
+		if(Day_Diff >=0){
+			var settAmt = $("#FltSettlement_AmountTab6").val();
+			//var settAmt = 1515.36;
+			var Total_Interest = (settAmt * 0.2) / (30 * Day_Diff);
+			$("#FltInterestTab6").val(Total_Interest);
+			console.log("Total_Interest:"+Total_Interest);
+		}else{ alert("Please Select correct End Date");}
 	}); 
     
     function parseDate(str) {
@@ -2029,6 +2053,7 @@ $(document).ready(function(e) {
 	$('#defendantIdTab-6').on('change', function() {
 		$("input[name=SettledWithAttorney]").val($("#defendantIdTab-6 option:selected").text());
 	});
+/*UPDATE SETTLEMENT DATA*/
 	$("#settlement_form_open").validate({
 		rules:{
 			Settlement_Notes:{
@@ -2036,23 +2061,14 @@ $(document).ready(function(e) {
 			}
 		},
 		submitHandler: function (form) {
-			// setup some local variables
 			var $form = $(form);
-			// let's select and cache all the fields
 			var $inputs = $form.find("input, select, button, textarea");
-			// serialize the data in the form
 			var serializedData = $form.serialize();
 			var flag = 0;
 			if($("input[name=SettledWithAdjuster]").val() == ""){
 				flag = 0;
-				if($("input[name=SettledWithAttorney]").val() == ""){
-					flag = 0;
-				}else{
-					flag = 1;
-				}
-			}else{
-				flag = 1;
-			}
+				if($("input[name=SettledWithAttorney]").val() == ""){ flag = 0; }else{ flag = 1; }
+			}else{ flag = 1; }
 
 			if(flag == 1){
 				request = $.ajax({
@@ -2060,10 +2076,7 @@ $(document).ready(function(e) {
 					type: "post",
 					data: serializedData
 				});
-	
-				// callback handler that will be called on success
 				request.done(function (response, textStatus, jqXHR) {
-					
 					Update_Settlement();
 					checkstatus_open();
 					$(".settled-by-show").css("display","block");
@@ -2074,9 +2087,9 @@ $(document).ready(function(e) {
 			}else{
 				$("#AdjOrAtt").modal("show");
 			}
-			
 		}
 	});
+/*RESET ETTLEMENT*/
 	$(".reset-settlement").click(function(e){
 		swal({
 			title: "Are you sure?",
@@ -2113,7 +2126,7 @@ $(document).ready(function(e) {
 		
 	});
 	function checkstatus_open(){
-		console.log("current_case_status BEFORE ajax call :"+current_case_status+"Z");
+		//console.log("current_case_status BEFORE ajax call :"+current_case_status+"Z");
 		$.ajax({
 			type:'POST',
 			url: "<?php echo base_url();?>search/get_Current_Status/<?php echo $Case_AutoId;?>", 
@@ -2121,29 +2134,43 @@ $(document).ready(function(e) {
 				results = JSON.parse(data);
 			//	Update_Settlement();
 				current_case_status = results[0].Status;
-				console.log("current_case_status AFTER ajax call :"+current_case_status+"Z");
-				if(current_case_status == "OPEN "){
-					current_case_status = "OPEN";
-				}
+				//console.log("current_case_status AFTER ajax call :"+current_case_status+"Z");
+				if(current_case_status == "OPEN "){ current_case_status = "OPEN"; }
 				if(current_case_status == "OPEN"){
 					$(".settled-status-open").css("display", "block");
 					$(".settled-by-show").css("display","none");
-					console.log("current_case_status if open:"+current_case_status);
+					//console.log("current_case_status if open:"+current_case_status);
 				}else{
 					$(".settled-status-open").css("display", "none");
-					console.log("current_case_status if others:"+current_case_status);
+					//console.log("current_case_status if others:"+current_case_status);
 				}
 				current_case_status ="";
         	},
 			error: function(result){ console.log("error"); }
-		
 		});
-		load_sett_data();
-		//e.preventDefault();	//STOP default action
 	}
 	$('#tab6').click(function(e){
 		checkstatus_open();
 		load_sett_data();
+	});
+	
+	
+	$("#FltInterestPercTab6").keyup(function(){
+		var interest = $("#FltInterestTab6").val();
+		var rr = $("#FltAttorneyFeeTab6").val(($("#FltSettlement_AmountTab6").val() + $("#FltInterestTab6").val())/5);
+		console.log("rr:"+interest);
+	
+		var interestPerc = $(this).val();
+		if ($(this).val() > 100){
+			$(this).val("100.00");
+			$("#FltInterestTab6").val(interest);
+			//console.log("calInt:"+calInt);
+		}else{
+			calInt = (parseFloat(interestPerc) / 100) * interest;
+			$("#FltInterestTab6").val(calInt);
+			console.log("calInt:"+calInt);
+		}
+		
 	});
 	function load_sett_data(){
 		$.ajax({
@@ -2156,26 +2183,26 @@ $(document).ready(function(e) {
 				});
 				 var settledBy = document.getElementsByClassName("settled-by-info");
 				for($i in results){
-					console.log("Settlement_Amount:"+results[$i].Settlement_Amount);
-					console.log("Settlement_Int:"+results[$i].Settlement_Int);
-					$("#FltInterestTab6").val(results[$i].Settlement_Int);
-					console.log("Settlement_Af:"+results[$i].Settlement_Af);
-					console.log("Settlement_Ff:"+results[$i].Settlement_Ff);
-					console.log("Settlement_Total:"+results[$i].Settlement_Total);
+					console.log("Settlement_Amount:"+parseFloat(results[$i].Settlement_Amount));
+					console.log("Settlement_Int:"+parseFloat(results[$i].Settlement_Int));
+					console.log("Settlement_Af:"+parseFloat(results[$i].Settlement_Af));
+					console.log("Settlement_Ff:"+parseFloat(results[$i].Settlement_Ff));
+					console.log("Settlement_Total:"+parseFloat(results[$i].Settlement_Total));
 					
 					
-					 settledBy[0].innerHTML = results[$i].User_Id;
-					 settledBy[1].innerHTML = results[$i].SettledWith;
-					 settledBy[2].innerHTML = results[$i].Settlement_Amount;
-					 settledBy[3].innerHTML = results[$i].Settlement_Int;
+					settledBy[0].innerHTML = results[$i].User_Id;
+					settledBy[1].innerHTML = results[$i].SettledWith;
 					 
-					 $("#FltSettlement_AmountTab6").val(results[$i].Settlement_Amount);
+					 
+					 $("#FltSettlement_AmountTab6").val(parseFloat(results[$i].Settlement_Amount));
+					 //$("#FltInterestTab6").val(results[$i].Settlement_Int);
+					 $("#FltInterestTab6").val("100");
 					//var settlementPercentage = (results[$i].Settlement_Amount * 100)/ balance;
 					//$("#settlementPercentageTab6").val(settlementPercentage.toFixed(2));
-					$("#FltAttorneyFeeTab6").val(results[$i].Settlement_Af);
+					//$("#FltAttorneyFeeTab6").val(results[$i].Settlement_Af);
 					
-					$("#FltFillingFeeTab6").val(results[$i].Settlement_Ff);
-					var TotalAmount =  results[$i].Settlement_Amount + results[$i].Settlement_Int + results[$i].Settlement_Af + results[$i].Settlement_Ff;
+					//$("#FltFillingFeeTab6").val(results[$i].Settlement_Ff);
+					var TotalAmount =  parseFloat(results[$i].Settlement_Amount) + parseFloat(results[$i].Settlement_Int) + parseFloat(results[$i].Settlement_Af) + parseFloat(results[$i].Settlement_Ff);
 					console.log("load_sett_data TotalAmount:"+TotalAmount);
 					
 					$("#TotalAmount").val(TotalAmount);
@@ -2198,7 +2225,6 @@ $(document).ready(function(e) {
 		});
 	}
 /*************************************************** Payment TAB-8 ***************************************************************/	
-	
 	
 	$('#SettlementQuickView').dataTable( {
 		"ajax": "<?php echo base_url();?>search/SettlementQuickView/<?php echo $Case_Id;?>",
@@ -2389,7 +2415,6 @@ $(document).ready(function(e) {
 					});
 			
 					request.done(function (response, textStatus, jqXHR) {
-						
 						$('.deleteCheckedEvents:checked').each(function(i){
 							var values = $(this).val();
 							var row = $(".deleteCheckedEvents"+values).parent().parent();
@@ -2591,7 +2616,7 @@ $(document).ready(function(e) {
 					$("#PaymentsTab6").prop("disabled", true);
 					$("#BalanceTab6").prop("disabled", true);
 					
-					x[13].innerHTML = results.CaseInfo[$i].Paid_Amount;
+					x[13].innerHTML = results.CaseInfo[$i].Paid_Amount+" / Balance = "+balance;
 					$("input[name=Paid_Amount]").val(results.CaseInfo[$i].Paid_Amount);
 					
 					x[15].innerHTML = results.CaseInfo[$i].Old_Case_Id;
@@ -2604,7 +2629,7 @@ $(document).ready(function(e) {
 					$("input[name=Accident_Date]").val(results.CaseInfo[$i].Accident_Date);
 					
 					//x[17].innerHTML = results.CaseInfo[$i].Adjuster_LastName+ ", "+results.CaseInfo[$i].Adjuster_FirstName;
-					info[5].innerHTML = results.CaseInfo[$i].Adjuster_LastName+ ", "+results.CaseInfo[$i].Adjuster_FirstName;
+					info[5].innerHTML = results.CaseInfo[$i].Adjuster_FirstName+ " "+results.CaseInfo[$i].Adjuster_LastName+" [Phone#: "+results.CaseInfo[$i].Adjuster_Phone+"] [Ext#: "+results.CaseInfo[$i].Adjuster_Phone_Ext+"]";
 					$("#Hidden_Adjuster_Id").val(results.CaseInfo[$i].Adjuster_Id);
 					x[18].innerHTML = results.CaseInfo[$i].Attorney_Name;
 					
@@ -2703,7 +2728,7 @@ $(document).ready(function(e) {
 	
 	/*$.ajax({
 		type:'POST',
-		url:"<?php echo base_url(); ?>search/get_Settled_By/<?php echo $Case_Id;?>",
+		url:"<?php //echo base_url(); ?>search/get_Settled_By/<?php //echo $Case_Id;?>",
 		success:function(data){
 			results = JSON.parse(data);
 			$.each(results[0], function(k, v) {
@@ -2718,60 +2743,7 @@ $(document).ready(function(e) {
 		}
 	});*/
 	
-		$('.fromdate').datepicker({
-			dateFormat: 'yy-mm-dd',
-			changeMonth: true,
-			changeYear: true,
-		});
-		$('.todate').datepicker({
-			dateFormat: 'yy-mm-dd',
-			changeMonth: true,
-			changeYear: true,
-		});
-		$('.fromdate').datepicker().bind("change", function () {
-			var minValue = $(this).val();
-			minValue = $.datepicker.parseDate("yy-mm-dd", minValue);
-			$('.todate').datepicker("option", "minDate", minValue);
-			calculate();
-		});
-		$('.todate').datepicker().bind("change", function () {
-			var maxValue = $(this).val();
-			maxValue = $.datepicker.parseDate("yy-mm-dd", maxValue);
-			$('.fromdate').datepicker("option", "maxDate", maxValue);
-			calculate();
-		});
 		
-		function calculate() {
-			var d1 = $('.fromdate').datepicker('getDate');
-			var d2 = $('.todate').datepicker('getDate');
-			var oneDay = 24*60*60*1000;
-			var diff = 0;
-			if (d1 && d2) {
-		  
-			  diff = Math.round(Math.abs((d2.getTime() - d1.getTime())/(oneDay)));
-			}
-			alert("diff:"+diff);
-		}
-		$(".CalSimpleInterest").click(function(){
-			
-		});
-		var interest = $("#FltInterestTab6").val();
-		var rr = $("#FltAttorneyFeeTab6").val(($("#FltSettlement_AmountTab6").val() + $("#FltInterestTab6").val())/5);
-		//console.log("rr:"+rr);
-		
-		$("#FltInterestPercTab6").keyup(function(){
-			var interestPerc = $(this).val();
-			if ($(this).val() > 100){
-				$(this).val("100.00");
-				$("#FltInterestTab6").val(interest);
-				console.log("calInt:"+calInt);
-			}else{
-				calInt = (parseFloat(interestPerc) / 100) * interest;
-				$("#FltInterestTab6").val(calInt);
-				console.log("calInt:"+calInt);
-			}
-			
-		});
 		$(".info-link").click(function(){
 			var id = $(this).attr("id");
 			var hiddenField = $(this).prev().val();
