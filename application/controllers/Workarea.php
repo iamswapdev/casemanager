@@ -37,6 +37,7 @@ session_cache_limiter('private_no_expire');
 				$data['Court']= $this->workarea_model->get_Court();
 				$data['Service']= $this->workarea_model->get_Service();
 				$data['DenialReasons']= $this->workarea_model->get_DenialReasons();
+				$data['Accessibility'] = $this->session->userdata['logged_in']['RoleId'];
 				$this->load->view('pages/dataentry_workarea',$data);
 			}else{
 				$this->load->view('pages/login');
@@ -80,6 +81,7 @@ session_cache_limiter('private_no_expire');
 		}
 		
 		public function fileinsert(){
+			//echo $this->session->userdata['logged_in']['username'];
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
 				$this->load->view('pages/fileinsert');	
@@ -94,6 +96,7 @@ session_cache_limiter('private_no_expire');
 				$data['InsuranceCompany_Name']= $this->workarea_model->get_Insurance();
 				$data['Defendant_Name']= $this->workarea_model->get_Defendant();
 				$data['Court']= $this->workarea_model->get_Court();
+				$data['Accessibility'] = $this->session->userdata['logged_in']['RoleId'];
 				$this->load->view('pages/workflowreport',$data);
 			}else{
 				$this->load->view('pages/login');
@@ -102,6 +105,7 @@ session_cache_limiter('private_no_expire');
 		public function calendar(){
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
+				$data['Accessibility'] = $this->session->userdata['logged_in']['RoleId'];
 				$this->load->view('pages/calendar');
 			}else{
 				$this->load->view('pages/login');

@@ -36,7 +36,7 @@
             <li class="adminprivilege">
                 <a href="#"><span class="nav-label">Admin</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>adminprivilege/manageusers" onclick="addactive(this);">Admin Privileges</a></li>
+                    <li><a href="<?php echo base_url();?>adminprivilege/manageusers">Admin Privileges</a></li>
                 </ul>
             </li>
             <li class="search">
@@ -49,6 +49,7 @@
                     <li><a href="<?php echo base_url();?>dataentry/addcase">Data Entry</a></li>
                 </ul>
             </li>
+            <?php //if($Accessibility == 1){?>
              <li class="workarea">
                 <a href="#"><span class="nav-label">Work Area</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
@@ -58,6 +59,7 @@
                     <li><a href="<?php echo base_url();?>workarea/calendar">Calendar</a></li>
                 </ul>
             </li>
+            <?php  //} ?>
             <li class="workdesk">
                 <a href="#"><span class="nav-label">WorkDesk</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">

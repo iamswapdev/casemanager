@@ -11,13 +11,11 @@ session_cache_limiter('private_no_expire');
 		public function index(){
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
-				$this->load->view('pages/config');
+				//$this->load->view('pages/config');
 			}else{
 				//echo "session deleted";
 				$this->load->view('pages/login');
-			}
-			
-				
+			}	
 		}
 		public function config(){
 			$this->session->all_userdata();
@@ -41,10 +39,12 @@ session_cache_limiter('private_no_expire');
 			
 		}
 		public function manageusers(){
+			//echo $this->session->userdata['logged_in']['username'];
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
 				//$this->load->model('admin_privilege_model');
 				$data['Roles']=$this->admin_privilege_model->get_AllRoles();
+				$data['Accessibility'] = $this->session->userdata['logged_in']['RoleId'];
 				$this->load->view('pages/manageusers', $data);
 			}else{
 				//echo "session deleted";

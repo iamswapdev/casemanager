@@ -19,10 +19,16 @@ session_cache_limiter('private_no_expire');
 		); 
 		
 		$check=$this->login_model->autho($data);
+		$data=array(
+			'username'=> "admin",
+			'password'=> "admin123",
+		); 
+		$result['Role']=$this->login_model->get_RoleId($data);
 		if($check){
 			$session_data = array(
 				'username'  => $data['username'],
 				'password'     => $data['password'],
+				'RoleId' => $result['Role'][0]['RoleId'],
 				'logged_in' => TRUE
 			);
 			

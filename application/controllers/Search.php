@@ -43,6 +43,7 @@ class Search extends CI_Controller{
 			$data['Adjuster_Name']= $this->search_model->get_Adjuster();
 			$data['Court']= $this->search_model->get_CourtArray();
 			$data['SearchResult']=$this->search_model->get_SearchResult();
+			$data['Accessibility'] = $this->session->userdata['logged_in']['RoleId'];
 			$this->load->view('pages/advancedsearch',$data);
 		}else{
 			$this->load->view('pages/login');
@@ -65,6 +66,7 @@ class Search extends CI_Controller{
 				$data['Adjuster_Name']= $this->dataentry_model->get_Adjuster();
 				
 				$data['CaseInfo']= $this->search_model->get_CaseInfo_ById($Case_AutoId);
+				$data['Accessibility'] = $this->session->userdata['logged_in']['RoleId'];
 				//echo "<pre>"; print_r($data['CaseInfo']); exit();
 				$this->load->view('pages/editcase',$data);
 				
@@ -74,7 +76,8 @@ class Search extends CI_Controller{
 		}
 	public function viewcase($Case_AutoId){
 		$this->session->all_userdata();
-		//echo "<pre>"; echo $this->session->userdata['logged_in']['username']; exit();
+		//echo "<br><pre>:";print_r($this->session->all_userdata());
+		//echo $this->session->userdata['logged_in']['RoleId']; exit;
 		//print_r($this->session->all_userdata());
 		if(isset($this->session->userdata['logged_in'])){
 			$data['Provider_Name1']= $this->search_model->get_Provider();
@@ -110,9 +113,11 @@ class Search extends CI_Controller{
 				"Case_Id" => $data['CaseInfo'][0]['Case_Id'],
 				"User_Id" => $this->session->userdata['logged_in']['username']
 			);
+			$data['Accessibility'] = $this->session->userdata['logged_in']['RoleId'];
+			//echo "<pre>";print_r($userAccebility); exit();
 			$this->search_model->add_Notes($data3);
 			
-			$this->load->view('pages/workarea_info',$data);
+			$this->load->view('pages/workarea_info',$data );
 		}else{
 			$this->load->view('pages/login');
 		}
@@ -573,7 +578,9 @@ class Search extends CI_Controller{
 			"Provider_Id" => $this->input->post("sProviderId"),
 			"Defendant_Id" => $this->input->post("sDefendantId"),
 			"Adjuster_Id" => $this->input->post("sAdjusterId"),
-			"AccidentDate" => $this->input->post("AccidentDate")
+			"AccidentDate" => $this->input->post("AccidentDate"),
+			"FirstId" => $this->input->post("FirstId"),
+			"LastId" => $this->input->post("LastId")
 		);
 		$list= $this->search_model->get_CaseInfo_ById1($Recieveddata);
 		$this->Search_Table_Data($list);
@@ -677,7 +684,7 @@ class Search extends CI_Controller{
 			$row[] = $result->IndexOrAAA_Number;
 			$row[] = $result->Claim_Amount;
 			$row[] = $result->Paid_Amount;
-			$row[] = $result->Last_Status;
+			$row[] = $result->Claim_Amount - $result->Paid_Amount;
 			$row[] = $result->Last_Status;
 			$row[] = $result->Settlement_Amount;
 			$row[] = $result->Settlement_Int;

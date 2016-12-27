@@ -326,6 +326,11 @@ Class Search_model extends CI_Model{
 		if($Recieveddata['AccidentDate'] !=""){
 			$this->db->where("t1.Accident_Date LIKE '".$Recieveddata['AccidentDate']."%'");
 		}
+		if($Recieveddata['FirstId'] !="" && 'LastId' !=""){
+			$this->db->where('t1.Case_Id >=', $Recieveddata['FirstId']);
+			$this->db->where('t1.Case_Id <=', $Recieveddata['LastId']);
+		}
+		
 		$query= $this->db->get();
 		$data=$query->result();
 		//echo "<pre>"; print_r($data); exit();

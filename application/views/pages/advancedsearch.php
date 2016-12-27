@@ -114,7 +114,6 @@
 					</div>
 				</div>
 				<div class="form-group form-horizontal col-md-12">
-					
                     <label class="col-md-2 control-label">ADJUSTER NAME</label>
 					<div class="col-md-2">
 						<select class="form-control input-sm" id="sAdjusterId" name="sAdjusterId" >
@@ -124,6 +123,17 @@
                             <?php }?>
                         </select>
 					</div>
+                    <label class="col-md-2 control-label">ID RANGE</label>
+                    <div class="col-md-2">
+                    	<div class="col-md-6 id-range-first">
+                        	<input type="text" name="FirstId" class="form-control input-sm">
+                        </div>
+                        <div class="col-md-6 id-range-last">
+                        	<input type="text" name="LastId" class="form-control input-sm">
+                        </div>
+                    	
+                        
+                    </div>
 				</div>
                 <div class="form-group form-horizontal col-md-12">
 					<div class="col-md-2"></div>
@@ -312,7 +322,9 @@
 							"sCaseStatus": dataObj['sCaseStatus'],
 							"sProviderId": dataObj['sProviderId'],
 							"sDefendantId": dataObj['sDefendantId'],
-							"sAdjusterId": dataObj['sAdjusterId']
+							"sAdjusterId": dataObj['sAdjusterId'],
+							"FirstId": dataObj["FirstId"],
+							"LastId": dataObj["LastId"]
 						},
 						"type": "POST"
 					},

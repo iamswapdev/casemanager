@@ -637,7 +637,7 @@ for($i=0; $i<=13; $i++){
 						<div class="panel-heading"></div>
 						<div class="panel-body tab-panel">
                         	<div class="form-group form-horizontal col-md-12">
-                            	<br><h5 class="h4-title">SETTLEMENT DETAIL</h5>
+                            	<br><h5 class="h4-title">SETTLEMENT DETAIL <?php echo $Accessibility; ?></h5>
                             </div>
                             <div class="form-horizontal col-md-12 settlement-title-info">
                                 <div class="col-md-2"></div>
@@ -690,8 +690,7 @@ for($i=0; $i<=13; $i++){
 								<div class="col-md-2 claim-paid-balance"><input step="0.0001" type="number" id="BalanceTab6" name="BalanceTab6"  class="form-control input-sm Amount" disabled></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
-								<div class="col-md-2"></div>
-                                <div class="col-md-2 claim-paid-balance">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+								<div class="col-md-4"></div>
 								<div class="col-md-2 claim-paid-balance"><label class="control-label">PERCENTAGE (%)</label> </div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
@@ -742,13 +741,13 @@ for($i=0; $i<=13; $i++){
 							<div class="form-group form-horizontal col-md-12 settled-status-open">
 								<div class="col-md-3"></div>
 								<div class="col-md-2 recalculate-btn"><button type="button" id="RecalculateAmt">Re-Calculate Amount</button></div>
-								<div class="add-amt-btn col-md-1"></div>
+								<!--<div class="add-amt-btn col-md-1"></div>-->
 								<div class="reset-amt-btn col-md-1"><button type="button" id="ResetValues" class="">Reset Values</button></div>
 							</div>
                             <div class="form-group form-horizontal col-md-12 settled-status-open">
 								<label class="col-md-2 control-label">SETTLED TYPE</label>
 								<div class="col-md-2">
-									<select class="form-control input-sm" id="" name="" required>
+									<select class="form-control input-sm" id="SettledType" name="SettledType" required>
                                         <option value="0">...SELECT....</option>
                                         <option value="Settled/Phone">SETTLED/PHONE</option>
                                         <option value="Settled/Court">SETTLED IN COURT</option>
@@ -760,7 +759,7 @@ for($i=0; $i<=13; $i++){
                             <div class="form-group form-horizontal col-md-12 settled-status-open">
 								<label class="col-md-2 control-label">Notes</label>
 								<div class="col-md-4">
-									<textarea rows="3"  id="memo" name="Settlement_Notes" class="form-control" required></textarea>
+									<textarea rows="3"  id="Settlement_Notes" name="Settlement_Notes" class="form-control" required></textarea>
 								</div>
 							</div>
                             <div class="form-group form-horizontal col-md-12">
@@ -2039,11 +2038,14 @@ $(document).ready(function(e) {
 		checkstatus_open();
 		load_sett_data();
 	});
-	$('#adjusterIdTab-6').on('change', function() {
-		$("input[name=SettledWithAdjuster]").val($("#adjusterIdTab-6 option:selected").text());
+	$('#SettledType').on('change', function() {
+		$("#Settlement_Notes").val($("#SettledType option:selected").text());
 	});
 	$('#defendantIdTab-6').on('change', function() {
 		$("input[name=SettledWithAttorney]").val($("#defendantIdTab-6 option:selected").text());
+	});
+	$('#adjusterIdTab-6').on('change', function() {
+		$("input[name=SettledWithAdjuster]").val($("#adjusterIdTab-6 option:selected").text());
 	});
 	function checkstatus_open(){
 		//console.log("current_case_status BEFORE ajax call :"+current_case_status+"Z");
@@ -2658,7 +2660,19 @@ $(document).ready(function(e) {
 					$("input[name=Accident_Date]").val(results.CaseInfo[$i].Accident_Date);
 					
 					//x[17].innerHTML = results.CaseInfo[$i].Adjuster_LastName+ ", "+results.CaseInfo[$i].Adjuster_FirstName;
-					info[5].innerHTML = results.CaseInfo[$i].Adjuster_FirstName+ " "+results.CaseInfo[$i].Adjuster_LastName+" [Phone#: "+results.CaseInfo[$i].Adjuster_Phone+"] [Ext#: "+results.CaseInfo[$i].Adjuster_Phone_Ext+"]";
+					var adjFirstName = "";
+					var adjLastName = "";
+					var adjPhone = "";
+					var adjExt = "";
+					if(results.CaseInfo[$i].Adjuster_FirstName == null){ adjFirstName = "";
+					}else{ adjFirstName = results.CaseInfo[$i].Adjuster_FirstName; }
+					if(results.CaseInfo[$i].Adjuster_LastName == null){ adjLastName = "";
+					}else{ adjLastName = results.CaseInfo[$i].Adjuster_LastName; }
+					if(results.CaseInfo[$i].Adjuster_Phone == null){ adjPhone = "";
+					}else{ adjPhone = results.CaseInfo[$i].Adjuster_Phone; }
+					if(results.CaseInfo[$i].Adjuster_Phone_Ext == null){ adjExt = "";
+					}else{ adjExt = results.CaseInfo[$i].Adjuster_Phone_Ext; }
+					info[5].innerHTML = adjFirstName+ " "+adjLastName+" [Phone#: "+adjPhone+"] [Ext#: "+adjExt+"]";
 					$("#Hidden_Adjuster_Id").val(results.CaseInfo[$i].Adjuster_Id);
 					x[18].innerHTML = results.CaseInfo[$i].Attorney_Name;
 					
