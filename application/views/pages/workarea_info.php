@@ -742,7 +742,7 @@ for($i=0; $i<=13; $i++){
 							<div class="form-group form-horizontal col-md-12 settled-status-open">
 								<div class="col-md-3"></div>
 								<div class="col-md-2 recalculate-btn"><button type="button" id="RecalculateAmt">Re-Calculate Amount</button></div>
-								<div class="add-amt-btn col-md-1"><button>Add Amount</button></div>
+								<div class="add-amt-btn col-md-1"></div>
 								<div class="reset-amt-btn col-md-1"><button type="button" id="ResetValues" class="">Reset Values</button></div>
 							</div>
                             <div class="form-group form-horizontal col-md-12 settled-status-open">
@@ -2035,6 +2035,100 @@ $(document).ready(function(e) {
 	});
 /************************************************************************************************************************************/
 /************************************************* SETTLEMENT TAB-6 *************************************************************/
+	$('#tab6').click(function(e){
+		checkstatus_open();
+		load_sett_data();
+	});
+	$('#adjusterIdTab-6').on('change', function() {
+		$("input[name=SettledWithAdjuster]").val($("#adjusterIdTab-6 option:selected").text());
+	});
+	$('#defendantIdTab-6').on('change', function() {
+		$("input[name=SettledWithAttorney]").val($("#defendantIdTab-6 option:selected").text());
+	});
+	function checkstatus_open(){
+		//console.log("current_case_status BEFORE ajax call :"+current_case_status+"Z");
+		$.ajax({
+			type:'POST',
+			url: "<?php echo base_url();?>search/get_Current_Status/<?php echo $Case_AutoId;?>", 
+			success: function(data){
+				results = JSON.parse(data);
+			//	Update_Settlement();
+				current_case_status = results[0].Status;
+				//console.log("current_case_status AFTER ajax call :"+current_case_status+"Z");
+				if(current_case_status == "OPEN "){ current_case_status = "OPEN"; }
+				if(current_case_status == "OPEN"){
+					$(".settled-status-open").css("display", "block");
+					$(".settled-by-show").css("display","none");
+					//console.log("current_case_status if open:"+current_case_status);
+				}else{
+					$(".settled-status-open").css("display", "none");
+					/*$("input[name=Settlement_Int]").prop("disabled", true);
+					$("input[name=Settlement_Af]").prop("disabled", true);
+					$("input[name=Settlement_Ff]").prop("disabled", true);
+					$("input[name=Settlement_Total]").prop("disabled", true);
+					$("input[name=FltInterestPercTab6]").prop("disabled", true);
+					$("input[name=FltAttorneyPercTab6]").prop("disabled", true);
+					$("input[name=FltFillingFeePercTab6]").prop("disabled", true);
+					$("input[name=TotalAmountPerc]").prop("disabled", true);*/
+					//console.log("current_case_status if others:"+current_case_status);
+				}
+				current_case_status ="";
+        	},
+			error: function(result){ console.log("error"); }
+		});
+	}
+	function load_sett_data(){
+		$.ajax({
+			type:'POST',
+			url:"<?php echo base_url(); ?>search/get_Settled_By/<?php echo $Case_Id;?>",
+			success:function(data){
+				results = JSON.parse(data);
+				$.each(results[0], function(k, v) {
+					//console.log(k + ' is ' + v);
+				});
+				 var settledBy = document.getElementsByClassName("settled-by-info");
+				for($i in results){
+					/*console.log("Settlement_Amount:"+results[$i].Settlement_Amount);
+					console.log("Settlement_Int:"+parseFloat(results[$i].Settlement_Int));
+					console.log("Settlement_Af:"+parseFloat(results[$i].Settlement_Af));
+					console.log("Settlement_Ff:"+parseFloat(results[$i].Settlement_Ff));
+					console.log("Settlement_Total:"+parseFloat(results[$i].Settlement_Total));*/
+					
+					settledBy[0].innerHTML = results[$i].User_Id;
+					settledBy[1].innerHTML = results[$i].SettledWith;
+					 
+					if(results[$i].Settlement_Amount == null){ $("input[name=Settlement_Amount]").val("0.00"); }else{ $("input[name=Settlement_Amount]").val(parseFloat(results[$i].Settlement_Amount));}
+					
+					 //$("#FltInterestTab6").val(results[$i].Settlement_Int);
+					 $("input[name=Settlement_Int]").val(parseFloat(results[$i].Settlement_Int));
+					 $("input[name=Settlement_Af]").val(parseFloat(results[$i].Settlement_Af));
+					 $("input[name=Settlement_Ff]").val(parseFloat(results[$i].Settlement_Ff));
+					 Settlement_Calculation();
+					 interestCount = 0;
+				}
+			}
+		});
+	}
+	var interestCount = 0;
+	var interest = "";
+	$("#FltInterestPercTab6").keyup(function(){
+		if(interestCount == 0){
+			interest = $("input[name=Settlement_Int]").val();
+		}
+		var rr = $("#FltAttorneyFeeTab6").val(($("input[name=Settlement_Amount]").val() + $("input[name=Settlement_Int]").val())/5);
+		interestCount++;
+		var interestPerc = $(this).val();
+		if ($(this).val() > 100){
+			$(this).val("100.00");
+			$("input[name=Settlement_Int]").val(interest)
+			//console.log("calInt:"+calInt);
+		}else{
+			calInt = (parseFloat(interestPerc) / 100) * interest;
+			$("input[name=Settlement_Int]").val(calInt)
+			console.log("calInt:"+calInt);
+		}
+	});
+/*Calculate Days difference and simple interest*/
 	$("#CalculateSI").click( function(){
 		var Day_Diff = daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndData').val()));
 		if(Day_Diff >=0){
@@ -2044,22 +2138,24 @@ $(document).ready(function(e) {
 			$("#FltInterestTab6").val(Total_Interest);
 			console.log("Total_Interest:"+Total_Interest);
 		}else{ alert("Please Select correct End Date");}
-	}); 
-    
+	});
     function parseDate(str) {
 		var mdy = str.split('/')
 		return new Date(mdy[2], mdy[0]-1, mdy[1]);
 	}
-
 	function daydiff(first, second) {
 		return (second-first)/(1000*60*60*24)
 	}
-
-	$('#adjusterIdTab-6').on('change', function() {
-		$("input[name=SettledWithAdjuster]").val($("#adjusterIdTab-6 option:selected").text());
+	$("#RecalculateAmt").click(function(){
+		Settlement_Calculation();
+		interestCount = 0;
 	});
-	$('#defendantIdTab-6').on('change', function() {
-		$("input[name=SettledWithAttorney]").val($("#defendantIdTab-6 option:selected").text());
+	$("#ResetValues").click(function(){
+		$("input[name=Settlement_Int]").val("0.00");
+		$("input[name=Settlement_Af]").val("0.00");
+		$("input[name=Settlement_Ff]").val("0.00");
+		$("input[name=Settlement_Total]").val("0.00");
+		interestCount = 0;
 	});
 /*UPDATE SETTLEMENT DATA*/
 	$("#settlement_form_open").validate({
@@ -2148,121 +2244,18 @@ $(document).ready(function(e) {
 				swal("Cancelled", "Your Settlement Data is safe :)", "error");
 			}
 		});
-
-
-		
-	});
-	function checkstatus_open(){
-		//console.log("current_case_status BEFORE ajax call :"+current_case_status+"Z");
-		$.ajax({
-			type:'POST',
-			url: "<?php echo base_url();?>search/get_Current_Status/<?php echo $Case_AutoId;?>", 
-			success: function(data){
-				results = JSON.parse(data);
-			//	Update_Settlement();
-				current_case_status = results[0].Status;
-				//console.log("current_case_status AFTER ajax call :"+current_case_status+"Z");
-				if(current_case_status == "OPEN "){ current_case_status = "OPEN"; }
-				if(current_case_status == "OPEN"){
-					$(".settled-status-open").css("display", "block");
-					$(".settled-by-show").css("display","none");
-					//console.log("current_case_status if open:"+current_case_status);
-				}else{
-					$(".settled-status-open").css("display", "none");
-					/*$("input[name=Settlement_Int]").prop("disabled", true);
-					$("input[name=Settlement_Af]").prop("disabled", true);
-					$("input[name=Settlement_Ff]").prop("disabled", true);
-					$("input[name=Settlement_Total]").prop("disabled", true);
-					$("input[name=FltInterestPercTab6]").prop("disabled", true);
-					$("input[name=FltAttorneyPercTab6]").prop("disabled", true);
-					$("input[name=FltFillingFeePercTab6]").prop("disabled", true);
-					$("input[name=TotalAmountPerc]").prop("disabled", true);*/
-					//console.log("current_case_status if others:"+current_case_status);
-				}
-				current_case_status ="";
-        	},
-			error: function(result){ console.log("error"); }
-		});
-	}
-	$('#tab6').click(function(e){
-		checkstatus_open();
-		load_sett_data();
-	});
-	
-	var interestCount = 0;
-	var interest = "";
-	$("#FltInterestPercTab6").keyup(function(){
-		if(interestCount == 0){
-			interest = $("input[name=Settlement_Int]").val();
-		}
-		var rr = $("#FltAttorneyFeeTab6").val(($("input[name=Settlement_Amount]").val() + $("input[name=Settlement_Int]").val())/5);
-		interestCount++;
-		var interestPerc = $(this).val();
-		if ($(this).val() > 100){
-			$(this).val("100.00");
-			$("input[name=Settlement_Int]").val(interest)
-			//console.log("calInt:"+calInt);
-		}else{
-			calInt = (parseFloat(interestPerc) / 100) * interest;
-			$("input[name=Settlement_Int]").val(calInt)
-			console.log("calInt:"+calInt);
-		}
-	});
-	$("#ResetValues").click(function(){
-		$("input[name=Settlement_Int]").val("0.00");
-		$("input[name=Settlement_Af]").val("0.00");
-		$("input[name=Settlement_Ff]").val("0.00");
-		$("input[name=Settlement_Total]").val("0.00");
-		interestCount = 0;
-	});
-	$("#RecalculateAmt").click(function(){
-		Settlement_Calculation();
-		interestCount = 0;
 	});
 	function Settlement_Calculation(){
 		var SetAmt = $("input[name=Settlement_Amount]").val();
 		var SetInt = $("input[name=Settlement_Int]").val();
 		var SetAF = $("input[name=Settlement_Af]").val();
 		var SetFF = $("input[name=Settlement_Ff]").val();
-		if(SetAF == null){
-			SetAF = "0.00";
-		}
-		
+		if(SetAF == null){ SetAF = "0.00"; }
+		if(SetFF == null){ SetFF = "0.00"; }
 		var TotalAmount =  parseFloat(SetAmt) + parseFloat(SetInt) + parseFloat(SetAF) + parseFloat(SetFF);
 		$("input[name=Settlement_Total]").val(TotalAmount.toFixed(2));
 	}
-	function load_sett_data(){
-		$.ajax({
-			type:'POST',
-			url:"<?php echo base_url(); ?>search/get_Settled_By/<?php echo $Case_Id;?>",
-			success:function(data){
-				results = JSON.parse(data);
-				$.each(results[0], function(k, v) {
-					//console.log(k + ' is ' + v);
-				});
-				 var settledBy = document.getElementsByClassName("settled-by-info");
-				for($i in results){
-					console.log("Settlement_Amount:"+results[$i].Settlement_Amount);
-					console.log("Settlement_Int:"+parseFloat(results[$i].Settlement_Int));
-					console.log("Settlement_Af:"+parseFloat(results[$i].Settlement_Af));
-					console.log("Settlement_Ff:"+parseFloat(results[$i].Settlement_Ff));
-					console.log("Settlement_Total:"+parseFloat(results[$i].Settlement_Total));
-					
-					settledBy[0].innerHTML = results[$i].User_Id;
-					settledBy[1].innerHTML = results[$i].SettledWith;
-					 
-					if(results[$i].Settlement_Amount == null){ $("input[name=Settlement_Amount]").val("0.00"); }else{ $("input[name=Settlement_Amount]").val(parseFloat(results[$i].Settlement_Amount));}
-					
-					 //$("#FltInterestTab6").val(results[$i].Settlement_Int);
-					 $("input[name=Settlement_Int]").val(parseFloat(results[$i].Settlement_Int));
-					 $("input[name=Settlement_Af]").val(parseFloat(results[$i].Settlement_Af));
-					 $("input[name=Settlement_Ff]").val(parseFloat(results[$i].Settlement_Ff));
-					 Settlement_Calculation();
-					 interestCount = 0;
-				}
-			}
-		});
-	}
+	
 /*************************************************** Payment TAB-8 ***************************************************************/	
 	
 	$('#SettlementQuickView').dataTable( {
