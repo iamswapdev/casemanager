@@ -651,7 +651,7 @@ class Search extends CI_Controller{
 		}
 		$Case_Id = $this->input->post('Case_Id');
 		$this->search_model->updateSettlement($data,$Case_Id);
-		//echo "<pre>"; print_r($data);
+		echo "<pre>"; print_r($data);
 	}
 	public function reset_Settlement($Case_AutoId){
 		$this->search_model->resetSettlement($Case_AutoId);

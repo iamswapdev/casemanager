@@ -450,6 +450,7 @@
 	$('tbody').on( 'click', '.addRecord', function () {
 		var parentR = $(this).parent().parent();
 		var tabIdentity = $(parentR).find("input[name=tabIdentity]").val();
+		var Ajax_path ="";
 		
 		if(tabIdentity == 1){
 			console.log("tabIdentity: "+tabIdentity);
@@ -458,6 +459,7 @@
 			//serializeData.push({DenialReasons_Type:DenialReasons_Type});
 			var string = "tabIdentity="+tabIdentity+"&DenialReasons_Type="  + DenialReasons_Type;
 			console.log("string: "+string);
+			Ajax_path = "DenialReasons";
 		}else if(tabIdentity == 2){
 			console.log("tabIdentity: "+tabIdentity);
 			var Court_Name = $(parentR).find("input[name=Court_Name]").val();
@@ -469,6 +471,7 @@
 			//serializeData.push({Court_Name:Court_Name, Court_Venue:Court_Venue});
 			var string = "tabIdentity="+tabIdentity+"&Court_Name="  + Court_Name + "&Court_Venue="  + Court_Venue + "&Court_Address="  + Court_Address + "&Court_Basis="  + Court_Basis + "&Court_Misc="  + Court_Misc;
 			console.log("string: "+string);
+			Ajax_path = "Court";
 		}else if(tabIdentity == 3){
 			console.log("tabIdentity: "+tabIdentity);
 			var Image_Type = $(parentR).find("input[name=Image_Type]").val();
@@ -476,6 +479,7 @@
 			////serializeData.push({EventStatusName:EventStatusName, EventStatusId:EventStatusId});
 			var string = "tabIdentity="+tabIdentity+"&Image_Type="  + Image_Type;
 			console.log("string: "+string);
+			Ajax_path = "ImageType";
 		}else if(tabIdentity == 4){
 			console.log("tabIdentity: "+tabIdentity);
 			var Status_Type = $(parentR).find("input[name=Status_Type]").val();
@@ -484,6 +488,7 @@
 			////serializeData.push({EventStatusName:EventStatusName, EventStatusId:EventStatusId});
 			var string = "tabIdentity="+tabIdentity+"&Status_Type="  + Status_Type + "&Status_Abr="  + Status_Abr;
 			console.log("string: "+string);
+			Ajax_path = "Status";
 		}else if(tabIdentity == 5){
 			console.log("tabIdentity: "+tabIdentity);
 			var name = $(parentR).find("input[name=name]").val();
@@ -492,6 +497,7 @@
 			//serializeData.push({EventStatusName:EventStatusName, EventStatusId:EventStatusId});
 			var string = "tabIdentity="+tabIdentity+"&name="  + name + "&description="  + description;
 			console.log("string: "+string);
+			Ajax_path = "CaseStatus";
 		}else if(tabIdentity == 6){
 			console.log("tabIdentity: "+tabIdentity);
 			var Doc_Name = $(parentR).find("input[name=Doc_Name]").val();
@@ -501,6 +507,7 @@
 			//serializeData.push({EventStatusName:EventStatusName, EventStatusId:EventStatusId});
 			var string = "tabIdentity="+tabIdentity+"&Doc_Name="  + Doc_Name + "&Doc_Value="  + Doc_Value + "&Settlement="  + Settlement;
 			console.log("string: "+string);
+			Ajax_path = "Doc";
 		}else if(tabIdentity == 7){
 			console.log("tabIdentity: "+tabIdentity);
 			var ServiceType = $(parentR).find("input[name=ServiceType]").val();
@@ -509,6 +516,7 @@
 			//serializeData.push({EventStatusName:EventStatusName, EventStatusId:EventStatusId});
 			var string = "tabIdentity="+tabIdentity+"&ServiceType="  + ServiceType + "&ServiceDesc="  + ServiceDesc;
 			console.log("string: "+string);
+			Ajax_path = "Service";
 		}else if(tabIdentity == 8){
 			console.log("tabIdentity: "+tabIdentity);
 			var EventTypeName = $(parentR).find("input[name=EventTypeName]").val();
@@ -516,6 +524,7 @@
 			//serializeData.push({EventTypeName:EventTypeName, EventTypeId:EventTypeId});
 			var string = "tabIdentity="+tabIdentity+"&EventTypeName="  + EventTypeName;
 			console.log("string: "+string);
+			Ajax_path = "EventType";
 		}else if(tabIdentity == 9){
 			console.log("tabIdentity: "+tabIdentity);
 			var EventStatusName = $(parentR).find("input[name=EventStatusName]").val();
@@ -523,6 +532,7 @@
 			//serializeData.push({EventStatusName:EventStatusName, EventStatusId:EventStatusId});
 			var string = "tabIdentity="+tabIdentity+"&EventStatusName="  + EventStatusName;
 			console.log("string: "+string);
+			Ajax_path = "EventStatus";
 		}
 		request = $.ajax({
 			url:"<?php echo base_url(); ?>dataentry/Add_Record",
@@ -532,14 +542,14 @@
 
 		request.done(function (response, textStatus, jqXHR) {
 			console.log("Successssss "+response);
-			/*$("#example"+tabIdentity).dataTable().fnDestroy();
+			$("#example"+tabIdentity).dataTable().fnDestroy();
 			$('#example'+tabIdentity).dataTable( {
-				"ajax": 'EventType',
+				"ajax": Ajax_path,
 				"iDisplayLength": 20,
 				"aLengthMenu": [5, 10, 20, 25, 50, "All"],
 				"bSort": false,
 				"searching": false
-			});*/
+			});
 			callSuccess();
 			
 		});

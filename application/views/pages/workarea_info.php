@@ -685,9 +685,9 @@ for($i=0; $i<=13; $i++){
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
-								<div class="col-md-2 claim-paid-balance"><input step="0.0001" type="number" id="ClaimAmtTab6" name="ClaimAmtTab6" class="form-control input-sm Amount" ></div> 	 	
-								<div class="col-md-2 claim-paid-balance"><input step="0.0001" type="number" id="PaymentsTab6" name="PaymentsTab6" class="form-control input-sm Amount" ></div>
-								<div class="col-md-2 claim-paid-balance"><input step="0.0001" type="number" id="BalanceTab6" name="BalanceTab6"  class="form-control input-sm Amount" ></div>
+								<div class="col-md-2 claim-paid-balance"><input step="0.0001" type="number" id="ClaimAmtTab6" name="ClaimAmtTab6" class="form-control input-sm Amount" disabled></div> 	 	
+								<div class="col-md-2 claim-paid-balance"><input step="0.0001" type="number" id="PaymentsTab6" name="PaymentsTab6" class="form-control input-sm Amount" disabled></div>
+								<div class="col-md-2 claim-paid-balance"><input step="0.0001" type="number" id="BalanceTab6" name="BalanceTab6"  class="form-control input-sm Amount" disabled></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
@@ -699,13 +699,18 @@ for($i=0; $i<=13; $i++){
                                 <input type="hidden" name="Case_AutoId" value="<?php echo $Case_AutoId;?>">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label">SETTLEMENT AMOUNT</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltSettlement_AmountTab6" name="Settlement_Amount"  class="form-control input-sm Amount settled-by-info"></div>
-								<div class="col-md-1"><input step="0.01" type="number" id="settlementPercentageTab6" name="settlementPercentageTab6"  class="form-control input-sm percentage" value="100.00"></div>
+								<div class="col-md-1">
+                                    <!--<input type="text" id="FltSettlement_AmountTab6" name="Settlement_Amount"  class="form-control input-sm Amount settled-by-info" />-->
+                                    <input type="text" name="Settlement_Amount" value="" class="form-control input-sm Amount settled-by-info" disabled />
+                                </div>
+								<div class="col-md-1"><input step="0.01" type="number" id="settlementPercentageTab6" name="settlementPercentageTab6"  class="form-control input-sm percentage" value="100.00" disabled></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label col-md-12">INTEREST</label> </div>
-								<div class="col-md-1"><input type="text" id="FltInterestTab6" name="Settlement_Int"  class="form-control input-sm Amount settled-by-info" /></div>
+								<div class="col-md-1">
+                                	<input type="text" id="FltInterestTab6" name="Settlement_Int"  class="form-control input-sm Amount settled-by-info" />
+                                </div>
 								<div class="col-md-1"><input step="0.01" type="number" id="FltInterestPercTab6" name="FltInterestPercTab6"  class="form-control input-sm percentage" value="100.00" ></div>
 								<div class="col-md-1 start-date-settlement settled-status-open"><label class="control-label col-md-12">START DATE</label> </div>
 								<div class="col-md-1 settled-status-open"><input type="text" id="CopundIntStartData" name="CopundIntStartData"  class="form-control input-sm datepicker_recurring_start" ></div>
@@ -720,25 +725,25 @@ for($i=0; $i<=13; $i++){
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label">ATTORNEY'S FEE 	</label> </div>
 								<div class="col-md-1"><input step="0.01" type="number" id="FltAttorneyFeeTab6" name="Settlement_Af"  class="form-control input-sm Amount" ></div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltAttorneyPercTab6" name="FltAttorneyPercTab6"  class="form-control input-sm percentage" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltAttorneyPercTab6" value="100.00" name="FltAttorneyPercTab6"  class="form-control input-sm percentage" ></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label">FILING FEE</label> </div>
 								<div class="col-md-1"><input step="0.01" type="number" id="FltFillingFeeTab6" name="Settlement_Ff"  class="form-control input-sm Amount" ></div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltFillingFeePercTab6" name="FltFillingFeePercTab6"  class="form-control input-sm percentage" ></div>
+								<div class="col-md-1"><input step="0.01" value="100.00" type="number" id="FltFillingFeePercTab6" name="FltFillingFeePercTab6"  class="form-control input-sm percentage" ></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label settlement-title">TOTAL AMOUNT</label> </div>
 								<div class="col-md-1"><input step="0.01" type="number" id="TotalAmount" name="Settlement_Total"  class="form-control input-sm Amount" ></div>
-								<div class="col-md-1"><input step="0.01" type="number" id="TotalAmountPerc" name="TotalAmountPerc"  class="form-control input-sm percentage" ></div>
+								<div class="col-md-1"><input step="0.01" value="100.00" type="number" id="TotalAmountPerc" name="TotalAmountPerc"  class="form-control input-sm percentage" ></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12 settled-status-open">
 								<div class="col-md-3"></div>
-								<div class="col-md-2 recalculate-btn"><button>Re-Calculate Amount</button></div>
+								<div class="col-md-2 recalculate-btn"><button type="button" id="RecalculateAmt">Re-Calculate Amount</button></div>
 								<div class="add-amt-btn col-md-1"><button>Add Amount</button></div>
-								<div class="reset-amt-btn col-md-1"><button>Reset Values</button></div>
+								<div class="reset-amt-btn col-md-1"><button type="button" id="ResetValues" class="">Reset Values</button></div>
 							</div>
                             <div class="form-group form-horizontal col-md-12 settled-status-open">
 								<label class="col-md-2 control-label">SETTLED TYPE</label>
@@ -760,7 +765,7 @@ for($i=0; $i<=13; $i++){
 							</div>
                             <div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
-								<div class="col-md-2 finalize-sett-button"><button type="submit" class="btn btn-primary" id="finalizeButton" <?php //if($Check_Status !="OPEN" || $Check_Status !="OPEN "){echo "disabled";}?>><i class="fa fa-check"></i> Finalize Settlement</button></div>
+								<div class="col-md-2 finalize-sett-button"><button type="submit" class="btn btn-primary" id="finalizeButton" <?php if($Check_Status =="OPEN" || $Check_Status =="OPEN "){}else{echo "disabled";}?>><i class="fa fa-check"></i> Finalize Settlement</button></div>
 								<div class="col-md-1"><button type="button" class="reset-settlement">Reset</button></div>
 							</div>
                             </form>
@@ -1766,6 +1771,9 @@ $(document).ready(function(e) {
 				string += "&inputName="+inputName+"&inputValue="+inputValue;
 				if(recordNo >=22){
 					x[recordNo-2].innerHTML = inputValue;
+				}else if(recordNo == 14){
+					var balance = parseFloat($(".visible:eq(12)").text()) - inputValue;
+					x[13].innerHTML = inputValue +" / Balance = "+balance;
 				}else{
 					x[recordNo-1].innerHTML = inputValue;
 				}
@@ -1827,7 +1835,7 @@ $(document).ready(function(e) {
 		}
 		
 		
-		console.log("string= "+string);
+		console.log("Final string= "+string);
 		request = $.ajax({
 			url:"<?php echo base_url(); ?>search/updateCaseInfo",
 			type: "post",
@@ -2030,7 +2038,7 @@ $(document).ready(function(e) {
 	$("#CalculateSI").click( function(){
 		var Day_Diff = daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndData').val()));
 		if(Day_Diff >=0){
-			var settAmt = $("#FltSettlement_AmountTab6").val();
+			var settAmt = $("input[name=Settlement_Amount]").val();
 			//var settAmt = 1515.36;
 			var Total_Interest = (settAmt * 0.2) / (30 * Day_Diff);
 			$("#FltInterestTab6").val(Total_Interest);
@@ -2062,6 +2070,7 @@ $(document).ready(function(e) {
 		},
 		submitHandler: function (form) {
 			var $form = $(form);
+			var FixedSettAmt = $("input[name=Settlement_Amount]").val();
 			var $inputs = $form.find("input, select, button, textarea");
 			var serializedData = $form.serialize();
 			var flag = 0;
@@ -2071,10 +2080,28 @@ $(document).ready(function(e) {
 			}else{ flag = 1; }
 
 			if(flag == 1){
+				var dataArray = $form.serializeArray();
+				len = dataArray.length;
+				dataObj = [];
+				
+				for (i=0; i<len; i++) {
+				  dataObj[dataArray[i].name] = dataArray[i].value;
+				}
+				
 				request = $.ajax({
 					url:"<?php echo base_url(); ?>search/update_Settlement",
 					type: "post",
-					data: serializedData
+					"data": {
+						"Settlement_Amount": FixedSettAmt,
+						"Settlement_Int": dataObj['Settlement_Int'],
+						"Settlement_Af": dataObj['Settlement_Af'],
+						"Settlement_Ff": dataObj['Settlement_Ff'],
+						"Settlement_Total": dataObj['Settlement_Total'],
+						"Settlement_Notes": dataObj['Settlement_Notes'],
+						"SettledWithAdjuster": dataObj['SettledWithAdjuster'],
+						"SettledWithAttorney": dataObj['SettledWithAttorney'],
+						"Case_Id": dataObj['Case_Id']
+					}
 				});
 				request.done(function (response, textStatus, jqXHR) {
 					Update_Settlement();
@@ -2089,7 +2116,7 @@ $(document).ready(function(e) {
 			}
 		}
 	});
-/*RESET ETTLEMENT*/
+/*RESET SETTLEMENT*/
 	$(".reset-settlement").click(function(e){
 		swal({
 			title: "Are you sure?",
@@ -2142,6 +2169,14 @@ $(document).ready(function(e) {
 					//console.log("current_case_status if open:"+current_case_status);
 				}else{
 					$(".settled-status-open").css("display", "none");
+					/*$("input[name=Settlement_Int]").prop("disabled", true);
+					$("input[name=Settlement_Af]").prop("disabled", true);
+					$("input[name=Settlement_Ff]").prop("disabled", true);
+					$("input[name=Settlement_Total]").prop("disabled", true);
+					$("input[name=FltInterestPercTab6]").prop("disabled", true);
+					$("input[name=FltAttorneyPercTab6]").prop("disabled", true);
+					$("input[name=FltFillingFeePercTab6]").prop("disabled", true);
+					$("input[name=TotalAmountPerc]").prop("disabled", true);*/
 					//console.log("current_case_status if others:"+current_case_status);
 				}
 				current_case_status ="";
@@ -2154,24 +2189,48 @@ $(document).ready(function(e) {
 		load_sett_data();
 	});
 	
-	
+	var interestCount = 0;
+	var interest = "";
 	$("#FltInterestPercTab6").keyup(function(){
-		var interest = $("#FltInterestTab6").val();
-		var rr = $("#FltAttorneyFeeTab6").val(($("#FltSettlement_AmountTab6").val() + $("#FltInterestTab6").val())/5);
-		console.log("rr:"+interest);
-	
+		if(interestCount == 0){
+			interest = $("input[name=Settlement_Int]").val();
+		}
+		var rr = $("#FltAttorneyFeeTab6").val(($("input[name=Settlement_Amount]").val() + $("input[name=Settlement_Int]").val())/5);
+		interestCount++;
 		var interestPerc = $(this).val();
 		if ($(this).val() > 100){
 			$(this).val("100.00");
-			$("#FltInterestTab6").val(interest);
+			$("input[name=Settlement_Int]").val(interest)
 			//console.log("calInt:"+calInt);
 		}else{
 			calInt = (parseFloat(interestPerc) / 100) * interest;
-			$("#FltInterestTab6").val(calInt);
+			$("input[name=Settlement_Int]").val(calInt)
 			console.log("calInt:"+calInt);
 		}
-		
 	});
+	$("#ResetValues").click(function(){
+		$("input[name=Settlement_Int]").val("0.00");
+		$("input[name=Settlement_Af]").val("0.00");
+		$("input[name=Settlement_Ff]").val("0.00");
+		$("input[name=Settlement_Total]").val("0.00");
+		interestCount = 0;
+	});
+	$("#RecalculateAmt").click(function(){
+		Settlement_Calculation();
+		interestCount = 0;
+	});
+	function Settlement_Calculation(){
+		var SetAmt = $("input[name=Settlement_Amount]").val();
+		var SetInt = $("input[name=Settlement_Int]").val();
+		var SetAF = $("input[name=Settlement_Af]").val();
+		var SetFF = $("input[name=Settlement_Ff]").val();
+		if(SetAF == null){
+			SetAF = "0.00";
+		}
+		
+		var TotalAmount =  parseFloat(SetAmt) + parseFloat(SetInt) + parseFloat(SetAF) + parseFloat(SetFF);
+		$("input[name=Settlement_Total]").val(TotalAmount.toFixed(2));
+	}
 	function load_sett_data(){
 		$.ajax({
 			type:'POST',
@@ -2183,43 +2242,23 @@ $(document).ready(function(e) {
 				});
 				 var settledBy = document.getElementsByClassName("settled-by-info");
 				for($i in results){
-					console.log("Settlement_Amount:"+parseFloat(results[$i].Settlement_Amount));
+					console.log("Settlement_Amount:"+results[$i].Settlement_Amount);
 					console.log("Settlement_Int:"+parseFloat(results[$i].Settlement_Int));
 					console.log("Settlement_Af:"+parseFloat(results[$i].Settlement_Af));
 					console.log("Settlement_Ff:"+parseFloat(results[$i].Settlement_Ff));
 					console.log("Settlement_Total:"+parseFloat(results[$i].Settlement_Total));
 					
-					
 					settledBy[0].innerHTML = results[$i].User_Id;
 					settledBy[1].innerHTML = results[$i].SettledWith;
 					 
-					 
-					 $("#FltSettlement_AmountTab6").val(parseFloat(results[$i].Settlement_Amount));
+					if(results[$i].Settlement_Amount == null){ $("input[name=Settlement_Amount]").val("0.00"); }else{ $("input[name=Settlement_Amount]").val(parseFloat(results[$i].Settlement_Amount));}
+					
 					 //$("#FltInterestTab6").val(results[$i].Settlement_Int);
-					 $("#FltInterestTab6").val("100");
-					//var settlementPercentage = (results[$i].Settlement_Amount * 100)/ balance;
-					//$("#settlementPercentageTab6").val(settlementPercentage.toFixed(2));
-					//$("#FltAttorneyFeeTab6").val(results[$i].Settlement_Af);
-					
-					//$("#FltFillingFeeTab6").val(results[$i].Settlement_Ff);
-					var TotalAmount =  parseFloat(results[$i].Settlement_Amount) + parseFloat(results[$i].Settlement_Int) + parseFloat(results[$i].Settlement_Af) + parseFloat(results[$i].Settlement_Ff);
-					console.log("load_sett_data TotalAmount:"+TotalAmount);
-					
-					$("#TotalAmount").val(TotalAmount);
-					
-					/*var balance = results.CaseInfo[$i].Claim_Amount - results.CaseInfo[$i].Paid_Amount;
-					$("#BalanceTab6").val(balance.toFixed(2));
-					
-					$("#FltSettlement_AmountTab6").val(results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT.toFixed(2));
-					var settlementPercentage = (results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT * 100)/ balance;
-					$("#settlementPercentageTab6").val(settlementPercentage.toFixed(2));
-					$("#FltAttorneyFeeTab6").val(results.CaseInfo[$i].FLT_ATTORNEY_FEE);
-					//$("#FltInterestTab6").val(results.CaseInfo[$i].FLT_INTERATE_RATE);
-					$("#FltFillingFeeTab6").val(results.CaseInfo[$i].FLT_FILING_FEE);
-					var TotalAmount =  parseFloat(results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT) + parseFloat(results.CaseInfo[$i].FLT_INTERATE_RATE) + parseFloat(results.CaseInfo[$i].FLT_ATTORNEY_FEE) + parseFloat(results.CaseInfo[$i].FLT_FILING_FEE);
-					$("#TotalAmount").val(TotalAmount.toFixed(2));*/
-					
-					
+					 $("input[name=Settlement_Int]").val(parseFloat(results[$i].Settlement_Int));
+					 $("input[name=Settlement_Af]").val(parseFloat(results[$i].Settlement_Af));
+					 $("input[name=Settlement_Ff]").val(parseFloat(results[$i].Settlement_Ff));
+					 Settlement_Calculation();
+					 interestCount = 0;
 				}
 			}
 		});
@@ -2382,8 +2421,8 @@ $(document).ready(function(e) {
 	$("input[name=EventType]").prop("disabled", true);
 	$("input[name=EventStatus]").prop("disabled", true);
 	$("input[name=AssignUser]").prop("disabled", true);
-	$("#FltSettlement_AmountTab6").prop("disabled", true);
-	$("#settlementPercentageTab6").prop("disabled", true);
+	//$("#FltSettlement_AmountTab6").prop("disabled", true);
+	//$("#settlementPercentageTab6").prop("disabled", true);
 
 /******** DELETE EVENTS ********/
 	$('body').on( 'click', '#deleteEventsButton', function () {
@@ -2612,9 +2651,6 @@ $(document).ready(function(e) {
 					var TotalAmount =  parseFloat(results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT) + parseFloat(results.CaseInfo[$i].FLT_INTERATE_RATE) + parseFloat(results.CaseInfo[$i].FLT_ATTORNEY_FEE) + parseFloat(results.CaseInfo[$i].FLT_FILING_FEE);
 					$("#TotalAmount").val(TotalAmount.toFixed(2));*/
 					
-					$("#ClaimAmtTab6").prop("disabled", true);
-					$("#PaymentsTab6").prop("disabled", true);
-					$("#BalanceTab6").prop("disabled", true);
 					
 					x[13].innerHTML = results.CaseInfo[$i].Paid_Amount+" / Balance = "+balance;
 					$("input[name=Paid_Amount]").val(results.CaseInfo[$i].Paid_Amount);
