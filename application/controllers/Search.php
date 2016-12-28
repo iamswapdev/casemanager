@@ -94,6 +94,7 @@ class Search extends CI_Controller{
 			$data['EventType']= $this->dataentry_model->get_EventTypeArray();
 			$data['EventStatus']= $this->dataentry_model->get_EventStatusArray();
 			$data['Transactions'] = $this->search_model->Transanction_Info();
+			$data['User_List'] = $this->search_model->get_User_List();
 			
 			$data['CaseInfo']= $this->search_model->get_CaseInfo_ById($Case_AutoId);
 			$Provider_Id = $data['CaseInfo'][0]['Provider_Id'];
@@ -642,7 +643,7 @@ class Search extends CI_Controller{
 	
 	public function update_Settlement(){
 		$data = array(
-			"Settlement_Amount" =>$this->input->post('Settlement_Amount'),
+			"Settlement_Amount" =>$this->input->post('Settlement_AmountHidden'),
 			"Settlement_Int" => $this->input->post('Settlement_Int'),
 			"Settlement_Af" => $this->input->post('Settlement_Af'),
 			"Settlement_Ff" => $this->input->post('Settlement_Ff'),
@@ -710,7 +711,7 @@ class Search extends CI_Controller{
 			$row = array();
 			$row[] = "<input type='text' name='Provider_Name' class='form-control input-sm input-height' value='".$result->Provider_Name."' >";
 			$row[] = "<input type='text' name='Transactions_Type' class='form-control input-sm input-height' value='".$result->Transactions_Type."' >";
-			$row[] = "<input type='text' name='ServiceType' class='form-control input-sm input-height' value='".$result->Transactions_Date."' >";
+			$row[] = "<input type='text' name='ServiceType' class='form-control input-sm input-height datetimepicker_Dos_Doe' value='".date_format(date_create(substr($result->Transactions_Date,0,10)),"m/d/Y")."' >";
 			$row[] = "<input type='text' name='Transactions_Amount' class='form-control input-sm input-height' value='".$result->Transactions_Amount."' >";
 			$row[] = "<input type='text' name='Transactions_Description' class='form-control input-sm input-height' value='".$result->Transactions_Description."' >";
 			$row[] = "<input type='text' name='ServiceType' class='form-control input-sm input-height' value='".$result->Transactions_Fee."' >";
@@ -795,12 +796,14 @@ class Search extends CI_Controller{
 		$data = array();
 		foreach ($list as $result) {
 			$row = array();
+			$Event_Time = $result->Event_Time;
+			if($Event_Time == null){ $Event_Time = ""; }else{ $Event_Time = substr($Event_Time, 11, 5);}
 			$row[] ="<i title='Edit' class='fa fa-edit editEventsButton'></i><input type='hidden' name='Assigned_To' value='".$result->Assigned_To."'>"."<input type='hidden' name='EventId' value='".$result->Event_id."'>";
 			$row[] = $result->Case_Id;
 			$row[] = $result->EventTypeName."<input type='hidden' name='EventTypeIdHidden' value='".$result->EventTypeId."'>";
 			$row[] = $result->EventStatusName."<input type='hidden' name='EventStatusIdHidden' value='".$result->EventStatusId."'>";
 			$row[] = substr($result->Event_Date, 0, 10);
-			$row[] = substr($result->Event_Date, 11, 8);
+			$row[] = substr($result->Event_Date, 11, 5);
 			$row[] = $result->Event_Notes;
 			$row[] = $result->Assigned_To;
 			$row[] = $result->Provider_Name;
@@ -837,11 +840,11 @@ class Search extends CI_Controller{
 			"EventStatusId" => $this->input->post("EventStatusHidden"),
 			"Event_Time" => $this->input->post("EventTime"),
 			"Event_Notes" => $this->input->post("EventDescription"),
-			"Assigned_To" => $this->input->post("AssignUser"),
+			"Assigned_To" => $this->input->post("AssignUserHidden"),
 			"Event_id" => $this->input->post("EventIdHidden")
 		);
 		$this->search_model->update_EventInfo($data);
-		//echo "<pre>"; print_r($data);exit();
+		echo "<pre>"; print_r($data);
 	}
 /*****************************************************************************************************************************************/
 	public function Search_Table_Data($list){

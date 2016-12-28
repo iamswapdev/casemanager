@@ -644,8 +644,9 @@ for($i=0; $i<=13; $i++){
                                 <div class="col-md-1 case-info-tab6-title">CASE ID</div>
                                 <div class="col-md-2 case-info-tab6-title">PROVIDER</div>
                                 <div class="col-md-2 case-info-tab6-title">INJURED PARTY</div>
-                                <div class="col-md-1 settled-by-show"></div>
+                                <!--<div class="col-md-1 settled-by-show"></div>-->
                                 <div class="col-md-2 case-info-tab6-title settled-by settled-by-show">SETTLED BY</div>
+                                <div class="col-md-2 case-info-tab6-title settled-by settled-by-show">SETTLED DATE</div>
                                 
 							</div>
 							<div class="form-horizontal col-md-12 settlement-title-info">
@@ -654,10 +655,12 @@ for($i=0; $i<=13; $i++){
                                 <div class="col-md-2 case-info-tab6" id="ProviderName-tab-6"></div>
                                 <div class="col-md-2 case-info-tab6" id="InjuredPartyName-tab-6"></div>
                                 
-                                <div class="col-md-1 settled-by-show"></div>
-                                <div class="col-md-2 case-info-tab6 settled-by-info settled-by-show" id="InjuredPartyName-tab-6"></div>
+                                <!--<div class="col-md-1 settled-by-show"></div>-->
+                                <div class="col-md-2 case-info-tab6 settled-by-info settled-by-show"></div>
+                                <div class="col-md-2 case-info-tab6 settled-by-info settled-by-show">27/01/1231</div>
                                
 							</div>
+<!--------------- SETTLED FORM ---------------------------------------------------------------------------------->
                             <form method="post" id="settlement_form_open">
 							<div class="form-group form-horizontal col-md-12 settled-status-open">
 								<label class="col-md-2 control-label">ADJUSTER</label>
@@ -674,7 +677,7 @@ for($i=0; $i<=13; $i++){
 								</div>
 							</div>
                             <div class="form-group form-horizontal col-md-12 sett-with-name settled-by-show">
-                            	<label class="control-label col-md-2">Settle with: </label>
+                            	<label class="control-label col-md-2">Settled with: </label>
                                 <div class="col-md-8 case-info-tab6 settled-by-info"></div>
                             </div>
 							<div class="form-group form-horizontal col-md-12">
@@ -701,6 +704,7 @@ for($i=0; $i<=13; $i++){
 								<div class="col-md-1">
                                     <!--<input type="text" id="FltSettlement_AmountTab6" name="Settlement_Amount"  class="form-control input-sm Amount settled-by-info" />-->
                                     <input type="text" name="Settlement_Amount" value="" class="form-control input-sm Amount settled-by-info" disabled />
+                                    <input type="hidden" name="Settlement_AmountHidden" />
                                 </div>
 								<div class="col-md-1"><input step="0.01" type="number" id="settlementPercentageTab6" name="settlementPercentageTab6"  class="form-control input-sm percentage" value="100.00" disabled></div>
 							</div>
@@ -724,19 +728,19 @@ for($i=0; $i<=13; $i++){
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label">ATTORNEY'S FEE 	</label> </div>
 								<div class="col-md-1"><input step="0.01" type="number" id="FltAttorneyFeeTab6" name="Settlement_Af"  class="form-control input-sm Amount" ></div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltAttorneyPercTab6" value="100.00" name="FltAttorneyPercTab6"  class="form-control input-sm percentage" ></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="FltAttorneyPercTab6" value="100.00" name="FltAttorneyPercTab6"  class="form-control input-sm percentage" disabled></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label">FILING FEE</label> </div>
 								<div class="col-md-1"><input step="0.01" type="number" id="FltFillingFeeTab6" name="Settlement_Ff"  class="form-control input-sm Amount" ></div>
-								<div class="col-md-1"><input step="0.01" value="100.00" type="number" id="FltFillingFeePercTab6" name="FltFillingFeePercTab6"  class="form-control input-sm percentage" ></div>
+								<div class="col-md-1"><input step="0.01" value="100.00" type="number" id="FltFillingFeePercTab6" name="FltFillingFeePercTab6"  class="form-control input-sm percentage" disabled></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-1"><label class="control-label settlement-title">TOTAL AMOUNT</label> </div>
 								<div class="col-md-1"><input step="0.01" type="number" id="TotalAmount" name="Settlement_Total"  class="form-control input-sm Amount" ></div>
-								<div class="col-md-1"><input step="0.01" value="100.00" type="number" id="TotalAmountPerc" name="TotalAmountPerc"  class="form-control input-sm percentage" ></div>
+								<div class="col-md-1"><input step="0.01" value="100.00" type="number" id="TotalAmountPerc" name="TotalAmountPerc"  class="form-control input-sm percentage" disabled></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12 settled-status-open">
 								<div class="col-md-3"></div>
@@ -769,7 +773,6 @@ for($i=0; $i<=13; $i++){
 							</div>
                             </form>
                             
-<!--------------- SETTLED FORM ---------------------------------------------------------------------------------->
 						</div><!-- End of panel-body tab-panel-->
 						</div><!-- End hpanel -->
 						</div><!-- End col-lg-12-->
@@ -1034,14 +1037,15 @@ for($i=0; $i<=13; $i++){
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Transaction Date</label>
                                 <div class="col-md-2">
-                                	<input type="text" id="Transactions_Date" name="Transactions_Date"  class="form-control input-sm datetimepicker_start" >
+                                	<input type="text" id="Transactions_Date" name="Transactions_Date"  class="form-control input-sm datetimepicker_Dos_Doe" >
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Transaction Type</label>
                                 <div class="col-md-2">
-                                	<select class="form-control input-sm" id="Transactions_Type" name="Transactions_Type" required>
-                                        <option selected="selected" value="0">...Select...</option>
+                                	<select class="form-control input-sm" id="Transactions_Type" name="Transactions_Type" >
+                                    	<option selected value=""></option>
+                                        <!--<option selected="selected" value="0">...Select...</option>-->
                                         <option value="C">Collected (C - From Insurer)</option>
                                         <option value="AF">Attorney Fee (AF)</option>
                                         <option value="CRED">Credit (CRED - To Provider)</option>
@@ -1056,9 +1060,12 @@ for($i=0; $i<=13; $i++){
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Transaction Status</label>
                                 <div class="col-md-2">
-                                	<select class="form-control input-sm" id="Transactions_status" name="Transactions_status" required>
-                                        <option selected="selected" value="Show On Remittance">Show On Remittance</option>
+                                	<select class="form-control input-sm" id="Transactions_status" name="Transactions_status" >
+                                    	<option selected value=""></option>
+                                        <option value="Show On Remittance">Show On Remittance</option>
+                                        <option value="XFREEZED">FREEZED</option>
                                         <option value="X">Do Not Show On Remittance</option>
+                                        
                                      </select>
                                 </div>
                             </div>
@@ -1104,7 +1111,7 @@ for($i=0; $i<=13; $i++){
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Event Date <span class="required-field">*</span></label>
                                 <div class="col-md-2">
-                                	<input class="form-control input-sm datetimepicker_start" name="EventDate">
+                                	<input class="form-control input-sm datetimepicker_HM" name="EventDate">
                                 </div>
                                 <!--<div class='input-group date col-md-2' id='datetimepicker6'>
                                     <input type='text' class="form-control input-sm" id="EventDate" name="EventDate" />
@@ -1116,7 +1123,7 @@ for($i=0; $i<=13; $i++){
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Event Type</label>
                                 <div class="col-md-2">
-                                	<input id="EventType" name="EventType"  class="form-control input-sm" >
+                                	<input id="EventType" name="EventType"  class="form-control input-sm" disabled>
                                     <input type="hidden" name="EventTypeHidden">
                                 </div>
                                 <div class="col-md-4">
@@ -1126,7 +1133,7 @@ for($i=0; $i<=13; $i++){
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Event Status: </label>
                                 <div class="col-md-2">
-                                	<input id="EventStatus" name="EventStatus"  class="form-control input-sm" >
+                                	<input id="EventStatus" name="EventStatus"  class="form-control input-sm" disabled>
                                     <input type="hidden" name="EventStatusHidden">
                                 </div>
                                 <div class="col-md-4">
@@ -1148,10 +1155,11 @@ for($i=0; $i<=13; $i++){
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Assigned To: </label>
                                 <div class="col-md-2">
-                                    <input type="text" name="AssignUser"  class="form-control input-sm">
+                                    <input type="text" name="AssignUser"  class="form-control input-sm" disabled>
+                                    <input type="hidden" name="AssignUserHidden"  class="form-control input-sm">
                                 </div>
                                 <div class="col-md-4">
-                                	<select class="form-control input-sm" id="selectAssignUser" name="selectAssignUser"><option selected="selected" value="">Select User to Assign</option><?php foreach($EventStatus as $row){?><option value="<?php echo $row['EventStatusId']; ?>"><?php echo $row['EventStatusName'];?></option><?php  }?></select>
+                                	<select class="form-control input-sm" id="selectAssignUser" name="selectAssignUser"><option selected="selected" value="">Select User to Assign</option><?php foreach($User_List as $row){?><option value="<?php echo $row['UserName']; ?>"><?php echo $row['UserName'];?></option><?php  }?></select>
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
@@ -1816,7 +1824,7 @@ $(document).ready(function(e) {
 								if(adjExt == null){
 									adjExt ="";
 								}
-									info1[5].innerHTML = results.data[0][0]+ " "+results.data[0][1]+" [Phone#: "+adjPhone+"] [Ext#: "+adjExt+"]";
+									info1[5].innerHTML = results.data[0][0]+ " "+results.data[0][1]+" / "+adjPhone+" / "+adjExt;
 								//info1[5].innerHTML = $("#"+selectId+" option:selected").text();
 							},
 							error: function(result){ console.log("error"); }
@@ -2097,9 +2105,16 @@ $(document).ready(function(e) {
 					console.log("Settlement_Total:"+parseFloat(results[$i].Settlement_Total));*/
 					
 					settledBy[0].innerHTML = results[$i].User_Id;
-					settledBy[1].innerHTML = results[$i].SettledWith;
+					settledBy[1].innerHTML = results[$i].Settlement_Date.substr(0, 10);
+					var str = results[$i].SettledWith;
+					var str = results[$i].SettledWith.replace("=> [ADJ.PH#:", "/");
+					var str = str.replace("/ INS CPY:", "/");
+					var str = str.replace("]", "");
+					var str = str.substring(0, str.indexOf("/ ADJ FAX#: "));
+					
+					settledBy[2].innerHTML = str;
 					 
-					if(results[$i].Settlement_Amount == null){ $("input[name=Settlement_Amount]").val("0.00"); }else{ $("input[name=Settlement_Amount]").val(parseFloat(results[$i].Settlement_Amount));}
+					if(results[$i].Settlement_Amount == null){ $("input[name=Settlement_Amount]").val("0.00"); $("input[name=Settlement_AmountHidden]").val("0.00"); }else{ $("input[name=Settlement_Amount]").val(parseFloat(results[$i].Settlement_Amount)); $("input[name=Settlement_AmountHidden]").val(parseFloat(results[$i].Settlement_Amount));}
 					
 					 //$("#FltInterestTab6").val(results[$i].Settlement_Int);
 					 $("input[name=Settlement_Int]").val(parseFloat(results[$i].Settlement_Int));
@@ -2117,7 +2132,7 @@ $(document).ready(function(e) {
 		if(interestCount == 0){
 			interest = $("input[name=Settlement_Int]").val();
 		}
-		var rr = $("#FltAttorneyFeeTab6").val(($("input[name=Settlement_Amount]").val() + $("input[name=Settlement_Int]").val())/5);
+		var rr = $("#FltAttorneyFeeTab6").val(($("input[name=Settlement_AmountHidden]").val() + $("input[name=Settlement_Int]").val())/5);
 		interestCount++;
 		var interestPerc = $(this).val();
 		if ($(this).val() > 100){
@@ -2127,18 +2142,18 @@ $(document).ready(function(e) {
 		}else{
 			calInt = (parseFloat(interestPerc) / 100) * interest;
 			$("input[name=Settlement_Int]").val(calInt)
-			console.log("calInt:"+calInt);
+			//console.log("calInt:"+calInt);
 		}
 	});
 /*Calculate Days difference and simple interest*/
 	$("#CalculateSI").click( function(){
 		var Day_Diff = daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndData').val()));
 		if(Day_Diff >=0){
-			var settAmt = $("input[name=Settlement_Amount]").val();
+			var settAmt = $("input[name=Settlement_AmountHidden]").val();
 			//var settAmt = 1515.36;
 			var Total_Interest = (settAmt * 0.2) / (30 * Day_Diff);
 			$("#FltInterestTab6").val(Total_Interest);
-			console.log("Total_Interest:"+Total_Interest);
+			//console.log("Total_Interest:"+Total_Interest);
 		}else{ alert("Please Select correct End Date");}
 	});
     function parseDate(str) {
@@ -2168,7 +2183,7 @@ $(document).ready(function(e) {
 		},
 		submitHandler: function (form) {
 			var $form = $(form);
-			var FixedSettAmt = $("input[name=Settlement_Amount]").val();
+			//var FixedSettAmt = $("input[name=Settlement_Amount]").val();
 			var $inputs = $form.find("input, select, button, textarea");
 			var serializedData = $form.serialize();
 			var flag = 0;
@@ -2178,28 +2193,18 @@ $(document).ready(function(e) {
 			}else{ flag = 1; }
 
 			if(flag == 1){
-				var dataArray = $form.serializeArray();
+				/*var dataArray = $form.serializeArray();
 				len = dataArray.length;
 				dataObj = [];
 				
 				for (i=0; i<len; i++) {
 				  dataObj[dataArray[i].name] = dataArray[i].value;
-				}
+				}*/
 				
 				request = $.ajax({
 					url:"<?php echo base_url(); ?>search/update_Settlement",
 					type: "post",
-					"data": {
-						"Settlement_Amount": FixedSettAmt,
-						"Settlement_Int": dataObj['Settlement_Int'],
-						"Settlement_Af": dataObj['Settlement_Af'],
-						"Settlement_Ff": dataObj['Settlement_Ff'],
-						"Settlement_Total": dataObj['Settlement_Total'],
-						"Settlement_Notes": dataObj['Settlement_Notes'],
-						"SettledWithAdjuster": dataObj['SettledWithAdjuster'],
-						"SettledWithAttorney": dataObj['SettledWithAttorney'],
-						"Case_Id": dataObj['Case_Id']
-					}
+					"data": serializedData
 				});
 				request.done(function (response, textStatus, jqXHR) {
 					Update_Settlement();
@@ -2248,7 +2253,7 @@ $(document).ready(function(e) {
 		});
 	});
 	function Settlement_Calculation(){
-		var SetAmt = $("input[name=Settlement_Amount]").val();
+		var SetAmt = $("input[name=Settlement_AmountHidden]").val();
 		var SetInt = $("input[name=Settlement_Int]").val();
 		var SetAF = $("input[name=Settlement_Af]").val();
 		var SetFF = $("input[name=Settlement_Ff]").val();
@@ -2345,6 +2350,14 @@ $(document).ready(function(e) {
 	});
 /*ADD TRANSACTIONS*/
 	$("#add_Transactions_Form").validate({
+		/*rules: {
+				Transactions_Type:{
+					required: true
+				},
+				Transactions_status:{
+					required: true
+				}	
+			},*/
 	
 		submitHandler: function (form) {
 			// setup some local variables
@@ -2410,12 +2423,10 @@ $(document).ready(function(e) {
 	  $("input[name=EventStatusHidden]").val(EventStatusId);
 	});
 	$('#selectAssignUser').on('change', function() {
-	  var AssignUser =$("#selectAssignUser option:selected").text();
-	  $("input[name=AssignUser]").val(AssignUser);
+	  $("input[name=AssignUser]").val($("#selectAssignUser option:selected").text());
+	  $("input[name=AssignUserHidden]").val($("#selectAssignUser option:selected").text());
 	});
-	$("input[name=EventType]").prop("disabled", true);
-	$("input[name=EventStatus]").prop("disabled", true);
-	$("input[name=AssignUser]").prop("disabled", true);
+	//$("input[name=AssignUser]").prop("disabled", true);
 	//$("#FltSettlement_AmountTab6").prop("disabled", true);
 	//$("#settlementPercentageTab6").prop("disabled", true);
 
@@ -2478,6 +2489,7 @@ $(document).ready(function(e) {
 		var EventDescription = $(parentRow).find("td:nth-child(7)").text();
 		var Assigned_To = $(parentRow).find("input[name=Assigned_To]").val();
 		$("input[name=AssignUser]").val(Assigned_To);
+		$("input[name=AssignUserHidden]").val(Assigned_To);
 		$("input[name=EventDate]").val(EventDate);
 		$("input[name=EventType]").val(EventType);
 		$("input[name=EventStatus]").val(EventStatus);
@@ -2505,6 +2517,7 @@ $(document).ready(function(e) {
 					var $inputs = $form.find("input, select, button, textarea");
 					// serialize the data in the form
 					var serializedData = $form.serialize();
+					
 		
 					request = $.ajax({
 						url:"<?php echo base_url();?>search/updateEventInfo",
@@ -2549,6 +2562,12 @@ $(document).ready(function(e) {
 	$('body').on('focus',".datetimepicker_start", function(){
 		$(this).datetimepicker({
 			format:'YYYY/MM/DD HH:mm:ss'
+		})
+	});
+/*DATE TIME PICKER SECTION*/
+	$('body').on('focus',".datetimepicker_HM", function(){
+		$(this).datetimepicker({
+			format:'YYYY/MM/DD HH:mm'
 		})
 	});
 /*ONLY TIME PICKER SECTION*/
@@ -2672,7 +2691,7 @@ $(document).ready(function(e) {
 					}else{ adjPhone = results.CaseInfo[$i].Adjuster_Phone; }
 					if(results.CaseInfo[$i].Adjuster_Phone_Ext == null){ adjExt = "";
 					}else{ adjExt = results.CaseInfo[$i].Adjuster_Phone_Ext; }
-					info[5].innerHTML = adjFirstName+ " "+adjLastName+" [Phone#: "+adjPhone+"] [Ext#: "+adjExt+"]";
+					info[5].innerHTML = adjFirstName+ " "+adjLastName+" / "+adjPhone+" / "+adjExt;
 					$("#Hidden_Adjuster_Id").val(results.CaseInfo[$i].Adjuster_Id);
 					x[18].innerHTML = results.CaseInfo[$i].Attorney_Name;
 					
