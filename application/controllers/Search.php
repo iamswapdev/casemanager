@@ -662,10 +662,28 @@ class Search extends CI_Controller{
 		}
 		$Case_Id = $this->input->post('Case_Id');
 		$this->search_model->updateSettlement($data,$Case_Id);
+		
+		$data3 = array(
+			"Notes_Type" => "ACTIVITY",
+			"Notes_Desc" => "Case Settled by ".$this->session->userdata['username']." with ".$data['SettledWith'],
+			"Notes_Date" => $date = date('Y-m-d H:i:s'),
+			"Case_Id" => $this->input->post('Case_Id'),
+			"User_Id" => $this->session->userdata['username']
+		);
+		$this->search_model->add_Notes($data3);
+	
 		echo "<pre>"; print_r($data);
 	}
-	public function reset_Settlement($Case_AutoId){
+	public function reset_Settlement($Case_AutoId, $Case_Id){
 		$this->search_model->resetSettlement($Case_AutoId);
+		$data3 = array(
+			"Notes_Type" => "ACTIVITY",
+			"Notes_Desc" => "Case Reset with/by ".$this->session->userdata['username'],
+			"Notes_Date" => $date = date('Y-m-d H:i:s'),
+			"Case_Id" => $Case_Id,
+			"User_Id" => $this->session->userdata['username']
+		);
+		$this->search_model->add_Notes($data3);
 	}
 	public function get_Current_Status($Case_AutoId){
 		$data = $this->search_model->getCurrent_Status($Case_AutoId);

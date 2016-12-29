@@ -351,7 +351,7 @@ for($i=0; $i<=13; $i++){
                                 &nbsp;&nbsp;<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Add Notes</button>
                             </div>
                         </div>
-                        <div class="form-group form-horizontal col-lg-12">
+                        <!--<div class="form-group form-horizontal col-lg-12">
                             <div class="col-md-9"></div>
                             <div class="col-md-1">
                             	<select class="form-control input-sm" id="" name="">
@@ -363,7 +363,7 @@ for($i=0; $i<=13; $i++){
                                 </select>
                             </div>
                             <div class="col-md-1"><button type="button" class="btn btn-primary">Filter</button></div>
-                        </div> 	
+                        </div> -->	
                         </form> 	 	
                         <div class="form-group form-horizontal col-md-12">
                         <!--<form action="/casemanager/search/getNotes" method="post">
@@ -917,6 +917,7 @@ for($i=0; $i<=13; $i++){
 							<div class="form-group form-horizontal col-md-12 settled-status-open">
 								<label class="col-md-2 control-label">ADJUSTER</label>
 								<div class="col-md-6">
+                                	<input type="hidden" name="Case_Id">
 									<select class="form-control input-sm" id="adjusterIdTab-6" name="adjusterIdTab-6"><option selected="selected" value=""></option><?php foreach ($Adjuster_Name_Insurance as $row) {?><option value="<?php echo $row['Adjuster_Id']; ?>"> <?php echo $row['Adjuster_LastName']." ".$row['Adjuster_FirstName']." => [ADJ.PH#: ".$row['Adjuster_Phone']." / INS CPY: ". $row['InsuranceCompany_Name']." / ADJ FAX#: ".$row['Adjuster_Fax']."]"; ?> </option><?php  }?></select>
                                     <input type="hidden" name="SettledWithAdjuster">
 								</div>
@@ -2471,6 +2472,19 @@ $(document).ready(function(e) {
 					Update_Settlement();
 					checkstatus_open();
 					$(".settled-by-show").css("display","block");
+					$("#NotesTab3").dataTable().fnDestroy();
+					$('#NotesTab3').dataTable( {
+						"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
+						"iDisplayLength": 10,
+						"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+					});
+					$("#NotesTab1").dataTable().fnDestroy();
+					$('#NotesTab1').dataTable( {
+						"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
+						"iDisplayLength": 5,
+						"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+						"bSort": false
+					});
 					load_sett_data();
 					callSuccess();
 					$("#finalizeButton").prop('disabled', true);
@@ -2497,8 +2511,21 @@ $(document).ready(function(e) {
 				swal("Reset!", "Settlement successfully Reset", "success");
 				$.ajax({
 					type:'POST',
-					url: "<?php echo base_url();?>search/reset_Settlement/<?php echo $Case_AutoId;?>", 
+					url: "<?php echo base_url();?>search/reset_Settlement/<?php echo $Case_AutoId;?>/<?php echo $Case_Id;?>", 
 					success: function(data){
+						$("#NotesTab3").dataTable().fnDestroy();
+						$('#NotesTab3').dataTable( {
+							"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
+							"iDisplayLength": 10,
+							"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+						});
+						$("#NotesTab1").dataTable().fnDestroy();
+						$('#NotesTab1').dataTable( {
+							"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
+							"iDisplayLength": 5,
+							"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+							"bSort": false
+						});
 						Update_Settlement();
 						checkstatus_open();
 						$("#finalizeButton").prop('disabled', false);
