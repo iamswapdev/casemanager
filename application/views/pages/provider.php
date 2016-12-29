@@ -219,7 +219,7 @@
 									</select>
 								</div>
 								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
-								<div class="col-sm-2">
+								<div class="col-sm-2 form-input-pad">
 									<input id="cityPermanent" name="cityPermanent" type="text" class="form-control input-sm" required>
 								</div>
 								

@@ -43,6 +43,11 @@
 			$data=$query->result();
 			return $data;
 		}
+		public function get_User_Info_By_Id($UserId){
+			$this->db->where("UserId", $UserId);
+			$query = $this->db->get("dbo_issuetracker_users");
+			return $query->result_array();
+		}
 		public function delete_Users($CheckedUsers){
 			foreach($CheckedUsers as $row){
 				$this->db->where("UserId", $row);
@@ -51,6 +56,11 @@
 		}
 		public function add_Users($data){
 			$this->db->insert("dbo_issuetracker_users", $data);
+		}
+		public function update_Users($data){
+			$this->db->set($data);
+			$this->db->where("UserId", $data['UserId']);
+			$this->db->update("dbo_issuetracker_users", $data);
 		}
 		public function get_AllRoles()
 		{

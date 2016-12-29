@@ -55,7 +55,7 @@
 			<form method="get" id="caseInfoSerach_form" class="form-horizontal label-font">
 
 				<div class="form-group form-horizontal col-md-12">
-                	<h5 class="h4-title">Search</h5>
+                	<h5 class="h4-title">Search <?php echo $Accessibility;?></h5>
                     <label class="col-md-2 control-label">PROVIDER</label>
 					<div class="col-md-2">
 						<select class="form-control input-sm" id="sProviderId" name="sProviderId">
@@ -150,7 +150,7 @@
 					<thead>
 						<tr>
 							<th>#</th> 	 	   	 	    	      	      	     	 	 	 	   	 	
-							<th>EDIT</th>
+							<?php if($Accessibility == 1){?><th>EDIT</th><?php  } ?>
 							<th class="th-case-id">CASE ID</th>
 							<th>INJURED PARTY</th>
 							<th>PROVIDER</th>
@@ -160,8 +160,8 @@
 							<th>STATUS</th>
 							<th class="th-claim-no">CLAIM NUMBER</th>
 							<th class="th-claim-amt">CLAIM AMT.</th>
-                            <th class="th-indexaaano">Indexoraaa_number</th>
-                            <th class="th-initial-status">INITIAL_STATUS</th>
+                            <?php if($Accessibility == 1){?><th class="th-indexaaano">Indexoraaa_number</th><?php  } ?>
+                            <?php if($Accessibility == 1){?><th class="th-initial-status">INITIAL_STATUS</th><?php  } ?>
 						</tr>
 					</thead>
 				</table>
@@ -231,17 +231,27 @@
 			"pageLength": 50,
 			dom: 'Bfrtip',
 			buttons: [ 'pageLength', 'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5', 'print' ]
-		});*/
+		});
 		$('#AdvancedSearchTable').dataTable( {
 			"ajax": 'getSearchTable',
 			dom: "<'row'<'col-sm-4 demo'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
             "lengthMenu": [ [10, 25, 50,100,200, -1], [10, 25, 50,100,200, "All"] ],
 			"pageLength": 50,
-            buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-
+            buttons: [ 'copy', 'csv', 'excel', 'pdf', 'print' ]
+		});*/
+		$('#AdvancedSearchTable').dataTable( {
+			"ajax": "getSearchTable",
+			"iDisplayLength": 50,
+			"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+			"bSort": false,
+			//bJQueryUI: true,
+			dom: "<'row'<'col-sm-4 demo'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
+            
+            buttons: [ 'copy', 'csv', 'excel', 'pdf', 'print' ],
+			
 		});
+						
+						
 		$('body').on('focus',".phone-format", function(){
 			$(this).mask("999999/99");
 			//$(this).mask("999-999-999");

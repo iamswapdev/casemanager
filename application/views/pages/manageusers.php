@@ -91,22 +91,22 @@
             </div>
         </div>
     </div>-->
-    <div id="CreateUser_modal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
+	<div id="CreateUser_modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
     
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h5 class="modal-title">Create User</h5>
-          </div>
-          <div class="modal-body">
-          	<div class="row">
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h5 class="modal-title">Create User</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
                 <div class="col-lg-12">
                 <div class="hpanel">
-                <div class="panel-heading"></div>
-                <div class="panel-body tab-panel">
-                	<form method="post" id="CreateUser_form">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body tab-panel">
+                    <form method="post" id="CreateUser_form">
                         <div class="form-group form-horizontal col-md-12">
                             <label class="control-label col-md-3">User Name</label>
                             <div class="col-md-5">
@@ -117,9 +117,9 @@
                             <label class="control-label col-md-3">Role</label>
                             <div class="col-md-5">
                                 <select name="RoleId" id="RoleId" class="form-control input-sm col-md-3" required>
-                                	<?php foreach($Roles as $row){?>
-                                    	<option value="<?php echo $row['RoleId'];?>"><?php echo $row['RoleName']?></option>
-									<?php }?>
+                                    <?php foreach($Roles as $row){?>
+                                    <option value="<?php echo $row['RoleId'];?>"><?php echo $row['RoleName']?></option>
+                                    <?php }?>
                                 </select>
                             </div>
                         </div>
@@ -142,25 +142,99 @@
                             </div>
                         </div>
                         <div class="form-group form-horizontal col-md-12">
-                        	<div class="col-md-3"></div>
-                        	<div class="col-md-5">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-5">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Save</button>
                             </div>
                         </div>
                     </form>
-                </div><!-- End of panel-body tab-panel-->
+                    </div><!-- End of panel-body tab-panel-->
                 </div><!-- End hpanel -->
                 </div><!-- End col-lg-12-->
-            </div><!-- End row-->
-            
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
+                </div><!-- End row-->
     
-      </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+    
+        </div>
     </div>
+    
+    <div id="UpdateUser_modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+    
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h5 class="modal-title">Create User</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                <div class="col-lg-12">
+                <div class="hpanel">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body tab-panel">
+                    <form method="post" id="UpdateUser_form">
+                        <div class="form-group form-horizontal col-md-12">
+                            <label class="control-label col-md-3">User Name1</label>
+                            <div class="col-md-5">
+                            	<input type="hidden" name="UserId">
+                                <input type="text" name="UserName"  class="form-control input-sm" required />
+                            </div>
+                        </div>
+                        <div class="form-group form-horizontal col-md-12">
+                            <label class="control-label col-md-3">Role1</label>
+                            <div class="col-md-5">
+                                <select name="RoleId" id="RoleId" class="form-control input-sm col-md-3" required>
+                                    <?php foreach($Roles as $row){?>
+                                    <option value="<?php echo $row['RoleId'];?>"><?php echo $row['RoleName']?></option>
+                                    <?php }?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-horizontal col-md-12">
+                            <label class="control-label col-md-3">Email1</label>
+                            <div class="col-md-5">
+                                <input type="email" name="Email"  class="form-control input-sm" required />
+                            </div>
+                        </div>
+                        <div class="form-group form-horizontal col-md-12">
+                            <label class="control-label col-md-3">Password1</label>
+                            <div class="col-md-5">
+                                <input type="password"  name="UserPassword1"  class="form-control input-sm" required />
+                            </div>
+                        </div>
+                        <div class="form-group form-horizontal col-md-12">
+                            <label class="control-label col-md-3">Confirm Password1</label>
+                            <div class="col-md-5">
+                                <input type="password" name="UserPassword"  class="form-control input-sm" required />
+                            </div>
+                        </div>
+                        <div class="form-group form-horizontal col-md-12">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-5">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Save</button>
+                            </div>
+                        </div>
+                    </form>
+                    </div><!-- End of panel-body tab-panel-->
+                </div><!-- End hpanel -->
+                </div><!-- End col-lg-12-->
+                </div><!-- End row-->
+    
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+    
+        </div>
+    </div>
+
+
 
 </div>
 
@@ -199,11 +273,35 @@
 
 
 <script>
-
+	$("body").on('click', '.User-info', function(){
+		var user_Id = $(this).attr('class').split(' ')[2];
+		$.ajax({
+			type:'POST',
+			url:"<?php echo base_url(); ?>adminprivilege/get_User_Info_By_Id/"+user_Id,
+			success:function(data){
+				results = JSON.parse(data);
+				$.each(results[0], function(k, v) {
+					console.log(k + ' is ' + v);
+				});
+				for($i in results){
+					$("#UpdateUser_modal input[name=UserId]").val(results[$i].UserId);
+					$("#UpdateUser_modal input[name=UserName]").val(results[$i].UserName);
+					$("#UpdateUser_modal #RoleId").val(results[$i].RoleId);
+					$("#UpdateUser_modal input[name=Email]").val(results[$i].Email);
+					$("#UpdateUser_modal input[name=UserPassword1]").attr("type", "text");
+					$("#UpdateUser_modal input[name=UserPassword]").attr("type", "text");
+					$("#UpdateUser_modal input[name=UserPassword1]").val(results[$i].UserPassword);
+					$("#UpdateUser_modal input[name=UserPassword]").val(results[$i].UserPassword);
+				}
+				$("#UpdateUser_modal").modal("show");
+			},
+			error: function(result){ console.log("error"); }
+		});
+	});
     $(function () {
         // Initialize Example 1
         $('#example1').dataTable( {
-            "ajax": 'getAdj',
+            "ajax": 'get_Users_List',
 			"iDisplayLength": 20,
 			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
         });
@@ -232,13 +330,10 @@
 					request = $.ajax({
 						url:"<?php echo base_url();?>adminprivilege/deleteUsers",
 						type: "post",
-						data: {
-								deleteCheckedUsers:checkedNo
-							}
+						data: {deleteCheckedUsers:checkedNo }
 					});
 			
 					request.done(function (response, textStatus, jqXHR) {
-						
 						$('.deleteCheckedUsers:checked').each(function(i){
 							var values = $(this).val();
 							var row = $(".deleteCheckedUsers"+values).parent().parent();
@@ -246,7 +341,7 @@
 						});
 						$("#example1").dataTable().fnDestroy();
 						$('#example1').dataTable( {
-							"ajax": 'getAdj',
+							"ajax": 'get_Users_List',
 							"iDisplayLength": 20,
 							"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 						});
@@ -305,7 +400,72 @@
 					$("#CreateUser_modal").modal("hide");
 					$("#example1").dataTable().fnDestroy();
 					$('#example1').dataTable( {
-						"ajax": 'getAdj',
+						"ajax": 'get_Users_List',
+						"iDisplayLength": 20,
+						"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+					});
+					callSuccess();
+				});
+	
+				request.fail(function (jqXHR, textStatus, errorThrown) {
+					console.error(
+						"The following error occured: " + textStatus, errorThrown);
+				});
+	
+				request.always(function () {
+					// reenable the inputs
+					$inputs.prop("disabled", false);
+				});
+			}else{
+				alert("Please Confirm the password");
+				$("input[name=UserPassword]").val("");
+			}
+		}
+	});
+	
+/* UPDATE USERS */
+	$("#UpdateUser_form").validate({
+	
+		rules: {
+			UserName:{
+				required: true
+			},
+			RoleId: {
+				required: true
+			},
+			Email: {
+				required: true,
+				email: true
+			},
+			Password:{
+				required: true
+			},
+			ConfirmPassword:{
+				required: true
+			}		
+		},
+				
+		submitHandler: function (form) {
+			var $form = $(form);
+			// let's select and cache all the fields
+			var $inputs = $form.find("input, select, button, textarea");
+			// serialize the data in the form
+			var serializedData = $form.serialize();
+			request = $.ajax({
+				url:"<?php echo base_url(); ?>adminprivilege/update_Users_Form",
+				type: "post",
+				data: serializedData
+			});
+
+			if($("#UpdateUser_form input[name=UserPassword1]").val() == $("#UpdateUser_form input[name=UserPassword]").val()){
+				request.done(function (response, textStatus, jqXHR) {
+					$('input').val('');
+					$('textarea').val('');
+					$("select").val('');
+					$("#UpdateUser_modal").modal("hide");
+					$("#example1").dataTable().fnDestroy();
+					$('#example1').dataTable( {
+						"ajax": 'get_Users_List',
 						"iDisplayLength": 20,
 						"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 					});

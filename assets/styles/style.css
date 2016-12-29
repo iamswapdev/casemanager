@@ -3818,7 +3818,7 @@ label {
 	color:#00F;
 }
 #showInsuredInfoLink .modal-content, #showInjuredInfoLink .modal-content, #showAdjusterInfoLink .modal-content, #showDefendantInfoLink .modal-content, #showInsuranceCompanyInfoLink .modal-content, #showProviderInfoLink .modal-content{
-	width:1000px;
+	width:400px;
 }
 .modal-content th{
 	text-align:center;
@@ -3955,4 +3955,31 @@ input[name=Served_To] {
 }
 .id-range-last{
 	padding-right:0px;
+}
+.info-link-popup{
+	margin-bottom:0px;
+}
+table.table.tdAlignLeft.work-area-info.info-link-popup td {
+    width: 160px;
+	padding-top: 13px;
+}
+table.table.tdAlignLeft.work-area-info.info-link-popup th {
+    width: 100px;
+    padding: 10px;
+}
+.work-area-modal-title{
+	text-align:center;
+}
+.form-input-pad{
+	padding-left:0px;
+}
+.attorney-form-label, .adjuster-form-label, .defendant-form-label{
+	width: 100px;
+}
+.attorney-form-label-CE, .adjuster-form-label-CE, .defendant-form-label-CE{
+	padding-right: 0px;
+    width: 47px;
+}
+.attorney-form-input, .adjuster-form-input, .defendant-form-input{
+	padding-left:0px;
 }

@@ -15,15 +15,15 @@ session_cache_limiter('private_no_expire');
 		$this->load->model('login_model');
 		$data=array(
 			'username'=>$this->input->post('username'),
-			'password'=>$this->input->post('password'),
+			'password'=>$this->input->post('password')
 		); 
 		
 		$check=$this->login_model->autho($data);
-		$data=array(
-			'username'=> "admin",
-			'password'=> "admin123",
+		$RoleIddata=array(
+			'username'=>$this->input->post('username'),
+			'password'=>$this->input->post('password')
 		); 
-		$result['Role']=$this->login_model->get_RoleId($data);
+		$result['Role']=$this->login_model->get_RoleId($RoleIddata);
 		if($check){
 			$session_data = array(
 				'username'  => $data['username'],
@@ -31,8 +31,8 @@ session_cache_limiter('private_no_expire');
 				'RoleId' => $result['Role'][0]['RoleId'],
 				'logged_in' => TRUE
 			);
-			
-			$session_set=$this->session->set_userdata('logged_in', $session_data);
+			$this->session->set_userdata($session_data);
+			//$session_set=$this->session->set_userdata('logged_in', $session_data);
 			redirect("search/advancedsearch");
 			//$this->load->view('pages/advancedsearch');
 		}else{
@@ -62,6 +62,7 @@ session_cache_limiter('private_no_expire');
 	}
 	public function logout(){
 		$this->session->sess_destroy();
+		echo "Session distroyed";
 		$this->load->view('pages/login');
 	}
 	
@@ -175,7 +176,8 @@ session_cache_limiter('private_no_expire');
 	public function contacts(){
 		$this->session->all_userdata();
 		if(isset($this->session->userdata['logged_in'])){
-			$this->load->view('pages/contacts');
+			$data['Accessibility'] = $this->session->userdata['RoleId'];
+			$this->load->view('pages/contacts', $data);
 		}else{
 			$this->load->view('admin');
 		}

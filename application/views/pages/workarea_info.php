@@ -121,13 +121,17 @@ for($i=0; $i<=13; $i++){
 			<ul class="nav nav-tabs view-case-navigation">
 				<li class="active"><a id="tab1" data-toggle="tab" href="#tab-1">Case Information</a></li>
 				<li class=""><a id="tab2" data-toggle="tab" href="#tab-2">Extended case info</a></li>
-				<li class=""><a id="tab3" data-toggle="tab" href="#tab-3">Notes</a></li>
+				<?php if($Accessibility == 1) {?><li class=""><a id="tab3" data-toggle="tab" href="#tab-3">Notes</a></li><?php } ?>
 				<li class=""><a id="tab4" data-toggle="tab" href="#tab-4">Document Manager</a></li>
-				<li class=""><a id="tab5" data-toggle="tab" href="#tab-5">Templates</a></li>
+                
+                <?php if($Accessibility == 2) {?><li class=""><a id="tabMotions" data-toggle="tab" href="#tab-Motions">Motions</a></li><?php } ?>
+                <?php if($Accessibility == 2) {?><li class=""><a id="tabTrials" data-toggle="tab" href="#tab-Trials">Trials</a></li><?php } ?>
+                
+				<?php if($Accessibility == 1) {?><li class=""><a id="tab5" data-toggle="tab" href="#tab-5">Templates</a></li><?php } ?>
 				<li class=""><a id="tab6" data-toggle="tab" href="#tab-6">Settlement</a></li>
 				<!--<li class=""><a id="tab7" data-toggle="tab" href="#tab-7">New Settlement</a></li>-->
-				<li class=""><a id="tab8" data-toggle="tab" href="#tab-8">Payment</a></li>
-				<li class=""><a id="tab9" data-toggle="tab" href="#tab-9">Events</a></li>
+				<?php if($Accessibility == 1) {?><li class=""><a id="tab8" data-toggle="tab" href="#tab-8">Payment</a></li>
+				<li class=""><a id="tab9" data-toggle="tab" href="#tab-9">Events</a></li><?php } ?>
 			</ul>
 			<div class="tab-content">
 				<div id="tab-1" class="tab-pane active">
@@ -143,7 +147,7 @@ for($i=0; $i<=13; $i++){
                     </div>
 						<div class="form-group form-horizontal col-md-10">                
 						<div class="table-responsive">
-							<table cellpadding="1" cellspacing="1" class="table tdAlignLeft work-area-info">
+							<table cellpadding="1" id="WorkAreaTable" cellspacing="1" class="table tdAlignLeft work-area-info">
 								<tbody>
 								<tr> 
                                 	<th><input type="hidden" name="selectRecordNo" value="1"><input type="hidden" name="recordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
@@ -218,9 +222,9 @@ for($i=0; $i<=13; $i++){
 								</tr>
                                 
                                 <tr> 
-                                	<th><input type="hidden" name="recordNo" value="15"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit1"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
+                                	<th><input type="hidden" name="recordNo" value="15"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>ASSIGN TO WORK DESK</th>
-									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="caseStatusId" name="caseStatusId"><option selected="selected" value=""></option><?php foreach($CaseStatus as $row){?><option value="<?php echo $row['id']; ?>"> <?php echo $row['name']; ?> </option><?php }?></select></div></td>
+									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="selectAssignUser" name="selectAssignUser"><option selected="selected" value="">Select User to Assign</option><?php foreach($User_List as $row){?><option value="<?php echo $row['UserName']; ?>"><?php echo $row['UserName'];?></option><?php  }?></select></div></td>
                                     <th><input type="hidden" name="recordNo" value="16"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i></th>
 									<th>OLD CASE ID</th>
 									<td><div class="visible" style="display:block;"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Old_Case_Id" /></div></td>
@@ -252,7 +256,7 @@ for($i=0; $i<=13; $i++){
                             	<table id="Treatement_Info_table" class="table dataTable tdAlignLeft-bottom">
                                     <thead>
                                     <tr>
-                                    	<th></th>
+                                    	<?php if($Accessibility == 1) {?><th>Edit</th><?php } ?>
                                         <th>D.O.S-Start</th>
 										<th>D.O.S.-End</th>
 										<th>Claim Amt.</th>
@@ -260,9 +264,10 @@ for($i=0; $i<=13; $i++){
 										<th>Date Bill Sent</th>
                                         <th>Service Type</th>
                                         <th>Denial Reason</th>
-                                        <th>Delete</th>
+                                        <?php if($Accessibility == 1) {?><th>Delete</th><?php  } ?>
                                     </tr>
                                     </thead>
+                                    <?php if($Accessibility == 1) {?>
                                     <tfoot>
                                       <tr class="first-row">
                                             <td></td>
@@ -286,13 +291,18 @@ for($i=0; $i<=13; $i++){
                                             <td><span><button type="button" id="addOtherInfo" class="btn btn-primary create">Add</button></span></td>
                                         </tr>
                                     </tfoot>
+                                    <?php } ?>
                                 </table>
 						</div>
+                        
                         <div class="form-group form-horizontal col-lg-12 payment-summary-delete">
                         	<div class="col-md-2"><br><h5 class="h4-title">Payment Summary Information</h5></div>
+                            <?php if($Accessibility == 1) {?>
                         	<div class="col-md-8"></div>
                             <div class="col-md-2 deleteTreatementButton"><button type="button" id="deleteTreatementButton" class="btn btn-primary"><i class="fa fa-trash-o"></i> Delete Checked</button></div>
+                            <?php } ?>
                         </div>
+                        
                         <div class="form-group form-horizontal col-lg-12">
                             	<table id="Payment_Info_table" class="table dataTable tdAlignLeft-bottom payment-summary">
                                     <thead>
@@ -386,7 +396,7 @@ for($i=0; $i<=13; $i++){
 					</div><!-- End hpanel -->
 					</div><!-- End col-lg-12-->
 				</div><!-- End row-->
-				</div>
+				</div><!--End of Case info Tab-->
 				<div id="tab-2" class="tab-pane">
 					<div class="row">
 						<div class="col-lg-12">
@@ -396,7 +406,7 @@ for($i=0; $i<=13; $i++){
 							<div class="form-group form-horizontal col-md-8">
 								<h5 class="h4-title">Workarea Information</h5>
 								<div class="table-responsive">
-									<table cellpadding="1" cellspacing="1" class="table tdAlignLeft work-area-info-tab2">
+									<table cellpadding="1" id="ExtendedCase_Info_table" cellspacing="1" class="table tdAlignLeft work-area-info-tab2">
 										<tbody>
 										<tr>
 											<th></th>		
@@ -518,7 +528,7 @@ for($i=0; $i<=13; $i++){
 						</div><!-- End hpanel -->
 						</div><!-- End col-lg-12-->
 					</div><!-- End row-->
-				</div>
+				</div><!--End of Extended info Tab-->
 				<div id="tab-3" class="tab-pane">
 					<div class="row">
 						<div class="col-lg-12">
@@ -590,7 +600,7 @@ for($i=0; $i<=13; $i++){
 						</div><!-- End hpanel -->
 						</div><!-- End col-lg-12-->
 					</div><!-- End row-->
-                 </div>
+                 </div><!--End of Notes Tab-->
 				
 				<div id="tab-4" class="tab-pane">
 					<div class="row">
@@ -603,7 +613,7 @@ for($i=0; $i<=13; $i++){
 						</div><!-- End hpanel -->
 						</div><!-- End col-lg-12-->
 					</div><!-- End row-->
-				</div>
+				</div><!--End of Document Manager tab-->
 				<div id="tab-5" class="tab-pane">
 					<div class="row">
 						<div class="col-lg-12">
@@ -629,7 +639,249 @@ for($i=0; $i<=13; $i++){
 						</div><!-- End hpanel -->
 						</div><!-- End col-lg-12-->
 					</div><!-- End row-->
-				</div>
+				</div><!--End of Template tab-->
+                <div id="tab-Motions" class="tab-pane">
+                	<div class="row">
+                        <div class="col-lg-12">
+                        <div class="hpanel">
+                        <div class="panel-heading"></div>
+                        <div class="panel-body tab-panel">
+                        	<div class="form-group form-horizontal col-md-12">
+                                <div class="col-md-12">
+                                    <table id="MotionTable" class="table dataTable table-bordered table-striped">
+                                        <thead>
+                                        <tr> 	
+                                        	<!--<th>Edit</th>-->
+                                            <th>Motion Date</th>
+                                            <th>Motion Status</th>
+                                            <th>Our Motion Type</th>
+                                            <th>Def. Motion Type</th>
+                                            <th>Opp. Due Date</th>
+                                            <th>Reply Due Date</th>
+                                            <th>Notes</th>
+                                            <th>Cross Motion</th>
+                                            <th>Whose Motion</th>
+                                            <th>Room</th>
+                                            <th>Part</th>
+                                            <th>Judge</th>
+                                            <th>Time Duration</th>
+                                            <!--<th>Delete</th>-->
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                    
+                                </div>
+                            </div>
+                            <!--<div class="form-group form-horizontal col-md-12">
+                                <div class="col-md-2"><button type="button" id="deleteMotionButton" name="deleteEventsButton" class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted Checked</button></div>
+                            </div>-->
+                            <!--<form id="add_Motion_Info_form"  method="post">
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label"> Motion  Date: </label>
+                                    <div class="col-md-1">
+                                    	<input type="hidden" name="Case_ID" value="<?php //echo $Case_Id;?>">
+                                        <input type="text" id="" name="Motion_Date"  class="form-control input-sm datetimepicker_Dos_Doe" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label"> Motion  Status: </label>
+                                    <div class="col-md-1">
+                                        <input type="text" id="" name="Motion_Status"  class="form-control input-sm" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Our  Motion Type: </label>
+                                    <div class="col-md-1">
+                                        <input type="text" id="" name="Our_Motion_Type"  class="form-control input-sm" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Defendant Motion Type: </label>
+                                    <div class="col-md-1">
+                                        <input type="text" id="" name="Defendent_Motion_Type"  class="form-control input-sm" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Opposition Due Date:  </label>
+                                    <div class="col-md-1">
+                                        <input type="text" id="" name="Opposition_Due_Date"  class="form-control input-sm datetimepicker_Dos_Doe" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Reply Due Date:  </label>
+                                    <div class="col-md-1">
+                                        <input type="text" id="" name="Reply_Due_Date"  class="form-control input-sm datetimepicker_Dos_Doe" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Cross Motion:</label>
+                                    <div class="col-md-1">
+                                        <input type="text" id="" name="cross_motion"  class="form-control input-sm" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Whose Motion</label>
+                                    <div class="col-md-1">
+                                        <input type="text" id="" name="whose_motion"  class="form-control input-sm" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Room</label>
+                                    <div class="col-md-1">
+                                        <input type="text" id="" name="room"  class="form-control input-sm" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Part: </label>
+                                    <div class="col-md-1">
+                                        <input type="text" id="" name="part"  class="form-control input-sm" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Judge Name: </label>
+                                    <div class="col-md-1">
+                                        <input type="text" id="" name="judge_name"  class="form-control input-sm" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Time: </label>
+                                    <div class="col-md-1">
+                                        <input type="text" id="" name="time_duration"  class="form-control input-sm datetimepicker_only_time" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Motion Notes: </label>
+                                    <div class="col-md-2">
+                                        <textarea rows="3"  id="" name="Notes" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-2">
+                                        <button type="submit" class="btn btn-primary"> Save</button>
+                                    </div>
+                                </div>
+                            </form>-->
+                            	
+                            
+                        </div><!-- End of panel-body tab-panel-->
+                        </div><!-- End hpanel -->
+                        </div><!-- End col-lg-12-->
+                    </div><!-- End row-->
+                </div><!--End of Motion tab -->
+                <div id="tab-Trials" class="tab-pane">
+                	<div class="row">
+                        <div class="col-lg-12">
+                        <div class="hpanel">
+                        <div class="panel-heading"></div>
+                        <div class="panel-body tab-panel">
+                            <div class="form-group form-horizontal col-md-12">
+                                <div class="col-md-12">
+                                    <table id="TrialsTable" class="table dataTable table-bordered table-striped">
+                                        <thead>
+                                        <tr>
+                                        	<!--<th></th>-->								 	
+                                        	<th>Trial Date</th>
+                                            <th>Trial Status</th>
+                                            <th>Trial Result</th>
+                                            <th>Trial Type</th>
+                                            <th>Jury Selection Date</th>
+                                            <th>Judge Name</th>
+                                            <th>Court Cal. Number</th>
+                                            <th>Not Filed Date</th>
+                                            <th>Receipt Date:</th>
+                                            <th>Notes</th>
+                                            <!--<th>Delete</th>-->
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                            <!--<div class="form-group form-horizontal col-md-12">
+                                <div class="col-md-2"><button type="button" id="deleteTrialsButton" name="deleteTrialsButton" class="btn btn-primary"><i class="fa fa-trash-o"></i> Deleted Checked</button></div>
+                            </div>-->
+                            <!--<form id="add_Trials_Info_form"  method="post">
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Trial Date: </label>
+                                    <div class="col-md-1">
+                                    	<input type="hidden" name="CASE_ID" value="<?php //echo $Case_Id;?>">
+                                        <input type="text" id="" name="Trial_Date"  class="form-control input-sm datetimepicker_Dos_Doe" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Trial Status: </label>
+                                    <div class="col-md-1">
+                                        <input type="text" id="" name="Trial_Status"  class="form-control input-sm" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Trial Result: </label>
+                                    <div class="col-md-1">
+                                        <input type="text" id="" name="Trial_Result"  class="form-control input-sm" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Trial Type: </label>
+                                    <div class="col-md-1">
+                                        <input type="text" id="" name="Trial_Type"  class="form-control input-sm" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Jury Selection Date:</label>
+                                    <div class="col-md-1">
+                                        <input type="text" id="" name="Jury_Selection_Date"  class="form-control input-sm datetimepicker_Dos_Doe" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Judge Name: </label>
+                                    <div class="col-md-1">
+                                        <input type="text" id="" name="Judge_Name"  class="form-control input-sm" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Court Cal Number: </label>
+                                    <div class="col-md-1">
+                                        <input type="text" id="" name="Court_Cal_Number"  class="form-control input-sm" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Not Filed Date: </label>
+                                    <div class="col-md-1">
+                                        <input type="text" id="" name="Not_Filed_Date"  class="form-control input-sm datetimepicker_Dos_Doe" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Receipt Date: </label>
+                                    <div class="col-md-1">
+                                        <input type="text" id="" name="Receipt_date"  class="form-control input-sm datetimepicker_Dos_Doe" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Service Complete Date: </label>
+                                    <div class="col-md-1">
+                                        <input type="text" id="" name="service_complete_date"  class="form-control input-sm datetimepicker_Dos_Doe" >
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Trial Notes: </label>
+                                    <div class="col-md-2">
+                                        <textarea rows="3"  id="" name="Notes" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-2">
+                                        <button type="submit" class="btn btn-primary"> Save</button>
+                                    </div>
+                                </div>
+                            </form>-->
+                            	
+                            
+                        </div><!-- End of panel-body tab-panel-->
+                        </div><!-- End hpanel -->
+                        </div><!-- End col-lg-12-->
+                    </div><!-- End row-->
+                </div><!--End of Trials tab -->
 				<div id="tab-6" class="tab-pane">
 					<div class="row">
 						<div class="col-lg-12">
@@ -777,7 +1029,7 @@ for($i=0; $i<=13; $i++){
 						</div><!-- End hpanel -->
 						</div><!-- End col-lg-12-->
 					</div><!-- End row-->
-				</div>
+				</div><!--End of Settlement Tab -->
 				<div id="tab-7" class="tab-pane">
 					<div class="row">
 						<div class="col-lg-12">
@@ -963,7 +1215,7 @@ for($i=0; $i<=13; $i++){
 						</div><!-- End hpanel -->
 						</div><!-- End col-lg-12-->
 					</div><!-- End row-->
-				</div>
+				</div><!--End of New Settlement Tab-->
 				<div id="tab-8" class="tab-pane">
 					<div class="row">
 						<div class="col-lg-12">
@@ -1086,7 +1338,7 @@ for($i=0; $i<=13; $i++){
 						</div><!-- End hpanel -->
 						</div><!-- End col-lg-12-->
 					</div><!-- End row-->
-				</div>
+				</div><!--End of Payment Tab-->
 				<div id="tab-9" class="tab-pane">
 					<div class="row">
 						<div class="col-lg-12">
@@ -1155,8 +1407,8 @@ for($i=0; $i<=13; $i++){
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Assigned To: </label>
                                 <div class="col-md-2">
-                                    <input type="text" name="AssignUser"  class="form-control input-sm" disabled>
-                                    <input type="hidden" name="AssignUserHidden"  class="form-control input-sm">
+                                    <input type="text" name="AssignUser"  class="form-control input-sm">
+                                    <!--<input type="hidden" name="AssignUserHidden"  class="form-control input-sm">-->
                                 </div>
                                 <div class="col-md-4">
                                 	<select class="form-control input-sm" id="selectAssignUser" name="selectAssignUser"><option selected="selected" value="">Select User to Assign</option><?php foreach($User_List as $row){?><option value="<?php echo $row['UserName']; ?>"><?php echo $row['UserName'];?></option><?php  }?></select>
@@ -1204,7 +1456,7 @@ for($i=0; $i<=13; $i++){
 						</div><!-- End hpanel -->
 						</div><!-- End col-lg-12-->
 					</div><!-- End row-->
-				</div>
+				</div> <!-- End of Tab-9 Event -->
 			</div>
 		
 		</div><!-- End hpanel -->
@@ -1267,23 +1519,21 @@ for($i=0; $i<=13; $i++){
     <div class="modal fade" id="showProviderInfoLink" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="table-responsive">
-                <table id="Provider_Info_table" class="table dataTable table-bordered table-striped tdAlignLeft-bottom">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Zip</th>
-                        <th>Phone</th>
-                        <th>Fax</th>
-                        <th>Email</th>
-                        <th>Type</th>
-                    </tr>
-                
-                </thead>
-                </table>
+            	<h5 class="modal-title work-area-modal-title">Provider Info</h5>
+            	<div class="table-responsive">
+                    <table cellpadding="1" id="Provider_Info_table" cellspacing="1" class="table tdAlignLeft work-area-info info-link-popup">
+                        <tbody>
+                            <tr> <th>Name</th> <td></td> </tr>
+                            <tr> <th>Address</th> <td></td> </tr>
+                            <tr> <th>City</th> <td></td> </tr>
+                            <tr> <th>State</th> <td></td> </tr>
+                            <tr> <th>Zip</th> <td></td> </tr>
+                            <tr> <th>Phone</th> <td></td> </tr>
+                            <tr> <th>Fax</th> <td></td> </tr>
+                            <tr> <th>Email</th> <td></td> </tr>
+                            <tr> <th>Type</th> <td></td> </tr>
+                        </tbody>
+                    </table>
                 </div>
 				<div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal"> Close </button>
@@ -1296,21 +1546,21 @@ for($i=0; $i<=13; $i++){
     <div class="modal fade" id="showInsuranceCompanyInfoLink" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="table-responsive">
-                <table id="InsuranceCompany_Info_table" class="table dataTable table-bordered table-striped tdAlignLeft-bottom">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Local Address</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Zip</th>
-                        <th>Phone</th>
-                        <th>Fax</th>
-                        <th>Email</th>
-                    </tr>
-                </thead>
-                </table>
+            	<h5 class="modal-title work-area-modal-title">Insurance Company Info</h5>
+            	<div class="table-responsive">
+                    <table cellpadding="1" id="InsuranceCompany_Info_table" cellspacing="1" class="table tdAlignLeft work-area-info info-link-popup">
+                        <tbody>
+                            <tr> <th>Name</th> <td></td> </tr>
+                            <tr> <th>Local Address</th> <td></td> </tr>
+                            <tr> <th>City</th> <td></td> </tr>
+                            <tr> <th>State</th> <td></td> </tr>
+                            <tr> <th>Zip</th> <td></td> </tr>
+                            <tr> <th>Phone</th> <td></td> </tr>
+                            <tr> <th>Fax</th> <td></td> </tr>
+                            <tr> <th>Email</th> <td></td> </tr>
+                            <tr> <th>Type</th> <td></td> </tr>
+                        </tbody>
+                    </table>
                 </div>
 				<div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal"> Close </button>
@@ -1323,22 +1573,21 @@ for($i=0; $i<=13; $i++){
     <div class="modal fade" id="showDefendantInfoLink" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="table-responsive">
-                <table id="Defendant_Info_table" class="table dataTable table-bordered table-striped tdAlignLeft-bottom">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Local Address</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Zip</th>
-                        <th>Phone</th>
-                        <th>Fax</th>
-                        <th>Email</th>
-                        <th>Type</th>
-                    </tr>
-                </thead>
-                </table>
+            	<h5 class="modal-title work-area-modal-title">Defendant Info</h5>
+            	<div class="table-responsive">
+                    <table cellpadding="1" id="Defendant_Info_table" cellspacing="1" class="table tdAlignLeft work-area-info info-link-popup">
+                        <tbody>
+                            <tr> <th>Name</th> <td></td> </tr>
+                            <tr> <th>Local Address</th> <td></td> </tr>
+                            <tr> <th>City</th> <td></td> </tr>
+                            <tr> <th>State</th> <td></td> </tr>
+                            <tr> <th>Zip</th> <td></td> </tr>
+                            <tr> <th>Phone</th> <td></td> </tr>
+                            <tr> <th>Fax</th> <td></td> </tr>
+                            <tr> <th>Email</th> <td></td> </tr>
+                            <tr> <th>Type</th> <td></td> </tr>
+                        </tbody>
+                    </table>
                 </div>
 				<div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal"> Close </button>
@@ -1351,23 +1600,21 @@ for($i=0; $i<=13; $i++){
     <div class="modal fade" id="showAdjusterInfoLink" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="table-responsive">
-                <table id="Adjuster_Info_table" class="table dataTable table-bordered table-striped tdAlignLeft-bottom">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Local Address</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Zip</th>
-                        <th>Phone</th>
-                        <th>Ext</th>
-                        <th>Fax</th>
-                        <th>Email</th>
-                        <th>Type</th>
-                    </tr>
-                </thead>
-                </table>
+            	<h5 class="modal-title work-area-modal-title">Adjuster Info</h5>
+            	<div class="table-responsive">
+                    <table cellpadding="1" id="Adjuster_Info_table" cellspacing="1" class="table tdAlignLeft work-area-info info-link-popup">
+                        <tbody>
+                            <tr> <th>Name</th> <td></td> </tr>
+                            <tr> <th>Local Address</th> <td></td> </tr>
+                            <tr> <th>City</th> <td></td> </tr>
+                            <tr> <th>State</th> <td></td> </tr>
+                            <tr> <th>Zip</th> <td></td> </tr>
+                            <tr> <th>Phone</th> <td></td> </tr>
+                            <tr> <th>Fax</th> <td></td> </tr>
+                            <tr> <th>Email</th> <td></td> </tr>
+                            <tr> <th>Type</th> <td></td> </tr>
+                        </tbody>
+                    </table>
                 </div>
 				<div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal"> Close </button>
@@ -1380,19 +1627,18 @@ for($i=0; $i<=13; $i++){
     <div class="modal fade" id="showInjuredInfoLink" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="table-responsive">
-                <table id="Injured_Info_table" class="table dataTable table-bordered table-striped tdAlignLeft-bottom">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Local Address</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Zip</th>
-                        <th>Phone</th>
-                    </tr>
-                </thead>
-                </table>
+            	<h5 class="modal-title work-area-modal-title">Injured Party</h5>
+            	<div class="table-responsive">
+                    <table cellpadding="1" id="Injured_Info_table" cellspacing="1" class="table tdAlignLeft work-area-info info-link-popup">
+                        <tbody>
+                            <tr> <th>Name</th> <td></td> </tr>
+                            <tr> <th>Local Address</th> <td></td> </tr>
+                            <tr> <th>City</th> <td></td> </tr>
+                            <tr> <th>State</th> <td></td> </tr>
+                            <tr> <th>Zip</th> <td></td> </tr>
+                            <tr> <th>Phone</th> <td></td> </tr>
+                        </tbody>
+                    </table>
                 </div>
 				<div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal"> Close </button>
@@ -1405,18 +1651,17 @@ for($i=0; $i<=13; $i++){
     <div class="modal fade" id="showInsuredInfoLink" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="table-responsive">
-                <table id="Insured_Info_table" class="table dataTable table-bordered table-striped tdAlignLeft-bottom">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Local Address</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Zip</th>
-                    </tr>
-                </thead>
-                </table>
+            	<h5 class="modal-title work-area-modal-title">Insured Party</h5>
+            	<div class="table-responsive">
+                    <table cellpadding="1" id="Insured_Info_table" cellspacing="1" class="table tdAlignLeft work-area-info info-link-popup">
+                        <tbody>
+                            <tr> <th>Name</th> <td></td> </tr>
+                            <tr> <th>Local Address</th> <td></td> </tr>
+                            <tr> <th>City</th> <td></td> </tr>
+                            <tr> <th>State</th> <td></td> </tr>
+                            <tr> <th>Zip</th> <td></td> </tr>
+                        </tbody>
+                    </table>
                 </div>
 				<div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal"> Close </button>
@@ -1468,6 +1713,7 @@ for($i=0; $i<=13; $i++){
 	<script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
     
     <!-- DATETIMEPICKER SCRIPTS -->
+    <script src="<?php echo base_url();?>assets/vendor/Date/date.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/mask-phone/maskPhone.js"></script>
     <script src="<?php echo base_url();?>assets/datetimepicker/jscss/js/moment-with-locales.js"></script>
     <script src="<?php echo base_url();?>assets/datetimepicker/jscss/js/bootstrap-datetimepicker.js"></script>
@@ -1482,6 +1728,17 @@ for($i=0; $i<=13; $i++){
 
 <script>
 $(document).ready(function(e) {
+	//$(".info-link-popup tr:nth-child(2) td:nth-child(2)").css("color", "blue");
+	var Accessibility = "<?php echo $Accessibility;?>";
+	if(Accessibility == 2){
+		console.log("Accessibility:"+Accessibility);
+		$("#WorkAreaTable th:nth-child(1)").html("");
+		$("#WorkAreaTable th:nth-child(4)").html("");
+		//$("#Treatement_Info_table th:nth-child(2), #Treatement_Info_table th:nth-child(9)").html("");
+		
+		//$("#Treatement_Info_table td:nth-child(4), #Treatement_Info_table td:nth-child(9)").html("");
+		$("#ExtendedCase_Info_table th:nth-child(1), #ExtendedCase_Info_table th:nth-child(4)").html("");
+	}
 	Update_Settlement();
 	var current_case_status ="";
 	var NewRow = $('#Treatement_Info_table').dataTable( {
@@ -1824,7 +2081,7 @@ $(document).ready(function(e) {
 								if(adjExt == null){
 									adjExt ="";
 								}
-									info1[5].innerHTML = results.data[0][0]+ " "+results.data[0][1]+" / "+adjPhone+" / "+adjExt;
+									info1[5].innerHTML = results.data[0][0]+ " "+results.data[0][1]+" / "+adjPhone+" ext."+adjExt;
 								//info1[5].innerHTML = $("#"+selectId+" option:selected").text();
 							},
 							error: function(result){ console.log("error"); }
@@ -2105,7 +2362,10 @@ $(document).ready(function(e) {
 					console.log("Settlement_Total:"+parseFloat(results[$i].Settlement_Total));*/
 					
 					settledBy[0].innerHTML = results[$i].User_Id;
-					settledBy[1].innerHTML = results[$i].Settlement_Date.substr(0, 10);
+					
+					var dateAr = results[$i].Settlement_Date.substr(0, 10).split('-');
+					var newDate = dateAr[1] + '-' + dateAr[2] + '-' + dateAr[0];
+					settledBy[1].innerHTML = newDate;
 					var str = results[$i].SettledWith;
 					var str = results[$i].SettledWith.replace("=> [ADJ.PH#:", "/");
 					var str = str.replace("/ INS CPY:", "/");
@@ -2132,7 +2392,6 @@ $(document).ready(function(e) {
 		if(interestCount == 0){
 			interest = $("input[name=Settlement_Int]").val();
 		}
-		var rr = $("#FltAttorneyFeeTab6").val(($("input[name=Settlement_AmountHidden]").val() + $("input[name=Settlement_Int]").val())/5);
 		interestCount++;
 		var interestPerc = $(this).val();
 		if ($(this).val() > 100){
@@ -2142,6 +2401,7 @@ $(document).ready(function(e) {
 		}else{
 			calInt = (parseFloat(interestPerc) / 100) * interest;
 			$("input[name=Settlement_Int]").val(calInt)
+			$("#FltAttorneyFeeTab6").val((parseFloat($("input[name=Settlement_AmountHidden]").val()) + calInt)/5);
 			//console.log("calInt:"+calInt);
 		}
 	});
@@ -2153,6 +2413,7 @@ $(document).ready(function(e) {
 			//var settAmt = 1515.36;
 			var Total_Interest = (settAmt * 0.2) / (30 * Day_Diff);
 			$("#FltInterestTab6").val(Total_Interest);
+			$("#FltAttorneyFeeTab6").val((parseFloat($("input[name=Settlement_AmountHidden]").val()) + parseFloat($("input[name=Settlement_Int]").val()))/5);
 			//console.log("Total_Interest:"+Total_Interest);
 		}else{ alert("Please Select correct End Date");}
 	});
@@ -2424,7 +2685,7 @@ $(document).ready(function(e) {
 	});
 	$('#selectAssignUser').on('change', function() {
 	  $("input[name=AssignUser]").val($("#selectAssignUser option:selected").text());
-	  $("input[name=AssignUserHidden]").val($("#selectAssignUser option:selected").text());
+	  //$("input[name=AssignUserHidden]").val($("#selectAssignUser option:selected").text());
 	});
 	//$("input[name=AssignUser]").prop("disabled", true);
 	//$("#FltSettlement_AmountTab6").prop("disabled", true);
@@ -2489,7 +2750,7 @@ $(document).ready(function(e) {
 		var EventDescription = $(parentRow).find("td:nth-child(7)").text();
 		var Assigned_To = $(parentRow).find("input[name=Assigned_To]").val();
 		$("input[name=AssignUser]").val(Assigned_To);
-		$("input[name=AssignUserHidden]").val(Assigned_To);
+		//$("input[name=AssignUserHidden]").val(Assigned_To);
 		$("input[name=EventDate]").val(EventDate);
 		$("input[name=EventType]").val(EventType);
 		$("input[name=EventStatus]").val(EventStatus);
@@ -2537,7 +2798,162 @@ $(document).ready(function(e) {
 					});
 				}
 			}
-		
+	});
+/*Get Motion table*/
+	$('#MotionTable').dataTable( {
+		"ajax": "<?php echo base_url();?>search/get_Motion_Data/<?php echo $Case_Id;?>",
+		"iDisplayLength": 10,
+		"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"bSort": false,
+		"searching": false
+	});
+/******** ADD MOTIONS ********/
+	$("#add_Motion_Info_form").validate({
+		rules: {
+			Motion_Date:{
+				required: true
+			}	
+		},		
+		submitHandler: function (form) {
+			var $form = $(form);
+			var $inputs = $form.find("input, select, button, textarea");
+			var serializedData = $form.serialize();
+			request = $.ajax({
+				url:"<?php echo base_url();?>search/add_Motion_Info_form",
+				type: "post",
+				data: serializedData
+			});
+			request.done(function (response, textStatus, jqXHR) {
+				$("#MotionTable").dataTable().fnDestroy();
+				$('#MotionTable').dataTable( {
+					"ajax": "<?php echo base_url();?>search/get_Motion_Data/<?php echo $Case_Id;?>",
+					"iDisplayLength": 10,
+					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+					"bSort": false,
+					"searching": false
+				});
+				callSuccess();
+			});
+		}
+	});
+/******** DELETE TRIALS ********/
+	$('body').on( 'click', '#deleteMotionButton', function () {
+		var checkedNo = [];
+		$('.deleteCheckedMotion:checked').each(function(i){
+			var values = $(this).val();
+			checkedNo.push(values);
+		});
+		console.log("deleteMotionButton:"+checkedNo.length);
+		if(checkedNo.length !=0){
+			swal({
+				title: "Are you sure?",
+				text: "You will not be able to recover these records",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "Yes, delete it!",
+				cancelButtonText: "No, cancel it!",
+				closeOnConfirm: false,
+				closeOnCancel: false },
+			function (isConfirm) {
+				if (isConfirm) {
+					request = $.ajax({
+						url:"<?php echo base_url();?>search/delete_Motion",
+						type: "post",
+						data: {deleteCheckedMotion:checkedNo}
+					});
+			
+					request.done(function (response, textStatus, jqXHR) {
+						$('.deleteCheckedMotion:checked').each(function(i){
+							var values = $(this).val();
+							var row = $(".deleteCheckedMotion"+values).parent().parent();
+							$(row).remove();
+						});
+					});
+					swal("Deleted!", "Your records has been deleted.", "success");
+				} else {
+					swal("Cancelled", "Your records are safe :)", "error");
+				}
+			});
+		}
+	});
+/*Get Motion table*/
+	$('#TrialsTable').dataTable( {
+		"ajax": "<?php echo base_url();?>search/get_Trials_Data/<?php echo $Case_Id;?>",
+		"iDisplayLength": 10,
+		"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"bSort": false,
+		"searching": false
+	});
+/******** ADD TRIALS ********/
+	$("#add_Trials_Info_form").validate({
+		rules: {
+			Motion_Date:{
+				required: true
+			}	
+		},		
+		submitHandler: function (form) {
+			var $form = $(form);
+			var $inputs = $form.find("input, select, button, textarea");
+			var serializedData = $form.serialize();
+			request = $.ajax({
+				url:"<?php echo base_url();?>search/add_Trials_Info_form",
+				type: "post",
+				data: serializedData
+			});
+			request.done(function (response, textStatus, jqXHR) {
+				$("#TrialsTable").dataTable().fnDestroy();
+				$('#TrialsTable').dataTable( {
+					"ajax": "<?php echo base_url();?>search/get_Trials_Data/<?php echo $Case_Id;?>",
+					"iDisplayLength": 10,
+					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+					"bSort": false,
+					"searching": false
+				});
+				callSuccess();
+			});
+		}
+	});
+/******** DELETE TRIALS ********/
+	$('body').on( 'click', '#deleteTrialsButton', function () {
+		var checkedNo = [];
+		$('.deleteCheckedTrials:checked').each(function(i){
+			var values = $(this).val();
+			checkedNo.push(values);
+		});
+		console.log("deleteTrialsButton:"+checkedNo.length);
+		if(checkedNo.length !=0){
+			swal({
+				title: "Are you sure?",
+				text: "You will not be able to recover these records",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "Yes, delete it!",
+				cancelButtonText: "No, cancel it!",
+				closeOnConfirm: false,
+				closeOnCancel: false },
+			function (isConfirm) {
+				if (isConfirm) {
+					request = $.ajax({
+						url:"<?php echo base_url();?>search/delete_Trials",
+						type: "post",
+						data: {deleteCheckedTrials:checkedNo}
+					});
+			
+					request.done(function (response, textStatus, jqXHR) {
+						$('.deleteCheckedTrials:checked').each(function(i){
+							var values = $(this).val();
+							var row = $(".deleteCheckedTrials"+values).parent().parent();
+							$(row).remove();
+						});
+					});
+					swal("Deleted!", "Your records has been deleted.", "success");
+				} else {
+					swal("Cancelled", "Your records are safe :)", "error");
+				}
+			});
+		}
 	});
 /*********************************************************/
 	$('body').on('focus',".datepicker_recurring_start", function(){
@@ -2582,6 +2998,8 @@ $(document).ready(function(e) {
 			format:'MM/DD/YYYY'
 		})
 	});
+	
+	
 	
 });
 	
@@ -2691,7 +3109,7 @@ $(document).ready(function(e) {
 					}else{ adjPhone = results.CaseInfo[$i].Adjuster_Phone; }
 					if(results.CaseInfo[$i].Adjuster_Phone_Ext == null){ adjExt = "";
 					}else{ adjExt = results.CaseInfo[$i].Adjuster_Phone_Ext; }
-					info[5].innerHTML = adjFirstName+ " "+adjLastName+" / "+adjPhone+" / "+adjExt;
+					info[5].innerHTML = adjFirstName+ " "+adjLastName+" / "+adjPhone+" ext."+adjExt;
 					$("#Hidden_Adjuster_Id").val(results.CaseInfo[$i].Adjuster_Id);
 					x[18].innerHTML = results.CaseInfo[$i].Attorney_Name;
 					
@@ -2811,10 +3229,24 @@ $(document).ready(function(e) {
 			var hiddenField = $(this).prev().val();
 			console.log("hiddenField:"+hiddenField);
 			if($(this).attr("id") == "ProviderInfoLink"){
-				console.log("ProviderInfoLink:");
-				$("#Provider_Info_table").dataTable().fnDestroy();
+				//console.log("ProviderInfoLink:");
+				$.ajax({
+					type:'POST',
+					url:"<?php echo base_url();?>search/getProvider_ById/"+hiddenField,
+					success:function(data){
+						var i=1;
+						results = JSON.parse(data);
+						$.each(results[0], function(k, v) {
+							//console.log(k + ' == ' + v);
+							$("#Provider_Info_table tr:nth-child("+i+") td:nth-child(2)").text(v);
+							i++;
+						});
+					},
+					error: function(result){ console.log("error"); }
+				});
+				/*$("#Provider_Info_table").dataTable().fnDestroy();
 				$('#Provider_Info_table').dataTable( {
-					"ajax": "<?php echo base_url();?>search/getProvider_ById/"+hiddenField,
+					"ajax": "<?php //echo base_url();?>search/getProvider_ById/"+hiddenField,
 					"iDisplayLength": 10,
 					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
 					"bSort": false,
@@ -2822,75 +3254,94 @@ $(document).ready(function(e) {
 					"lengthChange": false,
 					"bInfo": false,
 					"bPaginate": false
-				});
+				});*/
 			}else if($(this).attr("id") == "InsuranceCompanyInfoLink"){
 				console.log("InsuranceCompanyInfoLink:");
-				$("#InsuranceCompany_Info_table").dataTable().fnDestroy();
-				$('#InsuranceCompany_Info_table').dataTable( {
-					"ajax": "<?php echo base_url();?>search/getInsurance_ById/"+hiddenField,
-					"iDisplayLength": 10,
-					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
-					"bSort": false,
-					"searching": false,
-					"lengthChange": false,
-					"bInfo": false,
-					"bPaginate": false
+				$.ajax({
+					type:'POST',
+					url:"<?php echo base_url();?>search/getInsurance_ById/"+hiddenField,
+					success:function(data){
+						var i=1;
+						results = JSON.parse(data);
+						$.each(results[0], function(k, v) {
+							//console.log(k + ' == ' + v);
+							$("#InsuranceCompany_Info_table tr:nth-child("+i+") td:nth-child(2)").text(v);
+							i++;
+						});
+					},
+					error: function(result){ console.log("error"); }
 				});
 			}else if($(this).attr("id") == "DefendantInfoLink"){
 				console.log("DefendantInfoLink:");
-				$("#Defendant_Info_table").dataTable().fnDestroy();
-				$('#Defendant_Info_table').dataTable( {
-					"ajax": "<?php echo base_url();?>search/getDefendant_ById/"+hiddenField,
-					"iDisplayLength": 10,
-					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
-					"bSort": false,
-					"searching": false,
-					"lengthChange": false,
-					"bInfo": false,
-					"bPaginate": false
+				$.ajax({
+					type:'POST',
+					url:"<?php echo base_url();?>search/getDefendant_ById/"+hiddenField,
+					success:function(data){
+						var i=1;
+						results = JSON.parse(data);
+						$.each(results[0], function(k, v) {
+							//console.log(k + ' == ' + v);
+							$("#Defendant_Info_table tr:nth-child("+i+") td:nth-child(2)").text(v);
+							i++;
+						});
+					},
+					error: function(result){ console.log("error"); }
 				});
 			}else if($(this).attr("id") == "AdjusterInfoLink"){
 				console.log("AdjusterInfoLink:");
-				$("#Adjuster_Info_table").dataTable().fnDestroy();
-				$('#Adjuster_Info_table').dataTable( {
-					"ajax": "<?php echo base_url();?>search/getAdjuster_ById/"+hiddenField,
-					"iDisplayLength": 10,
-					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
-					"bSort": false,
-					"searching": false,
-					"lengthChange": false,
-					"bInfo": false,
-					"bPaginate": false
+				$.ajax({
+					type:'POST',
+					url:"<?php echo base_url();?>search/getAdjuster_ById/"+hiddenField,
+					success:function(data){
+						var i=1;
+						results = JSON.parse(data);
+						$.each(results[0], function(k, v) {
+							//console.log(k + ' == ' + v);
+							$("#Adjuster_Info_table tr:nth-child("+i+") td:nth-child(2)").text(v);
+							i++;
+						});
+					},
+					error: function(result){ console.log("error"); }
 				});
 			}else if($(this).attr("id") == "InjuredInfoLink"){
 				console.log("InjuredInfoLink:");
-				$("#Injured_Info_table").dataTable().fnDestroy();
-				$('#Injured_Info_table').dataTable( {
-					"ajax": "<?php echo base_url();?>search/getInjured_ById/<?php echo $Case_AutoId;?>",
-					"iDisplayLength": 10,
-					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
-					"bSort": false,
-					"searching": false,
-					"lengthChange": false,
-					"bInfo": false,
-					"bPaginate": false
+				$.ajax({
+					type:'POST',
+					url:"<?php echo base_url();?>search/getInjured_ById/<?php echo $Case_AutoId?>",
+					success:function(data){
+						var i=1;
+						results = JSON.parse(data);
+						$.each(results[0], function(k, v) {
+							//console.log(k + ' == ' + v);
+							$("#Injured_Info_table tr:nth-child("+i+") td:nth-child(2)").text(v);
+							i++;
+						});
+					},
+					error: function(result){ console.log("error"); }
 				});
 			}else if($(this).attr("id") == "InsuredInfoLink"){
 				console.log("InjuredInfoLink:");
-				$("#Insured_Info_table").dataTable().fnDestroy();
-				$('#Insured_Info_table').dataTable( {
-					"ajax": "<?php echo base_url();?>search/getInsured_ById/<?php echo $Case_AutoId;?>",
-					"iDisplayLength": 10,
-					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
-					"bSort": false,
-					"searching": false,
-					"lengthChange": false,
-					"bInfo": false,
-					"bPaginate": false
+				$.ajax({
+					type:'POST',
+					url:"<?php echo base_url();?>search/getInsured_ById/<?php echo $Case_AutoId?>",
+					success:function(data){
+						$("#InsuranceCompany_Info_table td").empty();
+						var i=1;
+						results = JSON.parse(data);
+						$.each(results[0], function(k, v) {
+							//console.log(k + ' == ' + v);
+							
+							//$("#Insured_Info_table tr:nth-child("+i+") td:nth-child(2)").append(v);
+							$("#Insured_Info_table tr:nth-child("+i+") td:nth-child(2)").text(v);
+							i++;
+						});
+					},
+					error: function(result){ console.log("error"); }
 				});
 			}
 			$("#show"+id).modal("show");
 		});
+		
 	
 </script>
 <script>

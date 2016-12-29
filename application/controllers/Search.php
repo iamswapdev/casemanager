@@ -11,8 +11,8 @@ class Search extends CI_Controller{
 		$this->load->model('dataentry_model');
 	}
 	public function index(){
-		$this->session->all_userdata();
-		$this->$username = $this->session->userdata['logged_in']['username'];
+		//$this->session->all_userdata();
+		$this->$username = $this->session->userdata['username'];
 		if(isset($this->session->userdata['logged_in'])){
 			$data['SearchResult']=$this->search_model->get_SearchResult();
 			$this->load->view('pages/search',$data);
@@ -30,11 +30,9 @@ class Search extends CI_Controller{
 		}
 	}
 	public function advancedsearch(){
-		$this->session->all_userdata();
-		//echo $this->session->userdata['username'];
-		//exit();
-		//echo $this->session->userdata['username']; exit();
 		if(isset($this->session->userdata['logged_in'])){
+			//echo "<br><pre>:";print_r($this->session->all_userdata());
+			//echo "<br>Role ID:".$this->session->userdata['RoleId'];exit;
 			$data['Provider_Name']= $this->search_model->get_Provider();
 			$data['InsuranceCompany_Name']= $this->search_model->get_Insurance();
 			$data['Status']= $this->search_model->get_StatusArray();
@@ -43,7 +41,7 @@ class Search extends CI_Controller{
 			$data['Adjuster_Name']= $this->search_model->get_Adjuster();
 			$data['Court']= $this->search_model->get_CourtArray();
 			$data['SearchResult']=$this->search_model->get_SearchResult();
-			$data['Accessibility'] = $this->session->userdata['logged_in']['RoleId'];
+			$data['Accessibility'] = $this->session->userdata['RoleId'];
 			$this->load->view('pages/advancedsearch',$data);
 		}else{
 			$this->load->view('pages/login');
@@ -66,7 +64,7 @@ class Search extends CI_Controller{
 				$data['Adjuster_Name']= $this->dataentry_model->get_Adjuster();
 				
 				$data['CaseInfo']= $this->search_model->get_CaseInfo_ById($Case_AutoId);
-				$data['Accessibility'] = $this->session->userdata['logged_in']['RoleId'];
+				$data['Accessibility'] = $this->session->userdata['RoleId'];
 				//echo "<pre>"; print_r($data['CaseInfo']); exit();
 				$this->load->view('pages/editcase',$data);
 				
@@ -112,9 +110,9 @@ class Search extends CI_Controller{
 				"Notes_Desc" => "File Viewed",
 				"Notes_Date" => $date = date('Y-m-d H:i:s'),
 				"Case_Id" => $data['CaseInfo'][0]['Case_Id'],
-				"User_Id" => $this->session->userdata['logged_in']['username']
+				"User_Id" => $this->session->userdata['username']
 			);
-			$data['Accessibility'] = $this->session->userdata['logged_in']['RoleId'];
+			$data['Accessibility'] = $this->session->userdata['RoleId'];
 			//echo "<pre>";print_r($userAccebility); exit();
 			$this->search_model->add_Notes($data3);
 			
@@ -141,7 +139,9 @@ class Search extends CI_Controller{
 		foreach ($list as $result) {
 			$row = array();
 			$no++;
+			if($this->session->userdata['RoleId'] == 1){
 			$row[] ="<button type='button' class='btn editTreatment'>Edit</button> <div class='update-Treatment' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn cancel'>Cancel</button></div>";
+			}
 			$row[] = "<input type='text' name='dateOfServiceStart' class='form-control input-sm datetimepicker_Dos_Doe dos-date dos-input' value='".date_format(date_create(substr($result->DateOfService_Start, 0, 10)), 'm/d/Y')."' disabled>";
 			$row[] = "<input type='text' name='dateOfServiceEnd' class='form-control input-sm datetimepicker_Dos_Doe dos-date dos-input' value='".date_format(date_create(substr($result->DateOfService_End, 0, 10)), 'm/d/Y')."' disabled>";
 			$row[] = "<input type='text' name='Claim_Amount_treat' class='form-control input-sm amt-input' value='".$result->Claim_Amount."' disabled>";
@@ -152,7 +152,9 @@ class Search extends CI_Controller{
 			
 			
 			$row[] = "<div class='DENIALREASONS_TYPE_treat_div'> <input type='text' name='DENIALREASONS_TYPE_treat' class='form-control input-sm' value='".$result->DENIALREASONS_TYPE."' disabled> <input type='hidden' name='DENIALREASONS_TYPE_treat_hidden' value='".$result->DENIALREASONS_TYPE."'> </div>";
+			if($this->session->userdata['RoleId'] == 1){
 			$row[] = "<input type='checkbox' name='DeleteTreatement[]' class='DeleteTreatement DeleteTreatement".$result->Treatment_Id."' value=".$result->Treatment_Id."> <input type='hidden' name='Treatment_Id' value='".$result->Treatment_Id."' >";
+			}
 			$data[] = $row;
 		}
 		$output = array(
@@ -217,7 +219,8 @@ class Search extends CI_Controller{
 		$output = array(
 			"data" => $data
 		);
-		echo json_encode($output);
+		//echo "<pre>";print_r($output);
+		echo json_encode($data);
 	}
 	public function getInsurance_ById($InsuranceCompany_Id){
 		$list=$this->search_model->get_Insurance_ById($InsuranceCompany_Id);
@@ -240,7 +243,7 @@ class Search extends CI_Controller{
 		$output = array(
 			"data" => $data
 		);
-		echo json_encode($output);
+		echo json_encode($data);
 	}
 	public function getDefendant_ById($Defendant_Id){
 		$list=$this->search_model->get_Defendant_ById($Defendant_Id);
@@ -264,7 +267,7 @@ class Search extends CI_Controller{
 		$output = array(
 			"data" => $data
 		);
-		echo json_encode($output);
+		echo json_encode($data);
 	}
 	public function getAdjuster_ById($Adjuster_Id){
 		$list=$this->search_model->get_Adjuster_ById($Adjuster_Id);
@@ -290,7 +293,7 @@ class Search extends CI_Controller{
 			"data" => $data
 		);
 		//echo "<pre>:";print_r($output);
-		echo json_encode($output);
+		echo json_encode($data);
 	}
 	public function getAdjuster_ById2($Adjuster_Id){
 		$list=$this->search_model->get_Adjuster_ById2($Adjuster_Id);
@@ -331,7 +334,7 @@ class Search extends CI_Controller{
 		$output = array(
 			"data" => $data
 		);
-		echo json_encode($output);
+		echo json_encode($data);
 	}
 	public function getInsured_ById($Case_AutoId){
 		$list=$this->search_model->get_CaseInfo_ById2($Case_AutoId);
@@ -351,7 +354,7 @@ class Search extends CI_Controller{
 		$output = array(
 			"data" => $data
 		);
-		echo json_encode($output);
+		echo json_encode($data);
 	}
 	
 	
@@ -388,7 +391,7 @@ class Search extends CI_Controller{
 			"Notes_Desc" => $this->input->post("notesDescription"),
 			"Notes_Date" => $this->input->post("notesAccidentDate"),
 			"Case_Id" => $this->input->post("caseId"),
-			"User_Id" => $this->session->userdata['logged_in']['username']
+			"User_Id" => $this->session->userdata['username']
 		);
 		$this->search_model->add_Notes($data);
 		echo json_encode($data);
@@ -519,7 +522,7 @@ class Search extends CI_Controller{
 			"Notes_Desc" => $this->input->post("inputName")." Changed from ".$PreviousValue." To ".$NewValue,
 			"Notes_Date" => $date = date('Y-m-d H:i:s'),
 			"Case_Id" => $Case_Id,
-			"User_Id" => $this->session->userdata['logged_in']['username']
+			"User_Id" => $this->session->userdata['username']
 		);
 		if($recordNo == 3){
 			$data3['Notes_Desc'] = "InjuredParty Name Changed from ".$PreviousValue1." ".$PreviousValue2." To ".$NewValue1." ".$NewValue2;
@@ -649,7 +652,7 @@ class Search extends CI_Controller{
 			"Settlement_Ff" => $this->input->post('Settlement_Ff'),
 			"Settlement_Total" => $this->input->post('Settlement_Total'),
 			"Settlement_Date" => date('Y-m-d H:i:s'),
-			"User_Id" => $this->session->userdata['logged_in']['username'],
+			"User_Id" => $this->session->userdata['username'],
 			"Settlement_Notes" => $this->input->post('Settlement_Notes')
 		);
 		if($this->input->post('SettledWithAdjuster') != ""){
@@ -761,7 +764,7 @@ class Search extends CI_Controller{
 				"Notes_Desc" => "Payment/Transaction posted : $".$data['Transactions_Amount']." (".$data['Transactions_Type'].") Desc->".$data['Transactions_Description'],
 				"Notes_Date" => $date = date('Y-m-d H:i:s'),
 				"Case_Id" => $data['Case_Id'],
-				"User_Id" => $this->session->userdata['logged_in']['username']
+				"User_Id" => $this->session->userdata['username']
 			);
 			$this->search_model->add_Notes($data3);
 			echo json_encode($output);
@@ -783,7 +786,7 @@ class Search extends CI_Controller{
 				"Notes_Desc" => "Payment/Transaction deleted : $".$CheckedTransactionsAmt[$i]." (".$CheckedTransactionsType[$i].") Desc->".$CheckedTransactionsDesc[$i],
 				"Notes_Date" => $date = date('Y-m-d H:i:s'),
 				"Case_Id" => $Case_Id,
-				"User_Id" => $this->session->userdata['logged_in']['username']
+				"User_Id" => $this->session->userdata['username']
 			);
 			$this->search_model->add_Notes($data[$i]);
 		}
@@ -840,12 +843,120 @@ class Search extends CI_Controller{
 			"EventStatusId" => $this->input->post("EventStatusHidden"),
 			"Event_Time" => $this->input->post("EventTime"),
 			"Event_Notes" => $this->input->post("EventDescription"),
-			"Assigned_To" => $this->input->post("AssignUserHidden"),
+			"Assigned_To" => $this->input->post("AssignUser"),
 			"Event_id" => $this->input->post("EventIdHidden")
 		);
 		$this->search_model->update_EventInfo($data);
 		echo "<pre>"; print_r($data);
 	}
+/* GET MOTION DATA */
+	public function get_Motion_Data($Case_Id){
+		$list=$this->search_model->getMotion_Data($Case_Id);
+		//echo "<pre>";print_r($list);exit();
+		$data = array();
+		foreach ($list as $result) {
+			$row = array();
+			
+			//$row[] = "";
+			$row[] = $result->Motion_Date;
+			$row[] = $result->Motion_Status;
+			$row[] = $result->Our_Motion_Type;
+			$row[] = $result->Defendent_Motion_Type;
+			$row[] = $result->Opposition_Due_Date;
+			$row[] = $result->Reply_Due_Date;
+			$row[] = $result->cross_motion;
+			$row[] = $result->Notes;
+			$row[] = $result->whose_motion;
+			$row[] = $result->room;
+			$row[] = $result->part;
+			$row[] = $result->judge_name;
+			$row[] = $result->time_duration;
+			//$row[] = "<input type='checkbox' name='deleteCheckedMotion[]' class='deleteCheckedMotion deleteCheckedMotion".$result->Motion_ID."' value='".$result->Motion_ID."'>";
+			
+			$data[] = $row;
+		}
+		$output = array(
+			"data" => $data
+		);
+		echo json_encode($output);
+	}
+/* ADD MOTION DATA*/
+	public function add_Motion_Info_form(){
+		$data = array(
+			"Case_ID" => $this->input->post("Case_ID"),
+			"Motion_Date" => $this->input->post("Motion_Date"),
+			"Motion_Status" => $this->input->post("Motion_Status"),
+			"Our_Motion_Type" => $this->input->post("Our_Motion_Type"),
+			"Defendent_Motion_Type" => $this->input->post("Defendent_Motion_Type"),
+			"Opposition_Due_Date" => $this->input->post("Opposition_Due_Date"),
+			"Reply_Due_Date" => $this->input->post("Reply_Due_Date"),
+			"cross_motion" => $this->input->post("cross_motion"),
+			"whose_motion" => $this->input->post("whose_motion"),
+			"room" => $this->input->post("room"),
+			"part" => $this->input->post("part"),
+			"judge_name" => $this->input->post("judge_name"),
+			"time_duration" => $this->input->post("time_duration"),
+			"Notes" => $this->input->post("Notes")
+		);
+		$this->search_model->addMotion_Info_form($data);
+	}
+/**** DELETE MOTION ********/
+	public function delete_Motion(){
+		$CheckedMotion = $this->input->post('deleteCheckedMotion');
+		$delete_success = $this->search_model->deleteMotion($CheckedMotion);
+	}
+/* GET TRIAL DATA */
+	public function get_Trials_Data($Case_Id){
+		$list=$this->search_model->getTrials_Data($Case_Id);
+		//echo "<pre>";print_r($list);exit();
+		$data = array();
+		foreach ($list as $result) {
+			$row = array();
+			
+			//$row[] = "";
+			$row[] = $result->Trial_Date;
+			$row[] = $result->Trial_Status;
+			$row[] = $result->Trial_Result;
+			$row[] = $result->Trial_Type;
+			$row[] = $result->Jury_Selection_Date;
+			$row[] = $result->Judge_Name;
+			$row[] = $result->Court_Cal_Number;
+			$row[] = $result->Not_Filed_Date;
+			$row[] = $result->Receipt_date;
+			$row[] = $result->Notes;
+			//$row[] = "<input type='checkbox' name='deleteCheckedTrials[]' class='deleteCheckedTrials deleteCheckedTrials".$result->Trial_ID."' value='".$result->Trial_ID."'>";
+			
+			$data[] = $row;
+		}
+		$output = array(
+			"data" => $data
+		);
+		echo json_encode($output);
+	}
+/**** ADD TRIAL DATA ********/
+	public function add_Trials_Info_form(){
+		$data = array(
+			"CASE_ID" => $this->input->post("CASE_ID"),
+			"Trial_Date" => $this->input->post("Trial_Date"),
+			"Trial_Status" => $this->input->post("Trial_Status"),
+			"Trial_Result" => $this->input->post("Trial_Result"),
+			"Trial_Type" => $this->input->post("Trial_Type"),
+			"Jury_Selection_Date" => $this->input->post("Jury_Selection_Date"),
+			"Judge_Name" => $this->input->post("Judge_Name"),
+			"Court_Cal_Number" => $this->input->post("Court_Cal_Number"),
+			"Not_Filed_Date" => $this->input->post("Not_Filed_Date"),
+			"Receipt_date" => $this->input->post("Receipt_date"),
+			"service_complete_date" => $this->input->post("service_complete_date"),
+			"Notes" => $this->input->post("Notes")
+		);
+		$this->search_model->addTrials_Info_form($data);
+	}
+/**** DELETE TRIALS ********/
+	public function delete_Trials(){
+		$CheckedTrials = $this->input->post('deleteCheckedTrials');
+		$delete_success = $this->search_model->deleteTrials($CheckedTrials);
+	}
+
 /*****************************************************************************************************************************************/
 	public function Search_Table_Data($list){
 		$months = array("Just", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "jan");
@@ -856,7 +967,9 @@ class Search extends CI_Controller{
 			$row = array();
 			$no++;
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$no."</a>";
+			if($this->session->userdata['RoleId'] == 1 ){
 			$row[] = "<a href='".base_url()."search/editcase/".$result->Case_AutoId."'><i title='Edit' class='fa fa-edit'></i></a>";
+			}
 			$row[] = "<a href='".base_url()."search/viewcase/".$result->Case_AutoId."'>".$result->Case_Id."</a>";
 			$row[] = "<a href='".base_url()."search/viewcase/".$result->Case_AutoId."'>".$result->InjuredParty_LastName." ".$result->InjuredParty_FirstName."</a>";
 			$row[] = "<a href='".base_url()."search/viewcase/".$result->Case_AutoId."'>".$result->Provider_Name."</a>";
@@ -922,8 +1035,8 @@ class Search extends CI_Controller{
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Status."</a>";
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Ins_Claim_Number."</a>";
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Claim_Amount."</a>";
-			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->IndexOrAAA_Number."</a>";
-			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Initial_Status."</a>";
+			if($this->session->userdata['RoleId'] == 1 ){ $row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->IndexOrAAA_Number."</a>";
+			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Initial_Status."</a>"; }
 			$data[] = $row;
 		}
 		
@@ -941,7 +1054,7 @@ class Search extends CI_Controller{
 		$q = date_create("2014-06-17");
 		$w = date_format($q, "m/d/Y");
 		echo "<br>JJJ:".substr(date("Y"), 2, 2);*/
-		
+		echo "username:".$this->session->userdata['username'];
 		$date2="";
 		$date3= date_create(substr($date2,0,19));
 		echo "<br>Data:".$date2;
@@ -950,7 +1063,6 @@ class Search extends CI_Controller{
 		echo "<br>base_url:".base_url();
 		echo "<br>Time zone:".date_default_timezone_get();
 		echo "<br>Current Time: ".date('h:i:sa');
-		
 	}
 /*****************************************************************************************************************************************/
 }

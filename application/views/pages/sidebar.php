@@ -33,23 +33,27 @@
         </div>
 
         <ul class="nav" id="side-menu">
+        	<?php if($Accessibility == 1){?>
             <li class="adminprivilege">
                 <a href="#"><span class="nav-label">Admin</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
                     <li><a href="<?php echo base_url();?>adminprivilege/manageusers">Admin Privileges</a></li>
                 </ul>
             </li>
+            <?php  } ?>
             <li class="search">
                 <a href="<?php echo base_url();?>search/advancedsearch"><span class="nav-label">Search</span><span class="fa arrow"></span> </a>
                 
             </li>
+            <?php if($Accessibility == 1){?>
             <li class="dataentry">
                 <a href="#"><span class="nav-label">Master</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
                     <li><a href="<?php echo base_url();?>dataentry/addcase">Data Entry</a></li>
                 </ul>
             </li>
-            <?php //if($Accessibility == 1){?>
+            <?php  } ?>
+            <?php if($Accessibility == 1){?>
              <li class="workarea">
                 <a href="#"><span class="nav-label">Work Area</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
@@ -59,24 +63,28 @@
                     <li><a href="<?php echo base_url();?>workarea/calendar">Calendar</a></li>
                 </ul>
             </li>
-            <?php  //} ?>
+            <?php  } ?>
+            <?php if($Accessibility == 1){?>
             <li class="workdesk">
                 <a href="#"><span class="nav-label">WorkDesk</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
                     <li><a href="<?php echo base_url();?>workdesk/workdesks">WorkDesk</a></li>
                 </ul>
             </li>
+            <?php  } ?>
              <li class="financials">
                 <a href="#"><span class="nav-label">Financials</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="<?php echo base_url();?>financials/financial">Financial</a></li>
+                    <?php if($Accessibility == 1){?><li><a href="<?php echo base_url();?>financials/financial">Financial</a></li><?php  } ?>
                     <li><a href="<?php echo base_url();?>financials/reports">Reports</a></li>
-                    <li><a href="<?php echo base_url();?>financials/rapidfunds">Rapid Funds</a></li>
+                    <?php if($Accessibility == 1){?><li><a href="<?php echo base_url();?>financials/rapidfunds">Rapid Funds</a></li><?php  } ?>
                 </ul>
             </li>
+            <?php if($Accessibility == 1){?>
              <li>
                 	<a href="<?php echo base_url();?>admin/contacts"><span class="nav-label">Contacts</span><span class="fa arrow"></span> </a> 
-            </li>   
+            </li> 
+            <?php  } ?>  
             <li>
                 <a href="<?php echo base_url();?>admin/logout"><span class="nav-label">Logoff</span><span class="fa arrow"></span> </a>
             </li>        

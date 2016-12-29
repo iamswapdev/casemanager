@@ -420,6 +420,39 @@ Class Search_model extends CI_Model{
 		$query = $this->db->get("dbo_issuetracker_users");
 		return $query->result_array();
 	}
-
+/* GET MOTION DATA*/
+	public function getMotion_Data($Case_Id){
+		$this->db->where("Case_ID", $Case_Id);
+		$query = $this->db->get("dbo_tblmotions");
+		return $query->result();
+	}
+/*ADD MOTION DATA*/
+	public function addMotion_Info_form($data){
+		$this->db->insert("dbo_tblmotions", $data);
+	}
+/*DELETE motion*/
+	public function deleteMotion($CheckedMotion){
+		foreach($CheckedMotion as $row){
+			$this->db->where("Motion_ID", $row);
+			$this->db->delete('dbo_tblmotions');
+		}
+	}
+/* GET TRIALS DATA*/
+	public function getTrials_Data($Case_Id){
+		$this->db->where("CASE_ID", $Case_Id);
+		$query = $this->db->get("dbo_tbltrials");
+		return $query->result();
+	}
+/*ADD TRIALS DATA*/
+	public function addTrials_Info_form($data){
+		$this->db->insert("dbo_tbltrials", $data);
+	}
+/*DELETE TRIALS*/
+	public function deleteTrials($CheckedTrials){
+		foreach($CheckedTrials as $row){
+			$this->db->where("Trial_ID", $row);
+			$this->db->delete('dbo_tbltrials');
+		}
+	}
 }
 ?>

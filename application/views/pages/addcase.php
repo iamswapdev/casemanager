@@ -173,10 +173,10 @@
                 	<h5 class="h4-title">Other Information </h5>
 					<label class="col-md-2 control-label">Status</label>
 					<div class="col-md-2">
-						<select class="form-control input-sm" id="status" name="status">
+						<select class="form-control input-sm" id="status" name="Status">
                             <option selected="selected" value=""></option>
                             <?php foreach($Status as $row){?>
-                            <option value="<?php echo $row['Status_Id']; ?>"> <?php echo $row['Status_Type']; ?> </option>
+                            <option value="<?php echo $row['Status_Type']; ?>"> <?php echo $row['Status_Type']; ?> </option>
                             <?php }?>
                         </select>
 					</div>
@@ -483,15 +483,9 @@
 			request.done(function (response, textStatus, jqXHR) {
 				// log a message to the console
 				console.log("Hooray, it worked!");
-				$('input[type=text]').val('');
-				$('input[type=radio]').val('');
-				$('textarea').val('');
-				$('#providerId').val('');
-				$('#insuranceCompanyId').val('');
-				$('#status').val('');
-				$('#courtId').val('');
-				$('#serviceType').val('');
-				$('#denialReasons').val('');   
+				$('input').val('');
+				$('select').val('');
+				$('textarea').val('');   
 				callSuccess();
 			});
 
@@ -541,9 +535,10 @@
 			format:'YYYY/MM/DD HH:mm:ss'
 		})
 	});
+/*ONLY DATE PICKER SECTION*/
 	$('body').on('focus',".datetimepicker_Dos_Doe", function(){
 		$(this).datetimepicker({
-			format:'MM/DD/YYYY HH:mm:ss'
+			format:'MM/DD/YYYY'
 		})
 	});
 	$('body').on('focus',".datepicker_recurring_start", function(){

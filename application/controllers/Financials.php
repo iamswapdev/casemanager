@@ -19,7 +19,9 @@ session_cache_limiter('private_no_expire');
 		public function financial(){
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
-				$this->load->view('pages/financials');
+				
+				$data['Accessibility'] = $this->session->userdata['RoleId'];
+				$this->load->view('pages/financials', $data);
 			}else{
 				$this->load->view('pages/login');
 			}
@@ -29,6 +31,7 @@ session_cache_limiter('private_no_expire');
 			if(isset($this->session->userdata['logged_in'])){
 				$data['Provider_Name']= $this->financials_model->get_Provider();
 				$data['InsuranceCompany_Name']= $this->financials_model->get_Insurance();
+				$data['Accessibility'] = $this->session->userdata['RoleId'];
 				$this->load->view('pages/reports',$data);
 			}else{
 				$this->load->view('pages/login');
@@ -39,6 +42,7 @@ session_cache_limiter('private_no_expire');
 			if(isset($this->session->userdata['logged_in'])){
 				$data['Provider_Name']= $this->financials_model->get_Provider();
 				$data['InsuranceCompany_Name']= $this->financials_model->get_Insurance();
+				$data['Accessibility'] = $this->session->userdata['RoleId'];
 				$this->load->view('pages/rapidfunds',$data);
 			}else{
 				$this->load->view('pages/login');
@@ -47,7 +51,8 @@ session_cache_limiter('private_no_expire');
 		public function defendant(){
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
-				$this->load->view('pages/add_defendant_info');
+				$data['Accessibility'] = $this->session->userdata['RoleId'];
+				$this->load->view('pages/add_defendant_info', $data);
 			}else{
 				$this->load->view('pages/login');
 			}

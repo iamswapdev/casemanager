@@ -30,6 +30,7 @@ session_cache_limiter('private_no_expire');
 				$data['company_result']=$this->admin_privilege_model->get_company();
 				
 				$data['Status_Type']=$this->admin_privilege_model->get_StatusType();
+			$data['Accessibility'] = $this->session->userdata['RoleId'];
 		
 				$this->load->view('pages/config',$data);
 			}else{
@@ -44,7 +45,7 @@ session_cache_limiter('private_no_expire');
 			if(isset($this->session->userdata['logged_in'])){
 				//$this->load->model('admin_privilege_model');
 				$data['Roles']=$this->admin_privilege_model->get_AllRoles();
-				$data['Accessibility'] = $this->session->userdata['logged_in']['RoleId'];
+				$data['Accessibility'] = $this->session->userdata['RoleId'];
 				$this->load->view('pages/manageusers', $data);
 			}else{
 				//echo "session deleted";
@@ -52,14 +53,14 @@ session_cache_limiter('private_no_expire');
 			}
 			
 		}
-		public function getAdj(){
+		public function get_Users_List(){
 			$list=$this->admin_privilege_model->get_ManageUserData();
 			$data = array();
 			foreach ($list as $result) {
 				
 				$row = array();
-				$row[] = $result->UserName;
-				$row[] = $result->UserName;
+				$row[] = "<a class='info-link User-info ".$result->UserId."' >".$result->UserName."</a>";
+				$row[] = "<a class='info-link User-info ".$result->UserId."' >".$result->UserName."</a>";
 				$row[] = $result->DisplayName;
 				$row[] = $result->RoleName;
 				$row[] = "<input type='checkbox' name='deleteCheckedUsers[]' class='deleteCheckedUsers deleteCheckedUsers".$result->UserId."' value='".$result->UserId."' >";
@@ -75,6 +76,10 @@ session_cache_limiter('private_no_expire');
 			echo json_encode($output);
 			//$this->load->view('pages/adj',$data);
 		}
+		public function get_User_Info_By_Id($UserId){
+			$data = $this->admin_privilege_model->get_User_Info_By_Id($UserId);
+			echo json_encode($data);
+		}
 		public function deleteUsers(){
 			$CheckedUsers = $this->input->post('deleteCheckedUsers');
 			$delete_success = $this->admin_privilege_model->delete_Users($CheckedUsers);
@@ -89,11 +94,23 @@ session_cache_limiter('private_no_expire');
 			);
 			$this->admin_privilege_model->add_Users($data);
 		}
+		public function update_Users_Form(){
+			$data = array(
+				"UserId" => $this->input->post("UserId"),
+				"UserName" => $this->input->post("UserName"),
+				"UserPassword" => $this->input->post("UserPassword"),
+				"RoleId" => $this->input->post("RoleId"),
+				"Email" => $this->input->post("Email"),
+				"DisplayName" => $this->input->post("UserName")
+			);
+			$this->admin_privilege_model->update_Users($data);
+		}
 		public function addnewrole(){
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
 				
 				$data['Roles']=$this->admin_privilege_model->get_AllRoles();
+				$data['Accessibility'] = $this->session->userdata['RoleId'];
 				$this->load->view('pages/addnewrole',$data);
 			}else{
 				//echo "session deleted";
@@ -135,6 +152,7 @@ session_cache_limiter('private_no_expire');
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
 				$data['RoleName']=$this->admin_privilege_model->get_AllRoles();
+				$data['Accessibility'] = $this->session->userdata['RoleId'];
 				$this->load->view('pages/assignmenu',$data);
 			}else{
 				//echo "session deleted";

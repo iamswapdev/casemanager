@@ -18,7 +18,8 @@ session_cache_limiter('private_no_expire');
 		public function workdesks(){
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
-				$this->load->view('pages/workdesk');
+				$data['Accessibility'] = $this->session->userdata['RoleId'];
+				$this->load->view('pages/workdesk', $data);
 			}else{
 				$this->load->view('pages/login');
 			}
