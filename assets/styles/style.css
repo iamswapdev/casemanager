@@ -3983,3 +3983,9 @@ table.table.tdAlignLeft.work-area-info.info-link-popup th {
 .attorney-form-input, .adjuster-form-input, .defendant-form-input{
 	padding-left:0px;
 }
+.case-info-tab6-title-width{
+	width:70px;
+}
+.injuredparty-tab6-width{
+	width:125px;
+}

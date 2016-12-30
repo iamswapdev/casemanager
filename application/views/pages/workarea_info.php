@@ -893,7 +893,7 @@ for($i=0; $i<=13; $i++){
                             </div>
                             <div class="form-horizontal col-md-12 settlement-title-info">
                                 <div class="col-md-2"></div>
-                                <div class="col-md-1 case-info-tab6-title">CASE ID</div>
+                                <div class="col-md-1 case-info-tab6-title case-info-tab6-title-width">CASE ID</div>
                                 <div class="col-md-2 case-info-tab6-title">PROVIDER</div>
                                 <div class="col-md-2 case-info-tab6-title">INJURED PARTY</div>
                                 <!--<div class="col-md-1 settled-by-show"></div>-->
@@ -903,7 +903,7 @@ for($i=0; $i<=13; $i++){
 							</div>
 							<div class="form-horizontal col-md-12 settlement-title-info">
                             	<div class="col-md-2"></div>
-								<div class="col-md-1 case-info-tab6" id="CaseId-tab-6"></div>
+								<div class="col-md-1 case-info-tab6 case-info-tab6-title-width" id="CaseId-tab-6"></div>
                                 <div class="col-md-2 case-info-tab6" id="ProviderName-tab-6"></div>
                                 <div class="col-md-2 case-info-tab6" id="InjuredPartyName-tab-6"></div>
                                 
@@ -956,10 +956,10 @@ for($i=0; $i<=13; $i++){
 								<div class="col-md-1"><label class="control-label">SETTLEMENT AMOUNT</label> </div>
 								<div class="col-md-1">
                                     <!--<input type="text" id="FltSettlement_AmountTab6" name="Settlement_Amount"  class="form-control input-sm Amount settled-by-info" />-->
-                                    <input type="text" name="Settlement_Amount" value="" class="form-control input-sm Amount settled-by-info" disabled />
+                                    <input type="text" name="Settlement_Amount" value="" class="form-control input-sm Amount settled-by-info"/>
                                     <input type="hidden" name="Settlement_AmountHidden" />
                                 </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="settlementPercentageTab6" name="settlementPercentageTab6"  class="form-control input-sm percentage" value="100.00" disabled></div>
+								<div class="col-md-1"><input step="0.01" type="number" id="settlementPercentageTab6" name="settlementPercentageTab6"  class="form-control input-sm percentage" value="100.00"></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
