@@ -3670,7 +3670,7 @@ tr{
 .nav.nav-tabs.black-tab a{
 	color:#000;
 }
-.fa-edit, .fa-save{
+.fa-edit, .fa-save, fa-times{
 	cursor:pointer;
 }
 .tdAlignLeft td, th{
@@ -3916,22 +3916,22 @@ textarea{
     border-color: #a4a4a4 !important;
 }
 #Payment_Info_table tr th:nth-child(1){
-	width:67px;
+	width:60px;
 }
 #Payment_Info_table tr th:nth-child(2){
-	width:197px;
+	width:177px;
 }
 #Payment_Info_table tr th:nth-child(3){
-	width:211px;
+	width:173px;
 }
 #Payment_Info_table tr th:nth-child(4){
-	width:202px;
+	width:174px;
 }
 #Payment_Info_table tr th:nth-child(5){
-	width:214px;
+	width:169px;
 }
-#Payment_Info_table tr td:nth-child(6){
-	width:190px;
+#Payment_Info_table tr th:nth-child(6){
+	width:179px;
 }
 #Payment_Info_table tr td:nth-child(7){
 	border:none;
