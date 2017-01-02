@@ -140,8 +140,6 @@ class Adminprivilege extends CI_Controller{
 				echo "R: ".$Rolename; exit();
 				$this->addnewrole();
 			}
-			
-			
 		}else{
 			//echo "session deleted";
 			$this->load->view('pages/login');
@@ -160,9 +158,30 @@ class Adminprivilege extends CI_Controller{
 		}
 	}	
 	public function get_Assigned_Menus($RoleId, $MainMenuId){
-		$data = $this->admin_privilege_model->get_Assigned_Menus($RoleId, $MainMenuId);
-		//echo "<pre>"; print_r($data);exit;
-		echo json_encode($data);
+		
+		$data['Allocated'] = $this->admin_privilege_model->get_Allocated_Menus($RoleId, $MainMenuId);
+		$AllocatedMenuId = array();
+		if($MainMenuId ==0){
+			
+			for($i=0; $i<count($data['Allocated']); $i++){
+				if($data['Allocated'][$i]['MenuID'] <=6){
+					$AllocatedMenuId[$i] = $data['Allocated'][$i]['MenuID'];
+				}
+			}
+			//echo "Data len:".count($data);
+			//echo "<pre>controller AllocatedMenuId: ";print_r($AllocatedMenuId);
+			$data['DeAllocated'] = $this->admin_privilege_model->get_DeAllocated_Menus($AllocatedMenuId, $MainMenuId);
+		}else{
+			for($i=0; $i<count($data['Allocated']); $i++){
+				$AllocatedMenuId[$i] = $data['Allocated'][$i]['MenuID'];
+			}
+			//echo "Data len:".count($data);
+			echo "<pre>";print_r($AllocatedMenuId);exit;
+			$data['DeAllocated'] = $this->admin_privilege_model->get_DeAllocated_Menus($AllocatedMenuId, $MainMenuId);
+		}
+		
+		echo "<pre>";print_r($data);
+		//echo json_encode($data);
 	}
 } 	
 ?>

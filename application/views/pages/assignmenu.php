@@ -72,7 +72,7 @@
 				<label class="col-sm-2 control-label">Select Main Menu Name:</label>
 				<div class="col-sm-4">
 					<select class="form-control input-sm" id="SelectMainMenu">
-                    <option value=""></option>
+                    <option value="0"></option>
 					<option value="1">Admin</option>
 					<option value="2">Master</option>
 					<option value="3">Search</option>
@@ -85,10 +85,6 @@
 			
 			<div class="form-group form-horizontal col-md-12">
 				<div class="col-md-4">List of Menus for selected role and main menu.<select class="form-control input-sm input-rows" id="DeAllocated" multiple>
-					<option>option 1</option>
-					<option>option 2</option>
-					<option>option 3</option>
-					<option>option 4</option>
 					</select>
 				</div>
 				<div class="col-sm-1"><br><br><button type="button" id="AssignRight" class="btn btn-primary assign-menu-btn"><p> >> </p></button><br><br><button type="button" id="AssignLeft" class="btn btn-primary assign-menu-btn"><p> << </p></button>
@@ -137,49 +133,75 @@
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
 $(document).ready(function(e) {
-	/*$.ajax({
+	$.ajax({
 		type:'POST',
-		url:"<?php echo base_url();?>adminprivilege/get_Assigned_Menus/1",
+		url:"<?php echo base_url();?>adminprivilege/get_Assigned_Menus/1/0",
 		success:function(data){
 			results = JSON.parse(data);
 			/*for(var i=0; i<results.length; i++){
-				$.each(results[i], function(k, v) {
+				$.each(results[i].Allocated, function(k, v) {
 					console.log(k + ' == ' + v);
 					if(k == "MenuID" && v > 6){
 						$("#DeAllocated").append("<option value='"+v+"'>"+Text+"</option>");
 					}
 				});
 			}*/
-			for($i in results){
-				if(results[$i].MenuID <= 6){
-					$("#Allocated").append("<option value='"+results[$i].MenuID+"'>"+results[$i].MenuName+"</option>");
+			for($i in results.Allocated){
+				if(results.Allocated[$i].MenuID <= 6){
+					$("#Allocated").append("<option value='"+results.Allocated[$i].MenuID+"'>"+results.Allocated[$i].MenuName+"</option>");
 					//console.log("MenuID:"+results[$i].MenuID+" MenueName:"+results[$i].MenuName);
 				}
 			}
 			
 		},
 		error: function(result){ console.log("error"); }
-	});*/
-	$("#SelectRole").on('change', function(){
+	});
+	$("#SelectRole, #SelectMainMenu").on('change', function(){
+		
 		$.ajax({
 			type:'POST',
 			url:"<?php echo base_url();?>adminprivilege/get_Assigned_Menus/"+$("#SelectRole option:selected").val()+"/"+$("#SelectMainMenu option:selected").val(),
 			success:function(data){
 				results = JSON.parse(data);
+				console.log("results.DeAllocated.length:"+results.DeAllocated.length);
 				$('#Allocated').empty();
-				if($("#SelectRole option:selected").val() == 1 || $("#SelectRole option:selected").val() == 3){
-					for($i in results){
-						if(results[$i].MenuID <= 6){
-							$("#Allocated").append("<option value='"+results[$i].MenuID+"'>"+results[$i].MenuName+"</option>");
-							//console.log("MenuID:"+results[$i].MenuID+" MenueName:"+results[$i].MenuName);
+				$('#DeAllocated').empty();
+				if($("#SelectRole option:selected").val() == 1 || $("#SelectRole option:selected").val() == 3 || $("#SelectMainMenu option:selected").val() == 0){
+					if(results.Allocated.length !=0){
+						for($i in results.Allocated){
+							if(results.Allocated[$i].MenuID <= 6){
+								$("#Allocated").append("<option value='"+results.Allocated[$i].MenuID+"'>"+results.Allocated[$i].MenuName+"</option>");
+								//console.log("MenuID:"+results[$i].MenuID+" MenueName:"+results[$i].MenuName);
+							}
 						}
 					}
+					
+					if(results.DeAllocated.length !=0){
+						for($i in results.DeAllocated){
+							if(results.DeAllocated[$i].MenuID <= 6){
+								$("#DeAllocated").append("<option value='"+results.DeAllocated[$i].MenuID+"'>"+results.DeAllocated[$i].MenuName+"</option>");
+								//console.log("MenuID:"+results[$i].MenuID+" MenueName:"+results[$i].MenuName);
+							}
+						}
+					}
+					
 				}else{
-					for($i in results){
-						if(results[$i].MenuID > 6){
-							$("#Allocated").append("<option value='"+results[$i].MenuID+"'>"+results[$i].MenuName+"</option>");
+					if(results.Allocated.length !=0){
+						for($i in results.Allocated){
+							if(results.Allocated[$i].MenuID > 6){
+								$("#Allocated").append("<option value='"+results.Allocated[$i].MenuID+"'>"+results.Allocated[$i].MenuName+"</option>");
+							}
 						}
 					}
+					
+					if(results.DeAllocated.length !=0){
+						for($i in results.DeAllocated){
+							if(results.DeAllocated[$i].MenuID > 6){
+								$("#DeAllocated").append("<option value='"+results.DeAllocated[$i].MenuID+"'>"+results.DeAllocated[$i].MenuName+"</option>");
+							}
+						}
+					}
+					
 				}
 				
 				
