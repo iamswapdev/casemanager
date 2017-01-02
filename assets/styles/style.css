@@ -3601,7 +3601,7 @@ input[name="search"]::-webkit-input-placeholder, input[name="search"] {
 	height:20px !important;
 }
 select[multiple].input-rows{
-	height:101px;
+	height:150px;
 }
 .required-field{
 	color:#F00;
@@ -3670,7 +3670,7 @@ tr{
 .nav.nav-tabs.black-tab a{
 	color:#000;
 }
-.fa-edit, .fa-save, fa-times{
+.fa-edit, .fa-save, .fa-times{
 	cursor:pointer;
 }
 .tdAlignLeft td, th{
@@ -3988,4 +3988,7 @@ table.table.tdAlignLeft.work-area-info.info-link-popup th {
 }
 .injuredparty-tab6-width{
 	width:125px;
+}
+.assign-menu-btn{
+	margin-left:50px;
 }

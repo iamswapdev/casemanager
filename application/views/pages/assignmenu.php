@@ -60,10 +60,10 @@
 			<div class="form-group form-horizontal col-md-12">
 				<label class="col-sm-2 control-label">Select Role Name :</label>
 				<div class="col-sm-4">
-					<select class="form-control input-sm" name="account">
+					<select class="form-control input-sm" id="SelectRole">
 					
                     <?php foreach($RoleName as $row){?>
-							<option><?php echo $row['RoleName']?></option>
+							<option value="<?php echo $row['RoleId']?>"><?php echo $row['RoleName']?></option>
                     <?php }?>
 					</select>
 				</div>
@@ -71,36 +71,31 @@
 			<div class="form-group form-horizontal col-md-12">
 				<label class="col-sm-2 control-label">Select Main Menu Name:</label>
 				<div class="col-sm-4">
-					<select class="form-control input-sm" name="account">
-					<option>Admin</option>
-					<option>Master</option>
-					<option>Search</option>
-					<option>WorkArea</option>
-					<option>WorkDesk</option>
-					<option>Financials</option>
+					<select class="form-control input-sm" id="SelectMainMenu">
+                    <option value=""></option>
+					<option value="1">Admin</option>
+					<option value="2">Master</option>
+					<option value="3">Search</option>
+					<option value="4">WorkArea</option>
+					<option value="5">WorkDesk</option>
+					<option value="6">Financials</option>
 					</select>
 				</div>
 			</div>
 			
 			<div class="form-group form-horizontal col-md-12">
-				<div class="col-md-4">List of Menus for selected role and main menu.<select class="form-control input-sm input-rows" name="account" multiple>
+				<div class="col-md-4">List of Menus for selected role and main menu.<select class="form-control input-sm input-rows" id="DeAllocated" multiple>
 					<option>option 1</option>
 					<option>option 2</option>
 					<option>option 3</option>
 					<option>option 4</option>
 					</select>
 				</div>
-				<div class="col-sm-1"><br><br><button type="button" class="btn btn-primary"><p> << </p></button><br><br><button type="button" class="btn btn-primary"><p> << </p></button>
+				<div class="col-sm-1"><br><br><button type="button" id="AssignRight" class="btn btn-primary assign-menu-btn"><p> >> </p></button><br><br><button type="button" id="AssignLeft" class="btn btn-primary assign-menu-btn"><p> << </p></button>
                 </div>
-				<div class="col-sm-4">List Assigned Menus To A Role<select class="form-control input-sm input-rows" name="account" multiple>
-						<option>Admin</option>
-						<option>Master</option>
-						<option>Search</option>
-						<option>WorkArea</option>
-						<option>WorkDesk</option>
-						<option>Financials</option>
-						<option>Contacts</option>
-						</select>
+				<div class="col-sm-4">List Assigned Menus To A Role
+                	<select class="form-control input-sm input-rows" id="Allocated" multiple>
+					</select>
 				 </div>
 			</div>
 			
@@ -141,21 +136,75 @@
 <!-- App scripts -->
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
-	var preventClick = false;
-
-	$('#ThisLink').click(function(e) {
-		$(this)
-		   .css('cursor', 'default')
-		   .css('text-decoration', 'none')
-	
-		if (!preventClick) {
-			$(this).html($(this).html() + ' lalala');
-		}
-	
-		preventClick = true;
-	
-		return false;
+$(document).ready(function(e) {
+	/*$.ajax({
+		type:'POST',
+		url:"<?php echo base_url();?>adminprivilege/get_Assigned_Menus/1",
+		success:function(data){
+			results = JSON.parse(data);
+			/*for(var i=0; i<results.length; i++){
+				$.each(results[i], function(k, v) {
+					console.log(k + ' == ' + v);
+					if(k == "MenuID" && v > 6){
+						$("#DeAllocated").append("<option value='"+v+"'>"+Text+"</option>");
+					}
+				});
+			}*/
+			for($i in results){
+				if(results[$i].MenuID <= 6){
+					$("#Allocated").append("<option value='"+results[$i].MenuID+"'>"+results[$i].MenuName+"</option>");
+					//console.log("MenuID:"+results[$i].MenuID+" MenueName:"+results[$i].MenuName);
+				}
+			}
+			
+		},
+		error: function(result){ console.log("error"); }
+	});*/
+	$("#SelectRole").on('change', function(){
+		$.ajax({
+			type:'POST',
+			url:"<?php echo base_url();?>adminprivilege/get_Assigned_Menus/"+$("#SelectRole option:selected").val()+"/"+$("#SelectMainMenu option:selected").val(),
+			success:function(data){
+				results = JSON.parse(data);
+				$('#Allocated').empty();
+				if($("#SelectRole option:selected").val() == 1 || $("#SelectRole option:selected").val() == 3){
+					for($i in results){
+						if(results[$i].MenuID <= 6){
+							$("#Allocated").append("<option value='"+results[$i].MenuID+"'>"+results[$i].MenuName+"</option>");
+							//console.log("MenuID:"+results[$i].MenuID+" MenueName:"+results[$i].MenuName);
+						}
+					}
+				}else{
+					for($i in results){
+						if(results[$i].MenuID > 6){
+							$("#Allocated").append("<option value='"+results[$i].MenuID+"'>"+results[$i].MenuName+"</option>");
+						}
+					}
+				}
+				
+				
+			},
+			error: function(result){ console.log("error"); }
+		});
 	});
+	$("#AssignRight").click(function(){
+		var Value = $("#DeAllocated option:selected").val();
+		var Text = $("#DeAllocated option:selected").text();
+		$("#Allocated").append("<option value='"+Value+"'>"+Text+"</option>");
+		
+		$("#DeAllocated option:selected").remove();
+	});
+	$("#AssignLeft").click(function(){
+		var Value = $("#Allocated option:selected").val();
+		var Text = $("#Allocated option:selected").text();
+		$("#DeAllocated").append("<option value='"+Value+"'>"+Text+"</option>");
+		
+		$("#Allocated option:selected").remove();
+	}); 
+});
+	
+	
+	
 </script>
 <script>
 	$('.adminprivilege').addClass('active');
