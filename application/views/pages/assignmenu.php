@@ -184,6 +184,14 @@ $(document).ready(function(e) {
 							}
 						}
 					}
+					if(results.DeAllocatedSubMenu.length !=0){
+						for($i in results.DeAllocatedSubMenu){
+							if(results.DeAllocatedSubMenu[$i].MenuID <= 6){
+								$("#DeAllocated").append("<option value='"+results.DeAllocatedSubMenu[$i].MenuID+"'>"+results.DeAllocatedSubMenu[$i].MenuName+"</option>");
+								//console.log("MenuID:"+results[$i].MenuID+" MenueName:"+results[$i].MenuName);
+							}
+						}
+					}
 					
 				}else{
 					if(results.Allocated.length !=0){
@@ -198,6 +206,13 @@ $(document).ready(function(e) {
 						for($i in results.DeAllocated){
 							if(results.DeAllocated[$i].MenuID > 6){
 								$("#DeAllocated").append("<option value='"+results.DeAllocated[$i].MenuID+"'>"+results.DeAllocated[$i].MenuName+"</option>");
+							}
+						}
+					}
+					if(results.DeAllocatedSubMenu.length !=0){
+						for($i in results.DeAllocatedSubMenu){
+							if(results.DeAllocatedSubMenu[$i].MenuID > 6){
+								$("#DeAllocated").append("<option value='"+results.DeAllocatedSubMenu[$i].MenuID+"'>"+results.DeAllocatedSubMenu[$i].MenuName+"</option>");
 							}
 						}
 					}

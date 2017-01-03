@@ -88,13 +88,72 @@ Class Admin_privilege_model extends CI_Model{
 		$check = $this->db->insert("dbo_issuetracker_roles", $data);
 		if($check){ return true;} else{ return false;}
 	}
-	public function get_Allocated_Menus($RoleId, $MainMenuId){
+	public function get_Allocated_Main_Menus($RoleId){
+		$this->db->select('t1.*, t2.*');
+		$this->db->from('dbo_tblmenu_access as t1');
+		$this->db->join('dbo_tblmenu as t2', 't1.MenuId = t2.MenuID', 'LEFT');
+		$this->db->where('t1.MenuId <=', 6);
+		$this->db->where('t1.RoleId', $RoleId);
+		$query= $this->db->get();
+		$data=$query->result_array();
+		//echo "<pre>"; print_r($data); exit();
+		return $data;
+	}
+	public function get_DeAllocated_Main_Menus($AllocatedMenuId){
+		$MainMenuId = array(1,2,3,4,5,6);
+		$result = array_diff($MainMenuId, $AllocatedMenuId);
+		$this->db->where_in('MenuID',$result);
+		$query= $this->db->get("dbo_tblmenu");
+		$data=$query->result_array();
+		//echo "<pre>"; print_r($data);
+		return $data;
+	}
+	public function get_Allocated_SubMenus($RoleId, $MainMenuId){
+		$this->db->select('t1.*, t2.*');
+		$this->db->from('dbo_tblmenu_access as t1');
+		$this->db->join('dbo_tblmenu as t2', 't1.MenuId = t2.MenuID', 'LEFT');
+		$this->db->where('t1.RoleId', $RoleId);
+		$this->db->where('t2.ParentID', $MainMenuId);
+		$query= $this->db->get();
+		$data=$query->result_array();
+		//echo "<pre>get_Allocated_SubMenus:"; print_r($data); exit();
+		return $data;
+	}
+	public function get_DeAllocated_SubMenus($RoleId, $MainMenuId, $Allocated_SubMenuId){
+		//echo "<pre>Allocated_SubMenuId model:"; print_r($Allocated_SubMenuId);
+		echo "RoleId:".$RoleId." MainMenuId:".$MainMenuId." Allocated_SubMenuId:";print_r($Allocated_SubMenuId);
+		$this->db->select('t1.*, t2.*');
+		$this->db->from('dbo_tblmenu_access as t1');
+		$this->db->join('dbo_tblmenu as t2', 't1.MenuId = t2.ParentID');
+		$this->db->where('t1.RoleId', $RoleId);
+		$this->db->where('t1.MenuId', $MainMenuId);
+		$this->db->where_not_in("t2.MenuID", $Allocated_SubMenuId);
+		$query= $this->db->get();
+		$data=$query->result_array();
+		echo "<pre>get_DeAllocated_SubMenus:"; print_r($data); exit();
+		return $data;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/**************************************************/
+	public function get_Allocated_Menus2($RoleId, $MainMenuId){
 		$this->db->select('t1.*, t2.*');
 		
 		$this->db->from('dbo_tblmenu_access as t1');
 		$this->db->join('dbo_tblmenu as t2', 't1.MenuId = t2.MenuID', 'LEFT');
 		$this->db->where('t1.RoleId',$RoleId);
 		if($MainMenuId !=0){
+			//echo "dsdsd";
 			$this->db->where('t2.ParentID',$MainMenuId);
 		}
 		
@@ -103,7 +162,14 @@ Class Admin_privilege_model extends CI_Model{
 		//echo "<pre>"; print_r($data); exit();
 		return $data;
 	}
-	public function get_DeAllocated_Menus($AllocatedMenuId, $MainMenuId){
+	public function get_DeAllocated_SubMenus2($MainMenuId){
+		$this->db->where('ParentID',$MainMenuId);
+		$query= $this->db->get("dbo_tblmenu");
+		$data=$query->result_array();
+		//echo "<pre>"; print_r($data); exit();
+		return $data;
+	}
+	public function get_DeAllocated_Menus2($AllocatedMenuId, $MainMenuId){
 		if(count($AllocatedMenuId) !=0){
 			if($MainMenuId !=0){
 				$this->db->where_not_in('MenuID',$AllocatedMenuId);
@@ -121,9 +187,6 @@ Class Admin_privilege_model extends CI_Model{
 				}	
 			}
 		}
-		
-		
-		
 		$query= $this->db->get("dbo_tblmenu");
 		$data=$query->result_array();
 		//echo "<pre>"; print_r($data);
