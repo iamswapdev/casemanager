@@ -97,7 +97,7 @@
 			
 			<div class="form-group form-horizontal col-md-12">
 				<div class="col-sm-4">
-                    <button type="button" class="btn w-xs btn-primary">Save Assigned Menus</button>
+                    <button type="button" class="btn w-xs btn-primary" id="AssignMenuBtn">Save Assigned Menus</button>
                 </div>
 			</div>
 			
@@ -133,6 +133,8 @@
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
 $(document).ready(function(e) {
+	var DeAllocated_array = [];
+	var Allocated_array = [];
 	$.ajax({
 		type:'POST',
 		url:"<?php echo base_url();?>adminprivilege/get_Assigned_Menus/1/0",
@@ -148,17 +150,15 @@ $(document).ready(function(e) {
 			}*/
 			if(results.Allocated_Main_Menus.length !=0){
 				for($i in results.Allocated_Main_Menus){
-					$("#Allocated").append("<option value='"+results.Allocated_Main_Menus[$i].MenuID+"'>"+results.Allocated_Main_Menus[$i].MenuName+"</option>");
+					$("#Allocated").append("<option value='"+results.Allocated_Main_Menus[$i].MenuId+"'>"+results.Allocated_Main_Menus[$i].MenuName+"</option>");
 				}
 			}
 			
 			if(results.DeAllocated_Main_Menus.length !=0){
 				for($i in results.DeAllocated_Main_Menus){
-					$("#DeAllocated").append("<option value='"+results.DeAllocated_Main_Menus[$i].MenuID+"'>"+results.DeAllocated_Main_Menus[$i].MenuName+"</option>");
+					$("#DeAllocated").append("<option value='"+results.DeAllocated_Main_Menus[$i].MenuId+"'>"+results.DeAllocated_Main_Menus[$i].MenuName+"</option>");
 				}
 			}
-			
-			
 		},
 		error: function(result){ console.log("error"); }
 	});
@@ -176,130 +176,50 @@ $(document).ready(function(e) {
 				if($("#SelectMainMenu option:selected").val() == 0){
 					if(results.Allocated_Main_Menus.length !=0){
 						for($i in results.Allocated_Main_Menus){
-							$("#Allocated").append("<option value='"+results.Allocated_Main_Menus[$i].MenuID+"'>"+results.Allocated_Main_Menus[$i].MenuName+"</option>");
+							$("#Allocated").append("<option value='"+results.Allocated_Main_Menus[$i].MenuId+"'>"+results.Allocated_Main_Menus[$i].MenuName+"</option>");
 						}
 					}
 					
 					if(results.DeAllocated_Main_Menus.length !=0){
 						for($i in results.DeAllocated_Main_Menus){
-							$("#DeAllocated").append("<option value='"+results.DeAllocated_Main_Menus[$i].MenuID+"'>"+results.DeAllocated_Main_Menus[$i].MenuName+"</option>");
+							$("#DeAllocated").append("<option value='"+results.DeAllocated_Main_Menus[$i].MenuId+"'>"+results.DeAllocated_Main_Menus[$i].MenuName+"</option>");
 						}
 					}
 				}else{
 					if(results.Allocated_SubMenus.length !=0){
 						for($i in results.Allocated_SubMenus){
-							$("#Allocated").append("<option value='"+results.Allocated_SubMenus[$i].MenuID+"'>"+results.Allocated_SubMenus[$i].MenuName+"</option>");
+							$("#Allocated").append("<option value='"+results.Allocated_SubMenus[$i].MenuId+"'>"+results.Allocated_SubMenus[$i].MenuName+"</option>");
 						}
 					}
 					
 					if(results.DeAllocated_SubMenus.length !=0){
 						for($i in results.DeAllocated_SubMenus){
-							$("#DeAllocated").append("<option value='"+results.DeAllocated_SubMenus[$i].MenuID+"'>"+results.DeAllocated_SubMenus[$i].MenuName+"</option>");
+							$("#DeAllocated").append("<option value='"+results.DeAllocated_SubMenus[$i].MenuId+"'>"+results.DeAllocated_SubMenus[$i].MenuName+"</option>");
 						}
 					}
 					
 					if(results.DeAllocated_SubMenus_MM.length !=0){
 						for($i in results.DeAllocated_SubMenus_MM){
-							$("#DeAllocated").append("<option value='"+results.DeAllocated_SubMenus_MM[$i].MenuID+"'>"+results.DeAllocated_SubMenus_MM[$i].MenuName+"</option>");
+							$("#DeAllocated").append("<option value='"+results.DeAllocated_SubMenus_MM[$i].MenuId+"'>"+results.DeAllocated_SubMenus_MM[$i].MenuName+"</option>");
 						}
 					}
-					
-					
+					DeAllocated_array = [];
+					$("#DeAllocated option").each(function(){
+						DeAllocated_array.push($(this).val());
+					});
+					Allocated_array = [];
+					$("#Allocated option").each(function(){
+						Allocated_array.push($(this).val());
+					});
+					/*console.log('Deallocated left array');
+					for (var i = 0; i < DeAllocated_array.length; i++) {
+						console.log('de:' + DeAllocated_array[i]);
+					}
+					console.log('allocated right array');
+					for (var i = 0; i < Allocated_array.length; i++) {
+						console.log('de:' + Allocated_array[i]);
+					}*/
 				}
-				
-				/*
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				if(results.Allocated_Main_Menus.length !=0){
-					for($i in results.Allocated_Main_Menus){
-						$("#Allocated").append("<option value='"+results.Allocated_Main_Menus[$i].MenuID+"'>"+results.Allocated_Main_Menus[$i].MenuName+"</option>");
-					}
-				}
-				
-				if(results.DeAllocated_Main_Menus.length !=0){
-					for($i in results.DeAllocated_Main_Menus){
-						$("#DeAllocated").append("<option value='"+results.DeAllocated_Main_Menus[$i].MenuID+"'>"+results.DeAllocated_Main_Menus[$i].MenuName+"</option>");
-					}
-				}
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				if($("#SelectRole option:selected").val() == 1 || $("#SelectRole option:selected").val() == 3 || $("#SelectMainMenu option:selected").val() == 0){
-					if(results.Allocated.length !=0){
-						for($i in results.Allocated){
-							if(results.Allocated[$i].MenuID <= 6){
-								$("#Allocated").append("<option value='"+results.Allocated[$i].MenuID+"'>"+results.Allocated[$i].MenuName+"</option>");
-								//console.log("MenuID:"+results[$i].MenuID+" MenueName:"+results[$i].MenuName);
-							}
-						}
-					}
-					
-					if(results.DeAllocated.length !=0){
-						for($i in results.DeAllocated){
-							if(results.DeAllocated[$i].MenuID <= 6){
-								$("#DeAllocated").append("<option value='"+results.DeAllocated[$i].MenuID+"'>"+results.DeAllocated[$i].MenuName+"</option>");
-								//console.log("MenuID:"+results[$i].MenuID+" MenueName:"+results[$i].MenuName);
-							}
-						}
-					}
-					if(results.DeAllocatedSubMenu.length !=0){
-						for($i in results.DeAllocatedSubMenu){
-							if(results.DeAllocatedSubMenu[$i].MenuID <= 6){
-								$("#DeAllocated").append("<option value='"+results.DeAllocatedSubMenu[$i].MenuID+"'>"+results.DeAllocatedSubMenu[$i].MenuName+"</option>");
-								//console.log("MenuID:"+results[$i].MenuID+" MenueName:"+results[$i].MenuName);
-							}
-						}
-					}
-					
-				}else{
-					if(results.Allocated.length !=0){
-						for($i in results.Allocated){
-							if(results.Allocated[$i].MenuID > 6){
-								$("#Allocated").append("<option value='"+results.Allocated[$i].MenuID+"'>"+results.Allocated[$i].MenuName+"</option>");
-							}
-						}
-					}
-					
-					if(results.DeAllocated.length !=0){
-						for($i in results.DeAllocated){
-							if(results.DeAllocated[$i].MenuID > 6){
-								$("#DeAllocated").append("<option value='"+results.DeAllocated[$i].MenuID+"'>"+results.DeAllocated[$i].MenuName+"</option>");
-							}
-						}
-					}
-					if(results.DeAllocatedSubMenu.length !=0){
-						for($i in results.DeAllocatedSubMenu){
-							if(results.DeAllocatedSubMenu[$i].MenuID > 6){
-								$("#DeAllocated").append("<option value='"+results.DeAllocatedSubMenu[$i].MenuID+"'>"+results.DeAllocatedSubMenu[$i].MenuName+"</option>");
-							}
-						}
-					}
-					
-				}*/
-				
-				
 			},
 			error: function(result){ console.log("error"); }
 		});
@@ -307,17 +227,41 @@ $(document).ready(function(e) {
 	$("#AssignRight").click(function(){
 		var Value = $("#DeAllocated option:selected").val();
 		var Text = $("#DeAllocated option:selected").text();
-		$("#Allocated").append("<option value='"+Value+"'>"+Text+"</option>");
-		
-		$("#DeAllocated option:selected").remove();
+		if(Text != ""){
+			$("#Allocated").append("<option value='"+Value+"'>"+Text+"</option>");
+			$("#DeAllocated option:selected").remove();
+		}
 	});
 	$("#AssignLeft").click(function(){
 		var Value = $("#Allocated option:selected").val();
 		var Text = $("#Allocated option:selected").text();
-		$("#DeAllocated").append("<option value='"+Value+"'>"+Text+"</option>");
-		
-		$("#Allocated option:selected").remove();
+		if(Text != ""){
+			$("#DeAllocated").append("<option value='"+Value+"'>"+Text+"</option>");
+			$("#Allocated option:selected").remove();
+		}
 	}); 
+	
+	$("#AssignMenuBtn").click(function(){
+		var NewAllocated_array = [];
+		$("#Allocated option").each(function(){
+			NewAllocated_array.push($(this).val());
+		});
+		$.ajax({
+			type:"POST",
+			url:"<?php echo base_url();?>adminprivilege/Save_Assign_Menu",
+			data:{OriginalAllocated: Allocated_array, NewAllocated_array: NewAllocated_array, RoleId: $("#SelectRole option:selected").val()},
+			success: function(){
+				callSuccess();
+			},
+			error: function(){ alert();}
+		});
+	});
+	function callSuccess() {
+		swal({
+			title: "Successfully Added",
+			type: "success"
+		});
+	}
 });
 	
 	

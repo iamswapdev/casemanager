@@ -163,6 +163,7 @@ class Adminprivilege extends CI_Controller{
 		for($i=0; $i<count($data['Allocated_Main_Menus']); $i++){
 			$AllocatedMenuId[$i] = $data['Allocated_Main_Menus'][$i]['MenuID'];
 		}
+		//echo "<pre>";print_r($AllocatedMenuId);exit;
 		if($MainMenuId == 0){
 			$data['DeAllocated_Main_Menus'] = $this->admin_privilege_model->get_DeAllocated_Main_Menus($AllocatedMenuId);
 			//echo "<pre>"; print_r($data);
@@ -175,7 +176,7 @@ class Adminprivilege extends CI_Controller{
 				for($i=0; $i<count($data['Allocated_SubMenus']); $i++){
 					$Allocated_SubMenuId[$i] = $data['Allocated_SubMenus'][$i]['MenuID'];
 				}
-				//echo "<pre>Allocated_SubMenuId:"; print_r($Allocated_SubMenuId);
+				//echo "<pre>Allocated_SubMenuId:"; print_r($Allocated_SubMenuId);exit;
 				$data['DeAllocated_SubMenus'] = $this->admin_privilege_model->get_DeAllocated_SubMenus($RoleId, $MainMenuId, $Allocated_SubMenuId);
 				$data['DeAllocated_SubMenus_MM'] = "";
 			}else{
@@ -186,7 +187,7 @@ class Adminprivilege extends CI_Controller{
 				$data['DeAllocated_SubMenus_MM'] = $this->admin_privilege_model->get_DeAllocated_SubMenus_MM($MainMenuId);
 			}
 		}
-		//echo "<pre>";print_r($data);
+		//echo "<pre>";print_r($data['DeAllocated_SubMenus']);
 		echo json_encode($data);
 	}
 	
@@ -199,42 +200,56 @@ class Adminprivilege extends CI_Controller{
 	
 	
 	
-	public function get_Assigned_Menus2($RoleId, $MainMenuId){
-		
-		$data['Allocated'] = $this->admin_privilege_model->get_Allocated_Menus($RoleId, $MainMenuId);
-		if(count($data['Allocated']) ==0){
-			$data['DeAllocatedSub'] = $this->admin_privilege_model->get_DeAllocated_SubMenus($MainMenuId);
-			$data['DeAllocated'] = "";
-			echo json_encode($data);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public function Save_Assign_Menu(){
+		$OriginalAllocated = $this->input->post("OriginalAllocated");
+		$NewAllocated_array = $this->input->post("NewAllocated_array");
+		$RoleId = $this->input->post("RoleId");
+		//echo "count-OriginalAllocated:".count($OriginalAllocated)." count-NewAllocated_array:".count($NewAllocated_array)."<br>";
+		/*if(count($OriginalAllocated) ==0){
+			$Deleted_Menu_Id = $NewAllocated_array;
+		}else if(count($OriginalAllocated) > count($NewAllocated_array)){
+			$Deleted_Menu_Id = array_diff($OriginalAllocated, $NewAllocated_array);
+			$New_Added_array = array_diff($NewAllocated_array, $OriginalAllocated);
+		}else if(count($OriginalAllocated) < count($NewAllocated_array)){
+			$Deleted_Menu_Id = array_diff($OriginalAllocated, $NewAllocated_array);
+			$New_Added_array = array_diff($NewAllocated_array, $OriginalAllocated);
 		}else{
-			$AllocatedMenuId = array();
-			if($MainMenuId ==0){
-				
-				for($i=0; $i<count($data['Allocated']); $i++){
-					if($data['Allocated'][$i]['MenuID'] <=6){
-						$AllocatedMenuId[$i] = $data['Allocated'][$i]['MenuID'];
-					}
-				}
-				//echo "Data len:".count($data);
-				//echo "<pre>controller AllocatedMenuId: ";print_r($AllocatedMenuId);
-				$data['DeAllocated'] = $this->admin_privilege_model->get_DeAllocated_Menus($AllocatedMenuId, $MainMenuId);
-			}else{
-				for($i=0; $i<count($data['Allocated']); $i++){
-					$AllocatedMenuId[$i] = $data['Allocated'][$i]['MenuID'];
-				}
-				//echo "Data len:".count($data);
-				
-				
-				$data['DeAllocated'] = $this->admin_privilege_model->get_DeAllocated_Menus($AllocatedMenuId, $MainMenuId);
-			}
-		}
-		//echo "<pre>";print_r($data['DeAllocatedSubMenu']);exit;
+			$Deleted_Menu_Id = $NewAllocated_array;
+		}*/
 		
-		echo "<pre>AllocatedMenuId:";print_r($AllocatedMenuId);
-		echo "<pre>Allocated:";print_r($data['Allocated']);
-		echo "<pre>DeAllocatedSub:";print_r($data['DeAllocatedSub']);exit;
-		//echo "<pre>";print_r($data);
-		echo json_encode($data);
+		if(count($OriginalAllocated) ==0){
+			$New_Added_array = $NewAllocated_array;
+			$Deleted_Menu_Id = "";
+		}else{
+			if(count($NewAllocated_array) !=0){
+				$Deleted_Menu_Id = array_diff($OriginalAllocated, $NewAllocated_array);
+				$New_Added_array = array_diff($NewAllocated_array, $OriginalAllocated);
+			}else{
+				$Deleted_Menu_Id = $OriginalAllocated;
+				$New_Added_array = "";
+			}
+			
+		}
+		echo "<pre>OriginalAllocated"; print_r($OriginalAllocated);
+		echo "<pre>NewAllocated_array"; print_r($NewAllocated_array);
+		echo "<pre>Deleted_Menu_Id"; print_r($Deleted_Menu_Id);
+		echo "<pre>New_Added_array"; print_r($New_Added_array);
+		
+		$this->admin_privilege_model->Save_Assign_Menu($New_Added_array, $Deleted_Menu_Id, $RoleId);
+		return true;
 	}
 } 	
 ?>

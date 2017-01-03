@@ -116,7 +116,9 @@ Class Admin_privilege_model extends CI_Model{
 		$this->db->select('t1.*, t2.*');
 		$this->db->from('dbo_tblmenu_access as t1');
 		$this->db->join('dbo_tblmenu as t2', 't1.MenuId = t2.MenuID', 'LEFT');
+		$this->db->where('t2.MenuID >', 6);
 		$this->db->where('t1.RoleId', $RoleId);
+		
 		$this->db->where('t2.ParentID', $MainMenuId);
 		$query= $this->db->get();
 		$data=$query->result_array();
@@ -129,6 +131,7 @@ Class Admin_privilege_model extends CI_Model{
 		$this->db->select('t1.*, t2.*');
 		$this->db->from('dbo_tblmenu_access as t1');
 		$this->db->join('dbo_tblmenu as t2', 't1.MenuId = t2.ParentID');
+		$this->db->where('t2.MenuID >', 6);
 		$this->db->where('t1.RoleId', $RoleId);
 		$this->db->where('t1.MenuId', $MainMenuId);
 		$this->db->where_not_in("t2.MenuID", $Allocated_SubMenuId);
@@ -145,64 +148,27 @@ Class Admin_privilege_model extends CI_Model{
 		//echo "<pre>get_DeAllocated_SubMenus_MM:"; print_r($data); exit();
 		return $data;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/**************************************************/
-	public function get_Allocated_Menus2($RoleId, $MainMenuId){
-		$this->db->select('t1.*, t2.*');
-		
-		$this->db->from('dbo_tblmenu_access as t1');
-		$this->db->join('dbo_tblmenu as t2', 't1.MenuId = t2.MenuID', 'LEFT');
-		$this->db->where('t1.RoleId',$RoleId);
-		if($MainMenuId !=0){
-			//echo "dsdsd";
-			$this->db->where('t2.ParentID',$MainMenuId);
-		}
-		
-		$query= $this->db->get();
-		$data=$query->result_array();
-		//echo "<pre>"; print_r($data); exit();
-		return $data;
-	}
-	public function get_DeAllocated_SubMenus2($MainMenuId){
-		$this->db->where('ParentID',$MainMenuId);
-		$query= $this->db->get("dbo_tblmenu");
-		$data=$query->result_array();
-		//echo "<pre>"; print_r($data); exit();
-		return $data;
-	}
-	public function get_DeAllocated_Menus2($AllocatedMenuId, $MainMenuId){
-		if(count($AllocatedMenuId) !=0){
-			if($MainMenuId !=0){
-				$this->db->where_not_in('MenuID',$AllocatedMenuId);
-				$this->db->where("ParentID", $MainMenuId);
-			}else{
-				if(count($AllocatedMenuId) !=6){
-					$DeAllocatedMainMenu = array(1,2,3,4,5,6);
-					$result2 =array();
-					$result = array_diff($DeAllocatedMainMenu, $AllocatedMenuId);
-					foreach($result as $val){
-						array_push($result2, $val);
-					}
-					//echo "<pre> model:DeAllocatedMainMenu:";print_r($result2);
-					$this->db->where_in('MenuID',$result2);
-				}	
+	public function Save_Assign_Menu($New_Added_array, $Deleted_Menu_Id, $RoleId){
+		if(count($New_Added_array) !=0 ){
+			$MenuId = array();
+			foreach($New_Added_array as $val){
+				$MenuId = array(
+					"RoleId" => $RoleId,
+					"MenuId" => $val
+				);
+				$this->db->insert("dbo_tblmenu_access", $MenuId);
 			}
 		}
-		$query= $this->db->get("dbo_tblmenu");
-		$data=$query->result_array();
-		//echo "<pre>"; print_r($data);
-		return $data;
+		if(count($Deleted_Menu_Id) != 0){
+			foreach($Deleted_Menu_Id as $val){
+				$this->db->where('RoleId', $RoleId);
+				$this->db->where('MenuId', $val);
+				if($val == 20){
+					$this->db->where('MenuId', 5);
+				}
+				$this->db->delete('dbo_tblmenu_access');
+			}
+		}
 	}
 }
 
