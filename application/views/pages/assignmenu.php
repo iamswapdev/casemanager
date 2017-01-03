@@ -72,7 +72,7 @@
 				<label class="col-sm-2 control-label">Select Main Menu Name:</label>
 				<div class="col-sm-4">
 					<select class="form-control input-sm" id="SelectMainMenu">
-                    <option value="0"></option>
+                    <option value="0">All Menus</option>
 					<option value="1">Admin</option>
 					<option value="2">Master</option>
 					<option value="3">Search</option>
@@ -146,12 +146,18 @@ $(document).ready(function(e) {
 					}
 				});
 			}*/
-			for($i in results.Allocated){
-				if(results.Allocated[$i].MenuID <= 6){
-					$("#Allocated").append("<option value='"+results.Allocated[$i].MenuID+"'>"+results.Allocated[$i].MenuName+"</option>");
-					//console.log("MenuID:"+results[$i].MenuID+" MenueName:"+results[$i].MenuName);
+			if(results.Allocated_Main_Menus.length !=0){
+				for($i in results.Allocated_Main_Menus){
+					$("#Allocated").append("<option value='"+results.Allocated_Main_Menus[$i].MenuID+"'>"+results.Allocated_Main_Menus[$i].MenuName+"</option>");
 				}
 			}
+			
+			if(results.DeAllocated_Main_Menus.length !=0){
+				for($i in results.DeAllocated_Main_Menus){
+					$("#DeAllocated").append("<option value='"+results.DeAllocated_Main_Menus[$i].MenuID+"'>"+results.DeAllocated_Main_Menus[$i].MenuName+"</option>");
+				}
+			}
+			
 			
 		},
 		error: function(result){ console.log("error"); }
@@ -163,9 +169,83 @@ $(document).ready(function(e) {
 			url:"<?php echo base_url();?>adminprivilege/get_Assigned_Menus/"+$("#SelectRole option:selected").val()+"/"+$("#SelectMainMenu option:selected").val(),
 			success:function(data){
 				results = JSON.parse(data);
-				console.log("results.DeAllocated.length:"+results.DeAllocated.length);
+				//console.log("results.DeAllocated.length:"+results.DeAllocated.length);
 				$('#Allocated').empty();
 				$('#DeAllocated').empty();
+				
+				if($("#SelectMainMenu option:selected").val() == 0){
+					if(results.Allocated_Main_Menus.length !=0){
+						for($i in results.Allocated_Main_Menus){
+							$("#Allocated").append("<option value='"+results.Allocated_Main_Menus[$i].MenuID+"'>"+results.Allocated_Main_Menus[$i].MenuName+"</option>");
+						}
+					}
+					
+					if(results.DeAllocated_Main_Menus.length !=0){
+						for($i in results.DeAllocated_Main_Menus){
+							$("#DeAllocated").append("<option value='"+results.DeAllocated_Main_Menus[$i].MenuID+"'>"+results.DeAllocated_Main_Menus[$i].MenuName+"</option>");
+						}
+					}
+				}else{
+					if(results.Allocated_SubMenus.length !=0){
+						for($i in results.Allocated_SubMenus){
+							$("#Allocated").append("<option value='"+results.Allocated_SubMenus[$i].MenuID+"'>"+results.Allocated_SubMenus[$i].MenuName+"</option>");
+						}
+					}
+					
+					if(results.DeAllocated_SubMenus.length !=0){
+						for($i in results.DeAllocated_SubMenus){
+							$("#DeAllocated").append("<option value='"+results.DeAllocated_SubMenus[$i].MenuID+"'>"+results.DeAllocated_SubMenus[$i].MenuName+"</option>");
+						}
+					}
+					
+					if(results.DeAllocated_SubMenus_MM.length !=0){
+						for($i in results.DeAllocated_SubMenus_MM){
+							$("#DeAllocated").append("<option value='"+results.DeAllocated_SubMenus_MM[$i].MenuID+"'>"+results.DeAllocated_SubMenus_MM[$i].MenuName+"</option>");
+						}
+					}
+					
+					
+				}
+				
+				/*
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				if(results.Allocated_Main_Menus.length !=0){
+					for($i in results.Allocated_Main_Menus){
+						$("#Allocated").append("<option value='"+results.Allocated_Main_Menus[$i].MenuID+"'>"+results.Allocated_Main_Menus[$i].MenuName+"</option>");
+					}
+				}
+				
+				if(results.DeAllocated_Main_Menus.length !=0){
+					for($i in results.DeAllocated_Main_Menus){
+						$("#DeAllocated").append("<option value='"+results.DeAllocated_Main_Menus[$i].MenuID+"'>"+results.DeAllocated_Main_Menus[$i].MenuName+"</option>");
+					}
+				}
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				if($("#SelectRole option:selected").val() == 1 || $("#SelectRole option:selected").val() == 3 || $("#SelectMainMenu option:selected").val() == 0){
 					if(results.Allocated.length !=0){
 						for($i in results.Allocated){
@@ -217,7 +297,7 @@ $(document).ready(function(e) {
 						}
 					}
 					
-				}
+				}*/
 				
 				
 			},

@@ -167,9 +167,9 @@ class Adminprivilege extends CI_Controller{
 			$data['DeAllocated_Main_Menus'] = $this->admin_privilege_model->get_DeAllocated_Main_Menus($AllocatedMenuId);
 			//echo "<pre>"; print_r($data);
 		}else{
-			echo "not 0";
+			//echo "not 0";
 			if(in_array($MainMenuId, $AllocatedMenuId)){
-				echo "in array";
+				//echo "in array";
 				$data['Allocated_SubMenus'] = $this->admin_privilege_model->get_Allocated_SubMenus($RoleId, $MainMenuId);
 				$Allocated_SubMenuId = array();
 				for($i=0; $i<count($data['Allocated_SubMenus']); $i++){
@@ -177,14 +177,17 @@ class Adminprivilege extends CI_Controller{
 				}
 				//echo "<pre>Allocated_SubMenuId:"; print_r($Allocated_SubMenuId);
 				$data['DeAllocated_SubMenus'] = $this->admin_privilege_model->get_DeAllocated_SubMenus($RoleId, $MainMenuId, $Allocated_SubMenuId);
+				$data['DeAllocated_SubMenus_MM'] = "";
 			}else{
+				
+				$data['DeAllocated_Main_Menus'] = "";
+				$data['Allocated_SubMenus'] = "";
+				$data['DeAllocated_SubMenus'] = "";
+				$data['DeAllocated_SubMenus_MM'] = $this->admin_privilege_model->get_DeAllocated_SubMenus_MM($MainMenuId);
 			}
-			
-			/*for($i=0; $i<count($data['Allocated']); $i++){
-				$AllocatedMenuId[$i] = $data['Allocated'][$i]['MenuID'];
-			}
-			$data['DeAllocated'] = $this->admin_privilege_model->get_DeAllocated_Menus($AllocatedMenuId, $MainMenuId);*/
 		}
+		//echo "<pre>";print_r($data);
+		echo json_encode($data);
 	}
 	
 	
