@@ -24,6 +24,10 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/animate.css/animate.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
+    
+    <!-- Alerts css-->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.css" />
 
     <!-- App styles -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
@@ -121,16 +125,21 @@
 
 </div>
 
-<!-- Vendor scripts -->
-<script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
-<!-- App scripts -->
-<script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
+    <!-- Vendor scripts -->
+    <script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
+    
+    <!--Alerts js -->
+    <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.js"></script>
+    <!-- App scripts -->
+    <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
 $(document).ready(function(e) {
 	var DeAllocated_array = [];
@@ -156,9 +165,17 @@ $(document).ready(function(e) {
 			
 			if(results.DeAllocated_Main_Menus.length !=0){
 				for($i in results.DeAllocated_Main_Menus){
-					$("#DeAllocated").append("<option value='"+results.DeAllocated_Main_Menus[$i].MenuId+"'>"+results.DeAllocated_Main_Menus[$i].MenuName+"</option>");
+					$("#DeAllocated").append("<option value='"+results.DeAllocated_Main_Menus[$i].MenuID+"'>"+results.DeAllocated_Main_Menus[$i].MenuName+"</option>");
 				}
 			}
+			DeAllocated_array = [];
+			$("#DeAllocated option").each(function(){
+				DeAllocated_array.push($(this).val());
+			});
+			Allocated_array = [];
+			$("#Allocated option").each(function(){
+				Allocated_array.push($(this).val());
+			});
 		},
 		error: function(result){ console.log("error"); }
 	});
@@ -182,7 +199,7 @@ $(document).ready(function(e) {
 					
 					if(results.DeAllocated_Main_Menus.length !=0){
 						for($i in results.DeAllocated_Main_Menus){
-							$("#DeAllocated").append("<option value='"+results.DeAllocated_Main_Menus[$i].MenuId+"'>"+results.DeAllocated_Main_Menus[$i].MenuName+"</option>");
+							$("#DeAllocated").append("<option value='"+results.DeAllocated_Main_Menus[$i].MenuID+"'>"+results.DeAllocated_Main_Menus[$i].MenuName+"</option>");
 						}
 					}
 				}else{
@@ -194,32 +211,32 @@ $(document).ready(function(e) {
 					
 					if(results.DeAllocated_SubMenus.length !=0){
 						for($i in results.DeAllocated_SubMenus){
-							$("#DeAllocated").append("<option value='"+results.DeAllocated_SubMenus[$i].MenuId+"'>"+results.DeAllocated_SubMenus[$i].MenuName+"</option>");
+							$("#DeAllocated").append("<option value='"+results.DeAllocated_SubMenus[$i].MenuID+"'>"+results.DeAllocated_SubMenus[$i].MenuName+"</option>");
 						}
 					}
 					
 					if(results.DeAllocated_SubMenus_MM.length !=0){
 						for($i in results.DeAllocated_SubMenus_MM){
-							$("#DeAllocated").append("<option value='"+results.DeAllocated_SubMenus_MM[$i].MenuId+"'>"+results.DeAllocated_SubMenus_MM[$i].MenuName+"</option>");
+							$("#DeAllocated").append("<option value='"+results.DeAllocated_SubMenus_MM[$i].MenuID+"'>"+results.DeAllocated_SubMenus_MM[$i].MenuName+"</option>");
 						}
 					}
-					DeAllocated_array = [];
-					$("#DeAllocated option").each(function(){
-						DeAllocated_array.push($(this).val());
-					});
-					Allocated_array = [];
-					$("#Allocated option").each(function(){
-						Allocated_array.push($(this).val());
-					});
-					/*console.log('Deallocated left array');
-					for (var i = 0; i < DeAllocated_array.length; i++) {
-						console.log('de:' + DeAllocated_array[i]);
-					}
-					console.log('allocated right array');
-					for (var i = 0; i < Allocated_array.length; i++) {
-						console.log('de:' + Allocated_array[i]);
-					}*/
 				}
+				DeAllocated_array = [];
+				$("#DeAllocated option").each(function(){
+					DeAllocated_array.push($(this).val());
+				});
+				Allocated_array = [];
+				$("#Allocated option").each(function(){
+					Allocated_array.push($(this).val());
+				});
+				/*console.log('Deallocated left array');
+				for (var i = 0; i < DeAllocated_array.length; i++) {
+					console.log('de:' + DeAllocated_array[i]);
+				}
+				console.log('allocated right array');
+				for (var i = 0; i < Allocated_array.length; i++) {
+					console.log('de:' + Allocated_array[i]);
+				}*/
 			},
 			error: function(result){ console.log("error"); }
 		});
@@ -231,6 +248,14 @@ $(document).ready(function(e) {
 			$("#Allocated").append("<option value='"+Value+"'>"+Text+"</option>");
 			$("#DeAllocated option:selected").remove();
 		}
+		/*DeAllocated_array = [];
+		$("#DeAllocated option").each(function(){
+			DeAllocated_array.push($(this).val());
+		});
+		Allocated_array = [];
+		$("#Allocated option").each(function(){
+			Allocated_array.push($(this).val());
+		});*/
 	});
 	$("#AssignLeft").click(function(){
 		var Value = $("#Allocated option:selected").val();
@@ -239,6 +264,14 @@ $(document).ready(function(e) {
 			$("#DeAllocated").append("<option value='"+Value+"'>"+Text+"</option>");
 			$("#Allocated option:selected").remove();
 		}
+		/*DeAllocated_array = [];
+		$("#DeAllocated option").each(function(){
+			DeAllocated_array.push($(this).val());
+		});
+		Allocated_array = [];
+		$("#Allocated option").each(function(){
+			Allocated_array.push($(this).val());
+		});*/
 	}); 
 	
 	$("#AssignMenuBtn").click(function(){
@@ -249,9 +282,17 @@ $(document).ready(function(e) {
 		$.ajax({
 			type:"POST",
 			url:"<?php echo base_url();?>adminprivilege/Save_Assign_Menu",
-			data:{OriginalAllocated: Allocated_array, NewAllocated_array: NewAllocated_array, RoleId: $("#SelectRole option:selected").val()},
+			data:{OriginalAllocated: Allocated_array, NewAllocated_array: NewAllocated_array, RoleId: $("#SelectRole option:selected").val(), Main_MenuId: $("#SelectMainMenu option:selected").val()},
 			success: function(){
 				callSuccess();
+				DeAllocated_array = [];
+				$("#DeAllocated option").each(function(){
+					DeAllocated_array.push($(this).val());
+				});
+				Allocated_array = [];
+				$("#Allocated option").each(function(){
+					Allocated_array.push($(this).val());
+				});
 			},
 			error: function(){ alert();}
 		});

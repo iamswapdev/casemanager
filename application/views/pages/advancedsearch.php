@@ -55,7 +55,7 @@
 			<form method="get" id="caseInfoSerach_form" class="form-horizontal label-font">
 
 				<div class="form-group form-horizontal col-md-12">
-                	<h5 class="h4-title">Search <?php echo $Accessibility;?></h5>
+                	<h5 class="h4-title">Search</h5>
                     <label class="col-md-2 control-label">PROVIDER</label>
 					<div class="col-md-2">
 						<select class="form-control input-sm" id="sProviderId" name="sProviderId">
@@ -150,7 +150,7 @@
 					<thead>
 						<tr>
 							<th>#</th> 	 	   	 	    	      	      	     	 	 	 	   	 	
-							<?php if($Accessibility == 1){?><th>EDIT</th><?php  } ?>
+							<?php if($Admin){?><th>EDIT</th><?php  } ?>
 							<th class="th-case-id">CASE ID</th>
 							<th>INJURED PARTY</th>
 							<th>PROVIDER</th>
@@ -160,8 +160,8 @@
 							<th>STATUS</th>
 							<th class="th-claim-no">CLAIM NUMBER</th>
 							<th class="th-claim-amt">CLAIM AMT.</th>
-                            <?php if($Accessibility == 1){?><th class="th-indexaaano">Indexoraaa_number</th><?php  } ?>
-                            <?php if($Accessibility == 1){?><th class="th-initial-status">INITIAL_STATUS</th><?php  } ?>
+                            <?php if($Admin){?><th class="th-indexaaano">Indexoraaa_number</th><?php  } ?>
+                            <?php if($Admin){?><th class="th-initial-status">INITIAL_STATUS</th><?php  } ?>
 						</tr>
 					</thead>
 				</table>

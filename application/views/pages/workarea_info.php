@@ -121,16 +121,16 @@ for($i=0; $i<=13; $i++){
 			<ul class="nav nav-tabs view-case-navigation">
 				<li class="active"><a id="tab1" data-toggle="tab" href="#tab-1">Case Information</a></li>
 				<li class=""><a id="tab2" data-toggle="tab" href="#tab-2">Extended case info</a></li>
-				<?php if($Accessibility == 1) {?><li class=""><a id="tab3" data-toggle="tab" href="#tab-3">Notes</a></li><?php } ?>
+				<?php if($Admin) {?><li class=""><a id="tab3" data-toggle="tab" href="#tab-3">Notes</a></li><?php } ?>
 				<li class=""><a id="tab4" data-toggle="tab" href="#tab-4">Document Manager</a></li>
                 
-                <?php if($Accessibility == 2) {?><li class=""><a id="tabMotions" data-toggle="tab" href="#tab-Motions">Motions</a></li><?php } ?>
-                <?php if($Accessibility == 2) {?><li class=""><a id="tabTrials" data-toggle="tab" href="#tab-Trials">Trials</a></li><?php } ?>
+                <?php if($Admin) {?><li class=""><a id="tabMotions" data-toggle="tab" href="#tab-Motions">Motions</a></li><?php } ?>
+                <?php if($Admin) {?><li class=""><a id="tabTrials" data-toggle="tab" href="#tab-Trials">Trials</a></li><?php } ?>
                 
-				<?php if($Accessibility == 1) {?><li class=""><a id="tab5" data-toggle="tab" href="#tab-5">Templates</a></li><?php } ?>
+				<?php if($Admin) {?><li class=""><a id="tab5" data-toggle="tab" href="#tab-5">Templates</a></li><?php } ?>
 				<li class=""><a id="tab6" data-toggle="tab" href="#tab-6">Settlement</a></li>
 				<!--<li class=""><a id="tab7" data-toggle="tab" href="#tab-7">New Settlement</a></li>-->
-				<?php if($Accessibility == 1) {?><li class=""><a id="tab8" data-toggle="tab" href="#tab-8">Payment</a></li>
+				<?php if($Admin) {?><li class=""><a id="tab8" data-toggle="tab" href="#tab-8">Payment</a></li>
 				<li class=""><a id="tab9" data-toggle="tab" href="#tab-9">Events</a></li><?php } ?>
 			</ul>
 			<div class="tab-content">
@@ -256,7 +256,7 @@ for($i=0; $i<=13; $i++){
                             	<table id="Treatement_Info_table" class="table dataTable tdAlignLeft-bottom">
                                     <thead>
                                     <tr>
-                                    	<?php if($Accessibility == 1) {?><th>Edit</th><?php } ?>
+                                    	<?php if($Admin) {?><th>Edit</th><?php } ?>
                                         <th>D.O.S-Start</th>
 										<th>D.O.S.-End</th>
 										<th>Claim Amt.</th>
@@ -265,10 +265,10 @@ for($i=0; $i<=13; $i++){
 										<th>Date Bill Sent</th>
                                         <th>Service Type</th>
                                         <th>Denial Reason</th>
-                                        <?php if($Accessibility == 1) {?><th>Delete</th><?php  } ?>
+                                        <?php if($Admin) {?><th>Delete</th><?php  } ?>
                                     </tr>
                                     </thead>
-                                    <?php if($Accessibility == 1) {?>
+                                    <?php if($Admin) {?>
                                     <tfoot>
                                       <tr class="first-row">
                                             <td></td>
@@ -298,7 +298,7 @@ for($i=0; $i<=13; $i++){
                         
                         <div class="form-group form-horizontal col-lg-12 payment-summary-delete">
                         	<div class="col-md-2"><br><h5 class="h4-title">Payment Summary Information</h5></div>
-                            <?php if($Accessibility == 1) {?>
+                            <?php if($Admin) {?>
                         	<div class="col-md-8"></div>
                             <div class="col-md-2 deleteTreatementButton"><button type="button" id="deleteTreatementButton" class="btn btn-primary"><i class="fa fa-trash-o"></i> Delete Checked</button></div>
                             <?php } ?>
@@ -890,7 +890,7 @@ for($i=0; $i<=13; $i++){
 						<div class="panel-heading"></div>
 						<div class="panel-body tab-panel">
                         	<div class="form-group form-horizontal col-md-12">
-                            	<br><h5 class="h4-title">SETTLEMENT DETAIL <?php echo $Accessibility; ?></h5>
+                            	<br><h5 class="h4-title">SETTLEMENT DETAIL</h5>
                             </div>
                             <div class="form-horizontal col-md-12 settlement-title-info">
                                 <div class="col-md-2"></div>
@@ -1734,15 +1734,17 @@ for($i=0; $i<=13; $i++){
 <script>
 $(document).ready(function(e) {
 	//$(".info-link-popup tr:nth-child(2) td:nth-child(2)").css("color", "blue");
-	var Accessibility = "<?php echo $Accessibility;?>";
-	if(Accessibility == 2){
+	var Accessibility = true;
+	if(Accessibility){
 		console.log("Accessibility:"+Accessibility);
+		<?php if($Admin) {?>
 		$("#WorkAreaTable th:nth-child(1)").html("");
 		$("#WorkAreaTable th:nth-child(4)").html("");
 		//$("#Treatement_Info_table th:nth-child(2), #Treatement_Info_table th:nth-child(9)").html("");
 		
 		//$("#Treatement_Info_table td:nth-child(4), #Treatement_Info_table td:nth-child(9)").html("");
 		$("#ExtendedCase_Info_table th:nth-child(1), #ExtendedCase_Info_table th:nth-child(4)").html("");
+		<?php } ?>
 	}
 	Update_Settlement();
 	var current_case_status ="";

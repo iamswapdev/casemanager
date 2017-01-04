@@ -8,6 +8,7 @@ session_cache_limiter('private_no_expire');
 			$this->load->library('session');
 			$this->load->model('dataentry_model');
 			$this->load->model('workarea_model');
+			$this->load->model('admin_privilege_model');
 		}
 		public function index(){
 			$this->session->all_userdata();
@@ -17,10 +18,15 @@ session_cache_limiter('private_no_expire');
 				$this->load->view('pages/login');
 			}
 		}
+		public function get_Assigned_Menus($User_Role){
+			$this->session->all_userdata();
+			$data = $this->admin_privilege_model->get_Assigned_Menus($User_Role);
+			return $data;
+		}
 		public function caseinformation(){
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
-				$data['Accessibility'] = $this->session->userdata['RoleId'];
+				$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 				$this->load->view('pages/caseinformation', $data);
 			}else{
 				$this->load->view('pages/login');
@@ -38,7 +44,7 @@ session_cache_limiter('private_no_expire');
 				$data['Court']= $this->workarea_model->get_Court();
 				$data['Service']= $this->workarea_model->get_Service();
 				$data['DenialReasons']= $this->workarea_model->get_DenialReasons();
-				$data['Accessibility'] = $this->session->userdata['RoleId'];
+				$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 				$this->load->view('pages/dataentry_workarea',$data);
 			}else{
 				$this->load->view('pages/login');
@@ -85,7 +91,7 @@ session_cache_limiter('private_no_expire');
 			//echo $this->session->userdata['logged_in']['username'];
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
-				$data['Accessibility'] = $this->session->userdata['RoleId'];
+				$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 				$this->load->view('pages/fileinsert', $data);	
 			}else{
 				$this->load->view('pages/login');
@@ -98,7 +104,7 @@ session_cache_limiter('private_no_expire');
 				$data['InsuranceCompany_Name']= $this->workarea_model->get_Insurance();
 				$data['Defendant_Name']= $this->workarea_model->get_Defendant();
 				$data['Court']= $this->workarea_model->get_Court();
-				$data['Accessibility'] = $this->session->userdata['RoleId'];
+				$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 				$this->load->view('pages/workflowreport',$data);
 			}else{
 				$this->load->view('pages/login');
@@ -107,7 +113,7 @@ session_cache_limiter('private_no_expire');
 		public function calendar(){
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
-				$data['Accessibility'] = $this->session->userdata['RoleId'];
+				$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 				$this->load->view('pages/calendar', $data);
 			}else{
 				$this->load->view('pages/login');

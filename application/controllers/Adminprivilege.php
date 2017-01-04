@@ -17,6 +17,12 @@ class Adminprivilege extends CI_Controller{
 			$this->load->view('pages/login');
 		}	
 	}
+	public function get_Assigned_Menus_New($User_Role){
+		$this->session->all_userdata();
+		$data = $this->admin_privilege_model->get_Assigned_Menus($User_Role);
+		//echo "<pre>";print_r($data); exit;
+		return $data;
+	}
 	public function config(){
 		$this->session->all_userdata();
 		if(isset($this->session->userdata['logged_in'])){
@@ -30,7 +36,7 @@ class Adminprivilege extends CI_Controller{
 			$data['company_result']=$this->admin_privilege_model->get_company();
 			
 			$data['Status_Type']=$this->admin_privilege_model->get_StatusType();
-		$data['Accessibility'] = $this->session->userdata['RoleId'];
+		$data['Assigned_Menus'] = $this->get_Assigned_Menus_New($this->session->userdata['RoleId']);
 	
 			$this->load->view('pages/config',$data);
 		}else{
@@ -45,7 +51,7 @@ class Adminprivilege extends CI_Controller{
 		if(isset($this->session->userdata['logged_in'])){
 			//$this->load->model('admin_privilege_model');
 			$data['Roles']=$this->admin_privilege_model->get_AllRoles();
-			$data['Accessibility'] = $this->session->userdata['RoleId'];
+			$data['Assigned_Menus'] = $this->get_Assigned_Menus_New($this->session->userdata['RoleId']);
 			$this->load->view('pages/manageusers', $data);
 		}else{
 			//echo "session deleted";
@@ -110,7 +116,7 @@ class Adminprivilege extends CI_Controller{
 		if(isset($this->session->userdata['logged_in'])){
 			
 			$data['Roles']=$this->admin_privilege_model->get_AllRoles();
-			$data['Accessibility'] = $this->session->userdata['RoleId'];
+			$data['Assigned_Menus'] = $this->get_Assigned_Menus_New($this->session->userdata['RoleId']);
 			$this->load->view('pages/addnewrole',$data);
 		}else{
 			//echo "session deleted";
@@ -150,7 +156,7 @@ class Adminprivilege extends CI_Controller{
 		$this->session->all_userdata();
 		if(isset($this->session->userdata['logged_in'])){
 			$data['RoleName']=$this->admin_privilege_model->get_AllRoles();
-			$data['Accessibility'] = $this->session->userdata['RoleId'];
+			$data['Assigned_Menus'] = $this->get_Assigned_Menus_New($this->session->userdata['RoleId']);
 			$this->load->view('pages/assignmenu',$data);
 		}else{
 			//echo "session deleted";
@@ -187,36 +193,15 @@ class Adminprivilege extends CI_Controller{
 				$data['DeAllocated_SubMenus_MM'] = $this->admin_privilege_model->get_DeAllocated_SubMenus_MM($MainMenuId);
 			}
 		}
-		//echo "<pre>";print_r($data['DeAllocated_SubMenus']);
+		//echo "<pre>AllocatedMenuId";print_r($AllocatedMenuId);
+		//echo "<pre>DeAllocated_Main_Menus";print_r($data['DeAllocated_Main_Menus']);
 		echo json_encode($data);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	public function Save_Assign_Menu(){
 		$OriginalAllocated = $this->input->post("OriginalAllocated");
 		$NewAllocated_array = $this->input->post("NewAllocated_array");
 		$RoleId = $this->input->post("RoleId");
+		$Main_MenuId = $this->input->post("Main_MenuId");
 		//echo "count-OriginalAllocated:".count($OriginalAllocated)." count-NewAllocated_array:".count($NewAllocated_array)."<br>";
 		/*if(count($OriginalAllocated) ==0){
 			$Deleted_Menu_Id = $NewAllocated_array;
@@ -232,23 +217,24 @@ class Adminprivilege extends CI_Controller{
 		
 		if(count($OriginalAllocated) ==0){
 			$New_Added_array = $NewAllocated_array;
-			$Deleted_Menu_Id = "";
+			$Deleted_Menu_Id = array();
 		}else{
 			if(count($NewAllocated_array) !=0){
 				$Deleted_Menu_Id = array_diff($OriginalAllocated, $NewAllocated_array);
 				$New_Added_array = array_diff($NewAllocated_array, $OriginalAllocated);
 			}else{
 				$Deleted_Menu_Id = $OriginalAllocated;
-				$New_Added_array = "";
+				$New_Added_array = array();
 			}
 			
 		}
-		echo "<pre>OriginalAllocated"; print_r($OriginalAllocated);
+		/*echo "<pre>OriginalAllocated"; print_r($OriginalAllocated);
 		echo "<pre>NewAllocated_array"; print_r($NewAllocated_array);
 		echo "<pre>Deleted_Menu_Id"; print_r($Deleted_Menu_Id);
-		echo "<pre>New_Added_array"; print_r($New_Added_array);
+		echo "<pre>Deleted_Menu_Id count:".count($Deleted_Menu_Id);
+		echo "<pre>New_Added_array"; print_r($New_Added_array);*/
 		
-		$this->admin_privilege_model->Save_Assign_Menu($New_Added_array, $Deleted_Menu_Id, $RoleId);
+		$this->admin_privilege_model->Save_Assign_Menu($OriginalAllocated, $New_Added_array, $Deleted_Menu_Id, $RoleId, $Main_MenuId);
 		return true;
 	}
 } 	

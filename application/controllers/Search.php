@@ -9,7 +9,9 @@ class Search extends CI_Controller{
 		$this->load->library('session');
 		$this->load->model('search_model');
 		$this->load->model('dataentry_model');
+		$this->load->model('admin_privilege_model');
 	}
+	
 	public function index(){
 		//$this->session->all_userdata();
 		$this->$username = $this->session->userdata['username'];
@@ -41,7 +43,7 @@ class Search extends CI_Controller{
 			$data['Adjuster_Name']= $this->search_model->get_Adjuster();
 			$data['Court']= $this->search_model->get_CourtArray();
 			$data['SearchResult']=$this->search_model->get_SearchResult();
-			$data['Accessibility'] = $this->session->userdata['RoleId'];
+			$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 			$this->load->view('pages/advancedsearch',$data);
 		}else{
 			$this->load->view('pages/login');
@@ -64,7 +66,7 @@ class Search extends CI_Controller{
 				$data['Adjuster_Name']= $this->dataentry_model->get_Adjuster();
 				
 				$data['CaseInfo']= $this->search_model->get_CaseInfo_ById($Case_AutoId);
-				$data['Accessibility'] = $this->session->userdata['RoleId'];
+				$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 				//echo "<pre>"; print_r($data['CaseInfo']); exit();
 				$this->load->view('pages/editcase',$data);
 				
@@ -72,6 +74,11 @@ class Search extends CI_Controller{
 				$this->load->view('pages/login');
 			}
 		}
+	public function get_Assigned_Menus($User_Role){
+		$this->session->all_userdata();
+		$data = $this->admin_privilege_model->get_Assigned_Menus($User_Role);
+		return $data;
+	}
 	public function viewcase($Case_AutoId){
 		$this->session->all_userdata();
 		//echo "<br><pre>:";print_r($this->session->all_userdata());
@@ -112,7 +119,7 @@ class Search extends CI_Controller{
 				"Case_Id" => $data['CaseInfo'][0]['Case_Id'],
 				"User_Id" => $this->session->userdata['username']
 			);
-			$data['Accessibility'] = $this->session->userdata['RoleId'];
+			$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 			//echo "<pre>";print_r($userAccebility); exit();
 			$this->search_model->add_Notes($data3);
 			

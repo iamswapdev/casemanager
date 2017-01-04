@@ -8,6 +8,7 @@ session_cache_limiter('private_no_expire');
 			$this->load->library('session');
 			//$this->load->driver('session');
 			$this->load->model('dataentry_model');
+			$this->load->model('admin_privilege_model');
 		}
 		public function index(){
 			$this->session->all_userdata();
@@ -16,6 +17,11 @@ session_cache_limiter('private_no_expire');
 			}else{
 				$this->load->view('pages/login');
 			}	
+		}
+		public function get_Assigned_Menus($User_Role){
+			$this->session->all_userdata();
+			$data = $this->admin_privilege_model->get_Assigned_Menus($User_Role);
+			return $data;
 		}
 
 /* ************************************  Start of Addcase  *************************************************************************/
@@ -32,7 +38,7 @@ session_cache_limiter('private_no_expire');
 			$data['Court']= $this->dataentry_model->get_CourtArray();
 			$data['Service']= $this->dataentry_model->get_ServiceArray();
 			$data['DenialReasons']= $this->dataentry_model->get_DenialReasonsArray();
-			$data['Accessibility'] = $this->session->userdata['RoleId'];
+			$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 			$this->load->view('pages/addcase',$data);
 		}else{
 			$this->load->view('pages/login');
@@ -168,7 +174,7 @@ session_cache_limiter('private_no_expire');
 				$data['State_Name']= $this->dataentry_model->get_States();
 				$data['Provider_Name']= $this->dataentry_model->get_Provider();
 				//$data['City_Zip_Country']= $this->dataentry_model->get_City_Zip_Country();
-				$data['Accessibility'] = $this->session->userdata['RoleId'];
+				$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 				$this->load->view('pages/provider',$data);
 			}else{
 				$this->load->view('pages/login');
@@ -241,7 +247,7 @@ session_cache_limiter('private_no_expire');
 			if(isset($this->session->userdata['logged_in'])){
 				$data['State_Name']= $this->dataentry_model->get_States();
 				$data['InsuranceCompany_Name']= $this->dataentry_model->get_Insurance();
-				$data['Accessibility'] = $this->session->userdata['RoleId'];
+				$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 				$this->load->view('pages/addinc_company',$data);
 			}else{
 				$this->load->view('pages/login');
@@ -313,7 +319,7 @@ session_cache_limiter('private_no_expire');
 			$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
 				$data['State_Name']= $this->dataentry_model->get_States();
-				$data['Accessibility'] = $this->session->userdata['RoleId'];
+				$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 				$this->load->view('pages/add_defendant_info',$data);
 			}else{
 				$this->load->view('pages/login');
@@ -372,7 +378,7 @@ session_cache_limiter('private_no_expire');
 			if(isset($this->session->userdata['logged_in'])){
 				$data['InsuranceCompany_Name']= $this->dataentry_model->get_Insurance();
 				$data['Adjuster_Name']= $this->dataentry_model->get_Adjuster();
-				$data['Accessibility'] = $this->session->userdata['RoleId'];
+				$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 				$this->load->view('pages/add_adjuster_info',$data);
 				
 			}else{
@@ -430,7 +436,7 @@ session_cache_limiter('private_no_expire');
 			if(isset($this->session->userdata['logged_in'])){
 				$data['State_Name']= $this->dataentry_model->get_States();
 				$data['Defendant_Name']= $this->dataentry_model->get_Defendant();
-				$data['Accessibility'] = $this->session->userdata['RoleId'];
+				$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 				$this->load->view('pages/add_attorney',$data);
 			}else{
 				$this->load->view('pages/login');
@@ -490,7 +496,7 @@ session_cache_limiter('private_no_expire');
 		public function plantiffattorney(){
 			if(isset($this->session->userdata['logged_in'])){
 				$data['State_Name']= $this->dataentry_model->get_States();
-				$data['Accessibility'] = $this->session->userdata['RoleId'];
+				$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 				$this->load->view('pages/plaintiff_attorney',$data);
 			}else{
 				$this->load->view('pages/login');
@@ -555,7 +561,7 @@ session_cache_limiter('private_no_expire');
 				$data['Service']= $this->dataentry_model->get_Service();
 				$data['EventType']= $this->dataentry_model->get_EventType();
 				$data['EventStatus']= $this->dataentry_model->get_EventStatus();*/
-				$data['Accessibility'] = $this->session->userdata['RoleId'];
+				$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 				
 				$this->load->view('pages/other_entries', $data);
 			}else{
