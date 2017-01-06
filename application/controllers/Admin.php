@@ -11,16 +11,18 @@ session_cache_limiter('private_no_expire');
 	}
 	public function index(){
 		//$this->load->library('session');
-		$this->load->view('pages/login');
+		$CurrentPage['CurrentUrl'] = "search/advancedsearch";
+		$this->load->view('pages/login', $CurrentPage);
 	}
 	public function get_Assigned_Menus_New($User_Role){
-		$this->session->all_userdata();
+		//$this->session->all_userdata();
 		$data = $this->admin_privilege_model->get_Assigned_Menus($User_Role);
 		//echo "<pre>";print_r($data); exit;
 		return $data;
 	}
 	public function dashboard()
 	{ 	
+		$CurrentUrl = $this->input->post('currenturl');
 		$this->load->model('login_model');
 		$data=array(
 			'username'=>$this->input->post('username'),
@@ -42,7 +44,10 @@ session_cache_limiter('private_no_expire');
 			);
 			$this->session->set_userdata($session_data);
 			//$session_set=$this->session->set_userdata('logged_in', $session_data);
-			redirect("search/advancedsearch");
+			//echo "Current url:".$_SERVER['REQUEST_URI'];
+			$Base_Url = base_url();
+			redirect($Base_Url.$CurrentUrl);
+			//redirect("search/advancedsearch");
 			//$this->load->view('pages/advancedsearch');
 		}else{
 			$this->load->view('pages/error_one');
@@ -71,12 +76,13 @@ session_cache_limiter('private_no_expire');
 	}
 	public function logout(){
 		$this->session->sess_destroy();
-		echo "Session distroyed";
-		$this->load->view('pages/login');
+		//echo "Session distroyed";
+		$CurrentPage['CurrentUrl'] = "search/advancedsearch";
+		$this->load->view('pages/login', $CurrentPage);
 	}
 	
 	public function adminprivilege(){
-		$this->session->all_userdata();
+		//$this->session->all_userdata();
 		if(isset($this->session->userdata['logged_in'])){
 			$this->load->view('pages/adminprivilege');
 		}else{
@@ -85,7 +91,7 @@ session_cache_limiter('private_no_expire');
 		
 	}
 	public function dataentry(){
-		$this->session->all_userdata();
+		//$this->session->all_userdata();
 		if(isset($this->session->userdata['logged_in'])){
 			$this->load->view('pages/dataentry');
 		}else{
@@ -94,7 +100,7 @@ session_cache_limiter('private_no_expire');
 		
 	}
 	public function search(){
-		$this->session->all_userdata();
+		//$this->session->all_userdata();
 		if(isset($this->session->userdata['logged_in'])){
 			$this->load->view('pages/search');
 		}else{
@@ -102,88 +108,15 @@ session_cache_limiter('private_no_expire');
 		}
 	}
 	public function advancedsearch(){
-		$this->session->all_userdata();
+		//$this->session->all_userdata();
 		if(isset($this->session->userdata['logged_in'])){
 			$this->load->view('pages/advancedsearch');
 		}else{
 			$this->load->view('admin');
 		}
 	}
-	public function caseinformation(){
-		$this->session->all_userdata();
-		if(isset($this->session->userdata['logged_in'])){
-			$this->load->view('pages/caseinformation');
-		}else{
-			$this->load->view('admin');
-		}
-	}
-	public function dataentry_workarea(){
-		$this->session->all_userdata();
-		if(isset($this->session->userdata['logged_in'])){
-			$this->load->view('pages/dataentry_workarea');
-		}else{
-			$this->load->view('admin');
-		}
-	}
-	public function fileinsert(){
-		$this->session->all_userdata();
-		if(isset($this->session->userdata['logged_in'])){
-			$this->load->view('pages/fileinsert');
-		}else{
-			$this->load->view('admin');
-		}
-	}
-	public function workflowreport(){
-		$this->session->all_userdata();
-		if(isset($this->session->userdata['logged_in'])){
-			$this->load->view('pages/workflowreport');
-		}else{
-			$this->load->view('admin');
-		}
-	}
-	public function calendar(){
-		$this->session->all_userdata();
-		if(isset($this->session->userdata['logged_in'])){
-			$this->load->view('pages/calendar');
-		}else{
-			$this->load->view('admin');
-		}
-	}
-	public function workdesk(){
-		$this->session->all_userdata();
-		if(isset($this->session->userdata['logged_in'])){
-			$this->load->view('pages/workdesk');
-		}else{
-			$this->load->view('admin');
-		}
-	}
-	public function financials(){
-		$this->session->all_userdata();
-		if(isset($this->session->userdata['logged_in'])){
-			$this->load->view('pages/financials');
-		}else{
-			$this->load->view('admin');
-		}
-	}
-	public function reports(){
-		$this->session->all_userdata();
-		if(isset($this->session->userdata['logged_in'])){
-			$this->load->view('pages/reports');
-		}else{
-			$this->load->view('admin');
-		}
-	}
-	public function rapidfunds(){
-		$this->session->all_userdata();
-		if(isset($this->session->userdata['logged_in'])){
-			$this->load->view('pages/rapidfunds');
-		}else{
-			$this->load->view('admin');
-		}
-		
-	}
 	public function contacts(){
-		$this->session->all_userdata();
+		//$this->session->all_userdata();
 		if(isset($this->session->userdata['logged_in'])){
 			$data['Assigned_Menus'] = $this->get_Assigned_Menus_New($this->session->userdata['RoleId']);
 			$this->load->view('pages/contacts', $data);

@@ -146,6 +146,7 @@
 			
 			<h5 class="h4-title">Search Results</h5>
 			<div class="form-group form-horizontal col-md-12 table-responsive">
+            	<div class="col-md-12">
 				<table id="AdvancedSearchTable" class="table dataTable table-bordered table-striped advanced-search">
 					<thead>
 						<tr>
@@ -165,6 +166,7 @@
 						</tr>
 					</thead>
 				</table>
+                </div>
 			</div>
 			
 			

@@ -11,29 +11,31 @@ session_cache_limiter('private_no_expire');
 			$this->load->model('admin_privilege_model');
 		}
 		public function index(){
-			$this->session->all_userdata();
+			
 			if(isset($this->session->userdata['logged_in'])){
 				$this->load->view('pages/caseinformation');	
 			}else{
-				$this->load->view('pages/login');
+				$CurrentPage['CurrentUrl'] = "workarea";
+				$this->load->view('pages/login', $CurrentPage);
 			}
 		}
 		public function get_Assigned_Menus($User_Role){
-			$this->session->all_userdata();
+			
 			$data = $this->admin_privilege_model->get_Assigned_Menus($User_Role);
 			return $data;
 		}
 		public function caseinformation(){
-			$this->session->all_userdata();
+			
 			if(isset($this->session->userdata['logged_in'])){
 				$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 				$this->load->view('pages/caseinformation', $data);
 			}else{
-				$this->load->view('pages/login');
+				$CurrentPage['CurrentUrl'] = "workarea/caseinformation";
+				$this->load->view('pages/login', $CurrentPage);
 			}
 		}
 		public function dataentryworkarea(){
-			$this->session->all_userdata();
+			
 			if(isset($this->session->userdata['logged_in'])){
 				//$data['Provider_Name']= $this->workarea_model->just();
 				
@@ -47,11 +49,12 @@ session_cache_limiter('private_no_expire');
 				$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 				$this->load->view('pages/dataentry_workarea',$data);
 			}else{
-				$this->load->view('pages/login');
+				$CurrentPage['CurrentUrl'] = "workarea/dataentryworkarea";
+				$this->load->view('pages/login', $CurrentPage);
 			}
 		}
 		public function add_CaseInfo(){
-			$this->session->all_userdata();
+			
 			if(isset($this->session->userdata['logged_in'])){
 				
 				$data = array(
@@ -88,17 +91,17 @@ session_cache_limiter('private_no_expire');
 		}
 		
 		public function fileinsert(){
-			//echo $this->session->userdata['logged_in']['username'];
-			$this->session->all_userdata();
+			//echo "<br><prewe>Session:";print_r($this->session->all_userdata()); echo "</pre>";
 			if(isset($this->session->userdata['logged_in'])){
 				$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 				$this->load->view('pages/fileinsert', $data);	
 			}else{
-				$this->load->view('pages/login');
+				$CurrentPage['CurrentUrl'] = "workarea/fileinsert";
+				$this->load->view('pages/login', $CurrentPage);
 			}
 		}
 		public function workflowreport(){
-			$this->session->all_userdata();
+			
 			if(isset($this->session->userdata['logged_in'])){
 				$data['Provider_Name']= $this->workarea_model->get_Provider();
 				$data['InsuranceCompany_Name']= $this->workarea_model->get_Insurance();
@@ -107,16 +110,18 @@ session_cache_limiter('private_no_expire');
 				$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 				$this->load->view('pages/workflowreport',$data);
 			}else{
-				$this->load->view('pages/login');
+				$CurrentPage['CurrentUrl'] = "workarea/workflowreport";
+				$this->load->view('pages/login', $CurrentPage);
 			}
 		}
 		public function calendar(){
-			$this->session->all_userdata();
+			
 			if(isset($this->session->userdata['logged_in'])){
 				$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 				$this->load->view('pages/calendar', $data);
 			}else{
-				$this->load->view('pages/login');
+				$CurrentPage['CurrentUrl'] = "workarea/calendar";
+				$this->load->view('pages/login', $CurrentPage);
 			}
 		}	
 	} 	

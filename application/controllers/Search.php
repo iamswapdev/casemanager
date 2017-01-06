@@ -19,16 +19,18 @@ class Search extends CI_Controller{
 			$data['SearchResult']=$this->search_model->get_SearchResult();
 			$this->load->view('pages/search',$data);
 		}else{
-			$this->load->view('pages/login');
+			$CurrentPage['CurrentUrl'] = "search";
+			$this->load->view('pages/login', $CurrentPage);
 		}
 	}
 	public function searchs(){
-		$this->session->all_userdata();
+		//$this->session->all_userdata();
 		if(isset($this->session->userdata['logged_in'])){
 			$data['SearchResult']=$this->search_model->get_SearchResult();
 			$this->load->view('pages/search',$data);
 		}else{
-			$this->load->view('pages/login');
+			$CurrentPage['CurrentUrl'] = "search/searchs";
+			$this->load->view('pages/login', $CurrentPage);
 		}
 	}
 	public function advancedsearch(){
@@ -46,11 +48,12 @@ class Search extends CI_Controller{
 			$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 			$this->load->view('pages/advancedsearch',$data);
 		}else{
-			$this->load->view('pages/login');
+			$CurrentPage['CurrentUrl'] = "search/advancedsearch";
+			$this->load->view('pages/login', $CurrentPage);
 		}
 	}
 	public function editcase($Case_AutoId){
-			$this->session->all_userdata();
+			//$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
 				$Case_AutoIdData = array(
 					"Case_AutoId" => $Case_AutoId
@@ -71,16 +74,18 @@ class Search extends CI_Controller{
 				$this->load->view('pages/editcase',$data);
 				
 			}else{
-				$this->load->view('pages/login');
+				$CurrentPage['CurrentUrl'] = "search/editcase";
+				$this->load->view('pages/login', $CurrentPage);
 			}
 		}
 	public function get_Assigned_Menus($User_Role){
-		$this->session->all_userdata();
+		//$this->session->all_userdata();
 		$data = $this->admin_privilege_model->get_Assigned_Menus($User_Role);
 		return $data;
 	}
 	public function viewcase($Case_AutoId){
-		$this->session->all_userdata();
+		
+		//$this->session->all_userdata();
 		//echo "<br><pre>:";print_r($this->session->all_userdata());
 		//echo $this->session->userdata['logged_in']['RoleId']; exit;
 		//print_r($this->session->all_userdata());
@@ -125,8 +130,10 @@ class Search extends CI_Controller{
 			$this->search_model->add_Notes($data3);
 			
 			$this->load->view('pages/workarea_info',$data );
+			echo "<br><prewe>Session:";print_r($this->session->all_userdata()); echo "</pre>";
 		}else{
-			$this->load->view('pages/login');
+			$CurrentPage['CurrentUrl'] = "search/viewcase/".$Case_AutoId;
+			$this->load->view('pages/login', $CurrentPage);
 		}
 	}
 /* GET SETTLED BY INFO BY CASE ID*/
@@ -632,7 +639,7 @@ class Search extends CI_Controller{
 	}
 /***** UPDATE NOTES INFO*/
 	public function UpdateNotesInfo(){
-		$this->session->all_userdata();
+		//$this->session->all_userdata();
 		if(isset($this->session->userdata['logged_in'])){
 			$data = array(
 				"Notes_ID" => $this->input->post('Notes_ID'),
@@ -1075,7 +1082,7 @@ class Search extends CI_Controller{
 	}
 	public function testmethod(){
 		$Case_Id = $this->dataentry_model->get_Last_Case_Id();
-		echo "CaseID:".$Case_Id;exit;
+		echo "CaseID:".$_SERVER['REQUEST_URI'];exit;
 		$this->db->where('order_date >=', $first_date);
 		$this->db->where('order_date <=', $second_date);
 		return $this->db->get('orders');

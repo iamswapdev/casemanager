@@ -9,22 +9,23 @@ class Adminprivilege extends CI_Controller{
 		$this->load->model('admin_privilege_model');
 	}
 	public function index(){
-		$this->session->all_userdata();
+		
 		if(isset($this->session->userdata['logged_in'])){
 			//$this->load->view('pages/config');
 		}else{
 			//echo "session deleted";
-			$this->load->view('pages/login');
+			$CurrentPage['CurrentUrl'] = "adminprivilege";
+			$this->load->view('pages/login', $CurrentPage);
 		}	
 	}
 	public function get_Assigned_Menus_New($User_Role){
-		$this->session->all_userdata();
+		
 		$data = $this->admin_privilege_model->get_Assigned_Menus($User_Role);
 		//echo "<pre>";print_r($data); exit;
 		return $data;
 	}
 	public function config(){
-		$this->session->all_userdata();
+		
 		if(isset($this->session->userdata['logged_in'])){
 			$data = array();
 			//$this->load->model('admin_privilege_model');
@@ -41,13 +42,14 @@ class Adminprivilege extends CI_Controller{
 			$this->load->view('pages/config',$data);
 		}else{
 			//echo "session deleted";
-			$this->load->view('pages/login');
+			$CurrentPage['CurrentUrl'] = "adminprivilege/config";
+			$this->load->view('pages/login', $CurrentPage);
 		}
 		
 	}
 	public function manageusers(){
 		//echo $this->session->userdata['logged_in']['username'];
-		$this->session->all_userdata();
+		
 		if(isset($this->session->userdata['logged_in'])){
 			//$this->load->model('admin_privilege_model');
 			$data['Roles']=$this->admin_privilege_model->get_AllRoles();
@@ -55,7 +57,8 @@ class Adminprivilege extends CI_Controller{
 			$this->load->view('pages/manageusers', $data);
 		}else{
 			//echo "session deleted";
-			$this->load->view('pages/login');
+			$CurrentPage['CurrentUrl'] = "adminprivilege/manageusers";
+			$this->load->view('pages/login', $CurrentPage);
 		}
 		
 	}
@@ -112,7 +115,7 @@ class Adminprivilege extends CI_Controller{
 		$this->admin_privilege_model->update_Users($data);
 	}
 	public function addnewrole(){
-		$this->session->all_userdata();
+		
 		if(isset($this->session->userdata['logged_in'])){
 			
 			$data['Roles']=$this->admin_privilege_model->get_AllRoles();
@@ -120,7 +123,8 @@ class Adminprivilege extends CI_Controller{
 			$this->load->view('pages/addnewrole',$data);
 		}else{
 			//echo "session deleted";
-			$this->load->view('pages/login');
+			$CurrentPage['CurrentUrl'] = "adminprivilege/addnewrole";
+			$this->load->view('pages/login', $CurrentPage);
 		}
 	
 	}
@@ -132,7 +136,7 @@ class Adminprivilege extends CI_Controller{
 		return true;
 	}
 	public function insert_Roles(){
-		$this->session->all_userdata();
+		
 		if(isset($this->session->userdata['logged_in'])){
 			$Rolename = $this->input->post('RoleName');
 			if($Rolename != ""){
@@ -148,19 +152,21 @@ class Adminprivilege extends CI_Controller{
 			}
 		}else{
 			//echo "session deleted";
-			$this->load->view('pages/login');
+			$CurrentPage['CurrentUrl'] = "adminprivilege/insert_Roles";
+			$this->load->view('pages/login', $CurrentPage);
 		}
 	
 	}
 	public function assignmenu(){
-		$this->session->all_userdata();
+		
 		if(isset($this->session->userdata['logged_in'])){
 			$data['RoleName']=$this->admin_privilege_model->get_AllRoles();
 			$data['Assigned_Menus'] = $this->get_Assigned_Menus_New($this->session->userdata['RoleId']);
 			$this->load->view('pages/assignmenu',$data);
 		}else{
 			//echo "session deleted";
-			$this->load->view('pages/login');
+			$CurrentPage['CurrentUrl'] = "adminprivilege/assignmenu";
+			$this->load->view('pages/login', $CurrentPage);
 		}
 	}	
 	public function get_Assigned_Menus($RoleId, $MainMenuId){

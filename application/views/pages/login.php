@@ -27,16 +27,12 @@
 <body class="blank" style="background-image:url(<?php echo base_url();?>assets/images/log66.jpg); background-repeat: no-repeat;
     background-size: cover;>
 
-
 <!--[if lt IE 7]>
-<p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <!--<div class="color-line"></div>
 
-<div class="back-link">
-    <a href="index.html" class="btn btn-primary">Back to Dashboard</a>
-</div>-->
+
 
 <div class="login-container">
     <div class="row">
@@ -47,8 +43,9 @@
             </div>
             <div class="hpanel">
                 <div class="panel-body login-page">
-                        <form action="<?php echo base_url() ?>admin/dashboard" method="post">
+                        <form action="<?php echo base_url(); //if($CurrentUrl != ""){ echo $CurrentUrl;} ?>admin/dashboard" method="post">
                             <div class="form-group">
+                            	<input type="hidden" name="currenturl" value="<?php echo $CurrentUrl;?>">
                                 <label class="control-label" for="username">Username</label>
                                 <input type="text" placeholder="example@gmail.com" title="Please enter you username" required value="" name="username" id="username" class="form-control">
                                 <span class="help-block small">Your unique username to app</span>
@@ -63,6 +60,7 @@
                                      Remember login
                                 <p class="help-block small">(if this is a private computer)</p>
                             </div>
+                            <?php //if($CurrentUrl != ""){echo base_url(); echo $CurrentUrl;} ?>
                             <button class="btn btn-success btn-block login-form-btn">Login</button>
                             <a class="btn btn-primary btn-block forgot-btn" href="<?php echo base_url();?>admin/forgotPassword">Forgot Password</a>
                         </form>
