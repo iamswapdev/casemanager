@@ -9,6 +9,7 @@ session_cache_limiter('private_no_expire');
 			//$this->load->driver('session');
 			$this->load->model('dataentry_model');
 			$this->load->model('admin_privilege_model');
+			$this->load->model('search_model');
 		}
 		public function index(){
 			$this->session->all_userdata();
@@ -119,9 +120,10 @@ session_cache_limiter('private_no_expire');
 	}
 /**ADD NEW AND SETTLEMENT TO OPEN STATUS*/
 	public function add_CaseInfo(){
+		
 		$this->session->all_userdata();
+		
 		if(isset($this->session->userdata['logged_in'])){
-			
 			$data = array(
 				'Initial_Status' => $this->input->post('initialStatus'),
 				'Provider_Id' => $this->input->post('providerNameHidden'),
@@ -136,16 +138,51 @@ session_cache_limiter('private_no_expire');
 				'Status' => $this->input->post('Status'),
 				'IndexOrAAA_Number' => $this->input->post('indexOrAAANumber'),
 				'Court_Id' => $this->input->post('courtId'),
-				'DateOfService_Start' => $this->input->post('dateOfServiceStart'),
-				'DateOfService_End' => $this->input->post('dateOfServiceEnd'),
-				'Claim_Amount' => $this->input->post('claimAmt'),
-				'Paid_Amount' => $this->input->post('paidAmt'),
-				'Date_BillSent' => $this->input->post('dateBillSent'),
-				'DenialReasons_Type' => $this->input->post('denialReasons'),
+				//'DateOfService_Start' => $this->input->post('dateOfServiceStart'),
+				//'DateOfService_End' => $this->input->post('dateOfServiceEnd'),
+				//'Claim_Amount' => $Total_ClaimAmt,
+				//'Paid_Amount' => $Total_PaidAmt,
+				//'Date_BillSent' => $this->input->post('dateBillSent'),
+				//'DenialReasons_Type' => $this->input->post('denialReasons'),
 				'Memo' => $this->input->post('memo'),
 			);
 			$success = $this->dataentry_model->insert_CaseInfo($data);
-			$sett_amt = $this->input->post('claimAmt') - $this->input->post('paidAmt');
+			
+			$Case_Id = $this->dataentry_model->get_Last_Case_Id();
+			$Total_ClaimAmt = 0;
+			$Total_PaidAmt = 0;
+			$OtherInfoTableCount = $this->input->post("OtherInfoTableCount");
+			//echo "<pre>OtherInfoTableCount:".$OtherInfoTableCount;
+			$Final_array = array();
+			for($i=1; $i<=$OtherInfoTableCount; $i++){
+				if($i == 1){$DateOfService_Start = $this->input->post('dateOfServiceStart_'.$i);}
+				if($i == 1){$Date_BillSent = $this->input->post('dateBillSent_'.$i);}
+				if($i == $OtherInfoTableCount){$DateOfService_End = $this->input->post('dateOfServiceEnd_'.$i);}
+				$row = array(
+					"DateOfService_Start" => $this->input->post('dateOfServiceStart_'.$i),
+					"DateOfService_End" => $this->input->post('dateOfServiceEnd_'.$i),
+					"Claim_Amount" => $this->input->post('claimAmt_'.$i),
+					"Paid_Amount" => $this->input->post('paidAmt_'.$i),
+					"Date_BillSent" => $this->input->post('dateBillSent_'.$i),
+					"Case_Id" => $Case_Id,
+					"SERVICE_TYPE" => $this->input->post('serviceType_'.$i),
+					"DENIALREASONS_TYPE" => $this->input->post('denialReasons_'.$i)
+				);
+				$this->search_model->addTreatement($row);
+				$Total_ClaimAmt = $Total_ClaimAmt + $this->input->post('claimAmt_'.$i);
+				$Total_PaidAmt = $Total_PaidAmt + $this->input->post('paidAmt_'.$i);
+				$Final_array[] = $row;
+			}
+			$Amt_Dates = array(
+				"DateOfService_Start" => $DateOfService_Start,
+				"DateOfService_End" => $DateOfService_End,
+				"Date_BillSent" => $Date_BillSent,
+				"Claim_Amount" => $Total_ClaimAmt,
+				"Paid_Amount" => $Total_PaidAmt,
+			);
+			$update_amt = $this->dataentry_model->insert_Claim_Paid_Dates($Amt_Dates, $Case_Id);
+			
+			$sett_amt = $Total_ClaimAmt - $Total_PaidAmt;
 			$Attorney_fee = $sett_amt / 5;
 			$Total = $sett_amt + $Attorney_fee;
 			$data2 = array(
@@ -159,8 +196,8 @@ session_cache_limiter('private_no_expire');
 				"Settlement_Notes" => "",
 				"SettledWith" => ""
 			);
-			
 			$this->dataentry_model->addSettlement($data2);
+			//echo "Final_array:";print_r($Final_array);exit;
 		}else{
 			$this->load->view('pages/login');
 		}

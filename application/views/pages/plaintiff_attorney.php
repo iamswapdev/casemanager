@@ -85,7 +85,7 @@
 								<input type="text" id="zip" name="zip"  class="form-control input-sm" required>
 								<!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
 							</div>
-							<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
+							<label class="col-sm-1 control-label plantiffAttorney-label">State <span class="required-field">*</span></label>
 							<div class="col-sm-1">
 								<select id="state" name="state" class="form-control input-sm" required>
                                     <option selected="selected" value=""></option>
@@ -94,8 +94,8 @@
                                     <?php }?>
 								</select>
 							</div>
-							<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
-							<div class="col-sm-2">
+							<label class="col-sm-1 control-label plantiffAttorney-label">City <span class="required-field">*</span></label>
+							<div class="col-sm-2 plantiffAttorney-input">
 								<input type="text" id="city" name="city"  class="form-control input-sm" required>
 							</div>
 						</div>
@@ -104,12 +104,12 @@
 							<div class="col-sm-1">
 								<input  type="text" id="phone" name="phone" placeholder="123-456-7890" class="phone-format form-control input-sm" required>
 							</div>
-                            <label class="col-sm-1 control-label">Fax <span class="required-field">*</span></label>
+                            <label class="col-sm-1 control-label plantiffAttorney-label">Fax <span class="required-field">*</span></label>
 							<div class="col-sm-1">
 								<input type="text" id="fax" name="fax" placeholder="123-456-7890"  class="phone-format form-control input-sm" required>
 							</div>
-                            <label class="col-sm-1 control-label">Email</label>
-							<div class="col-sm-2">
+                            <label class="col-sm-1 control-label plantiffAttorney-label">Email</label>
+							<div class="col-sm-2 plantiffAttorney-input">
 								<input type="text" id="email" name="email" placeholder="Ex.abc@pqr.com" class="form-control input-sm">
 							</div>
 						</div>
@@ -185,7 +185,7 @@
 								<input type="text" id="zipU" name="zip"  class="form-control input-sm" required>
 								<!--<input type="text" placeholder=".input-sm" class="form-control input-sm">--> 
 							</div>
-							<label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
+							<label class="col-sm-1 control-label plantiffAttorney-label">State <span class="required-field">*</span></label>
 							<div class="col-sm-1">
 								<select id="stateU" name="state" class="form-control input-sm" required>
                                     <option selected="selected" value=""></option>
@@ -194,8 +194,8 @@
                                     <?php }?>
 								</select>
 							</div>
-							<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
-							<div class="col-sm-2">
+							<label class="col-sm-1 control-label plantiffAttorney-label">City <span class="required-field">*</span></label>
+							<div class="col-sm-2 plantiffAttorney-input">
 								<input type="text" id="cityU" name="city"  class="form-control input-sm" required>
 							</div>
 						</div>
@@ -204,12 +204,12 @@
 							<div class="col-sm-1">
 								<input  type="text" id="phoneU" name="phone" placeholder="123-456-7890" class="phone-format form-control input-sm" required>
 							</div>
-							<label class="col-sm-1 control-label">Fax</label>
+							<label class="col-sm-1 control-label plantiffAttorney-label">Fax</label>
 							<div class="col-sm-1">
 								<input type="text" id="faxU" name="fax" placeholder="123-456-7890"  class="phone-format form-control input-sm" required>
 							</div>
-                            <label class="col-sm-1 control-label">Email</label>
-							<div class="col-sm-2">
+                            <label class="col-sm-1 control-label plantiffAttorney-label">Email</label>
+							<div class="col-sm-2 plantiffAttorney-input">
 								<input type="text" id="emailU" name="email" placeholder="Ex.abc@pqr.com" class="form-control input-sm">
 							</div>
 						</div>

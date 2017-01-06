@@ -5,10 +5,19 @@ session_cache_limiter('private_no_expire');
 	Public function __construct(){
 		parent::__construct();
 		$this->load->library('session');
+		$this->load->model('admin_privilege_model');
+		$this->load->model('dataentry_model');
+		
 	}
 	public function index(){
 		//$this->load->library('session');
 		$this->load->view('pages/login');
+	}
+	public function get_Assigned_Menus_New($User_Role){
+		$this->session->all_userdata();
+		$data = $this->admin_privilege_model->get_Assigned_Menus($User_Role);
+		//echo "<pre>";print_r($data); exit;
+		return $data;
 	}
 	public function dashboard()
 	{ 	
@@ -176,11 +185,37 @@ session_cache_limiter('private_no_expire');
 	public function contacts(){
 		$this->session->all_userdata();
 		if(isset($this->session->userdata['logged_in'])){
-			$data['Accessibility'] = $this->session->userdata['RoleId'];
+			$data['Assigned_Menus'] = $this->get_Assigned_Menus_New($this->session->userdata['RoleId']);
 			$this->load->view('pages/contacts', $data);
 		}else{
 			$this->load->view('admin');
 		}
+	}
+/* GET CONTACT DATA */
+	public function get_Contact_Data(){
+		$list=$this->dataentry_model->get_Adjuster_Objects();
+		//echo "<pre>";print_r($list);exit();
+		$data = array();
+		foreach ($list as $result) {
+			$row = array();
+			
+			$row[] = $result->Adjuster_FirstName;
+			$row[] = $result->InsuranceCompany_Name;
+			$row[] = "";
+			$row[] = "";
+			$row[] = "";
+			$row[] = "";
+			$row[] = $result->Adjuster_Phone;
+			$row[] = $result->Adjuster_Fax;
+			$row[] = $result->Adjuster_Email;
+			$row[] = "Adjuster";
+			
+			$data[] = $row;
+		}
+		$output = array(
+			"data" => $data
+		);
+		echo json_encode($output);
 	}
 	 
 } 

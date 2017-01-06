@@ -198,9 +198,9 @@
                 
                 
                 <div class="form-group form-horizontal col-lg-12 set-bg">
-                
+                	<input type="hidden" name="OtherInfoTableCount">
                 	<div class="table-responsive1">
-                        <table cellpadding="1" cellspacing="1" class="table table-bordered add-case-table">
+                        <table cellpadding="1" cellspacing="1" id="myTable" class="table table-bordered add-case-table">
                             <thead>
                             <tr>
                                 <th>D.O.S-Start</th>
@@ -360,37 +360,64 @@
 	}
 	
 	var countForRows = 0;
-	var value = 0;
+	var value = 1;
 	$("#addOtherInfo").click(function(){
+		var Parent_Row = $(this).parent().parent().parent();
 		if(countForRows >= 0){
-			console.log("ccc: "+countForRows);
+			//console.log("ccc: "+countForRows);
 			$("#DeleteButton").css("display", "block");
 		}
 		countForRows++;
 		  
 		var addNewRow = '<tr class="r'+value+'">';
-		    addNewRow += '<td><input name="dateOfServiceStart" class="form-control input-sm datetimepicker_Dos_Doe"></td>';
-            addNewRow += '<td><input name="dateOfServiceEnd" class="form-control input-sm datetimepicker_Dos_Doe"></td>'
-            addNewRow += '<td><input type="text" name="claimAmt" class="form-control input-sm"></td>'
-            addNewRow += '<td><input type="text" name="paidAmt" class="form-control input-sm"></td>'
-            addNewRow += '<td><input class="form-control input-sm datetimepicker_Dos_Doe" name="dateBillSent"></td>';
-			addNewRow += '<td><select class="form-control input-sm" name="serviceType"><option>-- Select Service--</option><?php foreach($Service as $row){?><option value="<?php echo $row['ServiceType_ID']; ?>"> <?php echo $row['ServiceType']; ?> </option><?php }?></select></td>';
+		    addNewRow += '<td><input name="dateOfServiceStart_'+value+'" class="form-control input-sm dateOfServiceStart" value="'+$(Parent_Row).find("input[name=dateOfServiceStart]").val()+'"></td>';
+            addNewRow += '<td><input name="dateOfServiceEnd_'+value+'" class="form-control input-sm dateOfServiceEnd" value="'+$(Parent_Row).find("input[name=dateOfServiceEnd]").val()+'"></td>'
+            addNewRow += '<td><input type="text" name="claimAmt_'+value+'" class="form-control input-sm claimAmt" value="'+$(Parent_Row).find("input[name=claimAmt]").val()+'"></td>'
+            addNewRow += '<td><input type="text" name="paidAmt_'+value+'" class="form-control input-sm paidAmt" value="'+$(Parent_Row).find("input[name=paidAmt]").val()+'"></td>'
+            addNewRow += '<td><input class="form-control input-sm dateBillSent" name="dateBillSent_'+value+'" value="'+$(Parent_Row).find("input[name=dateBillSent]").val()+'"></td>';
 			
-			addNewRow += '<td><select class="form-control input-sm" name="denialReasons"><option>-- Select Denial reason --</option><?php foreach($DenialReasons as $row){?><option value="<?php echo $row['DenialReasons_Id']; ?>"> <?php echo $row['DenialReasons_Type']; ?> </option><?php }?></select></td>';
+			
+			addNewRow += '<td><input class="form-control input-sm serviceType" name="serviceType_'+value+'" value="'+$(Parent_Row).find("#serviceType option:selected").text()+'"></td>';
+			
+			addNewRow += '<td><input class="form-control input-sm denialReasons" name="denialReasons_'+value+'" value="'+$(Parent_Row).find("#denialReasons option:selected").text()+'"></td>';
+			
 			addNewRow += '<td><input class="ads_Checkbox" type="checkbox" name="delete[]" value="'+value+'"></td>';
 			value++;
 			addNewRow += '</tr>';
 						  
 		$(addNewRow).insertBefore(".first-row");
+		$(Parent_Row).find("input").val("");
+		$(Parent_Row).find("select").val("");
+		$("input[name=OtherInfoTableCount]").val(($('#myTable tr').length-2));
 	});
 	
 	 $('#DeleteButton').click(function(){
 		var final = '';
+		var tableCount1 = $('#myTable tr').length;
+		var values =0;
 		$('.ads_Checkbox:checked').each(function(){        
-			var values = $(this).val();
+			values = $(this).val();
 			$(".r"+values).remove();
 			countForRows--;
 		});
+		var tableCount2 = $('#myTable tr').length;
+		console.log("delete values:"+values);
+		console.log("Table tow count1:"+tableCount1);
+		console.log("Table tow count2:"+tableCount2);
+		$("input[name=OtherInfoTableCount]").val((tableCount2-2));
+		
+		for(var j=1; j<=(tableCount2-2); j++){
+			console.log("cccccc:"+j);
+			$("#myTable tr:nth-child("+j+")").find(".dateOfServiceStart").attr("name", "dateOfServiceStart_"+j);
+			$("#myTable tr:nth-child("+j+")").find(".dateOfServiceEnd").attr("name", "dateOfServiceEnd_"+j);
+			$("#myTable tr:nth-child("+j+")").find(".claimAmt").attr("name", "claimAmt_"+j);
+			$("#myTable tr:nth-child("+j+")").find(".paidAmt").attr("name", "paidAmt_"+j);
+			$("#myTable tr:nth-child("+j+")").find(".dateBillSent").attr("name", "dateBillSent_"+j);
+			$("#myTable tr:nth-child("+j+")").find(".serviceType").attr("name", "serviceType_"+j);
+			$("#myTable tr:nth-child("+j+")").find(".denialReasons").attr("name", "denialReasons_"+j);
+		}
+		//$.each( obj, function( key, value ) {
+		//});
 		if(countForRows == 0){
 			$("#DeleteButton").css("display", "none");
 		}

@@ -9,11 +9,11 @@
 
             <div id="hbreadcrumb" style="margin-top:-10px;" class="pull-right">
                 <ol class="hbreadcrumb breadcrumb make-bold">
-                    <?php if($Accessibility == 1){?><li><a class="financials-page" href="<?php echo base_url();?>financials/financial">FINANCIAL</a></li><?php  } ?>
+                    <?php if($Admin){?><li><a class="financials-page" href="<?php echo base_url();?>financials/financial">FINANCIAL</a></li><?php  } ?>
                     
                     <li><a class="reports" href="<?php echo base_url();?>financials/reports">REPORTS</a></li>
                     
-                    <?php if($Accessibility == 1){?><li><a class="rapidFunds" href="<?php echo base_url();?>financials/rapidfunds">RAPID FUNDS</a></li><?php  } ?>
+                    <?php if($Admin){?><li><a class="rapidFunds" href="<?php echo base_url();?>financials/rapidfunds">RAPID FUNDS</a></li><?php  } ?>
                 </ol>
             </div>
             

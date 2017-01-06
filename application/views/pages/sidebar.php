@@ -15,8 +15,8 @@
 <aside id="menu">
     <div id="navigation">
         <div class="profile-picture">
-            <a href="<?php echo base_url();?>admin/dashboard">
-                <!--<img src="<?php echo base_url();?>assets/images/profile1.jpg" class="img-circle m-b" alt="logo">-->
+            <a href="<?php echo base_url(); ?>search/advancedsearch">
+                <img src="<?php echo base_url();?>assets/images/images (1).jpg" class="img-circle m-b" alt="logo">
             </a>
 
             <div class="stats-label text-color">

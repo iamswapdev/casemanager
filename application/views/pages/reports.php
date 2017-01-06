@@ -53,7 +53,7 @@
 		<div class="col-lg-12">
 			<div class="hpanel">
 				<ul class="nav nav-tabs">
-					<?php if($Accessibility == 1){?><li class="active"><a data-toggle="tab" href="#tab-1">Daily Settlement Reports</a></li>
+					<?php if($Admin){?><li class="active"><a data-toggle="tab" href="#tab-1">Daily Settlement Reports</a></li>
 					<li class=""><a data-toggle="tab" href="#tab-2">Discontinuance Reports</a></li><?php } ?>
 					<li class=""><a data-toggle="tab" href="#tab-3">Client Reports</a></li>
 				</ul>

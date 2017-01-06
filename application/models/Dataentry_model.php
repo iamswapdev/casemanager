@@ -22,6 +22,16 @@ Class Dataentry_model extends CI_Model{
 		$query = $this->db->insert('dbo_tblcase',$data); 
 		return true;
 	}
+	public function get_Last_Case_Id()
+	{
+		$this->db->order_by("Case_AutoId", "desc");
+		$this->db->select("Case_Id");
+		$this->db->limit('1');
+		$query = $this->db->get("dbo_tblcase");
+		$Case_Id = $query->result_array();
+		$Case_Id1 = $Case_Id[0]['Case_Id'];
+		return $Case_Id1;
+	}
 /*add Settlement*/
 	public function addSettlement($data){
 		$this->db->order_by("Case_AutoId", "desc");
@@ -37,6 +47,12 @@ Class Dataentry_model extends CI_Model{
 	public function Update_CaseInfo($data, $Case_AutoId){
 		$this->db->set($data);
 		$this->db->where("Case_AutoId", $Case_AutoId);
+		$query = $this->db->update("dbo_tblcase",$data);
+		return $query;
+	}
+	public function insert_Claim_Paid_Dates($data, $Case_Id){
+		$this->db->set($data);
+		$this->db->where("Case_Id", $Case_Id);
 		$query = $this->db->update("dbo_tblcase",$data);
 		return $query;
 	}
@@ -139,6 +155,16 @@ Class Dataentry_model extends CI_Model{
 		$this->db->order_by("Adjuster_LastName", "asc");
 		$query=$this->db->get('dbo_tbladjusters');
 		$data=$query->result_array();
+		return $data;
+	}
+	public function get_Adjuster_Objects()
+	{
+		$this->db->select("t1.*, t2.InsuranceCompany_Name");
+		$this->db->from("dbo_tbladjusters as t1");
+		$this->db->join("dbo_tblinsurancecompany as t2", "t1.InsuranceCompany_Id = t2.InsuranceCompany_Id");
+		$this->db->order_by("t1.Adjuster_FirstName", "asc");
+		$query=$this->db->get();
+		$data=$query->result();
 		return $data;
 	}
 	public function get_Adjuster_FirstName()

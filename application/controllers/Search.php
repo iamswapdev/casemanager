@@ -120,6 +120,7 @@ class Search extends CI_Controller{
 				"User_Id" => $this->session->userdata['username']
 			);
 			$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
+			$data['Accessibility'] = $this->session->userdata['RoleId'];
 			//echo "<pre>";print_r($userAccebility); exit();
 			$this->search_model->add_Notes($data3);
 			
@@ -1073,6 +1074,11 @@ class Search extends CI_Controller{
 		echo json_encode($output);
 	}
 	public function testmethod(){
+		$Case_Id = $this->dataentry_model->get_Last_Case_Id();
+		echo "CaseID:".$Case_Id;exit;
+		$this->db->where('order_date >=', $first_date);
+		$this->db->where('order_date <=', $second_date);
+		return $this->db->get('orders');
 		/*echo "Case_Id: ".$this->Case_Id; exit();
 		$date = date('Y-m-d H:i:s');
 		echo "date:".date('Y');

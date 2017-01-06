@@ -196,7 +196,8 @@
   margin-bottom: 10px;
 }
 .m-b {
-  margin-bottom: 15px;
+  margin-bottom: 2px;
+  margin-top:-20px;
 }
 .m-b-md {
   margin-bottom: 20px;
@@ -748,7 +749,7 @@ body.blank {
   background: #f7f8fa;
 }
 .fc-widget-header .fc-day-header {
-  padding: 12px 0;
+  padding: 0px 0;
 }
 .fc-ltr .fc-basic-view .fc-day-number {
   text-align: center;
@@ -2212,7 +2213,6 @@ body {
   font-size: 14px;
 }
 .profile-picture {
-  padding: 20px 20px;
   text-align: center;
 }
 .stats-box div {
@@ -3766,6 +3766,8 @@ textarea.form-control {
 }
 .Amount{
 	color:#0C0;
+	font-weight:bold;
+	font-size:15px;
 }
 .percentage{
 	color:#F00;
@@ -3895,7 +3897,7 @@ label {
 .payment-summary td input{
 	margin:auto;
 }
-#AdvancedSearchTable_filter label{
+#AdvancedSearchTable_filter label, #Contacts_filter label{
 	font-size:20px;
 	font-weight:bold;
 }
@@ -3991,4 +3993,33 @@ table.table.tdAlignLeft.work-area-info.info-link-popup th {
 }
 .assign-menu-btn{
 	margin-left:50px;
+}
+#calendar .fc-toolbar{
+	height:22px;
+}
+.provider-input, .insurance-input, .plantiffAttorney-input{
+	width:266px;
+}
+.provider-label, .insurance-label, .plantiffAttorney-label{
+	padding-left: 0px;
+    padding-right: 0px;
+    width: 75px;
+}
+.viewcase-input{
+	    width: 80px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.viewcase-label{
+	padding-left: 0px;
+    padding-right: 0px;
+    width: 73px;
+}
+.no-of-days-div{
+	padding-left: 0px;
+    padding-right: 0px;
+    width: 80px;
+}
+.img-circle{
+	border-radius:0px;
 }

@@ -160,7 +160,7 @@
 								<div class="col-sm-1">
 									<input type="text" id="zipLocal" name="zipLocal" placeholder="12345" class="form-control input-sm" required>
 								</div>
-                                <label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
+                                <label class="col-sm-1 control-label provider-label">State <span class="required-field">*</span></label>
 								<div class="col-sm-1">
 									<select id="stateLocal" name="stateLocal" class="form-control input-sm" required>
 										<option selected="selected" value=""></option>
@@ -169,8 +169,8 @@
 										<?php }?>
 									</select>
 								</div>
-								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
-								<div class="col-sm-2">
+								<label class="col-sm-1 control-label provider-label">City <span class="required-field">*</span></label>
+								<div class="col-sm-2 provider-input">
 									<input id="cityLocal" name="cityLocal" type="text" class="form-control input-sm" required>
 								</div>
 								
@@ -180,7 +180,7 @@
 								<div class="col-sm-1">
 									<input id="phoneLocal" name="phoneLocal" type="text" placeholder="123-456-7890" class="phone-format form-control input-sm">
 								</div>
-								<label class="col-sm-1 control-label">Fax</label>
+								<label class="col-sm-1 control-label provider-label">Fax</label>
 								<div class="col-sm-1">
 									<input id="faxLocal" name="faxLocal" type="text" placeholder="123-456-7890" class="phone-format form-control input-sm">
 								</div>
@@ -209,7 +209,7 @@
 								<div class="col-sm-1">
 									<input type="text" id="zipPermanent" name="zipPermanent" placeholder="12345" class="form-control input-sm" required>
 								</div>
-                                <label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
+                                <label class="col-sm-1 control-label provider-label">State <span class="required-field">*</span></label>
 								<div class="col-sm-1">
 									<select id="statePermanent" name="statePermanent" class="form-control input-sm" required>
 										<option selected="selected" value=""></option>
@@ -218,8 +218,8 @@
 										<?php }?>
 									</select>
 								</div>
-								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
-								<div class="col-sm-2 form-input-pad">
+								<label class="col-sm-1 control-label provider-label">City <span class="required-field">*</span></label>
+								<div class="col-sm-2 form-input-pad provider-input">
 									<input id="cityPermanent" name="cityPermanent" type="text" class="form-control input-sm" required>
 								</div>
 								
@@ -229,7 +229,7 @@
 								<div class="col-sm-1">
 									<input id="phonePermanent" name="phonePermanent" placeholder="123-456-7890" type="text" class="phone-format form-control input-sm">
 								</div>
-								<label class="col-sm-1 control-label">Fax</label>
+								<label class="col-sm-1 control-label provider-label">Fax</label>
 								<div class="col-sm-1">
 									<input id="faxPermanent" name="faxPermanent" placeholder="123-456-7890" type="text" class="phone-format form-control input-sm">
 								</div>
@@ -239,12 +239,12 @@
 								<div class="col-sm-1">
 									<input type="text" id="contact" name="contact" placeholder="123-456-7890" class="phone-format form-control input-sm">
 								</div>
-								<label class="col-sm-1 control-label">Contact 2</label>
+								<label class="col-sm-1 control-label provider-label">Contact 2</label>
 								<div class="col-sm-1">
 									<input type="text" id="contact2" name="contact2" placeholder="123-456-7890" class="phone-format form-control input-sm">
 								</div>
-								<label class="col-sm-1 control-label">Email <span class="required-field">*</span></label>
-								<div class="col-sm-2">
+								<label class="col-sm-1 control-label provider-label">Email <span class="required-field">*</span></label>
+								<div class="col-sm-2 provider-input">
 									<input type="email" id="email" name="email" placeholder="abc@xyz.com" class="form-control input-sm" required>
 								</div>
 							</div>
@@ -406,7 +406,7 @@
 								<div class="col-sm-1">
 									<input type="text" id="zipLocalU" name="zipLocal" placeholder="12345" class="form-control input-sm" required>
 								</div>
-                                <label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
+                                <label class="col-sm-1 control-label provider-label">State <span class="required-field">*</span></label>
 								<div class="col-sm-1">
 									<select id="stateLocalU" name="stateLocal" class="form-control input-sm" required>
 										<option selected="selected" value=""></option>
@@ -415,8 +415,8 @@
 										<?php }?>
 									</select>
 								</div>
-								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
-								<div class="col-sm-2">
+								<label class="col-sm-1 control-label provider-label">City <span class="required-field">*</span></label>
+								<div class="col-sm-2 provider-input">
 									<input id="cityLocalU" name="cityLocal" type="text" class="form-control input-sm" required>
 								</div>
 								
@@ -426,7 +426,7 @@
 								<div class="col-sm-1">
 									<input id="phoneLocalU" name="phoneLocal" type="text" placeholder="123-456-7890" class="phone-format form-control input-sm" required>
 								</div>
-								<label class="col-sm-1 control-label">Fax</label>
+								<label class="col-sm-1 control-label provider-label">Fax</label>
 								<div class="col-sm-1">
 									<input id="faxLocalU" name="faxLocal" type="text" placeholder="123-456-7890" class="phone-format form-control input-sm">
 								</div>
@@ -456,7 +456,7 @@
 								<div class="col-sm-1">
 									<input type="text" id="zipPermanentU" name="zipPermanent" placeholder="12345" class="form-control input-sm" required>
 								</div>
-                                <label class="col-sm-1 control-label">State <span class="required-field">*</span></label>
+                                <label class="col-sm-1 control-label provider-label">State <span class="required-field">*</span></label>
 								<div class="col-sm-1">
 									<select id="statePermanentU" name="statePermanent" class="form-control input-sm" required>
 										<option selected="selected" value=""></option>
@@ -465,8 +465,8 @@
 										<?php }?>
 									</select>
 								</div>
-								<label class="col-sm-1 control-label">City <span class="required-field">*</span></label>
-								<div class="col-sm-2">
+								<label class="col-sm-1 control-label provider-label">City <span class="required-field">*</span></label>
+								<div class="col-sm-2 provider-input">
 									<input id="cityPermanentU" name="cityPermanent" type="text" class="form-control input-sm" required>
 								</div>
 								
@@ -476,7 +476,7 @@
 								<div class="col-sm-1">
 									<input id="phonePermanentU" name="phonePermanent" placeholder="123-456-7890" type="text" class="phone-format form-control input-sm" required>
 								</div>
-								<label class="col-sm-1 control-label">Fax</label>
+								<label class="col-sm-1 control-label provider-label">Fax</label>
 								<div class="col-sm-1">
 									<input id="faxPermanentU" name="faxPermanent" placeholder="123-456-7890" type="text" class="phone-format form-control input-sm">
 								</div>
@@ -486,12 +486,12 @@
 								<div class="col-sm-1">
 									<input type="text" id="contactU" name="contact" placeholder="123-456-7890" class="phone-format form-control input-sm">
 								</div>
-								<label class="col-sm-1 control-label">Contact 2</label>
+								<label class="col-sm-1 control-label provider-label">Contact 2</label>
 								<div class="col-sm-1">
 									<input type="text" id="contact2U" name="contact2" placeholder="123-456-7890" class="phone-format form-control input-sm">
 								</div>
-								<label class="col-sm-1 control-label">Email <span class="required-field">*</span></label>
-								<div class="col-sm-2">
+								<label class="col-sm-1 control-label provider-label">Email <span class="required-field">*</span></label>
+								<div class="col-sm-2 provider-input">
 									<input type="email" id="emailU" name="email" placeholder="abc@xyz.com" class="form-control input-sm" required>
 								</div>
 							</div>

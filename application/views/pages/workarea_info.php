@@ -124,8 +124,8 @@ for($i=0; $i<=13; $i++){
 				<?php if($Admin) {?><li class=""><a id="tab3" data-toggle="tab" href="#tab-3">Notes</a></li><?php } ?>
 				<li class=""><a id="tab4" data-toggle="tab" href="#tab-4">Document Manager</a></li>
                 
-                <?php if($Admin) {?><li class=""><a id="tabMotions" data-toggle="tab" href="#tab-Motions">Motions</a></li><?php } ?>
-                <?php if($Admin) {?><li class=""><a id="tabTrials" data-toggle="tab" href="#tab-Trials">Trials</a></li><?php } ?>
+                <?php if($Accessibility == 2) {?><li class=""><a id="tabMotions" data-toggle="tab" href="#tab-Motions">Motions</a></li><?php } ?>
+                <?php if($Accessibility == 2) {?><li class=""><a id="tabTrials" data-toggle="tab" href="#tab-Trials">Trials</a></li><?php } ?>
                 
 				<?php if($Admin) {?><li class=""><a id="tab5" data-toggle="tab" href="#tab-5">Templates</a></li><?php } ?>
 				<li class=""><a id="tab6" data-toggle="tab" href="#tab-6">Settlement</a></li>
@@ -968,12 +968,12 @@ for($i=0; $i<=13; $i++){
                                 	<input type="number" id="FltInterestTab6" name="Settlement_Int"  class="form-control input-sm Amount settled-by-info" />
                                 </div>
 								<div class="col-md-1"><input step="0.01" type="number" id="FltInterestPercTab6" name="FltInterestPercTab6"  class="form-control input-sm percentage" value="100.00" ></div>
-								<div class="col-md-1 start-date-settlement settled-status-open"><label class="control-label col-md-12">START DATE</label> </div>
-								<div class="col-md-1 settled-status-open"><input type="text" id="CopundIntStartData" name="CopundIntStartData"  class="form-control input-sm datepicker_settlement" ></div>
-								<div class="col-md-1 end-date-settlement settled-status-open"><label class="control-label col-md-12">END DATE</label> </div>
-								<div class="col-md-1 settled-status-open"><input type="text" id="CopundIntEndData" name="CopundIntEndData"  class="form-control input-sm datepicker_settlement" ></div>
-                                <div class="col-md-1 settled-status-open"><label class="control-label col-md-12">No. of Days:</label> </div>
-                                <div class="col-md-1 settled-status-open"><input type="number" name="No_of_days" class="form-control input-sm"></div> 
+								<div class="col-md-1 start-date-settlement settled-status-open"><label class="control-label col-md-12 viewcase-label">START DATE</label> </div>
+								<div class="col-md-1 settled-status-open viewcase-input"><input type="text" id="CopundIntStartData" name="CopundIntStartData"  class="form-control input-sm datepicker_settlement" ></div>
+								<div class="col-md-1 end-date-settlement settled-status-open"><label class="control-label col-md-12 viewcase-label">END DATE</label> </div>
+								<div class="col-md-1 settled-status-open viewcase-input"><input type="text" id="CopundIntEndData" name="CopundIntEndData"  class="form-control input-sm datepicker_settlement" ></div>
+                                <div class="col-md-1 settled-status-open no-of-days-div"><label class="control-label col-md-12 viewcase-label">No. of Days:</label> </div>
+                                <div class="col-md-1 settled-status-open viewcase-input"><input type="number" name="No_of_days" class="form-control input-sm"></div> 
 							</div>
 							<div class="form-group form-horizontal col-md-12 settled-status-open">
 								<div class="col-md-3"></div>
@@ -1737,7 +1737,7 @@ $(document).ready(function(e) {
 	var Accessibility = true;
 	if(Accessibility){
 		console.log("Accessibility:"+Accessibility);
-		<?php if($Admin) {?>
+		<?php if(!$Admin) {?>
 		$("#WorkAreaTable th:nth-child(1)").html("");
 		$("#WorkAreaTable th:nth-child(4)").html("");
 		//$("#Treatement_Info_table th:nth-child(2), #Treatement_Info_table th:nth-child(9)").html("");
