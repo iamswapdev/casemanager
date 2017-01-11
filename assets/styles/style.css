@@ -4023,3 +4023,12 @@ table.table.tdAlignLeft.work-area-info.info-link-popup th {
 .img-circle{
 	border-radius:0px;
 }
+#AdvancedSearchTable_length{
+	float:left;
+}
+.dt-buttons{
+	margin-left:10px
+}
+#AdvancedSearchTable_info{
+	float:left;
+}

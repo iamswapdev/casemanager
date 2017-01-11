@@ -245,11 +245,12 @@
 			"ajax": "getSearchTable",
 			"iDisplayLength": 50,
 			"aLengthMenu": [5, 10, 20, 25, 50, "All"],
-			"bSort": false,
+			"bSort": true,
 			//bJQueryUI: true,
-			dom: "<'row'<'col-sm-4 demo'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
+			dom: 'lBfrtip',
+			//dom: "<'row'<'col-sm-4 demo'l><'col-sm-4 text-center'B><'col-sm-4'f>>lBfrtip",
             
-            buttons: [ 'copy', 'csv', 'excel', 'pdf', 'print' ],
+            buttons: [ 'copy', 'csv', 'excel', 'pdf', 'print' ]
 			
 		});
 						
@@ -274,15 +275,16 @@
 			$("select").val('');
 			$("#AdvancedSearchTable").dataTable().fnDestroy();
 			$('#AdvancedSearchTable').dataTable( {
-				"ajax": 'getSearchTable',
-				"aLengthMenu": [5, 10, 20, 25, 50, 100, 200, "All"],
-				"pageLength": 50,
-				dom: "<'row'<'col-sm-4 demo'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
-						"lengthMenu": [ [10, 25, 50,100,200, -1], [10, 25, 50,100,200, "All"] ],
-						"pageLength": 50,
-						buttons: [
-						'copy', 'csv', 'excel', 'pdf', 'print'
-					]
+				"ajax": "getSearchTable",
+				"iDisplayLength": 50,
+				"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+				"bSort": false,
+				//bJQueryUI: true,
+				dom: 'lBfrtip',
+				//dom: "<'row'<'col-sm-4 demo'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
+				
+				buttons: [ 'copy', 'csv', 'excel', 'pdf', 'print' ]
+				
 			});
 		});
 		/*$(function () {
@@ -342,13 +344,10 @@
 					},
 					"aLengthMenu": [5, 10, 20, 25, 50, 100, 200, "All"],
 					"pageLength": 50,
-					dom: "<'row'<'col-sm-4 demo'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
-						"lengthMenu": [ [10, 25, 50,100,200, -1], [10, 25, 50,100,200, "All"] ],
-						"pageLength": 50,
-						buttons: [
-						'copy', 'csv', 'excel', 'pdf', 'print'
-					]
-					  
+					dom: 'lBfrtip',
+					//dom: "<'row'<'col-sm-4 demo'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
+            
+            		buttons: [ 'copy', 'csv', 'excel', 'pdf', 'print' ]	  
 				});
 	
 			}
