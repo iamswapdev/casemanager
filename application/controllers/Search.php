@@ -1067,7 +1067,7 @@ class Search extends CI_Controller{
 		echo json_encode($output);
 	}
 	public function testmethod(){
-		$Case_Id = $this->dataentry_model->get_Last_Case_Id();
+		/*$Case_Id = $this->dataentry_model->get_Last_Case_Id();
 		echo "CaseID:".$_SERVER['REQUEST_URI'];exit;
 		$this->db->where('order_date >=', $first_date);
 		$this->db->where('order_date <=', $second_date);
@@ -1078,7 +1078,7 @@ class Search extends CI_Controller{
 		//2014-06-17 00:00:00.00000
 		$q = date_create("2014-06-17");
 		$w = date_format($q, "m/d/Y");
-		echo "<br>JJJ:".substr(date("Y"), 2, 2);*/
+		echo "<br>JJJ:".substr(date("Y"), 2, 2);
 		echo "username:".$this->session->userdata['username'];
 		$date2="";
 		$date3= date_create(substr($date2,0,19));
@@ -1086,8 +1086,8 @@ class Search extends CI_Controller{
 		echo "<br><br>New format:".date_format(date_create(substr($date2,0,19)),"m/d/Y")."<br></br>";
 		//echo "<br>NNN:".substr(date_format($date2, 'm/d/Y H:i:s'), 0,10);
 		echo "<br>base_url:".base_url();
-		echo "<br>Time zone:".date_default_timezone_get();
-		echo "<br>Current Time: ".date('h:i:sa');
+		echo "<br>Time zone:".date_default_timezone_get();*/
+		echo "<br>Current Time: ".date("Y-m-d h:i:s");
 	}
 /*****************************************************************************************************************************************/
 }

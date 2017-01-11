@@ -200,6 +200,7 @@
     <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
     
+    <!--Datatable js -->
     <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/dataTables.buttons.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/buttons.flash.min.js"></script>
@@ -208,8 +209,6 @@
     <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/vfs_fonts.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/buttons.html5.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/buttons.print.min.js"></script>
-    
-    
     
     
     <script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>

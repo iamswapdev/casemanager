@@ -145,6 +145,7 @@ session_cache_limiter('private_no_expire');
 				//'Date_BillSent' => $this->input->post('dateBillSent'),
 				//'DenialReasons_Type' => $this->input->post('denialReasons'),
 				'Memo' => $this->input->post('memo'),
+				'Date_Opened' => date("Y-m-d h:i:s")
 			);
 			$success = $this->dataentry_model->insert_CaseInfo($data);
 			

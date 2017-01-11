@@ -1,10 +1,3 @@
-<?php
-	/*session_cache_limiter('private_no_expire');
-	if( !isset($_SESSION["username"]) && !isset($_SESSION["password"])){
-		
-		header('Location: admin');
-	}*/
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,12 +67,12 @@
                                     <div class="form-group form-horizontal col-md-12">
                                         <label class="col-md-1 control-label">Start Date</label>										
                                         <div class="col-md-1">
-                                            <input id="datapicker1" type="text" class="form-control input-sm">
+                                            <input type="text" class="form-control input-sm datepicking">
                                         </div>
                                         
                                         <label class="col-md-1 control-label">End Date</label>										
                                         <div class="col-md-1">
-                                            <input id="datapicker2" type="text" class="form-control input-sm">
+                                            <input type="text" class="form-control input-sm datepicking">
                                         </div>
                                         
                                         <label class="col-md-1 control-label">Calendar type</label>	
@@ -160,12 +153,12 @@
                                     <div class="form-group form-horizontal col-md-12">
                                         <label class="col-md-1 control-label">Start Date</label>										
                                         <div class="col-md-1">
-                                            <input id="datapicker3" type="text" class="form-control input-sm">
+                                            <input type="text" class="form-control input-sm datepicking">
                                         </div>
                                         
                                         <label class="col-md-1 control-label">End Date</label>										
                                         <div class="col-md-1">
-                                            <input id="datapicker4" type="text" class="form-control input-sm">
+                                            <input type="text" class="form-control input-sm datepicking">
                                         </div>
                                         <div class="col-md-2">
                                             <button type="button" class="btn btn-primary">Get</button>
@@ -252,12 +245,12 @@
                                     <div class="form-group form-horizontal col-md-12">
                                         <label class="col-md-1 control-label">Start Date</label>										
                                         <div class="col-md-1">
-                                            <input id="datapicker5" type="text" class="form-control input-sm">
+                                            <input type="text" class="form-control input-sm datepicking">
                                         </div>
                                         
                                         <label class="col-md-1 control-label">End Date</label>										
                                         <div class="col-md-1">
-                                            <input id="datapicker6" type="text" class="form-control input-sm">
+                                            <input type="text" class="form-control input-sm datepicking">
                                         </div>
                                         <div class="col-md-2">
                                                 
@@ -598,12 +591,12 @@
 										<h5>Select Date Range for Pending Resons</h5>
 										<label class="col-md-1 control-label">Start Date</label>										
 										<div class="col-md-1">
-											<input id="datapicker7" type="text" class="form-control input-sm">
+											<input type="text" class="form-control input-sm datepicking">
 										</div>
 										
 										<label class="col-md-1 control-label">End Date</label>										
 										<div class="col-md-1">
-											<input id="datapicker8" type="text" class="form-control input-sm">
+											<input type="text" class="form-control input-sm datepicking">
 										</div>
 										<div class="col-md-2">
 											<button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
@@ -695,6 +688,7 @@
 <!-- App scripts -->
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
+$(document).ready(function(e) {
 	$("#SummonsNotServed").click(function(){
 		$(".SummonsNotServed").css("display","block");
 		$(".SummonsNotField").css("display","none");
@@ -715,52 +709,7 @@
 		$('input[type=text]').val('');
 		$('select').val('All');
 	});
-
-    $(function () {
-
-        // Initialize Example 1
-        $('#example1').dataTable( {
-            "ajax": 'api/datatables.json'
-        });
-
-        // Initialize Example 2
-        $('#example2').dataTable();
-		$('#example3').dataTable();
-
-    });
-
-</script>
-<script>
-$(function(){
-	$('#datapicker1').datepicker({
-		"autoclose": true,
-		"todayHighlight": true
-	});
-	$('#datapicker2').datepicker({
-		"autoclose": true,
-		"todayHighlight": true
-	});
-	$('#datapicker3').datepicker({
-		"autoclose": true,
-		"todayHighlight": true
-	});
-	$('#datapicker4').datepicker({
-		"autoclose": true,
-		"todayHighlight": true
-	});
-	$('#datapicker5').datepicker({
-		"autoclose": true,
-		"todayHighlight": true
-	});
-	$('#datapicker6').datepicker({
-		"autoclose": true,
-		"todayHighlight": true
-	});
-	$('#datapicker7').datepicker({
-		"autoclose": true,
-		"todayHighlight": true
-	});
-	$('#datapicker8').datepicker({
+    $('.datepicking').datepicker({
 		"autoclose": true,
 		"todayHighlight": true
 	});

@@ -132,6 +132,20 @@ class Financials extends CI_Controller{
 		$output = array( "data" => $data );
 		echo json_encode($output);
 	}
+	public function get_Exp_Cost_Balance(){
+		/*$list = $this->financials_model->get_Exp_Cost_Balance();
+		//echo "<pre>"; print_r($list);exit;
+		$data = array();
+		foreach($list as $result){
+			$row = array();
+			$row[] = ;
+			$row[] = $result->Provider_Name;
+			$row[] = ;
+		}
+		
+		$output = array( "data" => $data );
+		echo json_encode($output);*/
+	}
 	public function get_Firm_Fees(){
 		$Start_Date = date_format(date_create($this->input->post("SD_FirmFees")), 'Y/m/d');
 		$End_Date = date_format(date_create($this->input->post("ED_FirmFees")), 'Y/m/d');

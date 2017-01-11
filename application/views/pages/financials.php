@@ -288,49 +288,25 @@
 							<div class="hpanel">
 							<div class="panel-heading"></div>
 							<div class="panel-body tab-panel">
-								
-								<div class="form-group form-horizontal col-md-12"> 	 	 	 	 	 	 	
-									<div class="table-responsive">
-										<div class="table-responsive">
-											<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
-												<thead> 	 	 	 	 	 		 	 	
-												<tr>  	 	 	 	 	 	 	 	 	 	 	 	 	
-													<th>Select</th>
-													<th>PROVIDER NAME</th>
-													<th>INSURER NAME</th>
-													<th>CASE ID</th>
-													<th>EXP COST</th>
-													<th>FFB</th>
-													<th>FFC</th>
-													<th>FFREC</th>
-												</tr>
-												</thead>
-												<tbody>
-												<tr>
-													<td><input type="checkbox" value="" /></td>
-													<td>System Architect</td>
-													<td>Edinburgh</td>
-													<td>61</td>
-													<td class="inputt"><input type="text" class="form-control input-sm input-height"></td>
-													<td class="inputt"><input type="text" class="form-control input-sm input-height"></td>
-													<td class="inputt"><input type="text" class="form-control input-sm input-height"></td>
-													<td class="inputt"><input type="text" class="form-control input-sm input-height"></td>
-												</tr>
-												<tr>
-													<td><input type="checkbox" value="" /></td>
-													<td>Accountant</td>
-													<td>Tokyo</td>
-													<td>63</td>
-													<td class="inputt"><input type="text" class="form-control input-sm input-height"></td>
-													<td class="inputt"><input type="text" class="form-control input-sm input-height"></td>
-													<td class="inputt"><input type="text" class="form-control input-sm input-height"></td>
-													<td class="inputt"><input type="text" class="form-control input-sm input-height"></td>
-												</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
+								<div class="form-group form-horizontal col-md-12">
+                                    <h5 class="h4-title">EXP COST BALANCE</h5>
+                                    <div class="col-md-12">
+                                        <table id="ExpCostBalance" class="table dataTable table-bordered table-striped">
+                                            <thead>
+                                            <tr> 
+                                                <th>Select</th>
+                                                <th>PROVIDER NAME</th>
+                                                <th>INSURER NAME</th>
+                                                <th>CASE ID</th>
+                                                <th>EXP COST</th>
+                                                <th>FFB</th>
+                                                <th>FFC</th>
+                                                <th>FFREC</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
 								
 							</div><!-- End of panel-body tab-panel-->
 							</div><!-- End hpanel -->
@@ -435,6 +411,12 @@ $(document).ready(function(e) {
 			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 		});
 	});
+	/*$('#ExpCostBalance').dataTable( {
+		"ajax": "get_Exp_Cost_Balance",
+		"iDisplayLength": 10,
+		"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"bSort": false,
+	});*/
 	
 	
 	$('.datepicking').datepicker({
