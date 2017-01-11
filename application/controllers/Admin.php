@@ -7,7 +7,7 @@ session_cache_limiter('private_no_expire');
 		$this->load->library('session');
 		$this->load->model('admin_privilege_model');
 		$this->load->model('dataentry_model');
-		
+		$this->session->all_userdata();
 	}
 	public function index(){
 		//$this->load->library('session');

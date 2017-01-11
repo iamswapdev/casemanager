@@ -10,6 +10,7 @@ class Search extends CI_Controller{
 		$this->load->model('search_model');
 		$this->load->model('dataentry_model');
 		$this->load->model('admin_privilege_model');
+		$this->session->all_userdata();
 	}
 	
 	public function index(){
@@ -84,11 +85,8 @@ class Search extends CI_Controller{
 		return $data;
 	}
 	public function viewcase($Case_AutoId){
+		//echo "<br><prewe>Session:";print_r($this->session->all_userdata()); echo "</pre>";
 		
-		//$this->session->all_userdata();
-		//echo "<br><pre>:";print_r($this->session->all_userdata());
-		//echo $this->session->userdata['logged_in']['RoleId']; exit;
-		//print_r($this->session->all_userdata());
 		if(isset($this->session->userdata['logged_in'])){
 			$data['Provider_Name1']= $this->search_model->get_Provider();
 			$data['InsuranceCompany_Name']= $this->search_model->get_Insurance();
@@ -130,7 +128,6 @@ class Search extends CI_Controller{
 			$this->search_model->add_Notes($data3);
 			
 			$this->load->view('pages/workarea_info',$data );
-			echo "<br><prewe>Session:";print_r($this->session->all_userdata()); echo "</pre>";
 		}else{
 			$CurrentPage['CurrentUrl'] = "search/viewcase/".$Case_AutoId;
 			$this->load->view('pages/login', $CurrentPage);
@@ -145,10 +142,6 @@ class Search extends CI_Controller{
 /*GET TREATEMENT TABLE*/
 	public function getTreatement($Case_Id){
 		$list = $this->search_model->get_Treatment($Case_Id);
-		//echo "<pre>"; print_r($list); exit();  date_format(substr($result->DateOfService_Start, 0,9),'m/d/Y H:i:s"')
-		//substr(date_format($result->DateOfService_Start, 'm/d/Y H:i:s'), 0,9) 2010-11-30 00:00:00.000000
-		//date_format(date_create(substr($result->DateOfService_Start,0,18)),'m/d/Y')
-		
 		$data = array();
 		$no=0;
 		foreach ($list as $result) {
@@ -159,9 +152,9 @@ class Search extends CI_Controller{
 			}
 			$row[] = "<input type='text' name='dateOfServiceStart' class='form-control input-sm datetimepicker_Dos_Doe dos-date dos-input' value='".date_format(date_create(substr($result->DateOfService_Start, 0, 10)), 'm/d/Y')."' disabled>";
 			$row[] = "<input type='text' name='dateOfServiceEnd' class='form-control input-sm datetimepicker_Dos_Doe dos-date dos-input' value='".date_format(date_create(substr($result->DateOfService_End, 0, 10)), 'm/d/Y')."' disabled>";
-			$row[] = "<input type='text' name='Claim_Amount_treat' class='form-control input-sm amt-input' value='".$result->Claim_Amount."' disabled>";
-			$row[] = "<input type='text' name='Paid_Amount_treat' class='form-control input-sm amt-input' value='".$result->Paid_Amount."' disabled>";
-			$row[] = "<input type='text' name='Paid_Amount_treat' class='form-control input-sm amt-input' value='".($result->Claim_Amount - $result->Paid_Amount)."' disabled>";
+			$row[] = "<input type='text' name='Claim_Amount_treat' class='form-control input-sm amt-input' value='".number_format($result->Claim_Amount, 2)."' disabled>";
+			$row[] = "<input type='text' name='Paid_Amount_treat' class='form-control input-sm amt-input' value='".number_format($result->Paid_Amount, 2)."' disabled>";
+			$row[] = "<input type='text' name='Paid_Amount_treat' class='form-control input-sm amt-input' value='".number_format(($result->Claim_Amount - $result->Paid_Amount), 2)."' disabled>";
 			$row[] = "<input type='text' name='Date_BillSent_treat' class='form-control input-sm datetimepicker_Dos_Doe dos-input' value='".$result->Date_BillSent."' disabled>";
 			$row[] = "<div class='SERVICE_TYPE_treat_div'> <input type='text' name='SERVICE_TYPE_treat' class='form-control input-sm' value='".$result->SERVICE_TYPE."' disabled><input type='hidden' name='SERVICE_TYPE_treat_hidden' value='".$result->SERVICE_TYPE."'> </div>";
 			
@@ -173,9 +166,7 @@ class Search extends CI_Controller{
 			}
 			$data[] = $row;
 		}
-		$output = array(
-			"data" => $data
-		);
+		$output = array( "data" => $data );
 		//echo "<pre>"; print_r($output); exit();
 		echo json_encode($output);
 	}
@@ -192,6 +183,7 @@ class Search extends CI_Controller{
 			"DENIALREASONS_TYPE" => $this->input->post('currentDenialReasonType')
 		);
 		$this->search_model->updateTreatement($data, $Treatment_Id);
+		$this->update_Claim_Paid_Dates($this->input->post("Case_Id"));
 		echo json_encode($data);
 	}
 /*ADD TREATEMENT RECORDS*/
@@ -207,12 +199,39 @@ class Search extends CI_Controller{
 			"SERVICE_TYPE" => $this->input->post("serviceType")
 		);
 		$this->search_model->addTreatement($data);
+		$this->update_Claim_Paid_Dates($this->input->post("Case_Id"));
 	}
 /*ADD TREATEMENT RECORDS*/
 	public function deleteTreatement(){
 		$data = $this->input->post('DeletedTreatementId');
 		$this->search_model->delete_Treatement($data);
+		$this->update_Claim_Paid_Dates($this->input->post("Case_Id"));
 	}
+/*Update claim paid DOS start and end*/
+	public function update_Claim_Paid_Dates($Case_Id){
+		$list = $this->search_model->update_Claim_Paid_Dates($Case_Id, "");
+		$Tot_Claim = 0;
+		$Tot_Paid = 0;
+		$DOS_End = "";
+		$i=1;
+		foreach($list as $result){
+			if($i == 1){$DOS_Start = $result->DateOfService_Start;}
+			$i++;
+			
+			$Tot_Claim = $Tot_Claim + $result->Claim_Amount;
+			$Tot_Paid = $Tot_Paid + $result->Paid_Amount;
+			$DOS_End = $result->DateOfService_End;
+		}
+		
+		$data = array(
+			"Claim_Amount" => $Tot_Claim,
+			"Paid_Amount" => $Tot_Paid,
+			"DateOfService_Start" => $DOS_Start,
+			"DateOfService_End" => $DOS_End
+		);
+		$this->search_model->update_Claim_Paid_Dates($Case_Id, $data);
+	} 
+/* get provider by id - viewcase page*/
 	public function getProvider_ById($Provider_Id){
 		$list=$this->search_model->get_Provider_ById($Provider_Id);
 		$data = array();
@@ -232,12 +251,11 @@ class Search extends CI_Controller{
 			
 			$data[] = $row;
 		}
-		$output = array(
-			"data" => $data
-		);
+		$output = array( "data" => $data );
 		//echo "<pre>";print_r($output);
 		echo json_encode($data);
 	}
+/* get insurance by id - viewcase page*/
 	public function getInsurance_ById($InsuranceCompany_Id){
 		$list=$this->search_model->get_Insurance_ById($InsuranceCompany_Id);
 		$data = array();
@@ -256,11 +274,10 @@ class Search extends CI_Controller{
 			
 			$data[] = $row;
 		}
-		$output = array(
-			"data" => $data
-		);
+		$output = array( "data" => $data );
 		echo json_encode($data);
 	}
+/* get defendant by id - viewcase page*/
 	public function getDefendant_ById($Defendant_Id){
 		$list=$this->search_model->get_Defendant_ById($Defendant_Id);
 		$data = array();
@@ -280,11 +297,10 @@ class Search extends CI_Controller{
 			
 			$data[] = $row;
 		}
-		$output = array(
-			"data" => $data
-		);
+		$output = array( "data" => $data );
 		echo json_encode($data);
 	}
+/* get adjuster by id - viewcase page*/
 	public function getAdjuster_ById($Adjuster_Id){
 		$list=$this->search_model->get_Adjuster_ById($Adjuster_Id);
 		$data = array();
@@ -305,9 +321,7 @@ class Search extends CI_Controller{
 			
 			$data[] = $row;
 		}
-		$output = array(
-			"data" => $data
-		);
+		$output = array( "data" => $data );
 		//echo "<pre>:";print_r($output);
 		echo json_encode($data);
 	}
@@ -325,12 +339,11 @@ class Search extends CI_Controller{
 			
 			$data[] = $row;
 		}
-		$output = array(
-			"data" => $data
-		);
+		$output = array( "data" => $data );
 		//echo "<pre>:";print_r($output);
 		echo json_encode($output);
 	}
+/* get injured by id - viewcase page*/
 	public function getInjured_ById($Case_AutoId){
 		$list=$this->search_model->get_CaseInfo_ById2($Case_AutoId);
 		$data = array();
@@ -347,11 +360,10 @@ class Search extends CI_Controller{
 			
 			$data[] = $row;
 		}
-		$output = array(
-			"data" => $data
-		);
+		$output = array( "data" => $data );
 		echo json_encode($data);
 	}
+/* get insured by id - viewcase page*/
 	public function getInsured_ById($Case_AutoId){
 		$list=$this->search_model->get_CaseInfo_ById2($Case_AutoId);
 		$data = array();
@@ -367,13 +379,10 @@ class Search extends CI_Controller{
 			
 			$data[] = $row;
 		}
-		$output = array(
-			"data" => $data
-		);
+		$output = array( "data" => $data );
 		echo json_encode($data);
 	}
-	
-	
+/* get Search table data - viewcase page*/
 	public function getSearchTable(){  
 		$list=$this->search_model->get_SearchResult();
 		$this->Search_Table_Data($list);
@@ -381,7 +390,7 @@ class Search extends CI_Controller{
 
 /**************************** CASEINFORMATION TAB-1 ************************************************************************************/
 	public function getNotes($Case_Id){
-		$list=$this->search_model->get_Notes($Case_Id);
+		$list=$this->search_model->get_Notes($Case_Id); 
 		$data = array();
 		$no=0;
 		foreach ($list as $result) {
@@ -395,9 +404,7 @@ class Search extends CI_Controller{
 			
 			$data[] = $row;
 		}
-		$output = array(
-			"data" => $data
-		);
+		$output = array( "data" => $data );
 		echo json_encode($output);
 	}
 /**** ADD NOTES ***********/
@@ -413,6 +420,7 @@ class Search extends CI_Controller{
 		echo json_encode($data);
 		//return true;
 	}
+/* get Case info by id - viewcase page*/
 	public function getCaseInfo($Case_AutoId){
 		$data['CaseInfo']= $this->search_model->get_CaseInfo_ById($Case_AutoId);
 		//echo "<pre>"; print_r($data['CaseInfo']); exit();
@@ -519,11 +527,8 @@ class Search extends CI_Controller{
 			$PreviousValue = $this->get_Changed_Value($this->input->post("inputName"), $Case_AutoId);
 		}
 		
-		
-		
 		$success = $this->search_model->update_CaseInfo($data, $Case_AutoId);
 
-		
 		if($recordNo ==3){
 			$NewValue1 = $this->get_Changed_Value("InjuredParty_LastName", $Case_AutoId);
 			$NewValue2 = $this->get_Changed_Value("InjuredParty_FirstName", $Case_AutoId);
@@ -604,9 +609,7 @@ class Search extends CI_Controller{
 		);
 		$list= $this->search_model->get_CaseInfo_ById1($Recieveddata);
 		$this->Search_Table_Data($list);
-		
 	}
-/**************************** EDIT CASE INFO TAB-2 ***********************************************************************/
 /**************************** NOTES TAB-3 ************************************************************************************/
 /***** BIND NOTES TABLE ****/	
 	public function getNotes2($Case_Id){
@@ -626,9 +629,7 @@ class Search extends CI_Controller{
 			
 			$data[] = $row;
 		}
-		$output = array(
-			"data" => $data
-		);
+		$output = array( "data" => $data );
 		echo json_encode($output);
 	}
 
@@ -687,8 +688,7 @@ class Search extends CI_Controller{
 			"User_Id" => $this->session->userdata['username']
 		);
 		$this->search_model->add_Notes($data3);
-	
-		echo "<pre>"; print_r($data);
+		//echo "<pre>"; print_r($data);
 	}
 	public function reset_Settlement($Case_AutoId, $Case_Id){
 		$this->search_model->resetSettlement($Case_AutoId);
@@ -720,24 +720,22 @@ class Search extends CI_Controller{
 			$row[] = $result->InjuredParty_LastName." ".$result->InjuredParty_FirstName;
 			$row[] = $result->InsuranceCompany_Name;
 			$row[] = $result->IndexOrAAA_Number;
-			$row[] = $result->Claim_Amount;
-			$row[] = $result->Paid_Amount;
-			$row[] = $result->Claim_Amount - $result->Paid_Amount;
+			$row[] = number_format($result->Claim_Amount, 2);
+			$row[] = number_format($result->Paid_Amount, 2);
+			$row[] = number_format($result->Claim_Amount - $result->Paid_Amount, 2);
 			$row[] = $result->Last_Status;
-			$row[] = $result->Settlement_Amount;
-			$row[] = $result->Settlement_Int;
-			$row[] = $result->Settlement_Af;
-			$row[] = $result->Settlement_Ff;
-			$row[] = $result->Settlement_Total;
+			$row[] = number_format($result->Settlement_Amount, 2);
+			$row[] = number_format($result->Settlement_Int, 2);
+			$row[] = number_format($result->Settlement_Af, 2);
+			$row[] = number_format($result->Settlement_Ff, 2);
+			$row[] = number_format($result->Settlement_Total, 2);
 			$row[] = date_format(date_create(substr($result->Settlement_Date,0,10)),"m/d/Y");
 			$row[] = $result->SettledWith;
 			$row[] = $result->User_Id;
 			
 			$data[] = $row;
 		}
-		$output = array(
-			"data" => $data
-		);
+		$output = array( "data" => $data );
 		echo json_encode($output);
 	}
 	public function getTransactions($Case_Id){
@@ -749,17 +747,15 @@ class Search extends CI_Controller{
 			$row[] = "<input type='text' name='Provider_Name' class='form-control input-sm input-height' value='".$result->Provider_Name."' >";
 			$row[] = "<input type='text' name='Transactions_Type' class='form-control input-sm input-height' value='".$result->Transactions_Type."' >";
 			$row[] = "<input type='text' name='ServiceType' class='form-control input-sm input-height datetimepicker_Dos_Doe' value='".date_format(date_create(substr($result->Transactions_Date,0,10)),"m/d/Y")."' >";
-			$row[] = "<input type='text' name='Transactions_Amount' class='form-control input-sm input-height' value='".$result->Transactions_Amount."' >";
+			$row[] = "<input type='text' name='Transactions_Amount' class='form-control input-sm input-height' value='".number_format($result->Transactions_Amount, 2)."' >";
 			$row[] = "<input type='text' name='Transactions_Description' class='form-control input-sm input-height' value='".$result->Transactions_Description."' >";
-			$row[] = "<input type='text' name='ServiceType' class='form-control input-sm input-height' value='".$result->Transactions_Fee."' >";
+			$row[] = "<input type='text' name='ServiceType' class='form-control input-sm input-height' value='".number_format($result->Transactions_Fee, 2)."' >";
 			$row[] = "<input type='text' name='Transactions_status' class='form-control input-sm input-height' value='".$result->Transactions_status."' >";
 			$row[] = "<input type='checkbox' name='deleteCheckedTransactions[]' class='deleteCheckedTransactions deleteCheckedTransactions".$result->Transactions_Id."' value='".$result->Transactions_Id."' >";
 			
 			$data[] = $row;
 		}
-		$output = array(
-			"data" => $data
-		);
+		$output = array( "data" => $data );
 		echo json_encode($output);
 	}
 	public function addTransactions(){
@@ -790,9 +786,7 @@ class Search extends CI_Controller{
 				
 				$data2[] = $row;
 			}
-			$output = array(
-				"data" => $data2
-			);
+			$output = array( "data" => $data2 );
 			$data3 = array(
 				"Notes_Type" => "ACTIVITY",
 				"Notes_Desc" => "Payment/Transaction posted : $".$data['Transactions_Amount']." (".$data['Transactions_Type'].") Desc->".$data['Transactions_Description'],
@@ -853,9 +847,7 @@ class Search extends CI_Controller{
 			
 			$data[] = $row;
 		}
-		$output = array(
-			"data" => $data
-		);
+		$output = array( "data" => $data );
 		echo json_encode($output);
 	}
 /**** delete EVENT LIST ********/
@@ -909,9 +901,7 @@ class Search extends CI_Controller{
 			
 			$data[] = $row;
 		}
-		$output = array(
-			"data" => $data
-		);
+		$output = array( "data" => $data );
 		echo json_encode($output);
 	}
 /* ADD MOTION DATA*/
@@ -962,9 +952,7 @@ class Search extends CI_Controller{
 			
 			$data[] = $row;
 		}
-		$output = array(
-			"data" => $data
-		);
+		$output = array( "data" => $data );
 		echo json_encode($output);
 	}
 /**** ADD TRIAL DATA ********/
@@ -1074,9 +1062,7 @@ class Search extends CI_Controller{
 			$data[] = $row;
 		}
 		
-		$output = array(
-			"data" => $data
-		);
+		$output = array( "data" => $data );
 		
 		echo json_encode($output);
 	}

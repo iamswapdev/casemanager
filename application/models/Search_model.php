@@ -115,11 +115,24 @@ Class Search_model extends CI_Model{
 	public function addTreatement($data){
 		$this->db->insert("dbo_tbltreatment", $data);
 	}
-/**/
+/*Delete treatement*/
 	public function delete_Treatement($data){
 		foreach($data as $id){
 			$this->db->where('Treatment_Id', $id);
 			$this->db->delete('dbo_tbltreatment');
+		}
+	}
+/*Update claim paid DOS start and end*/
+	public function update_Claim_Paid_Dates($Case_Id, $data){
+		if($data == ""){
+			$this->db->order_by("Treatment_Id", "asc");
+			$this->db->where("Case_Id", $Case_Id);
+			$data = $this->db->get("dbo_tbltreatment");
+			return $data->result();
+		}else{
+			$this->db->set($data);
+			$this->db->where("Case_Id", $Case_Id);
+			$this->db->update("dbo_tblcase", $data);
 		}
 	}
 	public function get_Provider()

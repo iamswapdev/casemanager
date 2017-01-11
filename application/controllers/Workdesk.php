@@ -7,6 +7,7 @@ session_cache_limiter('private_no_expire');
 			parent::__construct();
 			$this->load->library('session');
 			$this->load->model('admin_privilege_model');
+			$this->session->all_userdata();
 		}
 		public function index(){
 			

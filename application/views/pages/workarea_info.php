@@ -276,6 +276,7 @@ for($i=0; $i<=13; $i++){
                                             <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datetimepicker_Dos_Doe dos-input"></td>
                                             <td><input type="number" step="0.01" id="claimAmt" name="Claim_Amount_treat" class="form-control input-sm amt-input"></td>
                                             <td><input type="number" step="0.01" id="paidAmt" name="Paid_Amount_treat" class="form-control input-sm amt-input"></td>
+                                            <td><input type="number" step="0.01" id="TotalBalance" name="TotalBalance" class="form-control input-sm amt-input" disabled></td>
                                             <td><input id="dateBillSent" name="Date_BillSent_treat" class="form-control input-sm datetimepicker_Dos_Doe dos-input"></td>
                                             <td><select class="form-control input-sm" id="serviceType" name="serviceType">
                                             <option>-- Select Service--</option>
@@ -594,7 +595,6 @@ for($i=0; $i<=13; $i++){
 											</tr>
 											</thead>
 										</table>
-										
 									</div>
 							</div>
 						</div><!-- End of panel-body tab-panel-->
@@ -1734,6 +1734,10 @@ for($i=0; $i<=13; $i++){
 <script>
 $(document).ready(function(e) {
 	//$(".info-link-popup tr:nth-child(2) td:nth-child(2)").css("color", "blue");
+	$('#notesDescription5').bind("cut copy paste",function(e) {
+		e.preventDefault();
+	});
+	//$(".financials").find(".view-reports").attr("href", "<?php echo base_url();?>/financials/reports/<?php echo $Case_Id;?>");
 	var Accessibility = true;
 	if(Accessibility){
 		console.log("Accessibility:"+Accessibility);
@@ -1839,7 +1843,7 @@ $(document).ready(function(e) {
 				request = $.ajax({
 					url:"<?php echo base_url();?>search/deleteTreatement",
 					type: "post",
-					data: {DeletedTreatementId:DeletedTreatementId}
+					data: {DeletedTreatementId:DeletedTreatementId, Case_Id:"<?php echo $Case_Id;?>"}
 				});
 		
 				request.done(function (response, textStatus, jqXHR) {
@@ -1926,7 +1930,7 @@ $(document).ready(function(e) {
 		var currentServiceType = $(parentR).find(".current-serviceType").val();
 		var currentDenialReasonType = $(parentR).find(".current-denialReasonType").val();
 		
-		var string = "&DateOfService_Start="+DateOfService_Start+"&DateOfService_End="+DateOfService_End+"&Claim_Amount="+Claim_Amount+"&Paid_Amount="+Paid_Amount+"&Date_BillSent="+Date_BillSent+"&Treatment_Id="+Treatment_Id+"&currentServiceType="+currentServiceType+ "&currentDenialReasonType="+currentDenialReasonType;
+		var string = "&DateOfService_Start="+DateOfService_Start+"&DateOfService_End="+DateOfService_End+"&Claim_Amount="+Claim_Amount+"&Paid_Amount="+Paid_Amount+"&Date_BillSent="+Date_BillSent+"&Treatment_Id="+Treatment_Id+"&currentServiceType="+currentServiceType+ "&currentDenialReasonType="+currentDenialReasonType + "&Case_Id=<?php echo $Case_Id;?>";
 		
 		request = $.ajax({
 			url:"<?php echo base_url(); ?>search/update_Treatement",
@@ -2056,7 +2060,7 @@ $(document).ready(function(e) {
 					x[recordNo-2].innerHTML = inputValue;
 				}else if(recordNo == 14){
 					var balance = parseFloat($(".visible:eq(12)").text()) - inputValue;
-					x[13].innerHTML = "PAID / $"+inputValue +" / BALANCE $"+balance;
+					x[13].innerHTML = "PAID / $"+inputValue.toFixed(2) +" / BALANCE $"+balance.toFixed(2);
 				}else{
 					x[recordNo-1].innerHTML = inputValue;
 				}
@@ -3210,7 +3214,7 @@ daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndDat
 					$("#TotalAmount").val(TotalAmount.toFixed(2));*/
 					
 					
-					x[13].innerHTML = "PAID / $"+results.CaseInfo[$i].Paid_Amount+" / BALANCE $"+balance;
+					x[13].innerHTML = "PAID / $"+parseFloat(results.CaseInfo[$i].Paid_Amount).toFixed(2)+" / BALANCE $"+balance.toFixed(2);
 					$("input[name=Paid_Amount]").val(results.CaseInfo[$i].Paid_Amount);
 					
 					x[15].innerHTML = results.CaseInfo[$i].Old_Case_Id;

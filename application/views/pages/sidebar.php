@@ -109,7 +109,7 @@
                     <a href="<?php echo base_url();?>financials/financial">Financial</a></li>
 					<?php  } ?>
                     <?php if($Reports){ ?>
-                    <li><a href="<?php echo base_url();?>financials/reports">Reports</a></li>
+                    <li><a class="view-reports" href="<?php echo base_url();?>financials/reports">Reports</a></li>
                     <?php  } ?>
 					<?php if($RapidFunds){?>
                     <li><a href="<?php echo base_url();?>financials/rapidfunds">Rapid Funds</a></li>

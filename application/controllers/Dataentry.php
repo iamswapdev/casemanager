@@ -10,6 +10,7 @@ session_cache_limiter('private_no_expire');
 			$this->load->model('dataentry_model');
 			$this->load->model('admin_privilege_model');
 			$this->load->model('search_model');
+			$this->session->all_userdata();
 			//redirect(base_url(),'refresh');
 		}
 		public function index(){

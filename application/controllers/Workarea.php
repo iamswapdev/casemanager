@@ -9,6 +9,7 @@ session_cache_limiter('private_no_expire');
 			$this->load->model('dataentry_model');
 			$this->load->model('workarea_model');
 			$this->load->model('admin_privilege_model');
+			$this->session->all_userdata();
 		}
 		public function index(){
 			

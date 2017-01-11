@@ -7,6 +7,7 @@ class Adminprivilege extends CI_Controller{
 		parent::__construct();
 		$this->load->library('session');
 		$this->load->model('admin_privilege_model');
+		$this->session->all_userdata();
 	}
 	public function index(){
 		

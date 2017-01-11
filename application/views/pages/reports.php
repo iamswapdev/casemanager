@@ -27,6 +27,9 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.css" />
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.min.css" />
 
+	<!-- ALERT CSS -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.css" />
     <!-- App styles -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/helper.css" />
@@ -72,12 +75,12 @@
 										
 										<label class="col-md-1 control-label">Start Date</label>										
 										<div class="col-md-1">
-											<input id="datapicker1" type="text" class="form-control input-sm">
+											<input type="text" class="form-control input-sm datepicking">
 										</div>
 										
 										<label class="col-md-1 control-label">End Date</label>										
 										<div class="col-md-1">
-											<input id="datapicker2" type="text" class="form-control input-sm">
+											<input type="text" class="form-control input-sm datepicking">
 										</div>
 										<div class="col-md-1">
 												
@@ -153,7 +156,6 @@
 							<div class="panel-body tab-panel">
 								
 								<form>
-									
 									<div class="form-group form-horizontal col-md-12">
 										<h5>Select Insurance Company Name</h5>
 										<div class="col-md-2">
@@ -174,7 +176,6 @@
 								
 								<h5>OR</h5><div class="hr-line-dashed"></div>
 								<form>
-									
 									<div class="form-group form-horizontal col-md-12">	
 										<h5>Select Provider Name</h5>
 										<div class="col-md-2">
@@ -194,145 +195,114 @@
 								</form>
 								
 								<h5>OR</h5><div class="hr-line-dashed"></div>
-								<form>
-									
 									<div class="form-group form-horizontal col-md-12">
 										<h5>Cases for 0 Settlement Amount</h5>
 										
 										<label class="col-md-1 control-label">Start Date</label>										
 										<div class="col-md-1">
-											<input id="datapicker3" type="text" class="form-control input-sm">
+											<input type="text" name="SD_0Settlement" class="form-control input-sm datepicking">
 										</div>
 										<label class="col-md-1 control-label">End Date</label>										
 										<div class="col-md-1">
-											<input id="datapicker4" type="text" class="form-control input-sm">
+											<input type="text" name="ED_0Settlement" class="form-control input-sm datepicking">
 										</div>
 										
 										<div class="col-md-2">
-											<button type="button" class="btn btn-primary">Get</button>
+											<button type="button" id="Cases0Settlement_btn" class="btn btn-primary">Get</button>
 										</div>
 									</div>
-								</form>
 								
 								<h5>OR</h5><div class="hr-line-dashed"></div>
-								<form>
-									
 									<div class="form-group form-horizontal col-md-12">	
 										<h5>Overdue Settlement Report</h5>
 										
 										<label class="col-md-1 control-label">Start Date</label>										
 										<div class="col-md-1">
-											<input id="datapicker5" type="text" class="form-control input-sm">
+											<input type="text" name="SD_OverdueSettlement" class="form-control input-sm datepicking">
 										</div>
 										<label class="col-md-1 control-label">End Date</label>										
 										<div class="col-md-1">
-											<input id="datapicker6" type="text" class="form-control input-sm">
+											<input type="text" name="ED_OverdueSettlement" class="form-control input-sm datepicking">
 										</div>
 										
 										<div class="col-md-2">
-											<button type="button" class="btn btn-primary">Get</button>
+											<button type="button" id="OverdueSettlement_btn" class="btn btn-primary">Get</button>
 										</div>
 									</div>
-								</form>
 								
 							</div><!-- End of panel-body tab-panel-->
 							</div><!-- End hpanel -->
 							</div><!-- End col-lg-12-->
 						</div><!-- End row-->
-						
 						<div class="row">
-							<div class="col-lg-12">
-							<div class="hpanel">
-							<div class="panel-heading"></div>
-							<div class="panel-body tab-panel">
-								
-								<div class="form-group form-horizontal col-md-12">
-									<div class="table-responsive caseFor0Settlement" style="display: block;">
-										<h4>Cases for 0 Settlement Amount</h4>
-										<div class="table-responsive">
-											<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
-												<thead>  	 	 	 		 	 	 	
-												<tr>  	 	 	 	 	 	 	 	 	 	 	 	 	
-													<th>Case Id</th>
-													<th>Injured Party</th>
-													<th>Provider Name</th>
-													<th>Status</th>
-													<th>Insurance Company </th>
-													<th>Claim Amount</th>
-													<th>Balance</th>
-													<th>Settlement Date</th>
-													<th>Settlement Amount </th>
-												</tr>
-												</thead>
-												<tbody>
-												<tr>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
-									
-									<div class="table-responsive caseFor0Settlement">
-										<h4>Overdue Settlement Report</h4>
-										<div class="table-responsive overdueSettlementReport" style="display: block;"> 
-											<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
-												<thead>   	 	 	 	 	 	 	 	 	 		 	 	 	
-												<tr>  	 	 	 	 	 	 	 	 	 	 	 	 	
-													<th>Case Id</th>
-													<th>Injured Party</th>
-													<th>Provider Name</th>
-													<th>Insurance Company </th>
-													<th>Claim Amount</th>
-													<th>Balance</th>
-													<th>Settlement Amount </th>
-													<th>Settlement Date</th>
-													<th>Settlement Interest</th>
-													<th>Settlement Attorney Fees</th>
-													<th>Settlement Filing Fees</th>
-													<th>Settlement Total</th>
-													<th>Settled By</th>
-													<th>Settled With</th>
-													<th>Fees Status</th>
-													
-												</tr>
-												</thead>
-												<tbody>
-												<tr>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-								
-							</div><!-- End of panel-body tab-panel-->
-							</div><!-- End hpanel -->
-							</div><!-- End col-lg-12-->
-						</div><!-- End row-->
+                            <div class="col-lg-12">
+                            <div class="hpanel">
+                            <div class="panel-heading"></div>
+                            <div class="panel-body tab-panel">
+                                <div class="form-group form-horizontal col-lg-12">
+									<h5 class="h4-title">Cases for 0 Settlement Amount</h5>
+                                    <div class="col-md-12">
+                                        <table id="Cases0Settlement" class="table dataTable table-bordered table-striped">
+                                            <thead>
+                                            <tr>  	 	 	 
+                                                <th>Case Id</th>
+                                                <th>Injured Party</th>
+                                                <th>Provider Name</th>
+                                                <th>Status</th>
+                                                <th>Insurance Company </th>
+                                                <th>Claim Amount</th>
+                                                <th>Balance</th>
+                                                <th>Settlement Date</th>
+                                                <th>Settlement Amount </th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div><!-- End of panel-body tab-panel-->
+                            </div><!-- End hpanel -->
+                            </div><!-- End col-lg-12-->
+                        </div><!-- End row-->
+                        
+                        <div class="row">
+                            <div class="col-lg-12">
+                            <div class="hpanel">
+                            <div class="panel-heading"></div>
+                            <div class="panel-body tab-panel">
+                            	<div class="form-group form-horizontal col-md-12">
+                                    <h5 class="h4-title">Overdue Settlement Report</h5>
+                                    <div class="col-md-12">
+                                        <table id="OverdueSettlement" class="table dataTable table-bordered table-striped">
+                                            <thead>
+                                            <tr> 
+                                                <th>Case Id</th>
+                                                <th>Injured Party</th>
+                                                <th>Provider Name</th>
+                                                <th>Insurance Company </th>
+                                                <th>Claim Amount</th>
+                                                <th>Balance</th>
+                                                <th>Settlement Amount </th>
+                                                <th>Settlement Date</th>
+                                                <th>Settlement Interest</th>
+                                                <th>Settlement Attorney Fees</th>
+                                                <th>Settlement Filing Fees</th>
+                                                <th>Settlement Total</th>
+                                                <th>Settled By</th>
+                                                <th>Settled With</th>
+                                                <th>Fees Status</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                        
+                                    </div>
+                                </div>
+                                
+                                
+                            </div><!-- End of panel-body tab-panel-->
+                            </div><!-- End hpanel -->
+                            </div><!-- End col-lg-12-->
+                        </div><!-- End row-->
+                        
 						
 					</div>
 					
@@ -370,6 +340,160 @@
 							</div><!-- End hpanel -->
 							</div><!-- End col-lg-12-->
 						</div><!-- End row-->
+                        
+                        <div class="row">
+                            <div class="col-lg-12">
+                            <div class="hpanel">
+                            <div class="panel-heading"></div>
+                            <div class="panel-body tab-panel">
+                                <div class="form-group form-horizontal col-lg-12">
+									<h5 class="h4-title">Client Information</h5>
+                                    <div class="col-md-12">
+                                        <table id="ClientInformation" class="table dataTable table-bordered table-striped">
+                                            <thead>
+                                            <tr>  	 	 	 
+                                                <th>Client Name</th>
+                                                <th>Client Address</th>
+                                                <th>Client Billing %</th>
+                                                <th>Cost Balance</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div><!-- End of panel-body tab-panel-->
+                            </div><!-- End hpanel -->
+                            </div><!-- End col-lg-12-->
+                        </div><!-- End row-->
+                        
+                        <div class="row">
+                            <div class="col-lg-12">
+                            <div class="hpanel">
+                            <div class="panel-heading"></div>
+                            <div class="panel-body tab-panel">
+                                <div class="form-group form-horizontal col-lg-12">
+									<h5 class="h4-title">Client Settlements for last 5 months</h5>
+                                    <div class="col-md-12">
+                                        <table id="ClientSettlements" class="table dataTable table-bordered table-striped">
+                                            <thead>
+                                            <tr>  	 	 	 	 	 	  	 	 	 
+                                                <th>Month / Year</th>
+                                                <th>Count of Cases</th>
+                                                <th>Sum of Billed Amount</th>
+                                                <th>Sum of Suit Amount</th>
+                                                <th>Sum of Principal Settlement</th>
+                                                <th>Sum of Interest Settlement</th>
+                                                <th>Percentage</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div><!-- End of panel-body tab-panel-->
+                            </div><!-- End hpanel -->
+                            </div><!-- End col-lg-12-->
+                        </div><!-- End row-->
+                        <div class="row">
+                            <div class="col-lg-12">
+                            <div class="hpanel">
+                            <div class="panel-heading"></div>
+                            <div class="panel-body tab-panel">
+                                <div class="form-group form-horizontal col-lg-12">
+									<h5 class="h4-title">Withdrawn Cases for last 5 months</h5>
+                                    <div class="col-md-12">
+                                        <table id="WithdrawnCases" class="table dataTable table-bordered table-striped">
+                                            <thead>
+                                            <tr>  	 	 	 	 	  	 	 	 
+                                                <th>Month / Year</th>
+                                                <th>Count of Cases</th>
+                                                <th>Sum of Billed Amount</th>
+                                                <th>Sum of Suit Amount</th>
+                                                <th>Sum of Settlement Principal</th>
+                                                <th>Percentage</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div><!-- End of panel-body tab-panel-->
+                            </div><!-- End hpanel -->
+                            </div><!-- End col-lg-12-->
+                        </div><!-- End row-->
+                        <div class="row">
+                            <div class="col-lg-12">
+                            <div class="hpanel">
+                            <div class="panel-heading"></div>
+                            <div class="panel-body tab-panel">
+                                <div class="form-group form-horizontal col-lg-12">
+									<h5 class="h4-title">Client New Cases for last 5 months</h5>
+                                    <div class="col-md-12">
+                                        <table id="ClientNewCases" class="table dataTable table-bordered table-striped">
+                                            <thead>
+                                            <tr>  	 	 	 
+                                                <th>Year/Month</th>
+                                                <th>Count of Cases</th>
+                                                <th>Sum of Billed Amount</th>
+                                                <th>Sum of Suit Amount</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div><!-- End of panel-body tab-panel-->
+                            </div><!-- End hpanel -->
+                            </div><!-- End col-lg-12-->
+                        </div><!-- End row-->
+                        <div class="row">
+                            <div class="col-lg-12">
+                            <div class="hpanel">
+                            <div class="panel-heading"></div>
+                            <div class="panel-body tab-panel">
+                                <div class="form-group form-horizontal col-lg-12">
+									<h5 class="h4-title">Client Invoices</h5>
+                                    <div class="col-md-12">
+                                        <table id="ClientInvoices" class="table dataTable table-bordered table-striped">
+                                            <thead>
+                                            <tr>				 	 	 	 	 	 	 	 	 
+                                                <th>INVOICE ID 	PROVIDER NAME</th>
+                                                <th>GROSS AMOUNT</th>
+                                                <th>FIRM FEES</th>
+                                                <th>COST BALANCE</th>
+                                                <th>APPLIED COST</th>
+                                                <th>FINAL REMIT</th>
+                                                <th>INVOICE DATE</th>
+                                                <th>LAST INVOICE PRINTED</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div><!-- End of panel-body tab-panel-->
+                            </div><!-- End hpanel -->
+                            </div><!-- End col-lg-12-->
+                        </div><!-- End row-->
+                        <div class="row">
+                            <div class="col-lg-12">
+                            <div class="hpanel">
+                            <div class="panel-heading"></div>
+                            <div class="panel-body tab-panel">
+                                <div class="form-group form-horizontal col-lg-12">
+									<h5 class="h4-title">Status Breakdown </h5>
+                                    <div class="col-md-12">
+                                        <table id="StatusBreakdown " class="table dataTable table-bordered table-striped">
+                                            <thead>
+                                            <tr>  	 	 	 
+                                                <th>Client Name</th>
+                                                <th>Client Address</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div><!-- End of panel-body tab-panel-->
+                            </div><!-- End hpanel -->
+                            </div><!-- End col-lg-12-->
+                        </div><!-- End row-->
+                        
 					</div>
 				</div>
 			</div>
@@ -390,59 +514,92 @@
 
 
 
-<!-- Vendor scripts -->
-<script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
+    <!-- Vendor scripts -->
+    <script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
+    
+    <!-- ALERT SCRIPTS -->
+    <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.js"></script>
+    <!--Validate -->
+    <script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
+    
+    <!-- App scripts -->
+    <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 
-<!-- App scripts -->
-<script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
-
-    $(function () {
-
-        // Initialize Example 1
-        $('#example1').dataTable( {
-            "ajax": 'api/datatables.json'
-        });
-
-        // Initialize Example 2
-        $('#example2').dataTable();
-		$('#example3').dataTable();
-
-    });
-
+$(document).ready(function(e) {
+	$("#Cases0Settlement_btn").click(function(){
+		var SD = $("input[name=SD_0Settlement]").val();
+		var ED = $("input[name=ED_0Settlement]").val();
+		$("#Cases0Settlement").dataTable().fnDestroy();
+		$('#Cases0Settlement').dataTable( {
+			"ajax": {
+				"url": "get_Zero_Settlement",
+				"data": {"SD_0Settlement":SD, "ED_0Settlement":ED, "name": "Cases0Settlement"},
+				"type": "post"
+			},
+			
+			"iDisplayLength": 10,
+			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+		});
+	});
+	$("#OverdueSettlement_btn").click(function(){
+		var SD = $("input[name=SD_OverdueSettlement]").val();
+		var ED = $("input[name=ED_OverdueSettlement]").val();
+		$("#OverdueSettlement").dataTable().fnDestroy();
+		$('#OverdueSettlement').dataTable( {
+			"ajax": {
+				"url": "get_Zero_Settlement",
+				"data": {"SD_0Settlement":SD, "ED_0Settlement":ED, "name": "OverdueSettlement"},
+				"type": "post"
+			},
+			
+			"iDisplayLength": 10,
+			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+		});
+	});
+		
+	
+    /*$("#Cases0Settlement_form").validate({
+		rules:{
+			SD_0Settlement:{
+				required: true
+			},
+			SD_0Settlement:{
+				required: true
+			}
+		},
+		submitHandler: function (form) {
+			var $form = $(form);
+			var $inputs = $form.find("input, select, button, textarea");
+			var serializedData = $form.serialize();
+			
+			request = $.ajax({
+				url:"<?php echo base_url(); ?>financials/get_Zero_Settlement",
+				type: "post",
+				"data": serializedData
+			});
+			request.done(function (response) {
+				
+			});
+			
+		}
+	});*/
+});//End of Document
 </script>
 <script>
 $(function(){
-	$('#datapicker1').datepicker({
-		"autoclose": true,
-		"todayHighlight": true
-	});
-	$('#datapicker2').datepicker({
-		"autoclose": true,
-		"todayHighlight": true
-	});
-	$('#datapicker3').datepicker({
-		"autoclose": true,
-		"todayHighlight": true
-	});
-	$('#datapicker4').datepicker({
-		"autoclose": true,
-		"todayHighlight": true
-	});
-	$('#datapicker5').datepicker({
-		"autoclose": true,
-		"todayHighlight": true
-	});
-	$('#datapicker6').datepicker({
+	$('.datepicking').datepicker({
 		"autoclose": true,
 		"todayHighlight": true
 	});
