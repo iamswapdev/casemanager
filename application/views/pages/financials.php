@@ -76,12 +76,12 @@
 										<h4 class="h4-title">Select Date Range for Processed Invoices</h4>
 										<label class="col-md-1 control-label">Start Date</label>										
 										<div class="col-md-1">
-											<input id="datapicker1" type="text" class="form-control input-sm">
+											<input type="text" class="form-control input-sm datepicking">
 										</div>
 										
 										<label class="col-md-1 control-label">End Date</label>										
 										<div class="col-md-1">
-											<input id="datapicker2" type="text" class="form-control input-sm">
+											<input type="text" class="form-control input-sm datepicking">
 										</div>
 										<div class="col-md-2">
 											<button type="button" class="btn btn-primary">Get</button>
@@ -151,7 +151,7 @@
 								
 								<div class="form-group form-horizontal col-md-12"> 	 	 	 	 	 	 	
 									<div class="table-responsive">
-										<h4 class="h4-title"> <<< <a href="<?php echo base_url();?>search/advancedsearch">Advanced Search</a></h4>
+										<!--<h4 class="h4-title"> <<< <a href="<?php //echo base_url();?>search/advancedsearch">Advanced Search</a></h4>-->
 										<div class="table-responsive DailySettlementReports">
 											<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
 												<thead>
@@ -191,19 +191,19 @@
 							<div class="panel-body tab-panel">
 								
 								<form>
-									<h4 class="h4-title">Select Date Range for Firm Fees</h4>
+									<h5 class="h4-title">Select Date Range for Firm Fees</h5>
 									<div class="form-group form-horizontal col-md-12">
 										<label class="col-md-1 control-label">Start Date</label>										
 										<div class="col-md-1">
-											<input id="datapicker3" type="text" class="form-control input-sm">
+											<input type="text" name="SD_FirmFees" class="form-control input-sm datepicking">
 										</div>
 										
 										<label class="col-md-1 control-label">End Date</label>										
 										<div class="col-md-1">
-											<input id="datapicker4" type="text" class="form-control input-sm">
+											<input type="text" name="ED_FirmFees" class="form-control input-sm datepicking">
 										</div>
 										<div class="col-md-2">
-											<button type="button" class="btn btn-primary">Get</button>
+											<button type="button" id="FirmFees_btn" class="btn btn-primary">Get</button>
 										</div>
 										
 									</div>
@@ -219,37 +219,26 @@
 							<div class="hpanel">
 							<div class="panel-heading"></div>
 							<div class="panel-body tab-panel">
-								
-								<div class="table-responsive"> 	 	 	 	 	 	 	
-									<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
-										<thead>
-										<tr>
-											<th>PROVIDER ID</th>
-											<th>PROVIDER NAME</th>
-											<th>CASE ID</th>
-											<th>INDEX NUMBER</th>
-											<th>FFC</th>
-											<th>AF</th>
-											<th>DATE</th>
-											<th>DESCRIPTION</th>
-										</tr>
-										</thead>
-										<tbody>
-										<tr>
-											<td>Abraham</td>
-											<td>076 9477 4896</td>
-											<td>294-318 Duis Ave</td>
-											<td>Vosselaar</td>
-											<td>Belgium</td>
-											<td>076 9477 4896</td>
-											<td>294-318 Duis Ave</td>
-											<td>Vosselaar</td>
-										</tr>
-										</tbody>
-									</table>
-								</div>
-
-								
+								<div class="form-group form-horizontal col-md-12">
+                                    <div class="col-md-12">
+                                        <table id="FirmFees" class="table dataTable table-bordered table-striped">
+                                            <thead>
+                                            <tr> 
+                                                <th>PROVIDER ID</th>
+                                                <th>PROVIDER NAME</th>
+                                                <th>CASE ID</th>
+                                                <th>INDEX NUMBER</th>
+                                                <th>FFC</th>
+                                                <th>AF</th>
+                                                <th>DATE</th>
+                                                <th>DESCRIPTION</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                        
+                                    </div>
+                                </div>
+                                
 							</div><!-- End of panel-body tab-panel-->
 							</div><!-- End hpanel -->
 							</div><!-- End col-lg-12-->
@@ -265,28 +254,22 @@
 							<div class="panel-body tab-panel">
 								<!-- <p><a href="#">All</a>|<a href="#">A</a>|<a href="#">B</a>|<a href="#">C</a>|<a href="#">D</a>|<a href="#">E</a>|<a href="#">F</a>|<a href="#">G</a>|<a href="#">H</a>|<a href="#">I</a>|<a href="#">J</a>|<a href="#">K</a>|<a href="#">L</a>|<a href="#">M</a>|<a href="#">N</a>|<a href="#">O</a>|<a href="#">P</a>|<a href="#">Q</a>|<a href="#">R</a>|<a href="#">S</a>|<a href="#">T</a>|<a href="#">U</a>|<a href="#">V</a>|<a href="#">W</a>|<a href="#">X</a>|<a href="#">Y</a>|<a href="#">Z</a>|</p> -->
 								
-								<div class="form-group form-horizontal col-md-12"> 	 	 	 	 	 	 	
-									<div class="table-responsive col-md-6">
-										<div class="table-responsive">
-											<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
-												<thead> 	 	 	 	 	 		 	 	
-												<tr>  	 	 	 	 	 	 	 	 	 	 	 	 	
-													<th>PROVIDER ID</th>
-													<th>PROVIDER NAME</th>
-													<th>COST BALANCE</th>
-												</tr>
-												</thead>
-												<tbody>
-												<tr>
-													<td>Abraham</td>
-													<td>076 9477 4896</td>
-													<td><div class="form-horizontal col-md-5 table-input"> <input type="text" class="form-control input-sm input-height"> </div></td>
-												</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <h5 class="h4-title">CLIENT COST BALANCE</h5>
+                                    <div class="col-md-12">
+                                        <table id="CostBalance" class="table dataTable table-bordered table-striped">
+                                            <thead>
+                                            <tr> 
+                                                <th>PROVIDER ID</th>
+                                                <th>PROVIDER NAME</th>
+                                                <th>COST BALANCE</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                        
+                                    </div>
+                                </div>
+                                
 								<div class="form-group form-horizontal col-md-12">
 									<div class="col-md-4">
 										<button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>
@@ -430,38 +413,36 @@
 <!-- App scripts -->
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
-	$(function(){
-		$('#datapicker1').datepicker({
-			"autoclose": true,
-			"todayHighlight": true
-		});
-		$('#datapicker2').datepicker({
-			"autoclose": true,
-			"todayHighlight": true
-		});
-		$('#datapicker3').datepicker({
-			"autoclose": true,
-			"todayHighlight": true
-		});
-		$('#datapicker4').datepicker({
-			"autoclose": true,
-			"todayHighlight": true
+$(document).ready(function(e) {
+    $('#CostBalance').dataTable( {
+		"ajax": "get_Cost_Balance",
+		"iDisplayLength": 10,
+		"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"bSort": false,
+	});
+	$("#FirmFees_btn").click(function(){
+		var SD = $("input[name=SD_FirmFees]").val();
+		var ED = $("input[name=ED_FirmFees]").val();
+		$("#FirmFees").dataTable().fnDestroy();
+		$('#FirmFees').dataTable( {
+			"ajax": {
+				"url": "get_Firm_Fees",
+				"data": {"SD_FirmFees":SD, "ED_FirmFees":ED},
+				"type": "post"
+			},
+			"bSort": false,
+			"iDisplayLength": 10,
+			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 		});
 	});
-
-    $(function () {
-
-        // Initialize Example 1
-        $('#example1').dataTable( {
-            "ajax": 'api/datatables.json'
-        });
-
-        // Initialize Example 2
-        $('#example2').dataTable();
-		$('#example3').dataTable();
-
-    });
-
+	
+	
+	$('.datepicking').datepicker({
+		"autoclose": true,
+		"todayHighlight": true
+	});
+	
+});//End of Document
 </script>
 
 <script>

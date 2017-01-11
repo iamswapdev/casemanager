@@ -27,6 +27,9 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.css" />
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.min.css" />
 
+	<!-- DATATABLES CSS -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/advanced-datatable/buttons.dataTables.min.css" />
 	<!-- ALERT CSS -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.css" />
@@ -69,34 +72,31 @@
 							<div class="panel-heading"></div>
 							<div class="panel-body tab-panel">
 								
-								<form>
-									<div class="form-group form-horizontal col-md-12">
-										<h4 class="h4-title">Select Date Range for Settlements</h4>
-										
-										<label class="col-md-1 control-label">Start Date</label>										
-										<div class="col-md-1">
-											<input type="text" class="form-control input-sm datepicking">
-										</div>
-										
-										<label class="col-md-1 control-label">End Date</label>										
-										<div class="col-md-1">
-											<input type="text" class="form-control input-sm datepicking">
-										</div>
-										<div class="col-md-1">
-												
-											<select class="form-control input-sm" name="account">
-												<option>All</option>
-												<option>0%</option>
-												<option>Between 0% and 70%</option>
-												<option>70% and above</option>
-											</select>
-										</div>
-										<div class="col-md-2">
-											<button type="button" class="btn btn-primary">Get</button>
-										</div>
-										
-									</div>
-								</form>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <h4 class="h4-title">Select Date Range for Settlements</h4>
+                                    
+                                    <label class="col-md-1 control-label">Start Date</label>										
+                                    <div class="col-md-1">
+                                        <input type="text" name="SD_Daily_Sett" class="form-control input-sm datepicking">
+                                    </div>
+                                    
+                                    <label class="col-md-1 control-label">End Date</label>										
+                                    <div class="col-md-1">
+                                        <input type="text" name="ED_Daily_Sett" class="form-control input-sm datepicking">
+                                    </div>
+                                    <div class="col-md-1">
+                                            
+                                        <select class="form-control input-sm" name="Sett_Percentage">
+                                            <option>All</option>
+                                            <option>0%</option>
+                                            <option>Between 0% and 70%</option>
+                                            <option>70% and above</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="button" id="Daily_Sett_btn" class="btn btn-primary">Get</button>
+                                    </div>
+                                </div>
 								
 							</div><!-- End of panel-body tab-panel-->
 							</div><!-- End hpanel -->
@@ -107,40 +107,25 @@
 							<div class="hpanel">
 							<div class="panel-heading"></div>
 							<div class="panel-body tab-panel">
-								
-								<div class="form-group form-horizontal col-md-12"> 	 	 	 	 	 	 	
-									<div class="table-responsive">
-										<h4>Daily Settlement Reports</h4>
-										<div class="table-responsive DailySettlementReports">
-											<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
-												<thead>
-												<tr>  	 	 	 	 	 	 	 	 	 	 	 	 	
-													<th>USER</th>
-													<th>INSURER</th>
-													<th>#OF CASES</th>
-													<th>BALANCE</th>
-													<th>STLMT AMOUNT</th>
-													<th>FF</th>
-													<th>AF</th>
-													<th>STLMT %AGE</th>
-												</tr>
-												</thead>
-												<tbody>
-												<tr>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-													<td></td>
-												</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
+								<div class="form-group form-horizontal col-lg-12">
+									<h5 class="h4-title">Daily Settlement Reports</h5>
+                                    <div class="col-md-12">
+                                        <table id="DailySettlement" class="table dataTable table-bordered table-striped">
+                                            <thead>
+                                            <tr>  	 	 	 
+                                                <th>USER</th>
+                                                <th>INSURER</th>
+                                                <th>#OF CASES</th>
+                                                <th>BALANCE</th>
+                                                <th>STLMT AMOUNT</th>
+                                                <th>FF</th>
+                                                <th>AF</th>
+                                                <th>STLMT %AGE</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
 								
 							</div><!-- End of panel-body tab-panel-->
 							</div><!-- End hpanel -->
@@ -155,44 +140,40 @@
 							<div class="panel-heading"></div>
 							<div class="panel-body tab-panel">
 								
-								<form>
-									<div class="form-group form-horizontal col-md-12">
-										<h5>Select Insurance Company Name</h5>
-										<div class="col-md-2">
-												
-											<select class="form-control input-sm" id="insuranceId" name="insuranceId">
-												<option>-- Select Insurance comp. --</option>
-												<?php foreach($InsuranceCompany_Name as $row){?>
-												<option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option>
-												<?php }?>
-											</select>
-										</div>
-										
-										<div class="col-md-2">
-											<button type="button" class="btn btn-primary">Get</button>
-										</div>
-									</div>
-								</form>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <h5>Select Insurance Company Name</h5>
+                                    <div class="col-md-2">
+                                            
+                                        <select class="form-control input-sm" id="insuranceId" name="insuranceId">
+                                            <option>-- Select Insurance comp. --</option>
+                                            <?php foreach($InsuranceCompany_Name as $row){?>
+                                            <option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option>
+                                            <?php }?>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="col-md-2">
+                                        <button type="button" id="Insurance_btn" class="btn btn-primary">Get</button>
+                                    </div>
+                                </div>
 								
 								<h5>OR</h5><div class="hr-line-dashed"></div>
-								<form>
-									<div class="form-group form-horizontal col-md-12">	
-										<h5>Select Provider Name</h5>
-										<div class="col-md-2">
-												
-											<select class="form-control input-sm" id="providerId" name="providerId">
-												<option>-- Select Provider --</option>
-												<?php foreach($Provider_Name as $row){?>
-												<option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option>
-												<?php }?>
-											</select>
-										</div>
-										
-										<div class="col-md-2">
-											<button type="button" class="btn btn-primary">Get</button>
-										</div>
-									</div>
-								</form>
+                                <div class="form-group form-horizontal col-md-12">	
+                                    <h5>Select Provider Name</h5>
+                                    <div class="col-md-2">
+                                            
+                                        <select class="form-control input-sm" id="providerId" name="providerId">
+                                            <option>-- Select Provider --</option>
+                                            <?php foreach($Provider_Name as $row){?>
+                                            <option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option>
+                                            <?php }?>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="col-md-2">
+                                        <button type="button" id="Provider_btn" class="btn btn-primary">Get</button>
+                                    </div>
+                                </div>
 								
 								<h5>OR</h5><div class="hr-line-dashed"></div>
 									<div class="form-group form-horizontal col-md-12">
@@ -522,10 +503,17 @@
     <script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
-    <script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
     
+    <!--Datatable js -->
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/dataTables.buttons.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/buttons.flash.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/jszip.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/pdfmake.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/vfs_fonts.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/buttons.html5.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/buttons.print.min.js"></script>
     <!-- ALERT SCRIPTS -->
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>
@@ -563,6 +551,8 @@ $(document).ready(function(e) {
 				"data": {"SD_0Settlement":SD, "ED_0Settlement":ED, "name": "OverdueSettlement"},
 				"type": "post"
 			},
+			dom: 'lBfrtip',
+			buttons: [ 'excel'],
 			
 			"iDisplayLength": 10,
 			"aLengthMenu": [5, 10, 20, 25, 50, "All"]

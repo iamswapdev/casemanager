@@ -4029,6 +4029,12 @@ table.table.tdAlignLeft.work-area-info.info-link-popup th {
 .dt-buttons{
 	margin-left:10px
 }
-#AdvancedSearchTable_info{
+#AdvancedSearchTable_info, #OverdueSettlement_length{
 	float:left;
+}
+#OverdueSettlement_wrapper a.dt-button.buttons-excel.buttons-html5{
+    height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    font-size: 13px;
 }

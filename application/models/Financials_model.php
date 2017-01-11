@@ -34,6 +34,28 @@ Class Financials_model extends CI_Model{
 		$query = $this->db->get();
 		return $query->result();
 	}
+	public function get_Cost_Balance(){
+		$this->db->select("t1.Provider_Id, t2.Provider_Name");
+		$this->db->from("dbo_tblclientaccount as t1");
+		$this->db->group_by('t1.Provider_Id');
+		$this->db->join("dbo_tblprovider as t2", "t2.Provider_Id = t1.Provider_Id", "LEFT");
+		
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function get_Firm_Fees($Start_Date, $End_Date){
+		$this->db->select("t1.Provider_Id, t2.Provider_Name, t3.Case_Id, t3.IndexOrAAA_Number, t4.Settlement_Ff, t4.Settlement_Af, t4.Settlement_Date, t4.Settlement_Notes");
+		$this->db->from("dbo_tblclientaccount as t1");
+		$this->db->join("dbo_tblprovider as t2", "t2.Provider_Id = t1.Provider_Id");
+		$this->db->join("dbo_tblcase as t3", "t3.Provider_Id = t1.Provider_Id" );
+		$this->db->group_by('t3.Case_Id');
+		$this->db->join("dbo_tblsettlements as t4", "t4.Case_Id = t3.Case_Id");
+		$this->db->where('t4.Settlement_Date >=', $Start_Date);
+		$this->db->where('t4.Settlement_Date <=', $End_Date);
+		
+		$query = $this->db->get();
+		return $query->result();
+	}
 
 }
 ?>

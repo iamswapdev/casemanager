@@ -117,5 +117,43 @@ class Financials extends CI_Controller{
 		$output = array( "data" => $data );
 		echo json_encode($output);
 	}
+	public function get_Cost_Balance(){
+		$list = $this->financials_model->get_Cost_Balance();
+		//echo "<pre>"; print_r($list);exit;
+		$data = array();
+		foreach($list as $result){
+			$row = array();
+			$row[] = $result->Provider_Id;
+			$row[] = $result->Provider_Name;
+			$row[] = "<input name='' value='0' />";
+			$data[] = $row;
+		}
+		
+		$output = array( "data" => $data );
+		echo json_encode($output);
+	}
+	public function get_Firm_Fees(){
+		$Start_Date = date_format(date_create($this->input->post("SD_FirmFees")), 'Y/m/d');
+		$End_Date = date_format(date_create($this->input->post("ED_FirmFees")), 'Y/m/d');
+		$list = $this->financials_model->get_Firm_Fees($Start_Date, $End_Date);
+		//echo "<pre>"; print_r($list);exit;
+		$data = array();
+		foreach($list as $result){
+			$row = array();
+			$row[] = $result->Provider_Id;
+			$row[] = $result->Provider_Name;
+			$row[] = $result->Case_Id;
+			$row[] = $result->IndexOrAAA_Number;
+			$row[] = number_format($result->Settlement_Ff, 2);
+			$row[] = number_format($result->Settlement_Af, 2);
+			$row[] = date_format(date_create(substr($result->Settlement_Date, 0,10)), "m/d/Y");
+			$row[] = $result->Settlement_Notes;
+			
+			$data[] = $row;
+		}
+		
+		$output = array( "data" => $data );
+		echo json_encode($output);
+	}
 } 	
 ?>
