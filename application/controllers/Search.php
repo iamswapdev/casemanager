@@ -688,7 +688,7 @@ class Search extends CI_Controller{
 			"User_Id" => $this->session->userdata['username']
 		);
 		$this->search_model->add_Notes($data3);
-		//echo "<pre>"; print_r($data);
+		echo "<pre>"; print_r($data);
 	}
 	public function reset_Settlement($Case_AutoId, $Case_Id){
 		$this->search_model->resetSettlement($Case_AutoId);
@@ -720,15 +720,15 @@ class Search extends CI_Controller{
 			$row[] = $result->InjuredParty_LastName." ".$result->InjuredParty_FirstName;
 			$row[] = $result->InsuranceCompany_Name;
 			$row[] = $result->IndexOrAAA_Number;
-			$row[] = number_format($result->Claim_Amount, 2);
-			$row[] = number_format($result->Paid_Amount, 2);
-			$row[] = number_format($result->Claim_Amount - $result->Paid_Amount, 2);
+			$row[] = "$".number_format($result->Claim_Amount, 2);
+			$row[] = "$".number_format($result->Paid_Amount, 2);
+			$row[] = "$".number_format($result->Claim_Amount - $result->Paid_Amount, 2);
 			$row[] = $result->Last_Status;
-			$row[] = number_format($result->Settlement_Amount, 2);
-			$row[] = number_format($result->Settlement_Int, 2);
-			$row[] = number_format($result->Settlement_Af, 2);
-			$row[] = number_format($result->Settlement_Ff, 2);
-			$row[] = number_format($result->Settlement_Total, 2);
+			$row[] = "$".number_format($result->Settlement_Amount, 2);
+			$row[] = "$".number_format($result->Settlement_Int, 2);
+			$row[] = "$".number_format($result->Settlement_Af, 2);
+			$row[] = "$".number_format($result->Settlement_Ff, 2);
+			$row[] = "$".number_format($result->Settlement_Total, 2);
 			$row[] = date_format(date_create(substr($result->Settlement_Date,0,10)),"m/d/Y");
 			$row[] = $result->SettledWith;
 			$row[] = $result->User_Id;
@@ -747,9 +747,9 @@ class Search extends CI_Controller{
 			$row[] = "<input type='text' name='Provider_Name' class='form-control input-sm input-height' value='".$result->Provider_Name."' >";
 			$row[] = "<input type='text' name='Transactions_Type' class='form-control input-sm input-height' value='".$result->Transactions_Type."' >";
 			$row[] = "<input type='text' name='ServiceType' class='form-control input-sm input-height datetimepicker_Dos_Doe' value='".date_format(date_create(substr($result->Transactions_Date,0,10)),"m/d/Y")."' >";
-			$row[] = "<input type='text' name='Transactions_Amount' class='form-control input-sm input-height' value='".number_format($result->Transactions_Amount, 2)."' >";
+			$row[] = "<input type='text' name='Transactions_Amount' class='form-control input-sm input-height' value='$".number_format($result->Transactions_Amount, 2)."' >";
 			$row[] = "<input type='text' name='Transactions_Description' class='form-control input-sm input-height' value='".$result->Transactions_Description."' >";
-			$row[] = "<input type='text' name='ServiceType' class='form-control input-sm input-height' value='".number_format($result->Transactions_Fee, 2)."' >";
+			$row[] = "<input type='text' name='Transactions_Fee' class='form-control input-sm input-height' value='$".number_format($result->Transactions_Fee, 2)."' >";
 			$row[] = "<input type='text' name='Transactions_status' class='form-control input-sm input-height' value='".$result->Transactions_status."' >";
 			$row[] = "<input type='checkbox' name='deleteCheckedTransactions[]' class='deleteCheckedTransactions deleteCheckedTransactions".$result->Transactions_Id."' value='".$result->Transactions_Id."' >";
 			

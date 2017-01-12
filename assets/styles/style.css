@@ -3781,6 +3781,7 @@ table tr:hover {
 .start-date-settlement{
 	padding:0px;
 	width:100px !important;
+	margin-left:-30px;
 }
 .end-date-settlement{
 	padding:0px;
@@ -3834,8 +3835,9 @@ label {
 	width:167px !important;
 }
 .recalculate-btn{
-	margin-left: 0px;
+	/*margin-left: 0px;*/
     width: 175px;
+	padding-left:5px;
 }
 .add-amt-btn, reset-amt-btn{
 	width:125px;
@@ -4006,9 +4008,9 @@ table.table.tdAlignLeft.work-area-info.info-link-popup th {
     width: 75px;
 }
 .viewcase-input{
-	    width: 80px;
+	width: 100px;
     padding-left: 0px;
-    padding-right: 0px;
+    /*padding-right: 0px;*/
 }
 .viewcase-label{
 	padding-left: 0px;
@@ -4037,4 +4039,27 @@ table.table.tdAlignLeft.work-area-info.info-link-popup th {
     padding-bottom: 0px;
     padding-top: 0px;
     font-size: 13px;
+}
+.col-md-4.sett-notes{
+	width:496px;
+}
+.col-md-2.sett-type{
+	width:165px;
+}
+.col-md-1.sett-reset{
+	padding-left: 0px;
+    margin-left: -18px;
+}
+.sett-cal-title-left{
+	text-align:right;
+}
+.CalSimpleInterest-div{
+	padding-left:5px;
+}
+.sett-reset-values{
+	padding-left: 0px;
+    margin-left: -25px;
+}
+.sett-percentage{
+	padding-left:0px;
 }

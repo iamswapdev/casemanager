@@ -71,6 +71,52 @@ Class Workarea_model extends CI_Model{
 		}
 			return array();
 	}
+	public function get_Print_Table($Start_Date, $End_Date, $DateType, $Status, $TableName){
+		
+		$this->db->from('dbo_tblcase as t1');
+		if($TableName == "Print"){
+			$this->db->select('t1.*, t2.Provider_Name, t3.InsuranceCompany_Name, t4.Court_Name');
+		}else if($TableName == "Status"){
+			$this->db->select('t1.Status, COUNT(t1.Status) as Count');
+			$this->db->group_by("t1.Status");
+		}else if($TableName == "Provider"){
+			$this->db->select('t2.Provider_Name, COUNT(t1.Provider_Id) as Count');
+			$this->db->group_by("t1.Provider_Id");
+		}else{
+			$this->db->select('t3.InsuranceCompany_Name, COUNT(t1.InsuranceCompany_Id) as Count');
+			$this->db->group_by("t1.InsuranceCompany_Id");
+		}
+		
+		
+		$this->db->join('dbo_tblprovider as t2', 't1.Provider_Id = t2.Provider_Id', 'LEFT');
+		$this->db->join('dbo_tblinsurancecompany as t3', 't1.InsuranceCompany_Id = t3.InsuranceCompany_Id', 'LEFT');
+		$this->db->join('dbo_tblcourt as t4', 't1.Court_Id = t4.Court_Id', 'LEFT');
+		
+		$this->db->where('t1.'.$DateType.' >=', $Start_Date);
+		$this->db->where('t1.'.$DateType.' <=', $End_Date);
+		if($Status != ""){
+			$this->db->where('t1.Status',$Status);
+		}
+		$query= $this->db->get();
+		$data=$query->result();
+		return $data;
+	}
+	public function get_Status_Table($Start_Date, $End_Date, $DateType, $Status){
+		$this->db->from('dbo_tblcase as t1');
+		
+		$this->db->join('dbo_tblprovider as t2', 't1.Provider_Id = t2.Provider_Id', 'LEFT');
+		$this->db->join('dbo_tblinsurancecompany as t3', 't1.InsuranceCompany_Id = t3.InsuranceCompany_Id', 'LEFT');
+		$this->db->join('dbo_tblcourt as t4', 't1.Court_Id = t4.Court_Id', 'LEFT');
+		
+		$this->db->where('t1.'.$DateType.' >=', $Start_Date);
+		$this->db->where('t1.'.$DateType.' <=', $End_Date);
+		if($Status != ""){
+			$this->db->where('t1.Status',$Status);
+		}
+		$query= $this->db->get();
+		$data=$query->result();
+		return $data;
+	}
 }
 
 ?>

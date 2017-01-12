@@ -948,64 +948,70 @@ for($i=0; $i<=13; $i++){
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-4"></div>
-								<div class="col-md-2 claim-paid-balance"><label class="control-label">PERCENTAGE (%)</label> </div>
+								<div class="col-md-2 claim-paid-balance sett-percentage"><label class="control-label">PERCENTAGE (%)</label> </div>
 							</div>
 							<div class="form-group form-horizontal col-md-12 disabling_input">
                             	<input type="hidden" name="Case_Id" value="<?php echo $Case_Id;?>">
                                 <input type="hidden" name="Case_AutoId" value="<?php echo $Case_AutoId;?>">
 								<div class="col-md-2"></div>
-								<div class="col-md-1"><label class="control-label">SETTLEMENT AMOUNT</label> </div>
-								<div class="col-md-1">
+								<div class="col-md-2 claim-paid-balance sett-cal-title-left"><label class="control-label">SETTLEMENT AMOUNT</label> </div>
+								<div class="col-md-2 claim-paid-balance">
                                     <!--<input type="text" id="FltSettlement_AmountTab6" name="Settlement_Amount"  class="form-control input-sm Amount settled-by-info" />-->
                                     <input type="number" name="Settlement_Amount" value="" class="form-control input-sm Amount settled-by-info"/>
                                 </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="settlementPercentageTab6" name="settlementPercentageTab6"  class="form-control input-sm percentage" value="100.00"></div>
+								<div class="col-md-2 claim-paid-balance"><input step="0.01" type="number" id="settlementPercentageTab6" name="settlementPercentageTab6"  class="form-control input-sm percentage" value="100.00"></div>
 							</div>
+                            <div class="form-group form-horizontal col-md-12">
+                            	<div class="col-md-5"></div>
+                                <div class="col-md-1 start-date-settlement settled-status-open"><label class="control-label col-md-12 viewcase-label">START DATE</label> </div>
+                                <div class="col-md-1 end-date-settlement settled-status-open"><label class="control-label col-md-12 viewcase-label">END DATE</label> </div>
+                                <div class="col-md-1 settled-status-open"><label class="control-label col-md-12 viewcase-label">No. of Days:</label> </div>
+                            </div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
-								<div class="col-md-1"><label class="control-label col-md-12">INTEREST</label> </div>
-								<div class="col-md-1">
+								<div class="col-md-2 claim-paid-balance sett-cal-title-left"><label class="control-label">INTEREST</label> </div>
+								<div class="col-md-2 claim-paid-balance">
                                 	<input type="number" id="FltInterestTab6" name="Settlement_Int"  class="form-control input-sm Amount settled-by-info" />
                                 </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltInterestPercTab6" name="FltInterestPercTab6"  class="form-control input-sm percentage" value="100.00" ></div>
-								<div class="col-md-1 start-date-settlement settled-status-open"><label class="control-label col-md-12 viewcase-label">START DATE</label> </div>
+								<div class="col-md-2 claim-paid-balance"><input step="0.01" type="number" id="FltInterestPercTab6" name="FltInterestPercTab6"  class="form-control input-sm percentage" value="100.00" ></div>
+								
 								<div class="col-md-1 settled-status-open viewcase-input"><input type="text" id="CopundIntStartData" name="CopundIntStartData"  class="form-control input-sm datepicker_settlement" ></div>
-								<div class="col-md-1 end-date-settlement settled-status-open"><label class="control-label col-md-12 viewcase-label">END DATE</label> </div>
+								
 								<div class="col-md-1 settled-status-open viewcase-input"><input type="text" id="CopundIntEndData" name="CopundIntEndData"  class="form-control input-sm datepicker_settlement" ></div>
-                                <div class="col-md-1 settled-status-open no-of-days-div"><label class="control-label col-md-12 viewcase-label">No. of Days:</label> </div>
+                                
                                 <div class="col-md-1 settled-status-open viewcase-input"><input type="number" name="No_of_days" class="form-control input-sm"></div> 
 							</div>
 							<div class="form-group form-horizontal col-md-12 settled-status-open">
 								<div class="col-md-3"></div>
-								<div class="col-md-2"><button type="button" class="CalSimpleInterest" id="CalculateSI">Calculate Simple interest</button></div>
+								<div class="col-md-2 CalSimpleInterest-div"><button type="button" class="CalSimpleInterest" id="CalculateSI">Calculate Simple interest</button></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
-								<div class="col-md-1"><label class="control-label">ATTORNEY'S FEE 	</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltAttorneyFeeTab6" name="Settlement_Af"  class="form-control input-sm Amount" ></div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltAttorneyPercTab6" value="100.00" name="FltAttorneyPercTab6"  class="form-control input-sm percentage" disabled></div>
+								<div class="col-md-2 claim-paid-balance sett-cal-title-left"><label class="control-label">ATTORNEY'S FEE 	</label> </div>
+								<div class="col-md-2 claim-paid-balance"><input step="0.01" type="number" id="FltAttorneyFeeTab6" name="Settlement_Af"  class="form-control input-sm Amount" ></div>
+								<div class="col-md-2 claim-paid-balance"><input step="0.01" type="number" id="FltAttorneyPercTab6" value="100.00" name="FltAttorneyPercTab6"  class="form-control input-sm percentage" disabled></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
-								<div class="col-md-1"><label class="control-label">FILING FEE</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="FltFillingFeeTab6" name="Settlement_Ff"  class="form-control input-sm Amount" ></div>
-								<div class="col-md-1"><input step="0.01" value="100.00" type="number" id="FltFillingFeePercTab6" name="FltFillingFeePercTab6"  class="form-control input-sm percentage" disabled></div>
+								<div class="col-md-2 claim-paid-balance sett-cal-title-left"><label class="control-label">FILING FEE</label> </div>
+								<div class="col-md-2 claim-paid-balance"><input step="0.01" type="number" id="FltFillingFeeTab6" name="Settlement_Ff"  class="form-control input-sm Amount" ></div>
+								<div class="col-md-2 claim-paid-balance"><input step="0.01" value="100.00" type="number" id="FltFillingFeePercTab6" name="FltFillingFeePercTab6"  class="form-control input-sm percentage" disabled></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
-								<div class="col-md-1"><label class="control-label settlement-title">TOTAL AMOUNT</label> </div>
-								<div class="col-md-1"><input step="0.01" type="number" id="TotalAmount" name="Settlement_Total"  class="form-control input-sm Amount" ></div>
-								<div class="col-md-1"><input step="0.01" value="100.00" type="number" id="TotalAmountPerc" name="TotalAmountPerc"  class="form-control input-sm percentage" disabled></div>
+								<div class="col-md-2 claim-paid-balance sett-cal-title-left"><label class="control-label settlement-title">TOTAL AMOUNT</label> </div>
+								<div class="col-md-2 claim-paid-balance"><input type="text" id="TotalAmount" name="Settlement_Total"  class="form-control input-sm Amount" ></div>
+								<div class="col-md-2 claim-paid-balance"><input step="0.01" value="100.00" type="number" id="TotalAmountPerc" name="TotalAmountPerc"  class="form-control input-sm percentage" disabled></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12 settled-status-open">
 								<div class="col-md-3"></div>
 								<div class="col-md-2 recalculate-btn"><button type="button" id="RecalculateAmt">Re-Calculate Amount</button></div>
 								<!--<div class="add-amt-btn col-md-1"></div>-->
-								<div class="reset-amt-btn col-md-1"><button type="button" id="ResetValues" class="">Reset Values</button></div>
+								<div class="reset-amt-btn col-md-1 sett-reset-values"><button type="button" id="ResetValues" class="">Reset Values</button></div>
 							</div>
                             <div class="form-group form-horizontal col-md-12 settled-status-open">
 								<label class="col-md-2 control-label">SETTLED TYPE</label>
-								<div class="col-md-2">
+								<div class="col-md-2 sett-type">
 									<select class="form-control input-sm" id="SettledType" name="SettledType" required>
                                         <option value="0">...SELECT....</option>
                                         <option value="Settled/Phone">SETTLED/PHONE</option>
@@ -1019,14 +1025,14 @@ for($i=0; $i<=13; $i++){
 							</div>
                             <div class="form-group form-horizontal col-md-12 settled-status-open">
 								<label class="col-md-2 control-label">Notes</label>
-								<div class="col-md-4">
+								<div class="col-md-4 sett-notes">
 									<textarea rows="3"  id="Settlement_Notes" name="Settlement_Notes" class="form-control" required></textarea>
 								</div>
 							</div>
                             <div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-2 finalize-sett-button"><button type="submit" class="btn btn-primary" id="finalizeButton" <?php if($Check_Status =="OPEN" || $Check_Status =="OPEN "){}else{echo "disabled";}?>><i class="fa fa-check"></i> Finalize Settlement</button></div>
-								<div class="col-md-1"><button type="button" class="reset-settlement">Reset</button></div>
+								<div class="col-md-1 sett-reset"><button type="button" class="reset-settlement">Reset</button></div>
 							</div>
                             </form>
                             
@@ -2329,7 +2335,7 @@ $(document).ready(function(e) {
 		var rowCount = $('#TransactionTable >tbody >tr').length;
 		FF_Sum = 0;
 		for(var counter=1; counter <= $('#TransactionTable >tbody >tr').length; counter++){
-			var value = parseFloat($("#TransactionTable tr:nth-child("+counter+")").find("input[name=Transactions_Amount]").val());
+			var value = parseFloat(($("#TransactionTable tr:nth-child("+counter+")").find("input[name=Transactions_Amount]").val()).replace("$", ""));
 			FF_Sum = FF_Sum + value;
 		}
 	});
@@ -2527,7 +2533,7 @@ $(document).ready(function(e) {
 		if(SetAF == null){ SetAF = "0.00"; }
 		if(SetFF == null){ SetFF = "0.00"; }
 		var TotalAmount =  parseFloat(SetAmt) + parseFloat(SetInt) + parseFloat(SetAF) + parseFloat(SetFF);
-		$("input[name=Settlement_Total]").val(TotalAmount.toFixed(2));
+		$("input[name=Settlement_Total]").val("$"+TotalAmount.toFixed(2));
 	}
 	$("#ResetValues").click(function(){
 		$("input[name=Settlement_Int]").val("0.00");
@@ -3199,8 +3205,9 @@ daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndDat
 					
 					x[12].innerHTML = results.CaseInfo[$i].Claim_Amount;
 					$("input[name=Claim_Amount]").val(results.CaseInfo[$i].Claim_Amount);
-					$("#ClaimAmtTab6").val(results.CaseInfo[$i].Claim_Amount);
-					$("#PaymentsTab6").val(results.CaseInfo[$i].Paid_Amount);
+					
+					$("#ClaimAmtTab6").val(parseFloat(results.CaseInfo[$i].Claim_Amount).toFixed(2));
+					$("#PaymentsTab6").val(parseFloat(results.CaseInfo[$i].Paid_Amount).toFixed(2));
 					var balance = results.CaseInfo[$i].Claim_Amount - results.CaseInfo[$i].Paid_Amount;
 					$("#BalanceTab6").val(balance.toFixed(2));
 					

@@ -239,47 +239,43 @@
                             <div class="hpanel">
                             <div class="panel-heading"></div>
                             <div class="panel-body tab-panel">
-                                
-                                <form>
-                                    <h5>Select Date Range for Print</h5>
-                                    <div class="form-group form-horizontal col-md-12">
-                                        <label class="col-md-1 control-label">Start Date</label>										
-                                        <div class="col-md-1">
-                                            <input type="text" class="form-control input-sm datepicking">
-                                        </div>
-                                        
-                                        <label class="col-md-1 control-label">End Date</label>										
-                                        <div class="col-md-1">
-                                            <input type="text" class="form-control input-sm datepicking">
-                                        </div>
-                                        <div class="col-md-2">
-                                                
-                                            <select class="form-control input-sm" name="account">
-                                                <option>Date_Opened</option>
-                                                <option>Date_Summons_Printed</option>
-                                                <option>Date_Summons_Sent_Court</option>
-                                                <option>Date_Summons_Served</option>
-                                                <option>Date_Index_Number_Purchased</option>
-                                                <option>Date_Afidavit_Filed</option>
-                                                <option>Date_Answer_Received</option>
-                                                <option>Date_Closed</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-2">
-                                                
-                                            <select class="form-control input-sm" name="account">
-                                                <option>All</option>
-                                                <option>0%</option>
-                                                <option>Between 0% and 70%</option>
-                                                <option>70% and above</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <button type="button" class="btn btn-primary">Get</button>
-                                        </div>
-                                        
+                            
+                                <h5>Select Date Range for Print</h5>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-1 control-label">Start Date</label>										
+                                    <div class="col-md-1">
+                                        <input type="text" name="SD_Print" class="form-control input-sm datepicking">
                                     </div>
-                                </form>
+                                    
+                                    <label class="col-md-1 control-label">End Date</label>										
+                                    <div class="col-md-1">
+                                        <input type="text" name="ED_Print" class="form-control input-sm datepicking">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select name="DateType" id="DateType" class="form-control input-sm">
+                                            <option value="Date_Opened">Date_Opened</option>
+                                            <option value="Date_Summons_Printed">Date_Summons_Printed</option>
+                                            <option value="Date_Summons_Sent_Court">Date_Summons_Sent_Court</option>
+                                            <option value="Date_Summons_Served">Date_Summons_Served</option>
+                                            <option value="Date_Index_Number_Purchased">Date_Index_Number_Purchased</option>
+                                            <option value="Date_Afidavit_Filed">Date_Afidavit_Filed</option>
+                                            <option value="Date_Answer_Received">Date_Answer_Received</option>
+                                            <option value="Date_Closed">Date_Closed</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select class="form-control input-sm" id="PrintStatus" name="PrintStatus">
+                                            <option selected="selected" value=""></option>
+                                            <?php foreach($Status as $row){?>
+                                            <option value="<?php echo $row['Status_Type']; ?>"> <?php echo $row['Status_Type']; ?> </option>
+                                            <?php }?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="button" id="Print_btn" class="btn btn-primary">Get</button>
+                                    </div>
+                                    
+                                </div>
                             </div><!-- End of panel-body tab-panel-->
                             </div><!-- End hpanel -->
                             </div><!-- End col-lg-12-->
@@ -289,53 +285,26 @@
                             <div class="col-lg-12">
                             <div class="hpanel">
                             <div class="panel-body tab-panel">
-                                
-                                <div class="table-responsive">
-                                    <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
-                                        <thead>
-                                        <tr>  	 	 	 	 	 	 	 	 	 	
-                                            <th>Send to Elite</th>
-                                            <th>Case ID</th>
-                                            <th>Patient</th>
-                                            <th>Provider</th>
-                                            <th>Insurer</th>
-                                            <th>Venue</th>
-                                            <th>Claim Amount</th>
-                                            <th>Date Opened</th>
-                                            <th>Date Printed</th>
-                                            <th>Date_Opened</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td><input class="ads_Checkbox" type="checkbox" name="delete[]" value="'+value+'"></td>
-                                            <td>076 9477 4896</td>
-                                            <td>294-318 Duis Ave</td>
-                                            <td>Vosselaar</td>
-                                            <td>Belgium</td>
-                                            <td>Phelan</td>
-                                            <td>0500 034548</td>
-                                            <td>680-1097 Mi Rd.</td>
-                                            <td>Lavoir</td>
-                                            <td>Pakistan</td>
-                                        </tr>
-                                        <tr>
-                                            <td><input class="ads_Checkbox" type="checkbox" name="delete[]" value="'+value+'"></td>
-                                            <td>0500 034548</td>
-                                            <td>680-1097 Mi Rd.</td>
-                                            <td>Lavoir</td>
-                                            <td>Pakistan</td>
-                                            <td>Phelan</td>
-                                            <td>0500 034548</td>
-                                            <td>680-1097 Mi Rd.</td>
-                                            <td>Lavoir</td>
-                                            <td>Pakistan</td>
-                                        </tr>
-                                        <tr>
-                                        	<td><button type="button" id="sendToElite" class="btn btn-primary create">Send to Elite</button></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                <div class="form-group form-horizontal col-lg-12">
+									<h5 class="h4-title"></h5>
+                                    <div class="col-md-12">
+                                        <table id="PrintTable" class="table dataTable table-bordered table-striped">
+                                            <thead>
+                                            <tr>  	 	 	 
+                                                <th>Send to Elite</th>
+                                                <th>Case ID</th>
+                                                <th>Patient</th>
+                                                <th>Provider</th>
+                                                <th>Insurer</th>
+                                                <th>Venue</th>
+                                                <th>Claim Amount</th>
+                                                <th>Date Opened</th>
+                                                <th>Date Printed</th>
+                                                <th class="DateType"></th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
                                 </div>
 
                                 
@@ -352,39 +321,36 @@
                                 
                                 <div class="form-group form-horizontal col-md-12">
                                     <div class="table-responsive col-md-4">
-                                    <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
-                                        <thead>
-                                        <tr>  	  		 	 	 	 	 	 	 	 	
-                                            <th>Status</th>
-                                            <th>Count</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>Status</td>
-                                            <td>Count</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                    	<table id="StatusTable" class="table dataTable table-bordered table-striped">
+                                            <thead>
+                                            <tr>  	 	 	 
+                                                <th>Status</th>
+                                            	<th>Count</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
                                     </div>
 									<div class="table-responsive col-md-4">
-                                    <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
-                                        <thead>
-                                        <tr>  	  		 	 	 	 	 	 	 	 	
-                                            <th>Provider</th>
-                                            <th>Count</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>Provider</td>
-                                            <td>Count</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                    	<table id="ProviderTable" class="table dataTable table-bordered table-striped">
+                                            <thead>
+                                            <tr>  	 	 	 
+                                                <th>Provider</th>
+                                            	<th>Count</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
                                     </div>
                                     <div class="table-responsive col-md-4">
-                                    <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
+                                    	<table id="InsuranceTable" class="table dataTable table-bordered table-striped">
+                                            <thead>
+                                            <tr>  	 	 	 
+                                                <th>Insurer</th>
+                                            	<th>Count</th>
+                                            	<th>Filing Fee Cost</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    <!--<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
                                         <thead>
                                         <tr>  	  		 	 	 	 	 	 	 	 	
                                             <th>Insurer</th>
@@ -399,7 +365,7 @@
                                             <th>Filing Fee Cost</th>
                                         </tr>
                                         </tbody>
-                                    </table>
+                                    </table>-->
                                     </div>
                                     
 									
@@ -689,6 +655,58 @@
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
 $(document).ready(function(e) {
+	$("#Print_btn").click(function(){
+		var SD = $("input[name=SD_Print]").val();
+		var ED = $("input[name=ED_Print]").val();
+		var DateType = $("#DateType").val();
+		$(".DateType").text(DateType);
+		var Status = $("#PrintStatus").val();
+		console.log("sd:"+SD+" ed:"+ED+" DateType:"+DateType+" Status:"+Status);
+		$("#PrintTable").dataTable().fnDestroy();
+		$('#PrintTable').dataTable( {
+			"ajax": {
+				"url": "get_Print_Table",
+				"data": {"SD_Print":SD, "ED_Print":ED, "DateType": DateType, "Status": Status, "TableName": "Print"},
+				"type": "post"
+			},
+			"iDisplayLength": 10,
+			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+		});
+		
+		$("#StatusTable").dataTable().fnDestroy();
+		$('#StatusTable').dataTable( {
+			"ajax": {
+				"url": "get_Print_Table",
+				"data": {"SD_Print":SD, "ED_Print":ED, "DateType": DateType, "Status": Status, "TableName": "Status"},
+				"type": "post"
+			},
+			"iDisplayLength": 10,
+			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+		});
+		
+		$("#ProviderTable").dataTable().fnDestroy();
+		$('#ProviderTable').dataTable( {
+			"ajax": {
+				"url": "get_Print_Table",
+				"data": {"SD_Print":SD, "ED_Print":ED, "DateType": DateType, "Status": Status, "TableName": "Provider"},
+				"type": "post"
+			},
+			"iDisplayLength": 10,
+			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+		});
+		
+		$("#InsuranceTable").dataTable().fnDestroy();
+		$('#InsuranceTable').dataTable( {
+			"ajax": {
+				"url": "get_Print_Table",
+				"data": {"SD_Print":SD, "ED_Print":ED, "DateType": DateType, "Status": Status, "TableName": "Insurance"},
+				"type": "post"
+			},
+			"iDisplayLength": 10,
+			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+		});
+	});
+	
 	$("#SummonsNotServed").click(function(){
 		$(".SummonsNotServed").css("display","block");
 		$(".SummonsNotField").css("display","none");
