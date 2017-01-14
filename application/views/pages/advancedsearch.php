@@ -241,7 +241,11 @@
             buttons: [ 'copy', 'csv', 'excel', 'pdf', 'print' ]
 		});*/
 		$('#AdvancedSearchTable').dataTable( {
-			"ajax": "getSearchTable",
+			"ajax": {
+				"url": "getSearchTable",
+				"type": "post",
+				"data":{'UserId': '<?php echo $UserId;?>', 'RoleId': '<?php echo $RoleId;?>'}
+			},
 			"iDisplayLength": 50,
 			"aLengthMenu": [5, 10, 20, 25, 50, "All"],
 			"bSort": true,
@@ -274,7 +278,11 @@
 			$("select").val('');
 			$("#AdvancedSearchTable").dataTable().fnDestroy();
 			$('#AdvancedSearchTable').dataTable( {
-				"ajax": "getSearchTable",
+				"ajax": {
+					"url": "getSearchTable",
+					"type": "post",
+					"data":{'UserId': '<?php echo $UserId;?>', 'RoleId': '<?php echo $RoleId;?>'}
+				},
 				"iDisplayLength": 50,
 				"aLengthMenu": [5, 10, 20, 25, 50, "All"],
 				"bSort": false,
@@ -325,6 +333,8 @@
 					"ajax": {
 						"url": "getSearchTable_2",
 						"data": {
+							'UserId': '<?php echo $UserId;?>',
+							'RoleId': '<?php echo $RoleId;?>',
 							"sCaseId": dataObj['sCaseId'],
 							"spolicyNumber": dataObj['spolicyNumber'],
 							"sInsuranceClaimNo": dataObj['sInsuranceClaimNo'],

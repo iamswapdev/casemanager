@@ -69,7 +69,7 @@
 								<form>
 									
 									<div class="form-group form-horizontal col-md-12">
-										<h4 class="h4-title">Provider Local Address</h4>
+										<h4 class="h4-title">Rapid Fund Search</h4>
 										
 										<label class="col-md-1 control-label">Start Date</label>
 										<div class="col-md-2"> <input id="datapicker1" type="text" class="form-control input-sm"> </div>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html><head>
+<html>
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -213,10 +214,10 @@ for($i=0; $i<=13; $i++){
 								</tr>
                                 
                                 <tr> 
-                                	<th><input type="hidden" name="recordNo" value="13"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+                                	<th><!--<input type="hidden" name="recordNo" value="13"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i>--></th>
 									<th>CLAIM AMOUNT</th>
 									<td><div class="visible"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Claim_Amount" /></div></td>
-                                    <th><input type="hidden" name="recordNo" value="14"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+                                    <th><!--<input type="hidden" name="recordNo" value="14"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i>--></th>
 									<th>PAID / Balance</th>
 									<td><div class="visible"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Paid_Amount" /></div></td>
 								</tr>
@@ -324,9 +325,9 @@ for($i=0; $i<=13; $i++){
                                             <td></td>
                                             <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datetimepicker_Dos_Doe dos-input" value="<?php echo substr($DateOfService_Start, 0, 10);?>"></td>
                                             <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datetimepicker_Dos_Doe dos-input" value="<?php echo substr($DateOfService_End,0, 10);?>"></td>
-                                            <td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm amt-input" value="<?php echo $Claim_Amount;?>"></td>
-                                            <td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm amt-input" value="<?php echo $Paid_Amount;?>"></td>
-                                            <td><input type="number" step="0.01" id="balance" name="balance" class="form-control input-sm amt-input" value="<?php echo $Claim_Amount-$Paid_Amount;?>"></td>
+                                            <td><input type="text" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm amt-input" value="<?php echo "$".number_format($Claim_Amount, 2);?>"></td>
+                                            <td><input type="text" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm amt-input" value="<?php echo "$".number_format($Paid_Amount, 2);?>"></td>
+                                            <td><input type="text" step="0.01" id="balance" name="balance" class="form-control input-sm amt-input" value="<?php echo "$".number_format($Claim_Amount-$Paid_Amount, 2);?>"></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -2067,6 +2068,9 @@ $(document).ready(function(e) {
 				}else if(recordNo == 14){
 					var balance = parseFloat($(".visible:eq(12)").text()) - inputValue;
 					x[13].innerHTML = "PAID / $"+inputValue.toFixed(2) +" / BALANCE $"+balance.toFixed(2);
+				}else if(recordNo == 13){
+					var balance = parseFloat($(".visible:eq(12)").text()) - inputValue;
+					x[recordNo-1].innerHTML = "$"+inputValue;
 				}else{
 					x[recordNo-1].innerHTML = inputValue;
 				}
@@ -3203,7 +3207,7 @@ daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndDat
 					
 					x[11].innerHTML = results.CaseInfo[$i].Court_Name;
 					
-					x[12].innerHTML = results.CaseInfo[$i].Claim_Amount;
+					x[12].innerHTML = '$'+results.CaseInfo[$i].Claim_Amount;
 					$("input[name=Claim_Amount]").val(results.CaseInfo[$i].Claim_Amount);
 					
 					$("#ClaimAmtTab6").val(parseFloat(results.CaseInfo[$i].Claim_Amount).toFixed(2));

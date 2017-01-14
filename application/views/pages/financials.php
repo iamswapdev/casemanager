@@ -1,10 +1,3 @@
-<?php
-	/*session_cache_limiter('private_no_expire');
-	if( !isset($_SESSION["username"]) && !isset($_SESSION["password"])){
-		
-		header('Location: admin');
-	}*/
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -140,7 +133,7 @@
 							</div><!-- End col-lg-12-->
 						</div><!-- End row-->
 						
-					</div>
+					</div><!--End of Privious Posting Reports -->
 					
 					<div id="tab-2" class="tab-pane">
 						<div class="row">
@@ -181,7 +174,7 @@
 							</div><!-- End hpanel -->
 							</div><!-- End col-lg-12-->
 						</div><!-- End row-->
-					</div>
+					</div><!--End of Generate Daily Client Invoices -->
 					
 					<div id="tab-3" class="tab-pane">
 						<div class="row">
@@ -244,7 +237,7 @@
 							</div><!-- End col-lg-12-->
 						</div><!-- End row-->
 						
-					</div>
+					</div><!-- End of Firm Account Balance-->
 					
 					<div id="tab-4" class="tab-pane">
 						<div class="row">
@@ -281,7 +274,8 @@
 							</div><!-- End col-lg-12-->
 						</div><!-- End row-->
 						
-					</div>
+					</div><!--End of Cost Balance -->
+                    
 					<div id="tab-5" class="tab-pane">
 						<div class="row">
 							<div class="col-lg-12">
@@ -312,7 +306,7 @@
 							</div><!-- End hpanel -->
 							</div><!-- End col-lg-12-->
 						</div><!-- End row-->
-					</div>
+					</div><!--End of Exp Cost Balance -->
 					
 					<div id="tab-6" class="tab-pane">
 						<div class="row">
@@ -354,7 +348,7 @@
 							</div><!-- End hpanel -->
 							</div><!-- End col-lg-12-->
 						</div><!-- End row-->
-					</div>
+					</div><!--End of Filing Fees Cost -->
 				</div>
 			</div>
 		</div>

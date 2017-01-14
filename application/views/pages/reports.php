@@ -1,10 +1,3 @@
-<?php
-	/*session_cache_limiter('private_no_expire');
-	if( !isset($_SESSION["username"]) && !isset($_SESSION["password"])){
-		
-		header('Location: admin');
-	}*/
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,11 +79,11 @@
                                     </div>
                                     <div class="col-md-1">
                                             
-                                        <select class="form-control input-sm" name="Sett_Percentage">
-                                            <option>All</option>
-                                            <option>0%</option>
-                                            <option>Between 0% and 70%</option>
-                                            <option>70% and above</option>
+                                        <select class="form-control input-sm" id="Sett_Perc" name="Sett_Percentage">
+                                            <option value="All">All</option>
+                                            <option value="0">0%</option>
+                                            <option value="0_to_70">Between 0% and 70%</option>
+                                            <option value="Above_70">70% and above</option>
                                         </select>
                                     </div>
                                     <div class="col-md-2">
@@ -131,7 +124,7 @@
 							</div><!-- End hpanel -->
 							</div><!-- End col-lg-12-->
 						</div><!-- End row-->
-					</div>
+					</div><!-- End of Daily Settlement Reports-->
 					
 					<div id="tab-2" class="tab-pane">
 						<div class="row">
@@ -285,7 +278,7 @@
                         </div><!-- End row-->
                         
 						
-					</div>
+					</div><!--End of Discontinuance Reports -->
 					
 					<div id="tab-3" class="tab-pane">
 						<div class="row">
@@ -293,29 +286,25 @@
 							<div class="hpanel">
 							<div class="panel-heading"></div>
 							<div class="panel-body tab-panel">
-								
-								<form>
-									<h4 class="h4-title">Client Reports</h4>
-									<div class="form-group form-horizontal col-md-12">
-										<label class="col-md-2 control-label">Select provider name:</label>
-										<div class="col-md-2">
-												
-											<select class="form-control input-sm" id="providerId" name="providerId">
-												<option>-- Select Provider --</option>
-												<?php foreach($Provider_Name as $row){?>
-												<option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option>
-												<?php }?>
-											</select>
-										</div>
-										<label class="col-md-2 control-label">Enter date range in month:</label>
-										<div class="col-md-1">
-											<input type="number" class="form-control input-sm">
-										</div>
-										<div class="col-md-2">
-											<button type="button" class="btn btn-primary">Get</button>
-										</div>
-									</div>
-								</form>
+                                <h4 class="h4-title">Client Reports</h4>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-2 control-label">Select provider name:</label>
+                                    <div class="col-md-2">
+                                        <select class="form-control input-sm" id="providerId_client" name="providerId">
+                                            <option>-- Select Provider --</option>
+                                            <?php foreach($Provider_Name as $row){?>
+                                            <option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option>
+                                            <?php }?>
+                                        </select>
+                                    </div>
+                                    <label class="col-md-2 control-label">Enter date range in month:</label>
+                                    <div class="col-md-1">
+                                        <input type="number" name="No_Months" class="form-control input-sm">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="button" id="Client_Reports_btn" class="btn btn-primary">Get</button>
+                                    </div>
+                                </div>
 								
 							</div><!-- End of panel-body tab-panel-->
 							</div><!-- End hpanel -->
@@ -330,7 +319,7 @@
                                 <div class="form-group form-horizontal col-lg-12">
 									<h5 class="h4-title">Client Information</h5>
                                     <div class="col-md-12">
-                                        <table id="ClientInformation" class="table dataTable table-bordered table-striped">
+                                        <table id="Client_Information" class="table dataTable table-bordered table-striped">
                                             <thead>
                                             <tr>  	 	 	 
                                                 <th>Client Name</th>
@@ -475,7 +464,7 @@
                             </div><!-- End col-lg-12-->
                         </div><!-- End row-->
                         
-					</div>
+					</div><!--End of Client Reports -->
 				</div>
 			</div>
 		</div>
@@ -534,6 +523,84 @@ $(document).ready(function(e) {
 			"ajax": {
 				"url": "get_Zero_Settlement",
 				"data": {"SD_0Settlement":SD, "ED_0Settlement":ED, "name": "Cases0Settlement"},
+				"type": "post"
+			},
+			
+			"iDisplayLength": 10,
+			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+		});
+	});
+/*****Start from here */
+	$("#Client_Reports_btn").click(function(){
+		var Provider_Id = $("#providerId_client").val();
+		var No_Months = $("input[name=No_Months]").val();
+		$("#Client_Information").dataTable().fnDestroy();
+		$('#Client_Information').dataTable( {
+			"ajax": {
+				"url": "get_Client_Information",
+				"data": {"Provider_Id":Provider_Id, "TableId": "Client_Information"},
+				"type": "post"
+			},
+			"bPaginate": false,
+			"bLengthChange": false,
+			"bFilter": false,
+			"bInfo": false,
+			"bAutoWidth": false,
+			"bSort": false
+		});
+		
+		$("#ClientSettlements").dataTable().fnDestroy();
+		$('#ClientSettlements').dataTable( {
+			"ajax": {
+				"url": "get_Client_Settlement",
+				"data": {"Provider_Id":Provider_Id, "No_Months": No_Months, "TableId": "ClientSettlements"},
+				"type": "post"
+			},
+			"bPaginate": false,
+			"bLengthChange": false,
+			"bFilter": false,
+			"bInfo": false,
+			"bAutoWidth": false,
+			"bSort": false
+		});
+		$("#WithdrawnCases").dataTable().fnDestroy();
+		$('#WithdrawnCases').dataTable( {
+			"ajax": {
+				"url": "get_Client_Settlement",
+				"data": {"Provider_Id":Provider_Id, "No_Months": No_Months, "TableId": "WithdrawnCases"},
+				"type": "post"
+			},
+			"bPaginate": false,
+			"bLengthChange": false,
+			"bFilter": false,
+			"bInfo": false,
+			"bAutoWidth": false,
+			"bSort": false
+		});
+		$("#ClientNewCases").dataTable().fnDestroy();
+		$('#ClientNewCases').dataTable( {
+			"ajax": {
+				"url": "get_Client_New_Settlement",
+				"data": {"Provider_Id":Provider_Id, "No_Months": No_Months, "TableId": "ClientNewCases"},
+				"type": "post"
+			},
+			"bPaginate": false,
+			"bLengthChange": false,
+			"bFilter": false,
+			"bInfo": false,
+			"bAutoWidth": false,
+			"bSort": false
+		});
+	});
+	$("#Daily_Sett_btn").click(function(){
+		var SD = $("input[name=SD_Daily_Sett]").val();
+		var ED = $("input[name=ED_Daily_Sett]").val();
+		var Sett_Perc = $("#Sett_Perc").val();
+		$("#DailySettlement").dataTable().fnDestroy();
+		$('#DailySettlement').dataTable( {
+			"ajax": {
+				"url": "get_Daily_Sett",
+				"data": {"SD_Daily_Sett":SD, "ED_Daily_Sett":ED, "Sett_Perc": Sett_Perc},
 				"type": "post"
 			},
 			

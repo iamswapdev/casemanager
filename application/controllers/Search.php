@@ -17,7 +17,7 @@ class Search extends CI_Controller{
 		//$this->session->all_userdata();
 		$this->$username = $this->session->userdata['username'];
 		if(isset($this->session->userdata['logged_in'])){
-			$data['SearchResult']=$this->search_model->get_SearchResult();
+			$data['SearchResult']=$this->search_model->get_SearchResult(1,1);
 			$this->load->view('pages/search',$data);
 		}else{
 			$CurrentPage['CurrentUrl'] = "search";
@@ -27,7 +27,7 @@ class Search extends CI_Controller{
 	public function searchs(){
 		//$this->session->all_userdata();
 		if(isset($this->session->userdata['logged_in'])){
-			$data['SearchResult']=$this->search_model->get_SearchResult();
+			$data['SearchResult']=$this->search_model->get_SearchResult(1,1);
 			$this->load->view('pages/search',$data);
 		}else{
 			$CurrentPage['CurrentUrl'] = "search/searchs";
@@ -45,8 +45,10 @@ class Search extends CI_Controller{
 			$data['Defendant_Name']= $this->search_model->get_Defendant();
 			$data['Adjuster_Name']= $this->search_model->get_Adjuster();
 			$data['Court']= $this->search_model->get_CourtArray();
-			$data['SearchResult']=$this->search_model->get_SearchResult();
+			//$data['SearchResult']=$this->search_model->get_SearchResult(1,1);
 			$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
+			$data['UserId'] = $this->session->userdata['UserId'];
+			$data['RoleId'] = $this->session->userdata['RoleId'];
 			$this->load->view('pages/advancedsearch',$data);
 		}else{
 			$CurrentPage['CurrentUrl'] = "search/advancedsearch";
@@ -152,9 +154,9 @@ class Search extends CI_Controller{
 			}
 			$row[] = "<input type='text' name='dateOfServiceStart' class='form-control input-sm datetimepicker_Dos_Doe dos-date dos-input' value='".date_format(date_create(substr($result->DateOfService_Start, 0, 10)), 'm/d/Y')."' disabled>";
 			$row[] = "<input type='text' name='dateOfServiceEnd' class='form-control input-sm datetimepicker_Dos_Doe dos-date dos-input' value='".date_format(date_create(substr($result->DateOfService_End, 0, 10)), 'm/d/Y')."' disabled>";
-			$row[] = "<input type='text' name='Claim_Amount_treat' class='form-control input-sm amt-input' value='".number_format($result->Claim_Amount, 2)."' disabled>";
-			$row[] = "<input type='text' name='Paid_Amount_treat' class='form-control input-sm amt-input' value='".number_format($result->Paid_Amount, 2)."' disabled>";
-			$row[] = "<input type='text' name='Paid_Amount_treat' class='form-control input-sm amt-input' value='".number_format(($result->Claim_Amount - $result->Paid_Amount), 2)."' disabled>";
+			$row[] = "<input type='text' name='Claim_Amount_treat' class='form-control input-sm amt-input' value='$".number_format($result->Claim_Amount, 2)."' disabled>";
+			$row[] = "<input type='text' name='Paid_Amount_treat' class='form-control input-sm amt-input' value='$".number_format($result->Paid_Amount, 2)."' disabled>";
+			$row[] = "<input type='text' name='Paid_Amount_treat' class='form-control input-sm amt-input' value='$".number_format(($result->Claim_Amount - $result->Paid_Amount), 2)."' disabled>";
 			$row[] = "<input type='text' name='Date_BillSent_treat' class='form-control input-sm datetimepicker_Dos_Doe dos-input' value='".$result->Date_BillSent."' disabled>";
 			$row[] = "<div class='SERVICE_TYPE_treat_div'> <input type='text' name='SERVICE_TYPE_treat' class='form-control input-sm' value='".$result->SERVICE_TYPE."' disabled><input type='hidden' name='SERVICE_TYPE_treat_hidden' value='".$result->SERVICE_TYPE."'> </div>";
 			
@@ -176,8 +178,8 @@ class Search extends CI_Controller{
 		$data = array(
 			"DateOfService_Start" => $this->input->post('DateOfService_Start'),
 			"DateOfService_End" => $this->input->post('DateOfService_End'),
-			"Claim_Amount" => $this->input->post('Claim_Amount'),
-			"Paid_Amount" => $this->input->post('Paid_Amount'),
+			"Claim_Amount" => str_replace('$', '', $this->input->post('Claim_Amount')),
+			"Paid_Amount" => str_replace('$', '', $this->input->post('Paid_Amount')),
 			"Date_BillSent" => $this->input->post('Date_BillSent'),
 			"SERVICE_TYPE" => $this->input->post('currentServiceType'),
 			"DENIALREASONS_TYPE" => $this->input->post('currentDenialReasonType')
@@ -384,7 +386,10 @@ class Search extends CI_Controller{
 	}
 /* get Search table data - viewcase page*/
 	public function getSearchTable(){  
-		$list=$this->search_model->get_SearchResult();
+		$UserId = $this->input->post("UserId");
+		$RoleId = $this->input->post("RoleId");
+		
+		$list=$this->search_model->get_SearchResult($UserId, $RoleId);
 		$this->Search_Table_Data($list);
 	}
 
@@ -398,7 +403,7 @@ class Search extends CI_Controller{
 			$no++;
 			$row[] = $result->Notes_Desc;
 			$row[] = $result->User_Id;
-			$row[] = substr($result->Notes_Date, 0, 10);
+			$row[] = date_format(date_create(substr($result->Notes_Date, 0, 10)), "m/d/Y");
 			$row[] = substr($result->Notes_Date, 11, 8);
 			$row[] = $result->Notes_Type;
 			
@@ -587,6 +592,8 @@ class Search extends CI_Controller{
 	}
 	
 	public function getSearchTable_2(){
+		$UserId = $this->input->post("UserId");
+		$RoleId = $this->input->post("RoleId");
 		$Recieveddata = array(
 			"Case_Id" => $this->input->post("sCaseId"),
 			"InjuredParty_LastName" => $this->input->post("InjuredParty_LastName"),
@@ -607,7 +614,7 @@ class Search extends CI_Controller{
 			"FirstId" => $this->input->post("FirstId"),
 			"LastId" => $this->input->post("LastId")
 		);
-		$list= $this->search_model->get_CaseInfo_ById1($Recieveddata);
+		$list= $this->search_model->get_CaseInfo_ById1($Recieveddata, $UserId, $RoleId);
 		$this->Search_Table_Data($list);
 	}
 /**************************** NOTES TAB-3 ************************************************************************************/
@@ -622,7 +629,7 @@ class Search extends CI_Controller{
 			$row[] ="<i title='Edit' class='fa fa-edit editNotes'></i>";
 			$row[] = $result->Notes_Desc."<input type='hidden' class='tNoteDesc' value='".$result->Notes_Desc."'>";
 			$row[] = $result->User_Id."<input type='hidden' class='tNoteUserId' value='".$result->User_Id."'>";
-			$row[] = substr($result->Notes_Date, 0, 10)."<input type='hidden' class='tNoteDate' value='".$result->Notes_Date."'>";
+			$row[] = date_format(date_create(substr($result->Notes_Date, 0, 10)), "m/d/Y")."<input type='hidden' class='tNoteDate' value='".$result->Notes_Date."'>";
 			$row[] = substr($result->Notes_Date, 11, 8);
 			$row[] = $result->Notes_Type."<input type='hidden' class='tNoteType' value='".$result->Notes_Type."'>";
 			$row[] = "<input type='hidden' class='tNoteId' value='".$result->Notes_ID."'><input type='checkbox' name='DeleteNotes[]' class='DeleteNotes DeleteNotes".$result->Notes_ID."' value='".$result->Notes_ID."'>";
@@ -1056,7 +1063,7 @@ class Search extends CI_Controller{
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$DateOfService_Start." - ".$DateOfService_End."</a>";
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Status."</a>";
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Ins_Claim_Number."</a>";
-			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Claim_Amount."</a>";
+			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>$".$result->Claim_Amount."</a>";
 			if($this->session->userdata['RoleId'] == 1 ){ $row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->IndexOrAAA_Number."</a>";
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Initial_Status."</a>"; }
 			$data[] = $row;
@@ -1088,6 +1095,18 @@ class Search extends CI_Controller{
 		echo "<br>base_url:".base_url();
 		echo "<br>Time zone:".date_default_timezone_get();*/
 		echo "<br>Current Time: ".date("Y-m-d h:i:s");
+		echo "<br>$ testing:".str_replace('$', '', 'hellogg');
+		$date=date_create("2013-03-15");
+		echo "<br><br>1st Date:".date_format($date,"Y-m-d");
+		echo "<br><br>Substract 40 days";
+		date_sub($date,date_interval_create_from_date_string("1 months"));
+		echo "<br><br>New Date:".date_format($date,"Y-m-d");
+		echo "<br><br>current day's:".date("d");
+		$ddd = date("m/d/Y");
+		echo "First date of current month:".date_format(date_sub(date_create($ddd),date_interval_create_from_date_string((date("d")-1)." days")), "m/d/Y");
+		$first = date_format(date_sub(date_create($ddd),date_interval_create_from_date_string((date("d")-1)." days")), "m/d/Y");
+		
+		echo "<br><br>Date before 2 months:".date_format(date_sub(date_create($first),date_interval_create_from_date_string("2 months")), "m/d/Y");
 	}
 /*****************************************************************************************************************************************/
 }

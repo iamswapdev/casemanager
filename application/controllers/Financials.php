@@ -26,7 +26,6 @@ class Financials extends CI_Controller{
 		return $data;
 	}
 	public function financial(){
-		
 		if(isset($this->session->userdata['logged_in'])){
 			
 			$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
@@ -50,7 +49,6 @@ class Financials extends CI_Controller{
 		}
 	}
 	public function rapidfunds(){
-		
 		if(isset($this->session->userdata['logged_in'])){
 			$data['Provider_Name']= $this->financials_model->get_Provider();
 			$data['InsuranceCompany_Name']= $this->financials_model->get_Insurance();
@@ -62,7 +60,6 @@ class Financials extends CI_Controller{
 		}
 	}
 	public function defendant(){
-		
 		if(isset($this->session->userdata['logged_in'])){
 			$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 			$this->load->view('pages/add_defendant_info', $data);
@@ -85,10 +82,10 @@ class Financials extends CI_Controller{
 				$row[] = $result->Provider_Name;
 				$row[] = $result->Status;
 				$row[] = $result->InsuranceCompany_Name;
-				$row[] = $result->Claim_Amount;
-				$row[] = $result->Claim_Amount - $result->Paid_Amount;
+				$row[] = "$".number_format($result->Claim_Amount, 2);
+				$row[] = "$".number_format($result->Claim_Amount - $result->Paid_Amount, 2);
 				$row[] = date_format(date_create(substr($result->Settlement_Date,0,10)),"m/d/Y");
-				$row[] = $result->Settlement_Amount;
+				$row[] = "$".number_format($result->Settlement_Amount, 2);
 				$data[] = $row;
 			}
 		}else{
@@ -98,14 +95,14 @@ class Financials extends CI_Controller{
 				$row[] = $result->InjuredParty_FirstName." ".$result->InjuredParty_LastName;
 				$row[] = $result->Provider_Name;
 				$row[] = $result->InsuranceCompany_Name;
-				$row[] = $result->Claim_Amount;
-				$row[] = $result->Claim_Amount - $result->Paid_Amount;
-				$row[] = $result->Settlement_Amount;
+				$row[] = "$".number_format($result->Claim_Amount, 2);
+				$row[] = "$".number_format($result->Claim_Amount - $result->Paid_Amount, 2);
+				$row[] = "$".number_format($result->Settlement_Amount, 2);
 				$row[] = date_format(date_create(substr($result->Settlement_Date,0,10)),"m/d/Y");
-				$row[] = $result->Settlement_Int;
-				$row[] = $result->Settlement_Af;
-				$row[] = $result->Settlement_Ff;
-				$row[] = $result->Settlement_Total;
+				$row[] = "$".number_format($result->Settlement_Int, 2);
+				$row[] = "$".number_format($result->Settlement_Af, 2);
+				$row[] = "$".number_format($result->Settlement_Ff, 2);
+				$row[] = "$".number_format($result->Settlement_Total, 2);
 				$row[] = $result->User_Id;
 				$row[] = $result->SettledWith;
 				$row[] = "";
@@ -158,13 +155,181 @@ class Financials extends CI_Controller{
 			$row[] = $result->Provider_Name;
 			$row[] = $result->Case_Id;
 			$row[] = $result->IndexOrAAA_Number;
-			$row[] = number_format($result->Settlement_Ff, 2);
-			$row[] = number_format($result->Settlement_Af, 2);
+			$row[] = "$".number_format($result->Settlement_Ff, 2);
+			$row[] = "$".number_format($result->Settlement_Af, 2);
 			$row[] = date_format(date_create(substr($result->Settlement_Date, 0,10)), "m/d/Y");
 			$row[] = $result->Settlement_Notes;
 			
 			$data[] = $row;
 		}
+		
+		$output = array( "data" => $data );
+		echo json_encode($output);
+	}
+/*get daily sett table*/
+	public function get_Daily_Sett(){
+		$Start_Date = date_format(date_create($this->input->post("SD_Daily_Sett")), 'Y/m/d');
+		$End_Date = date_format(date_create($this->input->post("ED_Daily_Sett")), 'Y/m/d');
+		$Sett_Perc = $this->input->post("Sett_Perc");
+		$list = $this->financials_model->get_Daily_Sett($Start_Date, $End_Date);
+		//echo "<pre>"; print_r($list);exit;
+		$data = array();
+		$flag = 0;
+		foreach($list as $result){
+			if($Sett_Perc == "0"){
+				if($result->Settlement_Per <= 0){ $flag = 1; }else{ $flag = 0;}
+			}else if($Sett_Perc == "0_to_70"){
+				if($result->Settlement_Per >= 0 && $result->Settlement_Per <=70){$flag = 1; }else{ $flag = 0;}
+			}else if($Sett_Perc == "Above_70"){
+				if($result->Settlement_Per >= 70){$flag = 1; }else{ $flag = 0;}
+			}else{ $flag = 1;}
+			if($flag == 1){
+				$row = array();
+				$row[] = $result->User_Id;
+				$row[] = $result->InsuranceCompany_Name;
+				$row[] = $result->No_Of_Case;
+				$row[] = "$".number_format($result->Balance, 2);
+				$row[] = "$".number_format($result->Settlement_Amount, 2)." & "."$".number_format($result->Settlement_Int, 2);
+				$row[] = "$".number_format($result->Settlement_Ff, 2);
+				$row[] = "$".number_format($result->Settlement_Af, 2);
+				$row[] = number_format($result->Settlement_Per, 2);
+				
+				$data[] = $row;
+			}
+		}
+		
+		$output = array( "data" => $data );
+		echo json_encode($output);
+	}
+/*get client reports*/
+	public function get_Client_Information(){
+		$Provider_Id = $this->input->post("Provider_Id");
+		$No_Months = $this->input->post("No_Months");
+		$list = $this->financials_model->get_Client_Information($Provider_Id);
+		//echo "<pre>"; print_r($list);exit;
+		$data = array();
+		foreach($list as $result){
+			$row = array();
+			
+			$row[] = $result->Provider_Name;
+			$row[] = $result->Provider_Perm_Address;
+			$row[] = $result->Provider_Billing;
+			$row[] = "$0.00";
+			
+			$data[] = $row;
+		}
+		
+		$output = array( "data" => $data );
+		echo json_encode($output);
+	}
+/*Client Settlements for last few months*/
+	public function  get_Client_Settlement(){
+		$Provider_Id = $this->input->post("Provider_Id");
+		$No_Months = $this->input->post("No_Months");
+		$TableId = $this->input->post("TableId");
+		$data = array();
+		//$No_Months = 5;
+		//$Provider_Id = 5;
+		$Tot_Case_Count = 0;
+		$Tot_Sum_of_Billed_Amount = 0;
+		$Tot_Sum_of_Suit_Amount = 0;
+		$Tot_Sum_of_Principal_Settlement = 0;
+		$Tot_Sum_of_Interest_Settlement = 0;
+		$Tot_Percentage = 0;
+		$j=1;
+		for($i=1; $i <= $No_Months; $i++){
+			$list = $this->financials_model->get_Client_Settlement($Provider_Id, $i, $TableId);
+			//echo "<pre>"; print_r($list);
+			//echo "list:".$list;exit;
+			
+			foreach($list as $result){
+				if($result->Case_Count != 0){
+					$row = array();
+						 
+					$row[] = $result->Month_Year;
+					$Tot_Case_Count = $Tot_Case_Count + $result->Case_Count;
+					$row[] = $result->Case_Count;
+					$row[] = "$".number_format($result->Sum_of_Billed_Amount, 2);
+					$Tot_Sum_of_Billed_Amount = $Tot_Sum_of_Billed_Amount + $result->Sum_of_Billed_Amount;
+					$row[] = "$".number_format($result->Sum_of_Suit_Amount, 2);
+					$Tot_Sum_of_Suit_Amount = $Tot_Sum_of_Suit_Amount + $result->Sum_of_Suit_Amount;
+					$row[] = "$".number_format($result->Sum_of_Principal_Settlement, 2);
+					$Tot_Sum_of_Principal_Settlement = $Tot_Sum_of_Principal_Settlement + $result->Sum_of_Principal_Settlement;
+					if($TableId == "ClientSettlements"){
+						$row[] = "$".number_format($result->Sum_of_Interest_Settlement, 2);
+						$Tot_Sum_of_Interest_Settlement = $Tot_Sum_of_Interest_Settlement + $result->Sum_of_Interest_Settlement;
+					}
+					$row[] = number_format($result->Percentage, 2)."%";
+					
+					//$row[] = "$0.00";
+					
+					$data[] = $row;
+					$j++;
+					
+					$Tot_Percentage = $Tot_Percentage + $result->Percentage;
+				}
+			}
+		}
+		$row = array();
+		
+		$row[] = "Total";
+		$row[] = $Tot_Case_Count;
+		$row[] = "$".number_format($Tot_Sum_of_Billed_Amount, 2);
+		$row[] = "$".number_format($Tot_Sum_of_Suit_Amount, 2);
+		$row[] = "$".number_format($Tot_Sum_of_Principal_Settlement, 2);
+		if($TableId == "ClientSettlements"){ $row[] = "$".number_format($Tot_Sum_of_Interest_Settlement, 2); }
+		if($j){$row[] = "0.00%";}else{$row[] = number_format($Tot_Percentage/($j-1), 2);}
+		
+		$data[] = $row;
+		
+		$output = array( "data" => $data );
+		echo json_encode($output);
+	}
+/*Withdrawn Cases for last few months*/
+	public function  get_Client_New_Settlement(){
+		$Provider_Id = $this->input->post("Provider_Id");
+		$No_Months = $this->input->post("No_Months");
+		$data = array();
+		//$No_Months = 5;
+		//$Provider_Id = 5;
+		$Tot_Case_Count = 0;
+		$Tot_Sum_of_Billed_Amount = 0;
+		$Tot_Sum_of_Suit_Amount = 0;
+		$j=1;
+		for($i=1; $i <= $No_Months; $i++){
+			$list = $this->financials_model->get_Client_New_Settlement($Provider_Id, $i);
+			//echo "<pre>"; print_r($list);
+			//echo "list:".$list;exit;
+			
+			foreach($list as $result){
+				if($result->Case_Count != 0){
+					$row = array();
+						 
+					$row[] = $result->Month_Year;
+					$Tot_Case_Count = $Tot_Case_Count + $result->Case_Count;
+					$row[] = $result->Case_Count;
+					$row[] = "$".number_format($result->Sum_of_Billed_Amount, 2);
+					$Tot_Sum_of_Billed_Amount = $Tot_Sum_of_Billed_Amount + $result->Sum_of_Billed_Amount;
+					$row[] = "$".number_format($result->Sum_of_Suit_Amount, 2);
+					$Tot_Sum_of_Suit_Amount = $Tot_Sum_of_Suit_Amount + $result->Sum_of_Suit_Amount;
+					
+					
+					//$row[] = "$0.00";
+					
+					$data[] = $row;
+					$j++;
+					
+				}
+			}
+		}
+		$row = array();
+		
+		$row[] = "Total";
+		$row[] = $Tot_Case_Count;
+		$row[] = "$".number_format($Tot_Sum_of_Billed_Amount, 2);
+		$row[] = "$".number_format($Tot_Sum_of_Suit_Amount, 2);
+		
+		$data[] = $row;
 		
 		$output = array( "data" => $data );
 		echo json_encode($output);

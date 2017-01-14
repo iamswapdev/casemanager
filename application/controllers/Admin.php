@@ -40,6 +40,7 @@ session_cache_limiter('private_no_expire');
 				'username'  => $data['username'],
 				'password'     => $data['password'],
 				'RoleId' => $result['Role'][0]['RoleId'],
+				'UserId' => $result['Role'][0]['UserId'],
 				'logged_in' => TRUE
 			);
 			$this->session->set_userdata($session_data);

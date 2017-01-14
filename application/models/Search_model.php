@@ -199,11 +199,14 @@ Class Search_model extends CI_Model{
 		$data=$query->result_array();
 		return $data;
 	}
-	public function get_SearchResult()
+	public function get_SearchResult($userId, $RoleId)
 	{
 		$this->db->order_by("Case_Id","desc");
 		$this->db->select('t1.*, t2.Provider_Name, t3.InsuranceCompany_Name, DATE_FORMAT(t1.Accident_Date,"%m-%d-%Y") as Accident_Date');
 		$this->db->from('dbo_tblcase as t1');
+		if($RoleId == 2){
+			$this->db->where("t2.UserId", $userId);
+		}
 		$this->db->join('dbo_tblprovider as t2', 't1.Provider_Id = t2.Provider_Id', 'LEFT');
 		$this->db->join('dbo_tblinsurancecompany as t3', 't1.InsuranceCompany_Id = t3.InsuranceCompany_Id', 'LEFT');
 		$query= $this->db->get();
@@ -277,10 +280,13 @@ Class Search_model extends CI_Model{
 			$this->db->delete('dbo_tblnotes');
 		}
 	}
-	public function get_CaseInfo_ById1($Recieveddata){
+	public function get_CaseInfo_ById1($Recieveddata, $userId, $RoleId){
 		$this->db->order_by("Case_Id","dsc");
 		$this->db->select('t1.*, t2.Provider_Name, t3.InsuranceCompany_Name, DATE_FORMAT(t1.Accident_Date,"%m-%d-%Y") as Accident_Date');
 		$this->db->from('dbo_tblcase as t1');
+		if($RoleId == 2){
+			$this->db->where("t2.UserId", $userId);
+		}
 		$this->db->join('dbo_tblprovider as t2', 't1.Provider_Id = t2.Provider_Id', 'LEFT');
 		$this->db->join('dbo_tblinsurancecompany as t3', 't1.InsuranceCompany_Id = t3.InsuranceCompany_Id', 'LEFT');
 		if($Recieveddata['Case_Id'] !=""){
