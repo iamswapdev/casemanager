@@ -4063,3 +4063,6 @@ table.table.tdAlignLeft.work-area-info.info-link-popup th {
 .sett-percentage{
 	padding-left:0px;
 }
+#Client_Information tr:last-child, #ClientSettlements tr:last-child, #WithdrawnCases tr:last-child, #ClientNewCases tr:last-child{
+    background: #ffd599;
+}

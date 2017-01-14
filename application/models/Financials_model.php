@@ -146,6 +146,51 @@ Class Financials_model extends CI_Model{
 		$query = $this->db->get();
 		return $query->result();
 	}
+	
+	public function get_Client_Invoices($Provider_Id, $No_Months){
+		$this->db->where("Provider_Id", $Provider_Id);
+		$this->db->from("dbo_tblclientaccount as t1");
+		
+		$End_Date = date("Y/m/d");
+		$Curent_month_first_Date = date_format(date_sub(date_create($End_Date),date_interval_create_from_date_string((date("d")-1)." days")), "Y/m/d");
+		
+		if($No_Months == 1){
+			$End_Date = date("Y/m/d");
+			$Start_Date = $Curent_month_first_Date;
+			$this->db->where('Last_Printed <=', $End_Date);
+		}else{
+			//echo "<br>Curent_month_first_Date:".$Curent_month_first_Date;
+			$Start_Date = date_format(date_sub(date_create($Curent_month_first_Date),date_interval_create_from_date_string(($No_Months-1)." months")), "Y/m/d");
+			//echo "<br>Start_Date:".$Start_Date;
+			$End_Date = date_format(date_sub(date_create($Curent_month_first_Date),date_interval_create_from_date_string(($No_Months-2)." months")), "Y/m/d");
+			//echo "<br>End date:".$End_Date;
+			$this->db->where('Last_Printed <=', $End_Date);
+		}
+		$this->db->where('Last_Printed >=', $Start_Date);
+		
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function get_Status_Breakdown($Provider_Id, $No_Months){
+		$this->db->select("Status, COUNT(Status) as Status_Count");
+		
+		$this->db->where("Provider_Id", $Provider_Id);
+		$this->db->group_by("Status");
+		$this->db->from("dbo_tblcase");
+		
+		$Current_Date = date("Y/m/d");
+		$End_Date = date_format(date_sub(date_create($Current_Date),date_interval_create_from_date_string((date("d")-1)." days")), "Y/m/d");
+		$Start_Date = date_format(date_sub(date_create($End_Date),date_interval_create_from_date_string(($No_Months-1)." months")), "Y/m/d");
+		
+		//echo "Current_Date".$Current_Date;
+		//echo "Start_Date".$Start_Date; exit;
+		
+		$this->db->where('Date_Opened >=', $Start_Date);
+		$this->db->where('Date_Opened <=', $Current_Date);
+		
+		$query = $this->db->get();
+		return $query->result();
+	}
 
 }
 ?>

@@ -202,6 +202,7 @@ class Financials extends CI_Controller{
 		echo json_encode($output);
 	}
 /*get client reports*/
+/*Load Client_Information table*/
 	public function get_Client_Information(){
 		$Provider_Id = $this->input->post("Provider_Id");
 		$No_Months = $this->input->post("No_Months");
@@ -228,8 +229,6 @@ class Financials extends CI_Controller{
 		$No_Months = $this->input->post("No_Months");
 		$TableId = $this->input->post("TableId");
 		$data = array();
-		//$No_Months = 5;
-		//$Provider_Id = 5;
 		$Tot_Case_Count = 0;
 		$Tot_Sum_of_Billed_Amount = 0;
 		$Tot_Sum_of_Suit_Amount = 0;
@@ -239,9 +238,6 @@ class Financials extends CI_Controller{
 		$j=1;
 		for($i=1; $i <= $No_Months; $i++){
 			$list = $this->financials_model->get_Client_Settlement($Provider_Id, $i, $TableId);
-			//echo "<pre>"; print_r($list);
-			//echo "list:".$list;exit;
-			
 			foreach($list as $result){
 				if($result->Case_Count != 0){
 					$row = array();
@@ -261,11 +257,8 @@ class Financials extends CI_Controller{
 					}
 					$row[] = number_format($result->Percentage, 2)."%";
 					
-					//$row[] = "$0.00";
-					
 					$data[] = $row;
 					$j++;
-					
 					$Tot_Percentage = $Tot_Percentage + $result->Percentage;
 				}
 			}
@@ -290,17 +283,12 @@ class Financials extends CI_Controller{
 		$Provider_Id = $this->input->post("Provider_Id");
 		$No_Months = $this->input->post("No_Months");
 		$data = array();
-		//$No_Months = 5;
-		//$Provider_Id = 5;
 		$Tot_Case_Count = 0;
 		$Tot_Sum_of_Billed_Amount = 0;
 		$Tot_Sum_of_Suit_Amount = 0;
 		$j=1;
 		for($i=1; $i <= $No_Months; $i++){
 			$list = $this->financials_model->get_Client_New_Settlement($Provider_Id, $i);
-			//echo "<pre>"; print_r($list);
-			//echo "list:".$list;exit;
-			
 			foreach($list as $result){
 				if($result->Case_Count != 0){
 					$row = array();
@@ -313,12 +301,8 @@ class Financials extends CI_Controller{
 					$row[] = "$".number_format($result->Sum_of_Suit_Amount, 2);
 					$Tot_Sum_of_Suit_Amount = $Tot_Sum_of_Suit_Amount + $result->Sum_of_Suit_Amount;
 					
-					
-					//$row[] = "$0.00";
-					
 					$data[] = $row;
 					$j++;
-					
 				}
 			}
 		}
@@ -331,6 +315,45 @@ class Financials extends CI_Controller{
 		
 		$data[] = $row;
 		
+		$output = array( "data" => $data );
+		echo json_encode($output);
+	}
+/*Client Invoices*/
+	public function get_Client_Invoices(){
+		$Provider_Id = $this->input->post("Provider_Id");
+		$No_Months = $this->input->post("No_Months");
+		$data = array();
+		for($i=1; $i <= $No_Months; $i++){
+			$list = $this->financials_model->get_Client_Invoices($Provider_Id, $i);
+			foreach($list as $result){
+				$row = array();
+						 
+				$row[] = $result->Account_Id;
+				$row[] = $result->Gross_Amount;
+				$row[] = $result->Firm_Fees;
+				$row[] = $result->Cost_Balance;
+				$row[] = $result->Applied_Cost;
+				$row[] = $result->Final_Remit;
+				$row[] = $result->Account_Date;
+				$row[] = $result->Last_Printed;
+				$data[] = $row;
+			}
+		}
+		$output = array( "data" => $data );
+		echo json_encode($output);
+	}
+	public function get_Status_Breakdown(){
+		$Provider_Id = $this->input->post("Provider_Id");
+		$No_Months = $this->input->post("No_Months");
+		$data = array();
+		$list = $this->financials_model->get_Status_Breakdown($Provider_Id, $No_Months);
+		foreach($list as $result){
+			$row = array();
+					 
+			$row[] = $result->Status;
+			$row[] = $result->Status_Count;
+			$data[] = $row;
+		}
 		$output = array( "data" => $data );
 		echo json_encode($output);
 	}

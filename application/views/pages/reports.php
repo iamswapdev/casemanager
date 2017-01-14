@@ -424,7 +424,7 @@
                                         <table id="ClientInvoices" class="table dataTable table-bordered table-striped">
                                             <thead>
                                             <tr>				 	 	 	 	 	 	 	 	 
-                                                <th>INVOICE ID 	PROVIDER NAME</th>
+                                                <th>INVOICE ID</th>
                                                 <th>GROSS AMOUNT</th>
                                                 <th>FIRM FEES</th>
                                                 <th>COST BALANCE</th>
@@ -449,11 +449,11 @@
                                 <div class="form-group form-horizontal col-lg-12">
 									<h5 class="h4-title">Status Breakdown </h5>
                                     <div class="col-md-12">
-                                        <table id="StatusBreakdown " class="table dataTable table-bordered table-striped">
+                                        <table id="StatusBreakdown" class="table dataTable table-bordered table-striped">
                                             <thead>
                                             <tr>  	 	 	 
-                                                <th>Client Name</th>
-                                                <th>Client Address</th>
+                                                <th>Status</th>
+                                                <th>Count</th>
                                             </tr>
                                             </thead>
                                         </table>
@@ -591,7 +591,36 @@ $(document).ready(function(e) {
 			"bAutoWidth": false,
 			"bSort": false
 		});
+		$("#ClientInvoices").dataTable().fnDestroy();
+		$('#ClientInvoices').dataTable( {
+			"ajax": {
+				"url": "get_Client_Invoices",
+				"data": {"Provider_Id":Provider_Id, "No_Months": No_Months},
+				"type": "post"
+			},
+			"bPaginate": false,
+			"bLengthChange": false,
+			"bFilter": false,
+			"bInfo": false,
+			"bAutoWidth": false,
+			"bSort": false
+		});
+		$("#StatusBreakdown").dataTable().fnDestroy();
+		$('#StatusBreakdown').dataTable( {
+			"ajax": {
+				"url": "get_Status_Breakdown",
+				"data": {"Provider_Id":Provider_Id, "No_Months": No_Months},
+				"type": "post"
+			},
+			"bPaginate": false,
+			"bLengthChange": false,
+			"bFilter": false,
+			"bInfo": false,
+			"bAutoWidth": false,
+			"bSort": false
+		});
 	});
+	//$('#ClientNewCases tr:last').css("background-color", "red");
 	$("#Daily_Sett_btn").click(function(){
 		var SD = $("input[name=SD_Daily_Sett]").val();
 		var ED = $("input[name=ED_Daily_Sett]").val();
