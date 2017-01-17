@@ -139,7 +139,7 @@
                             </div><!-- End hpanel -->
                             </div><!-- End col-lg-12-->
                         </div><!-- End row-->
-					</div>
+					</div><!--End of Calendar reports -->
 					
 					<div id="tab-2" class="tab-pane">
 						<div class="row">
@@ -231,7 +231,7 @@
 							</div><!-- End hpanel -->
 							</div><!-- End col-lg-12-->
 						</div><!-- End row-->
-					</div>
+					</div><!--End of Service reports -->
 					
 					<div id="tab-3" class="tab-pane">
 						<div class="row">
@@ -377,7 +377,7 @@
                         </div><!-- End row-->
                         
                         
-					</div>
+					</div><!--End of summons printed report -->
 					
 					<div id="tab-4" class="tab-pane">
 						<div class="row">
@@ -414,7 +414,8 @@
                             </div><!-- End hpanel -->
                             </div><!-- End col-lg-12-->
                         </div><!-- End row-->
-					</div>
+					</div><!--End of Case close out -->
+                    
 					<div id="tab-5" class="tab-pane">
 						<div class="row">
                             <div class="col-lg-12">
@@ -541,7 +542,7 @@
 							</div><!-- End col-lg-12-->
 						</div><!-- End row-->
 							
-					</div>
+					</div><!--End of Case deadlines -->
 					
 					<div id="tab-6" class="tab-pane">
 						
@@ -619,7 +620,7 @@
 							</div><!-- End col-lg-12-->
 						</div><!-- End row-->
 						
-					</div>
+					</div> <!-- End of Pending Resons -->
 				</div>
 			</div>
 		</div>

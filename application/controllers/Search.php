@@ -1107,6 +1107,14 @@ class Search extends CI_Controller{
 		$first = date_format(date_sub(date_create($ddd),date_interval_create_from_date_string((date("d")-1)." days")), "m/d/Y");
 		
 		echo "<br><br>Date before 2 months:".date_format(date_sub(date_create($first),date_interval_create_from_date_string("2 months")), "m/d/Y");
+		
+		$query_date = '2010-02-04';
+
+		// First day of the month.
+		echo "<br>Date: '2010-02-04'<br>First day of the month:".date('Y-m-01', strtotime($query_date));
+		
+		// Last day of the month.
+		echo "<br>Last day of the month.:".date('Y-m-t', strtotime($query_date));
 	}
 /*****************************************************************************************************************************************/
 }

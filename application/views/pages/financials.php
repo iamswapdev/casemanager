@@ -69,15 +69,15 @@
 										<h4 class="h4-title">Select Date Range for Processed Invoices</h4>
 										<label class="col-md-1 control-label">Start Date</label>										
 										<div class="col-md-1">
-											<input type="text" class="form-control input-sm datepicking">
+											<input type="text" name="SD_Privious_Posting" class="form-control input-sm datepicking">
 										</div>
 										
 										<label class="col-md-1 control-label">End Date</label>										
 										<div class="col-md-1">
-											<input type="text" class="form-control input-sm datepicking">
+											<input type="text" name="ED_Privious_Posting" class="form-control input-sm datepicking">
 										</div>
 										<div class="col-md-2">
-											<button type="button" class="btn btn-primary">Get</button>
+											<button type="button" id="PriviousPosting_btn" class="btn btn-primary">Get</button>
 										</div>
 										
 									</div>
@@ -95,38 +95,29 @@
 							<div class="hpanel">
 							<div class="panel-heading"></div>
 							<div class="panel-body tab-panel">
-								
-								<div class="form-group form-horizontal col-md-12"> 	
-									<div class="table-responsive">
-										
-										<div class="table-responsive">
-											<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
-												<thead> 	 	 	 	 	 		 	 	
-												<tr>  	 	 	 	 	 	 	 	 	 	 	 	 	
-													<th>PROVIDER ID</th>
-													<th>PROVIDER NAME</th>
-													<th>GROSS AMOUNT</th>
-													<th>FEES</th>
-													<th>CLIENT REMIT AMOUNT</th>
-													<th>FIRM REMIT AMOUNT</th>
-													<th>PRINT CHECKS</th>
-													<th>PRINT INVOICE</th>
-													<th>INVOICE ID</th>
-													<th>GENERATED ON</th>
-													<th>PRINTED ON</th>
-													<th>CONFIRM PRINTING</th>
-													<th>REVERSE INVOICE</th>
-												</tr>
-												</thead>
-												<tbody>
-												<tr>
-													
-												</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
+								<div class="form-group form-horizontal col-md-12">
+                                    <div class="col-md-12">
+                                        <table id="PriviousPostingReports" class="table dataTable table-bordered table-striped">
+                                            <thead>
+                                            <tr> 
+                                                <th>PROVIDER ID</th>
+                                                <th>PROVIDER NAME</th>
+                                                <th>GROSS AMOUNT</th>
+                                                <th>FEES</th>
+                                                <th>CLIENT REMIT AMOUNT</th>
+                                                <th>FIRM REMIT AMOUNT</th>
+                                                <th>PRINT CHECKS</th>
+                                                <th>PRINT INVOICE</th>
+                                                <th>INVOICE ID</th>
+                                                <th>GENERATED ON</th>
+                                                <th>PRINTED ON</th>
+                                                <th>CONFIRM PRINTING</th>
+                                                <th>REVERSE INVOICE</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
 								
 							</div><!-- End of panel-body tab-panel-->
 							</div><!-- End hpanel -->
@@ -141,34 +132,22 @@
 							<div class="hpanel">
 							<div class="panel-heading"></div>
 							<div class="panel-body tab-panel">
-								
-								<div class="form-group form-horizontal col-md-12"> 	 	 	 	 	 	 	
-									<div class="table-responsive">
-										<!--<h4 class="h4-title"> <<< <a href="<?php //echo base_url();?>search/advancedsearch">Advanced Search</a></h4>-->
-										<div class="table-responsive DailySettlementReports">
-											<table cellpadding="1" cellspacing="1" class="table table-bordered table-striped">
-												<thead>
-												<tr>  	 	 	 	 	 	 	 	 	 	 	 	 	
-													<th>PROVIDER ID</th>
-													<th>PROVIDER NAME</th>
-													<th>NUMBER OF CHECKS</th>
-													<th>TOTAL AMOUNT</th>
-													<th>PROCESS INVOICE</th>
-												</tr>
-												</thead>
-												<tbody>
-												<tr>
-													<td>Abraham</td>
-													<td>076 9477 4896</td>
-													<td>076 9477 4896</td>
-													<td>076 9477 4896</td>
-													<td><button type="button" class="btn btn-primary">View Report</button></td>
-												</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
+								<div class="form-group form-horizontal col-md-12">
+                                    <div class="col-md-12">
+                                        <table id="GenerateDailyClientInvoices" class="table dataTable table-bordered table-striped">
+                                            <thead>
+                                            <tr> 
+                                                <th>PROVIDER ID</th>
+                                                <th>PROVIDER NAME</th>
+                                                <th>NUMBER OF CHECKS</th>
+                                                <th>TOTAL AMOUNT</th>
+                                                <th>PROCESS INVOICE</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                                
 								
 							</div><!-- End of panel-body tab-panel-->
 							</div><!-- End hpanel -->
@@ -384,6 +363,33 @@
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
 $(document).ready(function(e) {
+	$("#PriviousPosting_btn").click(function(){
+		var SD = $("input[name=SD_Privious_Posting]").val();
+		var ED = $("input[name=ED_Privious_Posting]").val();
+		$("#PriviousPostingReports").dataTable().fnDestroy();
+		$('#PriviousPostingReports').dataTable( {
+			"ajax": {
+				"url": "get_Privious_Posting_Reports",
+				"data": {"SD_Privious_Posting":SD, "ED_Privious_Posting":ED},
+				"type": "post"
+			},
+			"bPaginate": false,
+			"bLengthChange": false,
+			"bFilter": false,
+			"bInfo": false,
+			"bAutoWidth": false,
+			"bSort": false,
+		});
+	});
+	$('#GenerateDailyClientInvoices').dataTable( {
+		"ajax": "get_Generate_Daily_Client_Invoices",
+		"bPaginate": false,
+		"bLengthChange": false,
+		"bFilter": false,
+		"bInfo": false,
+		"bAutoWidth": false,
+		"bSort": false,
+	});
     $('#CostBalance').dataTable( {
 		"ajax": "get_Cost_Balance",
 		"iDisplayLength": 10,

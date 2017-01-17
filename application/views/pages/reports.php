@@ -299,7 +299,7 @@
                                     </div>
                                     <label class="col-md-2 control-label">Enter date range in month:</label>
                                     <div class="col-md-1">
-                                        <input type="number" name="No_Months" class="form-control input-sm">
+                                        <input type="number" name="No_Months" value="100" class="form-control input-sm">
                                     </div>
                                     <div class="col-md-2">
                                         <button type="button" id="Client_Reports_btn" class="btn btn-primary">Get</button>
@@ -342,7 +342,7 @@
                             <div class="panel-heading"></div>
                             <div class="panel-body tab-panel">
                                 <div class="form-group form-horizontal col-lg-12">
-									<h5 class="h4-title">Client Settlements for last 5 months</h5>
+									<h5 class="h4-title">Client Settlements for last <span class="no-month"></span> months</h5>
                                     <div class="col-md-12">
                                         <table id="ClientSettlements" class="table dataTable table-bordered table-striped">
                                             <thead>
@@ -369,7 +369,7 @@
                             <div class="panel-heading"></div>
                             <div class="panel-body tab-panel">
                                 <div class="form-group form-horizontal col-lg-12">
-									<h5 class="h4-title">Withdrawn Cases for last 5 months</h5>
+									<h5 class="h4-title">Withdrawn Cases for last <span class="no-month"></span> months</h5>
                                     <div class="col-md-12">
                                         <table id="WithdrawnCases" class="table dataTable table-bordered table-striped">
                                             <thead>
@@ -395,7 +395,7 @@
                             <div class="panel-heading"></div>
                             <div class="panel-body tab-panel">
                                 <div class="form-group form-horizontal col-lg-12">
-									<h5 class="h4-title">Client New Cases for last 5 months</h5>
+									<h5 class="h4-title">Client New Cases for last <span class="no-month"></span> months</h5>
                                     <div class="col-md-12">
                                         <table id="ClientNewCases" class="table dataTable table-bordered table-striped">
                                             <thead>
@@ -534,6 +534,8 @@ $(document).ready(function(e) {
 	$("#Client_Reports_btn").click(function(){
 		var Provider_Id = $("#providerId_client").val();
 		var No_Months = $("input[name=No_Months]").val();
+		$(".no-month").text(No_Months);
+/*Load Client_Information table*/
 		$("#Client_Information").dataTable().fnDestroy();
 		$('#Client_Information').dataTable( {
 			"ajax": {
@@ -548,7 +550,7 @@ $(document).ready(function(e) {
 			"bAutoWidth": false,
 			"bSort": false
 		});
-		
+/*Load ClientSettlements table*/		
 		$("#ClientSettlements").dataTable().fnDestroy();
 		$('#ClientSettlements').dataTable( {
 			"ajax": {
@@ -563,6 +565,7 @@ $(document).ready(function(e) {
 			"bAutoWidth": false,
 			"bSort": false
 		});
+/*Load WithdrawnCases table*/
 		$("#WithdrawnCases").dataTable().fnDestroy();
 		$('#WithdrawnCases').dataTable( {
 			"ajax": {
@@ -577,6 +580,7 @@ $(document).ready(function(e) {
 			"bAutoWidth": false,
 			"bSort": false
 		});
+/*Load ClientNewCases table*/
 		$("#ClientNewCases").dataTable().fnDestroy();
 		$('#ClientNewCases').dataTable( {
 			"ajax": {
@@ -591,6 +595,7 @@ $(document).ready(function(e) {
 			"bAutoWidth": false,
 			"bSort": false
 		});
+/*Load ClientInvoices table*/
 		$("#ClientInvoices").dataTable().fnDestroy();
 		$('#ClientInvoices').dataTable( {
 			"ajax": {
@@ -605,6 +610,7 @@ $(document).ready(function(e) {
 			"bAutoWidth": false,
 			"bSort": false
 		});
+/*Load StatusBreakdown table*/
 		$("#StatusBreakdown").dataTable().fnDestroy();
 		$('#StatusBreakdown').dataTable( {
 			"ajax": {
@@ -621,6 +627,7 @@ $(document).ready(function(e) {
 		});
 	});
 	//$('#ClientNewCases tr:last').css("background-color", "red");
+/*Load DailySettlement table*/
 	$("#Daily_Sett_btn").click(function(){
 		var SD = $("input[name=SD_Daily_Sett]").val();
 		var ED = $("input[name=ED_Daily_Sett]").val();
