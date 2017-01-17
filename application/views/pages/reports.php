@@ -600,7 +600,7 @@ $(document).ready(function(e) {
 		$('#ClientInvoices').dataTable( {
 			"ajax": {
 				"url": "get_Client_Invoices",
-				"data": {"Provider_Id":Provider_Id, "No_Months": No_Months},
+				"data": {"Provider_Id":Provider_Id, "No_Months": No_Months, "TableId": "ClientInvoices"},
 				"type": "post"
 			},
 			"bPaginate": false,
@@ -615,7 +615,7 @@ $(document).ready(function(e) {
 		$('#StatusBreakdown').dataTable( {
 			"ajax": {
 				"url": "get_Status_Breakdown",
-				"data": {"Provider_Id":Provider_Id, "No_Months": No_Months},
+				"data": {"Provider_Id":Provider_Id, "No_Months": No_Months, "TableId": "StatusBreakdown"},
 				"type": "post"
 			},
 			"bPaginate": false,

@@ -230,7 +230,7 @@ Class Financials_model extends CI_Model{
 			$this->db->select("t1.*, t2.InjuredParty_FirstName, t2.InjuredParty_LastName, t3.InsuranceCompany_Name, (t2.Claim_Amount-t2.Paid_Amount) as Initial_Balance, ((t1.Settlement_Amount + t1.Settlement_Int)*100/ (t2.Claim_Amount-t2.Paid_Amount))  as Settlement_Percentage");
 		}else if($data['TableId'] == "WithdrawnCases"){
 			$this->db->select("t1.*, t2.InjuredParty_FirstName, t2.InjuredParty_LastName, t3.InsuranceCompany_Name, (t2.Claim_Amount-t2.Paid_Amount) as Initial_Balance, ((t1.Settlement_Amount)*100/ (t2.Claim_Amount-t2.Paid_Amount))  as Settlement_Percentage");
-		}else if($data['TableId'] == "ClientNewCases"){
+		}else if($data['TableId'] == "ClientNewCases" || $data['TableId'] == "StatusBreakdown"){
 			$this->db->select("t1.*, t1.InjuredParty_FirstName, t1.InjuredParty_LastName, t2.InsuranceCompany_Name, (t1.Claim_Amount-t1.Paid_Amount) as Initial_Balance");
 		}
 		
@@ -249,6 +249,13 @@ Class Financials_model extends CI_Model{
 			$this->db->from("dbo_tblcase as t1");
 			$this->db->join("dbo_tblinsurancecompany as t2", "t1.InsuranceCompany_Id = t2.InsuranceCompany_Id" );
 			$this->db->where("t1.Provider_Id", $data['Provider_Id']);
+			$this->db->where('t1.Date_Opened >=', $data['SD']);
+			$this->db->where('t1.Date_Opened <=', $data['ED']);
+		}else if($data['TableId'] == "StatusBreakdown"){
+			$this->db->from("dbo_tblcase as t1");
+			$this->db->join("dbo_tblinsurancecompany as t2", "t1.InsuranceCompany_Id = t2.InsuranceCompany_Id" );
+			$this->db->where("t1.Provider_Id", $data['Provider_Id']);
+			$this->db->where("t1.Status", $data['Status']);
 			$this->db->where('t1.Date_Opened >=', $data['SD']);
 			$this->db->where('t1.Date_Opened <=', $data['ED']);
 		}

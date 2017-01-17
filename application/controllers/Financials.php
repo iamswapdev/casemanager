@@ -462,13 +462,18 @@ class Financials extends CI_Controller{
 	public function get_Status_Breakdown(){
 		$Provider_Id = $this->input->post("Provider_Id");
 		$No_Months = $this->input->post("No_Months");
+		$TableId = $this->input->post("TableId");
+		$Current_Date = date("Y/m/d");
+		$End_Date = date_format(date_sub(date_create($Current_Date),date_interval_create_from_date_string((date("d")-1)." days")), "Y/m/d");
+		$Start_Date = date_format(date_sub(date_create($End_Date),date_interval_create_from_date_string(($No_Months-1)." months")), "Y/m/d");
+		
 		$Tot_Status = 0;
 		$data = array();
 		$list = $this->financials_model->get_Status_Breakdown($Provider_Id, $No_Months);
 		foreach($list as $result){
 			$row = array();
 					 
-			$row[] = "<a class='info-link' target='_blank' href='new_page?No_Months=".$No_Months."&Provider_Id=".$Provider_Id."'>".$result->Status."</a>";
+			$row[] = "<a target='_blank' class='info-link' href='Client_Settlement?Provider_Id=".$Provider_Id."&TableId=".$TableId."&Status=".$result->Status."&SD=".$Start_Date."&ED=".$End_Date."'>".$result->Status."</a>";
 			$row[] = $result->Status_Count;
 			$data[] = $row;
 			$Tot_Status = $Tot_Status + $result->Status_Count; 
@@ -487,7 +492,8 @@ class Financials extends CI_Controller{
 			"Provider_Id" => $this->input->get("Provider_Id"),
 			"SD" => $this->input->get("SD"),
 			"ED" => $this->input->get("ED"),
-			"TableId" => $this->input->get("TableId")
+			"TableId" => $this->input->get("TableId"),
+			"Status" => $this->input->get("Status")
 		);
 		/*$data['TableInfo'] = array(
 			"Provider_Id" => 39,
@@ -508,12 +514,13 @@ class Financials extends CI_Controller{
 		$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 		$this->load->view("pages/Client_Settlement", $data);
 	}
-	public function get_Client_Settlement_Month(){
+	public function get_Client_Report_Month(){
 		$input_data = array(
 			"Provider_Id" => $this->input->post("Provider_Id"),
 			"SD" => $this->input->post("SD"),
 			"ED" => $this->input->post("ED"),
-			"TableId" => $this->input->post("TableId")
+			"TableId" => $this->input->post("TableId"),
+			"Status" => $this->input->post("Status")
 		);
 		/*$input_data = array(
 			"Provider_Id" => "39",
@@ -577,6 +584,31 @@ class Financials extends CI_Controller{
 			$row[] = $Tot_Inial_Balance;
 			$row[] = "";
 			$row[] = "";
+			$data[] = $row;
+		}else if($input_data['TableId'] == "StatusBreakdown"){
+			$Tot_Cases = 0;
+			$Tot_Inial_Balance = 0;
+			
+			foreach($list as $result){
+				$row = array();
+				$row[] = $result->Case_Id;
+				$row[] = $result->InjuredParty_FirstName." ".$result->InjuredParty_LastName;;
+				$row[] = $result->InsuranceCompany_Name;
+				$row[] = date_format(date_create(substr($result->Date_Opened, 0, 10)), "m/d/Y");
+				$row[] = $result->Status;
+				$row[] = "$".number_format($result->Initial_Balance, 2);
+				
+				$Tot_Cases++;
+				$Tot_Inial_Balance = $Tot_Inial_Balance + $result->Initial_Balance;
+				$data[] = $row;
+			}
+			$row = array();
+			$row[] = "Total";
+			$row[] = $Tot_Cases;
+			$row[] = "";
+			$row[] = "";
+			$row[] = "";
+			$row[] = $Tot_Inial_Balance;
 			$data[] = $row;
 		}
 		

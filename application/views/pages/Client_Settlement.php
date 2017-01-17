@@ -106,6 +106,33 @@
         </div><!-- End hpanel -->
         </div><!-- End col-lg-12-->
     </div><!-- End row-->
+    
+    <div class="row StatusBreakdown" style="display:none;">
+        <div class="col-lg-12">
+        <div class="hpanel">
+        <div class="panel-heading"></div>
+        <div class="panel-body tab-panel">
+            <div class="form-group form-horizontal col-lg-12">
+                <h5 class="h4-title"><?php echo $TableInfo['TableId'];?></h5>
+                <div class="col-md-12">
+                    <table id="StatusBreakdown" class="table dataTable table-bordered table-striped">
+                        <thead>
+                        <tr>  	 	 	 
+                            <th>Case ID</th>
+                            <th>Patient</th>
+                            <th>Insurer</th>
+                            <th>Date Opened</th>
+                            <th>Status</th>
+                            <th>Initial Amount</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div><!-- End of panel-body tab-panel-->
+        </div><!-- End hpanel -->
+        </div><!-- End col-lg-12-->
+    </div><!-- End row-->
                         
       
     
@@ -141,46 +168,27 @@
 $(document).ready(function(e) {
 	var TableId = "<?php echo $TableInfo['TableId']?>";
     $("."+TableId).css("display", "block");
-	console.log("TableId:"+TableId);
-	if(TableId == "ClientSettlements" || TableId == "WithdrawnCases"){
-		$('#ClientSettlements').dataTable( {
-			"ajax": {
-				"url": "get_Client_Settlement_Month",
-				"data": {
-					"Provider_Id": "<?php echo $TableInfo['Provider_Id'];?>",
-					"SD": "<?php echo $TableInfo['SD'];?>",
-					"ED": "<?php echo $TableInfo['ED'];?>",
-					"TableId": "<?php echo $TableInfo['TableId'];?>"
-				},
-				"type": "post"
+	
+	$('#'+TableId).dataTable( {
+		"ajax": {
+			"url": "get_Client_Report_Month",
+			"data": {
+				"Provider_Id": "<?php echo $TableInfo['Provider_Id'];?>",
+				"SD": "<?php echo $TableInfo['SD'];?>",
+				"ED": "<?php echo $TableInfo['ED'];?>",
+				"TableId": "<?php echo $TableInfo['TableId'];?>",
+				"Status": "<?php echo $TableInfo['Status'];?>"
 			},
-			"bPaginate": false,
-			"bLengthChange": false,
-			"bFilter": false,
-			"bInfo": false,
-			"bAutoWidth": false,
-			"bSort": false
-		});
-	}else if(TableId == "ClientNewCases"){
-		$('#ClientNewCases').dataTable( {
-			"ajax": {
-				"url": "get_Client_Settlement_Month",
-				"data": {
-					"Provider_Id": "<?php echo $TableInfo['Provider_Id'];?>",
-					"SD": "<?php echo $TableInfo['SD'];?>",
-					"ED": "<?php echo $TableInfo['ED'];?>",
-					"TableId": "<?php echo $TableInfo['TableId'];?>"
-				},
-				"type": "post"
-			},
-			"bPaginate": false,
-			"bLengthChange": false,
-			"bFilter": false,
-			"bInfo": false,
-			"bAutoWidth": false,
-			"bSort": false
-		});
-	}
+			"type": "post"
+		},
+		"bPaginate": false,
+		"bLengthChange": false,
+		"bFilter": false,
+		"bInfo": false,
+		"bAutoWidth": false,
+		"bSort": false
+	});
+		
 	
 });
 
