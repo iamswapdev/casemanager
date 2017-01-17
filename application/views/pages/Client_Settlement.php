@@ -50,7 +50,7 @@
 <?php include 'header_financials.php';?>
 <div class="content animate-panel">
 	
-    <div class="row ClientSettlements" style="display:none;">
+    <div class="row ClientSettlements WithdrawnCases" style="display:none;">
         <div class="col-lg-12">
         <div class="hpanel">
         <div class="panel-heading"></div>
@@ -58,7 +58,7 @@
             <div class="form-group form-horizontal col-lg-12">
                 <h5 class="h4-title"><?php echo $TableInfo['TableId'];?></h5>
                 <div class="col-md-12">
-                    <table id="ClientSettlements" class="table dataTable table-bordered table-striped" style="display:none;">
+                    <table id="ClientSettlements" class="table dataTable table-bordered table-striped">
                         <thead>
                         <tr>  	 	 	 
                             <th>Case ID</th>
@@ -70,8 +70,6 @@
                             <th>Settlement Date </th>
                             <th>Settlement Notes</th>
                             <th>Settlement %age</th>
-                            <th>Status</th>
-                            <th>Date Opened</th>
                         </tr>
                         </thead>
                     </table>
@@ -143,6 +141,7 @@
 $(document).ready(function(e) {
 	var TableId = "<?php echo $TableInfo['TableId']?>";
     $("."+TableId).css("display", "block");
+	console.log("TableId:"+TableId);
 	if(TableId == "ClientSettlements" || TableId == "WithdrawnCases"){
 		$('#ClientSettlements').dataTable( {
 			"ajax": {
@@ -155,17 +154,17 @@ $(document).ready(function(e) {
 				},
 				"type": "post"
 			},
-			"Provider_Id" => 39,
-				"SD" => "2016-02-01",
-				"ED" => "2016-02-29",
-				"TableId" => "ClientNewCases"
-			"iDisplayLength": 10,
-			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+			"bPaginate": false,
+			"bLengthChange": false,
+			"bFilter": false,
+			"bInfo": false,
+			"bAutoWidth": false,
+			"bSort": false
 		});
 	}else if(TableId == "ClientNewCases"){
 		$('#ClientNewCases').dataTable( {
 			"ajax": {
-				"url": "get_Client_New_Cases_Month",
+				"url": "get_Client_Settlement_Month",
 				"data": {
 					"Provider_Id": "<?php echo $TableInfo['Provider_Id'];?>",
 					"SD": "<?php echo $TableInfo['SD'];?>",
@@ -174,12 +173,12 @@ $(document).ready(function(e) {
 				},
 				"type": "post"
 			},
-			"Provider_Id" => 39,
-				"SD" => "2016-02-01",
-				"ED" => "2016-02-29",
-				"TableId" => "ClientNewCases"
-			"iDisplayLength": 10,
-			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+			"bPaginate": false,
+			"bLengthChange": false,
+			"bFilter": false,
+			"bInfo": false,
+			"bAutoWidth": false,
+			"bSort": false
 		});
 	}
 	

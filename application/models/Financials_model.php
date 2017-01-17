@@ -235,7 +235,6 @@ Class Financials_model extends CI_Model{
 		}
 		
 		
-		
 		if($data['TableId'] == "ClientSettlements" || $data['TableId'] == "WithdrawnCases"){
 			$this->db->from("dbo_tblsettlements as t1");
 			$this->db->join("dbo_tblcase as t2", "t2.Case_Id = t1.Case_Id" );
@@ -248,7 +247,7 @@ Class Financials_model extends CI_Model{
 			}
 		}else if($data['TableId'] == "ClientNewCases"){
 			$this->db->from("dbo_tblcase as t1");
-			$this->db->join("dbo_tblinsurancecompany as t2", "t2.InsuranceCompany_Id = t2.InsuranceCompany_Id" );
+			$this->db->join("dbo_tblinsurancecompany as t2", "t1.InsuranceCompany_Id = t2.InsuranceCompany_Id" );
 			$this->db->where("t1.Provider_Id", $data['Provider_Id']);
 			$this->db->where('t1.Date_Opened >=', $data['SD']);
 			$this->db->where('t1.Date_Opened <=', $data['ED']);

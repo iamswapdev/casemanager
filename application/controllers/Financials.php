@@ -483,18 +483,18 @@ class Financials extends CI_Controller{
 		echo json_encode($output);
 	}
 	public function Client_Settlement(){
-		/*$data = array(
+		$data['TableInfo'] = array(
 			"Provider_Id" => $this->input->get("Provider_Id"),
 			"SD" => $this->input->get("SD"),
 			"ED" => $this->input->get("ED"),
 			"TableId" => $this->input->get("TableId")
-		);*/
-		$data['TableInfo'] = array(
+		);
+		/*$data['TableInfo'] = array(
 			"Provider_Id" => 39,
 			"SD" => "2016-02-01",
 			"ED" => "2016-02-29",
 			"TableId" => "ClientNewCases"
-		);
+		);*/
 		/*if($data['TableId'] == "ClientSettlements" || $data['TableId'] == "WithdrawnCases"){
 			$data['ClientSettlements'] = $this->financials_model->get_Client_Settlement_Month($data);
 		}else if($data['TableId'] == "ClientNewCases"){
@@ -508,23 +508,78 @@ class Financials extends CI_Controller{
 		$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 		$this->load->view("pages/Client_Settlement", $data);
 	}
-	public function get_Client_New_Cases_Month(){
-		$data = array(
-			"Provider_Id" => $this->input->get("Provider_Id"),
-			"SD" => $this->input->get("SD"),
-			"ED" => $this->input->get("ED"),
-			"TableId" => $this->input->get("TableId")
+	public function get_Client_Settlement_Month(){
+		$input_data = array(
+			"Provider_Id" => $this->input->post("Provider_Id"),
+			"SD" => $this->input->post("SD"),
+			"ED" => $this->input->post("ED"),
+			"TableId" => $this->input->post("TableId")
 		);
-		$list = $this->financials_model->get_Client_New_Cases_Month($data);
-		//echo "<pre>"; print_r($list);exit;
+		/*$input_data = array(
+			"Provider_Id" => "39",
+			"SD" => "2016-09-01",
+			"ED" => "2016-09-30",
+			"TableId" => "ClientNewCases"
+		);*/
+		$list = $this->financials_model->get_Client_Settlement_Month($input_data);
+		//echo "<pre>".$input_data['TableId']; print_r($input_data);exit;
 		$data = array();
 		$flag = 0;
-		foreach($list as $result){
+		if($input_data['TableId'] == "ClientSettlements" || $input_data['TableId'] == "WithdrawnCases"){
+			$Tot_Cases = 0;
+			$Tot_Inial_Balance = 0;
+			foreach($list as $result){
+				$row = array();
+				$row[] = $result->Case_Id;
+				$row[] = $result->InjuredParty_FirstName." ".$result->InjuredParty_LastName;;
+				$row[] = $result->InsuranceCompany_Name;
+				$row[] = "$".number_format($result->Initial_Balance, 2);
+				$row[] = $result->User_Id;
+				$row[] = "P = $".number_format($result->Settlement_Amount, 2)." I = $".number_format($result->Settlement_Int, 2)." FF = $".number_format($result->Settlement_Ff, 2)." AF = $".number_format($result->Settlement_Af, 2)." Total = $".number_format($result->Settlement_Total, 2);
+				$row[] = date_format(date_create(substr($result->Settlement_Date, 0, 10)), "m/d/Y");
+				$row[] = $result->Settlement_Notes;
+				$row[] = number_format($result->Settlement_Percentage, 2)."%";
+				$Tot_Cases++;
+				$Tot_Inial_Balance = $Tot_Inial_Balance + $result->Initial_Balance;
+				$data[] = $row;
+			}
 			$row = array();
-			$row[] = $result->User_Id;
-				
+			$row[] = "Total";
+			$row[] = $Tot_Cases;
+			$row[] = "";
+			$row[] = $Tot_Inial_Balance;
+			$row[] = "";
+			$row[] = "";
+			$row[] = "";
+			$row[] = "";
+			$row[] = "";
+			$data[] = $row;
+		}else if($input_data['TableId'] == "ClientNewCases"){
+			$Tot_Cases = 0;
+			$Tot_Inial_Balance = 0;
+			
+			foreach($list as $result){
+				$row = array();
+				$row[] = $result->Case_Id;
+				$row[] = $result->InjuredParty_FirstName." ".$result->InjuredParty_LastName;;
+				$row[] = $result->InsuranceCompany_Name;
+				$row[] = "$".number_format($result->Initial_Balance, 2);
+				$row[] = $result->Status;
+				$row[] = date_format(date_create(substr($result->Date_Opened, 0, 10)), "m/d/Y");
+				$Tot_Cases++;
+				$Tot_Inial_Balance = $Tot_Inial_Balance + $result->Initial_Balance;
+				$data[] = $row;
+			}
+			$row = array();
+			$row[] = "Total";
+			$row[] = $Tot_Cases;
+			$row[] = "";
+			$row[] = $Tot_Inial_Balance;
+			$row[] = "";
+			$row[] = "";
 			$data[] = $row;
 		}
+		
 		
 		$output = array( "data" => $data );
 		echo json_encode($output);
