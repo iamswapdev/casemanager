@@ -213,6 +213,8 @@ class Financials extends CI_Controller{
 		$output = array( "data" => $data );
 		echo json_encode($output);*/
 	}
+
+/********************************************** Report page **************************************************/
 /*get daily sett table*/
 	public function get_Daily_Sett(){
 		$Start_Date = date_format(date_create($this->input->post("SD_Daily_Sett")), 'Y/m/d');
@@ -222,6 +224,20 @@ class Financials extends CI_Controller{
 		//echo "<pre>"; print_r($list);exit;
 		$data = array();
 		$flag = 0;
+		$count = 0;
+		$first_row = 0;
+		$User_Id = "";
+		$Tot_Case_Count = 0;
+		$Tot_Balance = 0;
+		$Tot_Sett_Amount = 0;
+		$Tot_FF = 0;
+		$Tot_AF = 0;
+		
+		$Fin_Case_Count = 0;
+		$Fin_Balance = 0;
+		$Fin_Sett_Amount = 0;
+		$Fin_FF = 0;
+		$Fin_AF = 0;
 		foreach($list as $result){
 			if($Sett_Perc == "0"){
 				if($result->Settlement_Per <= 0){ $flag = 1; }else{ $flag = 0;}
@@ -232,21 +248,102 @@ class Financials extends CI_Controller{
 			}else{ $flag = 1;}
 			if($flag == 1){
 				$row = array();
-				$row[] = $result->User_Id;
-				$row[] = $result->InsuranceCompany_Name;
+				$count++;
+				if($User_Id != $result->User_Id){
+					if($first_row !=0){
+					$row[] = "";
+					$row[] = "TOTAL CASES SETTLED BY -  ".$User_Id;
+					$row[] = $Tot_Case_Count;
+					$Fin_Case_Count = $Fin_Case_Count + $Tot_Case_Count;
+					$row[] = "$".number_format($Tot_Balance, 2);
+					$Fin_Balance = $Fin_Balance + $Tot_Balance;
+					$row[] = "$".number_format($Tot_Sett_Amount, 2);
+					$Fin_Sett_Amount = $Fin_Sett_Amount + $Tot_Sett_Amount;
+					$row[] = "$".number_format($Tot_FF, 2);
+					$Fin_FF = $Fin_FF + $Tot_FF;
+					$row[] = "$".number_format($Tot_AF, 2);
+					$Fin_AF = $Fin_AF + $Tot_AF;
+					$row[] = number_format(($Tot_Sett_Amount*100)/$Tot_Balance, 2)."%";
+					$data[] = $row;
+					}
+					$first_row = 1;
+					$row = array();
+					$row[] = $result->User_Id;
+					$User_Id = $result->User_Id;
+					$count = 1;
+					
+					
+					$Tot_Case_Count = 0;
+					$Tot_Balance = 0;
+					$Tot_Sett_Amount = 0;
+					$Tot_FF = 0;
+					$Tot_AF = 0;
+				}else{
+					$row[] = "";
+					
+				}
+				$Tot_Case_Count = $Tot_Case_Count + $result->No_Of_Case;
+				$Tot_Balance = $Tot_Balance + $result->Balance;
+				$Tot_Sett_Amount = $Tot_Sett_Amount + $result->Settlement_Amount + $result->Settlement_Int;
+				$Tot_FF = $Tot_FF + $result->Settlement_Ff;
+				$Tot_AF = $Tot_AF + $result->Settlement_Af;
+					
+				$row[] = "<a target='_blank' class='info-link' href='Daily_Settlement?InsuranceCompany_Id=".$result->InsuranceCompany_Id."&SD=".$Start_Date."&ED=".$End_Date."&User_Id=".$result->User_Id."'>".$result->InsuranceCompany_Name."</a>";
 				$row[] = $result->No_Of_Case;
 				$row[] = "$".number_format($result->Balance, 2);
 				$row[] = "$".number_format($result->Settlement_Amount, 2)." & "."$".number_format($result->Settlement_Int, 2);
 				$row[] = "$".number_format($result->Settlement_Ff, 2);
 				$row[] = "$".number_format($result->Settlement_Af, 2);
-				$row[] = number_format($result->Settlement_Per, 2);
+				$row[] = number_format($result->Settlement_Per, 2)."%";
 				
 				$data[] = $row;
 			}
 		}
+		$row = array();
+		$row[] = "<input type='hidden' class='HiddenField' />";
+		$row[] = "TOTAL CASES SETTLED BY -  ".$User_Id;
+		$row[] = $Tot_Case_Count;
+		$Fin_Case_Count = $Fin_Case_Count + $Tot_Case_Count;
+		$row[] = "$".number_format($Tot_Balance, 2);
+		$Fin_Balance = $Fin_Balance + $Tot_Balance;
+		$row[] = "$".number_format($Tot_Sett_Amount, 2);
+		$Fin_Sett_Amount = $Fin_Sett_Amount + $Tot_Sett_Amount;
+		$row[] = "$".number_format($Tot_FF, 2);
+		$Fin_FF = $Fin_FF + $Tot_FF;
+		$row[] = "$".number_format($Tot_AF, 2);
+		$Fin_AF = $Fin_AF + $Tot_AF;
+		$row[] = number_format(($Tot_Sett_Amount*100)/$Tot_Balance, 2)."%";
+		$data[] = $row;
+		
+		$row = array();
+		$row[] = "TOTAL CASES SETTLED";
+		$row[] = "<a target='_blank' class='info-link' href='Daily_Settlement?SD=".$Start_Date."&ED=".$End_Date."'>GET ALL CASES</a>";
+				$row[] = $result->No_Of_Case;
+		$row[] = $Fin_Case_Count;
+		$row[] = "$".number_format($Fin_Balance, 2);
+		$row[] = "$".number_format($Fin_Sett_Amount, 2);
+		$row[] = "$".number_format($Fin_FF, 2);
+		$row[] = "$".number_format($Fin_AF, 2);
+		$row[] = number_format(($Fin_Sett_Amount*100)/$Fin_Balance, 2)."%";
+		$data[] = $row;
 		
 		$output = array( "data" => $data );
 		echo json_encode($output);
+	}
+	public function Daily_Settlement(){
+		if(isset($this->session->userdata['logged_in'])){
+			$data['TableInfo'] = array(
+				"InsuranceCompany_Id" => $this->input->get("InsuranceCompany_Id"),
+				"SD" => $this->input->get("SD"),
+				"ED" => $this->input->get("ED"),
+				"User_Id" => $this->input->get("User_Id")
+			);
+			$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
+			$this->load->view("pages/Daily_Settlement", $data);
+		}else{
+			$CurrentPage['CurrentUrl'] = "financials/reports";
+			$this->load->view('pages/login', $CurrentPage);
+		}
 	}
 /* get 0 Settlement Amount and overdue settlement Repots- tab 2*/
 	public function get_Zero_Settlement(){
@@ -374,12 +471,12 @@ class Financials extends CI_Controller{
 	}
 /*get_Client_New_Settlement for last few months*/
 	public function  get_Client_New_Settlement(){
-		/*$Provider_Id = $this->input->post("Provider_Id");
+		$Provider_Id = $this->input->post("Provider_Id");
 		$No_Months = $this->input->post("No_Months");
-		$TableId = $this->input->post("TableId");*/
-		$Provider_Id = 39;
+		$TableId = $this->input->post("TableId");
+		/*$Provider_Id = 39;
 		$No_Months = 20;
-		$TableId = "ClientNewCases";
+		$TableId = "ClientNewCases";*/
 		$data = array();
 		$Tot_Case_Count = 0;
 		$Tot_Sum_of_Billed_Amount = 0;

@@ -636,8 +636,9 @@ $(document).ready(function(e) {
 		var SD = $("input[name=SD_Daily_Sett]").val();
 		var ED = $("input[name=ED_Daily_Sett]").val();
 		var Sett_Perc = $("#Sett_Perc").val();
-		$("#DailySettlement").dataTable().fnDestroy();
-		$('#DailySettlement').dataTable( {
+		var table ="";
+		 $("#DailySettlement").dataTable().fnDestroy();
+		 $('#DailySettlement').dataTable( {
 			"ajax": {
 				"url": "get_Daily_Sett",
 				"data": {"SD_Daily_Sett":SD, "ED_Daily_Sett":ED, "Sett_Perc": Sett_Perc},
@@ -650,6 +651,9 @@ $(document).ready(function(e) {
 			"bAutoWidth": false,
 			"bSort": false
 		});
+		//row = table.row("tr");
+		//$(row).addClass("qwerty");
+		
 	});
 	$("#OverdueSettlement_btn").click(function(){
 		var SD = $("input[name=SD_OverdueSettlement]").val();
@@ -671,6 +675,10 @@ $(document).ready(function(e) {
 			"bSort": false
 		});
 	});
+	
+	$("#DailySettlement").find(".HiddenField").remove();
+	$("#DailySettlement").find('td').addClass('myClass');
+	
 	
 });//End of Document
 </script>
