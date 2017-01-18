@@ -285,5 +285,26 @@ Class Financials_model extends CI_Model{
 		return $query->result();
 	}
 
+
+
+
+/* get client invoices all tables when clicked on account id*/
+	public function get_Collections($input_data){
+		$this->db->select("t1.Case_Id, t2.InjuredParty_FirstName, t2.InjuredParty_LastName, t2.Accident_Date, t2.DateOfService_Start, t2.DateOfService_End, t2.Claim_Amount, t1.Transactions_Type, t1.Transactions_Description, t1.Transactions_Date, t1.Transactions_Amount, t2.IndexOrAAA_Number");
+		$this->db->from("dbo_tbltransactions as t1");
+		$this->db->join("dbo_tblcase as t2", "t1.Case_Id = t2.Case_Id" );
+		
+		$this->db->where('t1.Invoice_Id', $input_data['Account_Id']);
+		$this->db->where('t1.Provider_Id', $input_data['Provider_Id']);
+		if($input_data['Table_Id'] == "Collections"){
+			$this->db->where("(t1.Transactions_Type='C' OR t1.Transactions_Type='I')", NULL, FALSE);
+		}else{
+			$this->db->where('t1.Transactions_Type', "EXP");
+		}
+		
+		
+		$query = $this->db->get();
+		return $query->result();
+	}
 }
 ?>

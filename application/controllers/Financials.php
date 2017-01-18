@@ -138,7 +138,7 @@ class Financials extends CI_Controller{
 			$row[] = $result->Provider_Name;
 			$row[] = $result->No_of_Checks;
 			$row[] = "$".number_format($result->Total_Amount, 2);
-			$row[] = "";
+			$row[] = "<a target='_blank' class='info-link' href=''>View Report</a>";
 			
 			$data[] = $row;
 			$Total_Amount = $Total_Amount + $result->Total_Amount;
@@ -200,18 +200,24 @@ class Financials extends CI_Controller{
 	}
 /* get exp cost balance Financials- tab 5 */
 	public function get_Exp_Cost_Balance(){
-		/*$list = $this->financials_model->get_Exp_Cost_Balance();
+		$list = $this->financials_model->get_Exp_Cost_Balance();
 		//echo "<pre>"; print_r($list);exit;
 		$data = array();
 		foreach($list as $result){
 			$row = array();
-			$row[] = ;
+			$row[] = "<input type='checkbox' />";
 			$row[] = $result->Provider_Name;
-			$row[] = ;
+			$row[] = $result->InsuranceCompany_Name;
+			$row[] = $result->Case_Id;
+			$row[] = $result->Exp_Cost;
+			$row[] = $result->FFB;
+			$row[] = $result->FFC;
+			$row[] = $result->FFREC;
+			$row[] = "";
 		}
 		
 		$output = array( "data" => $data );
-		echo json_encode($output);*/
+		echo json_encode($output);
 	}
 
 /********************************************** Report page **************************************************/
@@ -573,7 +579,7 @@ class Financials extends CI_Controller{
 			foreach($list as $result){
 				$row = array();
 						 
-				$row[] = "<a target='_blank' class='info-link' href='Client_Settlement?Provider_Id=".$Provider_Id."&No_Months=".$No_Months."&TableId=".$TableId."'>".$result->Account_Id."</a>";
+				$row[] = "<a target='_blank' class='info-link' href='Client_Settlement?Provider_Id=".$Provider_Id."&No_Months=".$No_Months."&TableId=".$TableId."&Account_Id=".$result->Account_Id."'>".$result->Account_Id."</a>";
 				
 				$row[] = "$".number_format($result->Gross_Amount, 2);
 				$row[] = "$".number_format($result->Firm_Fees, 2);
@@ -642,7 +648,8 @@ class Financials extends CI_Controller{
 				"SD" => $this->input->get("SD"),
 				"ED" => $this->input->get("ED"),
 				"TableId" => $this->input->get("TableId"),
-				"Status" => $this->input->get("Status")
+				"Status" => $this->input->get("Status"),
+				"Account_Id" => $this->input->get("Account_Id")
 			);
 			$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
 			$this->load->view("pages/Client_Settlement", $data);
@@ -729,7 +736,7 @@ class Financials extends CI_Controller{
 			foreach($list as $result){
 				$row = array();
 				$row[] = $result->Case_Id;
-				$row[] = $result->InjuredParty_FirstName." ".$result->InjuredParty_LastName;;
+				$row[] = $result->InjuredParty_FirstName." ".$result->InjuredParty_LastName;
 				$row[] = $result->InsuranceCompany_Name;
 				$row[] = date_format(date_create(substr($result->Date_Opened, 0, 10)), "m/d/Y");
 				$row[] = $result->Status;
@@ -749,6 +756,60 @@ class Financials extends CI_Controller{
 			$data[] = $row;
 		}
 		
+		
+		$output = array( "data" => $data );
+		echo json_encode($output);
+	}
+	public function get_Collections(){
+		$input_data = array(
+			"Provider_Id" => $this->input->post("Provider_Id"),
+			"Account_Id" => $this->input->post("Account_Id"),
+			"Table_Id" => $this->input->post("Table_Id")
+		);
+		$list = $this->financials_model->get_Collections($input_data);
+		//echo "pp:".$input_data['Table_Id']."G"; exit;//print_r($input_data);exit;
+		$data = array();
+		$Tot_Transactions_Amount = 0;
+		$noRows = 1;
+		foreach($list as $result){
+			$row = array();
+			
+			$row[] = $noRows;
+			$row[] = $result->Case_Id;
+			$row[] = $result->InjuredParty_FirstName." ".$result->InjuredParty_LastName;
+			$row[] = date_format(date_create(substr($result->Accident_Date, 0, 10)), "m/d/Y");
+			$row[] = $result->DateOfService_Start." - ".$result->DateOfService_End;
+			$row[] = "$".number_format($result->Claim_Amount, 2);
+			$row[] = $result->Transactions_Type;
+			$row[] = $result->Transactions_Description;
+			if($input_data['Table_Id'] == "Collections"){
+				$row[] = date_format(date_create(substr($result->Transactions_Date, 0, 10)), "m/d/Y");
+			}else{
+				$row[] = $result->IndexOrAAA_Number;
+			}
+			$row[] = "$".number_format($result->Transactions_Amount, 2);
+			if($input_data['Table_Id'] == "Collections"){
+				$row[] = "";
+			}
+			$noRows++;
+			$Tot_Transactions_Amount = $Tot_Transactions_Amount + $result->Transactions_Amount;
+			$data[] = $row;
+		}
+		$row = array();
+		$row[] = "Total";
+		$row[] = "";
+		$row[] = "";
+		$row[] = "";
+		$row[] = "";
+		$row[] = "";
+		$row[] = "";
+		$row[] = "";
+		$row[] = "";
+		$row[] = "$".number_format($Tot_Transactions_Amount, 2);
+		if($input_data['Table_Id'] == "Collections"){
+			$row[] = "";
+		}
+		$data[] = $row;
 		
 		$output = array( "data" => $data );
 		echo json_encode($output);

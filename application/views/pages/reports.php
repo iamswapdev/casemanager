@@ -100,7 +100,7 @@
 							<div class="hpanel">
 							<div class="panel-heading"></div>
 							<div class="panel-body tab-panel">
-								<div class="form-group form-horizontal col-lg-12">
+								<div class="form-group form-horizontal col-lg-12 responsive">
 									<h5 class="h4-title">Daily Settlement Reports</h5>
                                     <div class="col-md-12">
                                         <table id="DailySettlement" class="table dataTable table-bordered table-striped">
@@ -208,12 +208,12 @@
 							</div><!-- End hpanel -->
 							</div><!-- End col-lg-12-->
 						</div><!-- End row-->
-						<div class="row">
+						<div class="row Cases0Settlement" style="display:none;">
                             <div class="col-lg-12">
                             <div class="hpanel">
                             <div class="panel-heading"></div>
                             <div class="panel-body tab-panel">
-                                <div class="form-group form-horizontal col-lg-12">
+                                <div class="form-group form-horizontal col-lg-12 responsive">
 									<h5 class="h4-title">Cases for 0 Settlement Amount</h5>
                                     <div class="col-md-12">
                                         <table id="Cases0Settlement" class="table dataTable table-bordered table-striped">
@@ -238,7 +238,7 @@
                             </div><!-- End col-lg-12-->
                         </div><!-- End row-->
                         
-                        <div class="row">
+                        <div class="row OverdueSettlement" style="display:none;">
                             <div class="col-lg-12">
                             <div class="hpanel">
                             <div class="panel-heading"></div>
@@ -316,7 +316,7 @@
                             <div class="hpanel">
                             <div class="panel-heading"></div>
                             <div class="panel-body tab-panel">
-                                <div class="form-group form-horizontal col-lg-12">
+                                <div class="form-group form-horizontal col-lg-12 responsive">
 									<h5 class="h4-title">Client Information</h5>
                                     <div class="col-md-12">
                                         <table id="Client_Information" class="table dataTable table-bordered table-striped">
@@ -341,7 +341,7 @@
                             <div class="hpanel">
                             <div class="panel-heading"></div>
                             <div class="panel-body tab-panel">
-                                <div class="form-group form-horizontal col-lg-12">
+                                <div class="form-group form-horizontal col-lg-12 responsive">
 									<h5 class="h4-title">Client Settlements for last <span class="no-month"></span> months</h5>
                                     <div class="col-md-12">
                                         <table id="ClientSettlements" class="table dataTable table-bordered table-striped">
@@ -368,7 +368,7 @@
                             <div class="hpanel">
                             <div class="panel-heading"></div>
                             <div class="panel-body tab-panel">
-                                <div class="form-group form-horizontal col-lg-12">
+                                <div class="form-group form-horizontal col-lg-12 responsive">
 									<h5 class="h4-title">Withdrawn Cases for last <span class="no-month"></span> months</h5>
                                     <div class="col-md-12">
                                         <table id="WithdrawnCases" class="table dataTable table-bordered table-striped">
@@ -394,7 +394,7 @@
                             <div class="hpanel">
                             <div class="panel-heading"></div>
                             <div class="panel-body tab-panel">
-                                <div class="form-group form-horizontal col-lg-12">
+                                <div class="form-group form-horizontal col-lg-12 responsive">
 									<h5 class="h4-title">Client New Cases for last <span class="no-month"></span> months</h5>
                                     <div class="col-md-12">
                                         <table id="ClientNewCases" class="table dataTable table-bordered table-striped">
@@ -418,7 +418,7 @@
                             <div class="hpanel">
                             <div class="panel-heading"></div>
                             <div class="panel-body tab-panel">
-                                <div class="form-group form-horizontal col-lg-12">
+                                <div class="form-group form-horizontal col-lg-12 responsive">
 									<h5 class="h4-title">Client Invoices</h5>
                                     <div class="col-md-12">
                                         <table id="ClientInvoices" class="table dataTable table-bordered table-striped">
@@ -446,7 +446,7 @@
                             <div class="hpanel">
                             <div class="panel-heading"></div>
                             <div class="panel-body tab-panel">
-                                <div class="form-group form-horizontal col-lg-12">
+                                <div class="form-group form-horizontal col-lg-12 responsive">
 									<h5 class="h4-title">Status Breakdown </h5>
                                     <div class="col-md-12">
                                         <table id="StatusBreakdown" class="table dataTable table-bordered table-striped">
@@ -515,14 +515,17 @@
 
 <script>
 $(document).ready(function(e) {
-	$("#Cases0Settlement_btn").click(function(){
-		var SD = $("input[name=SD_0Settlement]").val();
-		var ED = $("input[name=ED_0Settlement]").val();
-		$("#Cases0Settlement").dataTable().fnDestroy();
-		$('#Cases0Settlement').dataTable( {
+/*Load DailySettlement table*/
+	$("#Daily_Sett_btn").click(function(){
+		var SD = $("input[name=SD_Daily_Sett]").val();
+		var ED = $("input[name=ED_Daily_Sett]").val();
+		var Sett_Perc = $("#Sett_Perc").val();
+		var table ="";
+		 $("#DailySettlement").dataTable().fnDestroy();
+		 $('#DailySettlement').dataTable( {
 			"ajax": {
-				"url": "get_Zero_Settlement",
-				"data": {"SD_0Settlement":SD, "ED_0Settlement":ED, "name": "Cases0Settlement"},
+				"url": "get_Daily_Sett",
+				"data": {"SD_Daily_Sett":SD, "ED_Daily_Sett":ED, "Sett_Perc": Sett_Perc},
 				"type": "post"
 			},
 			"bPaginate": false,
@@ -532,6 +535,10 @@ $(document).ready(function(e) {
 			"bAutoWidth": false,
 			"bSort": false
 		});
+		//row = table.row("tr");
+		//$(row).addClass("qwerty");
+		$("#DailySettlement tbody tr").find("input").css("display", "none");
+		//$(".DailySettlement").css("display", "block");
 	});
 /*****Start from here */
 	$("#Client_Reports_btn").click(function(){
@@ -631,17 +638,15 @@ $(document).ready(function(e) {
 		});
 	});
 	//$('#ClientNewCases tr:last').css("background-color", "red");
-/*Load DailySettlement table*/
-	$("#Daily_Sett_btn").click(function(){
-		var SD = $("input[name=SD_Daily_Sett]").val();
-		var ED = $("input[name=ED_Daily_Sett]").val();
-		var Sett_Perc = $("#Sett_Perc").val();
-		var table ="";
-		 $("#DailySettlement").dataTable().fnDestroy();
-		 $('#DailySettlement').dataTable( {
+
+	$("#Cases0Settlement_btn").click(function(){
+		var SD = $("input[name=SD_0Settlement]").val();
+		var ED = $("input[name=ED_0Settlement]").val();
+		$("#Cases0Settlement").dataTable().fnDestroy();
+		$('#Cases0Settlement').dataTable( {
 			"ajax": {
-				"url": "get_Daily_Sett",
-				"data": {"SD_Daily_Sett":SD, "ED_Daily_Sett":ED, "Sett_Perc": Sett_Perc},
+				"url": "get_Zero_Settlement",
+				"data": {"SD_0Settlement":SD, "ED_0Settlement":ED, "name": "Cases0Settlement"},
 				"type": "post"
 			},
 			"bPaginate": false,
@@ -651,9 +656,7 @@ $(document).ready(function(e) {
 			"bAutoWidth": false,
 			"bSort": false
 		});
-		//row = table.row("tr");
-		//$(row).addClass("qwerty");
-		
+		$(".Cases0Settlement").css("display", "block");
 	});
 	$("#OverdueSettlement_btn").click(function(){
 		var SD = $("input[name=SD_OverdueSettlement]").val();
@@ -674,6 +677,7 @@ $(document).ready(function(e) {
 			"bAutoWidth": false,
 			"bSort": false
 		});
+		$(".OverdueSettlement").css("display", "block");
 	});
 	
 	$("#DailySettlement").find(".HiddenField").remove();

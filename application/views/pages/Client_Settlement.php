@@ -140,7 +140,7 @@
                         <tr>  	
                         	<th>#</th> 	 	 
                             <th>Case ID</th>
-                            <th>Injurer</th>
+                            <th>INJURED</th>
                             <th>DOA</th>
                             <th>DOS</th>
                             <th>CLAIM</th>
@@ -159,7 +159,8 @@
                 <div class="col-md-12">
                     <table id="FessCostsExpended" class="table dataTable table-bordered table-striped">
                         <thead>
-                        <tr>  	
+                        <tr>  
+                        	<th>#</th> 	
                         	<th>Case ID</th>
                             <th>Injurer</th>
                             <th>DOA</th>
@@ -327,6 +328,57 @@ $(document).ready(function(e) {
 				"ED": "<?php echo $TableInfo['ED'];?>",
 				"TableId": "<?php echo $TableInfo['TableId'];?>",
 				"Status": "<?php echo $TableInfo['Status'];?>"
+			},
+			"type": "post"
+		},
+		"bPaginate": false,
+		"bLengthChange": false,
+		"bFilter": false,
+		"bInfo": false,
+		"bAutoWidth": false,
+		"bSort": false
+	});
+	$('#Collections').dataTable( {
+		"ajax": {
+			"url": "get_Collections",
+			"data": {
+				"Provider_Id": "<?php echo $TableInfo['Provider_Id'];?>",
+				"Table_Id": "Collections",
+				"Account_Id": "<?php echo $TableInfo['Account_Id'];?>"
+			},
+			"type": "post"
+		},
+		"bPaginate": false,
+		"bLengthChange": false,
+		"bFilter": false,
+		"bInfo": false,
+		"bAutoWidth": false,
+		"bSort": false
+	});
+	$('#FessCostsExpended').dataTable( {
+		"ajax": {
+			"url": "get_Collections",
+			"data": {
+				"Provider_Id": "<?php echo $TableInfo['Provider_Id'];?>",
+				"Table_Id": "FessCostsExpended",
+				"Account_Id": "<?php echo $TableInfo['Account_Id'];?>"
+			},
+			"type": "post"
+		},
+		"bPaginate": false,
+		"bLengthChange": false,
+		"bFilter": false,
+		"bInfo": false,
+		"bAutoWidth": false,
+		"bSort": false
+	});
+	$('#ProviderDetails').dataTable( {
+		"ajax": {
+			"url": "get_Provider_Details",
+			"data": {
+				"Provider_Id": "<?php echo $TableInfo['Provider_Id'];?>",
+				"Table_Id": "FessCostsExpended",
+				"Account_Id": "<?php echo $TableInfo['Account_Id'];?>"
 			},
 			"type": "post"
 		},

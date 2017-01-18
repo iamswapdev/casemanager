@@ -86,12 +86,12 @@
 							</div><!-- End hpanel -->
 							</div><!-- End col-lg-12-->
 						</div><!-- End row-->
-						<div class="row">
+						<div class="row PriviousPostingReports" style="display:none;">
 							<div class="col-lg-12">
 							<div class="hpanel">
 							<div class="panel-heading"></div>
 							<div class="panel-body tab-panel">
-								<div class="form-group form-horizontal col-md-12">
+								<div class="form-group form-horizontal col-lg-12 responsive">
                                     <div class="col-md-12">
                                         <table id="PriviousPostingReports" class="table dataTable table-bordered table-striped">
                                             <thead>
@@ -114,7 +114,6 @@
                                         </table>
                                     </div>
                                 </div>
-								
 							</div><!-- End of panel-body tab-panel-->
 							</div><!-- End hpanel -->
 							</div><!-- End col-lg-12-->
@@ -182,7 +181,7 @@
 							</div><!-- End col-lg-12-->
 						</div><!-- End row-->
 
-						<div class="row">
+						<div class="row FirmFees" style="display:none;">
 							<div class="col-lg-12">
 							<div class="hpanel">
 							<div class="panel-heading"></div>
@@ -376,6 +375,7 @@ $(document).ready(function(e) {
 			"bAutoWidth": false,
 			"bSort": false,
 		});
+		$(".PriviousPostingReports").css("display", "block");
 	});
 	$('#GenerateDailyClientInvoices').dataTable( {
 		"ajax": "get_Generate_Daily_Client_Invoices",
@@ -406,13 +406,14 @@ $(document).ready(function(e) {
 			"iDisplayLength": 10,
 			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 		});
+		$(".FirmFees").css("display", "block");
 	});
-	/*$('#ExpCostBalance').dataTable( {
+	$('#ExpCostBalance').dataTable( {
 		"ajax": "get_Exp_Cost_Balance",
 		"iDisplayLength": 10,
 		"aLengthMenu": [5, 10, 20, 25, 50, "All"],
 		"bSort": false,
-	});*/
+	});
 	
 	
 	$('.datepicking').datepicker({
