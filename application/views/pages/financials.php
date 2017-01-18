@@ -79,10 +79,6 @@
 										<div class="col-md-2">
 											<button type="button" id="PriviousPosting_btn" class="btn btn-primary">Get</button>
 										</div>
-										
-									</div>
-									<div class="form-group form-horizontal col-md-12">
-										<label class="col-md-2 control-label">Click <a href="#">here</a> to set Check Date</label>
 									</div>
 								</form>
 								

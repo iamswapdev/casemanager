@@ -133,6 +133,162 @@
         </div><!-- End hpanel -->
         </div><!-- End col-lg-12-->
     </div><!-- End row-->
+    
+    <div class="row ClientInvoices" style="display:none;">
+        <div class="col-lg-12">
+        <div class="hpanel">
+        <div class="panel-heading"></div>
+        <div class="panel-body tab-panel">
+            <div class="form-group form-horizontal col-lg-12">
+                <h5 class="h4-title">COLLECTIONS FOR THE CURRENT INVOICE PERIOD</h5>
+                <div class="col-md-12">
+                    <table id="Collections" class="table dataTable table-bordered table-striped">
+                        <thead>
+                        <tr>  	
+                        	<th>#</th> 	 	 
+                            <th>Case ID</th>
+                            <th>Injurer</th>
+                            <th>DOA</th>
+                            <th>DOS</th>
+                            <th>CLAIM</th>
+                            <th>TYPE</th>
+                            <th>DESC</th>
+                            <th>DATE</th>
+                            <th>COLLECTED</th>
+                            <th>FEES</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group form-horizontal col-lg-12">
+                <h5 class="h4-title">FEES AND COSTS EXPENDED BY FIRM FOR THE CURRENT INVOICE PERIOD</h5>
+                <div class="col-md-12">
+                    <table id="FessCostsExpended" class="table dataTable table-bordered table-striped">
+                        <thead>
+                        <tr>  	
+                        	<th>Case ID</th>
+                            <th>Injurer</th>
+                            <th>DOA</th>
+                            <th>DOS</th>
+                            <th>CLAIM</th>
+                            <th>TYPE</th>
+                            <th>DESC</th>
+                            <th>INDEX / AAA#</th>
+                            <th>COST</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group form-horizontal col-lg-12">
+                <h5 class="h4-title">CREDITS TO THE PROVIDER FOR THE CURRENT INVOICE PERIOD</h5>
+                <div class="col-md-12">
+                    <table id="CreditsToProvider" class="table dataTable table-bordered table-striped">
+                        <thead>
+                        <tr>  	
+                        	<th>Case ID</th>
+                            <th>Injurer</th>
+                            <th>DOA</th>
+                            <th>DOS</th>
+                            <th>CLAIM</th>
+                            <th>TYPE</th>
+                            <th>DESC</th>
+                            <th>INDEX / AAA#</th>
+                            <th>COST CREDIT</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group form-horizontal col-lg-12">
+                <h5 class="h4-title">FEES AND COSTS RECEIVED BY FIRM FROM THE CARRIER FOR THE CURRENT INVOICE PERIOD</h5>
+                <div class="col-md-12">
+                    <table id="FeesCostsReceived" class="table dataTable table-bordered table-striped">
+                        <thead>
+                        <tr>  	
+                        	<th>Case ID</th>
+                            <th>Injurer</th>
+                            <th>DOA</th>
+                            <th>DOS</th>
+                            <th>CLAIM</th>
+                            <th>TYPE</th>
+                            <th>DESC</th>
+                            <th>INDEX / AAA#</th>
+                            <th>COST CREDIT</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group form-horizontal col-lg-12">
+                <h5 class="h4-title">PROVIDER DETAILS</h5>
+                <div class="col-md-12">
+                    <table id="ProviderDetails" class="table dataTable table-bordered table-striped">
+                        <thead>
+                        <tr>  	
+                        	<th>PROVIDER ID</th>
+                            <th>PROVIDER NAME</th>
+                            <th>PREVIOUS COSTS</th>
+                            <th>COLLECTION %AGE</th>
+                            <th>INTEREST %AGE</th>
+                            <th>INVOICE TYPE</th>
+                            <th>PROVIDER BILLED FOR FF</th>
+                            <th>PROVIDER REIMBURSED FOR FF</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group form-horizontal col-lg-12">
+                <h5 class="h4-title">PROVIDER DETAILS</h5>
+                <div class="col-md-12">
+                    <table id="FinalClientInvoices" class="table dataTable table-bordered table-striped">
+                        <thead>
+                        <tr>  	
+                        	<th>[A] - GROSS AMOUNT COLLECTED </th>
+                            <td>testtesttesttesttesttesttesttesttesttest</td>
+                        </tr>
+                        <tr>  	
+                        	<th>[B] - LEGAL FEES </th>
+                            <td>testtesttesttesttesttesttesttesttesttest</td>
+                        </tr>
+                        <tr>  	
+                        	<th>[C] - PREVIOUS COSTS </th>
+                            <td>testtesttesttesttesttesttesttesttesttest</td>
+                        </tr>
+                        <tr>  	
+                        	<th>[D] - COSTS EXPENDED </th>
+                            <td>testtesttesttesttesttesttesttesttesttest</td>
+                        </tr>
+                        <tr>  	
+                        	<th>[E] - CREDITS TO THE CLIENT</th>
+                            <td>testtesttesttesttesttesttesttesttesttest</td>
+                        </tr>
+                        <tr>  	
+                        	<th>[F] - RECEIVED FEES & COSTS FROM INSURER, CR TO CLIENT </th>
+                            <td>testtesttesttesttesttesttesttesttesttest</td>
+                        </tr>
+                        <tr>  	
+                        	<th>[G=A-B-C-D+E+F] - FINAL REMITTANCE TO CLIENT </th>
+                            <td>testtesttesttesttesttesttesttesttesttest</td>
+                        </tr>
+                        <tr>  	
+                        	<th>[H=B+C+D-E-F] - FINAL REMITTANCE TO FIRM </th>
+                            <td>testtesttesttesttesttesttesttesttesttest</td>
+                        </tr>
+                        <tr>  	
+                        	<th>NEW BALANCE DUE FROM CLIENT </th>
+                            <td>testtesttesttesttesttesttesttesttesttest</td>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div><!-- End of panel-body tab-panel-->
+        </div><!-- End hpanel -->
+        </div><!-- End col-lg-12-->
+    </div><!-- End row-->
                         
       
     

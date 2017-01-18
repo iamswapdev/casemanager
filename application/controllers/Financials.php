@@ -41,6 +41,7 @@ class Financials extends CI_Controller{
 				$data['Provider_Name']= $this->search_model->get_Provider();
 				$data['InsuranceCompany_Name']= $this->search_model->get_Insurance();
 				$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
+				$data['RoleId'] = $this->session->userdata['RoleId'];
 			//}else{ $data['Case_Id'] = $ViewCase;}
 			$this->load->view('pages/reports',$data);
 		}else{
@@ -68,6 +69,7 @@ class Financials extends CI_Controller{
 			$this->load->view('pages/login', $CurrentPage);
 		}
 	}	
+/************************** Financials Page ********************************************************/
 /* get privious posting reports Financials-tab 1*/
 	public function get_Privious_Posting_Reports(){
 		$Start_Date = date_format(date_create($this->input->post("SD_Privious_Posting")), 'Y/m/d');
@@ -372,9 +374,12 @@ class Financials extends CI_Controller{
 	}
 /*get_Client_New_Settlement for last few months*/
 	public function  get_Client_New_Settlement(){
-		$Provider_Id = $this->input->post("Provider_Id");
+		/*$Provider_Id = $this->input->post("Provider_Id");
 		$No_Months = $this->input->post("No_Months");
-		$TableId = $this->input->post("TableId");
+		$TableId = $this->input->post("TableId");*/
+		$Provider_Id = 39;
+		$No_Months = 20;
+		$TableId = "ClientNewCases";
 		$data = array();
 		$Tot_Case_Count = 0;
 		$Tot_Sum_of_Billed_Amount = 0;
@@ -415,6 +420,7 @@ class Financials extends CI_Controller{
 	public function get_Client_Invoices(){
 		$Provider_Id = $this->input->post("Provider_Id");
 		$No_Months = $this->input->post("No_Months");
+		$TableId = $this->input->post("TableId");
 		$Tot_Gross_Amt = 0;
 		$Tot_Firm_Fees = 0;
 		$Tot_Cost_Balance = 0;
@@ -426,7 +432,8 @@ class Financials extends CI_Controller{
 			foreach($list as $result){
 				$row = array();
 						 
-				$row[] = "<a target='_blank' class='info-link'>".$result->Account_Id."</a>";
+				$row[] = "<a target='_blank' class='info-link' href='Client_Settlement?Provider_Id=".$Provider_Id."&No_Months=".$No_Months."&TableId=".$TableId."'>".$result->Account_Id."</a>";
+				
 				$row[] = "$".number_format($result->Gross_Amount, 2);
 				$row[] = "$".number_format($result->Firm_Fees, 2);
 				$row[] = "$".number_format($result->Cost_Balance, 2);
@@ -488,31 +495,20 @@ class Financials extends CI_Controller{
 		echo json_encode($output);
 	}
 	public function Client_Settlement(){
-		$data['TableInfo'] = array(
-			"Provider_Id" => $this->input->get("Provider_Id"),
-			"SD" => $this->input->get("SD"),
-			"ED" => $this->input->get("ED"),
-			"TableId" => $this->input->get("TableId"),
-			"Status" => $this->input->get("Status")
-		);
-		/*$data['TableInfo'] = array(
-			"Provider_Id" => 39,
-			"SD" => "2016-02-01",
-			"ED" => "2016-02-29",
-			"TableId" => "ClientNewCases"
-		);*/
-		/*if($data['TableId'] == "ClientSettlements" || $data['TableId'] == "WithdrawnCases"){
-			$data['ClientSettlements'] = $this->financials_model->get_Client_Settlement_Month($data);
-		}else if($data['TableId'] == "ClientNewCases"){
-			$data['ClientSettlements'] = "";
-			$data['ClientNewSettlements'] = $this->financials_model->get_Client_Settlement_Month($data);
-			echo "<pre>";print_r($data['ClientNewSettlements']);exit;
+		if(isset($this->session->userdata['logged_in'])){
+			$data['TableInfo'] = array(
+				"Provider_Id" => $this->input->get("Provider_Id"),
+				"SD" => $this->input->get("SD"),
+				"ED" => $this->input->get("ED"),
+				"TableId" => $this->input->get("TableId"),
+				"Status" => $this->input->get("Status")
+			);
+			$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
+			$this->load->view("pages/Client_Settlement", $data);
+		}else{
+			$CurrentPage['CurrentUrl'] = "financials/reports";
+			$this->load->view('pages/login', $CurrentPage);
 		}
-		*/
-		
-		
-		$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
-		$this->load->view("pages/Client_Settlement", $data);
 	}
 	public function get_Client_Report_Month(){
 		$input_data = array(
@@ -528,7 +524,7 @@ class Financials extends CI_Controller{
 			"ED" => "2016-09-30",
 			"TableId" => "ClientNewCases"
 		);*/
-		$list = $this->financials_model->get_Client_Settlement_Month($input_data);
+		$list = $this->financials_model->get_Client_Report_Month($input_data);
 		//echo "<pre>".$input_data['TableId']; print_r($input_data);exit;
 		$data = array();
 		$flag = 0;
@@ -554,7 +550,7 @@ class Financials extends CI_Controller{
 			$row[] = "Total";
 			$row[] = $Tot_Cases;
 			$row[] = "";
-			$row[] = $Tot_Inial_Balance;
+			$row[] = "$".number_format($Tot_Inial_Balance, 2);
 			$row[] = "";
 			$row[] = "";
 			$row[] = "";
@@ -581,7 +577,7 @@ class Financials extends CI_Controller{
 			$row[] = "Total";
 			$row[] = $Tot_Cases;
 			$row[] = "";
-			$row[] = $Tot_Inial_Balance;
+			$row[] = "$".number_format($Tot_Inial_Balance, 2);
 			$row[] = "";
 			$row[] = "";
 			$data[] = $row;
@@ -608,7 +604,7 @@ class Financials extends CI_Controller{
 			$row[] = "";
 			$row[] = "";
 			$row[] = "";
-			$row[] = $Tot_Inial_Balance;
+			$row[] = "$".number_format($Tot_Inial_Balance, 2);
 			$data[] = $row;
 		}
 		

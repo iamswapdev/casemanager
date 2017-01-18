@@ -153,9 +153,9 @@ Class Financials_model extends CI_Model{
 	public function get_Client_New_Settlement($Provider_Id, $No_Months){
 		$this->db->select("DATE_FORMAT(Date_Opened,'%Y/%m') as Month_Year, DATE_FORMAT(Date_Opened,'%Y/%m/%d') as Current_Month_Date, COUNT(t1.Case_Id) as Case_Count, SUM(t1.Claim_Amount) as Sum_of_Billed_Amount, SUM(t1.Claim_Amount-t1.Paid_Amount) as Sum_of_Suit_Amount");
 		
-		$this->db->where("t1.Provider_Id", $Provider_Id);
-		$this->db->from("dbo_tblcase as t1");
 		
+		$this->db->from("dbo_tblcase as t1");
+		$this->db->where("t1.Provider_Id", $Provider_Id);
 		$End_Date = date("Y/m/d");
 		$Curent_month_first_Date = date_format(date_sub(date_create($End_Date),date_interval_create_from_date_string((date("d")-1)." days")), "Y/m/d");
 		
@@ -167,7 +167,8 @@ Class Financials_model extends CI_Model{
 			//echo "<br>Curent_month_first_Date:".$Curent_month_first_Date;
 			$Start_Date = date_format(date_sub(date_create($Curent_month_first_Date),date_interval_create_from_date_string(($No_Months-1)." months")), "Y/m/d");
 			//echo "<br>Start_Date:".$Start_Date;
-			$End_Date = date_format(date_sub(date_create($Curent_month_first_Date),date_interval_create_from_date_string(($No_Months-2)." months")), "Y/m/d");
+			$End_Date = date('Y/m/t', strtotime($Start_Date));
+			//$End_Date = date_format(date_sub(date_create($Curent_month_first_Date),date_interval_create_from_date_string(($No_Months-2)." months")), "Y/m/d");
 			//echo "<br>End date:".$End_Date;
 			$this->db->where('t1.Date_Opened <=', $End_Date);
 		}
@@ -225,7 +226,7 @@ Class Financials_model extends CI_Model{
 	
 	
 /*get client settlement in one month*/
-	public function get_Client_Settlement_Month($data){
+	public function get_Client_Report_Month($data){
 		if($data['TableId'] == "ClientSettlements"){
 			$this->db->select("t1.*, t2.InjuredParty_FirstName, t2.InjuredParty_LastName, t3.InsuranceCompany_Name, (t2.Claim_Amount-t2.Paid_Amount) as Initial_Balance, ((t1.Settlement_Amount + t1.Settlement_Int)*100/ (t2.Claim_Amount-t2.Paid_Amount))  as Settlement_Percentage");
 		}else if($data['TableId'] == "WithdrawnCases"){

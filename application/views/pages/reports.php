@@ -54,11 +54,11 @@
 				<ul class="nav nav-tabs">
 					<?php if($Admin){?><li class="active"><a data-toggle="tab" href="#tab-1">Daily Settlement Reports</a></li>
 					<li class=""><a data-toggle="tab" href="#tab-2">Discontinuance Reports</a></li><?php } ?>
-					<li class=""><a data-toggle="tab" href="#tab-3">Client Reports</a></li>
+					<li class="<?php if($RoleId==2){echo "active";}?>"><a data-toggle="tab" href="#tab-3">Client Reports</a></li>
 				</ul>
 				
 				<div class="tab-content">
-					<div id="tab-1" class="tab-pane active">
+					<div id="tab-1" class="tab-pane <?php if($Admin){?> active <?php }?>">
 						<div class="row">
 							<div class="col-lg-12">
 							<div class="hpanel">
@@ -280,7 +280,7 @@
 						
 					</div><!--End of Discontinuance Reports -->
 					
-					<div id="tab-3" class="tab-pane">
+					<div id="tab-3" class="tab-pane <?php if($RoleId == 2){echo "active";}?>">
 						<div class="row">
 							<div class="col-lg-12">
 							<div class="hpanel">
@@ -311,7 +311,7 @@
 							</div><!-- End col-lg-12-->
 						</div><!-- End row-->
                         
-                        <div class="row">
+                        <div class="row initial-tables" style="display:none">
                             <div class="col-lg-12">
                             <div class="hpanel">
                             <div class="panel-heading"></div>
@@ -336,7 +336,7 @@
                             </div><!-- End col-lg-12-->
                         </div><!-- End row-->
                         
-                        <div class="row">
+                        <div class="row initial-tables" style="display:none">
                             <div class="col-lg-12">
                             <div class="hpanel">
                             <div class="panel-heading"></div>
@@ -363,7 +363,7 @@
                             </div><!-- End hpanel -->
                             </div><!-- End col-lg-12-->
                         </div><!-- End row-->
-                        <div class="row">
+                        <div class="row initial-tables" style="display:none">
                             <div class="col-lg-12">
                             <div class="hpanel">
                             <div class="panel-heading"></div>
@@ -389,7 +389,7 @@
                             </div><!-- End hpanel -->
                             </div><!-- End col-lg-12-->
                         </div><!-- End row-->
-                        <div class="row">
+                        <div class="row initial-tables" style="display:none">
                             <div class="col-lg-12">
                             <div class="hpanel">
                             <div class="panel-heading"></div>
@@ -413,7 +413,7 @@
                             </div><!-- End hpanel -->
                             </div><!-- End col-lg-12-->
                         </div><!-- End row-->
-                        <div class="row">
+                        <div class="row initial-tables" style="display:none">
                             <div class="col-lg-12">
                             <div class="hpanel">
                             <div class="panel-heading"></div>
@@ -441,7 +441,7 @@
                             </div><!-- End hpanel -->
                             </div><!-- End col-lg-12-->
                         </div><!-- End row-->
-                        <div class="row">
+                        <div class="row initial-tables" style="display:none">
                             <div class="col-lg-12">
                             <div class="hpanel">
                             <div class="panel-heading"></div>
@@ -525,13 +525,17 @@ $(document).ready(function(e) {
 				"data": {"SD_0Settlement":SD, "ED_0Settlement":ED, "name": "Cases0Settlement"},
 				"type": "post"
 			},
-			
-			"iDisplayLength": 10,
-			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+			"bPaginate": false,
+			"bLengthChange": false,
+			"bFilter": false,
+			"bInfo": false,
+			"bAutoWidth": false,
+			"bSort": false
 		});
 	});
 /*****Start from here */
 	$("#Client_Reports_btn").click(function(){
+		$(".initial-tables").css("display", "block");
 		var Provider_Id = $("#providerId_client").val();
 		var No_Months = $("input[name=No_Months]").val();
 		$(".no-month").text(No_Months);
@@ -639,9 +643,12 @@ $(document).ready(function(e) {
 				"data": {"SD_Daily_Sett":SD, "ED_Daily_Sett":ED, "Sett_Perc": Sett_Perc},
 				"type": "post"
 			},
-			
-			"iDisplayLength": 10,
-			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+			"bPaginate": false,
+			"bLengthChange": false,
+			"bFilter": false,
+			"bInfo": false,
+			"bAutoWidth": false,
+			"bSort": false
 		});
 	});
 	$("#OverdueSettlement_btn").click(function(){
@@ -656,38 +663,15 @@ $(document).ready(function(e) {
 			},
 			dom: 'lBfrtip',
 			buttons: [ 'excel'],
-			
-			"iDisplayLength": 10,
-			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+			"bPaginate": false,
+			"bLengthChange": false,
+			"bFilter": false,
+			"bInfo": false,
+			"bAutoWidth": false,
+			"bSort": false
 		});
 	});
-		
 	
-    /*$("#Cases0Settlement_form").validate({
-		rules:{
-			SD_0Settlement:{
-				required: true
-			},
-			SD_0Settlement:{
-				required: true
-			}
-		},
-		submitHandler: function (form) {
-			var $form = $(form);
-			var $inputs = $form.find("input, select, button, textarea");
-			var serializedData = $form.serialize();
-			
-			request = $.ajax({
-				url:"<?php echo base_url(); ?>financials/get_Zero_Settlement",
-				type: "post",
-				"data": serializedData
-			});
-			request.done(function (response) {
-				
-			});
-			
-		}
-	});*/
 });//End of Document
 </script>
 <script>
