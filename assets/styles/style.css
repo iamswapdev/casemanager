@@ -4063,6 +4063,6 @@ table.table.tdAlignLeft.work-area-info.info-link-popup th {
 .sett-percentage{
 	padding-left:0px;
 }
-#Client_Information tr:last-child, #ClientSettlements tr:last-child, #WithdrawnCases tr:last-child, #ClientNewCases tr:last-child, #StatusBreakdown tr:last-child, #ClientInvoices tr:last-child, #GenerateDailyClientInvoices tr:last-child, #PriviousPostingReports tr:last-child, .TotalCases{
+#Client_Information tr:last-child, #ClientSettlements tr:last-child, #WithdrawnCases tr:last-child, #ClientNewCases tr:last-child, #StatusBreakdown tr:last-child, #ClientInvoices tr:last-child, #GenerateDailyClientInvoices tr:last-child, #PriviousPostingReports tr:last-child, #DailySettlement tr:last-child, .TotalCases{
     background: #ffd599;
 }

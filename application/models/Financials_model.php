@@ -75,18 +75,38 @@ Class Financials_model extends CI_Model{
 /*get Daily settlement */
 	public function get_Daily_Sett($Start_Date, $End_Date){
 		$this->db->select(" t1.User_Id, t3.InsuranceCompany_Id, t3.InsuranceCompany_Name, COUNT(t3.InsuranceCompany_Id) as No_Of_Case, SUM((t2.Claim_Amount - t2.Paid_Amount)) as Balance, SUM(t1.Settlement_Amount) as Settlement_Amount, SUM(t1.Settlement_Ff) as Settlement_Ff, SUM(t1.Settlement_Af) as Settlement_Af, (SUM(t1.Settlement_Amount) * 100)/SUM((t2.Claim_Amount - t2.Paid_Amount)) as Settlement_Per, SUM(t1.Settlement_Int) as Settlement_Int, t1.Case_Id");
-		 
+		//$this->db->select("t1.Case_Id, t1.User_Id, t2.InsuranceCompany_Id, t3.InsuranceCompany_Name, COUNT(t2.InsuranceCompany_Id)");
 		 
 		$this->db->from("dbo_tblsettlements as t1");
-		$this->db->join("dbo_tblcase as t2", "t2.Case_Id = t1.Case_Id", "LEFT");
+		$this->db->join("dbo_tblcase as t2", "t2.Case_Id = t1.Case_Id");
 		$this->db->join("dbo_tblinsurancecompany as t3", "t3.InsuranceCompany_Id = t2.InsuranceCompany_Id", "LEFT");
-		$this->db->group_by(array("t1.User_Id"));
-		$this->db->group_by('t3.InsuranceCompany_Name');
+		$this->db->group_by("t1.User_Id");
+		$this->db->group_by('t2.InsuranceCompany_Id');
 		
 		
-		$this->db->join("dbo_tblsettlements as t4", "t4.Case_Id = t2.Case_Id");
+		//$this->db->join("dbo_tblsettlements as t4", "t4.Case_Id = t2.Case_Id");
 		$this->db->where('t1.Settlement_Date >=', $Start_Date);
 		$this->db->where('t1.Settlement_Date <=', $End_Date);
+		
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function get_DailySettlement_Cases($input_data){
+		$this->db->select("t1.Case_Id, t2.InjuredParty_FirstName, t2.InjuredParty_LastName, t2.InsuranceCompany_Id, t4.Provider_Name, t3.InsuranceCompany_Name, (t2.Claim_Amount - t2.Paid_Amount) as Initial_Balance, ((t1.Settlement_Amount + t1.Settlement_Int)*100/ (t2.Claim_Amount-t2.Paid_Amount))  as Settlement_Percentage, t1.*");
+		 
+		$this->db->from("dbo_tblsettlements as t1");
+		$this->db->join("dbo_tblcase as t2", "t2.Case_Id = t1.Case_Id");
+		$this->db->join("dbo_tblinsurancecompany as t3", "t3.InsuranceCompany_Id = t2.InsuranceCompany_Id");
+		$this->db->join("dbo_tblprovider as t4", "t4.Provider_Id = t2.Provider_Id");
+		
+		if($input_data['InsuranceCompany_Id'] != ""){
+			$this->db->where('t2.InsuranceCompany_Id', $input_data['InsuranceCompany_Id']);
+		}
+		if($input_data['User_Id'] != ""){
+			$this->db->where("t1.User_Id", $input_data['User_Id']);
+		}
+		$this->db->where('t1.Settlement_Date >=', $input_data['SD']);
+		$this->db->where('t1.Settlement_Date <=', $input_data['ED']);
 		
 		$query = $this->db->get();
 		return $query->result();

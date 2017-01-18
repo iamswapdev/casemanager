@@ -219,6 +219,8 @@ class Financials extends CI_Controller{
 	public function get_Daily_Sett(){
 		$Start_Date = date_format(date_create($this->input->post("SD_Daily_Sett")), 'Y/m/d');
 		$End_Date = date_format(date_create($this->input->post("ED_Daily_Sett")), 'Y/m/d');
+		//$Start_Date = date_format(date_create("2016/12/01"), 'Y/m/d');
+		//$End_Date = date_format(date_create("2017/01/31"), 'Y/m/d');
 		$Sett_Perc = $this->input->post("Sett_Perc");
 		$list = $this->financials_model->get_Daily_Sett($Start_Date, $End_Date);
 		//echo "<pre>"; print_r($list);exit;
@@ -317,8 +319,8 @@ class Financials extends CI_Controller{
 		
 		$row = array();
 		$row[] = "TOTAL CASES SETTLED";
-		$row[] = "<a target='_blank' class='info-link' href='Daily_Settlement?SD=".$Start_Date."&ED=".$End_Date."'>GET ALL CASES</a>";
-				$row[] = $result->No_Of_Case;
+		$row[] = "<a target='_blank' class='info-link' href='Daily_Settlement?&SD=".$Start_Date."&ED=".$End_Date."'>GET ALL CASES</a>";
+				//$row[] = $result->No_Of_Case;
 		$row[] = $Fin_Case_Count;
 		$row[] = "$".number_format($Fin_Balance, 2);
 		$row[] = "$".number_format($Fin_Sett_Amount, 2);
@@ -344,6 +346,48 @@ class Financials extends CI_Controller{
 			$CurrentPage['CurrentUrl'] = "financials/reports";
 			$this->load->view('pages/login', $CurrentPage);
 		}
+	}
+	public function get_DailySettlement_Cases(){
+		$input_data = array(
+			"InsuranceCompany_Id" => $this->input->post("InsuranceCompany_Id"),
+			"SD" => $this->input->post("SD"),
+			"ED" => $this->input->post("ED"),
+			"User_Id" => $this->input->post("User_Id")
+		);
+		$list = $this->financials_model->get_DailySettlement_Cases($input_data);
+		$data = array();
+		$Tot_Inial_Balance = 0;
+		$Tot_Cases = 0;
+		foreach($list as $result){
+			$row = array();
+			$row[] = $result->Case_Id;
+			$row[] = $result->InjuredParty_FirstName." ".$result->InjuredParty_LastName;
+			$row[] = $result->Provider_Name;
+			$row[] = $result->InsuranceCompany_Name;
+			$row[] = "$".number_format($result->Initial_Balance, 2);
+			$row[] = $result->User_Id;
+			$row[] = "P = $".number_format($result->Settlement_Amount, 2)." I = $".number_format($result->Settlement_Int, 2)." FF = $".number_format($result->Settlement_Ff, 2)." AF = $".number_format($result->Settlement_Af, 2)." Total = $".number_format($result->Settlement_Total, 2);
+			$row[] = date_format(date_create(substr($result->Settlement_Date, 0, 10)), "m/d/Y");
+			$row[] = number_format($result->Settlement_Percentage, 2)."%";
+			
+			$Tot_Cases++;
+			$Tot_Inial_Balance = $Tot_Inial_Balance + $result->Initial_Balance;
+			$data[] = $row;
+		}
+		$row = array();
+		$row[] = "Total";
+		$row[] = $Tot_Cases." Case(s) ";
+		$row[] = "";
+		$row[] = "";
+		$row[] = "$".number_format($Tot_Inial_Balance, 2);
+		$row[] = "";
+		$row[] = "";
+		$row[] = "";
+		$row[] = "";
+		$data[] = $row;
+		
+		$output = array( "data" => $data );
+		echo json_encode($output);
 	}
 /* get 0 Settlement Amount and overdue settlement Repots- tab 2*/
 	public function get_Zero_Settlement(){
