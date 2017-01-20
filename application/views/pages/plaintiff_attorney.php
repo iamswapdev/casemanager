@@ -147,6 +147,7 @@
 							</div>
 							<div class="col-sm-2">
 								<button type="submit" class="btn btn-primary"><i class="fa fa-paste"></i> SUBMIT</button>
+                                        &nbsp;&nbsp;<button type="button"  class="btn btn-primary delete" id="DeleteMaster"><i class="fa fa-trash-o"></i> Delete</button>
 							</div>
 						</div>
 					</form>
@@ -391,7 +392,6 @@
 				
 			},
 			error: function(result){ console.log("error"); }
-		
 		});
 		e.preventDefault();	//STOP default action
 	});
@@ -508,6 +508,56 @@
 			});
 
 		}
+	});
+/* Delete Master Entry records*/
+	$('#DeleteMaster').click(function () {
+		 var plantiffId = $("#plantiffId").val();
+		swal(
+			{
+				title: "Are you sure?",
+				text: "Your will not be able to recover this imaginary file!",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "Yes, delete it!",
+				cancelButtonText: "No, cancel plx!",
+				closeOnConfirm: false,
+				closeOnCancel: false 
+			},
+			function (isConfirm) 
+				{
+				if (isConfirm) {
+					$.ajax({
+						url:"delete_Master_Records",
+						type: "post",
+						data: {Column_Name: "Attorney_id", Table_Name: "dbo_tblplaintiffattorney", Id: plantiffId},
+						success: function(){
+							swal("Deleted!", "Your imaginary file has been deleted.", "success");
+							$('#plantiffId').find('option').remove();
+							$.ajax({
+								type:'POST',
+								url:"<?php echo base_url(); ?>dataentry/getPla",
+								success:function(data){
+									console.log("data: "+data);
+									results = JSON.parse(data);
+									var optionsAsString = "";
+									for($i in results.Plantiff){
+										//console.log(results.Provider_Name[$i].Adjuster_Id);
+										optionsAsString += "<option value='" + results.Plantiff[$i].Attorney_id + "'>" + results.Plantiff[$i].Attorney_Name + "</option>";
+									}
+									$( 'select[name="plantiffId"]' ).append( optionsAsString );
+									
+								},
+								error: function(result){ console.log("error"); }
+							});
+						}
+					});
+					
+				} else {
+					swal("Cancelled", "Your imaginary file is safe :)", "error");
+				}
+			}
+		);
 	});
 /* *************************************************** */
 	$("#cancel").click(function(){

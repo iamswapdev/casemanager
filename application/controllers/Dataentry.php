@@ -628,7 +628,7 @@ session_cache_limiter('private_no_expire');
 				$row = array();
 				$no++;
 				$row[] ="<button type='button' class='btn editRecord'>Edit</button> <div class='update-record' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn btn-primary cancel'>Cancel</button></div>";
-				$row[] = "<input type='text' name='DenialReasons_Type' class='form-control input-sm input-height' value='".$result->DenialReasons_Type."'>";
+				$row[] = "<input type='text' name='DenialReasons_Type' class='form-control input-sm input-height' value='".$result->DenialReasons_Type."' disabled>";
 				$row[] = "<input type='checkbox' name='deleteDenialReasons[]' class='deleteDenialReasons deleteDenialReasons".$result->DenialReasons_Id."' value=".$result->DenialReasons_Id."> <input type='hidden' name='tabIdentity' value='1' > <input type='hidden' name='DenialReasons_Id' value='".$result->DenialReasons_Id."' >";
 				
 				$data[] = $row;
@@ -657,11 +657,11 @@ session_cache_limiter('private_no_expire');
 				$row = array();
 				$no++;
 				$row[] ="<button type='button' class='btn editRecord'>Edit</button> <div class='update-record' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn btn-primary cancel'>Cancel</button></div>";
-				$row[] = "<input type='text' name='Court_Name' class='form-control input-sm input-height' value='".$result->Court_Name."' >";
-				$row[] = "<input type='text' name='Court_Venue' class='form-control input-sm input-height' value='".$result->Court_Venue."' >";
-				$row[] = "<input type='text' name='Court_Address' class='form-control input-sm input-height' value='".$result->Court_Address."' >";
-				$row[] = "<input type='text' name='Court_Basis' class='form-control input-sm input-height' value='".$result->Court_Basis."' >";
-				$row[] = "<input type='text' name='Court_Misc' class='form-control input-sm input-height' value='".$result->Court_Misc."' >";
+				$row[] = "<input type='text' name='Court_Name' class='form-control input-sm input-height' value='".$result->Court_Name."'  disabled>";
+				$row[] = "<input type='text' name='Court_Venue' class='form-control input-sm input-height' value='".$result->Court_Venue."'  disabled>";
+				$row[] = "<input type='text' name='Court_Address' class='form-control input-sm input-height' value='".$result->Court_Address."' disabled >";
+				$row[] = "<input type='text' name='Court_Basis' class='form-control input-sm input-height' value='".$result->Court_Basis."' disabled >";
+				$row[] = "<input type='text' name='Court_Misc' class='form-control input-sm input-height' value='".$result->Court_Misc."' disabled >";
 				$row[] = "<input type='checkbox' name='deleteCourt[]' class='deleteCourt deleteCourt".$result->Court_Id."' value=".$result->Court_Id."> <input type='hidden' name='tabIdentity' value='2' > <input type='hidden' name='Court_Id' value='".$result->Court_Id."' >";
 				$data[] = $row;
 			}
@@ -684,7 +684,7 @@ session_cache_limiter('private_no_expire');
 				$row = array();
 				$no++;
 				$row[] ="<button type='button' class='btn editRecord'>Edit</button> <div class='update-record' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn btn-primary cancel'>Cancel</button></div>";
-				$row[] = "<input type='text' name='Image_Type' class='form-control input-sm input-height' value='".$result->Image_Type."' >";
+				$row[] = "<input type='text' name='Image_Type' class='form-control input-sm input-height' value='".$result->Image_Type."' disabled >";
 				$row[] = "<input type='checkbox' name='deleteImageType[]' class='deleteImageType deleteImageType".$result->Image_Id."' value=".$result->Image_Id."> <input type='hidden' name='tabIdentity' value='3' > <input type='hidden' name='Image_Id' value='".$result->Image_Id."' >";
 				
 				$data[] = $row;
@@ -709,8 +709,8 @@ session_cache_limiter('private_no_expire');
 				$row = array();
 				$no++;
 				$row[] ="<button type='button' class='btn editRecord'>Edit</button> <div class='update-record' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn btn-primary cancel'>Cancel</button></div>";
-				$row[] = "<input type='text' name='Status_Type' class='form-control input-sm input-height' value='".$result->Status_Type."' >";
-				$row[] = "<input type='text' name='Status_Abr' class='form-control input-sm input-height' value='".$result->Status_Abr."' >";
+				$row[] = "<input type='text' name='Status_Type' class='form-control input-sm input-height' value='".$result->Status_Type."' disabled >";
+				$row[] = "<input type='text' name='Status_Abr' class='form-control input-sm input-height' value='".$result->Status_Abr."'  disabled>";
 				$row[] = "<input type='checkbox' name='deleteStatus[]' class='deleteStatus deleteStatus".$result->Status_Id."' value=".$result->Status_Id."> <input type='hidden' name='tabIdentity' value='4' > <input type='hidden' name='Status_Id' value='".$result->Status_Id."' >";
 				
 				$data[] = $row;
@@ -735,8 +735,8 @@ session_cache_limiter('private_no_expire');
 				$row = array();
 				$no++;
 				$row[] ="<button type='button' class='btn editRecord'>Edit</button> <div class='update-record' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn btn-primary cancel'>Cancel</button></div>";
-				$row[] = "<input type='text' name='name' class='form-control input-sm input-height' value='".$result->name."' >";
-				$row[] = "<input type='text' name='description' class='form-control input-sm input-height' value='".$result->description."' >";
+				$row[] = "<input type='text' name='name' class='form-control input-sm input-height' value='".$result->name."' disabled >";
+				$row[] = "<input type='text' name='description' class='form-control input-sm input-height' value='".$result->description."'  disabled>";
 				$row[] = "<input type='checkbox' name='deleteCaseStatus[]' class='deleteCaseStatus deleteCaseStatus".$result->id."' value=".$result->id."> <input type='hidden' name='tabIdentity' value='5' > <input type='hidden' name='id' value='".$result->id."' >";
 				
 				$data[] = $row;
@@ -762,9 +762,9 @@ session_cache_limiter('private_no_expire');
 				$row = array();
 				$no++;
 				$row[] ="<button type='button' class='btn editRecord'>Edit</button> <div class='update-record' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn btn-primary cancel'>Cancel</button></div>";
-				$row[] = "<input type='text' name='Doc_Name' class='form-control input-sm input-height' value='".$result->Doc_Name."' >";
-				$row[] = "<input type='text' name='Doc_Value' class='form-control input-sm input-height' value='".$result->Doc_Value."' >";
-				$row[] = "<input type='text' name='Settlement' class='form-control input-sm input-height' value='".$result->Settlement."' >";
+				$row[] = "<input type='text' name='Doc_Name' class='form-control input-sm input-height' value='".$result->Doc_Name."' disabled >";
+				$row[] = "<input type='text' name='Doc_Value' class='form-control input-sm input-height' value='".$result->Doc_Value."'  disabled>";
+				$row[] = "<input type='text' name='Settlement' class='form-control input-sm input-height' value='".$result->Settlement."'  disabled>";
 				$row[] = "<input type='checkbox' name='deleteDoc[]' class='deleteDoc deleteDoc".$result->Doc_Id."' value=".$result->Doc_Id."> <input type='hidden' name='tabIdentity' value='6' > <input type='hidden' name='Doc_Id' value='".$result->Doc_Id."' >";
 				
 				$data[] = $row;
@@ -789,8 +789,8 @@ session_cache_limiter('private_no_expire');
 				$row = array();
 				$no++;
 				$row[] ="<button type='button' class='btn editRecord'>Edit</button> <div class='update-record' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn btn-primary cancel'>Cancel</button></div>";
-				$row[] = "<input type='text' name='ServiceType' class='form-control input-sm input-height' value='".$result->ServiceType."' >";
-				$row[] = "<input type='text' name='ServiceDesc' class='form-control input-sm input-height' value='".$result->ServiceDesc."' >";
+				$row[] = "<input type='text' name='ServiceType' class='form-control input-sm input-height' value='".$result->ServiceType."' disabled >";
+				$row[] = "<input type='text' name='ServiceDesc' class='form-control input-sm input-height' value='".$result->ServiceDesc."'  disabled>";
 				$row[] = "<input type='checkbox' name='deleteService[]' class='deleteService deleteService".$result->ServiceType_ID."' value=".$result->ServiceType_ID."> <input type='hidden' name='tabIdentity' value='7' > <input type='hidden' name='ServiceType_ID' value='".$result->ServiceType_ID."' >";
 				
 				$data[] = $row;
@@ -814,7 +814,7 @@ session_cache_limiter('private_no_expire');
 				$row = array();
 				$no++;
 				$row[] ="<button type='button' class='btn editRecord'>Edit</button> <div class='update-record' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn btn-primary cancel'>Cancel</button></div>";
-				$row[] = "<input type='text' name='EventTypeName' class='form-control input-sm input-height' value='".$result->EventTypeName."' > ";
+				$row[] = "<input type='text' name='EventTypeName' class='form-control input-sm input-height' value='".$result->EventTypeName."'  disabled> ";
 				$row[] = "<input type='checkbox' name='deleteEventType[]' class='deleteEventType deleteEventType".$result->EventTypeId."' value=".$result->EventTypeId."> <input type='hidden' name='tabIdentity' value='8' > <input type='hidden' name='EventTypeId' value='".$result->EventTypeId."' >";
 				
 				$data[] = $row;
@@ -839,7 +839,7 @@ session_cache_limiter('private_no_expire');
 				$no++;
 				$row[] ="<button type='button' class='btn editRecord'>Edit</button> <div class='update-record' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn btn-primary cancel'>Cancel</button></div>";
 				
-				$row[] = "<input type='text' name='EventStatusName' class='form-control input-sm input-height' value='".$result->EventStatusName."' > ";
+				$row[] = "<input type='text' name='EventStatusName' class='form-control input-sm input-height' value='".$result->EventStatusName."' disabled > ";
 				$row[] = "<input type='checkbox' name='deleteEventStatus[]' class='deleteEventStatus deleteEventStatus".$result->EventStatusId."' value=".$result->EventStatusId."> <input type='hidden' name='tabIdentity' value='9' ><input type='hidden' name='EventStatusId' value='".$result->EventStatusId."' >";
 				
 				$data[] = $row;
@@ -1037,6 +1037,12 @@ session_cache_limiter('private_no_expire');
 				return false;
 			}
 			
+		}
+		public function delete_Master_Records(){
+			$Column_Name = $this->input->post("Column_Name");
+			$Table_Name = $this->input->post("Table_Name");
+			$Id = $this->input->post("Id");
+			$this->dataentry_model->delete_Master_Records($Column_Name, $Table_Name, $Id);
 		}
 /* ************************************  End of otherentries  *************************************************************************/	
 	} 	

@@ -79,7 +79,7 @@
                 	
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-8">
-							<table id="example1" class="table dataTable table-bordered table-striped">
+							<table id="DenialReasons" class="table dataTable table-bordered table-striped">
 								<thead>
 								<tr>
 									<th></th>
@@ -109,7 +109,7 @@
                 	<input type="hidden" name="tabIdentity" value="2">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
-							<table id="example2" class="table dataTable table-bordered table-striped">
+							<table id="Court" class="table dataTable table-bordered table-striped">
 								<thead>
 								<tr>
 									<th class="col-sm-1"></th>
@@ -150,7 +150,7 @@
                 	<input type="hidden" name="tabIdentity" value="3">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
-							<table id="example3" class="table dataTable table-bordered table-striped">
+							<table id="ImageType" class="table dataTable table-bordered table-striped">
 								<thead>
 								<tr>
 									<th class="col-sm-1"></th>
@@ -177,7 +177,7 @@
                 	<input type="hidden" name="tabIdentity" value="4">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
-							<table id="example4" class="table dataTable table-bordered table-striped">
+							<table id="Status" class="table dataTable table-bordered table-striped">
 								<thead>
 								<tr>
 									<th class="col-sm-1"></th>
@@ -203,7 +203,7 @@
                 	<input type="hidden" name="tabIdentity" value="5">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
-							<table id="example5" class="table dataTable table-bordered table-striped">
+							<table id="CaseStatus" class="table dataTable table-bordered table-striped">
 								<thead>
 								<tr>
 									<th class="col-sm-1"></th>
@@ -232,7 +232,7 @@
                 	<input type="hidden" name="tabIdentity" value="6">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
-							<table id="example6" class="table dataTable table-bordered table-striped">
+							<table id="Doc" class="table dataTable table-bordered table-striped">
 								<thead>
 								<tr>
 									<th class="col-sm-1"></th>
@@ -261,7 +261,7 @@
                 	<input type="hidden" name="tabIdentity" value="7">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
-							<table id="example7" class="table dataTable table-bordered table-striped">
+							<table id="Service" class="table dataTable table-bordered table-striped">
 								<thead>
 								<tr>
 									<th class="col-sm-1"></th>
@@ -287,7 +287,7 @@
                 	<input type="hidden" name="tabIdentity" value="8">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
-							<table id="example8" class="table dataTable table-bordered table-striped">
+							<table id="EventType" class="table dataTable table-bordered table-striped">
 								<thead>
 								<tr>
 									<th class="col-sm-1"></th>
@@ -312,7 +312,7 @@
                 	<input type="hidden" name="tabIdentity" value="9">
 					<div class="form-group form-horizontal col-md-12 otherEntries-table">
 						<div class="col-md-12">
-							<table id="example9" class="table dataTable table-bordered table-striped">
+							<table id="EventStatus" class="table dataTable table-bordered table-striped">
 								<thead>
 								<tr>
 									<th class="col-sm-1"></th>
@@ -370,63 +370,63 @@
 	$('.otherEntries').addClass('active');
 </script>
 <script>
-	var t = $('#example1').dataTable( {
+	var t = $('#DenialReasons').dataTable( {
 		"ajax": 'DenialReasons',
 		"iDisplayLength": 20,
     	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
 		"bSort": false,
 		"searching": false
 	});
-	$('#example2').dataTable( {
+	$('#Court').dataTable( {
 		"ajax": 'Court',
 		"iDisplayLength": 20,
     	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
 		"bSort": false,
 		"searching": false
 	});
-	$('#example3').dataTable( {
+	$('#ImageType').dataTable( {
 		"ajax": 'ImageType',
 		"iDisplayLength": 20,
     	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
 		"bSort": false,
 		"searching": false
 	});
-	$('#example4').dataTable( {
+	$('#Status').dataTable( {
 		"ajax": 'Status',
 		"iDisplayLength": 20,
     	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
 		"bSort": false,
 		"searching": false
 	});
-	$('#example5').dataTable( {
+	$('#CaseStatus').dataTable( {
 		"ajax": 'CaseStatus',
 		"iDisplayLength": 20,
     	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
 		"bSort": false,
 		"searching": false
 	});
-	$('#example6').dataTable( {
+	$('#Doc').dataTable( {
 		"ajax": 'Doc',
 		"iDisplayLength": 20,
     	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
 		"bSort": false,
 		"searching": false
 	});
-	$('#example7').dataTable( {
+	$('#Service').dataTable( {
 		"ajax": 'Service',
 		"iDisplayLength": 20,
     	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
 		"bSort": false,
 		"searching": false
 	});
-	$('#example8').dataTable( {
+	$('#EventType').dataTable( {
 		"ajax": 'EventType',
 		"iDisplayLength": 20,
     	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
 		"bSort": false,
 		"searching": false
 	});
-	var table = $('#example9').dataTable( {
+	var table = $('#EventStatus').dataTable( {
 		"ajax": 'EventStatus',
 		"iDisplayLength": 20,
     	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
@@ -437,7 +437,7 @@
 		var parentR = $(this).parent();
 		var div = $(parentR).find(".update-record").css("display", "block");
 		$(this).css("display", "none");
-		//$(parentR).parent().find("input").prop("disabled", false);
+		$(parentR).parent().find("input").prop("disabled", false);
     } );
 	$('tbody').on( 'click', '.cancel', function () {
 		var parentR = $(this).parent().parent();
@@ -445,13 +445,23 @@
 		var div = $(parentR).find(".update-record").css("display", "none");
 		var div = $(parentR).find(".editRecord").css("display", "block");
 		$(parentR).css("text-align", "center");
+		var TableId = $(this).parent().parent().parent().parent().parent().attr("id");
+		
+		$("#"+TableId).dataTable().fnDestroy();
+		$("#"+TableId).dataTable( {
+			"ajax": TableId,
+			"iDisplayLength": 20,
+			"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+			"bSort": false,
+			"searching": false
+		});
 		
     } );
 	
 	$('tbody').on( 'click', '.addRecord', function () {
 		var parentR = $(this).parent().parent();
 		var tabIdentity = $(parentR).find("input[name=tabIdentity]").val();
-		var Ajax_path ="";
+		var TableId ="";
 		
 		if(tabIdentity == 1){
 			console.log("tabIdentity: "+tabIdentity);
@@ -460,7 +470,7 @@
 			//serializeData.push({DenialReasons_Type:DenialReasons_Type});
 			var string = "tabIdentity="+tabIdentity+"&DenialReasons_Type="  + DenialReasons_Type;
 			console.log("string: "+string);
-			Ajax_path = "DenialReasons";
+			TableId = "DenialReasons";
 		}else if(tabIdentity == 2){
 			console.log("tabIdentity: "+tabIdentity);
 			var Court_Name = $(parentR).find("input[name=Court_Name]").val();
@@ -472,7 +482,7 @@
 			//serializeData.push({Court_Name:Court_Name, Court_Venue:Court_Venue});
 			var string = "tabIdentity="+tabIdentity+"&Court_Name="  + Court_Name + "&Court_Venue="  + Court_Venue + "&Court_Address="  + Court_Address + "&Court_Basis="  + Court_Basis + "&Court_Misc="  + Court_Misc;
 			console.log("string: "+string);
-			Ajax_path = "Court";
+			TableId = "Court";
 		}else if(tabIdentity == 3){
 			console.log("tabIdentity: "+tabIdentity);
 			var Image_Type = $(parentR).find("input[name=Image_Type]").val();
@@ -480,7 +490,7 @@
 			////serializeData.push({EventStatusName:EventStatusName, EventStatusId:EventStatusId});
 			var string = "tabIdentity="+tabIdentity+"&Image_Type="  + Image_Type;
 			console.log("string: "+string);
-			Ajax_path = "ImageType";
+			TableId = "ImageType";
 		}else if(tabIdentity == 4){
 			console.log("tabIdentity: "+tabIdentity);
 			var Status_Type = $(parentR).find("input[name=Status_Type]").val();
@@ -489,7 +499,7 @@
 			////serializeData.push({EventStatusName:EventStatusName, EventStatusId:EventStatusId});
 			var string = "tabIdentity="+tabIdentity+"&Status_Type="  + Status_Type + "&Status_Abr="  + Status_Abr;
 			console.log("string: "+string);
-			Ajax_path = "Status";
+			TableId = "Status";
 		}else if(tabIdentity == 5){
 			console.log("tabIdentity: "+tabIdentity);
 			var name = $(parentR).find("input[name=name]").val();
@@ -498,7 +508,7 @@
 			//serializeData.push({EventStatusName:EventStatusName, EventStatusId:EventStatusId});
 			var string = "tabIdentity="+tabIdentity+"&name="  + name + "&description="  + description;
 			console.log("string: "+string);
-			Ajax_path = "CaseStatus";
+			TableId = "CaseStatus";
 		}else if(tabIdentity == 6){
 			console.log("tabIdentity: "+tabIdentity);
 			var Doc_Name = $(parentR).find("input[name=Doc_Name]").val();
@@ -508,7 +518,7 @@
 			//serializeData.push({EventStatusName:EventStatusName, EventStatusId:EventStatusId});
 			var string = "tabIdentity="+tabIdentity+"&Doc_Name="  + Doc_Name + "&Doc_Value="  + Doc_Value + "&Settlement="  + Settlement;
 			console.log("string: "+string);
-			Ajax_path = "Doc";
+			TableId = "Doc";
 		}else if(tabIdentity == 7){
 			console.log("tabIdentity: "+tabIdentity);
 			var ServiceType = $(parentR).find("input[name=ServiceType]").val();
@@ -517,7 +527,7 @@
 			//serializeData.push({EventStatusName:EventStatusName, EventStatusId:EventStatusId});
 			var string = "tabIdentity="+tabIdentity+"&ServiceType="  + ServiceType + "&ServiceDesc="  + ServiceDesc;
 			console.log("string: "+string);
-			Ajax_path = "Service";
+			TableId = "Service";
 		}else if(tabIdentity == 8){
 			console.log("tabIdentity: "+tabIdentity);
 			var EventTypeName = $(parentR).find("input[name=EventTypeName]").val();
@@ -525,7 +535,7 @@
 			//serializeData.push({EventTypeName:EventTypeName, EventTypeId:EventTypeId});
 			var string = "tabIdentity="+tabIdentity+"&EventTypeName="  + EventTypeName;
 			console.log("string: "+string);
-			Ajax_path = "EventType";
+			TableId = "EventType";
 		}else if(tabIdentity == 9){
 			console.log("tabIdentity: "+tabIdentity);
 			var EventStatusName = $(parentR).find("input[name=EventStatusName]").val();
@@ -533,7 +543,7 @@
 			//serializeData.push({EventStatusName:EventStatusName, EventStatusId:EventStatusId});
 			var string = "tabIdentity="+tabIdentity+"&EventStatusName="  + EventStatusName;
 			console.log("string: "+string);
-			Ajax_path = "EventStatus";
+			TableId = "EventStatus";
 		}
 		request = $.ajax({
 			url:"<?php echo base_url(); ?>dataentry/Add_Record",
@@ -543,9 +553,9 @@
 
 		request.done(function (response, textStatus, jqXHR) {
 			console.log("Successssss "+response);
-			$("#example"+tabIdentity).dataTable().fnDestroy();
-			$('#example'+tabIdentity).dataTable( {
-				"ajax": Ajax_path,
+			$("#"+TableId).dataTable().fnDestroy();
+			$("#"+TableId).dataTable( {
+				"ajax": TableId,
 				"iDisplayLength": 20,
 				"aLengthMenu": [5, 10, 20, 25, 50, "All"],
 				"bSort": false,
@@ -559,7 +569,7 @@
 	$('tbody').on( 'click', '.update', function () {
 		var parentR = $(this).parent().parent().parent();
 		var tabIdentity = $(parentR).find("input[name=tabIdentity]").val();
-		
+		var TableId = "";
 		var div = $(parentR).find(".update-record").css("display", "none");
 		var div = $(parentR).find(".editRecord").css("display", "block");
 		
@@ -571,6 +581,7 @@
 			//serializeData.push({DenialReasons_Type:DenialReasons_Type, DenialReasons_Id:DenialReasons_Id});
 			var string = "tabIdentity="+tabIdentity+"&DenialReasons_Type="  + DenialReasons_Type + "&DenialReasons_Id="  + DenialReasons_Id;
 			console.log("string: "+string);
+			TableId = "DenialReasons";
 		}else if(tabIdentity == 2){
 			console.log("tabIdentity: "+tabIdentity);
 			var Court_Name = $(parentR).find("input[name=Court_Name]").val();
@@ -583,6 +594,7 @@
 			//serializeData.push({Court_Name:Court_Name, Court_Venue:Court_Venue});
 			var string = "tabIdentity="+tabIdentity+"&Court_Name="  + Court_Name + "&Court_Venue="  + Court_Venue + "&Court_Address="  + Court_Address + "&Court_Basis="  + Court_Basis + "&Court_Misc="  + Court_Misc + "&Court_Id="  + Court_Id;
 			console.log("string: "+string);
+			TableId = "Court";
 		}else if(tabIdentity == 3){
 			console.log("tabIdentity: "+tabIdentity);
 			var Image_Type = $(parentR).find("input[name=Image_Type]").val();
@@ -591,6 +603,7 @@
 			////serializeData.push({EventStatusName:EventStatusName, EventStatusId:EventStatusId});
 			var string = "tabIdentity="+tabIdentity+"&Image_Type="  + Image_Type + "&Image_Id="  + Image_Id;
 			console.log("string: "+string);
+			TableId = "ImageType";
 		}else if(tabIdentity == 4){
 			console.log("tabIdentity: "+tabIdentity);
 			var Status_Type = $(parentR).find("input[name=Status_Type]").val();
@@ -600,6 +613,7 @@
 			//serializeData.push({EventStatusName:EventStatusName, EventStatusId:EventStatusId});
 			var string = "tabIdentity="+tabIdentity+"&Status_Type="  + Status_Type + "&Status_Abr="  + Status_Abr + "&Status_Id="  + Status_Id;
 			console.log("string: "+string);
+			TableId = "Status";
 		}else if(tabIdentity == 5){
 			console.log("tabIdentity: "+tabIdentity);
 			var name = $(parentR).find("input[name=name]").val();
@@ -609,6 +623,7 @@
 			//serializeData.push({EventStatusName:EventStatusName, EventStatusId:EventStatusId});
 			var string = "tabIdentity="+tabIdentity+"&name="  + name + "&description="  + description + "&id="  + id;
 			console.log("string: "+string);
+			TableId = "CaseStatus";
 		}else if(tabIdentity == 6){
 			console.log("tabIdentity: "+tabIdentity);
 			var Doc_Name = $(parentR).find("input[name=Doc_Name]").val();
@@ -619,6 +634,7 @@
 			//serializeData.push({EventStatusName:EventStatusName, EventStatusId:EventStatusId});
 			var string = "tabIdentity="+tabIdentity+"&Doc_Name="  + Doc_Name + "&Doc_Value="  + Doc_Value + "&Settlement="  + Settlement + "&Doc_Id="  + Doc_Id;
 			console.log("string: "+string);
+			TableId = "Doc";
 		}else if(tabIdentity == 7){
 			console.log("tabIdentity: "+tabIdentity);
 			var ServiceType = $(parentR).find("input[name=ServiceType]").val();
@@ -628,6 +644,7 @@
 			//serializeData.push({EventStatusName:EventStatusName, EventStatusId:EventStatusId});
 			var string = "tabIdentity="+tabIdentity+"&ServiceType="  + ServiceType + "&ServiceDesc="  + ServiceDesc + "&ServiceType_ID="  + ServiceType_ID;
 			console.log("string: "+string);
+			TableId = "Service";
 		}else if(tabIdentity == 8){
 			console.log("tabIdentity: "+tabIdentity);
 			var EventTypeName = $(parentR).find("input[name=EventTypeName]").val();
@@ -636,6 +653,7 @@
 			//serializeData.push({EventTypeName:EventTypeName, EventTypeId:EventTypeId});
 			var string = "tabIdentity="+tabIdentity+"&EventTypeName="  + EventTypeName + "&EventTypeId="  + EventTypeId;
 			console.log("string: "+string);
+			TableId = "EventType";
 		}else if(tabIdentity == 9){
 			console.log("tabIdentity: "+tabIdentity);
 			var EventStatusName = $(parentR).find("input[name=EventStatusName]").val();
@@ -644,6 +662,7 @@
 			//serializeData.push({EventStatusName:EventStatusName, EventStatusId:EventStatusId});
 			var string = "tabIdentity="+tabIdentity+"&EventStatusName="  + EventStatusName + "&EventStatusId="  + EventStatusId;
 			console.log("string: "+string);
+			TableId = "EventStatus";
 		}
 		/*for(i=0;i<serializeData.length;i++){
 			var string = "EventStatusName="  + serializeData[i].EventStatusName + "&EventStatusId="  + serializeData[i].EventStatusId;
@@ -658,6 +677,14 @@
 
 		request.done(function (response, textStatus, jqXHR) {
 			console.log("Successssss ");
+			$("#"+TableId).dataTable().fnDestroy();
+			$("#"+TableId).dataTable( {
+				"ajax": TableId,
+				"iDisplayLength": 20,
+				"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+				"bSort": false,
+				"searching": false
+			});
 			
 			callSuccess();
 		});

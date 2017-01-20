@@ -287,6 +287,7 @@
 									</div>
 									<div class="col-sm-2">
 										<button type="submit" class="btn btn-primary"><i class="fa fa-paste"></i> SUMBIT</button>
+                                        &nbsp;&nbsp;<button type="button"  class="btn btn-primary delete" id="DeleteMaster"><i class="fa fa-trash-o"></i> Delete</button>
 									</div>
 								</div>
 								<!--<div class="form-group form-horizontal col-sm-12">
@@ -564,7 +565,7 @@
     <script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
     
     <script src="<?php echo base_url();?>assets/vendor/mask-phone/maskPhone.js"></script>
-    
+    <!--Alert -->
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.js"></script>
@@ -769,7 +770,6 @@
 				
 			},
 			error: function(result){ console.log("error"); }
-		
 		});
 		e.preventDefault();	//STOP default action
 	});
@@ -918,6 +918,55 @@
 
 		}
 	});
+	
+	 $('#DeleteMaster').click(function () {
+		 var providerId = $("#providerId").val();
+		swal(
+			{
+				title: "Are you sure?",
+				text: "Your will not be able to recover this imaginary file!",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "Yes, delete it!",
+				cancelButtonText: "No, cancel plx!",
+				closeOnConfirm: false,
+				closeOnCancel: false 
+			},
+			function (isConfirm) 
+				{
+				if (isConfirm) {
+					$.ajax({
+						url:"delete_Master_Records",
+						type: "post",
+						data: {Column_Name: "Provider_Id", Table_Name: "dbo_tblprovider", Id: providerId},
+						success: function(){
+							swal("Deleted!", "Your imaginary file has been deleted.", "success");
+							$('#providerId').find('option').remove();
+							$.ajax({
+								type:'POST',
+								url:"<?php echo base_url(); ?>dataentry/getPro",
+								success:function(data){
+									results = JSON.parse(data);
+									var optionsAsString = "";
+									for($i in results.Provider_Name){
+										optionsAsString += "<option value='" + results.Provider_Name[$i].Provider_Id + "'>" + results.Provider_Name[$i].Provider_Name + "</option>";
+									}
+									$( 'select[name="providerId"]' ).append( optionsAsString );
+									
+								},
+								error: function(result){ console.log("error"); }
+							});
+						}
+					});
+					
+				} else {
+					swal("Cancelled", "Your imaginary file is safe :)", "error");
+				}
+			}
+		);
+	});
+
 /* *************************************************** */
 	$("#cancelUpdate").click(function(){
 		$("#updateProviderInfo").css("display", "none");

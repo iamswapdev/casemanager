@@ -511,6 +511,10 @@ Class Dataentry_model extends CI_Model{
 		
 		return $query;
 	}
+	public function delete_Master_Records($Column_Name, $Table_Name, $Id){
+		$this->db->where($Column_Name, $Id);
+		$this->db->delete($Table_Name);
+	}
 	
 	
 	
