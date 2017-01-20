@@ -88,14 +88,14 @@ class Search extends CI_Controller{
 	}
 	public function viewcase($Case_AutoId){
 		//echo "<br><prewe>Session:";print_r($this->session->all_userdata()); echo "</pre>";
-		if($Case_AutoId == -1){
+		/*if($Case_AutoId == -1){
 			$data = array(
 				"SearchValue" => $this->input->post("Case_AutoId"),
 				"SearchBy" => $this->input->post("SearchBy")
 			);
 			$Case_AutoIdNew = $this->search_model->get_Case_AutoId_By_Quick($data);
 			$Case_AutoId = $Case_AutoIdNew;
-		}
+		}*/
 		//echo "Case_AutoId:".$Case_AutoId;
 		//exit;
 		if(isset($this->session->userdata['logged_in'])){

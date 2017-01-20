@@ -393,7 +393,7 @@ class Financials extends CI_Controller{
 			$row[] = $result->InsuranceCompany_Name;
 			$row[] = "$".number_format($result->Initial_Balance, 2);
 			$row[] = $result->User_Id;
-			$row[] = "P = $".number_format($result->Settlement_Amount, 2)." I = $".number_format($result->Settlement_Int, 2)." FF = $".number_format($result->Settlement_Ff, 2)." AF = $".number_format($result->Settlement_Af, 2)." Total = $".number_format($result->Settlement_Total, 2);
+			$row[] = "P = $".number_format($result->Settlement_Amount, 2)."; I = $".number_format($result->Settlement_Int, 2)."; FF = $".number_format($result->Settlement_Ff, 2)."; AF = $".number_format($result->Settlement_Af, 2)." Total = $".number_format($result->Settlement_Total, 2);
 			$row[] = date_format(date_create(substr($result->Settlement_Date, 0, 10)), "m/d/Y");
 			$row[] = number_format($result->Settlement_Percentage, 2)."%";
 			
@@ -715,7 +715,7 @@ class Financials extends CI_Controller{
 				$row[] = $result->InsuranceCompany_Name;
 				$row[] = "$".number_format($result->Initial_Balance, 2);
 				$row[] = $result->User_Id;
-				$row[] = "P = $".number_format($result->Settlement_Amount, 2)." I = $".number_format($result->Settlement_Int, 2)." FF = $".number_format($result->Settlement_Ff, 2)." AF = $".number_format($result->Settlement_Af, 2)." Total = $".number_format($result->Settlement_Total, 2);
+				$row[] = "P = $".number_format($result->Settlement_Amount, 2)."; I = $".number_format($result->Settlement_Int, 2)."; FF = $".number_format($result->Settlement_Ff, 2)."; AF = $".number_format($result->Settlement_Af, 2)." Total = $".number_format($result->Settlement_Total, 2);
 				$row[] = date_format(date_create(substr($result->Settlement_Date, 0, 10)), "m/d/Y");
 				$row[] = $result->Settlement_Notes;
 				$row[] = number_format($result->Settlement_Percentage, 2)."%";
