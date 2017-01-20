@@ -621,14 +621,14 @@ session_cache_limiter('private_no_expire');
 			$no=0;
 			$row = array();
 			$row[] ="";
-			$row[] = "<input type='text' name='DenialReasons_Type' class='form-control input-sm input-height' value='' >";
+			$row[] = "<input type='text' name='DenialReasons_Type' class='form-control input-sm input-height' value=''>";
 			$row[] = "<button type='button' class='btn addRecord'>Add</button><input type='hidden' name='tabIdentity' value='1' >";
 			$data[] = $row;
 			foreach ($list as $result) {
 				$row = array();
 				$no++;
 				$row[] ="<button type='button' class='btn editRecord'>Edit</button> <div class='update-record' style='display:none;'> <button type='button' class='btn btn-primary update'>Update</button> <button type='button' class='btn btn-primary cancel'>Cancel</button></div>";
-				$row[] = "<input type='text' name='DenialReasons_Type' class='form-control input-sm input-height' value='".$result->DenialReasons_Type."' >";
+				$row[] = "<input type='text' name='DenialReasons_Type' class='form-control input-sm input-height' value='".$result->DenialReasons_Type."'>";
 				$row[] = "<input type='checkbox' name='deleteDenialReasons[]' class='deleteDenialReasons deleteDenialReasons".$result->DenialReasons_Id."' value=".$result->DenialReasons_Id."> <input type='hidden' name='tabIdentity' value='1' > <input type='hidden' name='DenialReasons_Id' value='".$result->DenialReasons_Id."' >";
 				
 				$data[] = $row;

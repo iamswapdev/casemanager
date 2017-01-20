@@ -437,6 +437,7 @@
 		var parentR = $(this).parent();
 		var div = $(parentR).find(".update-record").css("display", "block");
 		$(this).css("display", "none");
+		//$(parentR).parent().find("input").prop("disabled", false);
     } );
 	$('tbody').on( 'click', '.cancel', function () {
 		var parentR = $(this).parent().parent();
