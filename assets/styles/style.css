@@ -4063,8 +4063,10 @@ table.table.tdAlignLeft.work-area-info.info-link-popup th {
 .sett-percentage{
 	padding-left:0px;
 }
-#Client_Information tr:last-child, #ClientSettlements tr:last-child, #WithdrawnCases tr:last-child, #ClientNewCases tr:last-child, #StatusBreakdown tr:last-child, #ClientInvoices tr:last-child, #GenerateDailyClientInvoices tr:last-child, #PriviousPostingReports tr:last-child, #DailySettlement tr:last-child, #Collections tr:last-child, #FessCostsExpended tr:last-child, .TotalCases{
+#Client_Information tr:last-child, #ClientSettlements tr:last-child, #WithdrawnCases tr:last-child, #ClientNewCases tr:last-child, #StatusBreakdown tr:last-child, #ClientInvoices tr:last-child, #GenerateDailyClientInvoices tr:last-child, #PriviousPostingReports tr:last-child, #DailySettlement tr:last-child, #Collections tr:last-child, #FessCostsExpended tr:last-child, #CreditsToProvider tr:last-child, .TotalCases{
     background: #ffd599;
+    font-size: 14px;
+    font-weight: bold;
 }
 table#FinalClientInvoices td {
     width: 200px;
@@ -4127,13 +4129,19 @@ table#FinalClientInvoices th {
 .client-invoices .hpanel .panel-body{
 	background-color:#FFF;
 }
-.clientinvoice-providername h3{
+.clientinvoice-providername{
 	color: #000;
-	font-weight:normal;
+}
+.clientinvoice-providername .provider-name{
+    font-weight: normal;
+    font-size: 25px;
 }
 .quick-search{
 	background-color: #fafad2;
 }
 li.quick-search label {
     padding-left: 15px;
+}
+.print-invoice table th{
+	padding:30px;
 }

@@ -14,8 +14,12 @@ Class Search_model extends CI_Model{
 	}
 	public function get_Case_AutoId_By_Quick($data){
 		$this->db->select('Case_AutoId');
-		$this->db->order_by($data['SearchBy'], "asc");
-		$this->db->where($data['SearchBy']. " LIKE ", $data['SearchValue']."%");
+		if($data['SearchBy'] == "Case_Id"){	
+			$this->db->order_by("Case_AutoId", "asc");
+		}else{
+			$this->db->order_by($data['SearchBy'], "asc");
+		}
+		$this->db->where($data['SearchBy']. " LIKE ", "%".$data['SearchValue']."%");
 		$this->db->limit('1');
 		$query = $this->db->get("dbo_tblcase");
 		$Case_AutoId = $query->result_array();
@@ -213,7 +217,7 @@ Class Search_model extends CI_Model{
 	public function get_SearchResult($userId, $RoleId)
 	{
 		$this->db->order_by("Case_Id","desc");
-		$this->db->select('t1.*, t2.Provider_Name, t3.InsuranceCompany_Name, DATE_FORMAT(t1.Accident_Date,"%m-%d-%Y") as Accident_Date');
+		$this->db->select('t1.*, t2.Provider_Name, t3.InsuranceCompany_Name, DATE_FORMAT(t1.Accident_Date,"%m-%d-%Y") as Accident_Date, DATE_FORMAT(t1.DateOfService_Start,"%m-%d-%Y") as DOS_S, DATE_FORMAT(t1.DateOfService_End,"%m-%d-%Y") as DOS_E');
 		$this->db->from('dbo_tblcase as t1');
 		if($RoleId == 2){
 			$this->db->where("t2.UserId", $userId);

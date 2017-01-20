@@ -4,9 +4,38 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 </head>
-	<div><?php 
+<div class="print-invoice">
+	<table>
+    <tbody>
+    	<tr><th><div>HARMONY CHIROPRACTIC, P.C.</div></th><th><div>291.22</div></th></tr>
+        <tr><th><div>Two Hundred Ninety One Dollars And Twenty Two Cents  </div></th></tr>
+        <tr><th> <div>Invoice Number - 855</div></th></tr>
+        <tr><th> <div>A & AR MANAGEMENT GROUP INC</div></th><th><div>20,357.53</div></th></tr>
+        <tr><th><div>Twenty Thousand Three Hundred Fifty Seven Dollars And Fifty Three Cents </div></th></tr>
+        <tr><th><div>Invoice Number - 855</div></th></tr>
+    </tbody>
+    </table>
+</div>
+    
+    
+    
+   
+    
+    
+   
+
 	
-	echo $TableInfo['fr'];?></div>
+
+
+
+	
+
+	
+ 
+ 
+  	
+
+	
 
 <body>
 </body>

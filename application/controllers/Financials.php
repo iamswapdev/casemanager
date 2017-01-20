@@ -92,7 +92,7 @@ class Financials extends CI_Controller{
 			$row[] = "$".number_format($result->Firm_Fees, 2);
 			$row[] = "$".number_format($result->Final_Remit, 2);
 			$row[] = "$".number_format($result->Firm_Remit_Amount, 2);
-			$row[] = "<a target='_blank' class='info-link' href='Print_Checks?fra=".number_format($result->Firm_Remit_Amount, 2)."&invoiceid=".$result->Account_Id."&fr=".number_format($result->Final_Remit, 2)."'>print checks</a>";
+			$row[] = "<a target='_blank' class='info-link' href='Print_Checks?fra=".number_format($result->Firm_Remit_Amount, 2)."&invoiceid=".$result->Account_Id."&fr=".number_format($result->Final_Remit, 2)."&Account_Id=".$result->Account_Id."'>print checks</a>";
 			//$row[] = "<a class='info-link'>print invoice</a>";
 			$row[] = "<a target='_blank' class='info-link' href='Client_Settlement?Provider_Id=".$result->Provider_Id."&No_Months=&TableId=&Account_Id=".$result->Account_Id."&AccDate=".$result->Account_Date."&print_invoice=print_invoice'>print invoice</a>";
 			$row[] = $result->Account_Id;
@@ -134,6 +134,7 @@ class Financials extends CI_Controller{
 				"invoiceid" => $this->input->get("invoiceid"),
 				"fr" => $this->input->get("fr"),
 				"providername" => $this->input->get("providername"),
+				"Account_Id" => $this->input->get("Account_Id")
 			);
 			$this->load->view("pages/Print_Checks", $data);
 			
@@ -157,7 +158,7 @@ class Financials extends CI_Controller{
 			$row[] = "$".number_format($result->Total_Amount, 2);
 			//$row[] = "<a target='_blank' class='info-link' href=''>View Report</a>";
 			
-			$row[] = "<a target='_blank' class='info-link' href='Client_Settlement?Provider_Id=".$result->Provider_Id."&No_Months=&TableId=&Account_Id='>View Report</a>";
+			$row[] = "<a target='_blank' class='info-link' href='Client_Settlement?Provider_Id=".$result->Provider_Id."&No_Months=&TableId=&Account_Id=".$result->Account_Id."'>View Report</a>";
 			
 			$data[] = $row;
 			$Total_Amount = $Total_Amount + $result->Total_Amount;
@@ -393,7 +394,7 @@ class Financials extends CI_Controller{
 			$row[] = $result->InsuranceCompany_Name;
 			$row[] = "$".number_format($result->Initial_Balance, 2);
 			$row[] = $result->User_Id;
-			$row[] = "P = $".number_format($result->Settlement_Amount, 2)."; I = $".number_format($result->Settlement_Int, 2)."; FF = $".number_format($result->Settlement_Ff, 2)."; AF = $".number_format($result->Settlement_Af, 2)." Total = $".number_format($result->Settlement_Total, 2);
+			$row[] = "P = $".number_format($result->Settlement_Amount, 2)."; I = $".number_format($result->Settlement_Int, 2)."; FF = $".number_format($result->Settlement_Ff, 2)."; AF = $".number_format($result->Settlement_Af, 2);
 			$row[] = date_format(date_create(substr($result->Settlement_Date, 0, 10)), "m/d/Y");
 			$row[] = number_format($result->Settlement_Percentage, 2)."%";
 			
@@ -504,7 +505,7 @@ class Financials extends CI_Controller{
 				if($result->Case_Count != 0){
 					$row = array();
 						 
-					$row[] = "<a target='_blank' class='info-link' href='Client_Settlement?Provider_Id=".$Provider_Id."&SD=".date('Y-m-01', strtotime($result->Current_Month_Date))."&ED=".date('Y-m-t', strtotime($result->Current_Month_Date))."&TableId=".$TableId."'>".$result->Month_Year."</a>"."<input type='hidden' name='SD' value='".date('Y-m-01', strtotime($result->Current_Month_Date))."' /> <input type='hidden' name='ED' value='".date('Y-m-t', strtotime($result->Current_Month_Date))."' />";
+					$row[] = "<a class='info-link' href='Client_Settlement?Provider_Id=".$Provider_Id."&SD=".date('Y-m-01', strtotime($result->Current_Month_Date))."&ED=".date('Y-m-t', strtotime($result->Current_Month_Date))."&TableId=".$TableId."'>".$result->Month_Year."</a>"."<input type='hidden' name='SD' value='".date('Y-m-01', strtotime($result->Current_Month_Date))."' /> <input type='hidden' name='ED' value='".date('Y-m-t', strtotime($result->Current_Month_Date))."' />";
 					$Tot_Case_Count = $Tot_Case_Count + $result->Case_Count;
 					$row[] = $result->Case_Count;
 					$row[] = "$".number_format($result->Sum_of_Billed_Amount, 2);
@@ -559,7 +560,7 @@ class Financials extends CI_Controller{
 				if($result->Case_Count != 0){
 					$row = array();
 						 
-					$row[] = "<a target='_blank' class='info-link' href='Client_Settlement?Provider_Id=".$Provider_Id."&SD=".date('Y-m-01', strtotime($result->Current_Month_Date))."&ED=".date('Y-m-t', strtotime($result->Current_Month_Date))."&TableId=".$TableId."'>".$result->Month_Year."</a>"."<input type='hidden' name='SD' value='".date('Y-m-01', strtotime($result->Current_Month_Date))."' /> <input type='hidden' name='ED' value='".date('Y-m-t', strtotime($result->Current_Month_Date))."' />";
+					$row[] = "<a class='info-link' href='Client_Settlement?Provider_Id=".$Provider_Id."&SD=".date('Y-m-01', strtotime($result->Current_Month_Date))."&ED=".date('Y-m-t', strtotime($result->Current_Month_Date))."&TableId=".$TableId."'>".$result->Month_Year."</a>"."<input type='hidden' name='SD' value='".date('Y-m-01', strtotime($result->Current_Month_Date))."' /> <input type='hidden' name='ED' value='".date('Y-m-t', strtotime($result->Current_Month_Date))."' />";
 					$Tot_Case_Count = $Tot_Case_Count + $result->Case_Count;
 					$row[] = $result->Case_Count;
 					$row[] = "$".number_format($result->Sum_of_Billed_Amount, 2);
@@ -600,7 +601,7 @@ class Financials extends CI_Controller{
 			foreach($list as $result){
 				$row = array();
 						 
-				$row[] = "<a target='_blank' class='info-link' href='Client_Settlement?Provider_Id=".$Provider_Id."&No_Months=".$No_Months."&TableId=".$TableId."&Account_Id=".$result->Account_Id."'>".$result->Account_Id."</a>";
+				$row[] = "<a class='info-link' href='Client_Settlement?Provider_Id=".$Provider_Id."&No_Months=".$No_Months."&TableId=".$TableId."&Account_Id=".$result->Account_Id."'>".$result->Account_Id."</a>";
 				
 				$row[] = "$".number_format($result->Gross_Amount, 2);
 				$row[] = "$".number_format($result->Firm_Fees, 2);
@@ -648,7 +649,7 @@ class Financials extends CI_Controller{
 		foreach($list as $result){
 			$row = array();
 					 
-			$row[] = "<a target='_blank' class='info-link' href='Client_Settlement?Provider_Id=".$Provider_Id."&TableId=".$TableId."&Status=".$result->Status."&SD=".$Start_Date."&ED=".$End_Date."'>".$result->Status."</a>";
+			$row[] = "<a class='info-link' href='Client_Settlement?Provider_Id=".$Provider_Id."&TableId=".$TableId."&Status=".$result->Status."&SD=".$Start_Date."&ED=".$End_Date."'>".$result->Status."</a>";
 			$row[] = $result->Status_Count;
 			$data[] = $row;
 			$Tot_Status = $Tot_Status + $result->Status_Count; 
@@ -715,7 +716,7 @@ class Financials extends CI_Controller{
 				$row[] = $result->InsuranceCompany_Name;
 				$row[] = "$".number_format($result->Initial_Balance, 2);
 				$row[] = $result->User_Id;
-				$row[] = "P = $".number_format($result->Settlement_Amount, 2)."; I = $".number_format($result->Settlement_Int, 2)."; FF = $".number_format($result->Settlement_Ff, 2)."; AF = $".number_format($result->Settlement_Af, 2)." Total = $".number_format($result->Settlement_Total, 2);
+				$row[] = "P = $".number_format($result->Settlement_Amount, 2)."; I = $".number_format($result->Settlement_Int, 2)."; FF = $".number_format($result->Settlement_Ff, 2)."; AF = $".number_format($result->Settlement_Af, 2);
 				$row[] = date_format(date_create(substr($result->Settlement_Date, 0, 10)), "m/d/Y");
 				$row[] = $result->Settlement_Notes;
 				$row[] = number_format($result->Settlement_Percentage, 2)."%";
@@ -799,6 +800,8 @@ class Financials extends CI_Controller{
 		//echo "pp:".$input_data['Table_Id']."G"; exit;//print_r($input_data);exit;
 		$data = array();
 		$Tot_Transactions_Amount = 0;
+		$Tot_Claim_Amount = 0;
+		$Tot_Legal_Fees = 0;
 		$noRows = 1;
 		foreach($list as $result){
 			$row = array();
@@ -812,16 +815,25 @@ class Financials extends CI_Controller{
 		
 			$row[] = date_format(date_create($result->DateOfService_Start),"m/d/Y")." - ".date_format(date_create($result->DateOfService_End),"m/d/Y");
 			$row[] = "$".number_format($result->Claim_Amount, 2);
+			$Tot_Claim_Amount = $Tot_Claim_Amount + $result->Claim_Amount;
 			$row[] = $result->Transactions_Type;
 			$row[] = $result->Transactions_Description;
 			if($input_data['Table_Id'] == "Collections"){
 				$row[] = date_format(date_create(substr($result->Transactions_Date, 0, 10)), "m/d/Y");
+				$row[] = number_format(($result->Transactions_Amount * 100 / $result->Claim_Amount), 2)."%";
 			}else{
 				$row[] = $result->IndexOrAAA_Number;
 			}
 			$row[] = "$".number_format($result->Transactions_Amount, 2);
 			if($input_data['Table_Id'] == "Collections"){
-				$row[] = "";
+				if($result->Transactions_Type == "C"){
+					$row[] = "$".number_format($result->Transactions_Amount * $result->Provider_Billing / 100 ,2);
+					$Tot_Legal_Fees = $Tot_Legal_Fees + number_format($result->Transactions_Amount * $result->Provider_Billing / 100 ,2);
+				}else{
+					$row[] = "$".number_format($result->Transactions_Amount * $result->Provider_IntBilling / 100 ,2);
+					$Tot_Legal_Fees = $Tot_Legal_Fees + number_format($result->Transactions_Amount * $result->Provider_IntBilling / 100 ,2);
+				}
+				
 			}
 			$noRows++;
 			$Tot_Transactions_Amount = $Tot_Transactions_Amount + $result->Transactions_Amount;
@@ -833,13 +845,16 @@ class Financials extends CI_Controller{
 		$row[] = "";
 		$row[] = "";
 		$row[] = "";
+		$row[] = "$".number_format($Tot_Claim_Amount, 2);
 		$row[] = "";
 		$row[] = "";
 		$row[] = "";
-		$row[] = "";
+		if($input_data['Table_Id'] == "Collections"){
+			$row[] = number_format(($Tot_Transactions_Amount * 100 / $Tot_Claim_Amount), 2)."%";
+		}
 		$row[] = "$".number_format($Tot_Transactions_Amount, 2);
 		if($input_data['Table_Id'] == "Collections"){
-			$row[] = "";
+			$row[] = "$".number_format($Tot_Legal_Fees, 2);
 		}
 		$data[] = $row;
 		
@@ -860,7 +875,7 @@ class Financials extends CI_Controller{
 			
 			$row[] = $result->Provider_Id;
 			$row[] = $result->Provider_Name;
-			$row[] = $result->Provider_Billing;
+			$row[] = "0.00";
 			$row[] = $result->Provider_Billing;
 			$row[] = $result->Provider_IntBilling;
 			$row[] = $result->Invoice_Type;
@@ -873,6 +888,7 @@ class Financials extends CI_Controller{
 		echo json_encode($output);
 	}
 	public function get_Final_Client_Invoices(){
+		$Tot_Legal_Fees = 0;
 		$input_data = array(
 			"Provider_Id" => $this->input->post("Provider_Id"),
 			"Account_Id" => $this->input->post("Account_Id"),
@@ -882,28 +898,40 @@ class Financials extends CI_Controller{
 		foreach ($list1 as $result) {
 			$Cost_Expended = $result->Cost_Expended;
 		}
-		$list2=$this->financials_model->get_Final_Client_Invoices($input_data, "");
+		$list2=$this->financials_model->get_Final_Client_Invoices($input_data, "CRED");
+		foreach ($list2 as $result) {
+			$Credit_To_Client = $result->Credit_To_Client;
+		}
+		
+		$array1=$this->financials_model->get_Tot_Legal_Fees_ClientInvoices($input_data, "C");
+		foreach ($array1 as $result) {
+			$Tot_Legal_Fees = $Tot_Legal_Fees + $result->Legal_Fees_C;
+		}
+		$array2=$this->financials_model->get_Tot_Legal_Fees_ClientInvoices($input_data, "I");
+		foreach ($array2 as $result) {
+			$Tot_Legal_Fees = $Tot_Legal_Fees + $result->Legal_Fees_I;
+		}
+		
+		$list3=$this->financials_model->get_Final_Client_Invoices($input_data, "");
 		$data = array();
 		$no=0;
-		foreach ($list2 as $result) {
+		foreach ($list3 as $result) {
 			$row = array();
 			$no++;
 			$row[] = "$".number_format($result->Gross_Amount_Collected, 2);
-			//$row[] = "$".number_format($result->Legal_Fees, 2);
-			$row[] = "";
+			$row[] = "$".number_format($Tot_Legal_Fees, 2);
+			$row[] = "$0.00";
 			//$row[] = "$".number_format($result->Privious_Cost, 2);
-			$row[] = "";
 			$row[] = "$".number_format($Cost_Expended, 2);
-			//$row[] = "$".number_format($result->Credit_To_Client, 2);
-			$row[] = "";
+			$row[] = "$".number_format($Credit_To_Client, 2);
 			//$row[] = "$".number_format($result->Received_Fees, 2);
-			$row[] = "";
-			//$row[] = "$".number_format($result->Gross_Amount_Collected - $result->Legal_Fees - $result->Privious_Cost - $result->Cost_Expended + $result->Credit_To_Client + $result->Received_Fees, 2);
+			$row[] = "$0.00";
+			//$row[] = "$".number_format($result->Gross_Amount_Collected - $Tot_Legal_Fees - 0 - $result->Cost_Expended + $result->Credit_To_Client + $result->Received_Fees, 2);
 			//$row[] =  "$".number_format($result->Legal_Fees + $result->Privious_Cost + $result->Cost_Expended + $result->Credit_To_Client + $result->Received_Fees, 2);
 			
-			$row[] = "$".number_format(($result->Gross_Amount_Collected - 0 - 0 - $Cost_Expended + 0 + 0), 2);
-			$row[] =  "$".number_format((0 + 0 + $Cost_Expended + 0 + 0), 2);
-			$row[] = "";
+			$row[] = "$".number_format(($result->Gross_Amount_Collected - $Tot_Legal_Fees - 0 - $Cost_Expended + $Credit_To_Client + 0), 2);
+			$row[] = "$".number_format(($Tot_Legal_Fees + 0 + $Cost_Expended - $Credit_To_Client + 0), 2);
+			$row[] = "$0.00";
 			
 			$data[] = $row;
 		}

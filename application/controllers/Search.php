@@ -55,6 +55,14 @@ class Search extends CI_Controller{
 			$this->load->view('pages/login', $CurrentPage);
 		}
 	}
+/* get Search table data - viewcase page*/
+	public function getSearchTable(){  
+		$UserId = $this->input->post("UserId");
+		$RoleId = $this->input->post("RoleId");
+		
+		$list=$this->search_model->get_SearchResult($UserId, $RoleId);
+		$this->Search_Table_Data($list);
+	}
 	public function editcase($Case_AutoId){
 			//$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
@@ -88,17 +96,18 @@ class Search extends CI_Controller{
 	}
 	public function viewcase($Case_AutoId){
 		//echo "<br><prewe>Session:";print_r($this->session->all_userdata()); echo "</pre>";
-		if($Case_AutoId == -1){
-			$data = array(
-				"SearchValue" => $this->input->post("Case_AutoId"),
-				"SearchBy" => $this->input->post("SearchBy")
-			);
-			$Case_AutoIdNew = $this->search_model->get_Case_AutoId_By_Quick($data);
-			$Case_AutoId = $Case_AutoIdNew;
-		}
+		
 		//echo "Case_AutoId:".$Case_AutoId;
 		//exit;
 		if(isset($this->session->userdata['logged_in'])){
+			if($Case_AutoId == -1){
+				$data = array(
+					"SearchValue" => $this->input->post("Case_AutoId"),
+					"SearchBy" => $this->input->post("SearchBy")
+				);
+				$Case_AutoIdNew = $this->search_model->get_Case_AutoId_By_Quick($data);
+				$Case_AutoId = $Case_AutoIdNew;
+			}
 			$data['Provider_Name1']= $this->search_model->get_Provider();
 			$data['InsuranceCompany_Name']= $this->search_model->get_Insurance();
 			$data['Status']= $this->search_model->get_StatusArray();
@@ -393,14 +402,7 @@ class Search extends CI_Controller{
 		$output = array( "data" => $data );
 		echo json_encode($data);
 	}
-/* get Search table data - viewcase page*/
-	public function getSearchTable(){  
-		$UserId = $this->input->post("UserId");
-		$RoleId = $this->input->post("RoleId");
-		
-		$list=$this->search_model->get_SearchResult($UserId, $RoleId);
-		$this->Search_Table_Data($list);
-	}
+
 
 /**************************** CASEINFORMATION TAB-1 ************************************************************************************/
 	public function getNotes($Case_Id){
@@ -1129,6 +1131,10 @@ class Search extends CI_Controller{
 		
 		$date=date_create("jun 13 2012");
 		echo "<br>text date:".date_format($date,"Y/m/d");
+		
+		$timestamp = strtotime( "February 15, 2015" );
+   
+   		echo "<br>Feb 15, 2015 = ".date( 'Y-m-d', $timestamp );
 	}
 /*****************************************************************************************************************************************/
 }

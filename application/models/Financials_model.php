@@ -31,7 +31,7 @@ Class Financials_model extends CI_Model{
 	}	
 /* get Generate Daily Client Invoices Financials-tab 2*/
 	public function get_Generate_Daily_Client_Invoices(){
-		$this->db->select("t1.Provider_Id, t2.Provider_Name, COUNT(t1.Provider_Id) as No_of_Checks, SUM(t1.Gross_Amount) as Total_Amount");
+		$this->db->select("t1.Provider_Id, t2.Provider_Name, COUNT(t1.Provider_Id) as No_of_Checks, SUM(t1.Gross_Amount) as Total_Amount, t1.Account_Id");
 		$this->db->from("dbo_tblclientaccount as t1");
 		$this->db->group_by("t1.Provider_Id");
 		$this->db->join("dbo_tblprovider as t2", "t1.Provider_Id = t2.Provider_Id");
@@ -293,18 +293,23 @@ Class Financials_model extends CI_Model{
 
 /* get client invoices all tables when clicked on account id*/
 	public function get_Collections($input_data){
-		$this->db->select("t1.Case_Id, t2.InjuredParty_FirstName, t2.InjuredParty_LastName, t2.Accident_Date, t2.DateOfService_Start, t2.DateOfService_End, t2.Claim_Amount, t1.Transactions_Type, t1.Transactions_Description, t1.Transactions_Date, t1.Transactions_Amount, t2.IndexOrAAA_Number");
+		$this->db->select("t1.Case_Id, t2.InjuredParty_FirstName, t2.InjuredParty_LastName, t2.Accident_Date, DATE_FORMAT(t2.DateOfService_End,'%m-%d-%Y') as DOS_E, t2.DateOfService_Start, t2.DateOfService_End, t2.Claim_Amount, t1.Transactions_Type, t1.Transactions_Description, t1.Transactions_Date, t1.Transactions_Amount, t2.IndexOrAAA_Number, t3.Provider_Billing, t3.Provider_IntBilling");
 		$this->db->from("dbo_tbltransactions as t1");
 		$this->db->join("dbo_tblcase as t2", "t1.Case_Id = t2.Case_Id" );
+		$this->db->join("dbo_tblprovider as t3", "t3.Provider_Id = t1.Provider_Id" );
+		
 		if($input_data['Account_Id'] != ""){
 			$this->db->where('t1.Invoice_Id', $input_data['Account_Id']);
 		}
 		$this->db->where('t1.Provider_Id', $input_data['Provider_Id']);
 		if($input_data['Table_Id'] == "Collections"){
 			$this->db->where("(t1.Transactions_Type='C' OR t1.Transactions_Type='I')", NULL, FALSE);
-		}else{
+		}else if($input_data['Table_Id'] == "FessCostsExpended"){
 			$this->db->where('t1.Transactions_Type', "EXP");
+		}else if($input_data['Table_Id'] == "CreditsToProvider"){
+			$this->db->where('t1.Transactions_Type', "CRED");
 		}
+		
 		
 		
 		$query = $this->db->get();
@@ -314,6 +319,8 @@ Class Financials_model extends CI_Model{
 	public function get_Final_Client_Invoices($input_data, $Type){
 		if($Type == "EXP"){
 			$this->db->select("SUM(t1.Transactions_Amount) as Cost_Expended");
+		}elseif($Type == "CRED"){
+			$this->db->select("SUM(t1.Transactions_Amount) as Credit_To_Client");
 		}else{
 			$this->db->select("SUM(t1.Transactions_Amount) as Gross_Amount_Collected, ");
 		}
@@ -325,11 +332,35 @@ Class Financials_model extends CI_Model{
 		$this->db->where('t1.Provider_Id', $input_data['Provider_Id']);
 		if($Type == "EXP"){
 			$this->db->where('t1.Transactions_Type', "EXP");
+		}else if($Type == "CRED"){
+			$this->db->where('t1.Transactions_Type', "CRED");
 		}else{
+			$this->db->join("dbo_tblprovider as t2", "t2.Provider_Id = t1.Provider_Id" );
 			$this->db->where("(t1.Transactions_Type='C' OR t1.Transactions_Type='I')", NULL, FALSE);
 		}
+		$query = $this->db->get();
+		return $query->result();
+	}
+/*get final client invoice legal fees total table*/
+	public function get_Tot_Legal_Fees_ClientInvoices($input_data, $Type){
+		if($Type == "C"){
+			$this->db->select("SUM(t1.Transactions_Amount * t2.Provider_Billing / 100) as Legal_Fees_C, ");
+		}else if($Type == "I"){
+			$this->db->select("SUM(t1.Transactions_Amount * t2.Provider_IntBilling / 100) as Legal_Fees_I, ");
+		}
+		$this->db->from("dbo_tbltransactions as t1");
+		$this->db->join("dbo_tblprovider as t2", "t2.Provider_Id = t1.Provider_Id" );
 		
 		
+		if($input_data['Account_Id'] !=""){
+			$this->db->where('t1.Invoice_Id', $input_data['Account_Id']);
+		}
+		$this->db->where('t1.Provider_Id', $input_data['Provider_Id']);
+		if($Type == "C"){
+			$this->db->where('t1.Transactions_Type', "C");
+		}else if($Type == "I"){
+			$this->db->where('t1.Transactions_Type', "I");
+		}
 		$query = $this->db->get();
 		return $query->result();
 	}

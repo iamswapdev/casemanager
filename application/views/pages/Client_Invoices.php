@@ -55,16 +55,15 @@
     <div class="provider-address"><?php foreach($Provider_Info as $row){echo $row['Provider_Name']."<br>".$row['Provider_Local_Address']; }?></div>
     <div class="invoice-subject">Re: No Fault Collection </div>
     <div class="invoice-letter">
-    
-    <p>Dear Client,</p>
-    
-    <p>Pursuant to our agreement enclosed please find a Disbursement of Funds Report showing a detailed breakdown of settlements/awards regarding the no fault matters that had been sent to my office for representation. Please be advised that all repayments of filing fees disbursed by you or by The Beynenson Law Firm, P.C. on your behalf (if any) will be credited to your monthly billing statement.
-    </p>
-    <p>Please contact the undersigned with any questions you have concerning either the above or any other matter you are concerned with.</p>
-    
-    <p>Sincerely,</p>
-    
-    <p>The Beynenson Law Firm, P.C. </p>
+        <p>Dear Client,</p>
+        
+        <p>Pursuant to our agreement enclosed please find a Disbursement of Funds Report showing a detailed breakdown of settlements/awards regarding the no fault matters that had been sent to my office for representation. Please be advised that all repayments of filing fees disbursed by you or by The Beynenson Law Firm, P.C. on your behalf (if any) will be credited to your monthly billing statement.
+        </p>
+        <p>Please contact the undersigned with any questions you have concerning either the above or any other matter you are concerned with.</p>
+        
+        <p>Sincerely,</p>
+        
+        <p>The Beynenson Law Firm, P.C. </p>
     </div>
 </div>
 <?php }?>
@@ -79,7 +78,7 @@
         <div class="panel-body tab-panel">
         	<div class="form-group form-horizontal col-lg-12">
                 <div class="col-md-5"></div>
-                <div class="col-md-6 clientinvoice-providername"><h3><?php foreach($Provider_Info as $row){echo $row['Provider_Name']; }?></h3></div>
+                <div class="col-md-6 clientinvoice-providername"><span class="provider-name"><?php foreach($Provider_Info as $row){echo $row['Provider_Name']; }?></span><span class="invoice-id">&nbsp;&nbsp;&nbsp;Invoice Id = <?php echo $TableInfo['Account_Id'];?></span></div>
             </div>
             <div class="form-group form-horizontal col-lg-12">
                 
@@ -98,6 +97,7 @@
                             <th>TYPE</th>
                             <th>DESC</th>
                             <th>DATE</th>
+                            <th>PERCENTAGE%</th>
                             <th>COLLECTED</th>
                             <th>FEES</th>
                         </tr>
@@ -138,6 +138,7 @@
                     <table id="CreditsToProvider" class="table dataTable table-bordered table-striped">
                         <thead>
                         <tr>  	
+                        	<th>#</th>
                         	<th>Case ID</th>
                             <th>Injurer</th>
                             <th>DOA</th>
@@ -284,6 +285,23 @@ $(document).ready(function(e) {
 			"data": {
 				"Provider_Id": "<?php echo $TableInfo['Provider_Id'];?>",
 				"Table_Id": "Collections",
+				"Account_Id": "<?php echo $TableInfo['Account_Id'];?>"
+			},
+			"type": "post"
+		},
+		"bPaginate": false,
+		"bLengthChange": false,
+		"bFilter": false,
+		"bInfo": false,
+		"bAutoWidth": false,
+		"bSort": false
+	});
+	$('#CreditsToProvider').dataTable( {
+		"ajax": {
+			"url": "get_Collections",
+			"data": {
+				"Provider_Id": "<?php echo $TableInfo['Provider_Id'];?>",
+				"Table_Id": "CreditsToProvider",
 				"Account_Id": "<?php echo $TableInfo['Account_Id'];?>"
 			},
 			"type": "post"
