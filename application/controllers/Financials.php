@@ -7,6 +7,7 @@ class Financials extends CI_Controller{
 		parent::__construct();
 		$this->load->library('session');
 		$this->load->model('financials_model');
+		$this->load->model('search_model');
 		$this->load->model('admin_privilege_model');
 		$this->load->model('search_model');
 		$this->session->all_userdata();
@@ -91,8 +92,9 @@ class Financials extends CI_Controller{
 			$row[] = "$".number_format($result->Firm_Fees, 2);
 			$row[] = "$".number_format($result->Final_Remit, 2);
 			$row[] = "$".number_format($result->Firm_Remit_Amount, 2);
-			$row[] = "<a class='info-link'>print checks</a>";
-			$row[] = "<a class='info-link'>print invoice</a>";
+			$row[] = "<a target='_blank' class='info-link' href='Print_Checks?fra=".number_format($result->Firm_Remit_Amount, 2)."&invoiceid=".$result->Account_Id."&fr=".number_format($result->Final_Remit, 2)."'>print checks</a>";
+			//$row[] = "<a class='info-link'>print invoice</a>";
+			$row[] = "<a target='_blank' class='info-link' href='Client_Settlement?Provider_Id=".$result->Provider_Id."&No_Months=&TableId=&Account_Id=".$result->Account_Id."&AccDate=".$result->Account_Date."&print_invoice=print_invoice'>print invoice</a>";
 			$row[] = $result->Account_Id;
 			$row[] = date_format(date_create(substr($result->Account_Date, 0,10)), "m/d/Y");
 			$row[] = date_format(date_create(substr($result->Last_Printed, 0,10)), "m/d/Y");
@@ -125,6 +127,21 @@ class Financials extends CI_Controller{
 		$output = array( "data" => $data );
 		echo json_encode($output);
 	}
+	public function Print_Checks(){
+		if(isset($this->session->userdata['logged_in'])){
+			$data['TableInfo'] = array(
+				"fra" => $this->input->get("fra"),
+				"invoiceid" => $this->input->get("invoiceid"),
+				"fr" => $this->input->get("fr"),
+				"providername" => $this->input->get("providername"),
+			);
+			$this->load->view("pages/Print_Checks", $data);
+			
+		}else{
+			$CurrentPage['CurrentUrl'] = "financials/reports";
+			$this->load->view('pages/login', $CurrentPage);
+		}
+	}
 /* get generate daily client invoices Financials-tab 2*/
 	public function get_Generate_Daily_Client_Invoices(){
 		$list = $this->financials_model->get_Generate_Daily_Client_Invoices();
@@ -138,7 +155,9 @@ class Financials extends CI_Controller{
 			$row[] = $result->Provider_Name;
 			$row[] = $result->No_of_Checks;
 			$row[] = "$".number_format($result->Total_Amount, 2);
-			$row[] = "<a target='_blank' class='info-link' href=''>View Report</a>";
+			//$row[] = "<a target='_blank' class='info-link' href=''>View Report</a>";
+			
+			$row[] = "<a target='_blank' class='info-link' href='Client_Settlement?Provider_Id=".$result->Provider_Id."&No_Months=&TableId=&Account_Id='>View Report</a>";
 			
 			$data[] = $row;
 			$Total_Amount = $Total_Amount + $result->Total_Amount;
@@ -201,7 +220,7 @@ class Financials extends CI_Controller{
 /* get exp cost balance Financials- tab 5 */
 	public function get_Exp_Cost_Balance(){
 		$list = $this->financials_model->get_Exp_Cost_Balance();
-		//echo "<pre>"; print_r($list);exit;
+		echo "<pre>"; print_r($list);exit;
 		$data = array();
 		foreach($list as $result){
 			$row = array();
@@ -209,7 +228,9 @@ class Financials extends CI_Controller{
 			$row[] = $result->Provider_Name;
 			$row[] = $result->InsuranceCompany_Name;
 			$row[] = $result->Case_Id;
-			$row[] = $result->Exp_Cost;
+			if($result->Transactions_Type){
+				$row[] = $result->Exp_Cost;
+			}
 			$row[] = $result->FFB;
 			$row[] = $result->FFC;
 			$row[] = $result->FFREC;
@@ -649,10 +670,18 @@ class Financials extends CI_Controller{
 				"ED" => $this->input->get("ED"),
 				"TableId" => $this->input->get("TableId"),
 				"Status" => $this->input->get("Status"),
-				"Account_Id" => $this->input->get("Account_Id")
+				"Account_Id" => $this->input->get("Account_Id"),
+				"print_invoice" => $this->input->get("print_invoice"),
+				"AccDate" => $this->input->get("AccDate")
 			);
+			//echo "<pre>".count($data['TableInfo']);exit;
 			$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
-			$this->load->view("pages/Client_Settlement", $data);
+			if($data['TableInfo']['SD'] == "" && $data['TableInfo']['ED'] == ""){
+				$data['Provider_Info'] = $this->financials_model->get_Provider_Info($data['TableInfo']['Provider_Id']);
+				$this->load->view("pages/Client_Invoices", $data);
+			}else{
+				$this->load->view("pages/Client_Settlement", $data);
+			}
 		}else{
 			$CurrentPage['CurrentUrl'] = "financials/reports";
 			$this->load->view('pages/login', $CurrentPage);
@@ -778,7 +807,10 @@ class Financials extends CI_Controller{
 			$row[] = $result->Case_Id;
 			$row[] = $result->InjuredParty_FirstName." ".$result->InjuredParty_LastName;
 			$row[] = date_format(date_create(substr($result->Accident_Date, 0, 10)), "m/d/Y");
-			$row[] = $result->DateOfService_Start." - ".$result->DateOfService_End;
+			//$date=date_create($result->DateOfService_Start);
+			//echo "<br>text date:".;
+		
+			$row[] = date_format(date_create($result->DateOfService_Start),"m/d/Y")." - ".date_format(date_create($result->DateOfService_End),"m/d/Y");
 			$row[] = "$".number_format($result->Claim_Amount, 2);
 			$row[] = $result->Transactions_Type;
 			$row[] = $result->Transactions_Description;
@@ -813,6 +845,70 @@ class Financials extends CI_Controller{
 		
 		$output = array( "data" => $data );
 		echo json_encode($output);
+	}
+	public function get_Provider_Details(){
+		$input_data = array(
+			"Provider_Id" => $this->input->post("Provider_Id"),
+			"Account_Id" => $this->input->post("Account_Id"),
+			"Table_Id" => $this->input->post("Table_Id")
+		);
+		$list = $this->search_model->get_Provider_ById($input_data['Provider_Id']);
+		//echo "pp:".$input_data['Table_Id']."G"; exit;//print_r($input_data);exit;
+		$data = array();
+		foreach($list as $result){
+			$row = array();
+			
+			$row[] = $result->Provider_Id;
+			$row[] = $result->Provider_Name;
+			$row[] = $result->Provider_Billing;
+			$row[] = $result->Provider_Billing;
+			$row[] = $result->Provider_IntBilling;
+			$row[] = $result->Invoice_Type;
+			$row[] = $result->Provider_FF;
+			$row[] = $result->Provider_ReturnFF;
+			
+			$data[] = $row;
+		}
+		$output = array( "data" => $data );
+		echo json_encode($output);
+	}
+	public function get_Final_Client_Invoices(){
+		$input_data = array(
+			"Provider_Id" => $this->input->post("Provider_Id"),
+			"Account_Id" => $this->input->post("Account_Id"),
+			"Table_Id" => $this->input->post("Table_Id")
+		);
+		$list1=$this->financials_model->get_Final_Client_Invoices($input_data, "EXP");
+		foreach ($list1 as $result) {
+			$Cost_Expended = $result->Cost_Expended;
+		}
+		$list2=$this->financials_model->get_Final_Client_Invoices($input_data, "");
+		$data = array();
+		$no=0;
+		foreach ($list2 as $result) {
+			$row = array();
+			$no++;
+			$row[] = "$".number_format($result->Gross_Amount_Collected, 2);
+			//$row[] = "$".number_format($result->Legal_Fees, 2);
+			$row[] = "";
+			//$row[] = "$".number_format($result->Privious_Cost, 2);
+			$row[] = "";
+			$row[] = "$".number_format($Cost_Expended, 2);
+			//$row[] = "$".number_format($result->Credit_To_Client, 2);
+			$row[] = "";
+			//$row[] = "$".number_format($result->Received_Fees, 2);
+			$row[] = "";
+			//$row[] = "$".number_format($result->Gross_Amount_Collected - $result->Legal_Fees - $result->Privious_Cost - $result->Cost_Expended + $result->Credit_To_Client + $result->Received_Fees, 2);
+			//$row[] =  "$".number_format($result->Legal_Fees + $result->Privious_Cost + $result->Cost_Expended + $result->Credit_To_Client + $result->Received_Fees, 2);
+			
+			$row[] = "$".number_format(($result->Gross_Amount_Collected - 0 - 0 - $Cost_Expended + 0 + 0), 2);
+			$row[] =  "$".number_format((0 + 0 + $Cost_Expended + 0 + 0), 2);
+			$row[] = "";
+			
+			$data[] = $row;
+		}
+		
+		echo json_encode($data);
 	}
 } 	
 ?>

@@ -124,7 +124,20 @@
             <?php  } ?>  
             <li>
                 <a href="<?php echo base_url();?>admin/logout"><span class="nav-label">Logoff</span><span class="fa arrow"></span> </a>
-            </li>        
+            </li>
+            <li>
+            	<a href="#"></a>
+            </li>
+            <li class="quick-search">
+                <form action="/casemanager/search/viewcase/-1" method="post">
+                    <div class="form-group">
+                        <input type="text" placeholder="Enter Case No." name="Case_AutoId" class="form-control">
+                    </div>
+                    <div class="form-group"><label><input type="radio" class="horizontal" value="Case_AutoId" name="SearchBy" checked="checked">Case Id</label></div>
+                    <div class="form-group"><label><input type="radio" class="horizontal" value="IndexOrAAA_Number" name="SearchBy">Index No</label></div>
+                    <div class="form-group"><label><input type="radio" class="horizontal" value="InjuredParty_LastName" name="SearchBy">Patient</label></div>
+                </form>
+            </li>      
       
         </ul>
     </div>

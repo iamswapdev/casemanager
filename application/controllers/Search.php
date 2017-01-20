@@ -88,7 +88,16 @@ class Search extends CI_Controller{
 	}
 	public function viewcase($Case_AutoId){
 		//echo "<br><prewe>Session:";print_r($this->session->all_userdata()); echo "</pre>";
-		
+		if($Case_AutoId == -1){
+			$data = array(
+				"SearchValue" => $this->input->post("Case_AutoId"),
+				"SearchBy" => $this->input->post("SearchBy")
+			);
+			$Case_AutoIdNew = $this->search_model->get_Case_AutoId_By_Quick($data);
+			$Case_AutoId = $Case_AutoIdNew;
+		}
+		//echo "Case_AutoId:".$Case_AutoId;
+		//exit;
 		if(isset($this->session->userdata['logged_in'])){
 			$data['Provider_Name1']= $this->search_model->get_Provider();
 			$data['InsuranceCompany_Name']= $this->search_model->get_Insurance();
@@ -1061,6 +1070,8 @@ class Search extends CI_Controller{
 				}
 			}
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$DateOfService_Start." - ".$DateOfService_End."</a>";
+			//$row[] = date_format(date_create($result->DateOfService_Start),"m/d/Y")." - ".date_format(date_create($result->DateOfService_End),"m/d/Y");
+			//$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".date_format(date_create($result->DateOfService_Start),"m/d/Y")." - ".date_format(date_create($result->DateOfService_End),"m/d/Y")."</a>";
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Status."</a>";
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Ins_Claim_Number."</a>";
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>$".$result->Claim_Amount."</a>";
@@ -1115,6 +1126,9 @@ class Search extends CI_Controller{
 		
 		// Last day of the month.
 		echo "<br>Last day of the month.:".date('Y-m-t', strtotime($query_date));
+		
+		$date=date_create("jun 13 2012");
+		echo "<br>text date:".date_format($date,"Y/m/d");
 	}
 /*****************************************************************************************************************************************/
 }

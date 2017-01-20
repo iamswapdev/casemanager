@@ -250,6 +250,7 @@
 			"aLengthMenu": [5, 10, 20, 25, 50, "All"],
 			"bSort": true,
 			//bJQueryUI: true,
+			//"sDom": '<"top"flp>rt<"bottom"i><"clear">',
 			dom: 'lBfrtip',
 			//dom: "<'row'<'col-sm-4 demo'l><'col-sm-4 text-center'B><'col-sm-4'f>>lBfrtip",
             

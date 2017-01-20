@@ -12,6 +12,17 @@ Class Search_model extends CI_Model{
 		//echo "<pre>"; print_r($data); echo "AL:".count($data[0]);exit();
 		return $data;
 	}
+	public function get_Case_AutoId_By_Quick($data){
+		$this->db->select('Case_AutoId');
+		$this->db->order_by($data['SearchBy'], "asc");
+		$this->db->where($data['SearchBy']. " LIKE ", $data['SearchValue']."%");
+		$this->db->limit('1');
+		$query = $this->db->get("dbo_tblcase");
+		$Case_AutoId = $query->result_array();
+		return $Case_AutoId[0]['Case_AutoId'];
+	}
+	
+	
 	public function get_CaseInfo_ById($Case_AutoId){
 		
 		$this->db->select('t1.*, DATE_FORMAT(t1.Accident_Date,"%m-%Y-%d") as Accident_DateNoTimr, t2.Provider_Name, t3.InsuranceCompany_Name, t4.Defendant_Name, t5.Adjuster_LastName, t5.Adjuster_FirstName, t5.Adjuster_Phone, t5.Adjuster_Phone_Ext, t6.Attorney_Name, t7.Court_Name' );

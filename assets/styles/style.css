@@ -2947,7 +2947,7 @@ h6 {
 /* Tables */
 .table > thead > tr > th {
   border-bottom: none;
-  background-color:#4ea4de;
+  background-color:#055286;
   color: #fff;
   text-align: center !important;
 }
@@ -4065,4 +4065,75 @@ table.table.tdAlignLeft.work-area-info.info-link-popup th {
 }
 #Client_Information tr:last-child, #ClientSettlements tr:last-child, #WithdrawnCases tr:last-child, #ClientNewCases tr:last-child, #StatusBreakdown tr:last-child, #ClientInvoices tr:last-child, #GenerateDailyClientInvoices tr:last-child, #PriviousPostingReports tr:last-child, #DailySettlement tr:last-child, #Collections tr:last-child, #FessCostsExpended tr:last-child, .TotalCases{
     background: #ffd599;
+}
+table#FinalClientInvoices td {
+    width: 200px;
+    padding: 8px 0px 10px 0px;
+    text-align: left !important;
+}
+table#FinalClientInvoices th {
+    width: 700px;
+    padding: 8px 0px 10px 0px;
+    text-align: left !important;
+	border: 1px solid #e2e2e2 !important;
+}
+.BeynensonLaw{
+	font-size: 35px;
+    margin: auto;
+    width: 550px;
+    font-weight: bold;
+    color: #000;
+}
+.BeynensonLaw hr{
+	margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #000;
+    width: 50%;
+}
+.BeynensonLaw-address{
+	margin: auto;
+    width: 15%;
+    font-size: 15px;
+    text-align: center;
+    color: #000;
+}
+.invoice-date{
+	float: right;
+    margin-right: 75px;
+    font-size: 15px;
+    color: #000;
+}
+.provider-address{
+	width: 15%;
+    font-size: 15px;
+    text-align: left;
+    color: #000;
+    margin-left: 20px;
+}
+.invoice-subject{
+	width: 15%;
+    font-size: 16px;
+    text-align: right;
+    color: #000;
+    margin-left: 130px;
+}
+.invoice-letter p, .invoice-letter{
+	font-size: 16px;
+	text-align: left;
+	color: #000;
+	margin-left: 10px;
+}
+.client-invoices .hpanel .panel-body{
+	background-color:#FFF;
+}
+.clientinvoice-providername h3{
+	color: #000;
+	font-weight:normal;
+}
+.quick-search{
+	background-color: #fafad2;
+}
+li.quick-search label {
+    padding-left: 15px;
 }

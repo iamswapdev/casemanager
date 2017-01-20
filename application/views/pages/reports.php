@@ -448,7 +448,7 @@
                             <div class="panel-body tab-panel">
                                 <div class="form-group form-horizontal col-lg-12 responsive">
 									<h5 class="h4-title">Status Breakdown </h5>
-                                    <div class="col-md-12">
+                                    <div class="col-md-3">
                                         <table id="StatusBreakdown" class="table dataTable table-bordered table-striped">
                                             <thead>
                                             <tr>  	 	 	 

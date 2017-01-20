@@ -11,9 +11,9 @@
         <div class="small-logo">
             <span class="text-primary">HOMER APP</span>
         </div>
-        <!--<form role="search" class="navbar-form-custom" method="post" action="#">
+        <!--<form role="search" class="navbar-form-custom" action="/casemanager/search/viewcase/-1" method="post" action="#">
             <div class="form-group">
-                <input type="text" placeholder="Search something special" class="form-control" name="search">
+                <input type="text" placeholder="Enter Case No." name="Case_AutoId" class="form-control" name="search">
             </div>
         </form>-->
         <!--<div class="navbar-right">

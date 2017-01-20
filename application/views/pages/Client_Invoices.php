@@ -35,106 +35,57 @@
 <![endif]-->
 
 <!-- Header -->
-<?php include 'header.php';?>
+<?php //include 'header.php';?>
 <!-- Navigation -->
-<?php include 'sidebar.php';?>
+<?php //include 'sidebar.php';?>
 <!-- Main Wrapper -->
-<div id="wrapper">
-<?php include 'header_financials.php';?>
-<div class="content animate-panel">
+<!--<div id="wrapper"> -->
+<?php //include 'header_financials.php';?>
+<?php if($TableInfo['print_invoice'] =="print_invoice"){?>
+<div>
+    <div class="BeynensonLaw">The Beynenson Law Firm, P.C.</div>
+    <div class="BeynensonLaw"><hr></div>
+    <div class="BeynensonLaw-address">
+        475 FRANKLIN AVENUE
+        FRANKLIN SQUARE, NY 11010
+        TEL: 516-858-4411     FAX: 516-216-5405
+        Email: nofault@beynensonlaw.com
+    </div>
+    <div class="invoice-date"><?php echo date_format(date_create($TableInfo['AccDate']), "m/d/Y");?></div>
+    <div class="provider-address"><?php foreach($Provider_Info as $row){echo $row['Provider_Name']."<br>".$row['Provider_Local_Address']; }?></div>
+    <div class="invoice-subject">Re: No Fault Collection </div>
+    <div class="invoice-letter">
+    
+    <p>Dear Client,</p>
+    
+    <p>Pursuant to our agreement enclosed please find a Disbursement of Funds Report showing a detailed breakdown of settlements/awards regarding the no fault matters that had been sent to my office for representation. Please be advised that all repayments of filing fees disbursed by you or by The Beynenson Law Firm, P.C. on your behalf (if any) will be credited to your monthly billing statement.
+    </p>
+    <p>Please contact the undersigned with any questions you have concerning either the above or any other matter you are concerned with.</p>
+    
+    <p>Sincerely,</p>
+    
+    <p>The Beynenson Law Firm, P.C. </p>
+    </div>
+</div>
+<?php }?>
+
+
+<div class="content animate-panel client-invoices">
 	
-    <div class="row ClientSettlements WithdrawnCases" style="display:none;">
+    <div class="row">
         <div class="col-lg-12">
         <div class="hpanel">
         <div class="panel-heading"></div>
         <div class="panel-body tab-panel">
-            <div class="form-group form-horizontal col-lg-12">
-                <h5 class="h4-title"><?php echo $TableInfo['TableId'];?></h5>
-                <div class="col-md-12">
-                    <table id="ClientSettlements" class="table dataTable table-bordered table-striped">
-                        <thead>
-                        <tr>  	 	 	 
-                            <th>Case ID</th>
-                            <th>Patient</th>
-                            <th>Insurer</th>
-                            <th>Initial Amount</th>
-                            <th>Settled By</th>
-                            <th>Settlement Terms</th>
-                            <th>Settlement Date </th>
-                            <th>Settlement Notes</th>
-                            <th>Settlement %age</th>
-                        </tr>
-                        </thead>
-                    </table>
-                </div>
+        	<div class="form-group form-horizontal col-lg-12">
+                <div class="col-md-5"></div>
+                <div class="col-md-6 clientinvoice-providername"><h3><?php foreach($Provider_Info as $row){echo $row['Provider_Name']; }?></h3></div>
             </div>
-        </div><!-- End of panel-body tab-panel-->
-        </div><!-- End hpanel -->
-        </div><!-- End col-lg-12-->
-    </div><!-- End row-->
-    
-    <div class="row ClientNewCases" style="display:none;">
-        <div class="col-lg-12">
-        <div class="hpanel">
-        <div class="panel-heading"></div>
-        <div class="panel-body tab-panel">
             <div class="form-group form-horizontal col-lg-12">
-                <h5 class="h4-title"><?php echo $TableInfo['TableId'];?></h5>
-                <div class="col-md-12">
-                    <table id="ClientNewCases" class="table dataTable table-bordered table-striped">
-                        <thead>
-                        <tr>  	 	 	 
-                            <th>Case ID</th>
-                            <th>Patient</th>
-                            <th>Insurer</th>
-                            <th>Initial Amount</th>
-                            <th>Status</th>
-                            <th>Date Opened</th>
-                        </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-        </div><!-- End of panel-body tab-panel-->
-        </div><!-- End hpanel -->
-        </div><!-- End col-lg-12-->
-    </div><!-- End row-->
-    
-    <div class="row StatusBreakdown" style="display:none;">
-        <div class="col-lg-12">
-        <div class="hpanel">
-        <div class="panel-heading"></div>
-        <div class="panel-body tab-panel">
-            <div class="form-group form-horizontal col-lg-12">
-                <h5 class="h4-title"><?php echo $TableInfo['TableId'];?></h5>
-                <div class="col-md-12">
-                    <table id="StatusBreakdown" class="table dataTable table-bordered table-striped">
-                        <thead>
-                        <tr>  	 	 	 
-                            <th>Case ID</th>
-                            <th>Patient</th>
-                            <th>Insurer</th>
-                            <th>Date Opened</th>
-                            <th>Status</th>
-                            <th>Initial Amount</th>
-                        </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-        </div><!-- End of panel-body tab-panel-->
-        </div><!-- End hpanel -->
-        </div><!-- End col-lg-12-->
-    </div><!-- End row-->
-    
-    <div class="row ClientInvoices" style="display:none;">
-        <div class="col-lg-12">
-        <div class="hpanel">
-        <div class="panel-heading"></div>
-        <div class="panel-body tab-panel">
-            <div class="form-group form-horizontal col-lg-12">
+                
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
                 <h5 class="h4-title">COLLECTIONS FOR THE CURRENT INVOICE PERIOD</h5>
-                <div class="col-md-12">
                     <table id="Collections" class="table dataTable table-bordered table-striped">
                         <thead>
                         <tr>  	
@@ -153,10 +104,13 @@
                         </thead>
                     </table>
                 </div>
+                <div class="col-md-2"></div>
             </div>
             <div class="form-group form-horizontal col-lg-12">
+                
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
                 <h5 class="h4-title">FEES AND COSTS EXPENDED BY FIRM FOR THE CURRENT INVOICE PERIOD</h5>
-                <div class="col-md-12">
                     <table id="FessCostsExpended" class="table dataTable table-bordered table-striped">
                         <thead>
                         <tr>  
@@ -174,10 +128,13 @@
                         </thead>
                     </table>
                 </div>
+                <div class="col-md-2"></div>
             </div>
             <div class="form-group form-horizontal col-lg-12">
+                
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
                 <h5 class="h4-title">CREDITS TO THE PROVIDER FOR THE CURRENT INVOICE PERIOD</h5>
-                <div class="col-md-12">
                     <table id="CreditsToProvider" class="table dataTable table-bordered table-striped">
                         <thead>
                         <tr>  	
@@ -194,10 +151,13 @@
                         </thead>
                     </table>
                 </div>
+                <div class="col-md-2"></div>
             </div>
             <div class="form-group form-horizontal col-lg-12">
+                
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
                 <h5 class="h4-title">FEES AND COSTS RECEIVED BY FIRM FROM THE CARRIER FOR THE CURRENT INVOICE PERIOD</h5>
-                <div class="col-md-12">
                     <table id="FeesCostsReceived" class="table dataTable table-bordered table-striped">
                         <thead>
                         <tr>  	
@@ -214,10 +174,13 @@
                         </thead>
                     </table>
                 </div>
+                <div class="col-md-2"></div>
             </div>
             <div class="form-group form-horizontal col-lg-12">
+                
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
                 <h5 class="h4-title">PROVIDER DETAILS</h5>
-                <div class="col-md-12">
                     <table id="ProviderDetails" class="table dataTable table-bordered table-striped">
                         <thead>
                         <tr>  	
@@ -233,9 +196,10 @@
                         </thead>
                     </table>
                 </div>
+                <div class="col-md-2"></div>
             </div>
             <div class="form-group form-horizontal col-lg-12">
-                <div class="col-md-3"></div>
+                <div class="col-md-4"></div>
                 <div class="col-md-4">
                     <table id="FinalClientInvoices" class="table dataTable table-bordered table-striped">
                         <thead>
@@ -279,6 +243,10 @@
                     </table>
                 </div>
             </div>
+            <div class="form-group form-horizontal col-lg-12">
+            	<div class="col-md-6"></div>
+                <div class="col-md-6"><button type="submit" id="searchbutton" class="btn btn-primary">Freeze</button></div>
+            </div>
         </div><!-- End of panel-body tab-panel-->
         </div><!-- End hpanel -->
         </div><!-- End col-lg-12-->
@@ -286,17 +254,11 @@
                         
       
     
-</div>
+</div><!-- End contenet-->
                 
-    <!-- Footer-->
-    <footer class="footer">
-        <span class="pull-right">
-            Example text
-        </span>
-        Company 2015-2020
-    </footer>
+   
 
-</div>
+<!--</div> -->
 
 
 
@@ -316,28 +278,6 @@
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
 $(document).ready(function(e) {
-	var TableId = "<?php echo $TableInfo['TableId']?>";
-    $("."+TableId).css("display", "block");
-	
-	$('#'+TableId).dataTable( {
-		"ajax": {
-			"url": "get_Client_Report_Month",
-			"data": {
-				"Provider_Id": "<?php echo $TableInfo['Provider_Id'];?>",
-				"SD": "<?php echo $TableInfo['SD'];?>",
-				"ED": "<?php echo $TableInfo['ED'];?>",
-				"TableId": "<?php echo $TableInfo['TableId'];?>",
-				"Status": "<?php echo $TableInfo['Status'];?>"
-			},
-			"type": "post"
-		},
-		"bPaginate": false,
-		"bLengthChange": false,
-		"bFilter": false,
-		"bInfo": false,
-		"bAutoWidth": false,
-		"bSort": false
-	});
 	$('#Collections').dataTable( {
 		"ajax": {
 			"url": "get_Collections",
