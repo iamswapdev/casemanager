@@ -1,4 +1,5 @@
 <?php
+ini_set('memory_limit','-1');
 session_cache_limiter('private_no_expire');
 
 class Search extends CI_Controller{
@@ -11,6 +12,7 @@ class Search extends CI_Controller{
 		$this->load->model('dataentry_model');
 		$this->load->model('admin_privilege_model');
 		$this->session->all_userdata();
+		
 	}
 	
 	public function index(){

@@ -216,7 +216,7 @@ Class Search_model extends CI_Model{
 	}
 	public function get_SearchResult($userId, $RoleId)
 	{
-		$this->db->order_by("Case_Id","desc");
+		$this->db->order_by("Case_AutoId","desc");
 		$this->db->select('t1.*, t2.Provider_Name, t3.InsuranceCompany_Name, DATE_FORMAT(t1.Accident_Date,"%m-%d-%Y") as Accident_Date, DATE_FORMAT(t1.DateOfService_Start,"%m-%d-%Y") as DOS_S, DATE_FORMAT(t1.DateOfService_End,"%m-%d-%Y") as DOS_E');
 		$this->db->from('dbo_tblcase as t1');
 		if($RoleId == 2){
