@@ -1,6 +1,6 @@
 <?php
 session_cache_limiter('private_no_expire');
-
+ini_set('memory_limit','-1');
 class Workarea extends CI_Controller{
 
 	Public function __construct(){
@@ -126,6 +126,33 @@ class Workarea extends CI_Controller{
 			$CurrentPage['CurrentUrl'] = "workarea/calendar";
 			$this->load->view('pages/login', $CurrentPage);
 		}
+	}
+	public function add_Calendar_Events(){
+		$data1 = array(
+			"title" => "Example Class",
+			"start" => "2017-01-22 00:00:00.000000",
+			"description" => 'Hurrayyyyyyyyyy'
+		);
+		$list = $this->workarea_model->add_Calendar_Events();
+		$data = array();
+		$Event_date = "";
+		$EventStatusName = "";
+		foreach($list as $result){
+			$row = array();
+			$row['title'] = $result->Case_id;
+			
+			if($result->start != $Event_date){
+				$Event_date = $result->start;
+				$row['start'] = $result->start;
+			}else{
+			}
+			$row['description'] = $result->EventStatusName;
+			$data[] = $row;
+		}
+		
+		//echo '[{ "title": "XXX", "start": "2017-01-12", "description": "Hurrayyyyyyyyyy"}]';
+		echo json_encode($data);
+		//echo "count:".$data2;
 	}
 	public function get_Print_Table(){
 		$Start_Date = date_format(date_create($this->input->post("SD_Print")), 'Y/m/d');

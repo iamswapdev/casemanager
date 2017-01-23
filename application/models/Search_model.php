@@ -415,10 +415,15 @@ Class Search_model extends CI_Model{
 			$this->db->delete('dbo_tblevent');
 		}
 	}
-	public function update_EventInfo($data){
-		$this->db->set($data);
-		$this->db->where("Event_id", $data['Event_id']);
-		$this->db->update("dbo_tblevent");
+	public function update_Event_Info($data){
+		if($data['Event_id'] == ""){
+			unset($data['Event_id']);
+			$this->db->insert("dbo_tblevent", $data);
+		}else{
+			$this->db->set($data);
+			$this->db->where("Event_id", $data['Event_id']);
+			$this->db->update("dbo_tblevent");
+		}
 	}
 	
 

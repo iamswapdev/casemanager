@@ -1,4 +1,5 @@
 <?php
+
 Class Workarea_model extends CI_Model{
 	
 	Public function __construct(){
@@ -116,6 +117,17 @@ Class Workarea_model extends CI_Model{
 		$query= $this->db->get();
 		$data=$query->result();
 		return $data;
+	}
+	public function add_Calendar_Events(){
+		$this->db->select("t1.Case_id, DATE_FORMAT(t1.Event_date, '%Y/%m/%d') as start, t2.EventStatusName,");
+		$this->db->from("dbo_tblevent as t1");
+		$this->db->order_by("t1.Event_date", "asc");
+		$this->db->join("dbo_tbleventstatus as t2", "t2.EventStatusId = t1.EventStatusId");
+		$this->db->limit('8000');
+		
+		//$this->db->group_by("t1.Event_date");
+		$query = $this->db->get("dbo_tblevent"); //echo "count:";print_r($query->result_array());exit;
+		return $query->result();
 	}
 }
 

@@ -84,40 +84,67 @@
 
 
 <script>
+$(document).ready(function(e) {
+	var date = new Date();
+	var d = date.getDate();
+	var m = date.getMonth();
+	var y = date.getFullYear();
+	$('#calendar').fullCalendar({
+		header: {
+			left: 'prev,next today',
+			center: 'title',
+			right: 'month,agendaWeek,agendaDay'
+		},
+		editable: true,
+		droppable: true, // this allows things to be dropped onto the calendar
+		drop: function() {
+			// is the "remove after drop" checkbox checked?
+			if ($('#drop-remove').is(':checked')) {
+				// if so, remove the element from the "Draggable Events" list
+				$(this).remove();
+			}
+		},
+		events: "add_Calendar_Events",
+		eventRender: function(event, element)
+		{ 
+			element.find('.fc-title').append("<br/>" + event.description); 
+		}
+	});
 
-    $(function () {
-
-
-        /* initialize the external events
-         -----------------------------------------------------------------*/
-
-        $('#external-events div.external-event').each(function() {
-
-            // store data so the calendar knows to render an event upon drop
-            $(this).data('event', {
-                title: $.trim($(this).text()), // use the element's text as the event title
-                stick: true // maintain when user navigates (see docs on the renderEvent method)
-            });
-
-            // make the event draggable using jQuery UI
-            $(this).draggable({
-                zIndex: 1111999,
-                revert: true,      // will cause the event to go back to its
-                revertDuration: 0  //  original position after the drag
-            });
-
-        });
-
-
-        /* initialize the calendar
-         -----------------------------------------------------------------*/
-        var date = new Date();
-        var d = date.getDate();
-        var m = date.getMonth();
-        var y = date.getFullYear();
-
-        $('#calendar').fullCalendar({
-            header: {
+	
+		
+		
+		/*$('#calendar').fullCalendar({
+			events: function(start, end, timezone, callback) {
+				$.ajax({
+					url: 'add_Calendar_Events',
+					dataType: 'JSON',
+					data: {
+						// our hypothetical feed requires UNIX timestamps
+						start: start.unix(),
+						end: end.unix()
+					},
+					success: function(doc) {
+						var events = [];
+						$(doc).find('event').each(function() {
+							events.push({
+								title: $(this).attr('title'),
+								start: $(this).attr('start'),
+								description: $(this).attr('description') // will be parsed
+							});
+						});
+						callback(events);
+					}
+				});
+			},
+			eventRender: function(event, element)
+			{ 
+				element.find('.fc-title').append("<br/>" + event.description); 
+			}
+		});*/
+		
+		/*$('#calendar').fullCalendar({
+			header: {
                 left: 'prev,next today',
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
@@ -131,64 +158,36 @@
                     $(this).remove();
                 }
             },
-            events: [
-                {
-                    title: 'All Day Event',
-                    start: new Date(y, m, 1)
-                },
-                {
-                    title: 'Long Event',
-                    start: new Date(y, m, d-5),
-                    end: new Date(y, m, d-2),
-                },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: new Date(y, m, d-3, 16, 0),
-                    allDay: false,
-                },
-                {
-                    title: 'Homer task',
-                    start: new Date(y, m, d + 5, 19, 0),
-                    end: new Date(y, m, d + 6, 22, 30),
-                    allDay: false,
-                    backgroundColor: "#62cb31",
-                    borderColor: "#62cb31"
-                },
-                {
-                    id: 999,
-                    title: 'Repeating Event',
-                    start: new Date(y, m, d+4, 16, 0),
-                    allDay: false
-                },
-                {
-                    title: 'Meeting',
-                    start: new Date(y, m, d, 10, 30),
-                    allDay: false
-                },
-                {
-                    title: 'Lunch',
-                    start: new Date(y, m, d, 12, 0),
-                    end: new Date(y, m, d, 14, 0),
-                    allDay: false
-                },
-                {
-                    title: 'Birthday Party',
-                    start: new Date(y, m, d+1, 19, 0),
-                    end: new Date(y, m, d+1, 22, 30),
-                    allDay: false
-                },
-                {
-                    title: 'Click for Google',
-                    start: new Date(y, m, 28),
-                    end: new Date(y, m, 29),
-                    url: 'http://google.com/'
-                }
-            ],
-        });
+			events: function(start, end, timezone, callback) {
+				jQuery.ajax({
+					url: 'add_Calendar_Events',
+					type: 'POST',
+					dataType: 'json',
+					data: {
+						start: start.format(),
+						end: end.format()
+					},
+					success: function(doc) {
+						var events = [];
+						if(!!doc.result){
+							$.map( doc.result, function( r ) {
+								events.push({
+									title: r.title,
+									start: r.date_start,
+									description: r.description
+								});
+							});
+						}
+						callback(events);
+					}
+				});
+			}
+		});*/
 
-
-    });
+  
+	
+});<!--End of document -->
+   
 
 </script>
 <script>

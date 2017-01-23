@@ -165,7 +165,7 @@ for($i=0; $i<=13; $i++){
 									<td><div class="visible"><input type="hidden" id="Hidden_Case_AutoId"><a class="info-link VisibleInfo" id="InjuredInfoLink"></a></div><div class="editHidden" style="display:none;"><label>Last Name: </label><input type="text" class="input-sm" name="InjuredParty_LastName" /><label>First Name: </label><input type="text" class="input-sm" name="InjuredParty_FirstName" /></div></td>
                                     <th><input type="hidden" name="recordNo" value="4"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 									<th>CURRENT STATUS</th>
-									<td><div class="visible"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Last_Status" name="Last_Status"><option selected="selected" value=""></option><?php foreach($Status as $row){?><option value="<?php echo $row['Status_Id']; ?>"> <?php echo $row['Status_Type']; ?> </option><?php }?></select></div></td>
+									<td><div class="visible"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Status" name="Status"><option selected="selected" value=""></option><?php foreach($Status as $row){?><option value="<?php echo $row['Status_Id']; ?>"> <?php echo $row['Status_Type']; ?> </option><?php }?></select></div></td>
 								</tr>
                                 
                                 <tr> 
@@ -1369,7 +1369,8 @@ for($i=0; $i<=13; $i++){
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Case_Id:</label>
                                 <div class="col-md-2">
-                                	<input type="text" id="9CaseId" name="9CaseId"  class="form-control input-sm" >
+                                	<input type="text" id="9CaseIdHidden" name="9CaseIdHidden"  class="form-control input-sm" disabled />
+                                	<input type="hidden" id="9CaseId" name="9CaseId"  class="form-control input-sm"/>
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
@@ -1423,7 +1424,7 @@ for($i=0; $i<=13; $i++){
                                     <!--<input type="hidden" name="AssignUserHidden"  class="form-control input-sm">-->
                                 </div>
                                 <div class="col-md-4">
-                                	<select class="form-control input-sm" id="selectAssignUser" name="selectAssignUser"><option selected="selected" value="">Select User to Assign</option><?php foreach($User_List as $row){?><option value="<?php echo $row['UserName']; ?>"><?php echo $row['UserName'];?></option><?php  }?></select>
+                                	<select class="form-control input-sm" id="9selectAssignUser" name="9selectAssignUser"><option selected="selected" value="">Select User to Assign</option><?php foreach($User_List as $row){?><option value="<?php echo $row['UserName']; ?>"><?php echo $row['UserName'];?></option><?php  }?></select>
                                 </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
@@ -2813,8 +2814,8 @@ $(document).ready(function(e) {
 	  $("input[name=EventStatus]").val(EventStatus);
 	  $("input[name=EventStatusHidden]").val(EventStatusId);
 	});
-	$('#selectAssignUser').on('change', function() {
-	  $("input[name=AssignUser]").val($("#selectAssignUser option:selected").text());
+	$('#9selectAssignUser').on('change', function() {
+		$("input[name=AssignUser]").val($("#9selectAssignUser option:selected").text());
 	  //$("input[name=AssignUserHidden]").val($("#selectAssignUser option:selected").text());
 	});
 	//$("input[name=AssignUser]").prop("disabled", true);
@@ -2911,7 +2912,7 @@ $(document).ready(function(e) {
 					
 		
 					request = $.ajax({
-						url:"<?php echo base_url();?>search/updateEventInfo",
+						url:"<?php echo base_url();?>search/update_Event_Info",
 						type: "post",
 						data: serializedData
 					});
@@ -3165,6 +3166,7 @@ daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndDat
 				for($i in results.CaseInfo){
 					y[0].innerHTML =  results.CaseInfo[$i].Case_Id;
 					$("#9CaseId").val(results.CaseInfo[$i].Case_Id);
+					$("#9CaseIdHidden").val(results.CaseInfo[$i].Case_Id);
 					document.getElementById("CaseId-tab-6").innerHTML = results.CaseInfo[$i].Case_Id;
 					//y2[0].innerHTML =  results.CaseInfo[$i].Old_Case_Id;
 					//document.getElementsByClassName("old-case-id").innerHTML =  results.CaseInfo[$i].Old_Case_Id;

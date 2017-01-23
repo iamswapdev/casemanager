@@ -853,8 +853,8 @@ class Search extends CI_Controller{
 			$row[] = $result->Case_Id;
 			$row[] = $result->EventTypeName."<input type='hidden' name='EventTypeIdHidden' value='".$result->EventTypeId."'>";
 			$row[] = $result->EventStatusName."<input type='hidden' name='EventStatusIdHidden' value='".$result->EventStatusId."'>";
-			$row[] = substr($result->Event_Date, 0, 10);
-			$row[] = substr($result->Event_Date, 11, 5);
+			$row[] = date_format(date_create($result->Event_Date), 'm/d/Y');
+			$row[] = date_format(date_create($result->Event_Date), 'H:i');
 			$row[] = $result->Event_Notes;
 			$row[] = $result->Assigned_To;
 			$row[] = $result->Provider_Name;
@@ -880,8 +880,8 @@ class Search extends CI_Controller{
 			return false;
 		}
 	}
-/**** update EVENT LIST INFO BY ********/
-	public function updateEventInfo(){
+/* add events */
+	public function add_Event_Info(){
 		$data = array(
 			"User_id" => $this->input->post("UserId"),
 			"Event_Date" => $this->input->post("EventDate"),
@@ -890,9 +890,26 @@ class Search extends CI_Controller{
 			"Event_Time" => $this->input->post("EventTime"),
 			"Event_Notes" => $this->input->post("EventDescription"),
 			"Assigned_To" => $this->input->post("AssignUser"),
-			"Event_id" => $this->input->post("EventIdHidden")
+			"Event_id" => $this->input->post("EventIdHidden"),
+			"Case_id" => $this->input->post("9CaseId")
 		);
-		$this->search_model->update_EventInfo($data);
+		$this->search_model->add_Event_Info($data);
+		echo "<pre>"; print_r($data);
+	}
+/**** update EVENT LIST INFO BY ********/
+	public function update_Event_Info(){
+		$data = array(
+			"User_id" => $this->input->post("UserId"),
+			"Event_Date" => $this->input->post("EventDate"),
+			"EventTypeId" => $this->input->post("EventTypeHidden"),
+			"EventStatusId" => $this->input->post("EventStatusHidden"),
+			"Event_Time" => $this->input->post("EventTime"),
+			"Event_Notes" => $this->input->post("EventDescription"),
+			"Assigned_To" => $this->input->post("AssignUser"),
+			"Event_id" => $this->input->post("EventIdHidden"),
+			"Case_id" => $this->input->post("9CaseId")
+		);
+		$this->search_model->update_Event_Info($data);
 		echo "<pre>"; print_r($data);
 	}
 /* GET MOTION DATA */
