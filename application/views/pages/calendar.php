@@ -85,11 +85,15 @@
 
 <script>
 $(document).ready(function(e) {
+	$('.fc-icon-left-single-arrow').click(function(){
+	   alert('prev is clicked, do something'+$('#calendar').fullCalendar('getDate'));
+	});
 	var date = new Date();
 	var d = date.getDate();
 	var m = date.getMonth();
 	var y = date.getFullYear();
-	$('#calendar').fullCalendar({
+	
+	/*$('#calendar').fullCalendar({
 		header: {
 			left: 'prev,next today',
 			center: 'title',
@@ -109,7 +113,60 @@ $(document).ready(function(e) {
 		{ 
 			element.find('.fc-title').append("<br/>" + event.description); 
 		}
+	});*/
+	
+	$('#calendar').fullCalendar({
+		events: function(start, end, timezone, callback) {
+			jQuery.ajax({
+				url: 'add_Calendar_Events',
+				type: 'POST',
+				dataType: 'json',
+				data: {
+					start: start.format(),
+					end: end.format()
+				},
+				success: function(data) {
+					var events = [];
+					/*var parsed_result = JSON.parse(data);  //parsing here
+					$.each(parsed_result, function(i, v) {
+						console.log("title:"+v.title);
+							console.log("start:"+v.start);
+							console.log("description:"+v.description);
+					});*/
+					//results = JSON.parse(data);
+					console.log("count:"+data.length);
+					for(var i=0; i<data.length; i++){
+						events.push({
+							title: data[i]['title'],
+							start: data[i]['start'],
+							url: data[i]['url'],
+							description: data[i]['description']
+						});
+					}
+					
+					/*if(!!doc.result){
+						$.map( doc, function( r ) {
+							console.log("title:"+r.title);
+							console.log("start:"+r.start);
+							console.log("description:"+r.description);
+							events.push({
+								title: r.title,
+								start: r.start,
+								description: r.description
+							});
+						});
+					}*/
+					callback(events);
+					
+				}
+			});
+		},
+		eventRender: function(event, element)
+		{ 
+			element.find('.fc-title').append("<br/>" + event.description); 
+		}
 	});
+	$(".fc-time").remove();
 
 	
 		

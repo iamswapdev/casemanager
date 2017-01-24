@@ -128,31 +128,82 @@ class Workarea extends CI_Controller{
 		}
 	}
 	public function add_Calendar_Events(){
-		$data1 = array(
-			"title" => "Example Class",
-			"start" => "2017-01-22 00:00:00.000000",
-			"description" => 'Hurrayyyyyyyyyy'
-		);
-		$list = $this->workarea_model->add_Calendar_Events();
+		$start = $this->input->post("start");
+		$end = $this->input->post("end");
+		
+		$list = $this->workarea_model->add_Calendar_Events($start, $end);
+		//echo "<pre>";print_r($list); 
 		$data = array();
 		$Event_date = "";
-		$EventStatusName = "";
-		foreach($list as $result){
-			$row = array();
-			$row['title'] = $result->Case_id;
-			
-			if($result->start != $Event_date){
-				$Event_date = $result->start;
-				$row['start'] = $result->start;
-			}else{
-			}
-			$row['description'] = $result->EventStatusName;
-			$data[] = $row;
-		}
+		$Tot_Events = 0;
+		$counter = 0;
+		$description = "";
+		$row = array();
 		
+		foreach($list as $result){
+			
+			if($Event_date != $result->start){
+				if($counter == 1){
+					$row['title'] = "Events = ".$Tot_Events;
+					$row['start'] = $Event_date;
+					$row['url'] = base_url()."workarea/Event_List?Date=".$Event_date;
+					$row['description'] = $description;
+					$data[] = $row;
+					$row = array();
+				}
+				$counter=1;
+				$Tot_Events = 0;
+				$description = "";
+				$Event_date = $result->start;
+			}
+			$description = $description."<br>".$result->EventStatusName." = ".$result->event_count;
+			$Tot_Events = $Tot_Events + $result->event_count;
+			
+		}
 		//echo '[{ "title": "XXX", "start": "2017-01-12", "description": "Hurrayyyyyyyyyy"}]';
 		echo json_encode($data);
-		//echo "count:".$data2;
+	}
+	public function Event_List(){
+		if(isset($this->session->userdata['logged_in'])){
+			$data['Date'] = $this->input->get("Date");
+			$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
+			$this->load->view("pages/Event_List", $data);
+		}else{
+			$CurrentPage['CurrentUrl'] = "workarea/calendar";
+			$this->load->view('pages/login', $CurrentPage);
+		}
+	}
+	public function get_Event_List(){
+		$Date = $this->input->post("Date");
+		$list = $this->workarea_model->get_Event_List($Date);
+		$data = array();
+		$Counter = 0;
+		foreach($list as $result){
+			$Counter++;
+			$row = array();
+			
+			$row[] = $Counter;
+			$row[] = $result->Case_id;
+			$row[] = $result->EventTypeName;
+			$row[] = $result->EventStatusName;
+			$row[] = date_format(date_create($result->Event_Date), 'm/d/Y');
+			$row[] = date_format(date_create($result->Event_Date), 'H:i');
+			$row[] = $result->Event_Notes;
+			$row[] = $result->Assigned_To;
+			$row[] = $result->Provider_Name;
+			$row[] = $result->InjuredParty_LastName." ".$result->InjuredParty_FirstName;
+			$row[] = "court misc";
+			$row[] = $result->Court_Name;
+			$row[] = $result->IndexOrAAA_Number;
+			$row[] = $result->Claim_Amount;
+			$row[] = $result->Defendant_Name;
+			$row[] = $result->InsuranceCompany_Name;
+			$row[] = $result->Status;
+			
+			$data[] = $row;
+		}
+		$output = array( "data" => $data );
+		echo json_encode($output);
 	}
 	public function get_Print_Table(){
 		$Start_Date = date_format(date_create($this->input->post("SD_Print")), 'Y/m/d');

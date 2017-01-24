@@ -10,6 +10,7 @@ class Search extends CI_Controller{
 		$this->load->library('session');
 		$this->load->model('search_model');
 		$this->load->model('dataentry_model');
+		$this->load->model('workarea_model');
 		$this->load->model('admin_privilege_model');
 		$this->session->all_userdata();
 		
@@ -1154,6 +1155,13 @@ class Search extends CI_Controller{
 		$timestamp = strtotime( "February 15, 2015" );
    
    		echo "<br>Feb 15, 2015 = ".date( 'Y-m-d', $timestamp );
+	}
+	public function get_data(){
+		//$start = $this->input->post("start");
+		//$end = $this->input->post("end");
+		
+		$list = $this->workarea_model->add_Calendar_Events("2016-12-01", "2016-12-31");
+		echo "<pre>";print_r($list);
 	}
 /*****************************************************************************************************************************************/
 }

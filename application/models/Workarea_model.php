@@ -118,16 +118,35 @@ Class Workarea_model extends CI_Model{
 		$data=$query->result();
 		return $data;
 	}
-	public function add_Calendar_Events(){
-		$this->db->select("t1.Case_id, DATE_FORMAT(t1.Event_date, '%Y/%m/%d') as start, t2.EventStatusName,");
+	public function add_Calendar_Events($start, $end){
+		$this->db->select("t1.Case_id, DATE_FORMAT(t1.Event_date, '%Y/%m/%d') as start, t2.EventStatusName, COUNT(t1.Event_date) as date_count, COUNT(t1.EventStatusId) as event_count");
 		$this->db->from("dbo_tblevent as t1");
 		$this->db->order_by("t1.Event_date", "asc");
 		$this->db->join("dbo_tbleventstatus as t2", "t2.EventStatusId = t1.EventStatusId");
-		$this->db->limit('8000');
-		
-		//$this->db->group_by("t1.Event_date");
-		$query = $this->db->get("dbo_tblevent"); //echo "count:";print_r($query->result_array());exit;
+		//$this->db->limit('500');
+		$this->db->where("t1.Event_date >=", $start);
+		$this->db->where("t1.Event_date <=", $end);
+		$this->db->group_by("t1.Event_date");
+		$this->db->group_by("t1.EventStatusId");
+		$query = $this->db->get(); //echo "count:";print_r($query->result_array());exit;
 		return $query->result();
+	}
+	public function get_Event_List($Date){
+		$this->db->select('t1.Case_id, t3.EventTypeName, t4.EventStatusName, t1.Event_Date, t1.Event_Time, t1.Event_Notes, t1.Assigned_To, t5.Provider_Name, t2.InjuredParty_LastName, t2.InjuredParty_FirstName, t6.Court_Name, t2.IndexOrAAA_Number, t2.Claim_Amount, t7.Defendant_Name, t8.InsuranceCompany_Name, t2.Status');
+		
+		$this->db->from('dbo_tblevent as t1');
+		$this->db->join('dbo_tblcase as t2', 't1.Case_id = t2.Case_id', "LEFT");
+		$this->db->join('dbo_tbleventtype as t3', 't1.EventTypeId = t3.EventTypeId');
+		$this->db->join('dbo_tbleventstatus as t4', 't1.EventStatusId = t4.EventStatusId');
+		$this->db->join('dbo_tblprovider as t5', 't2.Provider_Id = t5.Provider_Id');
+		$this->db->join('dbo_tblcourt as t6', 't2.Court_Id = t6.Court_Id');
+		$this->db->join('dbo_tbldefendant as t7', 't2.Defendant_Id = t7.Defendant_id');
+		$this->db->join('dbo_tblinsurancecompany as t8', 't2.InsuranceCompany_Id = t8.InsuranceCompany_Id');
+		$this->db->where("t1.Event_Date =", $Date);
+		$query= $this->db->get();
+		$data=$query->result();
+		//echo "<pre>"; print_r($data); exit();
+		return $data;
 	}
 }
 
