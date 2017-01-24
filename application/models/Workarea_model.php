@@ -136,13 +136,14 @@ Class Workarea_model extends CI_Model{
 		
 		$this->db->from('dbo_tblevent as t1');
 		$this->db->join('dbo_tblcase as t2', 't1.Case_id = t2.Case_id', "LEFT");
-		$this->db->join('dbo_tbleventtype as t3', 't1.EventTypeId = t3.EventTypeId');
-		$this->db->join('dbo_tbleventstatus as t4', 't1.EventStatusId = t4.EventStatusId');
-		$this->db->join('dbo_tblprovider as t5', 't2.Provider_Id = t5.Provider_Id');
-		$this->db->join('dbo_tblcourt as t6', 't2.Court_Id = t6.Court_Id');
-		$this->db->join('dbo_tbldefendant as t7', 't2.Defendant_Id = t7.Defendant_id');
-		$this->db->join('dbo_tblinsurancecompany as t8', 't2.InsuranceCompany_Id = t8.InsuranceCompany_Id');
-		$this->db->where("t1.Event_Date =", $Date);
+		$this->db->join('dbo_tbleventtype as t3', 't1.EventTypeId = t3.EventTypeId', "LEFT");
+		$this->db->join('dbo_tbleventstatus as t4', 't1.EventStatusId = t4.EventStatusId', "LEFT");
+		$this->db->join('dbo_tblprovider as t5', 't2.Provider_Id = t5.Provider_Id', "LEFT");
+		$this->db->join('dbo_tblcourt as t6', 't2.Court_Id = t6.Court_Id', "LEFT");
+		$this->db->join('dbo_tbldefendant as t7', 't2.Defendant_Id = t7.Defendant_id', "LEFT");
+		$this->db->join('dbo_tblinsurancecompany as t8', 't2.InsuranceCompany_Id = t8.InsuranceCompany_Id', "LEFT");
+		$this->db->where("t1.Event_Date", $Date);
+		$this->db->order_by("t1.Event_Date","asc");
 		$query= $this->db->get();
 		$data=$query->result();
 		//echo "<pre>"; print_r($data); exit();

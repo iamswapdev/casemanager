@@ -4145,3 +4145,9 @@ li.quick-search label {
 .print-invoice table th{
 	padding:30px;
 }
+td.fc-other-month {
+   /*visibility: hidden;*/
+}
+.fc-time{
+   display : none;
+}

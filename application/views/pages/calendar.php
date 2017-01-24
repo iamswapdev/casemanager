@@ -116,6 +116,20 @@ $(document).ready(function(e) {
 	});*/
 	
 	$('#calendar').fullCalendar({
+		header: {
+			left: 'prev,next today',
+			center: 'title',
+			right: 'month,agendaWeek,agendaDay'
+		},
+		editable: true,
+		droppable: true, // this allows things to be dropped onto the calendar
+		drop: function() {
+			// is the "remove after drop" checkbox checked?
+			if ($('#drop-remove').is(':checked')) {
+				// if so, remove the element from the "Draggable Events" list
+				$(this).remove();
+			}
+		},
 		events: function(start, end, timezone, callback) {
 			jQuery.ajax({
 				url: 'add_Calendar_Events',
@@ -167,7 +181,7 @@ $(document).ready(function(e) {
 		}
 	});
 	$(".fc-time").remove();
-
+	$("td.fc-other-month").remove();
 	
 		
 		
