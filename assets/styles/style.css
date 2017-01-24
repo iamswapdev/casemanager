@@ -3717,7 +3717,7 @@ tr{
 	background:red;
 }*/
 
-#AdvancedSearchTable tr td:nth-child(3) a {
+#AdvancedSearchTable tr td:nth-child(3) a, #EventList a, #StatusBreakdown a{
 	color:#00F !important;
 }
 .th-claim-no{
@@ -3946,7 +3946,7 @@ textarea{
 #Payment_Info_table tr td:nth-child(9){
 	border:none;
 }
-#CreateUser_modal .modal-header{
+#CreateUser_modal .modal-header, #UpdateUser_modal .modal-header{
 	text-align: center;
     color: #033151;
     font-weight: bold;

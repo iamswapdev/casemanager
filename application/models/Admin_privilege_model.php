@@ -62,6 +62,12 @@ Class Admin_privilege_model extends CI_Model{
 		$this->db->where("UserId", $data['UserId']);
 		$this->db->update("dbo_issuetracker_users", $data);
 	}
+	public function get_Role_Table()
+	{
+		$query=$this->db->get('dbo_issuetracker_roles');	
+		$data=$query->result();
+		return $data;
+	}
 	public function get_AllRoles()
 	{
 		$query=$this->db->get('dbo_issuetracker_roles');	

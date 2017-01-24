@@ -85,36 +85,6 @@
 
 <script>
 $(document).ready(function(e) {
-	$('.fc-icon-left-single-arrow').click(function(){
-	   alert('prev is clicked, do something'+$('#calendar').fullCalendar('getDate'));
-	});
-	var date = new Date();
-	var d = date.getDate();
-	var m = date.getMonth();
-	var y = date.getFullYear();
-	
-	/*$('#calendar').fullCalendar({
-		header: {
-			left: 'prev,next today',
-			center: 'title',
-			right: 'month,agendaWeek,agendaDay'
-		},
-		editable: true,
-		droppable: true, // this allows things to be dropped onto the calendar
-		drop: function() {
-			// is the "remove after drop" checkbox checked?
-			if ($('#drop-remove').is(':checked')) {
-				// if so, remove the element from the "Draggable Events" list
-				$(this).remove();
-			}
-		},
-		events: "add_Calendar_Events",
-		eventRender: function(event, element)
-		{ 
-			element.find('.fc-title').append("<br/>" + event.description); 
-		}
-	});*/
-	
 	$('#calendar').fullCalendar({
 		header: {
 			left: 'prev,next today',
@@ -141,14 +111,6 @@ $(document).ready(function(e) {
 				},
 				success: function(data) {
 					var events = [];
-					/*var parsed_result = JSON.parse(data);  //parsing here
-					$.each(parsed_result, function(i, v) {
-						console.log("title:"+v.title);
-							console.log("start:"+v.start);
-							console.log("description:"+v.description);
-					});*/
-					//results = JSON.parse(data);
-					console.log("count:"+data.length);
 					for(var i=0; i<data.length; i++){
 						events.push({
 							title: data[i]['title'],
@@ -157,19 +119,6 @@ $(document).ready(function(e) {
 							description: data[i]['description']
 						});
 					}
-					
-					/*if(!!doc.result){
-						$.map( doc, function( r ) {
-							console.log("title:"+r.title);
-							console.log("start:"+r.start);
-							console.log("description:"+r.description);
-							events.push({
-								title: r.title,
-								start: r.start,
-								description: r.description
-							});
-						});
-					}*/
 					callback(events);
 					
 				}
@@ -180,83 +129,6 @@ $(document).ready(function(e) {
 			element.find('.fc-title').append("<br/>" + event.description); 
 		}
 	});
-	$(".fc-time").remove();
-	$("td.fc-other-month").remove();
-	
-		
-		
-		/*$('#calendar').fullCalendar({
-			events: function(start, end, timezone, callback) {
-				$.ajax({
-					url: 'add_Calendar_Events',
-					dataType: 'JSON',
-					data: {
-						// our hypothetical feed requires UNIX timestamps
-						start: start.unix(),
-						end: end.unix()
-					},
-					success: function(doc) {
-						var events = [];
-						$(doc).find('event').each(function() {
-							events.push({
-								title: $(this).attr('title'),
-								start: $(this).attr('start'),
-								description: $(this).attr('description') // will be parsed
-							});
-						});
-						callback(events);
-					}
-				});
-			},
-			eventRender: function(event, element)
-			{ 
-				element.find('.fc-title').append("<br/>" + event.description); 
-			}
-		});*/
-		
-		/*$('#calendar').fullCalendar({
-			header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-            editable: true,
-            droppable: true, // this allows things to be dropped onto the calendar
-            drop: function() {
-                // is the "remove after drop" checkbox checked?
-                if ($('#drop-remove').is(':checked')) {
-                    // if so, remove the element from the "Draggable Events" list
-                    $(this).remove();
-                }
-            },
-			events: function(start, end, timezone, callback) {
-				jQuery.ajax({
-					url: 'add_Calendar_Events',
-					type: 'POST',
-					dataType: 'json',
-					data: {
-						start: start.format(),
-						end: end.format()
-					},
-					success: function(doc) {
-						var events = [];
-						if(!!doc.result){
-							$.map( doc.result, function( r ) {
-								events.push({
-									title: r.title,
-									start: r.date_start,
-									description: r.description
-								});
-							});
-						}
-						callback(events);
-					}
-				});
-			}
-		});*/
-
-  
-	
 });<!--End of document -->
    
 

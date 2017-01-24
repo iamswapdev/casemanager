@@ -40,7 +40,6 @@
 <?php include 'sidebar.php';?>
 <!-- Main Wrapper -->
 <div id="wrapper">
-<?php include 'header_financials.php';?>
 <div class="content animate-panel">
 	
     <div class="row">
@@ -48,9 +47,17 @@
         <div class="hpanel">
         <div class="panel-heading"></div>
         <div class="panel-body tab-panel">
+        	<div class="form-group form-horizontal col-lg-12">
+            	<div class="col-md-2">
+                	<input type="text" name="date"  class="form-control input-sm datepicker_settlement" >
+                </div>
+                <div class="col-md-2">
+                	<button type="button" class="btn btn-primary col-md-2" id="Go">Go</button>
+            	</div>
+            </div>
             <div class="form-group form-horizontal col-lg-12">
-                <h5 class="h4-title">Event List</h5>
                 <div class="col-md-12">
+                	<br><h5 class="h4-title">Event List</h5>
                     <table id="EventList" class="table dataTable table-bordered table-striped">
                         <thead>
                         <tr>  	 	 	 
@@ -112,6 +119,24 @@
 <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
 $(document).ready(function(e) {
+	$("#Go").click(function(){
+		$("#EventList").dataTable().fnDestroy();
+		$('#EventList').dataTable( {
+			"ajax": {
+				"url": "get_Event_List",
+				"data": {
+					"Date": $("input[name=date]").val()
+				},
+				"type": "post"
+			},
+			"bPaginate": false,
+			"bLengthChange": false,
+			"bFilter": false,
+			"bInfo": false,
+			"bAutoWidth": false,
+			"bSort": false
+		});
+	});
 	$('#EventList').dataTable( {
 		"ajax": {
 			"url": "get_Event_List",
@@ -127,7 +152,13 @@ $(document).ready(function(e) {
 		"bAutoWidth": false,
 		"bSort": false
 	});
-		
+	$('body').on('focus',".datepicker_settlement", function(){
+		$(this).datepicker({
+			"autoclose": true,
+			"todayHighlight": true,
+			"selectOtherMonths": true
+		});
+	});
 	
 });
 

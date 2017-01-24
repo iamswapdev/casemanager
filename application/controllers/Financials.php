@@ -765,7 +765,8 @@ class Financials extends CI_Controller{
 			
 			foreach($list as $result){
 				$row = array();
-				$row[] = $result->Case_Id;
+				//$row[] = $result->Case_Id;
+				$row[] = "<a href='".base_url()."search/viewcase/".$result->Case_AutoId."'>".$result->Case_Id."</a>";
 				$row[] = $result->InjuredParty_FirstName." ".$result->InjuredParty_LastName;
 				$row[] = $result->InsuranceCompany_Name;
 				$row[] = date_format(date_create(substr($result->Date_Opened, 0, 10)), "m/d/Y");
@@ -867,7 +868,7 @@ class Financials extends CI_Controller{
 			"Account_Id" => $this->input->post("Account_Id"),
 			"Table_Id" => $this->input->post("Table_Id")
 		);
-		$list = $this->search_model->get_Provider_ById($input_data['Provider_Id']);
+		$list = $this->financials_model->get_Provider_Details($input_data);
 		//echo "pp:".$input_data['Table_Id']."G"; exit;//print_r($input_data);exit;
 		$data = array();
 		foreach($list as $result){
@@ -875,9 +876,9 @@ class Financials extends CI_Controller{
 			
 			$row[] = $result->Provider_Id;
 			$row[] = $result->Provider_Name;
-			$row[] = "0.00";
-			$row[] = $result->Provider_Billing;
-			$row[] = $result->Provider_IntBilling;
+			$row[] = number_format($result->Prev_Cost_Balance, 2);
+			$row[] = number_format($result->Provider_Billing, 2);
+			$row[] = number_format($result->Provider_IntBilling, 2);
 			$row[] = $result->Invoice_Type;
 			$row[] = $result->Provider_FF;
 			$row[] = $result->Provider_ReturnFF;
@@ -894,6 +895,10 @@ class Financials extends CI_Controller{
 			"Account_Id" => $this->input->post("Account_Id"),
 			"Table_Id" => $this->input->post("Table_Id")
 		);
+		$list0=$this->financials_model->get_Prev_Cost_Balance($input_data);
+		foreach ($list0 as $result) {
+			$Prev_Cost_Balance = $result->Prev_Cost_Balance;
+		}
 		$list1=$this->financials_model->get_Final_Client_Invoices($input_data, "EXP");
 		foreach ($list1 as $result) {
 			$Cost_Expended = $result->Cost_Expended;
@@ -920,7 +925,7 @@ class Financials extends CI_Controller{
 			$no++;
 			$row[] = "$".number_format($result->Gross_Amount_Collected, 2);
 			$row[] = "$".number_format($Tot_Legal_Fees, 2);
-			$row[] = "$0.00";
+			$row[] = "$".number_format($Prev_Cost_Balance, 2);
 			//$row[] = "$".number_format($result->Privious_Cost, 2);
 			$row[] = "$".number_format($Cost_Expended, 2);
 			$row[] = "$".number_format($Credit_To_Client, 2);
@@ -929,8 +934,8 @@ class Financials extends CI_Controller{
 			//$row[] = "$".number_format($result->Gross_Amount_Collected - $Tot_Legal_Fees - 0 - $result->Cost_Expended + $result->Credit_To_Client + $result->Received_Fees, 2);
 			//$row[] =  "$".number_format($result->Legal_Fees + $result->Privious_Cost + $result->Cost_Expended + $result->Credit_To_Client + $result->Received_Fees, 2);
 			
-			$row[] = "$".number_format(($result->Gross_Amount_Collected - $Tot_Legal_Fees - 0 - $Cost_Expended + $Credit_To_Client + 0), 2);
-			$row[] = "$".number_format(($Tot_Legal_Fees + 0 + $Cost_Expended - $Credit_To_Client + 0), 2);
+			$row[] = "$".number_format(($result->Gross_Amount_Collected - $Tot_Legal_Fees - $Prev_Cost_Balance - $Cost_Expended + $Credit_To_Client + 0), 2);
+			$row[] = "$".number_format(($Tot_Legal_Fees + $Prev_Cost_Balance + $Cost_Expended - $Credit_To_Client + 0), 2);
 			$row[] = "$0.00";
 			
 			$data[] = $row;

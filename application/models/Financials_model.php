@@ -315,6 +315,15 @@ Class Financials_model extends CI_Model{
 		$query = $this->db->get();
 		return $query->result();
 	}
+	public function get_Provider_Details($input_data){
+		$this->db->select("t2.*, t1.Prev_Cost_Balance");
+		$this->db->from("dbo_tblclientaccount as t1");
+		$this->db->join("dbo_tblprovider as t2", "t1.Provider_Id = t2.Provider_Id");
+		$this->db->where("t1.Account_Id", $input_data['Account_Id']);
+		$query = $this->db->get(); 
+		$data=$query->result();
+		return $data;
+	}
 /*get final client invoice table*/
 	public function get_Final_Client_Invoices($input_data, $Type){
 		if($Type == "EXP"){
@@ -339,6 +348,12 @@ Class Financials_model extends CI_Model{
 			$this->db->where("(t1.Transactions_Type='C' OR t1.Transactions_Type='I')", NULL, FALSE);
 		}
 		$query = $this->db->get();
+		return $query->result();
+	}
+	public function get_Prev_Cost_Balance($input_data){
+		$this->db->select("Prev_Cost_Balance");
+		$this->db->where("Account_Id", $input_data['Account_Id']);
+		$query = $this->db->get("dbo_tblclientaccount");
 		return $query->result();
 	}
 /*get final client invoice legal fees total table*/

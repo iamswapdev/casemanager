@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/select2-3.5.2/select2.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/select2-bootstrap/select2-bootstrap.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" />
+    
+    <!-- DATETIMEPICKER CSS -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/datetimepicker/jscss/css/bootstrap-datetimepicker.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.min.css" />
     
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.css" />
@@ -51,7 +54,7 @@
 <?php include 'sidebar.php';?>
 <!-- Main Wrapper -->
 <div id="wrapper">
-<?php include 'header_workarea.php';?>
+<?php include 'header_dataentry.php';?>
 <div class="content animate-panel">
     
 	<div class="row">
@@ -61,21 +64,23 @@
 		<div class="panel-body tab-panel">
 			
 			<form id="addCaseForm" role="form" action="add_CaseInfo" method="post" >
-				<h5 class="h5-title">CASE INFORMATION</h5>
+				
 				<div class="form-group form-horizontal col-md-12">
-					<p>(Note: All amounts are in USD wherever applicable.)</p>
+                	<h5 class="h4-title">CASE INFORMATION</h5>
+					<!--<p>(Note: All amounts are in USD wherever applicable.)</p>-->
 					<label class="col-md-2 control-label">Initial Status</label>
-					<div class="col-md-4 radio">
-						<label><input type="radio" value="ARBITRATION" id="arbitration" name="initialStatus">ARBITRATION</label>
-						<label><input type="radio" value="LITIGATION" id="litigation" name="initialStatus">LITIGATION</label>
-                        <label><input type="radio" value="INITIAL SUBMISSION" id="initialSubmission" name="initialStatus">INITIAL SUBMISSION</label>
-                        <label><input type="radio" value="PERSONAL INJURY" id="personalInjury" name="initialStatus">PERSONAL INJURY</label>
+					<div class="col-md-6 radio">
+						<label><input type="radio" class="horizontal" value="ARBITRATION" id="arbitration" name="initialStatus">ARBITRATION</label>
+						<label><input type="radio" class="horizontal" value="LITIGATION" id="litigation" name="initialStatus">LITIGATION</label>
+                        <label><input type="radio" class="horizontal" value="INITIAL SUBMISSION" id="initialSubmission" name="initialStatus">INITIAL SUBMISSION</label>
+                        <label><input type="radio" class="horizontal" value="PERSONAL INJURY" id="personalInjury" name="initialStatus">PERSONAL INJURY</label>
 					</div>
 				</div>
 				<div class="form-group form-horizontal col-md-12">
 					<label class="col-md-2 control-label">Provider Name</label>
 					<div class="col-md-2">	
 						<input type="text" id="providerName" name="providerName" class="form-control input-sm">
+                        <input type="hidden" name="providerNameHidden">
 					</div>
 					<label class="col-md-2 control-label">Select Provider</label>
 					<div class="col-md-2">	
@@ -89,8 +94,9 @@
 					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
 				</div>
 
-				<h5 class="h5-title">Injured Party Information</h5>
+				
 				<div class="form-group form-horizontal col-md-12">
+                	<h5 class="h4-title">Injured Party Information</h5>
 					<label class="col-md-2 control-label">Last Name <span class="required-field">*</span></label>
 					<div class="col-md-2">
 						<input type="text" id="injuredPartyLastName" name="injuredPartyLastName" placeholder="Last Name" class="form-control input-sm" required> 
@@ -102,8 +108,9 @@
 					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
 				</div>
 
-				<h5 class="h5-title">Insured Party Information </h5>
+				
 				<div class="form-group form-horizontal col-md-12">
+                	<h5 class="h4-title">Insured Party Information </h5>
 					<div class="col-md-2">
 					</div>
 					<div class="col-md-6 checkbox">
@@ -123,11 +130,13 @@
 					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
 				</div>
 
-				<h5 class="h5-title">Insurance Information</h5>
+				
 				<div class="form-group form-horizontal col-md-12">
+                	<h5 class="h4-title">Insurance Information</h5>
 					<label class="col-md-2 control-label">Name</label>
 					<div class="col-md-2">	
 						<input type="text" id="insuranceName" name="insuranceName" class="form-control input-sm">
+                        <input type="hidden" name="insuranceNameHidden">
 					</div>
 					<label class="col-md-2 control-label">Select Insurance comp.</label>
 					<div class="col-md-2">	
@@ -148,32 +157,32 @@
 					<div class="col-md-2">	
 						<input type="text" id="insClaimNumber" name="insClaimNumber" class="form-control input-sm">
 					</div>
-					<!--<div class="form-horizontal col-md-12 hr-line-dashed"></div>-->
+					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
 				</div>
                 
-                <div class="form-group form-horizontal col-md-12"> <hr> </div>
-
-				<h5 class="h5-title">Accident Information</h5>
+				
 				<div class="form-group form-horizontal col-md-12">
+                	<h5 class="h4-title">Accident Information</h5>
 					<label class="col-md-2 control-label">D.O.A <span class="required-field">*</span></label>
-					<div class="col-md-2"> <input id="accidentDate" name="accidentDate" type="text" class="form-control input-sm" required> </div>
+					<div class="col-md-2"> <input id="accidentDate" name="accidentDate"  class="form-control input-sm datetimepicker" required> </div>
 					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
 				</div>
 
-				<h5 class="h5-title">Other Information </h5>
+				
 				<div class="form-group form-horizontal col-lg-12">
+                	<h5 class="h4-title">Other Information </h5>
 					<label class="col-md-2 control-label">Status</label>
 					<div class="col-md-2">
-						<select class="form-control input-sm" id="status" name="status">
+						<select class="form-control input-sm" id="status" name="Status">
                             <option selected="selected" value=""></option>
                             <?php foreach($Status as $row){?>
-                            <option value="<?php echo $row['Status_Id']; ?>"> <?php echo $row['Status_Type']; ?> </option>
+                            <option value="<?php echo $row['Status_Type']; ?>"> <?php echo $row['Status_Type']; ?> </option>
                             <?php }?>
                         </select>
 					</div>
 					<label class="col-md-2 control-label"> Index/AAA #</label>
 					<div class="col-md-2">
-						<input id="indexOrAAANumber"  name="indexOrAAANumber" type="text" class="form-control input-sm">
+						<input id="indexOrAAANumber"  name="indexOrAAANumber" type="text" class="form-control input-sm phone-format">
 					</div>
 					<label class="col-md-2 control-label">Court Name <span class="required-field">*</span></label>
 					<div class="col-md-2">
@@ -189,8 +198,9 @@
                 
                 
                 <div class="form-group form-horizontal col-lg-12 set-bg">
-                	<div class="table-responsive">
-                        <table cellpadding="1" cellspacing="1" class="table table-bordered table-striped add-case-table">
+                	<input type="hidden" name="OtherInfoTableCount">
+                	<div class="table-responsive1">
+                        <table cellpadding="1" cellspacing="1" id="myTable" class="table table-bordered add-case-table">
                             <thead>
                             <tr>
                                 <th>D.O.S-Start</th>
@@ -205,19 +215,19 @@
                             </thead>
                             <tbody>
                             <tr class="first-row">
-                                <td><input id="dateOfServiceStart" name="dateOfServiceStart" type="text" class="form-control input-sm"></td>
-                                <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" type="text" class="form-control input-sm"></td>
-                                <td><input type="text" id="claimAmt" name="claimAmt" class="form-control input-sm"></td>
-                                <td><input type="text" id="paidAmt" name="paidAmt" class="form-control input-sm"></td>
-                                <td><input id="dateBillSent" name="dateBillSent" type="text" class="form-control input-sm"></td>
+                                <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datetimepicker_Dos_Doe"></td>
+                                <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datetimepicker_Dos_Doe"></td>
+                                <td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm"></td>
+                                <td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm"></td>
+                                <td><input id="dateBillSent" name="dateBillSent" class="form-control input-sm datetimepicker_Dos_Doe"></td>
                                 <td><select class="form-control input-sm" id="serviceType" name="serviceType">
-                                        <option>-- Select Service--</option>
+                                        <option selected="selected" value=""></option>
                                         <?php foreach($Service as $row){?>
                                         <option value="<?php echo $row['ServiceType_ID']; ?>"> <?php echo $row['ServiceType']; ?> </option>
                                         <?php }?>
                                     </select></td>
                                 <td><select class="form-control input-sm" id="denialReasons" name="denialReasons" >
-                                        <option>-- Select Denial reason --</option>
+                                        <option selected="selected" value=""></option>
                                         <?php foreach($DenialReasons as $row){?>
                                         <option value="<?php echo $row['DenialReasons_Id']; ?>"> <?php echo $row['DenialReasons_Type']; ?> </option>
                                         <?php }?>
@@ -287,18 +297,27 @@
 </div>
 
     <!-- Vendor scripts --> 
-    <script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script> 
+    
     <script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script> 
-    <script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script> 
+    <script src="<?php echo base_url();?>assets/datetimepicker/jscss/js/bootstrap.min.js"></script> 
     <script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script> 
     <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script> 
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script> 
     <script src="<?php echo base_url();?>assets/vendor/select2-3.5.2/select2.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
     
+    <script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/mask-phone/maskPhone.js"></script>
+    
+    <!-- DATETIMEPICKER SCRIPTS -->
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/mask-phone/maskPhone.js"></script>
+    <script src="<?php echo base_url();?>assets/datetimepicker/jscss/js/moment-with-locales.js"></script>
+    <script src="<?php echo base_url();?>assets/datetimepicker/jscss/js/bootstrap-datetimepicker.js"></script>
+    
+    <!-- ALERT SCRIPTS -->
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.js"></script>
@@ -306,18 +325,18 @@
     <script src="<?php echo base_url();?>assets/scripts/homer.js"></script> 
     
 <script>
-	
-
 	$("#cancel").click(function(){
-		$('input[type=text]').val('');
-		$('input[type=radio]').val('');
+		$('input').val('');
+		$('select').val('');
+		//$('input[type=radio]').val('');
 		$('textarea').val('');
-		$('#providerId').val('');
+		/*$('#providerId').val('');
 		$('#insuranceCompanyId').val('');
 		$('#status').val('');
 		$('#courtId').val('');
 		$('#serviceType').val('');
-		$('#denialReasons').val(''); 
+		$('#denialReasons').val('');*/
+		$('.datepicker_recurring_start').val(''); 
 	});
 	$('#checkbox1').change(function() {
 		if ($(this).is(':checked')) {
@@ -341,54 +360,80 @@
 	}
 	
 	var countForRows = 0;
-	var value = 0;
+	var value = 1;
 	$("#addOtherInfo").click(function(){
+		var Parent_Row = $(this).parent().parent().parent();
 		if(countForRows >= 0){
-			console.log("ccc: "+countForRows);
+			//console.log("ccc: "+countForRows);
 			$("#DeleteButton").css("display", "block");
 		}
 		countForRows++;
-		 
+		  
 		var addNewRow = '<tr class="r'+value+'">';
-		    addNewRow += '<td><input class="dateOfServiceStart" name="dateOfServiceStart" type="text" class="form-control input-sm"></td>';
-            addNewRow += '<td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" type="text" class="form-control input-sm"></td>'
-            addNewRow += '<td><input type="text" id="claimAmt" name="claimAmt" class="form-control input-sm"></td>'
-            addNewRow += '<td><input type="text" id="paidAmt" name="paidAmt" class="form-control input-sm"></td>'
-            addNewRow += '<td><input id="dateBillSent" name="dateBillSent" type="text" class="form-control input-sm"></td>';
-			addNewRow += '<td></td>';
-			addNewRow += '<td></td>';
+		    addNewRow += '<td><input name="dateOfServiceStart_'+value+'" class="form-control input-sm dateOfServiceStart" value="'+$(Parent_Row).find("input[name=dateOfServiceStart]").val()+'"></td>';
+            addNewRow += '<td><input name="dateOfServiceEnd_'+value+'" class="form-control input-sm dateOfServiceEnd" value="'+$(Parent_Row).find("input[name=dateOfServiceEnd]").val()+'"></td>'
+            addNewRow += '<td><input type="text" name="claimAmt_'+value+'" class="form-control input-sm claimAmt" value="'+$(Parent_Row).find("input[name=claimAmt]").val()+'"></td>'
+            addNewRow += '<td><input type="text" name="paidAmt_'+value+'" class="form-control input-sm paidAmt" value="'+$(Parent_Row).find("input[name=paidAmt]").val()+'"></td>'
+            addNewRow += '<td><input class="form-control input-sm dateBillSent" name="dateBillSent_'+value+'" value="'+$(Parent_Row).find("input[name=dateBillSent]").val()+'"></td>';
+			
+			
+			addNewRow += '<td><input class="form-control input-sm serviceType" name="serviceType_'+value+'" value="'+$(Parent_Row).find("#serviceType option:selected").text()+'"></td>';
+			
+			addNewRow += '<td><input class="form-control input-sm denialReasons" name="denialReasons_'+value+'" value="'+$(Parent_Row).find("#denialReasons option:selected").text()+'"></td>';
+			
 			addNewRow += '<td><input class="ads_Checkbox" type="checkbox" name="delete[]" value="'+value+'"></td>';
 			value++;
 			addNewRow += '</tr>';
 						  
 		$(addNewRow).insertBefore(".first-row");
+		$(Parent_Row).find("input").val("");
+		$(Parent_Row).find("select").val("");
+		$("input[name=OtherInfoTableCount]").val(($('#myTable tr').length-2));
 	});
 	
 	 $('#DeleteButton').click(function(){
 		var final = '';
+		var tableCount1 = $('#myTable tr').length;
+		var values =0;
 		$('.ads_Checkbox:checked').each(function(){        
-			var values = $(this).val();
+			values = $(this).val();
 			$(".r"+values).remove();
 			countForRows--;
 		});
+		var tableCount2 = $('#myTable tr').length;
+		console.log("delete values:"+values);
+		console.log("Table tow count1:"+tableCount1);
+		console.log("Table tow count2:"+tableCount2);
+		$("input[name=OtherInfoTableCount]").val((tableCount2-2));
+		
+		for(var j=1; j<=(tableCount2-2); j++){
+			console.log("cccccc:"+j);
+			$("#myTable tr:nth-child("+j+")").find(".dateOfServiceStart").attr("name", "dateOfServiceStart_"+j);
+			$("#myTable tr:nth-child("+j+")").find(".dateOfServiceEnd").attr("name", "dateOfServiceEnd_"+j);
+			$("#myTable tr:nth-child("+j+")").find(".claimAmt").attr("name", "claimAmt_"+j);
+			$("#myTable tr:nth-child("+j+")").find(".paidAmt").attr("name", "paidAmt_"+j);
+			$("#myTable tr:nth-child("+j+")").find(".dateBillSent").attr("name", "dateBillSent_"+j);
+			$("#myTable tr:nth-child("+j+")").find(".serviceType").attr("name", "serviceType_"+j);
+			$("#myTable tr:nth-child("+j+")").find(".denialReasons").attr("name", "denialReasons_"+j);
+		}
+		//$.each( obj, function( key, value ) {
+		//});
 		if(countForRows == 0){
 			$("#DeleteButton").css("display", "none");
 		}
 		
 	});
-
-	$(function(){
+	/*$('input[name=dateOfServiceStart]').datepicker({
+			"autoclose": true,
+			"todayHighlight": true
+		});*/
+	/*$(function(){
 		//$("#accidentDate").datepicker("setDate", new Date());
-		var localToday = new Date();
-//localToday.setDate(getDate()); // tomorrow
 		$('#accidentDate').datepicker({
 			"autoclose": true,
 			"todayHighlight": true
 		});
-		$('#dateOfServiceStart').datepicker({
-			"autoclose": true,
-			"todayHighlight": true
-		});
+		
 		$('#dateOfServiceEnd').datepicker({
 			"autoclose": true,
 			"todayHighlight": true
@@ -401,7 +446,17 @@
 			"autoclose": true,
 			"todayHighlight": true
 		});
-	});
+	});*/
+	/*$('select#providerId').on('change', function() {
+		var option = $(this).find('option:selected').val();
+		$('#showoption').val(option);
+		
+		var providerName = $(this).text();
+		console.log("providerName: "+providerName);
+		$("#providerName").val(providerName);
+	});*/
+	
+	
 </script>
 <script>
 	$("#addCaseForm").validate({
@@ -455,18 +510,10 @@
 			request.done(function (response, textStatus, jqXHR) {
 				// log a message to the console
 				console.log("Hooray, it worked!");
-				$('input[type=text]').val('');
-				$('input[type=radio]').val('');
-				$('textarea').val('');
-				$('#providerId').val('');
-				$('#insuranceCompanyId').val('');
-				$('#status').val('');
-				$('#courtId').val('');
-				$('#serviceType').val('');
-
-				$('#denialReasons').val('');   
-				//$("#myModal").modal("show");
-					callSuccess();
+				$('input').val('');
+				$('select').val('');
+				$('textarea').val('');   
+				callSuccess();
 			});
 
 			// callback handler that will be called on failure
@@ -484,6 +531,49 @@
 			});
 
 		}
+	});
+	$('#providerId').on('change', function() {
+		var providerName =$("#providerId option:selected").text();
+		var providerId =$("#providerId option:selected").val();
+		$("input[name=providerName]").val(providerName);
+		$("input[name=providerNameHidden]").val(providerId);
+	});
+	$('#insuranceCompanyId').on('change', function() {
+		var insuranceName =$("#insuranceCompanyId option:selected").text();
+		var insuranceId =$("#insuranceCompanyId option:selected").val();
+		$("input[name=insuranceName]").val(insuranceName);
+		$("input[name=insuranceNameHidden]").val(insuranceId);
+	});
+	$("input[name=providerName]").prop("disabled", true);
+	$("input[name=insuranceName]").prop("disabled", true);
+	
+	
+	$('body').on('focus',".phone-format", function(){
+		$(this).mask("999999/99");
+	});
+	
+	/*$('body').on('focus',".datetimepicker", function(){
+		$(this).datetimepicker({
+			format:'YYYY/MM/DD HH:mm:ss'
+		})
+	});*/
+	$('body').on('focus',".datetimepicker", function(){
+		$(this).datetimepicker({
+			format:'YYYY/MM/DD HH:mm:ss'
+		})
+	});
+/*ONLY DATE PICKER SECTION*/
+	$('body').on('focus',".datetimepicker_Dos_Doe", function(){
+		$(this).datetimepicker({
+			format:'MM/DD/YYYY'
+		})
+	});
+	$('body').on('focus',".datepicker_recurring_start", function(){
+		$(this).datepicker({
+			"autoclose": true,
+			"todayHighlight": true,
+			"selectOtherMonths": true
+		});
 	});
 </script>
 <script>

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/animate.css/animate.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.css" />
     
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.css" />
@@ -56,7 +57,7 @@
 		<div class="panel-body tab-panel">
 			
 			<h4 class="h4-title">Add New Role</h4>
-			<form id="addRoleForm"  action="insert_Roles" method="post">
+			<form id="addRoleForm" method="post">
 				<div class="form-group form-horizontal col-md-12">
 					<label class="col-sm-2 control-label">Role Name</label>
 					<div class="col-sm-4">
@@ -78,23 +79,15 @@
 			<div class="form-group form-horizontal col-md-12">
 				<div class="col-md-2"></div>
 				<div class="col-md-4">
-                	
-					<table id="example2" class="table table-striped table-bordered table-hover">
-					<thead>
-						<tr>
-						<th>Roll Name</th>
-						<th>Delete</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php foreach($Roles as $row){?>
-						<tr class="r<?php echo $row['RoleId'];?>">
-							<td><?php echo $row['RoleName']?></td>
-							<td><input name="deleteRole[]" type="checkbox" class="ads_Checkbox"  value="<?php echo $row['RoleId']; ?>"></td>
-						</tr>
-						<?php }?>
-					</tbody>
-					</table>
+                	<table id="RoleTable" class="table dataTable table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Roll Name</th>
+							<th>Delete</th>
+                        </tr>
+                        </thead>
+                    </table>
+                
 				</div>
 			</div>
 			<div class="form-group form-horizontal col-md-12">
@@ -160,6 +153,9 @@
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/jquery-validation/jquery.validate.min.js"></script>
     
+	<script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+	<script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
     <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/sweetalert/lib/sweet-alert.min.js"></script>
     <script src="<?php echo base_url();?>assets/vendor/toastr/build/toastr.min.js"></script>
@@ -167,8 +163,21 @@
     <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 
 <script>
+	$('#RoleTable').dataTable( {
+		"ajax": {
+			"url": "get_Role_Table",
+			"type": "post"
+		},
+		"bPaginate": false,
+		"bLengthChange": false,
+		"bFilter": false,
+		"bInfo": false,
+		"bAutoWidth": false,
+		"bSort": false
+	});
+	
 	var value= 0;
-	$("#addRoleForm").validate({
+	$("#addRoleForm1").validate({
 		rules: {
 			RoleName: {
 				required: true,
@@ -182,7 +191,7 @@
 	});
 	
 	
-	$("#addRoleForm1").validate({
+	$("#addRoleForm").validate({
 		rules: {
 			RoleName: {
 				required: true,
@@ -195,23 +204,25 @@
 			var $inputs = $form.find("input, select, button, textarea");
 			var serializedData = $form.serialize();
 
-			$inputs.prop("disabled", true);
-
 			request = $.ajax({
-				url:"<?php echo base_url(); ?>adminprivilege/insert_Roles",
+				url:"insert_Roles",
 				type: "post",
 				data: serializedData,
 				success:function(data, textStatus, jqXHR) 
 				{
-					results = JSON.parse(data);
-					var optionsAsString = "";
-					for($i in results.Roles){
-						//console.log(results.Provider_Name[$i].Adjuster_Id);
-						optionsAsString +="<tr class='r"+results.Roles[$i].RoleId+"'> <td>"+results.Roles[$i].RoleName+"</td> <td><input type='checkbox' class='.ads_Checkbox' value='"+results.Roles[$i].RoleId+"' > </td></tr>"
-						
-					}
-					value++;
-					$( 'tbody' ).append( optionsAsString );
+					$('#RoleTable').dataTable().fnDestroy();
+					$('#RoleTable').dataTable( {
+						"ajax": {
+							"url": "get_Role_Table",
+							"type": "post"
+						},
+						"bPaginate": false,
+						"bLengthChange": false,
+						"bFilter": false,
+						"bInfo": false,
+						"bAutoWidth": false,
+						"bSort": false
+					});
 				}
 			});
 
@@ -242,10 +253,18 @@
 			});
 
 			request.done(function (response, textStatus, jqXHR) {
-				$('input[type=text]').val('');
-				$('.ads_Checkbox:checked').each(function(i){
-					var values = $(this).val();
-					$(".r"+values).remove();
+				$('#RoleTable').dataTable().fnDestroy();
+				$('#RoleTable').dataTable( {
+					"ajax": {
+						"url": "get_Role_Table",
+						"type": "post"
+					},
+					"bPaginate": false,
+					"bLengthChange": false,
+					"bFilter": false,
+					"bInfo": false,
+					"bAutoWidth": false,
+					"bSort": false
 				});
 				callDelete();
 			});

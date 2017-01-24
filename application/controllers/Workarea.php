@@ -175,7 +175,8 @@ class Workarea extends CI_Controller{
 	}
 	public function get_Event_List(){
 		$Date = $this->input->post("Date");
-		$list = $this->workarea_model->get_Event_List($Date);
+		
+		$list = $this->workarea_model->get_Event_List(date_format(date_create($Date), 'Y/m/d'));
 		$data = array();
 		$Counter = 0;
 		foreach($list as $result){
@@ -183,11 +184,11 @@ class Workarea extends CI_Controller{
 			$row = array();
 			
 			$row[] = $Counter;
-			$row[] = $result->Case_id;
+			$row[] = "<a class=='info-link' href='".base_url()."search/viewcase/".$result->Case_AutoId."'>".$result->Case_id."</a>";
 			$row[] = $result->EventTypeName;
 			$row[] = $result->EventStatusName;
 			$row[] = date_format(date_create($result->Event_Date), 'm/d/Y');
-			$row[] = date_format(date_create($result->Event_Date), 'H:i');
+			$row[] = date_format(date_create($result->Event_Time), 'H:i');
 			$row[] = $result->Event_Notes;
 			$row[] = $result->Assigned_To;
 			$row[] = $result->Provider_Name;

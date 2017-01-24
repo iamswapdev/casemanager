@@ -123,16 +123,15 @@ Class Workarea_model extends CI_Model{
 		$this->db->from("dbo_tblevent as t1");
 		$this->db->order_by("t1.Event_date", "asc");
 		$this->db->join("dbo_tbleventstatus as t2", "t2.EventStatusId = t1.EventStatusId");
-		//$this->db->limit('500');
 		$this->db->where("t1.Event_date >=", $start);
 		$this->db->where("t1.Event_date <=", $end);
 		$this->db->group_by("t1.Event_date");
 		$this->db->group_by("t1.EventStatusId");
-		$query = $this->db->get(); //echo "count:";print_r($query->result_array());exit;
+		$query = $this->db->get();
 		return $query->result();
 	}
 	public function get_Event_List($Date){
-		$this->db->select('t1.Case_id, t3.EventTypeName, t4.EventStatusName, t1.Event_Date, t1.Event_Time, t1.Event_Notes, t1.Assigned_To, t5.Provider_Name, t2.InjuredParty_LastName, t2.InjuredParty_FirstName, t6.Court_Name, t2.IndexOrAAA_Number, t2.Claim_Amount, t7.Defendant_Name, t8.InsuranceCompany_Name, t2.Status');
+		$this->db->select('t2.Case_AutoId, t1.Case_id, t3.EventTypeName, t4.EventStatusName, t1.Event_Date, t1.Event_Time, t1.Event_Notes, t1.Assigned_To, t5.Provider_Name, t2.InjuredParty_LastName, t2.InjuredParty_FirstName, t6.Court_Name, t2.IndexOrAAA_Number, t2.Claim_Amount, t7.Defendant_Name, t8.InsuranceCompany_Name, t2.Status');
 		
 		$this->db->from('dbo_tblevent as t1');
 		$this->db->join('dbo_tblcase as t2', 't1.Case_id = t2.Case_id', "LEFT");
@@ -146,7 +145,6 @@ Class Workarea_model extends CI_Model{
 		$this->db->order_by("t1.Event_Date","asc");
 		$query= $this->db->get();
 		$data=$query->result();
-		//echo "<pre>"; print_r($data); exit();
 		return $data;
 	}
 }

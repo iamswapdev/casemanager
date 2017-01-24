@@ -116,18 +116,26 @@ class Adminprivilege extends CI_Controller{
 		$this->admin_privilege_model->update_Users($data);
 	}
 	public function addnewrole(){
-		
 		if(isset($this->session->userdata['logged_in'])){
-			
-			$data['Roles']=$this->admin_privilege_model->get_AllRoles();
+			//$data['Roles']=$this->admin_privilege_model->get_AllRoles();
 			$data['Assigned_Menus'] = $this->get_Assigned_Menus_New($this->session->userdata['RoleId']);
 			$this->load->view('pages/addnewrole',$data);
 		}else{
-			//echo "session deleted";
 			$CurrentPage['CurrentUrl'] = "adminprivilege/addnewrole";
 			$this->load->view('pages/login', $CurrentPage);
 		}
-	
+	}
+	public function get_Role_Table(){
+		$list= $this->admin_privilege_model->get_Role_Table();
+		$data = array();
+		foreach($list as $result){
+			$row = array();
+			$row[] = $result->RoleName;
+			$row[] = "<input name='deleteRole[]' type='checkbox' class='ads_Checkbox' value='".$result->RoleId."' />";
+			$data[] = $row;
+		}
+		$output = array( "data" => $data );
+		echo json_encode($output);
 	}
 	public function delete_Roles()
 	{
