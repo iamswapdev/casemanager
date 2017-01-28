@@ -12,6 +12,7 @@ class Search extends CI_Controller{
 		$this->load->model('dataentry_model');
 		$this->load->model('workarea_model');
 		$this->load->model('admin_privilege_model');
+		$this->load->model("case_info_model");
 		$this->session->all_userdata();
 		
 	}
@@ -66,6 +67,32 @@ class Search extends CI_Controller{
 		$list=$this->search_model->get_SearchResult($UserId, $RoleId);
 		$this->Search_Table_Data($list);
 	}
+	public function getSearchTable_2(){
+		$UserId = $this->input->post("UserId");
+		$RoleId = $this->input->post("RoleId");
+		$Recieveddata = array(
+			"Case_Id" => $this->input->post("sCaseId"),
+			"InjuredParty_LastName" => $this->input->post("InjuredParty_LastName"),
+			"InjuredParty_FirstName" => $this->input->post("InjuredParty_FirstName"),
+			"InsuredParty_LastName" => $this->input->post("InsuredParty_LastName"),
+			"InsuredParty_FirstName" => $this->input->post("InsuredParty_FirstName"),
+			"Policy_Number" => $this->input->post("spolicyNumber"),
+			"Ins_Claim_Number" => $this->input->post("sInsuranceClaimNo"),
+			"IndexOrAAA_Number" => $this->input->post("sIndexaaa"),
+			"Status" => $this->input->post("sStatus"),
+			"InsuranceCompany_Id" => $this->input->post("sInsuranceCompanyId"),
+			"Court_Id" => $this->input->post("sCourtId"),
+			"Initial_Status" => $this->input->post("sCaseStatus"),
+			"Provider_Id" => $this->input->post("sProviderId"),
+			"Defendant_Id" => $this->input->post("sDefendantId"),
+			"Adjuster_Id" => $this->input->post("sAdjusterId"),
+			"AccidentDate" => $this->input->post("AccidentDate"),
+			"FirstId" => $this->input->post("FirstId"),
+			"LastId" => $this->input->post("LastId")
+		);
+		$list= $this->search_model->get_CaseInfo_ById1($Recieveddata, $UserId, $RoleId);
+		$this->Search_Table_Data($list);
+	}
 	public function editcase($Case_AutoId){
 			//$this->session->all_userdata();
 			if(isset($this->session->userdata['logged_in'])){
@@ -93,7 +120,6 @@ class Search extends CI_Controller{
 			}
 		}
 	public function get_Assigned_Menus($User_Role){
-		//$this->session->all_userdata();
 		$data = $this->admin_privilege_model->get_Assigned_Menus($User_Role);
 		return $data;
 	}
@@ -418,7 +444,7 @@ class Search extends CI_Controller{
 			$row[] = $result->Notes_Desc;
 			$row[] = $result->User_Id;
 			$row[] = date_format(date_create(substr($result->Notes_Date, 0, 10)), "m/d/Y");
-			$row[] = substr($result->Notes_Date, 11, 8);
+			$row[] = substr($result->Notes_Date, 11, 5);
 			$row[] = $result->Notes_Type;
 			
 			$data[] = $row;
@@ -605,32 +631,7 @@ class Search extends CI_Controller{
 		}
 	}
 	
-	public function getSearchTable_2(){
-		$UserId = $this->input->post("UserId");
-		$RoleId = $this->input->post("RoleId");
-		$Recieveddata = array(
-			"Case_Id" => $this->input->post("sCaseId"),
-			"InjuredParty_LastName" => $this->input->post("InjuredParty_LastName"),
-			"InjuredParty_FirstName" => $this->input->post("InjuredParty_FirstName"),
-			"InsuredParty_LastName" => $this->input->post("InsuredParty_LastName"),
-			"InsuredParty_FirstName" => $this->input->post("InsuredParty_FirstName"),
-			"Policy_Number" => $this->input->post("spolicyNumber"),
-			"Ins_Claim_Number" => $this->input->post("sInsuranceClaimNo"),
-			"IndexOrAAA_Number" => $this->input->post("sIndexaaa"),
-			"Status" => $this->input->post("sStatus"),
-			"InsuranceCompany_Id" => $this->input->post("sInsuranceCompanyId"),
-			"Court_Id" => $this->input->post("sCourtId"),
-			"Initial_Status" => $this->input->post("sCaseStatus"),
-			"Provider_Id" => $this->input->post("sProviderId"),
-			"Defendant_Id" => $this->input->post("sDefendantId"),
-			"Adjuster_Id" => $this->input->post("sAdjusterId"),
-			"AccidentDate" => $this->input->post("AccidentDate"),
-			"FirstId" => $this->input->post("FirstId"),
-			"LastId" => $this->input->post("LastId")
-		);
-		$list= $this->search_model->get_CaseInfo_ById1($Recieveddata, $UserId, $RoleId);
-		$this->Search_Table_Data($list);
-	}
+	
 /**************************** NOTES TAB-3 ************************************************************************************/
 /***** BIND NOTES TABLE ****/	
 	public function getNotes2($Case_Id){
@@ -644,7 +645,7 @@ class Search extends CI_Controller{
 			$row[] = $result->Notes_Desc."<input type='hidden' class='tNoteDesc' value='".$result->Notes_Desc."'>";
 			$row[] = $result->User_Id."<input type='hidden' class='tNoteUserId' value='".$result->User_Id."'>";
 			$row[] = date_format(date_create(substr($result->Notes_Date, 0, 10)), "m/d/Y")."<input type='hidden' class='tNoteDate' value='".$result->Notes_Date."'>";
-			$row[] = substr($result->Notes_Date, 11, 8);
+			$row[] = substr($result->Notes_Date, 11, 5);
 			$row[] = $result->Notes_Type."<input type='hidden' class='tNoteType' value='".$result->Notes_Type."'>";
 			$row[] = "<input type='hidden' class='tNoteId' value='".$result->Notes_ID."'><input type='checkbox' name='DeleteNotes[]' class='DeleteNotes DeleteNotes".$result->Notes_ID."' value='".$result->Notes_ID."'>";
 			
@@ -1166,6 +1167,18 @@ class Search extends CI_Controller{
 		
 		$list = $this->workarea_model->add_Calendar_Events("2016-12-01", "2016-12-31");
 		echo "<pre>";print_r($list);
+	}
+	public function EditTemplate(){
+		$template = $this->input->post("TemplateName");
+		$Case_AutoId = $this->input->post("Templates_Case_Id");
+		echo $template;
+		if(isset($this->session->userdata['logged_in'])){
+			$data['CaseInfo'] = $this->case_info_model->get_Case_Info($Case_AutoId);
+			$this->load->view('templates/'.$template, $data);
+		}else{
+			$CurrentPage['CurrentUrl'] = "search/viewcase/1";
+			$this->load->view('pages/login', $CurrentPage);
+		}
 	}
 /*****************************************************************************************************************************************/
 }

@@ -1,0 +1,495 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 12">
+<meta name=Originator content="Microsoft Word 12">
+<link rel=File-List href="Consent%20to%20change%20attorney_files/filelist.xml">
+<title>CIVIL COURT OF CITY OF NEW YORK </title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Mr. Man</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>WK2</o:LastAuthor>
+  <o:Revision>13</o:Revision>
+  <o:TotalTime>88</o:TotalTime>
+  <o:Created>2009-08-10T19:35:00Z</o:Created>
+  <o:LastSaved>2014-03-26T19:27:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>143</o:Words>
+  <o:Characters>1375</o:Characters>
+  <o:Lines>11</o:Lines>
+  <o:Paragraphs>3</o:Paragraphs>
+  <o:CharactersWithSpaces>1515</o:CharactersWithSpaces>
+  <o:Version>12.00</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<link rel=themeData href="Consent%20to%20change%20attorney_files/themedata.thmx">
+<link rel=colorSchemeMapping
+href="Consent%20to%20change%20attorney_files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:View>Print</w:View>
+  <w:Zoom>110</w:Zoom>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:TrackMoves/>
+  <w:TrackFormatting/>
+  <w:PunctuationKerning/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>
+   <w:DontVertAlignCellWithSp/>
+   <w:DontBreakConstrainedForcedTables/>
+   <w:DontVertAlignInTxbx/>
+   <w:Word11KerningPairs/>
+   <w:CachedColBalance/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="false"
+  DefSemiHidden="false" DefQFormat="false" LatentStyleCount="267">
+  <w:LsdException Locked="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="99" Name="No List"/>
+  <w:LsdException Locked="false" Priority="99" SemiHidden="true"
+   Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="99" SemiHidden="true" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" QFormat="true"
+   Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" QFormat="true"
+   Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" QFormat="true"
+   Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" QFormat="true"
+   Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" QFormat="true"
+   Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" QFormat="true"
+   Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" SemiHidden="true"
+   UnhideWhenUsed="true" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:1;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:variable;
+	mso-font-signature:0 0 0 0 0 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";}
+p
+	{mso-style-unhide:no;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1026"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US style='tab-interval:.5in'>
+
+<div class=WordSection1>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=827
+ style='width:495.9pt;border-collapse:collapse;mso-yfti-tbllook:1184;
+ mso-padding-alt:0in 0in 0in 0in'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td width=489 valign=top style='width:293.4pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal>COURT_NAME<br>
+  COURT_VENUE<span style='font-size:11.0pt'><br>
+  ---------------------------------------------------------------X</span></p>
+  </td>
+  <td width=338 valign=top style='width:202.5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>Index
+  number: <span class=SpellE>IndexOrAAA_Number</span></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1;mso-yfti-lastrow:yes'>
+  <td width=489 valign=top style='width:293.4pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p style='margin:0in;margin-bottom:.0001pt'><b><span style='font-size:11.0pt'>PROVIDER_NAME</span></b><span
+  style='font-size:11.0pt'>&nbsp;</span></p>
+  <p style='margin:0in;margin-bottom:.0001pt;text-align:justify'><span
+  style='font-size:11.0pt'>A/A/O <b>INJUREDPARTY_NAME</b></span></p>
+  <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plaintiff(s),</span></p>
+  <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:1.5in;
+  margin-bottom:.0001pt'><span style='font-size:11.0pt'><br>
+  -against-</span></p>
+  <p style='margin:0in;margin-bottom:.0001pt'><b><span style='font-size:11.0pt'><br>
+  INSURANCECOMPANY_NAME</span></b><span style='font-size:11.0pt'>,</span></p>
+  <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Defendant(s),<br>
+  <br>
+  ---------------------------------------------------------------X</span></p>
+  <p style='margin:0in;margin-bottom:.0001pt;text-align:justify'><span
+  style='font-size:11.0pt'>&nbsp;</span></p>
+  </td>
+  <td width=338 valign=top style='width:202.5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p style='margin:0in;margin-bottom:.0001pt;text-align:justify'><span
+  style='font-size:11.0pt'>Plaintiff’s Address:</span></p>
+  <p style='margin:0in;margin-bottom:.0001pt;text-align:justify'><span
+  style='font-size:11.0pt'>&nbsp;</span></p>
+  <p style='margin:0in;margin-bottom:.0001pt'><b><u><span style='font-size:
+  11.0pt'>STIPULATION TO CHANGE ATTORNEY </span></u></b></p>
+  <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'><br
+  style='mso-special-character:line-break'>
+  <![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
+  <![endif]></span></p>
+  </td>
+ </tr>
+</table>
+
+<p style='margin:0in;margin-bottom:.0001pt'><b><span style='font-size:11.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p style='margin:0in;margin-bottom:.0001pt'><b><span style='font-size:11.0pt'>IT
+IS HEREBY CONSENTED THAT </span></b><span style='font-size:11.0pt'>The <span
+class=SpellE>Beynenson</span> Law Firm, P.C. be substituted as attorney(s) of
+record for the undersigned party in the above-entitled action in place and
+stead of the undersigned attorney(s) as of the date hereof. </span></p>
+
+<p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>&nbsp;</span></p>
+
+<p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>Dated:
+NOWDT</span></p>
+
+<p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>&nbsp;<o:p></o:p></span></p>
+
+<p style='margin:0in;margin-bottom:.0001pt'><o:p>&nbsp;</o:p></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=827
+ style='width:495.9pt;border-collapse:collapse;mso-yfti-tbllook:1184;
+ mso-padding-alt:0in 0in 0in 0in'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes;
+  height:105.7pt'>
+  <td width=422 valign=top style='width:252.9pt;padding:0in 5.4pt 0in 5.4pt;
+  height:105.7pt'>
+  <div style='mso-element:para-border-div;border:none;border-bottom:solid windowtext 1.5pt;
+  padding:0in 0in 1.0pt 0in'>
+  <p style='margin:0in;margin-bottom:.0001pt;border:none;mso-border-bottom-alt:
+  solid windowtext 1.5pt;padding:0in;mso-padding-alt:0in 0in 1.0pt 0in'><span
+  style='font-size:11.0pt;mso-bidi-font-weight:bold'><o:p>&nbsp;</o:p></span></p>
+  </div>
+  <p style='margin:0in;margin-bottom:.0001pt'>By: <span class=SpellE>Provider_President</span><span
+  style='font-size:11.0pt'><o:p></o:p></span></p>
+  <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt;
+  mso-bidi-font-weight:bold'>PROVIDER_NAME</span></p>
+  <p class=MsoNormal><o:p>&nbsp;</o:p></p>
+  <p class=MsoNormal>Sworn to before me this ______ day of ______________ 20___<br>
+  <br>
+  <br>
+  _____________________</p>
+  <p style='margin:0in;margin-bottom:.0001pt'>Notary Public </p>
+  </td>
+  <td width=405 valign=top style='width:243.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:105.7pt'>
+  <div style='mso-element:para-border-div;border:none;border-bottom:solid windowtext 1.5pt;
+  padding:0in 0in 1.0pt 0in'>
+  <p style='margin:0in;margin-bottom:.0001pt;border:none;mso-border-bottom-alt:
+  solid windowtext 1.5pt;padding:0in;mso-padding-alt:0in 0in 1.0pt 0in'><span
+  style='font-size:11.0pt;mso-bidi-font-weight:bold'><o:p>&nbsp;</o:p></span></p>
+  </div>
+  <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt;
+  mso-bidi-font-weight:bold'>Incoming Attorney for Plaintiff</span></p>
+  <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt;
+  mso-bidi-font-weight:bold'>By: <span class=SpellE>Alek</span> <span
+  class=SpellE>Beynenson</span>, Esq.</span></p>
+  <p class=MsoNormal>The <span class=SpellE>Beynenson</span> Law Firm, P.C<span
+  style='mso-bidi-font-size:11.0pt'>.</span></p>
+  <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>Attorneys
+  for Plaintiff(s)</span></p>
+  <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>475
+  Franklin Avenue</span></p>
+  <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>Franklin
+  Square, NY11010</span></p>
+  <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>Tel:516-858-4411</span></p>
+  <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>Fax:516-216-5405</span></p>
+  <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>Our
+  Case Id: <span class=SpellE>Case_Id</span></span></p>
+  </td>
+ </tr>
+</table>
+
+<p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>&nbsp;</span></p>
+
+<p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>&nbsp;<o:p></o:p></span></p>
+
+<p style='margin:0in;margin-bottom:.0001pt'><o:p>&nbsp;</o:p></p>
+
+<p style='margin:0in;margin-bottom:.0001pt'><o:p>&nbsp;</o:p></p>
+
+<p style='margin:0in;margin-bottom:.0001pt'><o:p>&nbsp;</o:p></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=825
+ style='width:495.0pt;margin-left:.9pt;border-collapse:collapse;mso-yfti-tbllook:
+ 1184;mso-padding-alt:0in 0in 0in 0in'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes;
+  height:109.35pt'>
+  <td width=420 valign=top style='width:3.5in;padding:0in 5.4pt 0in 5.4pt;
+  height:109.35pt'>
+  <p class=MsoNormal style='margin-left:45.0pt;text-align:justify;text-indent:
+  -45.0pt;mso-pagination:none;mso-hyphenate:none'><span style='font-size:11.0pt'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal style='margin-left:45.0pt;text-align:justify;text-indent:
+  -45.0pt;mso-pagination:none;mso-hyphenate:none'><span style='font-size:11.0pt'>TO:
+  DEFENDANT_NAME<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-left:.3in;text-align:justify;text-indent:
+  -.3in;mso-pagination:none;mso-hyphenate:none'><span style='font-size:11.0pt'><span
+  style='mso-tab-count:1'>       </span>ATTORNEY FOR DEFENDANT(S)<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-left:.3in;text-align:justify;text-indent:
+  -.3in;mso-pagination:none;mso-hyphenate:none'><span style='font-size:11.0pt'><span
+  style='mso-tab-count:1'>       </span>DEFENDANT_ADDRESS<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-left:.3in;text-align:justify;text-indent:
+  -.3in;mso-pagination:none;mso-hyphenate:none'><span style='font-size:11.0pt'><span
+  style='mso-tab-count:1'>       </span>DEFENDANT_CITY, DEFENDANT_STATE, DEFENDANT_ZIP<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-left:.3in;text-align:justify;text-indent:
+  -.3in;mso-pagination:none;mso-hyphenate:none'><span style='font-size:11.0pt'><span
+  style='mso-tab-count:1'>       </span>TEL: DEFENDANT_PHONE<o:p></o:p></span></p>
+  <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:.3in;
+  margin-bottom:.0001pt;text-indent:-.3in'><span style='font-size:11.0pt;
+  mso-fareast-font-family:Arial'><span style='mso-tab-count:1'>       </span>YOUR
+  FILE#: ATTORNEY_FILENUMBER</span><span style='font-size:11.0pt'> </span></p>
+  </td>
+  <td width=405 valign=top style='width:243.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:109.35pt'>
+  <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>__________________________________________</span></p>
+  <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>Outgoing
+  Attorney For Plaintiff</span></p>
+  <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt;
+  mso-bidi-font-weight:bold'>By: Victor Gomelsky<b> </b>Esq<b>.</b></span></p>
+  <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>Law
+  Office of Victor Gomelsky Esq.,</span></p>
+  <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>Attorneys
+  for Plaintiff(s)</span></p>
+  <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>475
+  Franklin Avenue</span></p>
+  <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>Franklin
+  Square, NY11010</span></p>
+  </td>
+ </tr>
+</table>
+
+<p style='margin:0in;margin-bottom:.0001pt'><o:p>&nbsp;</o:p></p>
+
+</div>
+
+</body>
+
+</html>
