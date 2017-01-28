@@ -18,6 +18,7 @@ Class Case_Info_model extends CI_Model{
 		
 		$query=$this->db->get();
 		$data=$query->result_array();
+		//echo "<pre>"; print_r($data); exit;
 		return $data;
 	}
 

@@ -1170,8 +1170,7 @@ class Search extends CI_Controller{
 	}
 	public function EditTemplate(){
 		$template = $this->input->post("TemplateName");
-		$Case_AutoId = $this->input->post("Templates_Case_Id");
-		echo $template;
+		$Case_AutoId = $this->input->post("Templates_Case_AutoId");
 		if(isset($this->session->userdata['logged_in'])){
 			$data['CaseInfo'] = $this->case_info_model->get_Case_Info($Case_AutoId);
 			$this->load->view('templates/'.$template, $data);
