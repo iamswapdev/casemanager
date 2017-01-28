@@ -229,7 +229,7 @@ class Workarea extends CI_Controller{
 				$row[] = $result->Provider_Name;
 				$row[] = $result->InsuranceCompany_Name;
 				$row[] = $result->Court_Name;
-				$row[] = $result->Claim_Amount;
+				$row[] = "$".number_format($result->Claim_Amount, 2);
 				$row[] = date_format(date_create(substr($result->Date_Opened, 0,10)), "m/d/Y");
 				$row[] = "";
 				$row[] = date_format(date_create(substr($result->$DateType, 0,10)), "m/d/Y");

@@ -762,8 +762,12 @@ $(document).ready(function(e) {
 				"data": {"SD_Print":SD, "ED_Print":ED, "DateType": DateType, "Status": Status, "TableName": "Status"},
 				"type": "post"
 			},
-			"iDisplayLength": 10,
-			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+			"bPaginate": false,
+			"bLengthChange": false,
+			"bFilter": false,
+			"bInfo": false,
+			"bAutoWidth": false,
+			"bSort": false
 		});
 		
 		$("#ProviderTable").dataTable().fnDestroy();
@@ -773,8 +777,12 @@ $(document).ready(function(e) {
 				"data": {"SD_Print":SD, "ED_Print":ED, "DateType": DateType, "Status": Status, "TableName": "Provider"},
 				"type": "post"
 			},
-			"iDisplayLength": 10,
-			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+			"bPaginate": false,
+			"bLengthChange": false,
+			"bFilter": false,
+			"bInfo": false,
+			"bAutoWidth": false,
+			"bSort": false
 		});
 		
 		$("#InsuranceTable").dataTable().fnDestroy();
@@ -784,8 +792,12 @@ $(document).ready(function(e) {
 				"data": {"SD_Print":SD, "ED_Print":ED, "DateType": DateType, "Status": Status, "TableName": "Insurance"},
 				"type": "post"
 			},
-			"iDisplayLength": 10,
-			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+			"bPaginate": false,
+			"bLengthChange": false,
+			"bFilter": false,
+			"bInfo": false,
+			"bAutoWidth": false,
+			"bSort": false
 		});
 	});
 	
