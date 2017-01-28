@@ -177,6 +177,9 @@ class Workarea extends CI_Controller{
 		$Date = $this->input->post("Date");
 		
 		$list = $this->workarea_model->get_Event_List(date_format(date_create($Date), 'Y/m/d'));
+		$this->get_Event_List_Table($list);
+	}
+	public function get_Event_List_Table($list){
 		$data = array();
 		$Counter = 0;
 		foreach($list as $result){
@@ -255,11 +258,21 @@ class Workarea extends CI_Controller{
 				$data[] = $row;
 			}
 		}
-		
-		
-		
 		$output = array( "data" => $data );
 		echo json_encode($output);
+	}
+	public function get_Calendar_Report(){
+		$data = array(
+			"CR_SD" => date_format(date_create($this->input->post("CR_SD")), 'Y-m-d'),
+			"CR_ED" => date_format(date_create($this->input->post("CR_ED")), 'Y-m-d'),
+			"CR_CalendarType" => $this->input->post("CR_CalendarType"),
+			"CR_ProviderId" => $this->input->post("CR_ProviderId"),
+			"CR_InsuranceCompanyId" => $this->input->post("CR_InsuranceCompanyId"),
+			"CR_DefendantId" => $this->input->post("CR_DefendantId"),
+			"CR_CourtId" => $this->input->post("CR_CourtId"),
+		);
+		$list = $this->workarea_model->get_Calendar_Report($data);
+		$this->get_Event_List_Table($list);
 	}
 } 	
 ?>

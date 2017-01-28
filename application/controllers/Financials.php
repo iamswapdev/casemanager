@@ -221,21 +221,44 @@ class Financials extends CI_Controller{
 /* get exp cost balance Financials- tab 5 */
 	public function get_Exp_Cost_Balance(){
 		$list = $this->financials_model->get_Exp_Cost_Balance();
-		echo "<pre>"; print_r($list);exit;
+		//echo "<pre>"; print_r($list);exit;
 		$data = array();
+		$Tot_FFB = 0;
+		$Tot_FFC = 0;
+		$Tot_EXP = 0;
+		$Case_Id = "";
 		foreach($list as $result){
-			$row = array();
-			$row[] = "<input type='checkbox' />";
-			$row[] = $result->Provider_Name;
-			$row[] = $result->InsuranceCompany_Name;
-			$row[] = $result->Case_Id;
-			if($result->Transactions_Type){
-				$row[] = $result->Exp_Cost;
+			
+			
+			if($Case_Id == ""){
+				$Case_Id = $result->Case_Id;
+			}else if($result->Case_Id != $Case_Id){
+				
+				$row[] = "<input type='checkbox' />";
+				$row[] = $Provider_Name;
+				$row[] = $InsuranceCompany_Name;
+				$row[] = $Case_Id;
+				$row[] = "$".number_format($Tot_EXP, 2);
+				$row[] = "$".number_format($Tot_FFB, 2);
+				$row[] = "$".number_format($Tot_FFC, 2);
+				$row[] = "$0.00";
+				$data[] = $row;
+				
+				$row = array();
+				$Case_Id = $result->Case_Id;
+				$Tot_FFB = 0;
+				$Tot_FFC = 0;
+				$Tot_EXP = 0;
 			}
-			$row[] = $result->FFB;
-			$row[] = $result->FFC;
-			$row[] = $result->FFREC;
-			$row[] = "";
+			$Provider_Name = $result->Provider_Name;
+			$InsuranceCompany_Name = $result->InsuranceCompany_Name;
+			if($result->Transactions_Type == "FFB"){
+				$Tot_FFB = $result->TotalAmount;
+			}else if($result->Transactions_Type == "FFC"){
+				$Tot_FFC = $result->TotalAmount;
+			}else if($result->Transactions_Type == "EXP"){
+				$Tot_EXP = $result->TotalAmount;
+			}
 		}
 		
 		$output = array( "data" => $data );

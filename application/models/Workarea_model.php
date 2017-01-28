@@ -147,6 +147,44 @@ Class Workarea_model extends CI_Model{
 		$data=$query->result();
 		return $data;
 	}
+	public function get_Calendar_Report($data){
+		$this->db->select('t2.Case_AutoId, t1.Case_id, t3.EventTypeName, t4.EventStatusName, t1.Event_Date, t1.Event_Time, t1.Event_Notes, t1.Assigned_To, t5.Provider_Name, t2.InjuredParty_LastName, t2.InjuredParty_FirstName, t6.Court_Name, t2.IndexOrAAA_Number, t2.Claim_Amount, t7.Defendant_Name, t8.InsuranceCompany_Name, t2.Status');
+		
+		$this->db->from('dbo_tblevent as t1');
+		$this->db->join('dbo_tblcase as t2', 't1.Case_id = t2.Case_id', "LEFT");
+		$this->db->join('dbo_tbleventtype as t3', 't1.EventTypeId = t3.EventTypeId', "LEFT");
+		$this->db->join('dbo_tbleventstatus as t4', 't1.EventStatusId = t4.EventStatusId', "LEFT");
+		$this->db->join('dbo_tblprovider as t5', 't2.Provider_Id = t5.Provider_Id', "LEFT");
+		$this->db->join('dbo_tblcourt as t6', 't2.Court_Id = t6.Court_Id', "LEFT");
+		$this->db->join('dbo_tbldefendant as t7', 't2.Defendant_Id = t7.Defendant_id', "LEFT");
+		$this->db->join('dbo_tblinsurancecompany as t8', 't2.InsuranceCompany_Id = t8.InsuranceCompany_Id', "LEFT");
+		if($data['CR_SD'] != ""){
+			$this->db->where("t1.Event_Date >=", $data['CR_SD']);
+		}
+		if($data['CR_ED'] != ""){
+			$this->db->where("t1.Event_Date <=", $data['CR_ED']);
+		}
+		if($data['CR_CalendarType'] != "All"){
+			$this->db->where("t3.EventTypeId", $data['CR_CalendarType']);
+		}
+		if($data['CR_ProviderId'][0] != "All"){
+			$this->db->where("t5.Provider_Id", $data['CR_ProviderId'][0]);
+		}
+		if($data['CR_InsuranceCompanyId'][0] != "All"){
+			$this->db->where("t8.InsuranceCompany_Id", $data['CR_InsuranceCompanyId'][0]);
+		}
+		if($data['CR_DefendantId'][0] != "All"){
+			$this->db->where("t7.Defendant_Id", $data['CR_DefendantId'][0]);
+		}
+		if($data['CR_CourtId'][0] != "All"){
+			$this->db->where("t6.Court_Id", $data['CR_CourtId'][0]);
+		}
+		
+		$this->db->order_by("t1.Event_Date","asc");
+		$query= $this->db->get();
+		$data=$query->result();
+		return $data;
+	}
 }
 
 ?>

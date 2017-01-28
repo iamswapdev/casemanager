@@ -3877,7 +3877,7 @@ label {
 .demo.col-sm-4 {
 	width: 276px!important;	
 }
-#AdvancedSearchTable_wrapper .text-center{
+#AdvancedSearchTable_wrapper .text-center, #CalendarReport_wrapper .text-center{
 	width: 50%;
 }
 .col-sm-4.text-center .dt-button.buttons-copy.buttons-html5.btn-sm{
@@ -4150,4 +4150,9 @@ td.fc-other-month {
 }
 .fc-time{
    display : none;
+}
+.other-entries-page img {
+    height: 20px;
+    margin: 3px 0 3px 0;
+	cursor:pointer;
 }

@@ -842,7 +842,9 @@ class Search extends CI_Controller{
 	}
 /**************************** EVENT TAB-8 ************************************************************************************/
 /**** GET EVENT LIST BY CASE ID ********/
-	public function getEvents($Case_Id){
+	public function getEvents(){
+		$Case_Id = $this->input->post("Case_Id");
+		//echo "Case_Id:".$Case_Id."G";
 		$list=$this->search_model->get_Events($Case_Id);
 		//echo "<pre>";print_r($list);exit();
 		$data = array();
@@ -902,6 +904,7 @@ class Search extends CI_Controller{
 		$data = array(
 			"User_id" => $this->input->post("UserId"),
 			"Event_Date" => $this->input->post("EventDate"),
+			"Event_Time" => $this->input->post("Event_Time"),
 			"EventTypeId" => $this->input->post("EventTypeHidden"),
 			"EventStatusId" => $this->input->post("EventStatusHidden"),
 			"Event_Time" => $this->input->post("EventTime"),
@@ -1028,7 +1031,8 @@ class Search extends CI_Controller{
 			$no++;
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$no."</a>";
 			if($this->session->userdata['RoleId'] == 1 ){
-			$row[] = "<a href='".base_url()."search/editcase/".$result->Case_AutoId."'><i title='Edit' class='fa fa-edit'></i></a>";
+				$row[] = "<a href='".base_url()."search/editcase/".$result->Case_AutoId."'><i title='Edit' class='fa fa-edit'></i></a>";
+				//<img src='".base_url()."assets/images.jpg' class='editRecord'/>
 			}
 			$row[] = "<a href='".base_url()."search/viewcase/".$result->Case_AutoId."'>".$result->Case_Id."</a>";
 			$row[] = "<a href='".base_url()."search/viewcase/".$result->Case_AutoId."'>".$result->InjuredParty_LastName." ".$result->InjuredParty_FirstName."</a>";

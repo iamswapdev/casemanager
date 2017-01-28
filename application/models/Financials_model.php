@@ -64,13 +64,18 @@ Class Financials_model extends CI_Model{
 	}
 /* get exp cost balance Financials- tab 5 */
 	public function get_Exp_Cost_Balance(){
-		$this->db->select("t3.Provider_Name, t4.InsuranceCompany_Name, t1.Case_Id, t1.Transactions_Type");
+		$this->db->select("t3.Provider_Name, t4.InsuranceCompany_Name, t1.Case_Id, t1.Transactions_Type, SUM(Transactions_Amount)as TotalAmount, t1.Transactions_Amount");
 		$this->db->from("dbo_tbltransactions as t1");
-		$this->db->join("dbo_tblcase as t2", "t2.Case_Id = t1.Case_Id");
+		$this->db->join("dbo_tblcase as t2", "t2.Case_Id = t1.Case_Id", "LEFT");
 		$this->db->join("dbo_tblprovider as t3", "t3.Provider_Id = t1.Provider_Id", "LEFT");
 		$this->db->join("dbo_tblinsurancecompany as t4", "t4.InsuranceCompany_Id = t2.InsuranceCompany_Id", "LEFT");
-		//$this->db->group_by('t1.Case_Id');
-		$this->db->order_by("t1.Case_Id");
+		$this->db->where("t1.Transactions_Type !=", "AF");
+		$this->db->where("t1.Transactions_Type !=", "C");
+		$this->db->where("t1.Transactions_Type !=", "I");
+		$this->db->where("t1.Transactions_Type !=", "CRED");
+		$this->db->group_by('t1.Case_Id');
+		$this->db->group_by('t1.Transactions_Type');
+		$this->db->order_by("t1.Case_Id", "asc");
 		
 		$query = $this->db->get();
 		return $query->result();

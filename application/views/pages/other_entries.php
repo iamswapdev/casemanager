@@ -55,7 +55,7 @@
 <!-- Main Wrapper -->
 <div id="wrapper">
   <?php include 'header_dataentry.php';?>
-  <div class="content animate-panel">
+  <div class="content animate-panel other-entries-page">
     <div class="row">
       <div class="col-lg-12 animated-panel zoomIn">
        <div class="hpanel">

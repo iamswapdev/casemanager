@@ -408,12 +408,11 @@ $(document).ready(function(e) {
 		});
 		$(".FirmFees").css("display", "block");
 	});
-	/*$('#ExpCostBalance').dataTable( {
+	$('#ExpCostBalance').dataTable( {
 		"ajax": "get_Exp_Cost_Balance",
-		"iDisplayLength": 10,
-		"aLengthMenu": [5, 10, 20, 25, 50, "All"],
-		"bSort": false,
-	});*/
+		"iDisplayLength": 20,
+		"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+	});
 	
 	
 	$('.datepicking').datepicker({

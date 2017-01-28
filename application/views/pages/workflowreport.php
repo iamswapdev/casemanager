@@ -19,6 +19,10 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.css" />
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.min.css" />
+    
+    <!-- DATATABLES CSS -->
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/vendor/advanced-datatable/buttons.dataTables.min.css" />
 
     <!-- App styles -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
@@ -63,82 +67,121 @@
                             <div class="panel-heading"></div>
                             <div class="panel-body tab-panel">
                                 
-                                <form>
-                                    <div class="form-group form-horizontal col-md-12">
-                                        <label class="col-md-1 control-label">Start Date</label>										
-                                        <div class="col-md-1">
-                                            <input type="text" class="form-control input-sm datepicking">
-                                        </div>
-                                        
-                                        <label class="col-md-1 control-label">End Date</label>										
-                                        <div class="col-md-1">
-                                            <input type="text" class="form-control input-sm datepicking">
-                                        </div>
-                                        
-                                        <label class="col-md-1 control-label">Calendar type</label>	
-                                        <div class="col-md-2">											
-                                            <select class="form-control input-sm" name="account">
-                                                <option value="All">All</option>
-                                                <option value="Motion">Motion</option>
-                                                <option value="Trial">Trial</option>
-                                                <option value="Opposition Due Date">Opposition Due Date</option>
-                                                <option value="Reply DueDate">Reply DueDate</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group form-horizontal col-md-12">
-                                        <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-                                            <br>Select Provider
-                                            <select class="form-control input-sm select-height" id="providerId" multiple name="providerId">
-                                                <option selected="selected" value="All">All</option>
-                                                <?php foreach($Provider_Name as $row){?>
-                                                <option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option>
-                                                <?php }?>
-                                            </select>
-                                        </div>
-                                        <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-                                            <br>Select Insurance Company
-                                            <select class="form-control input-sm select-height" id="insuranceCompanyId" multiple name="insuranceCompanyId">
-                                                <option selected="selected" value="All">All</option>
-                                                <?php foreach($InsuranceCompany_Name as $row){?>
-                                                <option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option>
-                                                <?php }?>
-                                            </select>
-                                        </div>	
-                                    </div>
-                                    <div class="form-group form-horizontal col-md-12">
-                                        <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-                                            <br>Select Defendant
-                                            <select class="form-control input-sm select-height" id="defendantId" name="defendantId" multiple>
-                                                <option selected="selected" value="All">All</option>
-                                                <?php foreach($Defendant_Name as $row){?>
-                                                <option value="<?php echo $row['Defendant_id']; ?>"><?php echo $row['Defendant_Name'];?></option>
-                                                <?php }?>
-                                            </select>										
-                                        </div>
-                                        <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
-                                            <br>Select Venue
-                                            <select class="form-control input-sm select-height" id="courtId" name="courtId" multiple >
-                                                <option selected="selected" value="All">All</option>
-                                                <?php foreach($Court as $row){?>
-                                                <option value="<?php echo $row['Court_Id']; ?>"> <?php echo $row['Court_Name']; ?> </option>
-                                                <?php }?>
-                                            </select>
-                                        </div>	
+                                <div class="form-group form-horizontal col-md-12">
+                                    <label class="col-md-1 control-label">Start Date</label>										
+                                    <div class="col-md-1">
+                                        <input type="text" name="CR_SD" class="form-control input-sm datepicking">
                                     </div>
                                     
-                                    
-                                    <div class="form-group form-horizontal col-md-12">
-                                        <div class="col-md-4">
-                                            <br><button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancel" class="btn btn-primary">Cancel</button>
-                                        </div>
+                                    <label class="col-md-1 control-label">End Date</label>										
+                                    <div class="col-md-1">
+                                        <input type="text" name="CR_ED" class="form-control input-sm datepicking">
                                     </div>
-                                </form>
+                                    
+                                    <label class="col-md-1 control-label">Calendar type</label>	
+                                    <div class="col-md-2">											
+                                        <select class="form-control input-sm" id="CR_CalendarType" name="CR_CalendarType">
+                                            <option value="All">All</option>
+                                            <option value="1">Motion</option>
+                                            <option value="2">Trial</option>
+                                            <option value="25">Opposition Due Date</option>
+                                            <option value="29">Reply DueDate</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
+                                        <br>Select Provider
+                                        <select class="form-control input-sm select-height" id="CR_ProviderId" multiple name="CR_ProviderId">
+                                            <option selected="selected" value="All">All</option>
+                                            <?php foreach($Provider_Name as $row){?>
+                                            <option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option>
+                                            <?php }?>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
+                                        <br>Select Insurance Company
+                                        <select class="form-control input-sm select-height" id="CR_InsuranceCompanyId" multiple name="CR_InsuranceCompanyId">
+                                            <option selected="selected" value="All">All</option>
+                                            <?php foreach($InsuranceCompany_Name as $row){?>
+                                            <option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option>
+                                            <?php }?>
+                                        </select>
+                                    </div>	
+                                </div>
+                                <div class="form-group form-horizontal col-md-12">
+                                    <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
+                                        <br>Select Defendant
+                                        <select class="form-control input-sm select-height" id="CR_DefendantId" name="CR_DefendantId" multiple>
+                                            <option selected="selected" value="All">All</option>
+                                            <?php foreach($Defendant_Name as $row){?>
+                                            <option value="<?php echo $row['Defendant_id']; ?>"><?php echo $row['Defendant_Name'];?></option>
+                                            <?php }?>
+                                        </select>										
+                                    </div>
+                                    <div class="col-lg-4 animated-panel zoomIn" style="animation-delay: 0.2s;">
+                                        <br>Select Venue
+                                        <select class="form-control input-sm select-height" id="CR_CourtId" name="CR_CourtId" multiple >
+                                            <option selected="selected" value="All">All</option>
+                                            <?php foreach($Court as $row){?>
+                                            <option value="<?php echo $row['Court_Id']; ?>"> <?php echo $row['Court_Name']; ?> </option>
+                                            <?php }?>
+                                        </select>
+                                    </div>	
+                                </div>
+                                
+                                
+                                <div class="form-group form-horizontal col-md-12">
+                                    <div class="col-md-4">
+                                        <br><button type="button" id="CalendarReport_Btn" class="btn btn-primary"><i class="fa fa-check"></i> Submit</button>  <button type="button" id="cancel" class="btn btn-primary">Cancel</button>
+                                    </div>
+                                </div>
                                 
                             </div><!-- End of panel-body tab-panel-->
                             </div><!-- End hpanel -->
                             </div><!-- End col-lg-12-->
                         </div><!-- End row-->
+                        <div class="row">
+                        
+                        <div class="col-lg-12">
+                        <div class="hpanel">
+                        <div class="panel-heading"></div>
+                        <div class="panel-body tab-panel">
+                            <div class="form-group form-horizontal col-lg-12">
+                                <div class="col-md-12 responsive">
+                                    <br><h5 class="h4-title">Calendar Report</h5>
+                                    <table id="CalendarReport" class="table dataTable table-bordered table-striped">
+                                        <thead>
+                                        <tr>  	 	 	 
+                                            <th>#</th>											
+                                            <th>Case ID</th>
+                                            <th>Event Type</th>
+                                            <th>Event Status</th>
+                                            <th>Event Date</th>
+                                            <th>Event Time</th>
+                                            <th>Event Description</th>
+                                            <th>Assigned To</th>
+                                            <th>Provider Name</th>
+                                            <th>Injured Party</th>
+                                            <th>Court Misc</th>
+                                            <th>Court Name</th>
+                                            <th>IndexOrAAA Number</th>
+                                            <th>Claim Amount</th>
+                                            <th>Defendant Name</th>
+                                            <th>InsuranceCompany Name</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div><!-- End of panel-body tab-panel-->
+                        </div><!-- End hpanel -->
+                        </div><!-- End col-lg-12-->
+                    </div><!-- End row-->
+    
+    
+    
 					</div><!--End of Calendar reports -->
 					
 					<div id="tab-2" class="tab-pane">
@@ -640,22 +683,60 @@
 
 
 
-<!-- Vendor scripts -->
-<script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
-<script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
+    <!-- Vendor scripts -->
+    <script src="<?php echo base_url();?>assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/iCheck/icheck.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/sparkline/index.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
+    
+    <!--Datatable js -->
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/dataTables.buttons.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/buttons.flash.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/jszip.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/pdfmake.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/vfs_fonts.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/buttons.html5.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/advanced-datatable/buttons.print.min.js"></script>
+    
+    <!-- App scripts -->
+    <script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 
-<!-- App scripts -->
-<script src="<?php echo base_url();?>assets/scripts/homer.js"></script>
 <script>
 $(document).ready(function(e) {
+	$("#CalendarReport_Btn").click(function(e){
+		var CR_SD = $("input[name=CR_SD]").val();
+		var CR_ED = $("input[name=CR_ED]").val();
+		var CR_CalendarType = $("#CR_CalendarType").val();
+		var CR_ProviderId = $("#CR_ProviderId").val();
+		var CR_InsuranceCompanyId = $("#CR_InsuranceCompanyId").val();
+		var CR_DefendantId = $("#CR_DefendantId").val();
+		var CR_CourtId = $("#CR_CourtId").val();
+		
+		$('#CalendarReport').dataTable().fnDestroy();
+		$('#CalendarReport').dataTable( {
+			"ajax": {
+				"url": "get_Calendar_Report",
+				"data": {"CR_SD": CR_SD, "CR_ED": CR_ED, "CR_CalendarType": CR_CalendarType, "CR_ProviderId": CR_ProviderId, "CR_InsuranceCompanyId": CR_InsuranceCompanyId, "CR_DefendantId": CR_DefendantId, "CR_CourtId": CR_CourtId},
+				"type": "post"
+			},
+			"iDisplayLength": 10,
+			"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+			"bSort": true,
+			//bJQueryUI: true,
+			//"sDom": '<"top"flp>rt<"bottom"i><"clear">',
+			dom: 'lBfrtip',
+			//dom: "<'row'<'col-sm-4 demo'l><'col-sm-4 text-center'B><'col-sm-4'f>>lBfrtip",
+            
+            buttons: [ 'excel', 'print' ]
+		});
+		
+	});
+	
 	$("#Print_btn").click(function(){
 		var SD = $("input[name=SD_Print]").val();
 		var ED = $("input[name=ED_Print]").val();

@@ -1373,10 +1373,11 @@ for($i=0; $i<=13; $i++){
                                 	<input type="hidden" id="9CaseId" name="9CaseId"  class="form-control input-sm"/>
                                 </div>
                             </div>
+                            
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Event Date <span class="required-field">*</span></label>
                                 <div class="col-md-2">
-                                	<input class="form-control input-sm datetimepicker_HM" name="EventDate">
+                                	<input class="form-control input-sm datepicker_settlement" name="EventDate">
                                 </div>
                                 <!--<div class='input-group date col-md-2' id='datetimepicker6'>
                                     <input type='text' class="form-control input-sm" id="EventDate" name="EventDate" />
@@ -1384,6 +1385,12 @@ for($i=0; $i<=13; $i++){
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
                                 </div>-->
+                            </div>
+                            <div class="form-group form-horizontal col-md-12">
+                            	<label class="col-md-2 control-label">Event Time</label>
+                                <div class="col-md-2">
+                                	<input class="input-sm datetimepicker_only_time" name="Event_Time" />
+                                </div>
                             </div>
                             <div class="form-group form-horizontal col-md-12">
                             	<label class="col-md-2 control-label">Event Type</label>
@@ -2798,7 +2805,13 @@ $(document).ready(function(e) {
 /*************************************************** EVENT TAB-9 ***************************************************************/
 /****GET EVENTS NOTES INFO *********/	
 	$('#eventTable').dataTable( {
-		"ajax": "<?php echo base_url();?>search/getEvents/<?php echo $Case_Id;?>",
+		"ajax": {
+			"url": "<?php echo base_url();?>search/getEvents",
+			"data": {
+				"Case_Id": '<?php echo $Case_Id;?>'
+			},
+			"type": "post"
+		},
 		"iDisplayLength": 10,
     	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 	});
@@ -2893,35 +2906,33 @@ $(document).ready(function(e) {
 	});
 /******** UPDATE EVENTS ********/
 	$("#updateEventInfo_form").validate({
-		
 			rules: {
 				EventDate:{
 					required: true
 				}	
-			},
-					
+			},		
 			submitHandler: function (form) {
-				// setup some local variables
 				var EventIdHidden = $("input[name=EventTypeHidden]").val();
 				if(EventIdHidden != ""){
 					var $form = $(form);
-					// let's select and cache all the fields
 					var $inputs = $form.find("input, select, button, textarea");
-					// serialize the data in the form
 					var serializedData = $form.serialize();
 					
-		
 					request = $.ajax({
 						url:"<?php echo base_url();?>search/update_Event_Info",
 						type: "post",
 						data: serializedData
 					});
-		
-					// callback handler that will be called on success
 					request.done(function (response, textStatus, jqXHR) {
 						$("#eventTable").dataTable().fnDestroy();
 						$('#eventTable').dataTable( {
-							"ajax": "<?php echo base_url();?>search/getEvents/<?php echo $Case_Id;?>",
+							"ajax": {
+								"url": "<?php echo base_url();?>search/getEvents",
+								"data": {
+									"Case_Id": '<?php echo $Case_Id;?>'
+								},
+								"type": "post"
+							},
 							"iDisplayLength": 10,
 							"aLengthMenu": [5, 10, 20, 25, 50, "All"]
 						});
