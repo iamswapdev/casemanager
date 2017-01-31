@@ -523,18 +523,18 @@ ul
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
   <td width=384 valign=top style='width:4.0in;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in'><span
-  style='color:black'>COURT_VENUE<br>
-  COURT_NAME<br>
+  style='color:black'><?php echo $CaseInfo[0]['Court_Venue'];?><br>
+  <?php echo $CaseInfo[0]['Court_Name'];?><br>
   -----------------------------------------------------------X<br>
-  PROVIDER_NAME<br>
-  A/A/O INJUREDPARTY_NAME, <o:p></o:p></span></p>
+  <?php echo $CaseInfo[0]['Provider_Name'];?><br>
+  A/A/O <?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?>, <o:p></o:p></span></p>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in;
   text-indent:107.3pt'><span style='color:black'>&nbsp;PLAINTIFF(s),&nbsp;&nbsp;
   <o:p></o:p></span></p>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in;
   margin-left:1.0in'><span style='color:black'>-AGAINST- <o:p></o:p></span></p>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in'><span
-  style='color:black'>INSURANCECOMPANY_NAME, <o:p></o:p></span></p>
+  style='color:black'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?>, <o:p></o:p></span></p>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in;
   text-indent:112.5pt'><span style='color:black'>DEFENDANT,<br>
   ------------------------------------------------------------X<o:p></o:p></span></p>
@@ -542,7 +542,7 @@ ul
   <td width=324 valign=top style='width:243.0pt;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in'><span
   style='font-size:11.0pt;color:black'><br>
-  Index No / AAA No.:&nbsp; IndexOrAAA_Number</span><span style='color:black'><o:p></o:p></span></p>
+  Index No / AAA No.:&nbsp; <?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></span><span style='color:black'><o:p></o:p></span></p>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in'><span
   style='color:black'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in'><b><span
@@ -550,7 +550,7 @@ ul
   DISCONTINUANCE WITHOUT PREJUDICE</span></b><span style='color:black'><o:p></o:p></span></p>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in'><span
   style='color:black'>&nbsp;<br>
-  Our file # CASE_ID<o:p></o:p></span></p>
+  Our file # <?php echo $CaseInfo[0]['Case_Id'];?><o:p></o:p></span></p>
   </td>
  </tr>
 </table>
@@ -565,48 +565,48 @@ margin-bottom:.0001pt;text-align:justify;text-indent:-.25in;mso-list:l0 level1 l
 style='font-size:11.0pt;mso-fareast-font-family:"Times New Roman"'><span
 style='mso-list:Ignore'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span></span></span><![endif]><span style='font-size:11.0pt'>In full
-settlement and satisfaction of (FIRST, SECOND, THIRD, FOURTH……) Causes of
+settlement and satisfaction of (FIRST, SECOND, THIRD, FOURTH...) Causes of
 Action ONLY</span> <span style='font-size:11.0pt'>contemplated by the within
 action, the defendant shall pay the following sums:<o:p></o:p></span></p>
 
 <p style='margin-top:2.0pt;margin-right:0in;margin-bottom:0in;margin-left:.75in;
 margin-bottom:.0001pt;text-align:justify;text-indent:-27.0pt'><span
-style='font-size:11.0pt'>a)<span style='mso-tab-count:1'>      </span><b
+style='font-size:11.0pt'>a)<span style='mso-tab-count:1'></span><b
 style='mso-bidi-font-weight:normal'>SETTLEMENT_AMOUNT</b> for payment of the
-outstanding bill(s) made payable to <b style='mso-bidi-font-weight:normal'>PROVIDER_NAME</b>
+outstanding bill(s) made payable to <b style='mso-bidi-font-weight:normal'><?php echo $CaseInfo[0]['Provider_Name'];?></b>
 <b style='mso-bidi-font-weight:normal'>C/O <span class=GramE>The</span>
 Beynenson Law Firm, P.C.</b></span></p>
 
 <p style='margin-top:2.0pt;margin-right:0in;margin-bottom:0in;margin-left:.75in;
 margin-bottom:.0001pt;text-align:justify;text-indent:-27.0pt'><span
-style='font-size:11.0pt'>b)<span style='mso-tab-count:1'>      </span><b
+style='font-size:11.0pt'>b)<span style='mso-tab-count:1'></span><b
 style='mso-bidi-font-weight:normal'>SETTLEMENT_INT</b> for payment of the
-outstanding interest made payable to <b style='mso-bidi-font-weight:normal'>PROVIDER_NAME</b>
+outstanding interest made payable to <b style='mso-bidi-font-weight:normal'><?php echo $CaseInfo[0]['Provider_Name'];?></b>
 <b style='mso-bidi-font-weight:normal'>C/O <span class=GramE>The</span>
 Beynenson Law Firm, P.C.</b></span></p>
 
 <p style='margin-top:2.0pt;margin-right:0in;margin-bottom:0in;margin-left:.75in;
 margin-bottom:.0001pt;text-align:justify;text-indent:-27.0pt'><span
-style='font-size:11.0pt'>c)<span style='mso-tab-count:1'>      </span><b
-style='mso-bidi-font-weight:normal'>SETTLEMENT_AF</b> for attorney’s fees made
+style='font-size:11.0pt'>c)<span style='mso-tab-count:1'></span><b
+style='mso-bidi-font-weight:normal'>SETTLEMENT_AF</b> for attorneys fees made
 payable to <b style='mso-bidi-font-weight:normal'>The Beynenson Law Firm, P.C.</b></span></p>
 
 <p style='margin-top:2.0pt;margin-right:0in;margin-bottom:0in;margin-left:.75in;
 margin-bottom:.0001pt;text-align:justify;text-indent:-27.0pt'><span
-style='font-size:11.0pt'>d)<span style='mso-tab-count:1'>      </span>$0 for
+style='font-size:11.0pt'>d)<span style='mso-tab-count:1'></span>$0 for
 filing fees for Notice of Trial made payable to <b style='mso-bidi-font-weight:
 normal'>The Beynenson Law Firm, P.C.</b><o:p></o:p></span></p>
 
 <p style='margin-top:2.0pt;margin-right:0in;margin-bottom:0in;margin-left:.75in;
 margin-bottom:.0001pt;text-align:justify;text-indent:-27.0pt'><span
-style='font-size:11.0pt'>e)<span style='mso-tab-count:1'>      </span><b
+style='font-size:11.0pt'>e)<span style='mso-tab-count:1'></span><b
 style='mso-bidi-font-weight:normal'>SETTLEMENT_FF</b> for reimbursement for the
 arbitration/litigation filing fee and disbursements made payable to <b
 style='mso-bidi-font-weight:normal'>The Beynenson Law Firm, P.C.</b><o:p></o:p></span></p>
 
 <p style='margin-top:2.0pt;margin-right:0in;margin-bottom:0in;margin-left:27.0pt;
 margin-bottom:.0001pt;text-align:justify;text-indent:-27.0pt'><span
-style='font-size:11.0pt'>2.<span style='mso-tab-count:1'>      </span>All
+style='font-size:11.0pt'>2.<span style='mso-tab-count:1'></span>All
 payments in accordance within this stipulation shall be delivered to <b
 style='mso-bidi-font-weight:normal'>The Beynenson Law Firm, P.C.</b></span><b
 style='mso-bidi-font-weight:normal'><o:p></o:p></b></p>
@@ -623,7 +623,7 @@ rate of two percent (2%) a month thereon without further notice.<o:p></o:p></spa
 
 <p style='margin-top:2.0pt;margin-right:0in;margin-bottom:0in;margin-left:27.0pt;
 margin-bottom:.0001pt;text-align:justify;text-indent:-27.0pt'><span
-style='font-size:11.0pt'>4.<span style='mso-tab-count:1'>      </span>Whereas
+style='font-size:11.0pt'>4.<span style='mso-tab-count:1'></span>Whereas
 no party hereto is an infant or incompetent person for whom a committee has
 been appointed; and, no person non-party has an interest in the subject matter
 of the action, the above entitled action be as to defendant; and the same
@@ -636,7 +636,7 @@ style='font-size:11.0pt'><o:p>&nbsp;</o:p></span></p>
 
 <p style='margin-top:2.0pt;margin-right:0in;margin-bottom:0in;margin-left:0in;
 margin-bottom:.0001pt'><span style='font-size:11.0pt'>Dated:&nbsp;&nbsp;&nbsp;
-NOWDT</span></p>
+<?php echo date("m/d/Y");?></span></p>
 
 <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width="100%"
  style='width:100.0%;mso-cellspacing:0in;mso-yfti-tbllook:1184;mso-padding-alt:
@@ -651,25 +651,25 @@ NOWDT</span></p>
   </td>
   <td width="55%" valign=top style='width:55.46%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal><span style='mso-no-proof:yes'><span
-  style='mso-spacerun:yes'>    </span>Scan_sign_ab<o:p></o:p></span></p>
+  style='mso-spacerun:yes'></span>Scan_sign_ab<o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:1;mso-yfti-lastrow:yes;height:76.9pt'>
   <td width="44%" valign=top style='width:44.54%;padding:0in 0in 0in 0in;
   height:76.9pt'>
   <p class=MsoNormal style='mso-margin-top-alt:auto'><span class=SpellE><span
-  style='font-size:11.0pt;color:black'>Adjuster_Name</span></span><span
+  style='font-size:11.0pt;color:black'><?php echo $CaseInfo[0]['Adjuster_FirstName']." ".$CaseInfo[0]['Adjuster_LastName'];?></span><span
   style='font-size:11.0pt;color:black'> <br>
-  INSURANCECOMPANY_NAME<br>
-  Phone: <span class=SpellE>Adjuster_Phone</span><span
-  style='mso-spacerun:yes'>   </span><span class=SpellE>xt</span>: <span
-  class=SpellE>Adj_Phone_Ext</span><br>
-  Fax:<span style='mso-spacerun:yes'>     </span><span class=SpellE>Adjuster_Fax</span><o:p></o:p></span></p>
+  <?php echo $CaseInfo[0]['InsuranceCompany_Name'];?><br>
+  Phone: <span class=SpellE><?php echo $CaseInfo[0]['Adjuster_Phone'];?></span><span
+  style='mso-spacerun:no'></span><span class=SpellE>xt</span>: <span
+  class=SpellE><?php echo $CaseInfo[0]['Adjuster_Phone_Ext'];?></span><br>
+  Fax:<span style='mso-spacerun:yes'></span><span class=SpellE><?php echo $CaseInfo[0]['Adjuster_Fax'];?></span><o:p></o:p></span></p>
   <p class=MsoNormal><span style='font-size:11.0pt;color:black'>Email: <span
-  class=SpellE>Adjuster_Email</span><br>
-  Claim # INS_CLAIM_NUMBER<o:p></o:p></span></p>
+  class=SpellE><?php echo $CaseInfo[0]['Adjuster_Email'];?></span><br>
+  Claim # <?php echo $CaseInfo[0]['Ins_Claim_Number'];?><o:p></o:p></span></p>
   <p class=MsoNormal><span style='font-size:11.0pt;color:black'>Cc:<span
-  style='mso-spacerun:yes'>  </span></span><span style='font-size:11.0pt'>DEFENDANT_NAME<span
+  style='mso-spacerun:yes'></span></span><span style='font-size:11.0pt'>DEFENDANT_NAME<span
   style='color:black'><o:p></o:p></span></span></p>
   <p class=MsoNormal style='margin-left:45.0pt;text-align:justify;text-indent:
   -45.0pt;mso-pagination:none;mso-hyphenate:none'><span style='font-size:9.0pt'>ATTORNEY
@@ -689,17 +689,17 @@ NOWDT</span></p>
   <td width="55%" valign=top style='width:55.46%;padding:0in 0in 0in 0in;
   height:76.9pt'>
   <p style='margin:0in;margin-bottom:.0001pt'><span
-  style='mso-spacerun:yes'>     </span>Alek Beynenson, Esq.<br>
-  <span style='mso-spacerun:yes'>     </span><b style='mso-bidi-font-weight:
+  style='mso-spacerun:yes'></span>Alek Beynenson, Esq.<br>
+  <span style='mso-spacerun:yes'></span><b style='mso-bidi-font-weight:
   normal'><span style='font-size:11.0pt'>The Beynenson Law Firm, P.C.</span></b><br>
-  <span style='mso-spacerun:yes'>     </span>475 Franklin Avenue<br>
-  <span style='mso-spacerun:yes'>     </span>Franklin Square, NY 11010<br>
-  <span style='mso-spacerun:yes'>     </span>Phone: 516-858-4411<br>
-  <span style='mso-spacerun:yes'>     </span>Fax: 516-216-5405</p>
+  <span style='mso-spacerun:yes'></span>475 Franklin Avenue<br>
+  <span style='mso-spacerun:yes'></span>Franklin Square, NY 11010<br>
+  <span style='mso-spacerun:yes'></span>Phone: 516-858-4411<br>
+  <span style='mso-spacerun:yes'></span>Fax: 516-216-5405</p>
   <p style='margin:0in;margin-bottom:.0001pt'><span
-  style='mso-spacerun:yes'>     </span><a href="mailto:nofault@beynensonlaw.com">nofault@beynensonlaw.com</a></p>
+  style='mso-spacerun:yes'></span><a href="mailto:nofault@beynensonlaw.com">nofault@beynensonlaw.com</a></p>
   <p style='margin:0in;margin-bottom:.0001pt'><span
-  style='mso-spacerun:yes'>     </span>Tax Id No.: 27-3236520</p>
+  style='mso-spacerun:yes'></span>Tax Id No.: 27-3236520</p>
   <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:8.0pt;
   font-family:"Arial","sans-serif"'><o:p>&nbsp;</o:p></span></p>
   </td>

@@ -376,7 +376,7 @@ INSURANCE CLAIMS<o:p></o:p></u></b></p>
 
 <p class=MsoNormal style='text-align:justify;mso-layout-grid-align:none;
 text-autospace:none'>I, <u>_PROVIDER_PRESIDENT</u>_ (<span style='font-size:
-10.0pt'>PRESIDENT</span>), owner of _<u>PROVIDER_NAME</u>_ (provider’s name)
+10.0pt'>PRESIDENT</span>), owner of _<u><?php echo $CaseInfo[0]['Provider_Name'];?></u>_ (provider’s name)
 (hereinafter referred to as &quot;Client&quot;), hereby retain and authorize
 the Law Office of Victor Gomelsky, Esq. (hereinafter “Firm”) to represent
 Client on any and all matters related to the collection of outstanding no-fault

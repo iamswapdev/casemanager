@@ -434,7 +434,7 @@ div.WordSection1
 style='mso-bidi-font-weight:normal'>In the Matter of the Claim of<o:p></o:p></b></p>
 
 <p class=MsoNormal align=center style='text-align:center;line-height:150%'><b
-style='mso-bidi-font-weight:normal'><span style='color:black'>INJUREDPARTY_NAME</span>,<o:p></o:p></b></p>
+style='mso-bidi-font-weight:normal'><span style='color:black'><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></span>,<o:p></o:p></b></p>
 
 <p class=MsoNormal align=center style='text-align:center;line-height:150%'><b
 style='mso-bidi-font-weight:normal'>Claimant<o:p></o:p></b></p>
@@ -489,7 +489,7 @@ follows:</p>
   <td width=365 valign=top style='width:218.7pt;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='line-height:120%'>Claimant:</p>
   <p class=MsoNormal style='line-height:120%'><b style='mso-bidi-font-weight:
-  normal'><span style='color:black'>INJUREDPARTY_NAME</span> <o:p></o:p></b></p>
+  normal'><span style='color:black'><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></span> <o:p></o:p></b></p>
   </td>
   <td width=365 valign=top style='width:218.7pt;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='line-height:120%'>Attorney:</p>
@@ -536,7 +536,7 @@ follows:</p>
   in which the claim arose:</b> <span style='mso-spacerun:yes'> </span>This
   occurrence took place on <span class=SpellE><b style='mso-bidi-font-weight:
   normal'><span style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:
-  minor-latin'>Accident_Date</span></b></span><span style='mso-fareast-font-family:
+  minor-latin'><?php echo date_format(date_create($CaseInfo[0]['Accident_Date']), "m/d/Y");?></span></b></span><span style='mso-fareast-font-family:
   Calibri;mso-fareast-theme-font:minor-latin'> </span>at approximately [TIME OF
   ACCIDENT] on a sidewalk located at [LOCATION ACCIDENT AND TOWN] and State of
   New York.<span style='mso-spacerun:yes'>  </span>More specifically, this
@@ -615,7 +615,7 @@ to recover said sum of $1,000,000 with interest and costs.</p>
 1'> </span>Franklin Square, New York</p>
 
 <p class=MsoNormal style='line-height:120%'><span style='mso-tab-count:1'>            </span><span
-style='font-size:11.0pt;line-height:120%'>NOWDT</span></p>
+style='font-size:11.0pt;line-height:120%'><?php echo date("m/d/Y");?></span></p>
 
 <p class=MsoNormal style='line-height:150%'><span style='mso-tab-count:6'>                                                                        </span>Respectfully
 yours,</p>
@@ -682,7 +682,7 @@ style='mso-bidi-font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
 1'> </span>Franklin Square, New York</p>
 
 <p class=MsoNormal style='line-height:120%'><span style='mso-tab-count:1'>            </span><span
-style='font-size:11.0pt;line-height:120%'>NOWDT</span></p>
+style='font-size:11.0pt;line-height:120%'><?php echo date("m/d/Y");?></span></p>
 
 <p class=MsoNormal style='line-height:120%'><o:p>&nbsp;</o:p></p>
 

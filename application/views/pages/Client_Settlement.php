@@ -43,7 +43,7 @@
 <?php include 'header_financials.php';?>
 <div class="content animate-panel">
 	
-    <div class="row ClientSettlements WithdrawnCases" style="display:none;">
+    <div class="row ClientSettlements" style="display:none;">
         <div class="col-lg-12">
         <div class="hpanel">
         <div class="panel-heading"></div>
@@ -52,6 +52,36 @@
                 <h5 class="h4-title"><?php echo $TableInfo['TableId'];?></h5>
                 <div class="col-md-12">
                     <table id="ClientSettlements" class="table dataTable table-bordered table-striped">
+                        <thead>
+                        <tr>  	 	 	 
+                            <th>Case ID</th>
+                            <th>Patient</th>
+                            <th>Insurer</th>
+                            <th>Initial Amount</th>
+                            <th>Settled By</th>
+                            <th>Settlement Terms</th>
+                            <th>Settlement Date </th>
+                            <th>Settlement Notes</th>
+                            <th>Settlement %age</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div><!-- End of panel-body tab-panel-->
+        </div><!-- End hpanel -->
+        </div><!-- End col-lg-12-->
+    </div><!-- End row-->
+    
+    <div class="row WithdrawnCases" style="display:none;">
+        <div class="col-lg-12">
+        <div class="hpanel">
+        <div class="panel-heading"></div>
+        <div class="panel-body tab-panel">
+            <div class="form-group form-horizontal col-lg-12">
+                <h5 class="h4-title"><?php echo $TableInfo['TableId'];?></h5>
+                <div class="col-md-12">
+                    <table id="WithdrawnCases" class="table dataTable table-bordered table-striped">
                         <thead>
                         <tr>  	 	 	 
                             <th>Case ID</th>

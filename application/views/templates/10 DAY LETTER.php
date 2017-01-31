@@ -332,7 +332,7 @@ mso-font-kerning:14.0pt'><o:p></o:p></span></i></p>
   height:28.35pt'>
   <p class=MsoNormal align=right style='text-align:right;line-height:115%'><span
   style='font-size:11.0pt;line-height:115%;font-family:"Times New Roman","serif";
-  mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin'>DATE: </span>NOWDT<o:p></o:p></span></p>
+  mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin'>DATE: </span><?php echo date("m/d/Y");?><o:p></o:p></span></p>
   <p class=MsoNormal align=right style='text-align:right;line-height:115%'><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:Calibri;
   mso-fareast-theme-font:minor-latin'>Our Case ID: <span class=SpellE><?php echo $CaseInfo[0]['Case_Id'];?></span><o:p></o:p></span></p>
@@ -411,7 +411,7 @@ mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin'><o:p>&nbsp;<
   mso-fareast-theme-font:minor-latin'> <o:p></o:p></span></p>
   <p class=MsoNormal style='text-align:justify;line-height:115%'><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:Calibri;
-  mso-fareast-theme-font:minor-latin'><?php echo $CaseInfo[0]['Provider_Name'];?> <o:p></o:p></span></p>
+  mso-fareast-theme-font:minor-latin'><?php echo $CaseInfo[0]['Provider_Type'];?> <o:p></o:p></span></p>
   <p class=MsoNormal style='text-align:justify;line-height:115%'><span
   class=SpellE><span style='font-family:"Times New Roman","serif";mso-fareast-font-family:
   Calibri;mso-fareast-theme-font:minor-latin'><?php echo $CaseInfo[0]['Claim_Amount'];?></span></span><span
@@ -419,7 +419,7 @@ mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin'><o:p>&nbsp;<
   mso-fareast-theme-font:minor-latin'><o:p></o:p></span></p>
   <p class=MsoNormal style='text-align:justify;line-height:115%'><span
   class=SpellE><span style='font-family:"Times New Roman","serif";mso-fareast-font-family:
-  Calibri;mso-fareast-theme-font:minor-latin'><?php echo $CaseInfo[0]['Accident_Date'];?></span></span><span
+  Calibri;mso-fareast-theme-font:minor-latin'><?php echo date_format(date_create($CaseInfo[0]['Accident_Date']), "m/d/Y");?></span></span><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:Calibri;
   mso-fareast-theme-font:minor-latin'><o:p></o:p></span></p>
   <p class=MsoNormal style='text-align:justify;line-height:115%'><span

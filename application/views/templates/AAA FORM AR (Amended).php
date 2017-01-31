@@ -639,7 +639,7 @@ table.MsoTableGrid
   <td width="100%" valign=top style='width:100.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman","serif";
-  mso-fareast-font-family:"Times New Roman"'>DATE: NOWDT<o:p></o:p></span></p>
+  mso-fareast-font-family:"Times New Roman"'>DATE: <?php echo date("m/d/Y");?><o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:2;mso-yfti-lastrow:yes'>
@@ -715,7 +715,7 @@ table.MsoTableGrid
     <td width=436 style='width:327.1pt;padding:0in 0in 0in 0in'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=defaulttext><span style='font-size:12.0pt;
-    font-family:"Times New Roman","serif";mso-bidi-font-weight:bold'><?php echo $CaseInfo[0]['Accident_Date'];?></span></span><span
+    font-family:"Times New Roman","serif";mso-bidi-font-weight:bold'><?php echo date_format(date_create($CaseInfo[0]['Accident_Date']), "m/d/Y");?></span></span><span
     style='font-size:10.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
     "Times New Roman"'><o:p></o:p></span></p>
     </td>
@@ -956,7 +956,7 @@ style='font-size:10.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family
     line-height:normal'><span style='font-size:9.0pt;font-family:"Times New Roman","serif";
     mso-fareast-font-family:"Times New Roman"'>Date of accident<br>
     </span><span class=defaulttext><span style='font-size:9.0pt;font-family:
-    "Times New Roman","serif";mso-bidi-font-weight:bold'><?php echo $CaseInfo[0]['Accident_Date'];?></span></span><span
+    "Times New Roman","serif";mso-bidi-font-weight:bold'><?php echo date_format(date_create($CaseInfo[0]['Accident_Date']), "m/d/Y");?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
     "Times New Roman"'><o:p></o:p></span></p>
     </td>
@@ -1039,7 +1039,7 @@ style='font-size:10.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family
     mso-fareast-font-family:"Times New Roman"'>Insurer claim or file number<br>
     </span><span class=SpellE><span class=defaulttext><span style='font-size:
     9.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman";
-    mso-fareast-theme-font:major-fareast'><?php echo $CaseInfo[0]['Policy_Number'];?></span></span></span><span
+    mso-fareast-theme-font:major-fareast'><?php echo $CaseInfo[0]['Ins_Claim_Number'];?></span></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
     "Times New Roman"'><o:p></o:p></span></p>
     </td>
@@ -1116,10 +1116,10 @@ style='font-size:10.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family
     mso-fareast-font-family:"Times New Roman"'>Every attempt should be made to resolve
     this claim with the insurer prior to filing for arbitration. When <span
     class=GramE>was<br>
-    the insurer</span> last contacted? </span>NOWDT<span style='font-size:9.0pt;
+    the insurer</span> last contacted? </span><?php echo date("m/d/Y");?><span style='font-size:9.0pt;
     font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><br>
     Name and title of person contacted: </span><span class=SpellE><span
-    style='font-size:9.0pt;font-family:"Times New Roman","serif";color:black'>Adjuster_Name</span></span><span
+    style='font-size:9.0pt;font-family:"Times New Roman","serif";color:black'><?php echo $CaseInfo[0]['Adjuster_FirstName']." ".$CaseInfo[0]['Adjuster_LastName'];?></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
     "Times New Roman"'> at </span><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></span></span><span
@@ -1334,7 +1334,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:18.75pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'><?php number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
+    font-family:"Times New Roman","serif"'><?php echo "$".number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
     "Times New Roman"'><o:p></o:p></span></p>
     </td>
@@ -1342,15 +1342,15 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:18.75pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'>DateofService_Start</span></span><span
+    font-family:"Times New Roman","serif"'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'> - <span
-    class=SpellE>DateofService_End</span></span><span style='font-size:9.0pt;
+    class=SpellE><?php echo date_format(date_create($CaseInfo[0]['DateOfService_End']), "m/d/Y");?></span></span><span style='font-size:9.0pt;
     font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
     </td>
     <td width="10%" valign=top style='width:10.9%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:18.75pt'>
     <p class=MsoNormal><span class=SpellE><span style='font-size:9.0pt;
-    line-height:115%;font-family:"Times New Roman","serif";color:black'>Date_BillSent</span></span><span
+    line-height:115%;font-family:"Times New Roman","serif";color:black'><?php echo $CaseInfo[0]['Date_BillSent'];?></span></span><span
     style='font-size:9.0pt;line-height:115%;font-family:"Times New Roman","serif";
     color:black'><o:p></o:p></span></p>
     </td>
@@ -1380,7 +1380,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight:
-    bold'>Provider_Name</span></span></span><span class=defaulttext><span
+    bold'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span></span><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-family:
     "Times New Roman";mso-bidi-theme-font:minor-bidi;mso-bidi-font-weight:bold'><o:p></o:p></span></span></p>
     </td>
@@ -1407,21 +1407,21 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:18.75pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'><?php number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
+    font-family:"Times New Roman","serif"'><?php echo "$".number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
     </td>
     <td width="15%" valign=top style='width:15.52%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:18.75pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'>DateofService_Start</span></span><span
+    font-family:"Times New Roman","serif"'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'> - <span
-    class=SpellE>DateofService_End</span><o:p></o:p></span></p>
+    class=SpellE><?php echo date_format(date_create($CaseInfo[0]['DateOfService_End']), "m/d/Y");?></span><o:p></o:p></span></p>
     </td>
     <td width="10%" valign=top style='width:10.9%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:18.75pt'>
     <p class=MsoNormal><span class=SpellE><span style='font-size:9.0pt;
-    line-height:115%;font-family:"Times New Roman","serif";color:black'>Date_BillSent</span></span><span
+    line-height:115%;font-family:"Times New Roman","serif";color:black'><?php echo $CaseInfo[0]['Date_BillSent'];?></span></span><span
     style='font-size:9.0pt;line-height:115%;font-family:"Times New Roman","serif";
     color:black'><o:p></o:p></span></p>
     </td>
@@ -1450,7 +1450,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight:
-    bold'>Provider_Name</span></span></span><span class=defaulttext><span
+    bold'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span></span><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-family:
     "Times New Roman";mso-bidi-theme-font:minor-bidi;mso-bidi-font-weight:bold'><o:p></o:p></span></span></p>
     </td>
@@ -1477,21 +1477,21 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:18.75pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'><?php number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
+    font-family:"Times New Roman","serif"'><?php echo "$".number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
     </td>
     <td width="15%" valign=top style='width:15.52%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:18.75pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'>DateofService_Start</span></span><span
+    font-family:"Times New Roman","serif"'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'> - <span
-    class=SpellE>DateofService_End</span><o:p></o:p></span></p>
+    class=SpellE><?php echo date_format(date_create($CaseInfo[0]['DateOfService_End']), "m/d/Y");?></span><o:p></o:p></span></p>
     </td>
     <td width="10%" valign=top style='width:10.9%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:18.75pt'>
     <p class=MsoNormal><span class=SpellE><span style='font-size:9.0pt;
-    line-height:115%;font-family:"Times New Roman","serif";color:black'>Date_BillSent</span></span><span
+    line-height:115%;font-family:"Times New Roman","serif";color:black'><?php echo $CaseInfo[0]['Date_BillSent'];?></span></span><span
     style='font-size:9.0pt;line-height:115%;font-family:"Times New Roman","serif";
     color:black'><o:p></o:p></span></p>
     </td>
@@ -1548,7 +1548,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     mso-border-alt:inset black .75pt;padding:0in 0in 0in 0in;height:35.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'><?php number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
+    font-family:"Times New Roman","serif"'><?php echo "$".number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
     "Times New Roman"'><o:p></o:p></span></p>
     </td>
@@ -1971,7 +1971,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:9.0pt;font-family:"Times New Roman","serif";
     mso-fareast-font-family:"Times New Roman"'>Date<br>
-    NOWDT<o:p></o:p></span></p>
+    <?php echo date("m/d/Y");?><o:p></o:p></span></p>
     </td>
     <td valign=top style='border:inset black 1.0pt;mso-border-alt:inset black .75pt;
     padding:0in 0in 0in 0in;height:22.5pt'>
@@ -2191,7 +2191,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight:
-    bold'>Provider_Name</span></span></span><span class=defaulttext><span
+    bold'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span></span><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-family:
     "Times New Roman";mso-bidi-theme-font:minor-bidi;mso-bidi-font-weight:bold'><o:p></o:p></span></span></p>
     </td>
@@ -2213,21 +2213,21 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'><?php number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
+    font-family:"Times New Roman","serif"'><?php echo "$".number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
     </td>
     <td width="14%" valign=top style='width:14.96%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'>DateofService_Start</span></span><span
+    font-family:"Times New Roman","serif"'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'> - <span
-    class=SpellE>DateofService_End</span><o:p></o:p></span></p>
+    class=SpellE><?php echo date_format(date_create($CaseInfo[0]['DateOfService_End']), "m/d/Y");?></span><o:p></o:p></span></p>
     </td>
     <td width="10%" valign=top style='width:10.52%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal><span class=SpellE><span style='font-size:9.0pt;
-    line-height:115%;font-family:"Times New Roman","serif";color:black'>Date_BillSent</span></span><span
+    line-height:115%;font-family:"Times New Roman","serif";color:black'><?php echo $CaseInfo[0]['Date_BillSent'];?></span></span><span
     style='font-size:9.0pt;line-height:115%;font-family:"Times New Roman","serif";
     color:black'><o:p></o:p></span></p>
     </td>
@@ -2248,7 +2248,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight:
-    bold'>Provider_Name</span></span></span><span class=defaulttext><span
+    bold'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span></span><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-family:
     "Times New Roman";mso-bidi-theme-font:minor-bidi;mso-bidi-font-weight:bold'><o:p></o:p></span></span></p>
     </td>
@@ -2270,21 +2270,21 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'><?php number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
+    font-family:"Times New Roman","serif"'><?php echo "$".number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
     </td>
     <td width="14%" valign=top style='width:14.96%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'>DateofService_Start</span></span><span
+    font-family:"Times New Roman","serif"'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'> - <span
-    class=SpellE>DateofService_End</span><o:p></o:p></span></p>
+    class=SpellE><?php echo date_format(date_create($CaseInfo[0]['DateOfService_End']), "m/d/Y");?></span><o:p></o:p></span></p>
     </td>
     <td width="10%" valign=top style='width:10.52%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal><span class=SpellE><span style='font-size:9.0pt;
-    line-height:115%;font-family:"Times New Roman","serif";color:black'>Date_BillSent</span></span><span
+    line-height:115%;font-family:"Times New Roman","serif";color:black'><?php echo $CaseInfo[0]['Date_BillSent'];?></span></span><span
     style='font-size:9.0pt;line-height:115%;font-family:"Times New Roman","serif";
     color:black'><o:p></o:p></span></p>
     </td>
@@ -2305,7 +2305,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight:
-    bold'>Provider_Name</span></span></span><span class=defaulttext><span
+    bold'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span></span><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-family:
     "Times New Roman";mso-bidi-theme-font:minor-bidi;mso-bidi-font-weight:bold'><o:p></o:p></span></span></p>
     </td>
@@ -2327,21 +2327,21 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'><?php number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
+    font-family:"Times New Roman","serif"'><?php echo "$".number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
     </td>
     <td width="14%" valign=top style='width:14.96%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'>DateofService_Start</span></span><span
+    font-family:"Times New Roman","serif"'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'> - <span
-    class=SpellE>DateofService_End</span><o:p></o:p></span></p>
+    class=SpellE><?php echo date_format(date_create($CaseInfo[0]['DateOfService_End']), "m/d/Y");?></span><o:p></o:p></span></p>
     </td>
     <td width="10%" valign=top style='width:10.52%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal><span class=SpellE><span style='font-size:9.0pt;
-    line-height:115%;font-family:"Times New Roman","serif";color:black'>Date_BillSent</span></span><span
+    line-height:115%;font-family:"Times New Roman","serif";color:black'><?php echo $CaseInfo[0]['Date_BillSent'];?></span></span><span
     style='font-size:9.0pt;line-height:115%;font-family:"Times New Roman","serif";
     color:black'><o:p></o:p></span></p>
     </td>
@@ -2362,7 +2362,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight:
-    bold'>Provider_Name</span></span></span><span class=defaulttext><span
+    bold'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span></span><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-family:
     "Times New Roman";mso-bidi-theme-font:minor-bidi;mso-bidi-font-weight:bold'><o:p></o:p></span></span></p>
     </td>
@@ -2384,21 +2384,21 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'><?php number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
+    font-family:"Times New Roman","serif"'><?php echo "$".number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
     </td>
     <td width="14%" valign=top style='width:14.96%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'>DateofService_Start</span></span><span
+    font-family:"Times New Roman","serif"'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'> - <span
-    class=SpellE>DateofService_End</span><o:p></o:p></span></p>
+    class=SpellE><?php echo date_format(date_create($CaseInfo[0]['DateOfService_End']), "m/d/Y");?></span><o:p></o:p></span></p>
     </td>
     <td width="10%" valign=top style='width:10.52%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal><span class=SpellE><span style='font-size:9.0pt;
-    line-height:115%;font-family:"Times New Roman","serif";color:black'>Date_BillSent</span></span><span
+    line-height:115%;font-family:"Times New Roman","serif";color:black'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span></span><span
     style='font-size:9.0pt;line-height:115%;font-family:"Times New Roman","serif";
     color:black'><o:p></o:p></span></p>
     </td>
@@ -2419,7 +2419,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight:
-    bold'>Provider_Name</span></span></span><span class=defaulttext><span
+    bold'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span></span><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-family:
     "Times New Roman";mso-bidi-theme-font:minor-bidi;mso-bidi-font-weight:bold'><o:p></o:p></span></span></p>
     </td>
@@ -2441,21 +2441,21 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'><?php number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
+    font-family:"Times New Roman","serif"'><?php echo "$".number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
     </td>
     <td width="14%" valign=top style='width:14.96%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'>DateofService_Start</span></span><span
+    font-family:"Times New Roman","serif"'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'> - <span
-    class=SpellE>DateofService_End</span><o:p></o:p></span></p>
+    class=SpellE><?php echo date_format(date_create($CaseInfo[0]['DateOfService_End']), "m/d/Y");?></span><o:p></o:p></span></p>
     </td>
     <td width="10%" valign=top style='width:10.52%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal><span class=SpellE><span style='font-size:9.0pt;
-    line-height:115%;font-family:"Times New Roman","serif";color:black'>Date_BillSent</span></span><span
+    line-height:115%;font-family:"Times New Roman","serif";color:black'><?php echo $CaseInfo[0]['Date_BillSent'];?></span></span><span
     style='font-size:9.0pt;line-height:115%;font-family:"Times New Roman","serif";
     color:black'><o:p></o:p></span></p>
     </td>
@@ -2476,7 +2476,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight:
-    bold'>Provider_Name</span></span></span><span class=defaulttext><span
+    bold'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span></span><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-family:
     "Times New Roman";mso-bidi-theme-font:minor-bidi;mso-bidi-font-weight:bold'><o:p></o:p></span></span></p>
     </td>
@@ -2498,21 +2498,21 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'><?php number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
+    font-family:"Times New Roman","serif"'><?php echo "$".number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
     </td>
     <td width="14%" valign=top style='width:14.96%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'>DateofService_Start</span></span><span
+    font-family:"Times New Roman","serif"'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'> - <span
-    class=SpellE>DateofService_End</span><o:p></o:p></span></p>
+    class=SpellE><?php echo date_format(date_create($CaseInfo[0]['DateOfService_End']), "m/d/Y");?></span><o:p></o:p></span></p>
     </td>
     <td width="10%" valign=top style='width:10.52%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal><span class=SpellE><span style='font-size:9.0pt;
-    line-height:115%;font-family:"Times New Roman","serif";color:black'>Date_BillSent</span></span><span
+    line-height:115%;font-family:"Times New Roman","serif";color:black'><?php echo $CaseInfo[0]['Date_BillSent'];?></span></span><span
     style='font-size:9.0pt;line-height:115%;font-family:"Times New Roman","serif";
     color:black'><o:p></o:p></span></p>
     </td>
@@ -2533,7 +2533,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight:
-    bold'>Provider_Name</span></span></span><span class=defaulttext><span
+    bold'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span></span><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-family:
     "Times New Roman";mso-bidi-theme-font:minor-bidi;mso-bidi-font-weight:bold'><o:p></o:p></span></span></p>
     </td>
@@ -2555,21 +2555,21 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'><?php number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
+    font-family:"Times New Roman","serif"'><?php echo "$".number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
     </td>
     <td width="14%" valign=top style='width:14.96%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'>DateofService_Start</span></span><span
+    font-family:"Times New Roman","serif"'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'> - <span
-    class=SpellE>DateofService_End</span><o:p></o:p></span></p>
+    class=SpellE><?php echo date_format(date_create($CaseInfo[0]['DateOfService_End']), "m/d/Y");?></span><o:p></o:p></span></p>
     </td>
     <td width="10%" valign=top style='width:10.52%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal><span class=SpellE><span style='font-size:9.0pt;
-    line-height:115%;font-family:"Times New Roman","serif";color:black'>Date_BillSent</span></span><span
+    line-height:115%;font-family:"Times New Roman","serif";color:black'><?php echo $CaseInfo[0]['Date_BillSent'];?></span></span><span
     style='font-size:9.0pt;line-height:115%;font-family:"Times New Roman","serif";
     color:black'><o:p></o:p></span></p>
     </td>
@@ -2590,7 +2590,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight:
-    bold'>Provider_Name</span></span></span><span class=defaulttext><span
+    bold'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span></span><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-family:
     "Times New Roman";mso-bidi-theme-font:minor-bidi;mso-bidi-font-weight:bold'><o:p></o:p></span></span></p>
     </td>
@@ -2612,21 +2612,21 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'><?php number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
+    font-family:"Times New Roman","serif"'><?php echo "$".number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
     </td>
     <td width="14%" valign=top style='width:14.96%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'>DateofService_Start</span></span><span
+    font-family:"Times New Roman","serif"'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'> - <span
-    class=SpellE>DateofService_End</span><o:p></o:p></span></p>
+    class=SpellE><?php echo date_format(date_create($CaseInfo[0]['DateOfService_End']), "m/d/Y");?></span><o:p></o:p></span></p>
     </td>
     <td width="10%" valign=top style='width:10.52%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal><span class=SpellE><span style='font-size:9.0pt;
-    line-height:115%;font-family:"Times New Roman","serif";color:black'>Date_BillSent</span></span><span
+    line-height:115%;font-family:"Times New Roman","serif";color:black'><?php echo $CaseInfo[0]['Date_BillSent'];?></span></span><span
     style='font-size:9.0pt;line-height:115%;font-family:"Times New Roman","serif";
     color:black'><o:p></o:p></span></p>
     </td>
@@ -2661,7 +2661,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     <td width="11%" valign=top style='width:11.52%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
-    line-height:normal'><span style='font-size:9.0pt;font-family:"Times New Roman","serif"'>Claim_Amount</span><span
+    line-height:normal'><span style='font-size:9.0pt;font-family:"Times New Roman","serif"'><?php echo "$".number_format($CaseInfo[0]['Claim_Amount'], 2);?></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
     "Times New Roman"'><o:p></o:p></span></p>
     </td>
@@ -2677,7 +2677,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'><?php number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
+    font-family:"Times New Roman","serif"'><?php echo "$".number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
     "Times New Roman"'><o:p></o:p></span></p>
     </td>
@@ -2957,7 +2957,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
   margin-left:-.7pt;margin-bottom:.0001pt;tab-stops:4.0in 445.5pt'><span
   class=defaulttext><span style='font-size:10.0pt;line-height:115%;font-family:
-  "Times New Roman","serif"'>PROVIDER_NAME</span></span><span
+  "Times New Roman","serif"'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span><span
   class=defaulttext><span style='font-family:"Times New Roman","serif";
   mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi'><o:p></o:p></span></span></p>
   <p class=MsoNormal style='margin-bottom:12.0pt;line-height:normal'><span
@@ -3112,7 +3112,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
   <br>
   </span><span style='font-size:12.0pt;font-family:"Times New Roman","serif";
   mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi;
-  mso-bidi-font-weight:bold'>Our Case Id No.:<b> Case_Id</b></span><span
+  mso-bidi-font-weight:bold'>Our Case Id No.:<b> <?php echo $CaseInfo[0]['Case_Id'];?></b></span><span
   style='font-size:10.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
   "Times New Roman"'><br>
   <br>
@@ -3286,7 +3286,7 @@ normal'><o:p>&nbsp;</o:p></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight:
-    bold'>Provider_Name</span></span></span><span class=defaulttext><span
+    bold'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span></span><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-family:
     "Times New Roman";mso-bidi-theme-font:minor-bidi;mso-bidi-font-weight:bold'><o:p></o:p></span></span></p>
     </td>
@@ -3308,21 +3308,21 @@ normal'><o:p>&nbsp;</o:p></p>
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'><?php number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
+    font-family:"Times New Roman","serif"'><?php echo "$".number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
     </td>
     <td width="14%" valign=top style='width:14.96%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'>DateofService_Start</span></span><span
+    font-family:"Times New Roman","serif"'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'> - <span
-    class=SpellE>DateofService_End</span><o:p></o:p></span></p>
+    class=SpellE><?php echo date_format(date_create($CaseInfo[0]['DateOfService_End']), "m/d/Y");?></span><o:p></o:p></span></p>
     </td>
     <td width="10%" valign=top style='width:10.52%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal><span class=SpellE><span style='font-size:9.0pt;
-    line-height:115%;font-family:"Times New Roman","serif";color:black'>Date_BillSent</span></span><span
+    line-height:115%;font-family:"Times New Roman","serif";color:black'><?php echo $CaseInfo[0]['Date_BillSent'];?></span></span><span
     style='font-size:9.0pt;line-height:115%;font-family:"Times New Roman","serif";
     color:black'><o:p></o:p></span></p>
     </td>
@@ -3343,7 +3343,7 @@ normal'><o:p>&nbsp;</o:p></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight:
-    bold'>Provider_Name</span></span></span><span class=defaulttext><span
+    bold'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span></span><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-family:
     "Times New Roman";mso-bidi-theme-font:minor-bidi;mso-bidi-font-weight:bold'><o:p></o:p></span></span></p>
     </td>
@@ -3365,21 +3365,21 @@ normal'><o:p>&nbsp;</o:p></p>
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'><?php number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
+    font-family:"Times New Roman","serif"'><?php echo "$".number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
     </td>
     <td width="14%" valign=top style='width:14.96%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'>DateofService_Start</span></span><span
+    font-family:"Times New Roman","serif"'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'> - <span
-    class=SpellE>DateofService_End</span><o:p></o:p></span></p>
+    class=SpellE><?php echo date_format(date_create($CaseInfo[0]['DateOfService_End']), "m/d/Y");?></span><o:p></o:p></span></p>
     </td>
     <td width="10%" valign=top style='width:10.52%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal><span class=SpellE><span style='font-size:9.0pt;
-    line-height:115%;font-family:"Times New Roman","serif";color:black'>Date_BillSent</span></span><span
+    line-height:115%;font-family:"Times New Roman","serif";color:black'><?php echo $CaseInfo[0]['Date_BillSent'];?></span></span><span
     style='font-size:9.0pt;line-height:115%;font-family:"Times New Roman","serif";
     color:black'><o:p></o:p></span></p>
     </td>
@@ -3400,7 +3400,7 @@ normal'><o:p>&nbsp;</o:p></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight:
-    bold'>Provider_Name</span></span></span><span class=defaulttext><span
+    bold'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span></span><span class=defaulttext><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif";mso-bidi-font-family:
     "Times New Roman";mso-bidi-theme-font:minor-bidi;mso-bidi-font-weight:bold'><o:p></o:p></span></span></p>
     </td>
@@ -3422,21 +3422,21 @@ normal'><o:p>&nbsp;</o:p></p>
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'><?php number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
+    font-family:"Times New Roman","serif"'><?php echo "$".number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
     </td>
     <td width="14%" valign=top style='width:14.96%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=SpellE><span style='font-size:9.0pt;
-    font-family:"Times New Roman","serif"'>DateofService_Start</span></span><span
+    font-family:"Times New Roman","serif"'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span></span><span
     style='font-size:9.0pt;font-family:"Times New Roman","serif"'> - <span
-    class=SpellE>DateofService_End</span><o:p></o:p></span></p>
+    class=SpellE><?php echo date_format(date_create($CaseInfo[0]['DateOfService_End']), "m/d/Y");?></span><o:p></o:p></span></p>
     </td>
     <td width="10%" valign=top style='width:10.52%;border:solid windowtext 1.0pt;
     mso-border-alt:solid windowtext .5pt;padding:0in 0in 0in 0in;height:32.25pt'>
     <p class=MsoNormal><span class=SpellE><span style='font-size:9.0pt;
-    line-height:115%;font-family:"Times New Roman","serif";color:black'>Date_BillSent</span></span><span
+    line-height:115%;font-family:"Times New Roman","serif";color:black'><?php echo $CaseInfo[0]['Date_BillSent'];?></span></span><span
     style='font-size:9.0pt;line-height:115%;font-family:"Times New Roman","serif";
     color:black'><o:p></o:p></span></p>
     </td>

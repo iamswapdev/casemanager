@@ -1111,6 +1111,24 @@ class Search extends CI_Controller{
 		
 		echo json_encode($output);
 	}
+	public function get_data(){
+		//$start = $this->input->post("start");
+		//$end = $this->input->post("end");
+		
+		$list = $this->workarea_model->add_Calendar_Events("2016-12-01", "2016-12-31");
+		echo "<pre>";print_r($list);
+	}
+	public function EditTemplate(){
+		$template = $this->input->post("TemplateName");
+		$Case_AutoId = $this->input->post("Templates_Case_AutoId");
+		if(isset($this->session->userdata['logged_in'])){
+			$data['CaseInfo'] = $this->case_info_model->get_Case_Info($Case_AutoId);
+			$this->load->view('templates/'.$template, $data);
+		}else{
+			$CurrentPage['CurrentUrl'] = "search/viewcase/1";
+			$this->load->view('pages/login', $CurrentPage);
+		}
+	}
 	public function testmethod(){
 		/*$Case_Id = $this->dataentry_model->get_Last_Case_Id();
 		echo "CaseID:".$_SERVER['REQUEST_URI'];exit;
@@ -1160,24 +1178,12 @@ class Search extends CI_Controller{
 		$timestamp = strtotime( "February 15, 2015" );
    
    		echo "<br>Feb 15, 2015 = ".date( 'Y-m-d', $timestamp );
-	}
-	public function get_data(){
-		//$start = $this->input->post("start");
-		//$end = $this->input->post("end");
+		if("alla" == "ALLA"){
+			echo "<br>true";
+		}else { echo "<br>false";}
+		echo "<br>".strcasecmp("H","h");
 		
-		$list = $this->workarea_model->add_Calendar_Events("2016-12-01", "2016-12-31");
-		echo "<pre>";print_r($list);
-	}
-	public function EditTemplate(){
-		$template = $this->input->post("TemplateName");
-		$Case_AutoId = $this->input->post("Templates_Case_AutoId");
-		if(isset($this->session->userdata['logged_in'])){
-			$data['CaseInfo'] = $this->case_info_model->get_Case_Info($Case_AutoId);
-			$this->load->view('templates/'.$template, $data);
-		}else{
-			$CurrentPage['CurrentUrl'] = "search/viewcase/1";
-			$this->load->view('pages/login', $CurrentPage);
-		}
+		echo "<br>".strcasecmp("Hello","hELLo");
 	}
 /*****************************************************************************************************************************************/
 }

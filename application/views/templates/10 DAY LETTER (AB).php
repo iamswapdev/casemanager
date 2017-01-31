@@ -784,7 +784,7 @@ mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin'><o:p>&nbsp;<
   mso-fareast-theme-font:minor-latin'> <o:p></o:p></span></p>
   <p class=MsoNormal style='text-align:justify;line-height:115%'><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:Calibri;
-  mso-fareast-theme-font:minor-latin'><?php echo $CaseInfo[0]['Defendant_Name'];?>Provider_Type <o:p></o:p></span></p>
+  mso-fareast-theme-font:minor-latin'><?php echo $CaseInfo[0]['Defendant_Name'];?><?php echo $CaseInfo[0]['Provider_Type'];?> <o:p></o:p></span></p>
   <p class=MsoNormal style='text-align:justify;line-height:115%'><span
   class=SpellE><span style='font-family:"Times New Roman","serif";mso-fareast-font-family:
   Calibri;mso-fareast-theme-font:minor-latin'><?php echo $CaseInfo[0]['Claim_Amount'];?></span></span><span
@@ -792,7 +792,7 @@ mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin'><o:p>&nbsp;<
   mso-fareast-theme-font:minor-latin'><o:p></o:p></span></p>
   <p class=MsoNormal style='text-align:justify;line-height:115%'><span
   class=SpellE><span style='font-family:"Times New Roman","serif";mso-fareast-font-family:
-  Calibri;mso-fareast-theme-font:minor-latin'><?php echo $CaseInfo[0]['Accident_Date'];?></span></span><span
+  Calibri;mso-fareast-theme-font:minor-latin'><?php echo date_format(date_create($CaseInfo[0]['Accident_Date']), "m/d/Y");?></span></span><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:Calibri;
   mso-fareast-theme-font:minor-latin'><o:p></o:p></span></p>
   <p class=MsoNormal style='text-align:justify;line-height:115%'><span

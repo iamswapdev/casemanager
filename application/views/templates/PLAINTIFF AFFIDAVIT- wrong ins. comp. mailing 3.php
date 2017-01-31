@@ -1149,16 +1149,16 @@ table.MsoTableGrid
   <td width=378 valign=top style='width:283.5pt;padding:0in 5.4pt 0in 5.4pt;
   height:17.5pt'>
   <p class=MsoNormal style='margin-left:-5.4pt;tab-stops:445.5pt'><span
-  style='font-size:12.0pt;font-family:"Times New Roman","serif"'>COURT_VENUE<o:p></o:p></span></p>
+  style='font-size:12.0pt;font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Court_Venue'];?><o:p></o:p></span></p>
   <p class=MsoNormal style='margin-left:-5.4pt;tab-stops:445.5pt'><st1:place u4:st="on"><st1:PlaceType u4:st="on"><span
-  style='font-size:12.0pt;font-family:"Times New Roman","serif"'>COURT_NAME<br>
+  style='font-size:12.0pt;font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Court_Name'];?><br>
   </st1:PlaceType></st1:place>-----------------------------------------------------------------X<o:p></o:p></span></p>
   </td>
   <td width=306 valign=top style='width:229.5pt;padding:0in 5.4pt 0in 5.4pt;
   height:17.5pt'>
   <p class=MsoNormal style='text-align:justify;tab-stops:445.5pt'><b
   style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;font-family:
-  "Times New Roman","serif"'>Index No.: <span class=SpellE>IndexOrAAA_Number</span><o:p></o:p></span></b></p>
+  "Times New Roman","serif"'>Index No.: <span class=SpellE><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></span><o:p></o:p></span></b></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:1;mso-yfti-lastrow:yes'>
@@ -1166,11 +1166,11 @@ table.MsoTableGrid
   <p class=MsoNormal style='margin-left:-5.4pt;tab-stops:4.0in 445.5pt'><span
   class=defaulttext><b style='mso-bidi-font-weight:normal'><span
   style='font-size:12.0pt;font-family:"Arial","sans-serif";mso-bidi-font-family:
-  "Times New Roman"'>PROVIDER_NAME</span></b></span><span style='font-size:
+  "Times New Roman"'><?php echo $CaseInfo[0]['Provider_Name'];?></span></b></span><span style='font-size:
   12.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
   <p class=MsoNormal style='margin-left:-5.4pt;text-align:justify;tab-stops:
   445.5pt'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>A/A/O
-  <span class=defaulttext><b style='mso-bidi-font-weight:normal'>INJUREDPARTY_NAME</b></span></span><span
+  <span class=defaulttext><b style='mso-bidi-font-weight:normal'><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></b></span></span><span
   class=defaulttext><b style='mso-bidi-font-weight:normal'><span
   style='font-family:"Arial","sans-serif";mso-bidi-font-family:"Times New Roman"'><o:p></o:p></span></b></span></p>
   <p class=MsoNormal style='margin-left:-5.4pt;text-align:justify;tab-stops:
@@ -1197,7 +1197,7 @@ table.MsoTableGrid
   <p class=MsoNormal style='margin-left:-5.4pt;tab-stops:445.5pt'><b
   style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;font-family:
   "Times New Roman","serif"'><br>
-  <span class=defaulttext>INSURANCECOMPANY_NAME</span></span></b><span
+  <span class=defaulttext><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></span></span></b><span
   class=defaulttext><span style='font-size:12.0pt;font-family:"Arial","sans-serif";
   mso-bidi-font-family:"Times New Roman"'>,<u1:p></u1:p></span></span><span
   style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
@@ -1275,7 +1275,7 @@ being duly sworn, says:<o:p></o:p></span></p>
 auto;mso-add-space:auto;text-align:justify;line-height:150%;tab-stops:.5in 445.5pt;
 background:white'><span style='font-size:12.0pt;line-height:150%;font-family:
 "Times New Roman","serif"'>I am the billing manager for <span
-class=defaulttext>INSURANCECOMPANY_NAME</span><span style='mso-bidi-font-weight:
+class=defaulttext><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></span><span style='mso-bidi-font-weight:
 bold'> (hereinafter “Provider”), and I submit this affidavit in support of the
 attached motion. My duties as billing manager include ensuring that bills
 reflecting services rendered to Provider’s patients are mailed to the proper

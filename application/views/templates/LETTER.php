@@ -556,7 +556,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
   auto;text-align:right;line-height:normal'><span style='font-size:10.0pt;
   font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'>DATE:</span><span
   style='font-size:10.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
-  "Times New Roman"'> </span><span style='font-family:"Times New Roman","serif"'>NOWDT</span><span
+  "Times New Roman"'> </span><span style='font-family:"Times New Roman","serif"'><?php echo date("m/d/Y");?></span><span
   style='font-size:10.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
   "Times New Roman"'><o:p></o:p></span></p>
   </td>
@@ -572,14 +572,14 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-family:"Times New Roman","serif"'>DEFENDANT_NAME<br>
+  normal'><span style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Defendant_Name'];?><br>
   Attorney for Defendant(s)<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-family:"Times New Roman","serif";mso-bidi-font-weight:
-  bold'>DEFENDANT_ADDRESS</span><span style='font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
+  bold'><?php echo $CaseInfo[0]['Defendant_Address'];?></span><span style='font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal;tab-stops:4.0in 445.5pt'><span style='font-family:"Times New Roman","serif";
-  mso-bidi-font-weight:bold'>DEFENDANT_CITY, DEFENDANT_STATE DEFENDANT_ZIP</span><span
+  mso-bidi-font-weight:bold'><?php echo $CaseInfo[0]['Defendant_City'].", ".$CaseInfo[0]['Defendant_State']." ".$CaseInfo[0]['Defendant_Zip'];?></span><span
   style='font-size:10.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
   "Times New Roman"'> <br style='mso-special-character:line-break'>
   <![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
@@ -587,13 +587,13 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal;tab-stops:4.0in 445.5pt'><span style='font-size:10.0pt;font-family:
   "Arial","sans-serif";mso-fareast-font-family:"Times New Roman"'><br>
-  Re: </span><span class=defaulttext><span style='font-family:"Times New Roman","serif"'>PROVIDER_NAME</span></span><span
+  Re: </span><span class=defaulttext><span style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span><span
   style='font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
   <p class=MsoNormal style='mso-margin-bottom-alt:auto;line-height:normal'><span
-  style='font-family:"Times New Roman","serif"'>A/A/O <span class=defaulttext>INJUREDPARTY_NAME</span></span><span
+  style='font-family:"Times New Roman","serif"'>A/A/O <span class=defaulttext><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></span></span><span
   style='font-size:10.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
   "Times New Roman"'> v. </span><span class=defaulttext><span style='font-family:
-  "Times New Roman","serif"'>INSURANCECOMPANY_NAME</span></span><span
+  "Times New Roman","serif"'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></span></span><span
   style='font-size:10.0pt;font-family:"Arial","sans-serif";mso-fareast-font-family:
   "Times New Roman"'><br style='mso-special-character:line-break'>
   <![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
@@ -605,11 +605,11 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
   mso-fareast-font-family:"Times New Roman"'>Your</span></span><span
   style='font-size:10.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman"'> File No. </span><span style='font-family:"Times New Roman","serif";
-  mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin'>ATTORNEY_FILENUMBER</span><span
+  mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin'><?php echo $CaseInfo[0]['Attorney_FileNumber'];?></span><span
   style='font-size:10.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman"'>,<br>
   <b>Index No.: </b></span><span class=SpellE><b style='mso-bidi-font-weight:
-  normal'><span style='font-family:"Times New Roman","serif"'>IndexOrAAA_Number</span></b></span><span
+  normal'><span style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></span></b></span><span
   style='font-size:10.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman"'><br>
   </span><span style='font-family:"Times New Roman","serif"'>Our Case Id: <span

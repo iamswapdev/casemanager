@@ -773,13 +773,13 @@ div.WordSection1
   </td>
   <td width="67%" colspan=2 style='width:67.8%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-family:"Times New Roman",serif'>COURT_NAME<br>
-  COURT_VENUE</span></p>
+  normal'><span style='font-family:"Times New Roman",serif'><?php echo $CaseInfo[0]['Court_Name'];?><br>
+  <?php echo $CaseInfo[0]['Court_Venue'];?></span></p>
   </td>
   <td width="30%" valign=top style='width:30.14%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><b><span style='font-family:"Times New Roman",serif'>Index No:&nbsp; <span
-  class=SpellE>IndexOrAAA_Number</span></span></b></p>
+  class=SpellE><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></span></span></b></p>
   </td>
   <td width="1%" style='width:1.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal>&nbsp;</p>
@@ -812,7 +812,7 @@ div.WordSection1
     height:20.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=defaulttext><b><span style='font-family:
-    "Times New Roman",serif'>PROVIDER_NAME</span></b></span></p>
+    "Times New Roman",serif'><?php echo $CaseInfo[0]['Provider_Name'];?></span></b></span></p>
     <p class=MsoNormal style='line-height:normal'><span style='font-family:
     "Times New Roman",serif'>A/A/O <span class=defaulttext><b>INJUREDPARTY_<span
     class=GramE>NAME<span style='font-weight:normal'>,,</span></span></b></span></span></p>
@@ -846,7 +846,7 @@ div.WordSection1
     <td width="100%" colspan=3 valign=bottom style='width:100.0%;padding:0in 0in 0in 0in;
     height:21.0pt'>
     <p class=MsoNormal style='line-height:normal'><span class=defaulttext><b><span
-    style='font-family:"Times New Roman",serif'>INSURANCECOMPANY_NAME</span></b></span><span
+    style='font-family:"Times New Roman",serif'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></span></b></span><span
     style='font-family:"Times New Roman",serif'>,</span></p>
     </td>
    </tr>
@@ -915,7 +915,7 @@ div.WordSection1
 
 <p class=MsoListParagraph style='margin-left:1.5pt;text-align:justify;
 line-height:200%;background:white'><span style='font-size:11.0pt;line-height:
-200%'>I, Dr. PROVIDER_PRESIDENT, hereby swear the following to be true under
+200%'>I, Dr. <?php echo $CaseInfo[0]['Provider_President'];?></span>, hereby swear the following to be true under
 the penalty of perjury:</span></p>
 
 <p class=MsoListParagraph style='margin-left:19.5pt;text-align:justify;
@@ -933,7 +933,7 @@ the Independent Medical Examination (IME) report dated <b>01/15/2013 by John <sp
 class=SpellE>Iozzio</span>. D.C., Lac.,</b> who determined that, after
 examining the claimant on <b>01/15/2013</b>,&nbsp;further treatment was not
 medically necessary for injury reportedly sustained in the accident of <span
-class=defaulttext>ACCIDENT_DATE</span>. </span></p>
+class=defaulttext><?php echo date_format(date_create($CaseInfo[0]['Accident_Date']), "m/d/Y");?></span>. </span></p>
 
 <p class=MsoNormal style='margin-left:19.5pt;text-align:justify;text-indent:
 -19.5pt;line-height:200%;background:white'><span style='font-family:"Times New Roman",serif'>3.</span><span
@@ -942,19 +942,19 @@ style='font-size:7.0pt;line-height:200%;font-family:"Times New Roman",serif'>&nb
 of medical necessity <span class=GramE>on the basis of</span> the documentation
 provided, medical record and the IME report supplied, in order to come to a
 conclusion of whether the continued chiropractic treatments and chiropractic
-re-examinations provided to <span class=defaulttext>INJUREDPARTY_NAME</span> by
-my office <span class=defaulttext>PROVIDER_NAME</span> from <span class=SpellE><span
-class=defaulttext>DateOfService_START</span></span><span class=defaulttext> to <span
-class=SpellE>DateOfService_END</span></span><b> </b>performed on the claimant
+re-examinations provided to <span class=defaulttext><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></span> by
+my office <span class=defaulttext><?php echo $CaseInfo[0]['Provider_Name'];?></span> from <span class=SpellE><span
+class=defaulttext><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span></span><span class=defaulttext> to <span
+class=SpellE><?php echo date_format(date_create($CaseInfo[0]['DateOfService_End']), "m/d/Y");?></span></span><b> </b>performed on the claimant
 were required and medically necessary for the claimant’s pain and injuries.</span></p>
 
 <p class=MsoNormal style='margin-left:19.5pt;text-align:justify;text-indent:
 -19.5pt;line-height:200%;background:white'><span style='font-family:"Times New Roman",serif'>4.</span><span
 style='font-size:7.0pt;line-height:200%;font-family:"Times New Roman",serif'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span><span class=defaulttext><span style='font-family:"Times New Roman",serif'>INJUREDPARTY_NAME</span></span><span
+</span><span class=defaulttext><span style='font-family:"Times New Roman",serif'><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></span></span><span
 style='font-family:"Times New Roman",serif'>, a <b>53-year-old male/female</b>
 was a driver/front seat passenger of a vehicle involved in a motor vehicle
-accident on <span class=defaulttext>ACCIDENT_DATE</span>. <span class=GramE>As
+accident on <span class=defaulttext><?php echo date_format(date_create($CaseInfo[0]['Accident_Date']), "m/d/Y");?></span>. <span class=GramE>As
 a result of</span> the impact, he/she sustained injuries to his/her neck, <b>shoulders,
 middle back, lower back and left knee</b>. Following the accident, the patient
 was taken by ambulance to the emergency room of Lutheran Hospital where he/she
@@ -1002,7 +1002,7 @@ was called up by defendant insurance company for an independent Medical
 Examination (IME). This examination was performed by<b> Dr. Ariel Goldin. </b>At
 that time, Dr. Goldin acknowledge that the patient sustained injuries to the <b>head,
 neck, mid back, lower back, left shoulder, left elbow, left wrist, left hip,
-left knee and left ankle</b> in<b> </b><span class=defaulttext>ACCIDENT_DATE</span>
+left knee and left ankle</b> in<b> </b><span class=defaulttext><?php echo date_format(date_create($CaseInfo[0]['Accident_Date']), "m/d/Y");?></span>
 motor vehicle accident. <b>Dr. Goldin acknowledges that the patient received a
 sling, a neck collar, an ace bandage, a cane and a knee brace <span
 class=GramE>as a result of</span> this accident. Dr. Goldin acknowledges that
@@ -1114,9 +1114,9 @@ the insurance carrier, has no responsibility for the patient’s best interests.</
 style='font-size:7.0pt;line-height:200%;font-family:"Times New Roman",serif'>&nbsp;&nbsp;&nbsp;
 </span><span style='font-family:"Times New Roman",serif'>The IME report does
 not establish that the chiropractic therapy and chiropractic re-evaluation
-performed by my office <span class=defaulttext>PROVIDER_NAME</span> would not
+performed by my office <span class=defaulttext><?php echo $CaseInfo[0]['Provider_Name'];?></span> would not
 be medically necessary. Moreover, based on the foregoing, the services rendered
-by <span class=defaulttext>PROVIDER_NAME</span> were, in fact, medically
+by <span class=defaulttext><?php echo $CaseInfo[0]['Provider_Name'];?></span> were, in fact, medically
 necessary as an appropriate part of treatment for his patient.</span></p>
 
 <p class=MsoNormal style='margin-left:19.5pt;text-align:justify;text-indent:
@@ -1139,7 +1139,7 @@ color:black'>By_____________________________________</span></p>
 <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
 justify;line-height:normal;background:white'><span style='font-family:"Times New Roman",serif;
 color:black'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
-style='font-family:"Times New Roman",serif'>Dr. </span>PROVIDER_PRESIDENT</p>
+style='font-family:"Times New Roman",serif'>Dr. </span><?php echo $CaseInfo[0]['Provider_President'];?></span></p>
 
 <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;text-align:
 justify;line-height:normal;background:white'><span style='font-family:"Times New Roman",serif;

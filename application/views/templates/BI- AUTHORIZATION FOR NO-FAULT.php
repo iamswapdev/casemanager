@@ -731,16 +731,16 @@ style='font-size:12.0pt;mso-fareast-font-family:"Times New Roman"'><o:p></o:p></
 
 <p class=MsoNormal style='margin-left:3.0in;text-indent:-3.0in;mso-outline-level:
 1;tab-stops:445.5pt'><span class=defaulttext><b style='mso-bidi-font-weight:
-normal'><span style='mso-bidi-font-size:12.0pt'>INSURANCECOMPANY_NAME</span></b></span><span
+normal'><span style='mso-bidi-font-size:12.0pt'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></span></b></span><span
 style='mso-bidi-font-size:12.0pt'><o:p></o:p></span></p>
 
 <p class=MsoNormal style='margin-left:3.0in;text-indent:-3.0in;mso-outline-level:
-1;tab-stops:445.5pt'><b><span style='mso-bidi-font-size:12.0pt'>INSURANCECOMPANY_LOCAL_ADDRESS</span></b><span
+1;tab-stops:445.5pt'><b><span style='mso-bidi-font-size:12.0pt'><?php echo $CaseInfo[0]['InsuranceCompany_Local_Address'];?></span></b><span
 style='mso-bidi-font-size:12.0pt'><o:p></o:p></span></p>
 
 <p class=MsoNormal style='text-align:justify;line-height:150%'><b><span
-style='mso-bidi-font-size:12.0pt;line-height:150%'>INSURANCECOMPANY_LOCAL_CITY,
-INSURANCECOMPANY_LOCAL_STATE INSURANCECOMPANY_LOCAL_ZIP<o:p></o:p></span></b></p>
+style='mso-bidi-font-size:12.0pt;line-height:150%'><?php echo $CaseInfo[0]['InsuranceCompany_Local_City']; ?>,
+<?php echo $CaseInfo[0]['InsuranceCompany_Local_State']; ?> <?php $CaseInfo[0]['InsuranceCompany_Local_Zip'];?><o:p></o:p></span></b></p>
 
 <p class=MsoNormal style='text-align:justify;line-height:150%'><b
 style='mso-bidi-font-weight:normal'><span style='mso-bidi-font-size:12.0pt;
@@ -761,7 +761,7 @@ line-height:150%'><o:p>&nbsp;</o:p></span></b></p>
   </td>
   <td width=490 valign=top style='width:294.1pt;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span class=defaulttext><b style='mso-bidi-font-weight:
-  normal'><span style='mso-bidi-font-size:12.0pt'>INJUREDPARTY_NAME</span></b></span></p>
+  normal'><span style='mso-bidi-font-size:12.0pt'><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></span></b></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:1'>
@@ -775,7 +775,7 @@ line-height:150%'><o:p>&nbsp;</o:p></span></b></p>
   line-height:150%;mso-bidi-font-family:"Courier New"'>Insured:<o:p></o:p></span></b></p>
   </td>
   <td width=490 valign=top style='width:294.1pt;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal>InsuredParty_Name</p>
+  <p class=MsoNormal><?php echo $CaseInfo[0]['InsuredParty_FirstName']." ".$CaseInfo[0]['InsuredParty_LastName'];?></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:2'>
@@ -791,7 +791,7 @@ line-height:150%'><o:p>&nbsp;</o:p></span></b></p>
   <td width=490 valign=top style='width:294.1pt;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify;line-height:150%'><span
   class=defaulttext><span style='mso-bidi-font-size:12.0pt;line-height:150%;
-  mso-bidi-font-weight:bold'>ACCIDENT_DATE</span></span><b style='mso-bidi-font-weight:
+  mso-bidi-font-weight:bold'><?php echo date_format(date_create($CaseInfo[0]['Accident_Date']), "m/d/Y");?></span></span><b style='mso-bidi-font-weight:
   normal'><span style='mso-bidi-font-size:11.0pt;line-height:150%;mso-bidi-font-family:
   "Courier New"'><o:p></o:p></span></b></p>
   </td>
@@ -812,7 +812,7 @@ line-height:150%'><o:p>&nbsp;</o:p></span></b></p>
   <td width=490 valign=top style='width:294.1pt;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='text-align:justify;line-height:150%'><span
   class=SpellE><span class=defaulttext><span style='mso-bidi-font-size:12.0pt;
-  line-height:150%'>Ins_Claim_Number</span></span></span><span
+  line-height:150%'><?php echo $CaseInfo[0]['Ins_Claim_Number'];?></span></span></span><span
   class=HeaderChar><span style='mso-bidi-font-size:12.0pt;line-height:150%'> <o:p></o:p></span></span></p>
   <p class=MsoNormal style='text-align:justify;line-height:150%'><span
   class=SpellE><span class=defaulttext><span style='mso-bidi-font-size:12.0pt;
@@ -845,7 +845,7 @@ none'><span style='mso-bidi-font-family:"Courier New"'><span style='mso-tab-coun
 style='mso-tab-count:1'>      </span><span style='mso-tab-count:7'>                                                                                    </span><span
 style='mso-tab-count:4'>                                                </span><span
 style='mso-tab-count:1'>            </span></span><span class=defaulttext><span
-style='mso-bidi-font-size:12.0pt;line-height:150%'>INJUREDPARTY_NAME</span></span><span
+style='mso-bidi-font-size:12.0pt;line-height:150%'><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></span></span><span
 style='mso-bidi-font-family:"Courier New"'><o:p></o:p></span></p>
 
 <p class=MsoNormal style='line-height:150%'><span style='mso-bidi-font-family:
@@ -869,8 +869,8 @@ style='mso-bidi-font-size:12.0pt;line-height:150%;mso-bidi-font-family:"Courier 
 
 <p class=MsoNormal style='line-height:150%;tab-stops:0in .5in 1.0in 1.5in 2.0in 2.5in 3.0in 3.5in 4.0in 4.5in 5.0in 5.5in 6.0in 6.5in'><span
 style='mso-bidi-font-size:12.0pt;line-height:150%;mso-bidi-font-family:"Courier New"'><span
-style='mso-tab-count:1'>            </span>I CERTIFY that on NOWDT, </span><span
-class=defaulttext><span style='mso-bidi-font-size:12.0pt;line-height:150%'>INJUREDPARTY_NAME</span></span>,<span
+style='mso-tab-count:1'>            </span>I CERTIFY that on <?php echo date("m/d/Y");?>, </span><span
+class=defaulttext><span style='mso-bidi-font-size:12.0pt;line-height:150%'><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></span></span>,<span
 style='mso-bidi-font-size:12.0pt;line-height:150%;mso-bidi-font-family:"Courier New"'>
 personally came before me and acknowledged under oath, to my satisfaction, that
 this person:<o:p></o:p></span></p>

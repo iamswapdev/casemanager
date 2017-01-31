@@ -613,14 +613,14 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
   <td width="70%" style='width:70.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-family:
-  "Times New Roman"'>COURT_NAME<br>
-  COURT_VENUE<o:p></o:p></span></p>
+  "Times New Roman"'><?php echo $CaseInfo[0]['Court_Name'];?><br>
+  <?php echo $CaseInfo[0]['Court_Venue'];?><o:p></o:p></span></p>
   </td>
   <td width="30%" valign=top style='width:30.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><b><span style='font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman"'>Index No.:</span></b><b style='mso-bidi-font-weight:normal'><span
-  style='font-family:"Times New Roman","serif"'> <span class=SpellE>IndexOrAAA_Number</span></span></b><span
+  style='font-family:"Times New Roman","serif"'> <span class=SpellE><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></span></span></b><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
   </td>
  </tr>
@@ -641,11 +641,11 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
     <td colspan=3 valign=top style='padding:0in 0in 0in 0in;height:20.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     tab-stops:4.0in 445.5pt'><span class=defaulttext><span style='font-family:
-    "Times New Roman","serif"'>PROVIDER_NAME</span></span><span
+    "Times New Roman","serif"'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span><span
     style='font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-family:"Times New Roman","serif"'>A/A/O
-    <span class=defaulttext>INJUREDPARTY_NAME</span></span><span
+    <span class=defaulttext><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></span></span><span
     style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
     </td>
    </tr>
@@ -669,7 +669,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
    <tr style='mso-yfti-irow:3;height:21.0pt'>
     <td colspan=3 valign=bottom style='padding:0in 0in 0in 0in;height:21.0pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
-    line-height:normal'><span class=defaulttext><span style='font-family:"Times New Roman","serif"'>INSURANCECOMPANY_NAME</span></span><span
+    line-height:normal'><span class=defaulttext><span style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></span></span><span
     style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
     </td>
    </tr>
@@ -1525,7 +1525,7 @@ display:none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman"'>Franklin Square, New York.<br>
-  NOWDT <o:p></o:p></span></p>
+  <?php echo date("m/d/Y");?> <o:p></o:p></span></p>
   </td>
  </tr>
 </table>
@@ -1551,7 +1551,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
   Tel: 516-858-4411;<span style='mso-spacerun:yes'>    </span>Fax: 516-216-5405<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><b><span style='font-family:"Times New Roman","serif";mso-fareast-font-family:
-  "Times New Roman"'>Our Case Id: <span class=SpellE>Case_ID</span></span></b><span
+  "Times New Roman"'>Our Case Id: <span class=SpellE><?php echo $CaseInfo[0]['Case_Id'];?></span></span></b><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
   </td>
  </tr>
@@ -1578,14 +1578,14 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
   <td width="70%" style='width:70.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-family:
-  "Times New Roman"'>COURT_NAME<br>
-  COURT_VENUE<o:p></o:p></span></p>
+  "Times New Roman"'><?php echo $CaseInfo[0]['Court_Name'];?><br>
+  <?php echo $CaseInfo[0]['Court_Venue'];?><o:p></o:p></span></p>
   </td>
   <td width="30%" valign=top style='width:30.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><b><span style='font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman"'>Index No.:</span></b><b style='mso-bidi-font-weight:normal'><span
-  style='font-family:"Times New Roman","serif"'> <span class=SpellE>IndexOrAAA_Number</span></span></b><span
+  style='font-family:"Times New Roman","serif"'> <span class=SpellE><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></span></span></b><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
   </td>
  </tr>
@@ -1606,12 +1606,12 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
     <td colspan=3 valign=top style='padding:0in 0in 0in 0in;height:20.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     tab-stops:4.0in 445.5pt'><span class=defaulttext><span style='font-family:
-    "Times New Roman","serif"'>PROVIDER_NAME</span></span><span
+    "Times New Roman","serif"'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span><span
     style='font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     text-align:justify;text-justify:inter-ideograph;tab-stops:445.5pt'><span
     style='font-family:"Times New Roman","serif"'>A/A/O <span
-    class=defaulttext>INJUREDPARTY_NAME<o:p></o:p></span></span></p>
+    class=defaulttext><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?><o:p></o:p></span></span></p>
     </td>
    </tr>
    <tr style='mso-yfti-irow:1;height:24.75pt'>
@@ -1634,7 +1634,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
    <tr style='mso-yfti-irow:3;height:21.0pt'>
     <td colspan=3 valign=bottom style='padding:0in 0in 0in 0in;height:21.0pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
-    line-height:normal'><span class=defaulttext><span style='font-family:"Times New Roman","serif"'>INSURANCECOMPANY_NAME</span></span><span
+    line-height:normal'><span class=defaulttext><span style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></span></span><span
     style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'>.<o:p></o:p></span></p>
     </td>
    </tr>
@@ -2046,7 +2046,7 @@ display:none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman"'>Franklin Square, New York.<br>
-  NOWDT <o:p></o:p></span></p>
+  <?php echo date("m/d/Y");?> <o:p></o:p></span></p>
   </td>
  </tr>
 </table>
@@ -2070,7 +2070,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
   475 Franklin Avenue<br>
   Franklin Square, New York 11010<br>
   Tel: 516-858-4411<span style='mso-spacerun:yes'>   </span>Fax: 516-216-5405<br>
-  <b>Our Case Id: <span class=SpellE>Case_ID</span></b><o:p></o:p></span></p>
+  <b>Our Case Id: <span class=SpellE><?php echo $CaseInfo[0]['Case_Id'];?></span></b><o:p></o:p></span></p>
   </td>
  </tr>
 </table>
@@ -2091,7 +2091,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
   LAW OFFICES OF LAWRENCE N. ROGAK, LLC<br>
   3355 LAWSON BOULEVARD<span class=GramE>,</span><br>
   OCEANSIDE, New York, 11572 <br>
-  <b>Your File No. <span class=SpellE>Attorney_FileNumber</span></b><o:p></o:p></span></p>
+  <b>Your File No. <span class=SpellE><?php echo $CaseInfo[0]['Attorney_FileNumber'];?></span></b><o:p></o:p></span></p>
   </td>
   <td valign=top style='padding:0in 0in 0in 0in'></td>
  </tr>
@@ -2117,14 +2117,14 @@ display:none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
   <td width="70%" style='width:70.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'><span
-  style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'>COURT_NAME<br>
-  COURT_VENUE<o:p></o:p></span></p>
+  style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><?php echo $CaseInfo[0]['Court_Name'];?><br>
+  <?php echo $CaseInfo[0]['Court_Venue'];?><o:p></o:p></span></p>
   </td>
   <td width="30%" valign=top style='width:30.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'><b><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'>Index
   No.:</span></b><b style='mso-bidi-font-weight:normal'><span style='font-family:
-  "Times New Roman","serif"'> <span class=SpellE>IndexOrAAA_Number</span></span></b><span
+  "Times New Roman","serif"'> <span class=SpellE><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></span></span></b><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
   </td>
  </tr>
@@ -2145,10 +2145,10 @@ display:none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
     <td colspan=3 valign=top style='padding:0in 0in 0in 0in;height:20.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     tab-stops:4.0in 445.5pt'><span class=defaulttext><span style='font-family:
-    "Times New Roman","serif"'>PROVIDER_NAME<o:p></o:p></span></span></p>
+    "Times New Roman","serif"'><?php echo $CaseInfo[0]['Provider_Name'];?><o:p></o:p></span></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-family:"Times New Roman","serif"'>A/A/O
-    <span class=defaulttext>INJUREDPARTY_NAME</span></span><span
+    <span class=defaulttext><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></span></span><span
     style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
     </td>
    </tr>
@@ -2173,7 +2173,7 @@ display:none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
     <td colspan=3 valign=bottom style='padding:0in 0in 0in 0in;height:21.0pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-family:"Times New Roman","serif";
-    mso-fareast-font-family:"Times New Roman"'>INSURANCECOMPANY_NAME.<o:p></o:p></span></p>
+    mso-fareast-font-family:"Times New Roman"'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?>.<o:p></o:p></span></p>
     </td>
    </tr>
    <tr style='mso-yfti-irow:4;mso-yfti-lastrow:yes;height:24.0pt'>
@@ -2344,7 +2344,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman"'>Franklin Square, New York.<br>
-  NOWDT <o:p></o:p></span></p>
+  <?php echo date("m/d/Y");?> <o:p></o:p></span></p>
   </td>
  </tr>
 </table>
@@ -2387,7 +2387,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
   margin-left:10.9pt;margin-bottom:.0001pt;line-height:normal'><b
   style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman","serif"'>Our
-  Case Id: <span class=SpellE>Case_Id</span></span></b><b style='mso-bidi-font-weight:
+  Case Id: <span class=SpellE><?php echo $CaseInfo[0]['Case_Id'];?></span></span></b><b style='mso-bidi-font-weight:
   normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman"'><o:p></o:p></span></b></p>
   </td>
@@ -2409,7 +2409,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
   LAW OFFICES OF LAWRENCE N. ROGAK, LLC<br>
   3355 LAWSON BOULEVARD<span class=GramE>,</span><br>
   OCEANSIDE, New York, 11572 <br>
-  <b>Your File No. <span class=SpellE>Attorney_FileNumber</span></b><o:p></o:p></span></p>
+  <b>Your File No. <span class=SpellE><?php echo $CaseInfo[0]['Attorney_FileNumber'];?></span></b><o:p></o:p></span></p>
   </td>
   <td valign=top style='padding:0in 0in 0in 0in'></td>
  </tr>
@@ -2436,15 +2436,15 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
   <td width="70%" style='width:70.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman","serif";
-  mso-fareast-font-family:"Times New Roman"'>COURT_NAME<br>
-  COURT_VENUE<o:p></o:p></span></p>
+  mso-fareast-font-family:"Times New Roman"'><?php echo $CaseInfo[0]['Court_Name'];?><br>
+  <?php echo $CaseInfo[0]['Court_Venue'];?><o:p></o:p></span></p>
   </td>
   <td width="30%" valign=top style='width:30.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><b><span style='font-size:10.0pt;font-family:"Times New Roman","serif";
   mso-fareast-font-family:"Times New Roman"'>Index No.:</span></b><b
   style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
-  "Times New Roman","serif"'> <span class=SpellE>IndexOrAAA_Number</span></span></b><span
+  "Times New Roman","serif"'> <span class=SpellE><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></span></span></b><span
   style='font-size:10.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman"'><o:p></o:p></span></p>
   </td>
@@ -2466,11 +2466,11 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
     <td colspan=3 valign=top style='padding:0in 0in 0in 0in;height:20.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     tab-stops:4.0in 445.5pt'><span class=defaulttext><span style='font-size:
-    10.0pt;line-height:115%;font-family:"Times New Roman","serif"'>PROVIDER_NAME</span></span><span
+    10.0pt;line-height:115%;font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span><span
     style='font-size:10.0pt;line-height:115%;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:10.0pt;font-family:"Times New Roman","serif"'>A/A/O
-    <span class=defaulttext>INJUREDPARTY_NAME</span></span><span
+    <span class=defaulttext><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></span></span><span
     style='font-size:10.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
     "Times New Roman"'><o:p></o:p></span></p>
     </td>
@@ -2496,7 +2496,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
     <td colspan=3 valign=bottom style='padding:0in 0in 0in 0in;height:21.0pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=defaulttext><span style='font-size:10.0pt;
-    font-family:"Times New Roman","serif"'>INSURANCECOMPANY_NAME</span></span><span
+    font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></span></span><span
     style='font-size:10.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
     "Times New Roman"'><o:p></o:p></span></p>
     </td>
@@ -2630,7 +2630,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman","serif";
   mso-fareast-font-family:"Times New Roman"'>Franklin Square, New York.<br>
-  NOWDT <o:p></o:p></span></p>
+  <?php echo date("m/d/Y");?> <o:p></o:p></span></p>
   </td>
  </tr>
 </table>
@@ -2678,7 +2678,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
   margin-left:10.9pt;margin-bottom:.0001pt;line-height:normal'><b
   style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
-  "Times New Roman","serif"'>Our Case Id: <span class=SpellE>Case_Id</span></span></b><b
+  "Times New Roman","serif"'>Our Case Id: <span class=SpellE><?php echo $CaseInfo[0]['Case_Id'];?></span></span></b><b
   style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
   "Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></b></p>
   </td>
@@ -2700,7 +2700,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
   LAW OFFICES OF LAWRENCE N. ROGAK, LLC<br>
   3355 LAWSON BOULEVARD<span class=GramE>,</span><br>
   OCEANSIDE, New York, 11572 <br>
-  <b>Your File No. <span class=SpellE>Attorney_FileNumber</span></b><o:p></o:p></span></p>
+  <b>Your File No. <span class=SpellE><?php echo $CaseInfo[0]['Attorney_FileNumber'];?></span></b><o:p></o:p></span></p>
   </td>
   <td valign=top style='padding:0in 0in 0in 0in'></td>
  </tr>
@@ -2726,8 +2726,8 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
   <td width="70%" style='width:70.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'><span
-  style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'>COURT_NAME<br>
-  COURT_VENUE<o:p></o:p></span></p>
+  style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><?php echo $CaseInfo[0]['Court_Name'];?><br>
+  <?php echo $CaseInfo[0]['Court_Venue'];?><o:p></o:p></span></p>
   </td>
   <td width="30%" valign=top style='width:30.0%;padding:0in 0in 0in 0in'></td>
  </tr>
@@ -2748,10 +2748,10 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
     <td colspan=3 valign=top style='padding:0in 0in 0in 0in;height:20.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     tab-stops:4.0in 445.5pt'><span class=defaulttext><span style='font-family:
-    "Times New Roman","serif"'>PROVIDER_NAME<o:p></o:p></span></span></p>
+    "Times New Roman","serif"'><?php echo $CaseInfo[0]['Provider_Name'];?><o:p></o:p></span></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-family:"Times New Roman","serif"'>A/A/O
-    <span class=defaulttext>INJUREDPARTY_NAME</span></span><span
+    <span class=defaulttext><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></span></span><span
     style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
     </td>
    </tr>
@@ -2776,7 +2776,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
     <td colspan=3 valign=bottom style='padding:0in 0in 0in 0in;height:21.0pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-family:"Times New Roman","serif";
-    mso-fareast-font-family:"Times New Roman"'>INSURANCECOMPANY_NAME<o:p></o:p></span></p>
+    mso-fareast-font-family:"Times New Roman"'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?><o:p></o:p></span></p>
     </td>
    </tr>
    <tr style='mso-yfti-irow:4;mso-yfti-lastrow:yes;height:24.0pt'>
@@ -2807,7 +2807,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
     line-height:normal'><b><span style='font-family:"Times New Roman","serif";
     mso-fareast-font-family:"Times New Roman"'>Index No.:</span></b><b
     style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman","serif"'>
-    <span class=SpellE>IndexOrAAA_Number</span></span></b><span
+    <span class=SpellE><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></span></span></b><span
     style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
     </td>
    </tr>
@@ -2855,7 +2855,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
   Franklin Square, NY 11010<br>
   Tel: 516-858-4411<br>
   Fax: 516-216-5405<br>
-  <b>Our File No.: , <span class=SpellE>Case_ID</span><o:p></o:p></b></span></p>
+  <b>Our File No.: , <span class=SpellE><?php echo $CaseInfo[0]['Case_Id'];?></span><o:p></o:p></b></span></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman"'><br>
@@ -2911,14 +2911,14 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
   <td width="70%" style='width:70.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-family:
-  "Times New Roman"'>COURT_VENUE<br>
-  COURT_NAME<o:p></o:p></span></p>
+  "Times New Roman"'><?php echo $CaseInfo[0]['Court_Venue'];?><br>
+  <?php echo $CaseInfo[0]['Court_Name'];?><o:p></o:p></span></p>
   </td>
   <td width="30%" valign=top style='width:30.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><b><span style='font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman"'>Index No.: </span></b><span class=SpellE><b
-  style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman","serif"'>IndexOrAAA_Number</span></b></span><span
+  style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></span></b></span><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
   </td>
  </tr>
@@ -2939,12 +2939,12 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
     <td colspan=3 valign=top style='padding:0in 0in 0in 0in;height:20.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal;tab-stops:4.0in'><span class=defaulttext><span
-    style='font-family:"Times New Roman","serif"'>PROVIDER_NAME</span></span><span
+    style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span><span
     class=defaulttext><span style='font-family:"Times New Roman","serif";
     mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-family:"Times New Roman","serif"'>A/A/O
-    <span class=defaulttext>INJUREDPARTY_NAME</span><o:p></o:p></span></p>
+    <span class=defaulttext><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></span><o:p></o:p></span></p>
     </td>
    </tr>
    <tr style='mso-yfti-irow:1;height:24.75pt'>
@@ -2967,7 +2967,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
    <tr style='mso-yfti-irow:3;height:21.0pt'>
     <td colspan=3 valign=bottom style='padding:0in 0in 0in 0in;height:21.0pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
-    line-height:normal'><span class=defaulttext><span style='font-family:"Times New Roman","serif"'>INSURANCECOMPANY_NAME</span></span><span
+    line-height:normal'><span class=defaulttext><span style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></span></span><span
     style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
     </td>
    </tr>
@@ -3146,7 +3146,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman"'><br>
-  <b>Our File No.: , <span class=SpellE>Case_ID</span></b><o:p></o:p></span></p>
+  <b>Our File No.: , <span class=SpellE><?php echo $CaseInfo[0]['Case_Id'];?></span></b><o:p></o:p></span></p>
   </td>
  </tr>
 </table>
@@ -3190,7 +3190,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
   <td valign=top style='padding:0in 0in 0in 0in'>
   <p class=MsoNormal align=right style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:right;line-height:normal'><span style='font-family:"Times New Roman","serif"'>DATE:
-  NOWDT</span><span style='font-family:"Times New Roman","serif";mso-fareast-font-family:
+  <?php echo date("m/d/Y");?></span><span style='font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman"'><o:p></o:p></span></p>
   </td>
  </tr>
@@ -3198,10 +3198,10 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
   <td style='padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:12.0pt;line-height:normal'><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><br>
-  </span><span style='font-family:"Times New Roman","serif"'>PROVIDER_NAME<br>
-  <span class=SpellE>Provider_PERM_Address</span><br>
-  <span class=SpellE>Provider_PERM_City</span>, <span class=SpellE>Provider_PERM_State</span>
-  <span class=SpellE>Provider_PERM_Zip</span></span><span style='font-family:
+  </span><span style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Provider_Name'];?><br>
+  <span class=SpellE><?php echo $CaseInfo[0]['Provider_Perm_Address'];?></span><br>
+  <span class=SpellE><?php echo $CaseInfo[0]['Provider_Perm_City'];?></span>, <span class=SpellE><?php echo $CaseInfo[0]['Provider_Perm_State'];?></span>
+  <span class=SpellE><?php echo $CaseInfo[0]['Provider_Perm_Zip'];?></span></span><span style='font-family:
   "Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><br>
   <br style='mso-special-character:line-break'>
   <![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
@@ -3217,7 +3217,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
     </td>
     <td style='padding:0in 0in 0in 0in'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
-    line-height:normal'><span style='font-family:"Times New Roman","serif"'>PROVIDER_NAME.</span><span
+    line-height:normal'><span style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Provider_Name'];?>.</span><span
     style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
     </td>
    </tr>
@@ -3229,7 +3229,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
     </td>
     <td style='padding:0in 0in 0in 0in'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
-    line-height:normal'><span class=SpellE><span style='font-family:"Times New Roman","serif"'>InjuredParty_Name</span></span><span
+    line-height:normal'><span class=SpellE><span style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></span></span><span
     style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
     </td>
    </tr>
@@ -3242,7 +3242,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
     </td>
     <td style='padding:0in 0in 0in 0in'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
-    line-height:normal'><span class=SpellE><span style='font-family:"Times New Roman","serif"'>Ins_Claim_Number</span></span><span
+    line-height:normal'><span class=SpellE><span style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Ins_Claim_Number'];?></span></span><span
     style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
     </td>
    </tr>
@@ -3254,7 +3254,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
     </td>
     <td style='padding:0in 0in 0in 0in'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
-    line-height:normal'><span class=SpellE><span style='font-family:"Times New Roman","serif"'>Provider_Type</span></span><span
+    line-height:normal'><span class=SpellE><span style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Provider_Type'];?></span></span><span
     style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
     </td>
    </tr>
@@ -3266,7 +3266,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
     </td>
     <td style='padding:0in 0in 0in 0in'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
-    line-height:normal'><span class=SpellE><span style='font-family:"Times New Roman","serif"'>Balance_Amount</span></span><span
+    line-height:normal'><span class=SpellE><span style='font-family:"Times New Roman","serif"'><?php echo "$".number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
     style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
     </td>
    </tr>
@@ -3279,8 +3279,8 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
     </td>
     <td style='padding:0in 0in 0in 0in'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
-    line-height:normal'><span class=SpellE><span style='font-family:"Times New Roman","serif"'>DateOfService_Start</span></span><span
-    style='font-family:"Times New Roman","serif"'> – <span class=SpellE>DateOfService_End</span></span><span
+    line-height:normal'><span class=SpellE><span style='font-family:"Times New Roman","serif"'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span></span><span
+    style='font-family:"Times New Roman","serif"'> – <span class=SpellE><?php echo date_format(date_create($CaseInfo[0]['DateOfService_End']), "m/d/Y");?></span></span><span
     style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
     </td>
    </tr>
@@ -3288,7 +3288,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman"'><br>
-  Dear </span><span class=SpellE><span style='font-family:"Times New Roman","serif"'>Provider_President</span></span><span
+  Dear </span><span class=SpellE><span style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Provider_President'];?></span></span><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'>:
   <o:p></o:p></span></p>
   <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
@@ -3330,7 +3330,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
 style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><br>
 <br>
 </span><b><span style='font-family:"Times New Roman","serif"'>Our Case Id No.: <span
-class=SpellE>Case_Id</span></span></b><span style='font-family:"Times New Roman","serif";
+class=SpellE><?php echo $CaseInfo[0]['Case_Id'];?></span></span></b><span style='font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
 
 <span style='font-size:11.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
@@ -3349,17 +3349,17 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
   <td width="70%" style='width:70.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-family:"Times New Roman","serif"'>COURT_VENUE</span><span
+  normal'><span style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Court_Venue'];?></span><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><st1:place u4:st="on"><st1:PlaceType u4:st="on"><span
-  style='font-family:"Times New Roman","serif"'>COURT_NAME</span><span
+  style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Court_Name'];?></span><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
   </td>
   <td width="30%" valign=top style='width:30.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><b style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman","serif"'>Index
-  No.: <span class=SpellE>IndexOrAAA_Number</span></span></b><span
+  No.: <span class=SpellE><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></span></span></b><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
   </td>
  </tr>
@@ -3379,8 +3379,8 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
    <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:20.25pt'>
     <td colspan=3 valign=top style='padding:0in 0in 0in 0in;height:20.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
-    line-height:normal'><span class=defaulttext><span style='font-family:"Times New Roman","serif"'>PROVIDER_NAME
-    A/A/O INJUREDPARTY_NAME</span></span><span style='font-family:"Times New Roman","serif";
+    line-height:normal'><span class=defaulttext><span style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Provider_Name'];?>
+    A/A/O <?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></span></span><span style='font-family:"Times New Roman","serif";
     mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
     </td>
    </tr>
@@ -3404,7 +3404,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
    <tr style='mso-yfti-irow:3;height:21.0pt'>
     <td colspan=3 valign=bottom style='padding:0in 0in 0in 0in;height:21.0pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
-    line-height:normal'><span class=defaulttext><span style='font-family:"Times New Roman","serif"'>INSURANCECOMPANY_NAME</span></span><span
+    line-height:normal'><span class=defaulttext><span style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></span></span><span
     style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'>.<o:p></o:p></span></p>
     </td>
    </tr>
@@ -3475,7 +3475,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:0in;
   margin-bottom:.0001pt;line-height:normal'><span style='font-family:"Times New Roman","serif";
   mso-fareast-font-family:"Times New Roman"'>I am the owner of the plaintiff's
-  office (PROVIDER_NAME.), and as such, am fully familiar with the facts set
+  office (<?php echo $CaseInfo[0]['Provider_Name'];?>.), and as such, am fully familiar with the facts set
   forth in plaintiff's discovery responses annexed hereto. I hereby verify that
   the plaintiff's interrogatory responses annexed hereto are true and accurate
   to the best of my knowledge. I make this verification based upon a review of
@@ -3495,7 +3495,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
   <br>
   <br>
   </span><b><span style='font-family:"Times New Roman","serif"'>Our Case Id
-  No.: <span class=SpellE>Case_Id</span></span></b><span style='font-family:
+  No.: <span class=SpellE><?php echo $CaseInfo[0]['Case_Id'];?></span></span></b><span style='font-family:
   "Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
   </td>
  </tr>
@@ -3517,7 +3517,7 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
   mso-border-top-alt:inset windowtext .75pt;padding:.75pt .75pt .75pt .75pt'>
   <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:center;line-height:normal'><b><span style='font-family:"Times New Roman","serif"'>View
-  Our Case Info.: <span class=SpellE>Case_Id</span></span></b><b><span
+  Our Case Info.: <span class=SpellE><?php echo $CaseInfo[0]['Case_Id'];?></span></span></b><b><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></b></p>
   </td>
   <td width=127 style='width:95.6pt;border:none;padding:.75pt .75pt .75pt .75pt'></td>
@@ -3575,41 +3575,41 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
   <td style='padding:.75pt .75pt .75pt .75pt'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'><span
   class=SpellE><span style='font-family:"Times New Roman","serif";mso-fareast-font-family:
-  "Times New Roman"'>InjuredParty_name</span></span><span style='font-family:
+  "Times New Roman"'><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></span></span><span style='font-family:
   "Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
   </td>
   <td style='padding:.75pt .75pt .75pt .75pt'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'><span
-  class=SpellE><span style='font-family:"Times New Roman","serif"'>Ins_Claim_Number</span></span><span
+  class=SpellE><span style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Ins_Claim_Number'];?></span></span><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
   </td>
   <td width=97 style='width:72.75pt;padding:.75pt .75pt .75pt .75pt'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'><span
-  class=SpellE><span style='font-family:"Times New Roman","serif"'>Accident_Date</span></span><span
+  class=SpellE><span style='font-family:"Times New Roman","serif"'><?php echo date_format(date_create($CaseInfo[0]['Accident_Date']), "m/d/Y");?></span></span><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
   </td>
   <td width=141 style='width:105.4pt;padding:.75pt .75pt .75pt .75pt'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'><span
-  class=SpellE><span style='font-family:"Times New Roman","serif"'>DateofService_Start</span></span><span
-  style='font-family:"Times New Roman","serif"'> - <span class=SpellE>DateofService_End</span></span><span
+  class=SpellE><span style='font-family:"Times New Roman","serif"'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span></span><span
+  style='font-family:"Times New Roman","serif"'> - <span class=SpellE><?php echo date_format(date_create($CaseInfo[0]['DateOfService_End']), "m/d/Y");?></span></span><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
   </td>
   <td width=127 valign=top style='width:95.6pt;padding:.75pt .75pt .75pt .75pt'>
-  <p class=MsoNormal><span class=SpellE><span style='font-family:"Times New Roman","serif"'>Claim_Amount</span></span><span
+  <p class=MsoNormal><span class=SpellE><span style='font-family:"Times New Roman","serif"'><?php echo "$".number_format($CaseInfo[0]['Claim_Amount'], 2);?></span></span><span
   style='font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
   </td>
   <td width=71 style='width:53.25pt;padding:.75pt .75pt .75pt .75pt'>
   <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
-  text-align:center'><span class=SpellE><span style='font-family:"Times New Roman","serif"'>Paid_Amount</span></span><span
+  text-align:center'><span class=SpellE><span style='font-family:"Times New Roman","serif"'><?php echo "$".number_format($CaseInfo[0]['Paid_Amount'], 2);?></span></span><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
   </td>
   <td style='padding:.75pt .75pt .75pt .75pt'>
   <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
-  text-align:center'><span class=SpellE><span style='font-family:"Times New Roman","serif"'>Balance_Amount</span></span><span
+  text-align:center'><span class=SpellE><span style='font-family:"Times New Roman","serif"'><?php echo "$".number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></span><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
   </td>
   <td valign=top style='padding:.75pt .75pt .75pt .75pt'>
-  <p class=MsoNormal><span class=SpellE><span style='font-family:"Times New Roman","serif"'>Provider_Name</span></span><span
+  <p class=MsoNormal><span class=SpellE><span style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span><span
   style='font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
   </td>
  </tr>
@@ -3621,20 +3621,20 @@ normal'><span style='font-family:"Times New Roman","serif";mso-fareast-font-fami
   <td width=127 style='width:95.6pt;padding:.75pt .75pt .75pt .75pt'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span class=SpellE><b style='mso-bidi-font-weight:normal'><span
-  style='font-family:"Times New Roman","serif"'>Claim_Amount</span></b></span><span
+  style='font-family:"Times New Roman","serif"'><?php echo "$".number_format($CaseInfo[0]['Claim_Amount'], 2);?></span></b></span><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
   </td>
   <td width=71 style='width:53.25pt;padding:.75pt .75pt .75pt .75pt'>
   <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:center'><span class=SpellE><b style='mso-bidi-font-weight:normal'><span
-  style='font-family:"Times New Roman","serif"'>Paid_Amount</span></b></span><b
+  style='font-family:"Times New Roman","serif"'><?php echo "$".number_format($CaseInfo[0]['Paid_Amount'], 2);?></span></b></span><b
   style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman","serif";
   mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></b></p>
   </td>
   <td style='padding:.75pt .75pt .75pt .75pt'>
   <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
   text-align:center'><span class=SpellE><b style='mso-bidi-font-weight:normal'><span
-  style='font-family:"Times New Roman","serif"'>Balance_Amount</span></b></span><b
+  style='font-family:"Times New Roman","serif"'><?php echo "$".number_format(($CaseInfo[0]['Claim_Amount']-$CaseInfo[0]['Paid_Amount']), 2);?></span></b></span><b
   style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman","serif";
   mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></b></p>
   </td>

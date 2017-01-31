@@ -499,11 +499,11 @@ div.Section1
   <td width=360 valign=top style='width:3.75in;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in'><span
   style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif";
-  color:black'>COURT_VENUE<br>
-  COURT_NAME<br>
+  color:black'><?php echo $CaseInfo[0]['Court_Venue'];?><br>
+  <?php echo $CaseInfo[0]['Court_Name'];?><br>
   -----------------------------------------------------------X<br>
-  PROVIDER_NAME<br>
-  A/A/O INJUREDPARTY_NAME, <o:p></o:p></span></p>
+  <?php echo $CaseInfo[0]['Provider_Name'];?><br>
+  A/A/O <?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?>, <o:p></o:p></span></p>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in;
   text-indent:107.3pt'><span style='font-size:12.0pt;line-height:115%;
   font-family:"Times New Roman","serif";color:black'>&nbsp;PLAINTIFF(s),&nbsp;&nbsp;
@@ -513,7 +513,7 @@ div.Section1
   "Times New Roman","serif";color:black'>-AGAINST-\<o:p></o:p></span></p>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in'><span
   style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif";
-  color:black'>INSURANCECOMPANY_NAME,&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  color:black'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?>,&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <o:p></o:p></span></p>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in;
   text-indent:112.5pt'><span style='font-size:12.0pt;line-height:115%;
@@ -524,7 +524,7 @@ div.Section1
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in'><span
   style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif";
   color:black'><br>
-  Index No.:&nbsp; <span class=SpellE>IndexOrAAA_Number</span><o:p></o:p></span></p>
+  Index No.:&nbsp; <span class=SpellE><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></span><o:p></o:p></span></p>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in'><span
   style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif";
   color:black'><o:p>&nbsp;</o:p></span></p>
@@ -560,7 +560,7 @@ date thereafter as the Court may assign. Defendant agrees to appear and submit
 a copy of this stipulation to the court.<o:p></o:p></span></p>
 
 <p style='margin-top:2.0pt;margin-right:0in;margin-bottom:24.0pt;margin-left:
-0in'>DATED:&nbsp;&nbsp;&nbsp; NOWDT</p>
+0in'>DATED:&nbsp;&nbsp;&nbsp; <?php echo date("m/d/Y");?></p>
 
 <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width="100%"
  style='width:100.0%;mso-cellspacing:0in;mso-yfti-tbllook:1184;mso-padding-alt:
@@ -596,20 +596,20 @@ a copy of this stipulation to the court.<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
   margin-left:3.0in;margin-bottom:.0001pt;text-indent:-3.0in;line-height:normal'><span
   style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-family:
-  "Times New Roman";mso-bidi-theme-font:minor-bidi'>DEFENDANT_NAME<o:p></o:p></span></p>
+  "Times New Roman";mso-bidi-theme-font:minor-bidi'><?php echo $CaseInfo[0]['Defendant_Name'];?><o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
   margin-left:3.0in;margin-bottom:.0001pt;text-indent:-3.0in;line-height:normal'><span
   style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-family:
-  "Times New Roman";mso-bidi-theme-font:minor-bidi;mso-bidi-font-weight:bold'>DEFENDANT_ADDRESS</span><span
+  "Times New Roman";mso-bidi-theme-font:minor-bidi;mso-bidi-font-weight:bold'><?php echo $CaseInfo[0]['Defendant_Address'];?></span><span
   style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-bidi-font-family:
   "Times New Roman";mso-bidi-theme-font:minor-bidi'><o:p></o:p></span></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif";
   mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi;
-  mso-bidi-font-weight:bold'>DEFENDANT_CITY, DEFENDANT_STATE DEFENDANT_ZIP</span><span
+  mso-bidi-font-weight:bold'><?php echo $CaseInfo[0]['Defendant_City'].", ".$CaseInfo[0]['Defendant_State']." ".$CaseInfo[0]['Defendant_Zip'];?></span><span
   style='font-size:12.0pt;color:black'><br>
   </span><b><span style='font-size:12.0pt;font-family:"Times New Roman","serif";
-  mso-fareast-font-family:"Times New Roman"'>Your File No. <span class=SpellE>Attorney_FileNumber</span></span></b><span
+  mso-fareast-font-family:"Times New Roman"'>Your File No. <span class=SpellE><?php echo $CaseInfo[0]['Attorney_FileNumber'];?></span></span></b><span
   style='font-size:12.0pt;font-family:"Times New Roman","serif";color:black'><o:p></o:p></span></p>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in'><span
   style='font-size:12.0pt;line-height:115%;color:black'>&nbsp;<o:p></o:p></span></p>

@@ -1080,7 +1080,7 @@ normal'>The Beynenson Law Firm, P.C.</b>, 475 Franklin Ave, Franklin Square, NY
 against any and all persons, arising out of <u>automobile accident that took
 place on </u></span><span style='font-size:12.0pt;line-height:115%;font-family:
 "Times New Roman","serif";mso-fareast-font-family:Calibri;mso-fareast-theme-font:
-minor-latin;mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi'>Accident_Date</span><u><span
+minor-latin;mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi'><?php echo date_format(date_create($CaseInfo[0]['Accident_Date']), "m/d/Y");?></span><u><span
 style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman"'> on the corner of &lt;LOCATION OF
 THE ACCIDENT / INSIDENT, CITY&gt;, NEW YORK.</span></u><span style='font-family:

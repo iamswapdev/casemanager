@@ -86,10 +86,12 @@ Class Financials_model extends CI_Model{
 		//$this->db->select("t1.Case_Id, t1.User_Id, t2.InsuranceCompany_Id, t3.InsuranceCompany_Name, COUNT(t2.InsuranceCompany_Id)");
 		 
 		$this->db->from("dbo_tblsettlements as t1");
-		$this->db->join("dbo_tblcase as t2", "t2.Case_Id = t1.Case_Id");
+		$this->db->join("dbo_tblcase as t2", "t2.Case_Id = t1.Case_Id", "LEFT");
 		$this->db->join("dbo_tblinsurancecompany as t3", "t3.InsuranceCompany_Id = t2.InsuranceCompany_Id", "LEFT");
-		$this->db->group_by("t1.User_Id");
-		$this->db->group_by('t2.InsuranceCompany_Id');
+		$this->db->group_by(array("t1.User_Id", "t2.InsuranceCompany_Id"));
+		$this->db->order_by("t1.User_Id", "asc");
+	//	$this->db->group_by('t1.User_Id');
+	//	$this->db->group_by('t2.InsuranceCompany_Id');
 		
 		
 		//$this->db->join("dbo_tblsettlements as t4", "t4.Case_Id = t2.Case_Id");
@@ -103,9 +105,9 @@ Class Financials_model extends CI_Model{
 		$this->db->select("t1.Case_Id, t2.InjuredParty_FirstName, t2.InjuredParty_LastName, t2.InsuranceCompany_Id, t4.Provider_Name, t3.InsuranceCompany_Name, (t2.Claim_Amount - t2.Paid_Amount) as Initial_Balance, ((t1.Settlement_Amount + t1.Settlement_Int)*100/ (t2.Claim_Amount-t2.Paid_Amount))  as Settlement_Percentage, t1.*");
 		 
 		$this->db->from("dbo_tblsettlements as t1");
-		$this->db->join("dbo_tblcase as t2", "t2.Case_Id = t1.Case_Id");
-		$this->db->join("dbo_tblinsurancecompany as t3", "t3.InsuranceCompany_Id = t2.InsuranceCompany_Id");
-		$this->db->join("dbo_tblprovider as t4", "t4.Provider_Id = t2.Provider_Id");
+		$this->db->join("dbo_tblcase as t2", "t2.Case_Id = t1.Case_Id", "LEFT");
+		$this->db->join("dbo_tblinsurancecompany as t3", "t3.InsuranceCompany_Id = t2.InsuranceCompany_Id", "LEFT");
+		$this->db->join("dbo_tblprovider as t4", "t4.Provider_Id = t2.Provider_Id", "LEFT");
 		
 		if($input_data['InsuranceCompany_Id'] != ""){
 			$this->db->where('t2.InsuranceCompany_Id', $input_data['InsuranceCompany_Id']);

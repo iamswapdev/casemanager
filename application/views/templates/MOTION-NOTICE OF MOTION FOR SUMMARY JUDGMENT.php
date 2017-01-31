@@ -635,12 +635,12 @@ ul
  0in 0in 0in 0in'>
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
   <td width="60%" style='width:60.22%;padding:0in 0in 0in 0in'>
-  <p class=MsoNormal>COURT_NAME<br>
-  COURT_VENUE</p>
+  <p class=MsoNormal><?php echo $CaseInfo[0]['Court_Name'];?><br>
+  <?php echo $CaseInfo[0]['Court_Venue'];?></p>
   </td>
   <td width="39%" valign=top style='width:39.78%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='tab-stops:2.1in'><b>Index No.:</b><b
-  style='mso-bidi-font-weight:normal'> <span class=SpellE>IndexOrAAA_Number</span></b></p>
+  style='mso-bidi-font-weight:normal'> <span class=SpellE><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></span></b></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:1'>
@@ -659,9 +659,9 @@ ul
    <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:20.25pt'>
     <td colspan=3 valign=top style='padding:0in 0in 0in 0in;height:20.25pt'>
     <p class=MsoNormal style='tab-stops:4.0in 445.5pt'><span class=defaulttext><b
-    style='mso-bidi-font-weight:normal'>PROVIDER_NAME</b></span></p>
+    style='mso-bidi-font-weight:normal'><?php echo $CaseInfo[0]['Provider_Name'];?></b></span></p>
     <p class=MsoNormal>A/A/O <span class=defaulttext><b style='mso-bidi-font-weight:
-    normal'>INJUREDPARTY_NAME</b></span></p>
+    normal'><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></b></span></p>
     </td>
    </tr>
    <tr style='mso-yfti-irow:1;height:24.75pt'>
@@ -686,7 +686,7 @@ ul
    <tr style='mso-yfti-irow:3;height:21.0pt'>
     <td colspan=3 valign=bottom style='padding:0in 0in 0in 0in;height:21.0pt'>
     <p class=MsoNormal><span class=defaulttext><b style='mso-bidi-font-weight:
-    normal'>INSURANCECOMPANY_NAME</b></span></p>
+    normal'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></b></span></p>
     </td>
    </tr>
    <tr style='mso-yfti-irow:4;height:24.0pt'>
@@ -743,8 +743,8 @@ ul
   _____/_____/_____; upon the annexed Exhibits; and upon all of the prior
   pleadings and proceedings heretofore had herein the undersigned will move
   this Court at Room COURT_ROOM - Special Term, Part COURT_PART of the
-  COURT_NAME, COURT_VENUE located at <span style='font-size:11.0pt;line-height:
-  150%'>COURT_ADDRESS,</span> on _____/_____/_____ at 9:30 a.m. or as soon
+  <?php echo $CaseInfo[0]['Court_Name'];?>, <?php echo $CaseInfo[0]['Court_Venue'];?> located at <span style='font-size:11.0pt;line-height:
+  150%'><?php echo $CaseInfo[0]['Court_Address'];?>,</span> on _____/_____/_____ at 9:30 a.m. or as soon
   thereafter as counsel can be heard for an Order</p>
   <p class=western style='margin-top:0in;margin-right:0in;margin-bottom:0in;
   margin-left:1.0in;margin-bottom:.0001pt;text-indent:-.25in;line-height:150%;
@@ -780,7 +780,7 @@ ul
   </td>
   <td width="91%" colspan=3 valign=top style='width:91.26%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal>Franklin Square, New York<br>
-  NOWDT</p>
+  <?php echo date("m/d/Y");?></p>
   <p class=MsoNormal>&nbsp;</p>
   </td>
  </tr>
@@ -811,17 +811,17 @@ ul
  <tr style='mso-yfti-irow:3;mso-yfti-lastrow:yes'>
   <td width="100%" colspan=4 style='width:100.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-left:2.65pt;text-indent:-2.65pt'>TO:<b
-  style='mso-bidi-font-weight:normal'> DEFENDANT_NAME</b><br>
+  style='mso-bidi-font-weight:normal'> <?php echo $CaseInfo[0]['Defendant_Name'];?></b><br>
   Attorney for Defendant(s)</p>
-  <p class=MsoNormal style='margin-left:3.0in;text-indent:-3.0in'><b>DEFENDANT_ADDRESS</b></p>
-  <p class=MsoNormal><b>DEFENDANT_CITY, DEFENDANT_STATE DEFENDANT_ZIP</b></p>
+  <p class=MsoNormal style='margin-left:3.0in;text-indent:-3.0in'><b><?php echo $CaseInfo[0]['Defendant_Address'];?></b></p>
+  <p class=MsoNormal><b><?php echo $CaseInfo[0]['Defendant_City'].", ".$CaseInfo[0]['Defendant_State']." ".$CaseInfo[0]['Defendant_Zip'];?></b></p>
   <p class=MsoNormal style='line-height:115%'><b style='mso-bidi-font-weight:
   normal'><span style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:
-  minor-latin'>Tel: DEFENDANT_PHONE<span style='mso-spacerun:yes'>         
-  </span>Fax: DEFENDANT_FAX<o:p></o:p></span></b></p>
+  minor-latin'>Tel: <?php echo $CaseInfo[0]['Defendant_Phone'];?><span style='mso-spacerun:yes'>         
+  </span>Fax: <?php echo $CaseInfo[0]['Defendant_Fax'];?><o:p></o:p></span></b></p>
   <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
   style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin'>YOUR
-  FILE # ATTORNEY_FILENUMBER</span></b></p>
+  FILE # <?php echo $CaseInfo[0]['Attorney_FileNumber'];?></span></b></p>
   </td>
  </tr>
  <![if !supportMisalignedColumns]>
@@ -854,12 +854,12 @@ page-break-before:always'>
   mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><br clear=all
   style='page-break-before:always'>
   </span>
-  <p class=MsoNormal style='tab-stops:445.5pt'>COURT_VENUE</p>
-  <p class=MsoNormal>COURT_NAME</p>
+  <p class=MsoNormal style='tab-stops:445.5pt'><?php echo $CaseInfo[0]['Court_Venue'];?></p>
+  <p class=MsoNormal><?php echo $CaseInfo[0]['Court_Name'];?></p>
   </td>
   <td width="40%" valign=top style='width:40.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal><b>Index No.: </b><span class=SpellE><b style='mso-bidi-font-weight:
-  normal'>IndexOrAAA_Number</b></span></p>
+  normal'><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></b></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:1'>
@@ -878,9 +878,9 @@ page-break-before:always'>
    <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:20.25pt'>
     <td colspan=3 valign=top style='padding:0in 0in 0in 0in;height:20.25pt'>
     <p class=MsoNormal style='tab-stops:4.0in 445.5pt'><span class=defaulttext><b
-    style='mso-bidi-font-weight:normal'>PROVIDER_NAME</b></span></p>
+    style='mso-bidi-font-weight:normal'><?php echo $CaseInfo[0]['Provider_Name'];?></b></span></p>
     <p class=MsoNormal style='text-align:justify;tab-stops:445.5pt'>A/A/O <span
-    class=defaulttext><b style='mso-bidi-font-weight:normal'>INJUREDPARTY_NAME</b></span><b
+    class=defaulttext><b style='mso-bidi-font-weight:normal'><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></b></span><b
     style='mso-bidi-font-weight:normal'><o:p></o:p></b></p>
     </td>
    </tr>
@@ -906,7 +906,7 @@ page-break-before:always'>
    <tr style='mso-yfti-irow:3;height:21.0pt'>
     <td colspan=3 valign=bottom style='padding:0in 0in 0in 0in;height:21.0pt'>
     <p class=MsoNormal><span class=defaulttext><b style='mso-bidi-font-weight:
-    normal'>INSURANCECOMPANY_NAME</b>,<u1:p></u1:p></span></p>
+    normal'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></b>,<u1:p></u1:p></span></p>
     </td>
    </tr>
    <tr style='mso-yfti-irow:4;height:24.0pt'>
@@ -1103,7 +1103,7 @@ page-break-before:always'>
   </td>
   <td valign=top style='padding:0in 0in 0in 0in'>
   <p class=MsoNormal>Franklin Square, New York<br>
-  NOWDT</p>
+  <?php echo date("m/d/Y");?></p>
   </td>
  </tr>
 </table>
@@ -1129,7 +1129,7 @@ page-break-before:always'>
   <p class=MsoNormal style='tab-stops:445.5pt'>Tel: 516-858-4411</p>
   <p class=MsoNormal style='tab-stops:445.5pt'>Fax: 516<span style='mso-bidi-font-weight:
   bold'>-216-5405</span> </p>
-  <p class=MsoNormal style='tab-stops:445.5pt'>Our Case <span class=SpellE>Id:Case_Id</span></p>
+  <p class=MsoNormal style='tab-stops:445.5pt'>Our Case <span class=SpellE>Id:<?php echo $CaseInfo[0]['Case_Id'];?></span></p>
   </td>
  </tr>
 </table>
@@ -1142,17 +1142,17 @@ page-break-before:always'>
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
   <td width=648 valign=top style='width:486.05pt;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-left:2.65pt;text-indent:-2.65pt'>TO:<b
-  style='mso-bidi-font-weight:normal'> DEFENDANT_NAME</b><br>
+  style='mso-bidi-font-weight:normal'> <?php echo $CaseInfo[0]['Defendant_Name'];?></b><br>
   Attorney for Defendant(s)</p>
-  <p class=MsoNormal style='margin-left:2.65pt;text-indent:-2.65pt'><b>DEFENDANT_ADDRESS</b></p>
-  <p class=MsoNormal><b>DEFENDANT_CITY, DEFENDANT_STATE DEFENDANT_ZIP</b></p>
+  <p class=MsoNormal style='margin-left:2.65pt;text-indent:-2.65pt'><b><?php echo $CaseInfo[0]['Defendant_Address'];?></b></p>
+  <p class=MsoNormal><b><?php echo $CaseInfo[0]['Defendant_City'].", ".$CaseInfo[0]['Defendant_State']." ".$CaseInfo[0]['Defendant_Zip'];?></b></p>
   <p class=MsoNormal style='line-height:115%'><b style='mso-bidi-font-weight:
   normal'><span style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:
-  minor-latin'>Tel: DEFENDANT_PHONE<span style='mso-spacerun:yes'>         
-  </span>Fax: DEFENDANT_FAX<o:p></o:p></span></b></p>
+  minor-latin'>Tel: <?php echo $CaseInfo[0]['Defendant_Phone'];?><span style='mso-spacerun:yes'>         
+  </span>Fax: <?php echo $CaseInfo[0]['Defendant_Fax'];?><o:p></o:p></span></b></p>
   <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
   style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin'>YOUR
-  FILE # ATTORNEY_FILENUMBER</span></b></p>
+  FILE # <?php echo $CaseInfo[0]['Attorney_FileNumber'];?></span></b></p>
   </td>
  </tr>
 </table>
@@ -1164,13 +1164,13 @@ page-break-before:always'>
  0in 0in 0in 0in'>
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
   <td width="60%" style='width:60.0%;padding:0in 0in 0in 0in'>
-  <p class=MsoNormal>COURT_VENUE<span style='mso-bidi-font-family:"Times New Roman";
+  <p class=MsoNormal><?php echo $CaseInfo[0]['Court_Venue'];?><span style='mso-bidi-font-family:"Times New Roman";
   mso-bidi-theme-font:minor-bidi'><o:p></o:p></span></p>
-  <p class=MsoNormal>COURT_NAME</p>
+  <p class=MsoNormal><?php echo $CaseInfo[0]['Court_Name'];?></p>
   </td>
   <td width="40%" valign=top style='width:40.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal><b>Index No.:&nbsp;</b><span class=SpellE><b
-  style='mso-bidi-font-weight:normal'>IndexOrAAA_Number</b></span></p>
+  style='mso-bidi-font-weight:normal'><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></b></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:1'>
@@ -1189,11 +1189,11 @@ page-break-before:always'>
    <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:20.25pt'>
     <td colspan=3 valign=top style='padding:0in 0in 0in 0in;height:20.25pt'>
     <p class=MsoNormal style='tab-stops:4.0in'><span class=defaulttext><b
-    style='mso-bidi-font-weight:normal'>PROVIDER_NAME</b></span><span
+    style='mso-bidi-font-weight:normal'><?php echo $CaseInfo[0]['Provider_Name'];?></b></span><span
     class=defaulttext><b style='mso-bidi-font-weight:normal'><span
     style='mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi'><o:p></o:p></span></b></span></p>
     <p class=MsoNormal>A/A/O <span class=defaulttext><b style='mso-bidi-font-weight:
-    normal'>INJUREDPARTY_NAME</b></span></p>
+    normal'><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></b></span></p>
     </td>
    </tr>
    <tr style='mso-yfti-irow:1;height:24.75pt'>
@@ -1218,7 +1218,7 @@ page-break-before:always'>
    <tr style='mso-yfti-irow:3;height:21.0pt'>
     <td colspan=3 valign=bottom style='padding:0in 0in 0in 0in;height:21.0pt'>
     <p class=MsoNormal><span class=defaulttext><b style='mso-bidi-font-weight:
-    normal'>INSURANCECOMPANY_NAME</b></span></p>
+    normal'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></b></span></p>
     </td>
    </tr>
    <tr style='mso-yfti-irow:4;height:24.0pt'>
@@ -1283,7 +1283,7 @@ page-break-before:always'>
   </td>
   <td valign=top style='padding:0in 0in 0in 0in'>
   <p class=MsoNormal>Franklin Square, New York<br>
-  NOWDT</p>
+  <?php echo date("m/d/Y");?></p>
   </td>
  </tr>
 </table>
@@ -1315,7 +1315,7 @@ page-break-before:always'>
   bold'>516-216-5405</span><o:p></o:p></p>
   <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:6.75pt;
   margin-bottom:.0001pt'><u1:p></u1:p><b style='mso-bidi-font-weight:normal'>Our
-  Case Id: <span class=SpellE>Case_Id</span></b></p>
+  Case Id: <span class=SpellE><?php echo $CaseInfo[0]['Case_Id'];?></span></b></p>
   </td>
  </tr>
 </table>
@@ -1327,12 +1327,12 @@ page-break-before:always'>
  0in 0in 0in 0in'>
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
   <td width="60%" style='width:60.0%;padding:0in 0in 0in 0in'>
-  <p class=MsoNormal>COURT_VENUE<br>
-  COURT_NAME</p>
+  <p class=MsoNormal><?php echo $CaseInfo[0]['Court_Venue'];?><br>
+  <?php echo $CaseInfo[0]['Court_Name'];?></p>
   </td>
   <td width="40%" valign=top style='width:40.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal><b>Index No.:&nbsp;</b><span class=SpellE><b
-  style='mso-bidi-font-weight:normal'>IndexOrAAA_Number</b></span></p>
+  style='mso-bidi-font-weight:normal'><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></b></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:1'>
@@ -1351,11 +1351,11 @@ page-break-before:always'>
    <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:20.25pt'>
     <td colspan=3 valign=top style='padding:0in 0in 0in 0in;height:20.25pt'>
     <p class=MsoNormal style='tab-stops:4.0in'><span class=defaulttext><b
-    style='mso-bidi-font-weight:normal'>PROVIDER_NAME</b></span><span
+    style='mso-bidi-font-weight:normal'><?php echo $CaseInfo[0]['Provider_Name'];?></b></span><span
     class=defaulttext><b style='mso-bidi-font-weight:normal'><span
     style='mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi'><o:p></o:p></span></b></span></p>
     <p class=MsoNormal>A/A/O <span class=defaulttext><b style='mso-bidi-font-weight:
-    normal'>INJUREDPARTY_NAME</b></span></p>
+    normal'><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></b></span></p>
     </td>
    </tr>
    <tr style='mso-yfti-irow:1;height:24.75pt'>
@@ -1380,7 +1380,7 @@ page-break-before:always'>
    <tr style='mso-yfti-irow:3;height:21.0pt'>
     <td colspan=3 valign=bottom style='padding:0in 0in 0in 0in;height:21.0pt'>
     <p class=MsoNormal><span class=defaulttext><b style='mso-bidi-font-weight:
-    normal'>INSURANCECOMPANY_NAME</b>,<u1:p></u1:p></span></p>
+    normal'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></b>,<u1:p></u1:p></span></p>
     </td>
    </tr>
    <tr style='mso-yfti-irow:4;height:24.0pt'>
@@ -1590,12 +1590,12 @@ Notary Public/State of <st1:State w:st="on"><st1:place w:st="on">New York</st1:p
  0in 0in 0in 0in'>
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
   <td width="60%" style='width:60.0%;padding:0in 0in 0in 0in'>
-  <p class=MsoNormal>COURT_VENUE<br>
-  COURT_NAME</p>
+  <p class=MsoNormal><?php echo $CaseInfo[0]['Court_Venue'];?><br>
+  <?php echo $CaseInfo[0]['Court_Name'];?></p>
   </td>
   <td width="40%" valign=top style='width:40.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal><b>Index No.:&nbsp;</b><span class=SpellE><b
-  style='mso-bidi-font-weight:normal'>IndexOrAAA_Number</b></span></p>
+  style='mso-bidi-font-weight:normal'><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></b></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:1'>
@@ -1614,11 +1614,11 @@ Notary Public/State of <st1:State w:st="on"><st1:place w:st="on">New York</st1:p
    <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:20.25pt'>
     <td colspan=3 valign=top style='padding:0in 0in 0in 0in;height:20.25pt'>
     <p class=MsoNormal style='tab-stops:4.0in'><span class=defaulttext><b
-    style='mso-bidi-font-weight:normal'>PROVIDER_NAME</b></span><span
+    style='mso-bidi-font-weight:normal'><?php echo $CaseInfo[0]['Provider_Name'];?></b></span><span
     class=defaulttext><b style='mso-bidi-font-weight:normal'><span
     style='mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi'><o:p></o:p></span></b></span></p>
     <p class=MsoNormal>A/A/O <span class=defaulttext><b style='mso-bidi-font-weight:
-    normal'>INJUREDPARTY_NAME</b></span></p>
+    normal'><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></b></span></p>
     </td>
    </tr>
    <tr style='mso-yfti-irow:1;height:24.75pt'>
@@ -1643,7 +1643,7 @@ Notary Public/State of <st1:State w:st="on"><st1:place w:st="on">New York</st1:p
    <tr style='mso-yfti-irow:3;height:21.0pt'>
     <td colspan=3 valign=bottom style='padding:0in 0in 0in 0in;height:21.0pt'>
     <p class=MsoNormal><span class=defaulttext><b style='mso-bidi-font-weight:
-    normal'>INSURANCECOMPANY_NAME</b>,<u1:p></u1:p></span></p>
+    normal'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></b>,<u1:p></u1:p></span></p>
     </td>
    </tr>
    <tr style='mso-yfti-irow:4;height:24.0pt'>
@@ -1725,17 +1725,17 @@ Service within New York State, addressed to the following:</p>
   </td>
   <td width=621 valign=top style='width:465.8pt;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-left:2.65pt;text-indent:-2.65pt'>TO:<b
-  style='mso-bidi-font-weight:normal'> DEFENDANT_NAME</b><br>
+  style='mso-bidi-font-weight:normal'> <?php echo $CaseInfo[0]['Defendant_Name'];?></b><br>
   Attorney for Defendant(s)</p>
-  <p class=MsoNormal style='margin-left:2.65pt;text-indent:-2.65pt'><b>DEFENDANT_ADDRESS</b></p>
-  <p class=MsoNormal><b>DEFENDANT_CITY, DEFENDANT_STATE DEFENDANT_ZIP</b></p>
+  <p class=MsoNormal style='margin-left:2.65pt;text-indent:-2.65pt'><b><?php echo $CaseInfo[0]['Defendant_Address'];?></b></p>
+  <p class=MsoNormal><b><?php echo $CaseInfo[0]['Defendant_City'].", ".$CaseInfo[0]['Defendant_State']." ".$CaseInfo[0]['Defendant_Zip'];?></b></p>
   <p class=MsoNormal style='line-height:115%'><b style='mso-bidi-font-weight:
   normal'><span style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:
-  minor-latin'>Tel: DEFENDANT_PHONE<span style='mso-spacerun:yes'>         
-  </span>Fax: DEFENDANT_FAX<o:p></o:p></span></b></p>
+  minor-latin'>Tel: <?php echo $CaseInfo[0]['Defendant_Phone'];?><span style='mso-spacerun:yes'>         
+  </span>Fax: <?php echo $CaseInfo[0]['Defendant_Fax'];?><o:p></o:p></span></b></p>
   <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
   style='mso-fareast-font-family:Calibri;mso-fareast-theme-font:minor-latin'>YOUR
-  FILE # ATTORNEY_FILENUMBER</span></b></p>
+  FILE # <?php echo $CaseInfo[0]['Attorney_FileNumber'];?></span></b></p>
   </td>
  </tr>
 </table>
@@ -1761,12 +1761,12 @@ Notary Public/State of <st1:State w:st="on"><st1:place w:st="on">New York</st1:p
  0in 0in 0in 0in'>
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
   <td width="66%" style='width:66.26%;padding:0in 0in 0in 0in'>
-  <p class=MsoNormal>COURT_VENUE<br>
-  COURT_NAME</p>
+  <p class=MsoNormal><?php echo $CaseInfo[0]['Court_Venue'];?><br>
+  <?php echo $CaseInfo[0]['Court_Name'];?></p>
   </td>
   <td width="33%" valign=top style='width:33.74%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal><b>Index No.: </b><span class=SpellE><b style='mso-bidi-font-weight:
-  normal'>IndexOrAAA_Number</b></span></p>
+  normal'><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></b></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:1'>
@@ -1775,7 +1775,7 @@ Notary Public/State of <st1:State w:st="on"><st1:place w:st="on">New York</st1:p
   </td>
   <td width="33%" style='width:33.74%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal><span style='font-size:10.0pt'>Our File # <span
-  class=SpellE>Case_ID</span><o:p></o:p></span></p>
+  class=SpellE><?php echo $CaseInfo[0]['Case_Id'];?></span><o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:2;height:112.5pt'>
@@ -1786,11 +1786,11 @@ Notary Public/State of <st1:State w:st="on"><st1:place w:st="on">New York</st1:p
    <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:20.25pt'>
     <td colspan=3 valign=top style='padding:0in 0in 0in 0in;height:20.25pt'>
     <p class=MsoNormal style='tab-stops:4.0in'><span class=defaulttext><b
-    style='mso-bidi-font-weight:normal'>PROVIDER_NAME</b></span><span
+    style='mso-bidi-font-weight:normal'><?php echo $CaseInfo[0]['Provider_Name'];?></b></span><span
     class=defaulttext><b style='mso-bidi-font-weight:normal'><span
     style='mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi'><o:p></o:p></span></b></span></p>
     <p class=MsoNormal>A/A/O <span class=defaulttext><b style='mso-bidi-font-weight:
-    normal'>INJUREDPARTY_NAME</b></span><span style='font-size:11.0pt'><o:p></o:p></span></p>
+    normal'><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></b></span><span style='font-size:11.0pt'><o:p></o:p></span></p>
     </td>
    </tr>
    <tr style='mso-yfti-irow:1;height:24.75pt'>
@@ -1809,7 +1809,7 @@ Notary Public/State of <st1:State w:st="on"><st1:place w:st="on">New York</st1:p
    <tr style='mso-yfti-irow:3;height:21.0pt'>
     <td colspan=3 valign=bottom style='padding:0in 0in 0in 0in;height:21.0pt'>
     <p class=MsoNormal><span class=defaulttext><b style='mso-bidi-font-weight:
-    normal'>INSURANCECOMPANY_NAME</b>,<u1:p></u1:p></span></p>
+    normal'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></b>,<u1:p></u1:p></span></p>
     </td>
    </tr>
    <tr style='mso-yfti-irow:4;mso-yfti-lastrow:yes;height:24.0pt'>

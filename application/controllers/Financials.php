@@ -302,22 +302,26 @@ class Financials extends CI_Controller{
 			if($flag == 1){
 				$row = array();
 				$count++;
-				if($User_Id != $result->User_Id){
+				//if($User_Id != $result->User_Id){
+				if(strcasecmp($User_Id, $result->User_Id)){
+					//echo "<br>User_Id = ".$User_Id;
+					//echo "<br>result= ".$result->User_Id;
+					
 					if($first_row !=0){
-					$row[] = "";
-					$row[] = "TOTAL CASES SETTLED BY -  ".$User_Id;
-					$row[] = $Tot_Case_Count;
-					$Fin_Case_Count = $Fin_Case_Count + $Tot_Case_Count;
-					$row[] = "$".number_format($Tot_Balance, 2);
-					$Fin_Balance = $Fin_Balance + $Tot_Balance;
-					$row[] = "$".number_format($Tot_Sett_Amount, 2);
-					$Fin_Sett_Amount = $Fin_Sett_Amount + $Tot_Sett_Amount;
-					$row[] = "$".number_format($Tot_FF, 2);
-					$Fin_FF = $Fin_FF + $Tot_FF;
-					$row[] = "$".number_format($Tot_AF, 2);
-					$Fin_AF = $Fin_AF + $Tot_AF;
-					$row[] = number_format(($Tot_Sett_Amount*100)/$Tot_Balance, 2)."%";
-					$data[] = $row;
+						$row[] = "";
+						$row[] = "TOTAL CASES SETTLED BY -  ".$User_Id;
+						$row[] = $Tot_Case_Count;
+						$Fin_Case_Count = $Fin_Case_Count + $Tot_Case_Count;
+						$row[] = "$".number_format($Tot_Balance, 2);
+						$Fin_Balance = $Fin_Balance + $Tot_Balance;
+						$row[] = "$".number_format($Tot_Sett_Amount, 2);
+						$Fin_Sett_Amount = $Fin_Sett_Amount + $Tot_Sett_Amount;
+						$row[] = "$".number_format($Tot_FF, 2);
+						$Fin_FF = $Fin_FF + $Tot_FF;
+						$row[] = "$".number_format($Tot_AF, 2);
+						$Fin_AF = $Fin_AF + $Tot_AF;
+						$row[] = number_format(($Tot_Sett_Amount*100)/$Tot_Balance, 2)."%";
+						$data[] = $row;
 					}
 					$first_row = 1;
 					$row = array();
@@ -352,6 +356,7 @@ class Financials extends CI_Controller{
 				$data[] = $row;
 			}
 		}
+		//echo "<pre>"; print_r($data);exit;
 		$row = array();
 		$row[] = "<input type='hidden' class='HiddenField' />";
 		$row[] = "TOTAL CASES SETTLED BY -  ".$User_Id;

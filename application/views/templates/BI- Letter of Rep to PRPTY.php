@@ -431,7 +431,7 @@ style='mso-tab-count:1'>      </span>[CASE NAME]<o:p></o:p></span></p>
 
 <p class=MsoNormal style='line-height:150%'><span style='mso-bidi-font-size:
 12.0pt;line-height:150%;mso-bidi-font-family:"Courier New"'><span
-style='mso-tab-count:1'>            </span>[DATE OF ACCIDENT]<o:p></o:p></span></p>
+style='mso-tab-count:1'>            </span>[<?php echo date_format(date_create($CaseInfo[0]['Accident_Date']), "m/d/Y");?>]<o:p></o:p></span></p>
 
 <p class=MsoNormal style='line-height:150%'><span style='mso-bidi-font-size:
 11.0pt;line-height:150%;mso-bidi-font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
