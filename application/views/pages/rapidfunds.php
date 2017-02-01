@@ -48,7 +48,7 @@
 <!-- Main Wrapper -->
 <div id="wrapper">
 <?php include 'header_financials.php';?>
-<div class="content animate-panel">
+<div class="content">
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="hpanel">

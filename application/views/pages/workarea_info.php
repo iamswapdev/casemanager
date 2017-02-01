@@ -50,13 +50,13 @@
 <![endif]--> 
 
 <!-- Header -->
-<?php include 'header.php';?>
+<?php include 'header.php'; ?>
 
 <!-- Navigation -->
 <?php include 'sidebar.php';?>
 <!-- Main Wrapper -->
 <div id="wrapper"> 
-<div class="content animate-panel">
+<div class="content">
 <?php $months = array("Just", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "jan");
 foreach($CaseInfo as $row){$Case_AutoId = $row['Case_AutoId']; $Case_Id = $row['Case_Id']; $Claim_Amount = $row['Claim_Amount']; $Paid_Amount = $row['Paid_Amount']; $DateOfService_Start = $row['DateOfService_Start']; $DateOfService_End = $row['DateOfService_End']; $Date_BillSent = $row['Date_BillSent']; $Provider_Name_fix = $row['Provider_Name']; $Provider_Id_fix = $row['Provider_Id']; $Check_Status=$row['Status']; }
 
@@ -123,7 +123,7 @@ for($i=0; $i<=13; $i++){
 				<li class="active"><a id="tab1" data-toggle="tab" href="#tab-1">Case Information</a></li>
 				<li class=""><a id="tab2" data-toggle="tab" href="#tab-2">Extended case info</a></li>
 				<?php if($Admin) {?><li class=""><a id="tab3" data-toggle="tab" href="#tab-3">Notes</a></li><?php } ?>
-				<li class=""><a id="tab4" data-toggle="tab" href="#tab-4">Document Manager</a></li>
+				<li class=""><a href="/casemanager/search/Document_Manager">Document Manager</a></li>
                 
                 <?php if($Accessibility == 2) {?><li class=""><a id="tabMotions" data-toggle="tab" href="#tab-Motions">Motions</a></li><?php } ?>
                 <?php if($Accessibility == 2) {?><li class=""><a id="tabTrials" data-toggle="tab" href="#tab-Trials">Trials</a></li><?php } ?>
@@ -631,7 +631,7 @@ for($i=0; $i<=13; $i++){
 								<div class="col-sm-2"></div>
 								<div class="col-sm-4">List of available templates
                                 	<input type="hidden" name="Templates_Case_AutoId" value="<?php echo $Case_AutoId;?>" />
-                                	<select size="4" name="TemplateName" id="TemplateName" class="form-control input-sm input-rows" style="height:150px;width:700px;">
+                                	<select size="4" name="TemplateName" id="TemplateName" class="form-control input-sm input-rows" style="height:520px;width:900px;">
                                         <option value="10 DAY LETTER (AB)">10 DAY LETTER (AB)</option>
                                         <option value="10 DAY LETTER">10 DAY LETTER</option>
                                         <option value="AAA FORM AR (Amended)">AAA FORM AR (Amended)</option>
@@ -919,6 +919,8 @@ for($i=0; $i<=13; $i++){
                                         <option value="VERIFIEDCOMPLAINT">VERIFIEDCOMPLAINT</option>
                                         <option value="Z-RETAINER AGREEMENT W-CLIENTS-AB">Z-RETAINER AGREEMENT W-CLIENTS-AB</option>
                                         <option value="Z-RETAINER AGREEMENT WITH CLIENTS VG">Z-RETAINER AGREEMENT WITH CLIENTS VG</option>
+                                        <option value="TEST">TEST</option>
+                                        <option value="sid">SID</option>
                                     
                                     </select>
 								</div>
@@ -2008,7 +2010,13 @@ for($i=0; $i<=13; $i++){
 
 </div>
 
+<?php
+//mkdir("testing");
+if (!file_exists('Cases/'.$Case_Id)) {
+    mkdir('Cases/'.$Case_Id);
+}
 
+?>
 <!-- Right sidebar -->
 <div id="right-sidebar" class="animated fadeInRight"> </div>
 

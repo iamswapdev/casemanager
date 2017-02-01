@@ -1,4 +1,4 @@
-<?php
+ <?php
 ini_set('memory_limit','-1');
 session_cache_limiter('private_no_expire');
 
@@ -27,6 +27,10 @@ class Search extends CI_Controller{
 			$CurrentPage['CurrentUrl'] = "search";
 			$this->load->view('pages/login', $CurrentPage);
 		}
+	}
+	public function Document_Manager(){
+		
+		$this->load->view('pages/index');
 	}
 	public function searchs(){
 		//$this->session->all_userdata();

@@ -41,7 +41,7 @@
 <!-- Main Wrapper -->
 <div id="wrapper">
 
-<div class="content animate-panel">
+<div class="content">
 	<div class="row">
 		<div class="col-lg-12">
 		<div class="hpanel">

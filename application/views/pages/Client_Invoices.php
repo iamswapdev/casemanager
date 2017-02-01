@@ -69,7 +69,7 @@
 <?php }?>
 
 
-<div class="content animate-panel client-invoices">
+<div class="content client-invoices">
 	
     <div class="row">
         <div class="col-lg-12">

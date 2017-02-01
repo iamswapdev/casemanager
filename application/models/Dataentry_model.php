@@ -10,7 +10,7 @@ Class Dataentry_model extends CI_Model{
 	public function insert_CaseInfo($data)
 	{
 		$this->db->order_by("Case_AutoId", "desc");
-		$this->db->select("Case_AutoId");
+		$this->db->select("Case_AutoId, Case_Id");
 		$this->db->limit('1');
 		$query1 = $this->db->get("dbo_tblcase");
 		$Case_AutoId = $query1->result_array();
@@ -20,6 +20,10 @@ Class Dataentry_model extends CI_Model{
 		$data["Case_Id"] = "AR".substr(date("Y"), 2, 2)."-".($Case_AutoId1+1);
 		
 		$query = $this->db->insert('dbo_tblcase',$data); 
+		$Inserted_Case_Id = $this->get_Last_Case_Id();
+		if (!file_exists('Cases/'.$Inserted_Case_Id)) {
+			mkdir('Cases/'.$Inserted_Case_Id);
+		}
 		return true;
 	}
 	public function get_Last_Case_Id()

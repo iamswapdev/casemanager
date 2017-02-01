@@ -47,7 +47,7 @@
 <!-- Main Wrapper -->
 <div id="wrapper">
 <?php include 'header_workarea.php';?>
-<div class="content animate-panel">
+<div class="content">
 
 	<div class="row">
 		<div class="col-lg-12">

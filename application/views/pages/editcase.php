@@ -134,7 +134,7 @@ for($i=0; $i<=13; $i++){
         </div>
     </div>
 </div>
-<div class="content animate-panel">
+<div class="content">
     
 	<div class="row">
 		<div class="col-lg-12">

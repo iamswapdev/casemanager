@@ -46,7 +46,7 @@
 <div id="wrapper">
 <?php include 'header_adminprivilege.php';?>
  
-<div class="content animate-panel">
+<div class="content">
 
 	<div class="row">
 		<div class="col-lg-12">
