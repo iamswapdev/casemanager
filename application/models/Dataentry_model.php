@@ -21,8 +21,16 @@ Class Dataentry_model extends CI_Model{
 		
 		$query = $this->db->insert('dbo_tblcase',$data); 
 		$Inserted_Case_Id = $this->get_Last_Case_Id();
+		
+		$Folder_Name = array("BILLS", "AOB", "DENIALS", "SUMMONS-AND-COMPLAINT", "AFF-OF-SERVICE", "PAYMENTS", "SETTLEMENT-DOCS", "ANSWER", "THEIR-DEMANDS", "POM", "INDEX NUMBER", "DELAY LETTER", "PROVIDERS DOCUMENTS", "CORRESPONDENCE", "ACKNOWLEDGEMENT", "PEER REVIEW", "POLICE REPORT", "CERTIFICATE OF INCORPORATION", "LICENSES", "ANSWER DEMANDS", "AFF IN OPPOSITION", "EBT", "DISCOVERY CONFERENCE", "DEF SUPPLEMENTAL DEMANDS", "CONSENT TO CHANGE ATTORNEY", "PEER REVIEW", "IME", "OUR DEMANDS", "OUR DISCOVERY RESPONSES", "VERIFICATION REQUEST", "VERIFIED ANSWER", "UNCATEGORIZED", "Bills", "Bills", "Saved Letters", "Packet Exhibits", "Packet Document", "OUR MOTIONS", "ARBITRATIONS"
+		);
+		
+		
 		if (!file_exists('Cases/'.$Inserted_Case_Id)) {
 			mkdir('Cases/'.$Inserted_Case_Id);
+			foreach($Folder_Name as $row){
+				mkdir('Cases/'.$Inserted_Case_Id."/".$row);
+			}
 		}
 		return true;
 	}

@@ -161,6 +161,11 @@ class Search extends CI_Controller{
 			$InsuranceCompany_Id = $data['CaseInfo'][0]['InsuranceCompany_Id'];
 			$Defendant_Id = $data['CaseInfo'][0]['Defendant_Id'];
 			$Adjuster_Id = $data['CaseInfo'][0]['Adjuster_Id'];
+			$Update_Case_Path = array(
+				"Case_Id" => $data['CaseInfo'][0]['Case_Id'],
+				"Path" => base_url()
+			);
+			$this->search_model->Update_Document_Manager_Path($Update_Case_Path);
 			
 			//$data['Provider_Info']= $this->search_model->get_Provider_ById($Provider_Id);
 			$data['InsuranceCompany_Info']= $this->search_model->get_Insurance_ById($InsuranceCompany_Id);
@@ -185,6 +190,7 @@ class Search extends CI_Controller{
 			$this->load->view('pages/login', $CurrentPage);
 		}
 	}
+	
 /* GET SETTLED BY INFO BY CASE ID*/
 	public function get_Settled_By($Case_Id){
 		$data = $this->search_model->getSettled_By($Case_Id);
@@ -1188,11 +1194,24 @@ class Search extends CI_Controller{
 		
 		echo "<br>".strcasecmp("Hello","hELLo");
 		
-		$dir = base_url()."application/views/templates/";
+		//$dir = base_url()."application/views/templates/1";
 
-		$files1 = scandir($dir);
+		//$files1 = scandir($dir, 1);
 		
-		print_r($files1);
+		//print_r($files1);
+		
+		//$dir = base_url()."application/views/templates/1";
+		
+		//$files2 = scandir($dir, 1);
+		
+		
+		//print_r($files2);
+		
+		$Folder_Name = array("BILLS", "AOB", "DENIALS", "SUMMONS-AND-COMPLAINT", "AFF-OF-SERVICE", "PAYMENTS", "SETTLEMENT-DOCS", "ANSWER", "THEIR-DEMANDS", "POM", "INDEX NUMBER", "DELAY LETTER", "PROVIDERS DOCUMENTS", "CORRESPONDENCE", "ACKNOWLEDGEMENT", "PEER REVIEW", "POLICE REPORT", "CERTIFICATE OF INCORPORATION", "LICENSES", "ANSWER DEMANDS", "AFF IN OPPOSITION", "EBT", "DISCOVERY CONFERENCE", "DEF SUPPLEMENTAL DEMANDS", "CONSENT TO CHANGE ATTORNEY", "PEER REVIEW", "IME", "OUR DEMANDS", "OUR DISCOVERY RESPONSES", "VERIFICATION REQUEST", "VERIFIED ANSWER", "UNCATEGORIZED", "Bills", "Bills", "Saved Letters", "Packet Exhibits", "Packet Document", "OUR MOTIONS", "ARBITRATIONS"
+		);
+		foreach($Folder_Name as $row){
+			echo "G:".$row;
+		}
 	}
 /*****************************************************************************************************************************************/
 }

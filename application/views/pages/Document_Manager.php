@@ -31,7 +31,7 @@
 			
 			$(document).ready( function() {
 				
-				jQuery('#fileTreeDemo_1').gsFileManager({ script: '/casemanager/Filemanager/connectors/GsFileManager.php/as' });
+				jQuery('#fileTreeDemo_1').gsFileManager({ script: '/casemanager/Filemanager/connectors/GsFileManager.php' });
 				
 			});
 		</script>

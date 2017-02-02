@@ -44,6 +44,10 @@ Class Search_model extends CI_Model{
 		//echo "<pre>"; print_r($data); exit();
 		return $data;
 	}
+	public function Update_Document_Manager_Path($data){
+		$this->db->set($data);
+		$this->db->update("current_case", $data);
+	}
 	public function get_CaseInfo_ById2($Case_AutoId){
 		
 		$this->db->select('t1.*, DATE_FORMAT(t1.Accident_Date,"%m-%Y-%d") as Accident_DateNoTimr, t2.Provider_Name, t3.InsuranceCompany_Name, t4.Defendant_Name, t5.Adjuster_LastName, t5.Adjuster_FirstName, t6.Attorney_Name, t7.Court_Name' );
