@@ -1188,6 +1188,12 @@ class Search extends CI_Controller{
 		echo "<br>".strcasecmp("H","h");
 		
 		echo "<br>".strcasecmp("Hello","hELLo");
+		
+		$dir = base_url()."application/views/templates/";
+
+		$files1 = scandir($dir);
+		
+		print_r($files1);
 	}
 /*****************************************************************************************************************************************/
 }

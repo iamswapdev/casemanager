@@ -2973,16 +2973,23 @@ $(document).ready(function(e) {
 		"ajax": "<?php echo base_url();?>search/SettlementQuickView/<?php echo $Case_Id;?>",
 		"iDisplayLength": 10,
 		"aLengthMenu": [5, 10, 20, 25, 50, "All"],
-		"bSort": false,
-		"searching": false,
-		"lengthChange": false
+		"bPaginate": false,
+		"bLengthChange": false,
+		"bFilter": false,
+		"bInfo": false,
+		"bAutoWidth": false,
+		"bSort": false
 	});
 	$('#TransactionTable').dataTable( {
 		"ajax": "<?php echo base_url();?>search/getTransactions/<?php echo $Case_Id;?>",
 		"iDisplayLength": 10,
 		"aLengthMenu": [5, 10, 20, 25, 50, "All"],
 		"bSort": false,
-		"searching": false,
+		"bPaginate": false,
+		"bLengthChange": false,
+		"bFilter": false,
+		"bInfo": false,
+		"bAutoWidth": false
 	});
 /******** DELETE TRANSACTIONS ********/
 	$('body').on( 'click', '#deleteTransactionsButton', function () {
@@ -3120,7 +3127,13 @@ $(document).ready(function(e) {
 			"type": "post"
 		},
 		"iDisplayLength": 10,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"bPaginate": false,
+		"bLengthChange": false,
+		"bFilter": false,
+		"bInfo": false,
+		"bAutoWidth": false,
+		"bSort": false
 	});
 	$('#selectEventType').on('change', function() {
 		var EventType =$("#selectEventType option:selected").text();
@@ -3241,7 +3254,13 @@ $(document).ready(function(e) {
 								"type": "post"
 							},
 							"iDisplayLength": 10,
-							"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+							"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+							"bPaginate": false,
+							"bLengthChange": false,
+							"bFilter": false,
+							"bInfo": false,
+							"bAutoWidth": false,
+							"bSort": false
 						});
 						callSuccess();
 					});
