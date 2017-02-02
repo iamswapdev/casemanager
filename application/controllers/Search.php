@@ -29,8 +29,7 @@ class Search extends CI_Controller{
 		}
 	}
 	public function Document_Manager(){
-		
-		$this->load->view('pages/index');
+		$this->load->view('pages/Document_Manager');
 	}
 	public function searchs(){
 		//$this->session->all_userdata();
