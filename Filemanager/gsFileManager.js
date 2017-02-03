@@ -295,7 +295,7 @@ if (jQuery) (function(jQuery){
 			menuHtml += '<a id="gs_invertselectbutton" class=\'gs_dir_content_button\'>&nbsp;' + gs_getTranslation(o.language, 25)+ '&nbsp;</a>';*/
 			menuHtml += '<a id="gs_refreshbutton" class=\'gs_dir_content_button\'>&nbsp;' + gs_getTranslation(o.language, 49)+ '&nbsp;</a>';
 			
-			var wrapperHtml = '<div id=\'gs_dir_list\' class=\'gs_dir_list\' onClick="jQuery(this).doGSAction({action: 21})"></div>';
+			var wrapperHtml = '<div id=\'gs_dir_list\' class=\'gs_dir_list\' onClick="jQuery(this).doGSAction({action: 21}) style="display:none;"></div>';
 			wrapperHtml    += '<div class=\'gs_dir_content\' onClick="jQuery(this).doGSAction({action: 21})">' 
 				                 + '<div class=\'gs_dir_content_menu\'>';
 			wrapperHtml += menuHtml;
@@ -560,8 +560,11 @@ if (jQuery) (function(jQuery){
 				if (gsfiless.length > 0) {
 					for (var numf in gsfiless) {
 						var curItem = gsfiless[numf];
+						/*$.each(curItem, function(k, v) {
+							console.log(k+" is "+v);
+						});*/
 						gs_cur_items[curItem.id] = curItem;
-						fileshtml += "<tr><td><a href='#' class='item_menu_link_holder' rel='" + curItem.id + "'><img src='/casemanager/Filemanager/images/menu_icon.png'></a></td><td><div class='directory directory_info gsItem' id='gs_div_holder_" + curItem.id + "' rel=\'" + curItem.id + "\'><a href='javascript:void(0)' ondblclick=\"jQuery('#"+curItem.id+"').trigger('click'); return false\">" + curItem.name + "</a></div></td><td>Dir</td><td>0</td><td>"+curItem.getLastMod()+"</td></tr>";
+						fileshtml += "<tr><td><a href='#' class='item_menu_link_holder' rel='" + curItem.id + "'><img src='/casemanager/Filemanager/images/menu_icon.png'></a></td><td><div class='directory directory_info gsItem' id='gs_div_holder_" + curItem.id + "' rel=\'" + curItem.id + "\'><a href='javascript:void(0)' ondblclick=\"jQuery('#"+curItem.id+"').trigger('click'); return false\">" + curItem.name + "</a></div></td><td>Dir</td><td>"+curItem.size+" MB</td><td>"+curItem.getLastMod()+"</td></tr>";
 					}
 				}
                 return fileshtml;

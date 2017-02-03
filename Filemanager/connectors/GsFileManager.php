@@ -750,7 +750,23 @@ class GSFileManager {
 		}
 		return '{result: \'0\'}';
 	}
-
+	public function folderSize($dir){
+		$count_size = 0;
+		$count = 0;
+		$dir_array = scandir($dir);
+		  foreach($dir_array as $key=>$filename){
+			if($filename!=".." && $filename!="."){
+			   if(is_dir($dir."/".$filename)){
+				  $new_foldersize = $this->foldersize($dir."/".$filename);
+				  $count_size = $count_size+ $new_foldersize;
+				}else if(is_file($dir."/".$filename)){
+				  $count_size = $count_size + filesize($dir."/".$filename);
+				  $count++;
+				}
+		   }
+		 }
+		return $count_size;
+	}
 	public function listDir($args) {
 		$root = $this->getOptionValue(self::$root_param);
 		$dir = $args['dir'];
@@ -775,7 +791,8 @@ class GSFileManager {
 						}
 						$html .= 'gsfiles.push(new gsItem("1", "'.htmlentities($file, ENT_QUOTES, 'UTF-8').'", "'.htmlentities($dir.$file, ENT_QUOTES, 'UTF-8').'", "'.$this->fileStorage->filesize($root.$dir.$file).'", "'.md5($dir.$file).'", "'.strtolower(htmlentities($ext, ENT_QUOTES, 'UTF-8')).'", "'.date('m-d-Y H:i', $this->fileStorage->filemtime($root.$dir.$file)).'"));';
 					} else if ( $file != '.' && $file != '..' ) {
-						$html .= 'gsdirs.push(new gsItem("2", "'.htmlentities($file, ENT_QUOTES, 'UTF-8').'", "'.htmlentities($dir.$file, ENT_QUOTES, 'UTF-8').'", "0", "'.md5($dir.$file).'", "dir", "'.date('m-d-Y H:i', $this->fileStorage->filemtime($root.$dir.$file)).'"));';
+						$size = number_format(($this->folderSize($root.$dir.$file))/1048576, 2);
+						$html .= 'gsdirs.push(new gsItem("2", "'.htmlentities($file, ENT_QUOTES, 'UTF-8').'", "'.htmlentities($dir.$file, ENT_QUOTES, 'UTF-8').'", "'.$size.'", "'.md5($dir.$file).'", "dir", "'.date('m-d-Y H:i', $this->fileStorage->filemtime($root.$dir.$file)).'"));';
 					}
 				}
 

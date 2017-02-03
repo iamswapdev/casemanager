@@ -1,6 +1,9 @@
 #gspdf{
 	width:100% !important;
 }
+#gs_dir_list{
+	display:none !important;
+}
 /*
  * jQuery UI CSS Framework 1.8.9
  *
