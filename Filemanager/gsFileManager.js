@@ -625,8 +625,15 @@ if (jQuery) (function(jQuery){
 						var dirhtml = '';
 						if (typeof(gsdirs) != 'undefined' && gsdirs.length > 0) {
 							dirhtml += "<ul class=\"jqueryFileTree\" style=\"display: none;\">";
+							/*console.log("gsfiles:"+gsfiles.length);
+							$.each(gsfiles, function(k, v) {
+								console.log(k+" is "+v);
+							});*/
 							for (var num in gsdirs) {
 								 var curItem = gsdirs[num];
+								 /*console.log("ff:"+gsfiles[num]);
+								 var exd = "collapsed";
+								 if(gsfiles.length >1){exd = "expanded";}else{exd = "collapsed";}*/
 								 dirhtml += "<li class=\"directoryMeny collapsed\"><span class='dir_index toggleplus'>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href=\"#\" rel=\"" + curItem.path + "/\" id=\"" + curItem.id + "\">" + curItem.name + "</a></li>";
 							}
 							dirhtml += "</ul>";

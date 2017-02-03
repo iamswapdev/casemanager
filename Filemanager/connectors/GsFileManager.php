@@ -160,6 +160,7 @@ class GSFileManager {
 	public static $root_param = 'rootDir';
 	private $fileStorage;
 	private $setUtf8Header = true;
+	public $counte = 1;
 	private $functions;
     private $itemNameRegex = '[/\?\*;:{}\\\\]+';
 	
@@ -754,6 +755,7 @@ class GSFileManager {
 		if( $this->fileStorage->file_exists($root.$dir) ) {
 			$files = $this->fileStorage->scandir($root.$dir);
 			natcasesort($files);
+			//echo "files:<pre>";print_r($files);
 			$html = '';
 			$html .= 'var gsdirs = new Array();';
 			$html .= 'var gsfiles = new Array();';
@@ -763,18 +765,20 @@ class GSFileManager {
 					if ($file == '.' || $file == '..' || $file == '.htaccess') {
 						continue;
 					}
+					//echo "<br>first:".$root.$dir.$file;
 					if( !$this->fileStorage->is_dir($root.$dir.$file) ) {
 						$ext = preg_replace('/^.*\./', '', $file);
 						if ($ext == $file) {
 							$ext = 'unknown';
 						}
-						$html .= 'gsfiles.push(new gsItem("1", "'.htmlentities($file, ENT_QUOTES, 'UTF-8').'", "'.htmlentities($dir.$file, ENT_QUOTES, 'UTF-8').'", "'.$this->fileStorage->filesize($root.$dir.$file).'", "'.md5($dir.$file).'", "'.strtolower(htmlentities($ext, ENT_QUOTES, 'UTF-8')).'", "'.date('Y-m-d H:i:s', $this->fileStorage->filemtime($root.$dir.$file)).'"));';
+						$html .= 'gsfiles.push(new gsItem("1", "'.htmlentities($file, ENT_QUOTES, 'UTF-8').'", "'.htmlentities($dir.$file, ENT_QUOTES, 'UTF-8').'", "'.$this->fileStorage->filesize($root.$dir.$file).'", "'.md5($dir.$file).'", "'.strtolower(htmlentities($ext, ENT_QUOTES, 'UTF-8')).'", "'.date('m-d-Y H:i', $this->fileStorage->filemtime($root.$dir.$file)).'"));';
 					} else if ( $file != '.' && $file != '..' ) {
-						$html .= 'gsdirs.push(new gsItem("2", "'.htmlentities($file, ENT_QUOTES, 'UTF-8').'", "'.htmlentities($dir.$file, ENT_QUOTES, 'UTF-8').'", "0", "'.md5($dir.$file).'", "dir", "'.date('Y-m-d H:i:s', $this->fileStorage->filemtime($root.$dir.$file)).'"));';
+						$html .= 'gsdirs.push(new gsItem("2", "'.htmlentities($file, ENT_QUOTES, 'UTF-8').'", "'.htmlentities($dir.$file, ENT_QUOTES, 'UTF-8').'", "0", "'.md5($dir.$file).'", "dir", "'.date('m-d-Y H:i', $this->fileStorage->filemtime($root.$dir.$file)).'"));';
 					}
 				}
 
 			}
+			if($this->counte == 2){echo $html;}$this->counte = $this->counte + 1;
 			return $html;
 		} else {
 			throw new Exception('ILlegalArgumentException: dir to list does NOT exists '.$dir, 3);
@@ -801,7 +805,7 @@ ini_set('display_errors', true);
 mb_internal_encoding("UTF-8");
 
 $options = array();
-$options['max_upload_filesize'] = '2000'; //(the size in Kbytes)
+$options['max_upload_filesize'] = '10000'; //(the size in Kbytes)
 //$options[GSFileManager::$root_param] = $Path."Cases";
 
 $options[GSFileManager::$root_param] = "C:/xampp/htdocs/casemanager/Cases/".$Case_Id;
