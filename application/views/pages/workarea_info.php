@@ -123,7 +123,7 @@ for($i=0; $i<=13; $i++){
 				<li class="active"><a id="tab1" data-toggle="tab" href="#tab-1">Case Information</a></li>
 				<li class=""><a id="tab2" data-toggle="tab" href="#tab-2">Extended case info</a></li>
 				<?php if($Admin) {?><li class=""><a id="tab3" data-toggle="tab" href="#tab-3">Notes</a></li><?php } ?>
-				<li class=""><a href="/casemanager/search/Document_Manager" target="_blank">Document Manager</a></li>
+				<li class=""><a href="/casemanager/search/Document_Manager/<?php echo $Case_Id?>" target="_blank">Document Manager</a></li>
                 
                 <?php if($Accessibility == 2) {?><li class=""><a id="tabMotions" data-toggle="tab" href="#tab-Motions">Motions</a></li><?php } ?>
                 <?php if($Accessibility == 2) {?><li class=""><a id="tabTrials" data-toggle="tab" href="#tab-Trials">Trials</a></li><?php } ?>

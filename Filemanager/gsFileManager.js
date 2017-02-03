@@ -180,6 +180,7 @@ gs_filemanager_languages['en'][9] = 'Size';
 gs_filemanager_languages['en'][10] = 'Last Modified';
 gs_filemanager_languages['en'][11] = 'Open with';
 gs_filemanager_languages['en'][12] = 'Notepad';
+gs_filemanager_languages['en'][121] = 'Pdf';
 gs_filemanager_languages['en'][13] = 'ImageViewer';
 gs_filemanager_languages['en'][14] = 'Copy';
 gs_filemanager_languages['en'][15] = 'Cut';
@@ -261,7 +262,7 @@ var gs_ext_arhives = new Array();
 gs_ext_arhives['zip'] = '1';
 
 var gs_forbitten_ext_mapping = new Array();
-gs_forbitten_ext_mapping['editable'] = '15,16,17,23';
+gs_forbitten_ext_mapping['editable'] = '15,16,17,23,121';
 gs_forbitten_ext_mapping['picture'] = '12,18,23';
 gs_forbitten_ext_mapping['unknown'] = '12,15,16,17,18,23';
 gs_forbitten_ext_mapping['archive'] = '12,15,16,17,18,19';
@@ -307,13 +308,16 @@ if (jQuery) (function(jQuery){
 			contexMenus += '<li class="edit"><a href="#edit">' + gs_getTranslation(o.language, 11)+ '</a>';
 			contexMenus += '   <ul class="contextMenu subContextMenu">';
 			contexMenus += '     <li class="notepad"><a href="#notepad" rel="12">' + gs_getTranslation(o.language, 12)+ '</a></li>';
+			
+			contexMenus += '     <li class="pdf"><a href="#pdf" rel="121">' + gs_getTranslation(o.language, 121)+ '</a></li>';
+			
 			if (typeof(CKEDITOR) != 'undefined') {
 			    contexMenus += '     <li class="notepad"><a href="#ckeditor" rel="18">' + gs_getTranslation(o.language, 21)+ '</a></li>';
 			}
-			contexMenus += '     <li class="picture separator"><a href="#imageviewer" rel="15">' + gs_getTranslation(o.language, 13)+ '</a></li>';
+			/*contexMenus += '     <li class="picture separator"><a href="#imageviewer" rel="15">' + gs_getTranslation(o.language, 13)+ '</a></li>';
 			if(jQuery().Jcrop){
 			    contexMenus += '     <li class="picture"><a href="#jcrop" rel="16">' + gs_getTranslation(o.language, 22)+ '</a></li>';
-			}
+			}*/
 			contexMenus += '   </ul>';
 			contexMenus += '</li>';
 			contexMenus += '<li class="copy separator"><a href="#Copy" rel="7">' + gs_getTranslation(o.language, 14)+ '</a></li>';
@@ -349,10 +353,18 @@ if (jQuery) (function(jQuery){
 			wrapperHtml    += contexMenus;
 			
 			var hiddenElements = '<div id=\'gsclipboardContent\' style=\'display: none\'></div>';
+			//hiddenElements += '<div id=\'gspdf2\' style=\'display: none\'>qwerty</div>';
+			
+			//hiddenElements += '<?php <iframe id=\'gspdf\' src="/RIS PACS Manual 2016.pdf" width=\"100%\" height\"100%\" ></iframe> ?>';
+			
+			hiddenElements += '<iframe id=\"gspdf\" src=\"/"  style=\"height:100%; width:100% !important;\"></iframe>" ';
+			
+			//hiddenElements += '<embed id="gspdf" src="/RIS PACS Manual 2016.pdf#page=2" type="application/pdf" width="100%" height="100%">';
+			
 			hiddenElements += '<div id=\'gsnotepadedit\' style=\'display: none\'></div>';
 			hiddenElements += '<div id=\'gsckeditor\' style=\'display: none\'><div id="gs_ckeditor_content"></div></div>';
-			hiddenElements += '<div id=\'gsimageviewer\' style=\'display: none\'><div id="gsimageviewer_content"></div>' + gs_getTranslation(o.language, 26)+ ':&nbsp;&nbsp;<input type="text" name="gs_image_x" id="gs_image_x" value="" size="5" rel="0">px<br/>' + gs_getTranslation(o.language, 27)+ ': <input type="text" name="gs_image_y" id="gs_image_y" value="" size="5" rel="0">px'
-			                      + '<br/>' + gs_getTranslation(o.language, 44) + ': <input type="checkbox" name="lock_sizes" id="lock_sizes" checked=true></div>';
+			/*hiddenElements += '<div id=\'gsimageviewer\' style=\'display: none\'><div id="gsimageviewer_content"></div>' + gs_getTranslation(o.language, 26)+ ':&nbsp;&nbsp;<input type="text" name="gs_image_x" id="gs_image_x" value="" size="5" rel="0">px<br/>' + gs_getTranslation(o.language, 27)+ ': <input type="text" name="gs_image_y" id="gs_image_y" value="" size="5" rel="0">px'
+			                      + '<br/>' + gs_getTranslation(o.language, 44) + ': <input type="checkbox" name="lock_sizes" id="lock_sizes" checked=true></div>';*/
 			hiddenElements += '<div id=\'gsuploadfiles\' style=\'display: none; position: relative;\'>';
 			hiddenElements += '<form action="' + o.script +'" id="gsUploadForm" enctype="multipart/form-data" method="post"><input type="hidden" name="opt" value="11"><input type="hidden" name="dir" value="">';
 			hiddenElements +=  '<div style="padding: 20px; font-size: 14px; padding-left: 0px;"><a id="gs_uploadAddField" class=\'gs_dir_content_button\'>&nbsp;' + gs_getTranslation(o.language, 45)+ '&nbsp;</a></div>';
@@ -748,6 +760,10 @@ if (jQuery) (function(jQuery){
 				showNotePad(o, curDir, gsitem);
 				return;
 			}
+			if (o.action == '121') { // show notepad
+				showPdf(o, curDir, gsitem);
+				return;
+			}
 			
 			if (o.action == '13') { // copy as
 				copyAs(o, curDir, gsitem);
@@ -870,8 +886,21 @@ if (jQuery) (function(jQuery){
 					                       
 	      	    });
 			}
-			
+			function showPdf(o, curDir, gsitem){
+				var height = 800;
+				var width = 1000;
+				//Cases/AR17-8483
+				console.log("O:"+o+" curDir:"+curDir+" gsitem:"+gsitem.name);
+				$("#gspdf").attr("src", "/casemanager/Cases/"+$("input[name=Case_Id]").val()+curDir+gsitem.name);
+				jQuery('#gspdf').dialog({
+					title: 'Pdf viewer', 
+					modal: true, 
+					width: width, 
+					height: height
+				});
+			}
 			function showNotePad(o, curDir, gsitem){
+				console.log("O:"+o+" curDir:"+curDir+" gsitem:"+gsitem.name);
 				var height = parseInt(jQuery(window).height()) - 100;
 				var width = parseInt(jQuery(window).width()) - 100;
 				var rows = parseInt(height / 30);
@@ -1318,6 +1347,7 @@ if(jQuery)( function() {
 					for( var i = 0; i < d.length; i++ ) {
 						//alert(d[i]);
 						jQuery(this).find('A[rel="' + d[i] + '"]').parent().addClass('disabled');
+						jQuery(this).find('A[rel="' + d[i] + '"]').parent().addClass('abc');
 					}
 				}
 			});

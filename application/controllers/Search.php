@@ -28,8 +28,9 @@ class Search extends CI_Controller{
 			$this->load->view('pages/login', $CurrentPage);
 		}
 	}
-	public function Document_Manager(){
-		$this->load->view('pages/Document_Manager');
+	public function Document_Manager($Case_Id){
+		$data['Case_Id'] = $Case_Id;
+		$this->load->view('pages/Document_Manager', $data);
 	}
 	public function searchs(){
 		//$this->session->all_userdata();
@@ -1210,8 +1211,17 @@ class Search extends CI_Controller{
 		$Folder_Name = array("BILLS", "AOB", "DENIALS", "SUMMONS-AND-COMPLAINT", "AFF-OF-SERVICE", "PAYMENTS", "SETTLEMENT-DOCS", "ANSWER", "THEIR-DEMANDS", "POM", "INDEX NUMBER", "DELAY LETTER", "PROVIDERS DOCUMENTS", "CORRESPONDENCE", "ACKNOWLEDGEMENT", "PEER REVIEW", "POLICE REPORT", "CERTIFICATE OF INCORPORATION", "LICENSES", "ANSWER DEMANDS", "AFF IN OPPOSITION", "EBT", "DISCOVERY CONFERENCE", "DEF SUPPLEMENTAL DEMANDS", "CONSENT TO CHANGE ATTORNEY", "PEER REVIEW", "IME", "OUR DEMANDS", "OUR DISCOVERY RESPONSES", "VERIFICATION REQUEST", "VERIFIED ANSWER", "UNCATEGORIZED", "Bills", "Bills", "Saved Letters", "Packet Exhibits", "Packet Document", "OUR MOTIONS", "ARBITRATIONS"
 		);
 		foreach($Folder_Name as $row){
-			echo "G:".$row;
+			//echo "G:".$row;
 		}
+		/*$file = base_url().'RIS PACS Manual 2016.pdf';
+		$filename = 'filename.pdf';
+		header('Content-type: application/pdf');
+		header('Content-Disposition: inline; filename="' . $filename . '"');
+		header('Content-Transfer-Encoding: binary');
+		header('Accept-Ranges: bytes');
+		@readfile($file);*/
+		
+		echo "<iframe src='".base_url()."RIS PACS Manual 2016.pdf' width=\"100%\" style=\"height:100%\"></iframe>";
 	}
 /*****************************************************************************************************************************************/
 }

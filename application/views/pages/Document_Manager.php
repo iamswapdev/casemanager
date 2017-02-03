@@ -11,6 +11,8 @@
 		<script src="/casemanager/Filemanager/gsFileManager.js" type="text/javascript"></script>
 		<script src="/casemanager/Filemanager/jquery.form.js" type="text/javascript"></script>
 		<script src="/casemanager/Filemanager/jquery.Jcrop.js" type="text/javascript"></script>
+        <script src="/casemanager/Filemanager/pdfobject.js" type="text/javascript"></script>
+        <script src="/casemanager/Filemanager/pdfobject.min.js" type="text/javascript"></script>
 		<!--<script src="/casemanager/Filemanager/lib/ckeditor/ckeditor.js" type="text/javascript"></script>-->
 	
 		<link href="/casemanager/Filemanager/gsFileManager.css" rel="stylesheet" type="text/css" media="screen" />
@@ -39,6 +41,7 @@
 	</head>
 	
 	<body>
+    	<input type="hidden" name="Case_Id" value="<?php echo $Case_Id?>">
 	    <div style="height: 16px; line-height: 16px">&nbsp;</div>
         <div id="fileTreeDemo_1" class="demoto">
         
