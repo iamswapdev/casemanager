@@ -1133,7 +1133,26 @@ class Search extends CI_Controller{
 		$Case_AutoId = $this->input->post("Templates_Case_AutoId");
 		if(isset($this->session->userdata['logged_in'])){
 			$data['CaseInfo'] = $this->case_info_model->get_Case_Info($Case_AutoId);
-			$this->load->view('templates/'.$template, $data);
+			/*$check = base_url()."application/views/templates/".$template.".htm";
+			/*echo "check:".$check;
+			if( file_exists($check)){echo "tt";exit;}else{ echo "ff";exit;}
+			$this->load->view('templates/'.$template.".htm", $data);
+			
+			$crl = curl_init("http://localhost:8771/casemanager/application/views/templates/AAA FORM AR.htm");
+curl_setopt($crl, CURLOPT_NOBODY, true);
+curl_exec($crl);
+
+$ret = curl_getinfo($crl, CURLINFO_HTTP_CODE);
+curl_close($crl);
+
+if ($ret == 200)
+    echo 'File exists';
+else
+    echo 'File does not exist';*/
+	
+	
+			//$this->load->view('templates/aaa.htm', $data);
+			$this->load->view('templates/'.$template.".htm", $data);
 		}else{
 			$CurrentPage['CurrentUrl'] = "search/viewcase/1";
 			$this->load->view('pages/login', $CurrentPage);
@@ -1195,18 +1214,14 @@ class Search extends CI_Controller{
 		
 		echo "<br>".strcasecmp("Hello","hELLo");
 		
-		//$dir = base_url()."application/views/templates/1";
-
-		//$files1 = scandir($dir, 1);
+		$dir = "C:/xampp/htdocs/casemanager/application/views/templates/*.php*";
+		//$files1 = glob($dir);
+		//echo "<pre>";print_r($files1);
 		
-		//print_r($files1);
-		
-		//$dir = base_url()."application/views/templates/1";
-		
-		//$files2 = scandir($dir, 1);
-		
-		
-		//print_r($files2);
+		$images = glob($dir);   
+		foreach($images as $image) {
+			echo str_replace(".php", "", basename($image)). "<br>";
+		}	
 		
 		$Folder_Name = array("BILLS", "AOB", "DENIALS", "SUMMONS-AND-COMPLAINT", "AFF-OF-SERVICE", "PAYMENTS", "SETTLEMENT-DOCS", "ANSWER", "THEIR-DEMANDS", "POM", "INDEX NUMBER", "DELAY LETTER", "PROVIDERS DOCUMENTS", "CORRESPONDENCE", "ACKNOWLEDGEMENT", "PEER REVIEW", "POLICE REPORT", "CERTIFICATE OF INCORPORATION", "LICENSES", "ANSWER DEMANDS", "AFF IN OPPOSITION", "EBT", "DISCOVERY CONFERENCE", "DEF SUPPLEMENTAL DEMANDS", "CONSENT TO CHANGE ATTORNEY", "PEER REVIEW", "IME", "OUR DEMANDS", "OUR DISCOVERY RESPONSES", "VERIFICATION REQUEST", "VERIFIED ANSWER", "UNCATEGORIZED", "Bills", "Bills", "Saved Letters", "Packet Exhibits", "Packet Document", "OUR MOTIONS", "ARBITRATIONS"
 		);
@@ -1221,7 +1236,25 @@ class Search extends CI_Controller{
 		header('Accept-Ranges: bytes');
 		@readfile($file);*/
 		
-		echo "<iframe src='".base_url()."RIS PACS Manual 2016.pdf' width=\"100%\" style=\"height:100%\"></iframe>";
+		//echo "<iframe src='".base_url()."RIS PACS Manual 2016.pdf' width=\"100%\" style=\"height:100%\"></iframe>";
+		echo "<br>Folder size:".number_format(($this->folderSize("C:/xampp/htdocs/casemanager/Cases"))/1048576, 2)." MB";
+	}
+	public function folderSize($dir){
+		$count_size = 0;
+		$count = 0;
+		$dir_array = scandir($dir);
+		  foreach($dir_array as $key=>$filename){
+			if($filename!=".." && $filename!="."){
+			   if(is_dir($dir."/".$filename)){
+				  $new_foldersize = $this->foldersize($dir."/".$filename);
+				  $count_size = $count_size+ $new_foldersize;
+				}else if(is_file($dir."/".$filename)){
+				  $count_size = $count_size + filesize($dir."/".$filename);
+				  $count++;
+				}
+		   }
+		 }
+		return $count_size;
 	}
 /*****************************************************************************************************************************************/
 }

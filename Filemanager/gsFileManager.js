@@ -287,7 +287,7 @@ if (jQuery) (function(jQuery){
 			/*menuHtml += '<a id="gs_itemmenubutton" class=\'gs_dir_content_button\'>&nbsp;' + gs_getTranslation(o.language, 50)+ '&nbsp;</a>';*/
 			
 			menuHtml += '<a id="gs_uploadbutton" class=\'gs_dir_content_button\'>&nbsp;' + gs_getTranslation(o.language, 3)+ '&nbsp;</a>';
-			menuHtml += '<a id="gs_newfilebutton" class=\'gs_dir_content_button\'>&nbsp;' + gs_getTranslation(o.language, 4)+ '&nbsp;</a>';
+			/*menuHtml += '<a id="gs_newfilebutton" class=\'gs_dir_content_button\'>&nbsp;' + gs_getTranslation(o.language, 4)+ '&nbsp;</a>';*/
 			menuHtml += '<a id="gs_newdirbutton" class=\'gs_dir_content_button\'>&nbsp;' + gs_getTranslation(o.language, 5)+ '&nbsp;</a>';
 			menuHtml += '<a id="gs_pastebutton" class=\'gs_dir_content_button\'>&nbsp;' + gs_getTranslation(o.language, 6)+ '&nbsp;</a>';
 			/*menuHtml += '<a id="gs_selectallbutton" class=\'gs_dir_content_button\'>&nbsp;' + gs_getTranslation(o.language, 23)+ '&nbsp;</a>';

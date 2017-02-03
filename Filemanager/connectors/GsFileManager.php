@@ -1,4 +1,6 @@
 <?php
+/*echo "DATA:".$_GET['Case_Id'];exit;
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -14,7 +16,7 @@ $Id = $row['Id'];
 $Case_Id = $row['Case_Id'];
 $Path = $row['Path'];
 
-$conn->close();
+$conn->close();*/
 
 /**
  * Free Web File Manager is free software released under MIT License.
@@ -808,7 +810,7 @@ $options = array();
 $options['max_upload_filesize'] = '10000'; //(the size in Kbytes)
 //$options[GSFileManager::$root_param] = $Path."Cases";
 
-$options[GSFileManager::$root_param] = "C:/xampp/htdocs/casemanager/Cases/".$Case_Id;
+$options[GSFileManager::$root_param] = "C:/xampp/htdocs/casemanager/Cases/".$_GET['Case_Id'];
 
 //echo "Original path:".$options[GSFileManager::$root_param];
 //$options[GSFileManager::$root_param] = '/home/domovak/filemanagerfs';
