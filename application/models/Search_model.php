@@ -430,16 +430,28 @@ Class Search_model extends CI_Model{
 	
 
 /*UPDATE SETTLEMENT*/
-	public function updateSettlement($data, $Case_Id){
-		$this->db->set($data);
+	public function updateSettlement($data1, $Case_Id){
 		$this->db->where("Case_Id", $Case_Id);
-		$this->db->update("dbo_tblsettlements", $data);
-		$status_to_paid = array(
-			"Status" => "PAID"
-		);
-		$this->db->set($status_to_paid);
-		$this->db->where("Case_Id", $Case_Id);
-		$this->db->update("dbo_tblcase", $status_to_paid);
+		$data=$this->db->get('dbo_tblsettlements');
+		$rows = $data->num_rows();
+		if($rows == 1){ 
+			$this->db->set($data1);
+			$this->db->where("Case_Id", $Case_Id);
+			$this->db->update("dbo_tblsettlements", $data1);
+			$status_to_paid = array(
+				"Status" => "PAID"
+			);
+			$this->db->set($status_to_paid);
+			$this->db->where("Case_Id", $Case_Id);
+			$this->db->update("dbo_tblcase", $status_to_paid); 
+		}else { 
+			$data1['Case_Id'] = $Case_Id;
+			$this->db->insert("dbo_tblsettlements", $data1);
+		}
+		
+		
+		
+		
 	}
 /* Reset Settlement Make case status from PAID to OPEN*/
 	public function resetSettlement($Case_AutoId){

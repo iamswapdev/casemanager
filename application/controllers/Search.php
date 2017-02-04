@@ -1158,6 +1158,23 @@ else
 			$this->load->view('pages/login', $CurrentPage);
 		}
 	}
+	public function folderSize($dir){
+		$count_size = 0;
+		$count = 0;
+		$dir_array = scandir($dir);
+		  foreach($dir_array as $key=>$filename){
+			if($filename!=".." && $filename!="."){
+			   if(is_dir($dir."/".$filename)){
+				  $new_foldersize = $this->foldersize($dir."/".$filename);
+				  $count_size = $count_size+ $new_foldersize;
+				}else if(is_file($dir."/".$filename)){
+				  $count_size = $count_size + filesize($dir."/".$filename);
+				  $count++;
+				}
+		   }
+		 }
+		return $count_size;
+	}
 	public function testmethod(){
 		/*$Case_Id = $this->dataentry_model->get_Last_Case_Id();
 		echo "CaseID:".$_SERVER['REQUEST_URI'];exit;
@@ -1238,24 +1255,16 @@ else
 		
 		//echo "<iframe src='".base_url()."RIS PACS Manual 2016.pdf' width=\"100%\" style=\"height:100%\"></iframe>";
 		echo "<br>Folder size:".number_format(($this->folderSize("C:/xampp/htdocs/casemanager/Cases"))/1048576, 2)." MB";
+		
+		echo "<br>Array ************************* ********************";
+		$data2 = array(
+			"first" => "first",
+			"second" => "second"
+		);
+		$data2["third"] = "third";
+		echo "<pre>"; print_r($data2);
 	}
-	public function folderSize($dir){
-		$count_size = 0;
-		$count = 0;
-		$dir_array = scandir($dir);
-		  foreach($dir_array as $key=>$filename){
-			if($filename!=".." && $filename!="."){
-			   if(is_dir($dir."/".$filename)){
-				  $new_foldersize = $this->foldersize($dir."/".$filename);
-				  $count_size = $count_size+ $new_foldersize;
-				}else if(is_file($dir."/".$filename)){
-				  $count_size = $count_size + filesize($dir."/".$filename);
-				  $count++;
-				}
-		   }
-		 }
-		return $count_size;
-	}
+	
 /*****************************************************************************************************************************************/
 }
 ?>
