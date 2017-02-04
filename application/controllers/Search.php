@@ -162,11 +162,11 @@ class Search extends CI_Controller{
 			$InsuranceCompany_Id = $data['CaseInfo'][0]['InsuranceCompany_Id'];
 			$Defendant_Id = $data['CaseInfo'][0]['Defendant_Id'];
 			$Adjuster_Id = $data['CaseInfo'][0]['Adjuster_Id'];
-			$Update_Case_Path = array(
+			/*$Update_Case_Path = array(
 				"Case_Id" => $data['CaseInfo'][0]['Case_Id'],
 				"Path" => base_url()
 			);
-			$this->search_model->Update_Document_Manager_Path($Update_Case_Path);
+			$this->search_model->Update_Document_Manager_Path($Update_Case_Path);*/
 			
 			//$data['Provider_Info']= $this->search_model->get_Provider_ById($Provider_Id);
 			$data['InsuranceCompany_Info']= $this->search_model->get_Insurance_ById($InsuranceCompany_Id);
@@ -194,7 +194,7 @@ class Search extends CI_Controller{
 	
 /* GET SETTLED BY INFO BY CASE ID*/
 	public function get_Settled_By($Case_Id){
-		$data = $this->search_model->getSettled_By($Case_Id);
+		$data = $this->search_model->get_Settled_By($Case_Id);
 		//echo "<pre>";print_r($data);
 		echo json_encode($data);
 	}

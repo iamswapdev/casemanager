@@ -81,41 +81,6 @@ session_cache_limiter('private_no_expire');
 		$CurrentPage['CurrentUrl'] = "search/advancedsearch";
 		$this->load->view('pages/login', $CurrentPage);
 	}
-	
-	public function adminprivilege(){
-		//$this->session->all_userdata();
-		if(isset($this->session->userdata['logged_in'])){
-			$this->load->view('pages/adminprivilege');
-		}else{
-			$this->load->view('pages/login');
-		}
-		
-	}
-	public function dataentry(){
-		//$this->session->all_userdata();
-		if(isset($this->session->userdata['logged_in'])){
-			$this->load->view('pages/dataentry');
-		}else{
-			$this->load->view('admin');
-		}
-		
-	}
-	public function search(){
-		//$this->session->all_userdata();
-		if(isset($this->session->userdata['logged_in'])){
-			$this->load->view('pages/search');
-		}else{
-			$this->load->view('admin');
-		}
-	}
-	public function advancedsearch(){
-		//$this->session->all_userdata();
-		if(isset($this->session->userdata['logged_in'])){
-			$this->load->view('pages/advancedsearch');
-		}else{
-			$this->load->view('admin');
-		}
-	}
 	public function contacts(){
 		//$this->session->all_userdata();
 		if(isset($this->session->userdata['logged_in'])){
