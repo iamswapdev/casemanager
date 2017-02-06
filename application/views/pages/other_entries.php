@@ -373,63 +373,63 @@
 	var t = $('#DenialReasons').dataTable( {
 		"ajax": 'DenialReasons',
 		"iDisplayLength": 20,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+    	"aLengthMenu": [5, 10, 20, 25, 50],
 		"bSort": false,
 		"searching": false
 	});
 	$('#Court').dataTable( {
 		"ajax": 'Court',
 		"iDisplayLength": 20,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+    	"aLengthMenu": [5, 10, 20, 25, 50],
 		"bSort": false,
 		"searching": false
 	});
 	$('#ImageType').dataTable( {
 		"ajax": 'ImageType',
 		"iDisplayLength": 20,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+    	"aLengthMenu": [5, 10, 20, 25, 50],
 		"bSort": false,
 		"searching": false
 	});
 	$('#Status').dataTable( {
 		"ajax": 'Status',
 		"iDisplayLength": 20,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+    	"aLengthMenu": [5, 10, 20, 25, 50],
 		"bSort": false,
 		"searching": false
 	});
 	$('#CaseStatus').dataTable( {
 		"ajax": 'CaseStatus',
 		"iDisplayLength": 20,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+    	"aLengthMenu": [5, 10, 20, 25, 50],
 		"bSort": false,
 		"searching": false
 	});
 	$('#Doc').dataTable( {
 		"ajax": 'Doc',
 		"iDisplayLength": 20,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+    	"aLengthMenu": [5, 10, 20, 25, 50],
 		"bSort": false,
 		"searching": false
 	});
 	$('#Service').dataTable( {
 		"ajax": 'Service',
 		"iDisplayLength": 20,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+    	"aLengthMenu": [5, 10, 20, 25, 50],
 		"bSort": false,
 		"searching": false
 	});
 	$('#EventType').dataTable( {
 		"ajax": 'EventType',
 		"iDisplayLength": 20,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+    	"aLengthMenu": [5, 10, 20, 25, 50],
 		"bSort": false,
 		"searching": false
 	});
 	var table = $('#EventStatus').dataTable( {
 		"ajax": 'EventStatus',
 		"iDisplayLength": 20,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+    	"aLengthMenu": [5, 10, 20, 25, 50],
 		"bSort": false,
 		"searching": false
 	});
@@ -451,7 +451,7 @@
 		$("#"+TableId).dataTable( {
 			"ajax": TableId,
 			"iDisplayLength": 20,
-			"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+			"aLengthMenu": [5, 10, 20, 25, 50],
 			"bSort": false,
 			"searching": false
 		});
@@ -557,7 +557,7 @@
 			$("#"+TableId).dataTable( {
 				"ajax": TableId,
 				"iDisplayLength": 20,
-				"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+				"aLengthMenu": [5, 10, 20, 25, 50],
 				"bSort": false,
 				"searching": false
 			});
@@ -681,7 +681,7 @@
 			$("#"+TableId).dataTable( {
 				"ajax": TableId,
 				"iDisplayLength": 20,
-				"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+				"aLengthMenu": [5, 10, 20, 25, 50],
 				"bSort": false,
 				"searching": false
 			});

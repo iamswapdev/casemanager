@@ -389,7 +389,7 @@ $(document).ready(function(e) {
     $('#CostBalance').dataTable( {
 		"ajax": "get_Cost_Balance",
 		"iDisplayLength": 10,
-		"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"aLengthMenu": [5, 10, 20, 25, 50],
 		"bSort": false,
 	});
 	$("#FirmFees_btn").click(function(){
@@ -404,14 +404,14 @@ $(document).ready(function(e) {
 			},
 			"bSort": false,
 			"iDisplayLength": 10,
-			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+			"aLengthMenu": [5, 10, 20, 25, 50]
 		});
 		$(".FirmFees").css("display", "block");
 	});
 	$('#ExpCostBalance').dataTable( {
 		"ajax": "get_Exp_Cost_Balance",
 		"iDisplayLength": 20,
-		"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+		"aLengthMenu": [5, 10, 20, 25, 50]
 	});
 	
 	

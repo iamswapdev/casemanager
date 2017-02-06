@@ -725,7 +725,7 @@ $(document).ready(function(e) {
 				"type": "post"
 			},
 			"iDisplayLength": 10,
-			"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+			"aLengthMenu": [5, 10, 20, 25, 50],
 			"bSort": true,
 			//bJQueryUI: true,
 			//"sDom": '<"top"flp>rt<"bottom"i><"clear">',
@@ -752,7 +752,7 @@ $(document).ready(function(e) {
 				"type": "post"
 			},
 			"iDisplayLength": 10,
-			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+			"aLengthMenu": [5, 10, 20, 25, 50]
 		});
 		
 		$("#StatusTable").dataTable().fnDestroy();

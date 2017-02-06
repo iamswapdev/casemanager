@@ -423,30 +423,6 @@
 		}
 		
 	});
-	/*$('input[name=dateOfServiceStart]').datepicker({
-			"autoclose": true,
-			"todayHighlight": true
-		});*/
-	/*$(function(){
-		//$("#accidentDate").datepicker("setDate", new Date());
-		$('#accidentDate').datepicker({
-			"autoclose": true,
-			"todayHighlight": true
-		});
-		
-		$('#dateOfServiceEnd').datepicker({
-			"autoclose": true,
-			"todayHighlight": true
-		});
-		$('#datapicker4').datepicker({
-			"autoclose": true,
-			"todayHighlight": true
-		});
-		$('#dateBillSent').datepicker({
-			"autoclose": true,
-			"todayHighlight": true
-		});
-	});*/
 	/*$('select#providerId').on('change', function() {
 		var option = $(this).find('option:selected').val();
 		$('#showoption').val(option);

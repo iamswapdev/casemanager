@@ -228,7 +228,7 @@
 		// Initialize Example 1
 		/*$('#AdvancedSearchTable').dataTable( {
 			"ajax": 'getSearchTable',
-			"aLengthMenu": [5, 10, 20, 25, 50, 100, 200, "All"],
+			"aLengthMenu": [5, 10, 20, 25, 50, 100, 200],
 			"pageLength": 50,
 			dom: 'Bfrtip',
 			buttons: [ 'pageLength', 'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5', 'print' ]
@@ -236,7 +236,7 @@
 		$('#AdvancedSearchTable').dataTable( {
 			"ajax": 'getSearchTable',
 			dom: "<'row'<'col-sm-4 demo'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
-            "lengthMenu": [ [10, 25, 50,100,200, -1], [10, 25, 50,100,200, "All"] ],
+            "lengthMenu": [ [10, 25, 50,100,200, -1], [10, 25, 50,100,200] ],
 			"pageLength": 50,
             buttons: [ 'copy', 'csv', 'excel', 'pdf', 'print' ]
 		});*/
@@ -247,8 +247,12 @@
 				"data":{'UserId': '<?php echo $UserId;?>', 'RoleId': '<?php echo $RoleId;?>'}
 			},
 			"iDisplayLength": 50,
-			"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+			"aLengthMenu": [5, 10, 20, 25, 50],
 			"bSort": true,
+			"extend": 'pdf',
+			"exportOptions": {
+				rows: { selected: true }
+			},
 			//bJQueryUI: true,
 			//"sDom": '<"top"flp>rt<"bottom"i><"clear">',
 			dom: 'lBfrtip',
@@ -285,7 +289,7 @@
 					"data":{'UserId': '<?php echo $UserId;?>', 'RoleId': '<?php echo $RoleId;?>'}
 				},
 				"iDisplayLength": 50,
-				"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+				"aLengthMenu": [5, 10, 20, 25, 50],
 				"bSort": false,
 				//bJQueryUI: true,
 				dom: 'lBfrtip',
@@ -352,7 +356,7 @@
 						},
 						"type": "POST"
 					},
-					"aLengthMenu": [5, 10, 20, 25, 50, 100, 200, "All"],
+					"aLengthMenu": [5, 10, 20, 25, 50, 100, 200],
 					"pageLength": 50,
 					dom: 'lBfrtip',
 					//dom: "<'row'<'col-sm-4 demo'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",

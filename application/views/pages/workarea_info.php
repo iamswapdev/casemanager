@@ -631,6 +631,7 @@ for($i=0; $i<=13; $i++){
 								<div class="col-sm-2"></div>
 								<div class="col-sm-4">List of available templates
                                 	<input type="hidden" name="Templates_Case_AutoId" value="<?php echo $Case_AutoId;?>" />
+                                    <input type="hidden" name="Templates_Case_Id" value="<?php echo $Case_Id;?>" />
                                 	<select size="4" name="TemplateName" id="TemplateName" class="form-control input-sm input-rows" style="height:520px;width:900px;">
 										<?php
                                         $dir = "C:/xampp/htdocs/casemanager/application/views/templates/*.htm*";
@@ -1376,6 +1377,11 @@ for($i=0; $i<=13; $i++){
 						<div class="panel-heading"></div>
 						<div class="panel-body tab-panel">
                         <form id="updateEventInfo_form"  method="post">
+                        	<div class="form-group form-horizontal col-md-12 Add_Event" style="display:none;">
+                            	<div class="col-md-2"></div>
+                                <div class="col-md-2">
+                                	<button type="button" id="Add_Event" class="btn btn-primary">Add Event</button></div>
+                            </div>
 							<div class="form-group form-horizontal col-md-12">
                             	<h5 class="h4-title">Event Module</h5>
                             	<label class="col-md-2 control-label">User_Id:</label>
@@ -1794,7 +1800,7 @@ $(document).ready(function(e) {
 	var NewRow = $('#Treatement_Info_table').dataTable( {
 		"ajax": "<?php echo base_url();?>search/getTreatement/<?php echo $Case_Id;?>",
 		"iDisplayLength": 10,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+    	"aLengthMenu": [5, 10, 20, 25, 50],
 		"bSort": false,
 		"searching": false,
 		"lengthChange": false,
@@ -1832,7 +1838,7 @@ $(document).ready(function(e) {
 			$('#Treatement_Info_table').dataTable( {
 				"ajax": "<?php echo base_url();?>search/getTreatement/<?php echo $Case_Id;?>",
 				"iDisplayLength": 10,
-				"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+				"aLengthMenu": [5, 10, 20, 25, 50],
 				"bSort": false,
 				"searching": false,
 				"lengthChange": false,
@@ -1947,7 +1953,7 @@ $(document).ready(function(e) {
 		$('#Treatement_Info_table').dataTable( {
 			"ajax": "<?php echo base_url();?>search/getTreatement/<?php echo $Case_Id;?>",
 			"iDisplayLength": 10,
-			"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+			"aLengthMenu": [5, 10, 20, 25, 50],
 			"bSort": false,
 			"searching": false,
 			"lengthChange": false,
@@ -1983,7 +1989,7 @@ $(document).ready(function(e) {
 			$('#Treatement_Info_table').dataTable( {
 				"ajax": "<?php echo base_url();?>search/getTreatement/<?php echo $Case_Id;?>",
 				"iDisplayLength": 10,
-				"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+				"aLengthMenu": [5, 10, 20, 25, 50],
 				"bSort": false,
 				"searching": false,
 				"lengthChange": false,
@@ -2025,14 +2031,14 @@ $(document).ready(function(e) {
 				$('#NotesTab1').dataTable( {
 					"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
 					"iDisplayLength": 5,
-					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+					"aLengthMenu": [5, 10, 20, 25, 50],
 					"bSort": false
 				});
 				$("#NotesTab3").dataTable().fnDestroy();
 				$('#NotesTab3').dataTable( {
 					"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
 					"iDisplayLength": 10,
-					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+					"aLengthMenu": [5, 10, 20, 25, 50],
 					"bSort": false
 				});
 				//$("#myModal").modal("show");
@@ -2176,14 +2182,14 @@ $(document).ready(function(e) {
 			$('#NotesTab1').dataTable( {
 				"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
 				"iDisplayLength": 5,
-				"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+				"aLengthMenu": [5, 10, 20, 25, 50],
 				"bSort": false
 			});
 			$("#NotesTab3").dataTable().fnDestroy();
 			$('#NotesTab3').dataTable( {
 				"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
 				"iDisplayLength": 10,
-				"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+				"aLengthMenu": [5, 10, 20, 25, 50],
 				"bSort": false
 			});
 			callSuccess();
@@ -2197,7 +2203,7 @@ $(document).ready(function(e) {
 	$('#NotesTab3').dataTable( {
 		"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
 		"iDisplayLength": 10,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+    	"aLengthMenu": [5, 10, 20, 25, 50],
 		"bSort": false
 	});
 	var dateNow = new Date();
@@ -2208,7 +2214,7 @@ $(document).ready(function(e) {
 	$('#NotesTab1').dataTable( {
 		"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
 		"iDisplayLength": 5,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+    	"aLengthMenu": [5, 10, 20, 25, 50],
 		"bSort": false,
 	});
 
@@ -2239,14 +2245,14 @@ $(document).ready(function(e) {
 				$('#NotesTab1').dataTable( {
 					"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
 					"iDisplayLength": 5,
-					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+					"aLengthMenu": [5, 10, 20, 25, 50],
 					"bSort": false,
 				});
 				$("#NotesTab3").dataTable().fnDestroy();
 				$('#NotesTab3').dataTable( {
 					"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
 					"iDisplayLength": 10,
-					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+					"aLengthMenu": [5, 10, 20, 25, 50],
 					"bSort": false
 				});
 				callSuccess();
@@ -2310,14 +2316,14 @@ $(document).ready(function(e) {
 					$('#NotesTab1').dataTable( {
 						"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
 						"iDisplayLength": 5,
-						"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+						"aLengthMenu": [5, 10, 20, 25, 50],
 						"bSort": false
 					});
 					$("#NotesTab3").dataTable().fnDestroy();
 					$('#NotesTab3').dataTable( {
 						"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
 						"iDisplayLength": 10,
-						"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+						"aLengthMenu": [5, 10, 20, 25, 50],
 						"bSort": false
 					});
 					console.log("suuuuu:"+response);
@@ -2347,14 +2353,14 @@ $(document).ready(function(e) {
 				$('#NotesTab1').dataTable( {
 					"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
 					"iDisplayLength": 5,
-					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+					"aLengthMenu": [5, 10, 20, 25, 50],
 					"bSort": false
 				});
 				$("#NotesTab3").dataTable().fnDestroy();
 				$('#NotesTab3').dataTable( {
 					"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
 					"iDisplayLength": 10,
-					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+					"aLengthMenu": [5, 10, 20, 25, 50],
 					"bSort": false
 				});
 			},
@@ -2445,8 +2451,7 @@ $(document).ready(function(e) {
 					/*console.log("Settlement_Amount:"+results[$i].Settlement_Amount);
 					console.log("Settlement_Int:"+parseFloat(results[$i].Settlement_Int));
 					console.log("Settlement_Af:"+parseFloat(results[$i].Settlement_Af));
-					console.log("Settlement_Ff:"+parseFloat(results[$i].Settlement_Ff));
-					console.log("Settlement_Total:"+parseFloat(results[$i].Settlement_Total));*/
+					console.log("Settlement_Ff:"+parseFloat(results[$i].Settlement_Ff));											console.log("Settlement_Total:"+parseFloat(results[$i].Settlement_Total));*/
 					
 					settledBy[0].innerHTML = results[$i].User_Id;
 					
@@ -2462,6 +2467,10 @@ $(document).ready(function(e) {
 					settledBy[2].innerHTML = str;
 					 
 					if(results[$i].Settlement_Amount == null){ $("input[name=Settlement_Amount]").val("0.00"); }else{ $("input[name=Settlement_Amount]").val(parseFloat(results[$i].Settlement_Amount).toFixed(2)); }
+					var Sett_Amt = $("input[name=Settlement_Amount]").val();
+					var Balance_Tab_6 = $("#BalanceTab6").val();
+					var Sett_Percentage = parseFloat((Sett_Amt * 100)/ Balance_Tab_6).toFixed(2);
+					$("#settlementPercentageTab6").val(Sett_Percentage);
 					
 					 //$("#FltInterestTab6").val(results[$i].Settlement_Int);
 					 $("input[name=Settlement_Int]").val(parseFloat(results[$i].Settlement_Int).toFixed(2));
@@ -2618,13 +2627,13 @@ $(document).ready(function(e) {
 					$('#NotesTab3').dataTable( {
 						"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
 						"iDisplayLength": 10,
-						"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+						"aLengthMenu": [5, 10, 20, 25, 50]
 					});
 					$("#NotesTab1").dataTable().fnDestroy();
 					$('#NotesTab1').dataTable( {
 						"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
 						"iDisplayLength": 5,
-						"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+						"aLengthMenu": [5, 10, 20, 25, 50],
 						"bSort": false
 					});
 					load_sett_data();
@@ -2659,13 +2668,13 @@ $(document).ready(function(e) {
 						$('#NotesTab3').dataTable( {
 							"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
 							"iDisplayLength": 10,
-							"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+							"aLengthMenu": [5, 10, 20, 25, 50]
 						});
 						$("#NotesTab1").dataTable().fnDestroy();
 						$('#NotesTab1').dataTable( {
 							"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
 							"iDisplayLength": 5,
-							"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+							"aLengthMenu": [5, 10, 20, 25, 50],
 							"bSort": false
 						});
 						Update_Settlement();
@@ -2689,7 +2698,7 @@ $(document).ready(function(e) {
 	$('#SettlementQuickView').dataTable( {
 		"ajax": "<?php echo base_url();?>search/SettlementQuickView/<?php echo $Case_Id;?>",
 		"iDisplayLength": 10,
-		"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"aLengthMenu": [5, 10, 20, 25, 50],
 		"bPaginate": false,
 		"bLengthChange": false,
 		"bFilter": false,
@@ -2700,7 +2709,7 @@ $(document).ready(function(e) {
 	$('#TransactionTable').dataTable( {
 		"ajax": "<?php echo base_url();?>search/getTransactions/<?php echo $Case_Id;?>",
 		"iDisplayLength": 10,
-		"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"aLengthMenu": [5, 10, 20, 25, 50],
 		"bSort": false,
 		"bPaginate": false,
 		"bLengthChange": false,
@@ -2759,13 +2768,13 @@ $(document).ready(function(e) {
 						$('#NotesTab3').dataTable( {
 							"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
 							"iDisplayLength": 10,
-							"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+							"aLengthMenu": [5, 10, 20, 25, 50]
 						});
 						$("#NotesTab1").dataTable().fnDestroy();
 						$('#NotesTab1').dataTable( {
 							"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
 							"iDisplayLength": 5,
-							"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+							"aLengthMenu": [5, 10, 20, 25, 50],
 							"bSort": false
 						});
 						load_sett_data();
@@ -2813,19 +2822,19 @@ $(document).ready(function(e) {
 				$('#TransactionTable').dataTable( {
 					"ajax": "<?php echo base_url();?>search/getTransactions/<?php echo $Case_Id;?>",
 					"iDisplayLength": 10,
-					"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+					"aLengthMenu": [5, 10, 20, 25, 50]
 				});
 				$("#NotesTab3").dataTable().fnDestroy();
 				$('#NotesTab3').dataTable( {
 					"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
 					"iDisplayLength": 10,
-					"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+					"aLengthMenu": [5, 10, 20, 25, 50]
 				});
 				$("#NotesTab1").dataTable().fnDestroy();
 				$('#NotesTab1').dataTable( {
 					"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
 					"iDisplayLength": 5,
-					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+					"aLengthMenu": [5, 10, 20, 25, 50],
 					"bSort": false
 				});
 				load_sett_data();
@@ -2844,7 +2853,7 @@ $(document).ready(function(e) {
 			"type": "post"
 		},
 		"iDisplayLength": 10,
-    	"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+    	"aLengthMenu": [5, 10, 20, 25, 50],
 		"bPaginate": false,
 		"bLengthChange": false,
 		"bFilter": false,
@@ -2933,6 +2942,7 @@ $(document).ready(function(e) {
 		$("input[name=AssignUser]").val(Assigned_To);
 		//$("input[name=AssignUserHidden]").val(Assigned_To);
 		$("input[name=EventDate]").val(EventDate);
+		$("input[name=Event_Time]").val($(parentRow).find("td:nth-child(6)").text());
 		$("input[name=EventType]").val(EventType);
 		$("input[name=EventStatus]").val(EventStatus);
 		//$("input[name=EventTime]").val(EventTime);
@@ -2940,6 +2950,7 @@ $(document).ready(function(e) {
 		$("input[name=EventTypeHidden]").val(EventTypeId);
 		$("input[name=EventStatusHidden]").val(EventStatusId);
 		$("input[name=EventIdHidden]").val(EventId);
+		$(".Add_Event").css("display", "block");
 	});
 /******** UPDATE EVENTS ********/
 	$("#updateEventInfo_form").validate({
@@ -2950,6 +2961,9 @@ $(document).ready(function(e) {
 			},		
 			submitHandler: function (form) {
 				var EventIdHidden = $("input[name=EventTypeHidden]").val();
+				var Event_Time = $("input[name=Event_Time]").val();
+				console.log("Event_Time:"+Event_Time);
+				
 				if(EventIdHidden != ""){
 					var $form = $(form);
 					var $inputs = $form.find("input, select, button, textarea");
@@ -2971,7 +2985,7 @@ $(document).ready(function(e) {
 								"type": "post"
 							},
 							"iDisplayLength": 10,
-							"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+							"aLengthMenu": [5, 10, 20, 25, 50],
 							"bPaginate": false,
 							"bLengthChange": false,
 							"bFilter": false,
@@ -2984,11 +2998,24 @@ $(document).ready(function(e) {
 				}
 			}
 	});
+	$("#Add_Event").click(function (){
+		$("input[name=EventIdHidden]").val("");
+		$("input[name=EventDate]").val("");
+		$("input[name=Event_Time]").val("");
+		$("input[name=EventType]").val("");
+		$("input[name=EventTypeHidden]").val("");
+		$("input[name=EventStatus]").val("");
+		$("input[name=EventStatusHidden]").val("");
+		$("#EventDescription").val("");
+		$("input[name=AssignUser]").val("");
+		$("#updateEventInfo_form select").val("");
+		$(".Add_Event").css("display", "none");
+	});
 /*Get Motion table*/
 	$('#MotionTable').dataTable( {
 		"ajax": "<?php echo base_url();?>search/get_Motion_Data/<?php echo $Case_Id;?>",
 		"iDisplayLength": 10,
-		"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"aLengthMenu": [5, 10, 20, 25, 50],
 		"bSort": false,
 		"searching": false
 	});
@@ -3013,7 +3040,7 @@ $(document).ready(function(e) {
 				$('#MotionTable').dataTable( {
 					"ajax": "<?php echo base_url();?>search/get_Motion_Data/<?php echo $Case_Id;?>",
 					"iDisplayLength": 10,
-					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+					"aLengthMenu": [5, 10, 20, 25, 50],
 					"bSort": false,
 					"searching": false
 				});
@@ -3066,7 +3093,7 @@ $(document).ready(function(e) {
 	$('#TrialsTable').dataTable( {
 		"ajax": "<?php echo base_url();?>search/get_Trials_Data/<?php echo $Case_Id;?>",
 		"iDisplayLength": 10,
-		"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+		"aLengthMenu": [5, 10, 20, 25, 50],
 		"bSort": false,
 		"searching": false
 	});
@@ -3091,7 +3118,7 @@ $(document).ready(function(e) {
 				$('#TrialsTable').dataTable( {
 					"ajax": "<?php echo base_url();?>search/get_Trials_Data/<?php echo $Case_Id;?>",
 					"iDisplayLength": 10,
-					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+					"aLengthMenu": [5, 10, 20, 25, 50],
 					"bSort": false,
 					"searching": false
 				});
@@ -3445,7 +3472,7 @@ daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndDat
 				$('#Provider_Info_table').dataTable( {
 					"ajax": "<?php //echo base_url();?>search/getProvider_ById/"+hiddenField,
 					"iDisplayLength": 10,
-					"aLengthMenu": [5, 10, 20, 25, 50, "All"],
+					"aLengthMenu": [5, 10, 20, 25, 50],
 					"bSort": false,
 					"searching": false,
 					"lengthChange": false,

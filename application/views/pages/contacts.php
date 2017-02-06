@@ -124,8 +124,8 @@
     $(function () {
 		$('#Contacts').dataTable( {
 			"ajax": "<?php echo base_url();?>admin/get_Contact_Data",
-			"iDisplayLength": 10,
-			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+			"iDisplayLength": 20,
+			"aLengthMenu": [5, 10, 20, 25, 50]
 		});
     });
 

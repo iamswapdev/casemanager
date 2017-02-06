@@ -304,7 +304,7 @@
         $('#example1').dataTable( {
             "ajax": 'get_Users_List',
 			"iDisplayLength": 20,
-			"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+			"aLengthMenu": [5, 10, 20, 25, 50]
         });
     });
 /******** DELETE USERS ********/
@@ -344,7 +344,7 @@
 						$('#example1').dataTable( {
 							"ajax": 'get_Users_List',
 							"iDisplayLength": 20,
-							"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+							"aLengthMenu": [5, 10, 20, 25, 50]
 						});
 					});
 					swal("Deleted!", "Your records has been deleted.", "success");
@@ -403,7 +403,7 @@
 					$('#example1').dataTable( {
 						"ajax": 'get_Users_List',
 						"iDisplayLength": 20,
-						"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+						"aLengthMenu": [5, 10, 20, 25, 50]
 					});
 					callSuccess();
 				});
@@ -468,7 +468,7 @@
 					$('#example1').dataTable( {
 						"ajax": 'get_Users_List',
 						"iDisplayLength": 20,
-						"aLengthMenu": [5, 10, 20, 25, 50, "All"]
+						"aLengthMenu": [5, 10, 20, 25, 50]
 					});
 					callSuccess();
 				});

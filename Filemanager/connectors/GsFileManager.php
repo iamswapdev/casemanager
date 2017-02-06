@@ -1,14 +1,9 @@
 <?php
-/*echo "DATA:".$_GET['Case_Id'];exit;
+//echo "DATA:".$_GET['Case_Id'];exit;
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "casemanagement";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
 
-$sql = "SELECT * FROM current_case";
+/*$sql = "SELECT * FROM current_case";
 $result=mysqli_query($conn,$sql);
 
 $row=mysqli_fetch_array($result);
@@ -165,6 +160,13 @@ class GSFileManager {
 	public $counte = 1;
 	private $functions;
     private $itemNameRegex = '[/\?\*;:{}\\\\]+';
+	
+	private $servername = "localhost";
+	private $username = "root";
+	private $password = "";
+	private $dbname = "casemanagement";
+	
+	
 	
 	public function __construct($fileStorage, $options){
 		$this->fileStorage = $fileStorage;
@@ -445,6 +447,8 @@ class GSFileManager {
 	}
 
 	public function uploadfile($args) {
+		$conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
+	
 		$root = $this->getOptionValue(self::$root_param);
 		$dir = $args['dir'];
 		if (empty($_FILES)) {
@@ -462,6 +466,12 @@ class GSFileManager {
 					throw new Exception('ILlegalArgumentException: File to large '.$filename, 14);
 				}
 				$this->checkFileName($filename);
+				//echo "upload file:".$dir;exit;
+				$Date = date('Y-m-d H:i:s');
+				
+				
+				$sql = "INSERT INTO `dbo_tblnotes`(`Notes_Desc`, `Notes_Type`, `Notes_Priority`, `Case_Id`, `Notes_Date`, `User_Id`) VALUES ('".$filename." is Uploaded at ".$_GET['Case_Id'].$dir."', 'ACTIVITY', '1', '".$_GET['Case_Id']."', '".$Date."', '".$_GET['User_Name']."')";
+				$true = mysqli_query($conn,$sql);
 				if ($this->fileStorage->move_uploaded_file($file['tmp_name'], $root.$dir.$filename) === false){
 				     /*  UPLOAD_ERR_OK
 						    Value: 0; There is no error, the file uploaded with success.

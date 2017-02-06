@@ -33,7 +33,7 @@
 			
 			$(document).ready( function() {
 				
-				jQuery('#fileTreeDemo_1').gsFileManager({ script: '/casemanager/Filemanager/connectors/GsFileManager.php?Case_Id=<?php echo $Case_Id?>' });
+				jQuery('#fileTreeDemo_1').gsFileManager({ script: '/casemanager/Filemanager/connectors/GsFileManager.php?Case_Id=<?php echo $Case_Id?>&User_Name=<?php echo $User_Name;?>' });
 				
 			});
 		</script>

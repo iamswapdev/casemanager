@@ -411,6 +411,9 @@ Class Search_model extends CI_Model{
 		$data=$query->result();
 		return $data;
 	}
+	public function just(){
+		echo "calledddd";
+	}
 	public function delete_Events($CheckedEvents){
 		foreach($CheckedEvents as $row){
 			$this->db->where("Event_id", $row);
@@ -437,21 +440,17 @@ Class Search_model extends CI_Model{
 		if($rows == 1){ 
 			$this->db->set($data1);
 			$this->db->where("Case_Id", $Case_Id);
-			$this->db->update("dbo_tblsettlements", $data1);
-			$status_to_paid = array(
-				"Status" => "PAID"
-			);
-			$this->db->set($status_to_paid);
-			$this->db->where("Case_Id", $Case_Id);
-			$this->db->update("dbo_tblcase", $status_to_paid); 
+			$this->db->update("dbo_tblsettlements", $data1); 
 		}else { 
 			$data1['Case_Id'] = $Case_Id;
 			$this->db->insert("dbo_tblsettlements", $data1);
 		}
-		
-		
-		
-		
+		$status_to_paid = array(
+			"Status" => "PAID"
+		);
+		$this->db->set($status_to_paid);
+		$this->db->where("Case_Id", $Case_Id);
+		$this->db->update("dbo_tblcase", $status_to_paid);
 	}
 /* Reset Settlement Make case status from PAID to OPEN*/
 	public function resetSettlement($Case_AutoId){

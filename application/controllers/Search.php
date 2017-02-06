@@ -4,7 +4,7 @@ session_cache_limiter('private_no_expire');
 
 class Search extends CI_Controller{
 	public $username = "";
-	public $Case_Id = "";
+	protected $Case_Id = "";
 	Public function __construct(){
 		parent::__construct();
 		$this->load->library('session');
@@ -30,6 +30,7 @@ class Search extends CI_Controller{
 	}
 	public function Document_Manager($Case_Id){
 		$data['Case_Id'] = $Case_Id;
+		$data['User_Name'] = $this->session->userdata['username'];
 		$this->load->view('pages/Document_Manager', $data);
 	}
 	public function searchs(){
@@ -162,6 +163,7 @@ class Search extends CI_Controller{
 			$InsuranceCompany_Id = $data['CaseInfo'][0]['InsuranceCompany_Id'];
 			$Defendant_Id = $data['CaseInfo'][0]['Defendant_Id'];
 			$Adjuster_Id = $data['CaseInfo'][0]['Adjuster_Id'];
+			$this->Case_Id = $data['CaseInfo'][0]['Case_Id'];
 			/*$Update_Case_Path = array(
 				"Case_Id" => $data['CaseInfo'][0]['Case_Id'],
 				"Path" => base_url()
@@ -868,7 +870,7 @@ class Search extends CI_Controller{
 			$row[] = $result->EventTypeName."<input type='hidden' name='EventTypeIdHidden' value='".$result->EventTypeId."'>";
 			$row[] = $result->EventStatusName."<input type='hidden' name='EventStatusIdHidden' value='".$result->EventStatusId."'>";
 			$row[] = date_format(date_create($result->Event_Date), 'm/d/Y');
-			$row[] = date_format(date_create($result->Event_Date), 'H:i');
+			$row[] = date_format(date_create($result->Event_Time), 'H:i');
 			$row[] = $result->Event_Notes;
 			$row[] = $result->Assigned_To;
 			$row[] = $result->Provider_Name;
@@ -914,11 +916,10 @@ class Search extends CI_Controller{
 	public function update_Event_Info(){
 		$data = array(
 			"User_id" => $this->input->post("UserId"),
-			"Event_Date" => $this->input->post("EventDate"),
-			"Event_Time" => $this->input->post("Event_Time"),
+			"Event_Date" => date_format(date_create($this->input->post("EventDate")), "Y-m-d"),
+			"Event_Time" => date_format(date_create($this->input->post("EventDate")." ".$this->input->post("Event_Time")), "Y-m-d H:i"),
 			"EventTypeId" => $this->input->post("EventTypeHidden"),
 			"EventStatusId" => $this->input->post("EventStatusHidden"),
-			"Event_Time" => $this->input->post("EventTime"),
 			"Event_Notes" => $this->input->post("EventDescription"),
 			"Assigned_To" => $this->input->post("AssignUser"),
 			"Event_id" => $this->input->post("EventIdHidden"),
@@ -1130,6 +1131,15 @@ class Search extends CI_Controller{
 	}
 	public function EditTemplate(){
 		$template = $this->input->post("TemplateName");
+		$Case_Id = $this->input->post("Templates_Case_Id");
+		$data3 = array(
+			"Notes_Type" => "General",
+			"Notes_Desc" => "Document ".$template." Printed",
+			"Notes_Date" => $date = date('Y-m-d H:i:s'),
+			"Case_Id" => $Case_Id,
+			"User_Id" => $this->session->userdata['username']
+		);
+		$this->search_model->add_Notes($data3);
 		$Case_AutoId = $this->input->post("Templates_Case_AutoId");
 		if(isset($this->session->userdata['logged_in'])){
 			$data['CaseInfo'] = $this->case_info_model->get_Case_Info($Case_AutoId);
