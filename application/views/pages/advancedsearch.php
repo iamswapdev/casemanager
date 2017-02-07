@@ -53,9 +53,12 @@
 			
 			
 			<form method="get" id="caseInfoSerach_form" class="form-horizontal label-font">
-
 				<div class="form-group form-horizontal col-md-12">
-                	<h5 class="h4-title">Search</h5>
+                	<div class="col-md-2">
+                    	<h5 class="h4-title">Search</h5>
+                    </div>
+                </div>
+				<div class="form-group form-horizontal col-md-12">
                     <label class="col-md-2 control-label">PROVIDER</label>
 					<div class="col-md-2">
 						<select class="form-control input-sm" id="sProviderId" name="sProviderId">
@@ -144,7 +147,12 @@
 				</div>
 			</form>
 			
-			<h5 class="h4-title">Search Results</h5>
+			
+            <div class="form-group form-horizontal col-md-12">
+                	<div class="col-md-2">
+                    	<h5 class="h4-title">Search Results</h5>
+                    </div>
+                </div>
 			<div class="form-group form-horizontal col-md-12 table-responsive">
             	<div class="col-md-12 responsive">
 				<table id="AdvancedSearchTable" class="table dataTable table-bordered table-striped advanced-search">

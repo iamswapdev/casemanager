@@ -975,6 +975,8 @@ for($i=0; $i<=13; $i++){
 								<div class="col-md-2 claim-paid-balance">
                                     <!--<input type="text" id="FltSettlement_AmountTab6" name="Settlement_Amount"  class="form-control input-sm Amount settled-by-info" />-->
                                     <input type="number" name="Settlement_Amount" value="" class="form-control input-sm Amount settled-by-info"/>
+                                    
+                                    
                                 </div>
 								<div class="col-md-2 claim-paid-balance"><input step="0.01" type="number" id="settlementPercentageTab6" name="settlementPercentageTab6"  class="form-control input-sm percentage" value="100.00"></div>
 							</div>
@@ -1017,7 +1019,9 @@ for($i=0; $i<=13; $i++){
 							<div class="form-group form-horizontal col-md-12">
 								<div class="col-md-2"></div>
 								<div class="col-md-2 claim-paid-balance sett-cal-title-left"><label class="control-label settlement-title">TOTAL AMOUNT</label> </div>
-								<div class="col-md-2 claim-paid-balance"><input type="text" id="TotalAmount" name="Settlement_Total"  class="form-control input-sm Amount" ></div>
+								<div class="col-md-2 claim-paid-balance">
+                                	<input type="text" id="TotalAmount" name="Settlement_Total"  class="form-control input-sm Amount"/>
+                                </div>
 								<div class="col-md-2 claim-paid-balance"><input step="0.01" value="100.00" type="number" id="TotalAmountPerc" name="TotalAmountPerc"  class="form-control input-sm percentage" disabled></div>
 							</div>
 							<div class="form-group form-horizontal col-md-12 settled-status-open">
@@ -1785,7 +1789,7 @@ $(document).ready(function(e) {
 	//$(".financials").find(".view-reports").attr("href", "<?php echo base_url();?>/financials/reports/<?php echo $Case_Id;?>");
 	var Accessibility = true;
 	if(Accessibility){
-		console.log("Accessibility:"+Accessibility);
+		//console.log("Accessibility:"+Accessibility);
 		<?php if(!$Admin) {?>
 		$("#WorkAreaTable th:nth-child(1)").html("");
 		$("#WorkAreaTable th:nth-child(4)").html("");
@@ -2376,10 +2380,14 @@ $(document).ready(function(e) {
 		load_sett_data();
 		var rowCount = $('#TransactionTable >tbody >tr').length;
 		FF_Sum = 0;
-		for(var counter=1; counter <= $('#TransactionTable >tbody >tr').length; counter++){
-			var value = parseFloat(($("#TransactionTable tr:nth-child("+counter+")").find("input[name=Transactions_Amount]").val()).replace("$", ""));
-			FF_Sum = FF_Sum + value;
-		}
+		console.log("rowCount:"+rowCount);
+		if(rowCount >1){
+			for(var counter=1; counter <= $('#TransactionTable >tbody >tr').length; counter++){
+				var value = parseFloat(($("#TransactionTable tr:nth-child("+counter+")").find("input[name=Transactions_Amount]").val()).replace("$", ""));
+				FF_Sum = FF_Sum + value;
+			}
+		}else{FF_Sum = 0.0;}
+		
 	});
 	$('#SettledType').on('change', function() {
 		var Sett_Final_Note =$('#SettledType option:selected').text()+" => "+$('input[name=Settlement_Amount]').val()+" / "+$('input[name=Settlement_Int]').val()+" / "+$('input[name=Settlement_Af]').val()+" / "+$('input[name=Settlement_Ff]').val()+ " , Sett % "+$('input[name=settlementPercentageTab6]').val();
@@ -2503,6 +2511,7 @@ $(document).ready(function(e) {
 			Attorney_Cal(parseFloat($("input[name=Settlement_Amount]").val()), calInt);
 			//console.log("calInt:"+calInt);
 		}
+		Settlement_Calculation();
 	});
 /*Calculate Attorney FF */
 	function Attorney_Cal(SettlementAmt, SettlementPerc){
@@ -2530,6 +2539,7 @@ $(document).ready(function(e) {
 			$("input[name=Settlement_Amount]").val(parseFloat(calSettAmt).toFixed(2));
 		}
 		Attorney_Cal(parseFloat($("input[name=Settlement_Amount]").val()), parseFloat($("input[name=Settlement_Int]").val()));
+		Settlement_Calculation();
 	});
 /*Calculate settlement Percentage according to sett amt*/
 	var SettCount2 = 0;
@@ -2542,6 +2552,8 @@ $(document).ready(function(e) {
 		var dataPerc = ( $("input[name=Settlement_Amount]").val() * 100 ) / $("input[name=BalanceTab6]").val();
 		$("input[name=settlementPercentageTab6]").val(parseFloat(dataPerc).toFixed(2));
 		Attorney_Cal(parseFloat($("input[name=Settlement_Amount]").val()), parseFloat($("input[name=Settlement_Int]").val()));
+		
+		Settlement_Calculation();
 	});
 /*Calculate Days difference and simple interest*/
 	$("#CalculateSI").click( function(){
@@ -2555,6 +2567,7 @@ $(document).ready(function(e) {
 			//$("input[name=Settlement_Af]").val(((parseFloat($("input[name=Settlement_Amount]").val()) + parseFloat($("input[name=Settlement_Int]").val()))/5).toFixed(2));
 			//console.log("Total_Interest:"+Total_Interest);
 		}else{ alert("Please Select correct End Date");}
+		Settlement_Calculation();
 	});
     function parseDate(str) {
 		var mdy = str.split('/')

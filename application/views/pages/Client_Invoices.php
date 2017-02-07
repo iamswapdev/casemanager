@@ -244,10 +244,6 @@
                     </table>
                 </div>
             </div>
-            <div class="form-group form-horizontal col-lg-12">
-            	<div class="col-md-6"></div>
-                <div class="col-md-6"><button type="submit" id="searchbutton" class="btn btn-primary">Freeze</button></div>
-            </div>
         </div><!-- End of panel-body tab-panel-->
         </div><!-- End hpanel -->
         </div><!-- End col-lg-12-->

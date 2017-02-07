@@ -466,12 +466,10 @@ class GSFileManager {
 					throw new Exception('ILlegalArgumentException: File to large '.$filename, 14);
 				}
 				$this->checkFileName($filename);
-				//echo "upload file:".$dir;exit;
 				$Date = date('Y-m-d H:i:s');
-				
-				
 				$sql = "INSERT INTO `dbo_tblnotes`(`Notes_Desc`, `Notes_Type`, `Notes_Priority`, `Case_Id`, `Notes_Date`, `User_Id`) VALUES ('".$filename." is Uploaded at ".$_GET['Case_Id'].$dir."', 'ACTIVITY', '1', '".$_GET['Case_Id']."', '".$Date."', '".$_GET['User_Name']."')";
 				$true = mysqli_query($conn,$sql);
+				$conn->close();
 				if ($this->fileStorage->move_uploaded_file($file['tmp_name'], $root.$dir.$filename) === false){
 				     /*  UPLOAD_ERR_OK
 						    Value: 0; There is no error, the file uploaded with success.

@@ -411,9 +411,6 @@ Class Search_model extends CI_Model{
 		$data=$query->result();
 		return $data;
 	}
-	public function just(){
-		echo "calledddd";
-	}
 	public function delete_Events($CheckedEvents){
 		foreach($CheckedEvents as $row){
 			$this->db->where("Event_id", $row);
