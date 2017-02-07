@@ -53,13 +53,16 @@
 		<div class="hpanel">
 		<div class="panel-heading"></div>
 		<div class="panel-body tab-panel">
-        	<div class="form-group form-horizontal col-md-12">
+        	<div class="form-group form-horizontal col-md-12 responsive">
             	<h4 class="h4-title"> Manage Users</h4>
                 <div class="operation-buttons">
                     <button type="button" class="btn btn-primary" title="Create User" data-toggle="modal" data-target="#CreateUser_modal"><i class="fa fa-group"></i> Create User</button>
                     <button type="button" id="deleteUsersButton" class="btn btn-primary delete" title="Delete User"><i class="fa fa-trash-o"></i>  Delete User</button>
                 </div>
-                <table id="example1" class="table dataTable table-bordered table-striped">
+                
+            </div>
+            <div class="form-group form-horizontal col-md-12 responsive">
+            	<table id="example1" class="table dataTable table-bordered table-striped">
                     <thead>
                     <tr>
                         <th>Desk Info</th>

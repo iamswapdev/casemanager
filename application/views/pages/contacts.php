@@ -42,31 +42,11 @@
 <div id="wrapper">
 
 <div class="content">
-	<div class="row">
-		<div class="col-lg-12">
-		<div class="hpanel">
-		<div class="panel-heading"></div>
-		<div class="panel-body tab-panel">
-			<form>
-			<!--<div class="form-group form-horizontal col-md-12">
-				<label class="col-md-2 control-label">Name</label>
-				<div class="col-md-2">	
-					<input type="text" class="form-control input-sm">
-				</div>
-				<div class="col-md-2">
-					<button type="submit" class="btn btn-primary">Search</button>
-				</div>
-			</div>-->
-			</form>
-		</div><!-- End of panel-body tab-panel-->
-		</div><!-- End hpanel -->
-		</div><!-- End col-lg-12-->
-	</div><!-- End row-->
-	<div class="row">
+    <div class="row">
 		<div class="col-lg-12 ">
 		<div class="hpanel">
 		<div class="panel-heading"></div>
-		<div class="panel-body tab-panel">
+		<div class="panel-body">
 			<div class="form-group form-horizontal col-lg-12">
 				<h5 class="h4-title">Contact Details</h5>
 				<div class="col-md-12">
