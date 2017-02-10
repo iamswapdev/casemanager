@@ -479,8 +479,8 @@ div.Section1
   mso-border-bottom-themecolor:text1;mso-border-bottom-alt:solid black .5pt;
   mso-border-bottom-themecolor:text1;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:0in;
-  margin-bottom:.0001pt;line-height:normal'><span style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Court_Name'];?><br>
-  <?php echo $CaseInfo[0]['Court_Venue'];?></span><span style='font-family:"Times New Roman","serif";
+  margin-bottom:.0001pt;line-height:normal'><span style='font-family:"Times New Roman","serif"'>COURT_NAME<br>
+  COURT_VENUE</span><span style='font-family:"Times New Roman","serif";
   mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
   </td>
   <td width=15 valign=top style='width:11.1pt;padding:0in 5.4pt 0in 5.4pt'>
@@ -493,7 +493,7 @@ div.Section1
   margin-bottom:.0001pt;line-height:normal'><b><span style='font-size:10.0pt;
   font-family:"Times New Roman","serif"'>Index No:&nbsp; </span></b><span
   class=SpellE><b style='mso-bidi-font-weight:normal'><span style='font-size:
-  10.0pt;font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></span></b></span><span
+  10.0pt;font-family:"Times New Roman","serif"'>{IndexOrAAA_Number}</span></b></span><span
   style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman"'><o:p></o:p></span></p>
   </td>
@@ -534,11 +534,11 @@ div.Section1
     height:20.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal;tab-stops:4.0in 445.5pt'><span class=defaulttext><b
-    style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Provider_Name'];?></span></b></span><span
+    style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman","serif"'>{PROVIDER_NAME}</span></b></span><span
     style='font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
     <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
     auto;line-height:normal'><span style='font-family:"Times New Roman","serif"'>A/A/O
-    <span class=defaulttext><b style='mso-bidi-font-weight:normal'><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></b></span></span><span
+    <span class=defaulttext><b style='mso-bidi-font-weight:normal'>INJUREDPARTY_NAME</b></span></span><span
     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
     "Times New Roman"'><o:p></o:p></span></p>
     </td>
@@ -577,7 +577,7 @@ div.Section1
     height:21.0pt'>
     <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
     auto;line-height:normal'><span class=defaulttext><b style='mso-bidi-font-weight:
-    normal'><span style='font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></span></b></span><span
+    normal'><span style='font-family:"Times New Roman","serif"'>INSURANCECOMPANY_NAME</span></b></span><span
     style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
     </td>
    </tr>
@@ -638,7 +638,7 @@ and says:</p>
 
 <p class=MsoListParagraphCxSpMiddle style='text-align:justify;text-justify:
 inter-ideograph;tab-stops:.5in 445.5pt'>I am the billing manager for <span
-class=defaulttext><?php echo $CaseInfo[0]['Provider_Name'];?><span style='mso-bidi-font-weight:bold'>
+class=defaulttext>{PROVIDER_NAME}<span style='mso-bidi-font-weight:bold'>
 (hereinafter “Provider”), and I submit this affidavit in support of the
 attached motion. My duties as billing manager include ensuring that bills
 reflecting services rendered to Provider’s patients are mailed to the proper
@@ -696,10 +696,10 @@ inter-ideograph;tab-stops:.5in 445.5pt'><span class=defaulttext><span
 style='mso-bidi-font-weight:bold'>After a thorough review of the files and
 notations pertaining to the bills attached hereto, I am certain that the
 mailing procedures described above were followed, and that the annexed
-documents responding to the verification request were mailed to </span><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?>
-pursuant to services rendered by Provider to <?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?> as a result of
+documents responding to the verification request were mailed to </span>INSURANCECOMPANY_NAME
+pursuant to services rendered by Provider to INJUREDPARTY_NAME as a result of
 injuries sustained from collision that occurred on <span style='mso-bidi-font-weight:
-bold'><?php echo date_format(date_create($CaseInfo[0]['Accident_Date']), "m/d/Y");?>. The documents attached to this submission as <b>Exhibit A</b>
+bold'>ACCIDENT_DATE. The documents attached to this submission as <b>Exhibit A</b>
 are documents created and maintained by Provider in the ordinary course of
 business and pertain to the verification documents that were mailed by Provider
 to Defendant. The bills were mailed on the following dates:</span></span></p>
@@ -711,8 +711,8 @@ style='mso-bidi-font-weight:bold'>&nbsp;</span></span></p>
 <p class=MsoListParagraphCxSpMiddle style='text-align:justify;text-justify:
 inter-ideograph;tab-stops:.5in 445.5pt'><span class=defaulttext><span
 style='mso-bidi-font-weight:bold'>Bills for dates of service <span
-class=SpellE><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span> </span>to <span class=SpellE><span
-style='mso-bidi-font-weight:bold'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_End']), "m/d/Y");?></span></span><span
+class=SpellE>DateOfService_START</span> </span>to <span class=SpellE><span
+style='mso-bidi-font-weight:bold'>DateOfService_END</span></span><span
 style='mso-bidi-font-weight:bold'> were mailed by provider to the Defendant at
 the address listed on the annexed bills on </span></span><span class=spelle><span
 style='color:black'>04/27/2007</span></span><span style='color:black'>. The

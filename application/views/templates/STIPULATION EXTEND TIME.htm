@@ -453,11 +453,11 @@ div.WordSection1
   <td width=465 valign=top style='width:279.0pt;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in'><span
   style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif";
-  color:black'><?php echo $CaseInfo[0]['Court_Venue'];?><br>
-  <?php echo $CaseInfo[0]['Court_Name'];?><br>
+  color:black'>COURT_VENUE<br>
+  COURT_NAME<br>
   -----------------------------------------------------------X<br>
-  <?php echo $CaseInfo[0]['Provider_Name'];?><br>
-  A/A/O <?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?>,
+  {PROVIDER_NAME}<br>
+  A/A/O INJUREDPARTY_NAME,
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <o:p></o:p></span></p>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in;
@@ -470,7 +470,7 @@ div.WordSection1
   <o:p></o:p></span></p>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in'><span
   style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif";
-  color:black'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?>,&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  color:black'>INSURANCECOMPANY_NAME,&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <o:p></o:p></span></p>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in;
   text-indent:112.5pt'><span style='font-size:12.0pt;line-height:115%;
@@ -481,7 +481,7 @@ div.WordSection1
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in'><span
   style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif";
   color:black'><br>
-  Index No.:&nbsp; <span class=SpellE><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></span><o:p></o:p></span></p>
+  Index No.:&nbsp; <span class=SpellE>{IndexOrAAA_Number}</span><o:p></o:p></span></p>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in'><span
   style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif";
   color:black'><o:p>&nbsp;</o:p></span></p>
@@ -505,7 +505,7 @@ reference to the above caption matter, the plaintiff’s time to answer to
 Summons and Complaint is extended to</p>
 
 <p style='margin-top:2.0pt;margin-right:0in;margin-bottom:24.0pt;margin-left:
-0in'>DATED:&nbsp;&nbsp;&nbsp; <?php echo date("m/d/Y");?></p>
+0in'>DATED:&nbsp;&nbsp;&nbsp; NOWDT</p>
 
 <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width="100%"
  style='width:100.0%;mso-cellspacing:0in;mso-yfti-tbllook:1184;mso-padding-alt:
@@ -539,17 +539,17 @@ Summons and Complaint is extended to</p>
   height:126.45pt'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span class=SpellE><span style='font-size:12.0pt;font-family:"Times New Roman","serif";
-  color:black'><?php echo $CaseInfo[0]['Adjuster_FirstName']." ".$CaseInfo[0]['Adjuster_LastName'];?></span><span style='font-size:12.0pt;
+  color:black'>Adjuster_Name</span></span><span style='font-size:12.0pt;
   font-family:"Times New Roman","serif";color:black'> <br>
-  <?php echo $CaseInfo[0]['InsuranceCompany_Name'];?><br>
-  Phone: <span class=SpellE><?php echo $CaseInfo[0]['Adjuster_Phone'];?></span><span
+  INSURANCECOMPANY_NAME<br>
+  Phone: <span class=SpellE>Adjuster_Phone</span><span
   style='mso-spacerun:yes'>   </span><span class=SpellE>xt</span>: <span
-  class=SpellE><?php echo $CaseInfo[0]['Adjuster_Phone_Ext'];?></span><br>
-  Fax:<span style='mso-spacerun:yes'>     </span><span class=SpellE><?php echo $CaseInfo[0]['Adjuster_Fax'];?></span><o:p></o:p></span></p>
+  class=SpellE>Adj_Phone_Ext</span><br>
+  Fax:<span style='mso-spacerun:yes'>     </span><span class=SpellE>Adjuster_Fax</span><o:p></o:p></span></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'><span
   style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif";
-  color:black'>Email: <span class=SpellE><?php echo $CaseInfo[0]['Adjuster_Email'];?></span><br>
-  Claim # <?php echo $CaseInfo[0]['Ins_Claim_Number'];?><o:p></o:p></span></p>
+  color:black'>Email: <span class=SpellE>Adjuster_Email</span><br>
+  Claim # INS_CLAIM_NUMBER<o:p></o:p></span></p>
   </td>
   <td width="55%" valign=top style='width:55.46%;padding:0in 0in 0in 0in;
   height:126.45pt'>
@@ -570,7 +570,7 @@ Summons and Complaint is extended to</p>
   style='mso-spacerun:yes'>     </span>Tax Id No.:27-3236520</p>
   <p style='margin:0in;margin-bottom:.0001pt;line-height:115%'><b
   style='mso-bidi-font-weight:normal'><span style='mso-spacerun:yes'>    
-  </span></b>Our Case Id: <span class=SpellE><?php echo $CaseInfo[0]['Case_Id'];?></span><o:p></o:p></p>
+  </span></b>Our Case Id: <span class=SpellE>Case_Id</span><o:p></o:p></p>
   </td>
  </tr>
 </table>

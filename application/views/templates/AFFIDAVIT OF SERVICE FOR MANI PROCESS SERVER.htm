@@ -555,20 +555,20 @@ table.MsoTableGrid
   <td width=384 valign=top style='width:4.0in;border:none;border-right:solid windowtext 1.0pt;
   mso-border-right-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;
   height:17.5pt'>
-  <p class=MsoNormal><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Court_Venue'];?><o:p></o:p></span></p>
+  <p class=MsoNormal><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>COURT_VENUE<o:p></o:p></span></p>
   <p class=MsoNormal><st1:place u4:st="on"><st1:PlaceType u4:st="on"><span
-  style='font-size:12.0pt;font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Court_Name'];?><br>
+  style='font-size:12.0pt;font-family:"Times New Roman","serif"'>COURT_NAME<br>
   </st1:PlaceType></st1:place>------------------------------------------------------------X<o:p></o:p></span></p>
   </td>
   <td width=300 valign=top style='width:225.0pt;border:none;mso-border-left-alt:
   solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:17.5pt'>
   <p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
   normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Index
-  No.: <span class=SpellE><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></span><o:p></o:p></span></b></p>
+  No.: <span class=SpellE>{IndexOrAAA_Number}</span><o:p></o:p></span></b></p>
   <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
   style='font-size:12.0pt;font-family:"Times New Roman","serif"'>File Date: </span></b><span
   class=SpellE><b style='mso-bidi-font-weight:normal'><span style='font-size:
-  11.0pt;font-family:"Times New Roman","serif";color:black'><?php echo $CaseInfo[0]['Date_Index_Number_Purchased'];?></span></b></span><b
+  11.0pt;font-family:"Times New Roman","serif";color:black'>Date_Index_Number_Purchased</span></b></span><b
   style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;font-family:
   "Times New Roman","serif"'><o:p></o:p></span></b></p>
   </td>
@@ -578,10 +578,10 @@ table.MsoTableGrid
   mso-border-right-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='tab-stops:4.0in'><span class=defaulttext><b
   style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;font-family:
-  "Times New Roman","serif"'><?php echo $CaseInfo[0]['Provider_Name'];?></span></b></span><span
+  "Times New Roman","serif"'>{PROVIDER_NAME}</span></b></span><span
   style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
   <p class=MsoNormal><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>A/A/O
-  <span class=defaulttext><b style='mso-bidi-font-weight:normal'><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></b></span><br>
+  <span class=defaulttext><b style='mso-bidi-font-weight:normal'>INJUREDPARTY_NAME</b></span><br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plaintiff(s),<b
   style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
   <p class=MsoNormal style='margin-left:1.5in;tab-stops:4.0in'><span
@@ -589,7 +589,7 @@ table.MsoTableGrid
   -against-<o:p></o:p></span></p>
   <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
   style='font-size:12.0pt;font-family:"Times New Roman","serif"'><br>
-  <span class=defaulttext><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></span></span></b><span
+  <span class=defaulttext>INSURANCECOMPANY_NAME</span></span></b><span
   class=defaulttext><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>,<u1:p></u1:p></span></span><span
   style='font-size:12.0pt;font-family:"Times New Roman","serif"'><br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Defendant(s),<br>
@@ -618,7 +618,7 @@ table.MsoTableGrid
   style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-language:
   AR-SA'>Attorney File No:<span style='mso-spacerun:yes'>  </span></span></b><span
   class=SpellE><b style='mso-bidi-font-weight:normal'><span style='font-size:
-  11.0pt;font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Case_Id'];?></span></b></span><span
+  11.0pt;font-family:"Times New Roman","serif"'>Case_Id</span></b></span><span
   style='font-size:11.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
   <p class=MsoNormal style='text-align:justify'><span style='font-size:12.0pt;
   font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
@@ -677,11 +677,12 @@ style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-langua
 AR-SA'><o:p>&nbsp;</o:p></span></b></p>
 
 <p class=MsoNormal><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>That
-on <span class=SpellE><u><span style='color:black'><?php echo date_format(date_create($CaseInfo[0]['Served_On_Date']), "m/d/Y");?></span></u></span><span
-style='color:black'> </span>at <span class=SpellE><u><?php echo date_format(date_create($CaseInfo[0]['Served_On_Time']), "H:i");?></u></span><span
-style='mso-spacerun:yes'></span><b><?php echo $CaseInfo[0]['InsuranceCompany_Local_Address'];?></b>, <b><?php echo $CaseInfo[0]['InsuranceCompany_Local_City'].", ".$CaseInfo[0]['InsuranceCompany_Local_State'].", ".$CaseInfo[0]['InsuranceCompany_Local_Zip'];?></b><b style='mso-bidi-font-weight:
+on <span class=SpellE><u><span style='color:black'>Served_On_Date</span></u></span><span
+style='color:black'> </span>at <span class=SpellE><u>Served_On_Time</u></span><span
+style='mso-spacerun:yes'>   </span><b>INSURANCECOMPANY_LOCAL_ADDRESS</b>, <b>INSURANCECOMPANY_LOCAL_CITY,
+INSURANCECOMPANY_LOCAL_STATE INSURANCECOMPANY_LOCAL_ZIP</b><b style='mso-bidi-font-weight:
 normal'> </b>deponent served the SUMMONS &amp; VERIFIED COMPLAINT on <span
-class=defaulttext><b style='mso-bidi-font-weight:normal'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></b></span><b
+class=defaulttext><b style='mso-bidi-font-weight:normal'>INSURANCECOMPANY_NAME</b></span><b
 style='mso-bidi-font-weight:normal'>.</b></span><span style='font-size:11.0pt;
 font-family:"Calibri","sans-serif";color:black'><o:p></o:p></span></p>
 
@@ -695,11 +696,11 @@ mso-fareast-language:AR-SA'>CORPORATION<o:p></o:p></span></b></p>
 
 <p class=MsoNormal><span style='font-size:12.0pt;font-family:"Times New Roman","serif";
 mso-fareast-language:AR-SA'>By delivering to and leaving with <span
-class=defaulttext><b><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></b></span> and that the deponent
+class=defaulttext><b>INSURANCECOMPANY_NAME</b></span> and that the deponent
 knew the person so served to be the General Agent,</span><span
 style='font-size:11.0pt;font-family:"Calibri","sans-serif";color:black'> </span><span
 class=SpellE><span style='font-size:11.0pt;font-family:"Times New Roman","serif";
-color:black'><?php echo $CaseInfo[0]['Served_To'];?></span></span><span style='font-size:12.0pt;font-family:
+color:black'>Served_To</span></span><span style='font-size:12.0pt;font-family:
 "Times New Roman","serif";mso-fareast-language:AR-SA'> authorized to accept on
 behalf of corporation.</span><span style='font-size:11.0pt;font-family:"Calibri","sans-serif";
 color:black'><o:p></o:p></span></p>

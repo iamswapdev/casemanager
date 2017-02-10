@@ -491,24 +491,24 @@ table.MsoTableGrid
  none'>
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
   <td width=415 valign=top style='width:311.4pt;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Court_Venue'];?><o:p></o:p></span></p>
+  <p class=MsoNormal><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>COURT_VENUE<o:p></o:p></span></p>
   <p class=MsoNormal><st1:place u4:st="on"><st1:PlaceType u4:st="on"><span
-  style='font-size:12.0pt;font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Court_Name'];?><br>
+  style='font-size:12.0pt;font-family:"Times New Roman","serif"'>COURT_NAME<br>
   -------------------------------------------------------------------X<o:p></o:p></span></p>
   </td>
   <td width=252 valign=top style='width:189.0pt;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Index
-  number: <span class=SpellE><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></span><o:p></o:p></span></p>
+  number: <span class=SpellE>{IndexOrAAA_Number}</span><o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:1;mso-yfti-lastrow:yes'>
   <td width=415 valign=top style='width:311.4pt;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='tab-stops:4.0in'><span class=defaulttext><b
   style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;font-family:
-  "Times New Roman","serif"'><?php echo $CaseInfo[0]['Provider_Name'];?></span></b></span><span
+  "Times New Roman","serif"'>{PROVIDER_NAME}</span></b></span><span
   style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
   <p class=MsoNormal><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>A/A/O
-  <span class=defaulttext><b style='mso-bidi-font-weight:normal'><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></b></span></span><span
+  <span class=defaulttext><b style='mso-bidi-font-weight:normal'>INJUREDPARTY_NAME</b></span></span><span
   class=defaulttext><b style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
   <p class=MsoNormal><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PLAINTIFF(s),</span></p>
   <p class=MsoNormal style='margin-left:1.5in;tab-stops:4.0in'><span
@@ -516,7 +516,7 @@ table.MsoTableGrid
   -AGAINST-<o:p></o:p></span></p>
   <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
   style='font-size:12.0pt;font-family:"Times New Roman","serif"'><br>
-  <span class=defaulttext><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></span></span></b><span
+  <span class=defaulttext>INSURANCECOMPANY_NAME</span></span></b><span
   class=defaulttext><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>,<u1:p></u1:p></span></span><span
   style='font-size:12.0pt;font-family:"Times New Roman","serif"'><br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DEFENDANT(s),<br>
@@ -560,14 +560,14 @@ respective parties hereto, that the caption of this matter shall now read as:<o:
  none'>
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
   <td width=415 valign=top style='width:311.4pt;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Court_Venue'];?><o:p></o:p></span></p>
+  <p class=MsoNormal><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>COURT_VENUE<o:p></o:p></span></p>
   <p class=MsoNormal><st1:place u4:st="on"><st1:PlaceType u4:st="on"><span
-  style='font-size:12.0pt;font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Court_Name'];?><br>
+  style='font-size:12.0pt;font-family:"Times New Roman","serif"'>COURT_NAME<br>
   -------------------------------------------------------------------X<o:p></o:p></span></p>
   </td>
   <td width=252 valign=top style='width:189.0pt;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>Index
-  number: <span class=SpellE><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></span><o:p></o:p></span></p>
+  number: <span class=SpellE>{IndexOrAAA_Number}</span><o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:1;mso-yfti-lastrow:yes;height:139.05pt'>
@@ -575,10 +575,10 @@ respective parties hereto, that the caption of this matter shall now read as:<o:
   height:139.05pt'>
   <p class=MsoNormal style='tab-stops:4.0in'><span class=defaulttext><b
   style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;font-family:
-  "Times New Roman","serif"'><?php echo $CaseInfo[0]['Provider_Name'];?></span></b></span><span
+  "Times New Roman","serif"'>{PROVIDER_NAME}</span></b></span><span
   style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
   <p class=MsoNormal><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>A/A/O
-  <span class=defaulttext><b style='mso-bidi-font-weight:normal'><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></b></span></span><span
+  <span class=defaulttext><b style='mso-bidi-font-weight:normal'>INJUREDPARTY_NAME</b></span></span><span
   class=defaulttext><b style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
   <p class=MsoNormal><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PLAINTIFF(s),</span></p>
   <p class=MsoNormal style='margin-left:1.5in;tab-stops:4.0in'><span
@@ -586,7 +586,7 @@ respective parties hereto, that the caption of this matter shall now read as:<o:
   -AGAINST-<o:p></o:p></span></p>
   <p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
   style='font-size:12.0pt;font-family:"Times New Roman","serif"'><br>
-  <span class=defaulttext><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></span></span></b><span
+  <span class=defaulttext>INSURANCECOMPANY_NAME</span></span></b><span
   class=defaulttext><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>,<u1:p></u1:p></span></span><span
   style='font-size:12.0pt;font-family:"Times New Roman","serif"'><br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DEFENDANT(s),<br>
@@ -615,18 +615,18 @@ respective parties hereto, that the caption of this matter shall now read as:<o:
   <p class=MsoNormal><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>______________________________________<o:p></o:p></span></p>
   <p class=MsoNormal style='mso-margin-top-alt:auto'><span class=SpellE><span
-  style='font-size:12.0pt;font-family:"Times New Roman","serif";color:black'><?php echo $CaseInfo[0]['Adjuster_FirstName']." ".$CaseInfo[0]['Adjuster_LastName'];?></span><span
+  style='font-size:12.0pt;font-family:"Times New Roman","serif";color:black'>Adjuster_Name</span></span><span
   style='font-size:12.0pt;font-family:"Times New Roman","serif";color:black'> <br>
-  <?php echo $CaseInfo[0]['InsuranceCompany_Name'];?><br>
-  Phone: <span class=SpellE><?php echo $CaseInfo[0]['Adjuster_Phone'];?></span><span
+  INSURANCECOMPANY_NAME<br>
+  Phone: <span class=SpellE>Adjuster_Phone</span><span
   style='mso-spacerun:yes'>   </span><span class=SpellE>xt</span>: <span
-  class=SpellE><?php echo $CaseInfo[0]['Adjuster_Phone_Ext'];?></span><br>
-  Fax:<span style='mso-spacerun:yes'>     </span><span class=SpellE><?php echo $CaseInfo[0]['Adjuster_Fax'];?></span></span><span
+  class=SpellE>Adj_Phone_Ext</span><br>
+  Fax:<span style='mso-spacerun:yes'>     </span><span class=SpellE>Adjuster_Fax</span></span><span
   style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman";mso-fareast-theme-font:minor-fareast;color:black'><o:p></o:p></span></p>
   <p class=MsoNormal><span style='font-size:12.0pt;font-family:"Times New Roman","serif";
-  color:black'>Email: <span class=SpellE><?php echo $CaseInfo[0]['Adjuster_Email'];?></span><br>
-  Claim # <?php echo $CaseInfo[0]['Ins_Claim_Number'];?><o:p></o:p></span></p>
+  color:black'>Email: <span class=SpellE>Adjuster_Email</span><br>
+  Claim # INS_CLAIM_NUMBER<o:p></o:p></span></p>
   <p class=MsoNormal><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
   </td>
   <td width=372 valign=top style='width:279.05pt;padding:0in 5.4pt 0in 5.4pt'>
@@ -658,7 +658,7 @@ respective parties hereto, that the caption of this matter shall now read as:<o:
   bold'>516-216-5405</span><o:p></o:p></span></p>
   <p class=MsoNormal><U1:P></U1:P><span style='font-size:12.0pt;font-family:
   "Times New Roman","serif"'><span style='mso-spacerun:yes'>    </span><b
-  style='mso-bidi-font-weight:normal'>Our Case Id: <span class=SpellE><?php echo $CaseInfo[0]['Case_Id'];?></span><o:p></o:p></b></span></p>
+  style='mso-bidi-font-weight:normal'>Our Case Id: <span class=SpellE>Case_Id</span><o:p></o:p></b></span></p>
   <p class=MsoNormal><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
   </td>
  </tr>
@@ -666,7 +666,7 @@ respective parties hereto, that the caption of this matter shall now read as:<o:
 
 <p class=MsoNormal><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>DATED:</span><span
 style='font-family:"Verdana","sans-serif"'> </span><span style='font-family:
-"Times New Roman","serif"'><?php echo date("m/d/Y");?></span><span style='font-size:12.0pt;
+"Times New Roman","serif"'>NOWDT</span><span style='font-size:12.0pt;
 font-family:"Times New Roman","serif"'> <o:p></o:p></span></p>
 
 </div>

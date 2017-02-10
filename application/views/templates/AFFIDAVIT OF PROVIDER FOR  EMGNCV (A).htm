@@ -854,15 +854,15 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
   <td width="70%" style='width:70.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
-  mso-fareast-font-family:"Times New Roman"'><?php echo $CaseInfo[0]['Court_Name'];?><br>
-  <?php echo $CaseInfo[0]['Court_Venue'];?><o:p></o:p></span></p>
+  mso-fareast-font-family:"Times New Roman"'>COURT_NAME<br>
+  COURT_VENUE<o:p></o:p></span></p>
   </td>
   <td width="30%" valign=top style='width:30.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><b><span style='font-size:10.0pt;font-family:"Times New Roman",serif;
   mso-fareast-font-family:"Times New Roman"'>Index No.:</span></b><b
   style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
-  "Times New Roman",serif'> <span class=SpellE><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></span></span></b><span
+  "Times New Roman",serif'> <span class=SpellE>{IndexOrAAA_Number}</span></span></b><span
   style='font-size:10.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
   "Times New Roman"'><o:p></o:p></span></p>
   </td>
@@ -884,11 +884,11 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     <td colspan=3 valign=top style='padding:0in 0in 0in 0in;height:20.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     tab-stops:4.0in 445.5pt'><span class=defaulttext><span style='font-size:
-    10.0pt;line-height:115%;font-family:"Times New Roman",serif'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span><span
+    10.0pt;line-height:115%;font-family:"Times New Roman",serif'>{PROVIDER_NAME}</span></span><span
     style='font-size:10.0pt;line-height:115%;font-family:"Times New Roman",serif'><o:p></o:p></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:10.0pt;font-family:"Times New Roman",serif'>A/A/O
-    <span class=defaulttext><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></span></span><span
+    <span class=defaulttext>INJUREDPARTY_NAME</span></span><span
     style='font-size:10.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
     "Times New Roman"'><o:p></o:p></span></p>
     </td>
@@ -914,7 +914,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     <td colspan=3 valign=bottom style='padding:0in 0in 0in 0in;height:21.0pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=defaulttext><span style='font-size:10.0pt;
-    font-family:"Times New Roman",serif'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></span></span><span
+    font-family:"Times New Roman",serif'>INSURANCECOMPANY_NAME</span></span><span
     style='font-size:10.0pt;font-family:"Times New Roman",serif;mso-fareast-font-family:
     "Times New Roman"'><o:p></o:p></span></p>
     </td>
@@ -1010,9 +1010,9 @@ mso-fareast-font-family:"Times New Roman"'>I personally reviewed the peer
 review report of <b style='mso-bidi-font-weight:normal'>Jeffrey Perry, D.O</b>.,
 dated <b style='mso-bidi-font-weight:normal'>02/05/2015</b>, who determined that
 the electro diagnostic studies performed on </span><span class=SpellE><span
-class=defaulttext><span style='mso-bidi-font-weight:bold'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span></span></span><span
+class=defaulttext><span style='mso-bidi-font-weight:bold'>DateOfService_START</span></span></span><span
 class=defaulttext><span style='mso-bidi-font-weight:bold'> </span>to <span
-class=SpellE><span style='mso-bidi-font-weight:bold'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_End']), "m/d/Y");?></span></span></span><span
+class=SpellE><span style='mso-bidi-font-weight:bold'>DateOfService_END</span></span></span><span
 style='font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman"'>
 were not medically necessary. <o:p></o:p></span></p>
 
@@ -1036,10 +1036,10 @@ style='mso-list:Ignore'>5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp
 </span></span></span><![endif]><span style='font-family:"Times New Roman",serif;
 mso-fareast-font-family:"Times New Roman"'>As an initial matter, </span><span
 class=defaulttext><span style='font-family:"Times New Roman",serif;mso-bidi-font-family:
-"Times New Roman";mso-bidi-theme-font:minor-bidi'><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></span></span><span
+"Times New Roman";mso-bidi-theme-font:minor-bidi'>INJUREDPARTY_NAME</span></span><span
 style='font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman"'>
 was in a car accident on </span><span class=defaulttext><span style='font-family:
-"Times New Roman",serif;mso-bidi-font-weight:bold'><?php echo date_format(date_create($CaseInfo[0]['Accident_Date']), "m/d/Y");?></span></span><span
+"Times New Roman",serif;mso-bidi-font-weight:bold'>ACCIDENT_DATE</span></span><span
 style='font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman"'>.
 After over <b style='mso-bidi-font-weight:normal'>9</b> months of conservative
 care without adequate improvement in patient’s condition <span class=SpellE>electrodiagnostic</span>
@@ -1054,12 +1054,12 @@ auto;margin-left:63.0pt;mso-add-space:auto;text-indent:-27.0pt;line-height:
 style='font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman"'><span
 style='mso-list:Ignore'>6.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span></span></span><![endif]><span class=SpellE><span class=defaulttext><span
-style='mso-bidi-font-weight:bold'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span></span></span><span
+style='mso-bidi-font-weight:bold'>DateOfService_START</span></span></span><span
 class=defaulttext><span style='mso-bidi-font-weight:bold'> </span>to <span
-class=SpellE><span style='mso-bidi-font-weight:bold'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_End']), "m/d/Y");?></span></span></span><span
+class=SpellE><span style='mso-bidi-font-weight:bold'>DateOfService_END</span></span></span><span
 style='font-family:"Times New Roman",serif'> </span><span class=defaulttext><span
 style='font-family:"Times New Roman",serif;mso-bidi-font-family:"Times New Roman";
-mso-bidi-theme-font:minor-bidi'><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></span></span><span
+mso-bidi-theme-font:minor-bidi'>INJUREDPARTY_NAME</span></span><span
 style='font-family:"Times New Roman",serif'>&nbsp;presented in my office with
 complaints of <b style='mso-bidi-font-weight:normal'>neck pain radiating to the
 left shoulders and left arm with numbness and tingling. </b></span><b
@@ -1077,9 +1077,9 @@ cervical radiculopathy, R/O Posttraumatic lumbar radiculopathy, Carpal Tunnel
 Syndrome. Jackson’s test was positive on the right and left sides and Straight
 Leg Raising test on the right and left sides reproduced pain in Lumbar spine</b>.
 Neurological report dated </span><span class=SpellE><span class=defaulttext><span
-style='mso-bidi-font-weight:bold'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_Start']), "m/d/Y");?></span></span></span><span
+style='mso-bidi-font-weight:bold'>DateOfService_START</span></span></span><span
 class=defaulttext><span style='mso-bidi-font-weight:bold'> </span>to <span
-class=SpellE><span style='mso-bidi-font-weight:bold'><?php echo date_format(date_create($CaseInfo[0]['DateOfService_End']), "m/d/Y");?></span></span></span><span
+class=SpellE><span style='mso-bidi-font-weight:bold'>DateOfService_END</span></span></span><span
 style='font-family:"Times New Roman",serif;mso-fareast-font-family:"Times New Roman"'>
 clearly indicates that neurological examination yielded positive findings such
 as d<b style='mso-bidi-font-weight:normal'>eep tendon reflex +2/4, there was

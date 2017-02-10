@@ -7,6 +7,7 @@ class Search extends CI_Controller{
 	protected $Case_Id = "";
 	Public function __construct(){
 		parent::__construct();
+		$this->load->library('parser');
 		$this->load->library('session');
 		$this->load->model('search_model');
 		$this->load->model('dataentry_model');
@@ -1162,7 +1163,26 @@ else
 	
 	
 			//$this->load->view('templates/aaa.htm', $data);
-			$this->load->view('templates/'.$template.".htm", $data);
+			//$this->load->view('templates/'.$template.".htm", $data);
+			
+			
+			/*$this->view_data['page_content'] = "templates/".$template.".htm";    
+			if ($bool === TRUE){
+				$this->view_data['page_content'] = 'dash';
+			}
+			$this->load->view('main',$this->view_data);*/
+			//echo "<pre>";print_r($data);
+			$data1 = array(
+				'blog_title' => 'My Blog Title'
+			);
+			//echo "<pre>";print_r($data1);
+			$data['CaseInfo'][0]['PROVIDER_NAME'] = $data['CaseInfo'][0]['Provider_Name'];
+			unset($data['CaseInfo'][0]['Provider_Name']);
+			//echo "<pre>";print_r($data1);
+			
+			$this->parser->parse("templates/".$template.".htm", $data['CaseInfo'][0]);
+			
+			
 		}else{
 			$CurrentPage['CurrentUrl'] = "search/viewcase/1";
 			$this->load->view('pages/login', $CurrentPage);

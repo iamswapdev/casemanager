@@ -529,15 +529,15 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
   <td width="70%" style='width:70.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman","serif";
-  mso-fareast-font-family:"Times New Roman"'><?php echo $CaseInfo[0]['Court_Name'];?><br>
-  <?php echo $CaseInfo[0]['Court_Venue'];?><o:p></o:p></span></p>
+  mso-fareast-font-family:"Times New Roman"'>COURT_NAME<br>
+  COURT_VENUE<o:p></o:p></span></p>
   </td>
   <td width="30%" valign=top style='width:30.0%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><b><span style='font-size:10.0pt;font-family:"Times New Roman","serif";
   mso-fareast-font-family:"Times New Roman"'>Index No.:</span></b><b
   style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
-  "Times New Roman","serif"'> <span class=SpellE><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></span></span></b><span
+  "Times New Roman","serif"'> <span class=SpellE>{IndexOrAAA_Number}</span></span></b><span
   style='font-size:10.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman"'><o:p></o:p></span></p>
   </td>
@@ -559,11 +559,11 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     <td colspan=3 valign=top style='padding:0in 0in 0in 0in;height:20.25pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     tab-stops:4.0in 445.5pt'><span class=defaulttext><span style='font-size:
-    10.0pt;line-height:115%;font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['Provider_Name'];?></span></span><span
+    10.0pt;line-height:115%;font-family:"Times New Roman","serif"'>{PROVIDER_NAME}</span></span><span
     style='font-size:10.0pt;line-height:115%;font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:10.0pt;font-family:"Times New Roman","serif"'>A/A/O
-    <span class=defaulttext><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></span></span><span
+    <span class=defaulttext>INJUREDPARTY_NAME</span></span><span
     style='font-size:10.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
     "Times New Roman"'><o:p></o:p></span></p>
     </td>
@@ -589,7 +589,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     <td colspan=3 valign=bottom style='padding:0in 0in 0in 0in;height:21.0pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=defaulttext><span style='font-size:10.0pt;
-    font-family:"Times New Roman","serif"'><?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></span></span><span
+    font-family:"Times New Roman","serif"'>INSURANCECOMPANY_NAME</span></span><span
     style='font-size:10.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
     "Times New Roman"'><o:p></o:p></span></p>
     </td>
@@ -634,7 +634,7 @@ style='font-size:11.0pt'>STATE OF NEW <span class=GramE>YORK )</span><o:p></o:p>
 <p class=MsoListParagraph style='margin:0in;margin-bottom:.0001pt;text-align:
 justify;text-justify:inter-ideograph;tab-stops:.5in 445.5pt'><span
 style='font-size:11.0pt'><span
-style='mso-spacerun:yes'></span>)<o:p></o:p></span></p>
+style='mso-spacerun:yes'>                                           </span>)<o:p></o:p></span></p>
 
 <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
 normal'>COUNTY OF NASSAU</p>
@@ -681,7 +681,7 @@ MD, dated 7/6/2010 who determined that further treatment was not necessary.</p>
 <p class=MsoListParagraphCxSpMiddle style='margin-left:63.0pt;mso-add-space:
 auto;text-indent:-27.0pt;line-height:200%;mso-list:l0 level1 lfo2'><![if !supportLists]><span
 style='mso-list:Ignore'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span></span><![endif]>Notwithstanding Dr. <span class=SpellE>Westerbands</span>
+</span></span><![endif]>Notwithstanding Dr. <span class=SpellE>Westerband’s</span>
 opinion to the contrary, it is my opinion that based upon the symptoms
 presented by the patient when I treated him, the services were medically
 necessary.</p>
@@ -691,8 +691,8 @@ auto;text-indent:-27.0pt;line-height:200%;mso-list:l0 level1 lfo2'><![if !suppor
 style='mso-list:Ignore'>5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span></span><![endif]>As an initial matter, Wilbert Easy was in a car
 accident on 1/2/10. After over a month of conservative care without adequate
-improvement in patients condition <span class=SpellE>electrodiagnostic</span>
-studies became medically necessary.<span style='mso-spacerun:yes'></span>The
+improvement in patient’s condition <span class=SpellE>electrodiagnostic</span>
+studies became medically necessary.<span style='mso-spacerun:yes'>  </span>The
 peer review <span class=SpellE>dr</span> argues that the study would only be
 necessary after four weeks of treatment which was done here.</p>
 
@@ -702,9 +702,9 @@ style='mso-list:Ignore'>6.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp
 </span></span><![endif]>I have reviewed the records maintained by the
 plaintiff, including examination reports for 1/4/2010, 2/10/10, 3/5/10,
 3/26/10, 4/14/10, 5/4/10, 5/18/10, 6/2/10, 6/29/10, 7/14/10, 8/3/10 and
-8/17/10.<span style='mso-spacerun:yes'></span>I also reviewed numerous MRI
+8/17/10.<span style='mso-spacerun:yes'>  </span>I also reviewed numerous MRI
 and operative reports by other providers for this patient.<span
-style='mso-spacerun:yes'></span>It is my opinion that the services at issue
+style='mso-spacerun:yes'>  </span>It is my opinion that the services at issue
 were medically necessary.<a name="_GoBack"></a></p>
 
 <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
@@ -725,7 +725,7 @@ auto;mso-add-space:auto;text-align:justify;text-justify:inter-ideograph;
 line-height:200%;tab-stops:.5in 445.5pt'><span style='font-size:12.0pt;
 line-height:200%;font-family:"Times New Roman","serif";mso-fareast-font-family:
 "Times New Roman";color:black'>&nbsp;<span style='mso-spacerun:yes'>     
-</span><span style='mso-spacerun:yes'></span></span><span
+</span><span style='mso-spacerun:yes'>          </span></span><span
 class=SpellE><span style='font-size:12.0pt;line-height:200%;font-family:"Times New Roman","serif";
 mso-fareast-font-family:"Times New Roman"'>Sayeedus</span></span><span
 style='font-size:12.0pt;line-height:200%;font-family:"Times New Roman","serif";

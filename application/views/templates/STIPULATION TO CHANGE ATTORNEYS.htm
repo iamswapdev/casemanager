@@ -313,28 +313,28 @@ div.WordSection1
  mso-padding-alt:0in 0in 0in 0in'>
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
   <td width=489 valign=top style='width:293.4pt;padding:0in 5.4pt 0in 5.4pt'>
-  <p class=MsoNormal><?php echo $CaseInfo[0]['Court_Name'];?><br>
-  <?php echo $CaseInfo[0]['Court_Venue'];?><span style='font-size:11.0pt'><br>
+  <p class=MsoNormal>COURT_NAME<br>
+  COURT_VENUE<span style='font-size:11.0pt'><br>
   ---------------------------------------------------------------X</span></p>
   </td>
   <td width=338 valign=top style='width:202.5pt;padding:0in 5.4pt 0in 5.4pt'>
   <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>Index
-  number: <span class=SpellE><?php echo $CaseInfo[0]['IndexOrAAA_Number'];?></span></span></p>
+  number: <span class=SpellE>{IndexOrAAA_Number}</span></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:1;mso-yfti-lastrow:yes'>
   <td width=489 valign=top style='width:293.4pt;padding:0in 5.4pt 0in 5.4pt'>
-  <p style='margin:0in;margin-bottom:.0001pt'><b><span style='font-size:11.0pt'><?php echo $CaseInfo[0]['Provider_Name'];?></span></b><span
+  <p style='margin:0in;margin-bottom:.0001pt'><b><span style='font-size:11.0pt'>{PROVIDER_NAME}</span></b><span
   style='font-size:11.0pt'>&nbsp;</span></p>
   <p style='margin:0in;margin-bottom:.0001pt;text-align:justify'><span
-  style='font-size:11.0pt'>A/A/O <b><?php echo $CaseInfo[0]['InjuredParty_FirstName']." ".$CaseInfo[0]['InjuredParty_LastName'];?></b></span></p>
+  style='font-size:11.0pt'>A/A/O <b>INJUREDPARTY_NAME</b></span></p>
   <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plaintiff(s),</span></p>
   <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:1.5in;
   margin-bottom:.0001pt'><span style='font-size:11.0pt'><br>
   -against-</span></p>
   <p style='margin:0in;margin-bottom:.0001pt'><b><span style='font-size:11.0pt'><br>
-  <?php echo $CaseInfo[0]['InsuranceCompany_Name'];?></span></b><span style='font-size:11.0pt'>,</span></p>
+  INSURANCECOMPANY_NAME</span></b><span style='font-size:11.0pt'>,</span></p>
   <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Defendant(s),<br>
@@ -369,7 +369,7 @@ stead of the undersigned attorney(s) as of the date hereof. </span></p>
 <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>&nbsp;</span></p>
 
 <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>Dated:
-<?php echo date("m/d/Y");?></span></p>
+NOWDT</span></p>
 
 <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>&nbsp;<o:p></o:p></span></p>
 
@@ -388,10 +388,10 @@ stead of the undersigned attorney(s) as of the date hereof. </span></p>
   solid windowtext 1.5pt;padding:0in;mso-padding-alt:0in 0in 1.0pt 0in'><span
   style='font-size:11.0pt;mso-bidi-font-weight:bold'><o:p>&nbsp;</o:p></span></p>
   </div>
-  <p style='margin:0in;margin-bottom:.0001pt'>By: <span class=SpellE><?php echo $CaseInfo[0]['Provider_President'];?></span><span
+  <p style='margin:0in;margin-bottom:.0001pt'>By: <span class=SpellE>Provider_President</span><span
   style='font-size:11.0pt'><o:p></o:p></span></p>
   <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt;
-  mso-bidi-font-weight:bold'><?php echo $CaseInfo[0]['Provider_Name'];?></span></p>
+  mso-bidi-font-weight:bold'>{PROVIDER_NAME}</span></p>
   <p class=MsoNormal><o:p>&nbsp;</o:p></p>
   <p class=MsoNormal>Sworn to before me this ______ day of ______________ 20___<br>
   <br>
@@ -423,7 +423,7 @@ stead of the undersigned attorney(s) as of the date hereof. </span></p>
   <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>Tel:516-858-4411</span></p>
   <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>Fax:516-216-5405</span></p>
   <p style='margin:0in;margin-bottom:.0001pt'><span style='font-size:11.0pt'>Our
-  Case Id: <span class=SpellE><?php echo $CaseInfo[0]['Case_Id'];?></span></span></p>
+  Case Id: <span class=SpellE>Case_Id</span></span></p>
   </td>
  </tr>
 </table>
@@ -449,23 +449,23 @@ stead of the undersigned attorney(s) as of the date hereof. </span></p>
   -45.0pt;mso-pagination:none;mso-hyphenate:none'><span style='font-size:11.0pt'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='margin-left:45.0pt;text-align:justify;text-indent:
   -45.0pt;mso-pagination:none;mso-hyphenate:none'><span style='font-size:11.0pt'>TO:
-  <?php echo $CaseInfo[0]['Defendant_Name'];?><o:p></o:p></span></p>
+  DEFENDANT_NAME<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-left:.3in;text-align:justify;text-indent:
   -.3in;mso-pagination:none;mso-hyphenate:none'><span style='font-size:11.0pt'><span
   style='mso-tab-count:1'>       </span>ATTORNEY FOR DEFENDANT(S)<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-left:.3in;text-align:justify;text-indent:
   -.3in;mso-pagination:none;mso-hyphenate:none'><span style='font-size:11.0pt'><span
-  style='mso-tab-count:1'>       </span><?php echo $CaseInfo[0]['Defendant_Address'];?><o:p></o:p></span></p>
+  style='mso-tab-count:1'>       </span>DEFENDANT_ADDRESS<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-left:.3in;text-align:justify;text-indent:
   -.3in;mso-pagination:none;mso-hyphenate:none'><span style='font-size:11.0pt'><span
-  style='mso-tab-count:1'>       </span><?php echo $CaseInfo[0]['Defendant_City'];?>, <?php echo $CaseInfo[0]['Defendant_State'];?>, <?php echo $CaseInfo[0]['Defendant_Zip'];?><o:p></o:p></span></p>
+  style='mso-tab-count:1'>       </span>DEFENDANT_CITY, DEFENDANT_STATE, DEFENDANT_ZIP<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-left:.3in;text-align:justify;text-indent:
   -.3in;mso-pagination:none;mso-hyphenate:none'><span style='font-size:11.0pt'><span
-  style='mso-tab-count:1'>       </span>TEL: <?php echo $CaseInfo[0]['Defendant_Phone'];?><o:p></o:p></span></p>
+  style='mso-tab-count:1'>       </span>TEL: DEFENDANT_PHONE<o:p></o:p></span></p>
   <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:.3in;
   margin-bottom:.0001pt;text-indent:-.3in'><span style='font-size:11.0pt;
   mso-fareast-font-family:Arial'><span style='mso-tab-count:1'>       </span>YOUR
-  FILE#: <?php echo $CaseInfo[0]['Attorney_FileNumber'];?></span><span style='font-size:11.0pt'> </span></p>
+  FILE#: ATTORNEY_FILENUMBER</span><span style='font-size:11.0pt'> </span></p>
   </td>
   <td width=405 valign=top style='width:243.0pt;padding:0in 5.4pt 0in 5.4pt;
   height:109.35pt'>
