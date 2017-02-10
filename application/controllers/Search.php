@@ -1273,6 +1273,9 @@ else
 		);
 		$data2["third"] = "third";
 		echo "<pre>"; print_r($data2);
+		echo "<br>date and time concate.....";
+		$date=date_create("2013-03-15");
+		echo "<br>1st Date:".date_format($date,"m/d/Y H:i");
 	}
 	
 /*****************************************************************************************************************************************/

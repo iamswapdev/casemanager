@@ -164,7 +164,7 @@
 				<div class="form-group form-horizontal col-md-12">
                 	<h5 class="h4-title">Accident Information</h5>
 					<label class="col-md-2 control-label">D.O.A <span class="required-field">*</span></label>
-					<div class="col-md-2"> <input id="accidentDate" name="accidentDate"  class="form-control input-sm datetimepicker" required> </div>
+					<div class="col-md-2"> <input id="accidentDate" name="accidentDate"  class="form-control input-sm datetimepicker_Dos_Doe" required> </div>
 					<div class="form-horizontal col-md-12 hr-line-dashed"></div>
 				</div>
 
@@ -528,16 +528,6 @@
 		$(this).mask("999999/99");
 	});
 	
-	/*$('body').on('focus',".datetimepicker", function(){
-		$(this).datetimepicker({
-			format:'YYYY/MM/DD HH:mm:ss'
-		})
-	});*/
-	$('body').on('focus',".datetimepicker", function(){
-		$(this).datetimepicker({
-			format:'YYYY/MM/DD HH:mm:ss'
-		})
-	});
 /*ONLY DATE PICKER SECTION*/
 	$('body').on('focus',".datetimepicker_Dos_Doe", function(){
 		$(this).datetimepicker({

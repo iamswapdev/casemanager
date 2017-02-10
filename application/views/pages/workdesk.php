@@ -73,23 +73,7 @@
 				</tr>
 				</thead>
 				<tbody>
-				<tr>
-					<td>Abraham</td>
-					<td>076 9477 4896</td>
-					<td>076 9477 4896</td>
-					<td>076 9477 4896</td>
-                    <td>Abraham</td>
-					<td>076 9477 4896</td>
-					<td>076 9477 4896</td>
-					<td>076 9477 4896</td>
-                    <td>Abraham</td>
-					<td>076 9477 4896</td>
-					<td>076 9477 4896</td>
-					<td>076 9477 4896</td>
-                    <td>076 9477 4896</td>
-				</tr>
-				</tr>
-				</tr>
+				
 				</tbody>
 			</table>
             

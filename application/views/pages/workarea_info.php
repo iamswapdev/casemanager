@@ -1782,6 +1782,8 @@ if (!file_exists('Cases/'.$Case_Id)) {
 
 <script>
 $(document).ready(function(e) {
+	//var replaced = $("body").html().replace('Case Id','The new string');
+//$("body").html(replaced);
 	//$(".info-link-popup tr:nth-child(2) td:nth-child(2)").css("color", "blue");
 	$('#notesDescription5').bind("cut copy paste",function(e) {
 		e.preventDefault();
