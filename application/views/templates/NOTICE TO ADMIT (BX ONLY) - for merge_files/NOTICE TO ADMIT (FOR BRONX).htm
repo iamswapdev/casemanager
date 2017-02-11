@@ -1291,9 +1291,9 @@ table.MsoTableGrid
   <td width=378 valign=top style='width:283.5pt;padding:0in 5.4pt 0in 5.4pt;
   height:17.5pt'>
   <p class=MsoNormal style='margin-left:-5.4pt;tab-stops:445.5pt'><span
-  style='font-size:11.0pt;font-family:"Times New Roman","serif"'>COURT_VENUE<o:p></o:p></span></p>
+  style='font-size:11.0pt;font-family:"Times New Roman","serif"'>{COURT_VENUE}<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-left:-5.4pt;tab-stops:445.5pt'><st1:place u4:st="on"><st1:PlaceType u4:st="on"><span
-  style='font-size:11.0pt;font-family:"Times New Roman","serif"'>COURT_NAME<br>
+  style='font-size:11.0pt;font-family:"Times New Roman","serif"'>{COURT_NAME}<br>
   </st1:PlaceType></st1:place>-----------------------------------------------------------------X<o:p></o:p></span></p>
   </td>
   <td width=306 valign=top style='width:229.5pt;padding:0in 5.4pt 0in 5.4pt;
@@ -1526,14 +1526,14 @@ style='mso-special-character:line-break'>
   normal'><span style='font-size:11.0pt;font-family:"Times New Roman","serif"'><u1:p></u1:p><span
   style='mso-spacerun:yes'> </span></span></b><span style='font-size:11.0pt;
   font-family:"Times New Roman","serif"'>To:<br>
-  DEFENDANT_NAME<br>
+  {DEFENDANT_NAME}<br>
   Attorneys for Defendant<br>
-  DEFENDANT_ADDRESS,<br>
-  DEFENDANT_CITY, DEFENDANT_STATE, DEFENDANT_ZIP<br>
+  {DEFENDANT_ADDRESS},<br>
+  {DEFENDANT_CITY}, {DEFENDANT_STATE}, {DEFENDANT_ZIP}<br>
   </span><b style='mso-bidi-font-weight:normal'><span style='font-size:11.0pt;
   font-family:"Times New Roman","serif";mso-fareast-font-family:Arial'>YOUR
   FILE</span></b><span style='font-size:11.0pt;font-family:"Times New Roman","serif";
-  mso-fareast-font-family:Arial'>#: ATTORNEY_FILENUMBER</span><span
+  mso-fareast-font-family:Arial'>#: {ATTORNEY_FILENUMBER}</span><span
   style='font-size:11.0pt;font-family:"Times New Roman","serif";mso-bidi-font-weight:
   bold'>,<b> </b></span><b style='mso-bidi-font-weight:normal'><span
   style='font-size:11.0pt;font-family:"Times New Roman","serif"'><span
@@ -1581,8 +1581,8 @@ font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
  0in 0in 0in 0in'>
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
   <td width="66%" style='width:66.26%;padding:0in 0in 0in 0in'>
-  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Times New Roman","serif"'>COURT_VENUE<o:p></o:p></span></p>
-  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Times New Roman","serif"'>COURT_NAME<o:p></o:p></span></p>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Times New Roman","serif"'>{COURT_VENUE}<o:p></o:p></span></p>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Times New Roman","serif"'>{COURT_NAME}<o:p></o:p></span></p>
   </td>
   <td width="33%" valign=top style='width:33.74%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal><b><span style='font-size:11.0pt;font-family:"Times New Roman","serif"'>Index
@@ -1746,19 +1746,19 @@ display:none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
   <p class=MsoNormal style='text-align:justify;mso-pagination:none;mso-hyphenate:
   none'><span style='font-size:11.0pt;font-family:"Times New Roman","serif"'><br>
   <br>
-  DEFENDANT_NAME<o:p></o:p></span></p>
+  {DEFENDANT_NAME}<o:p></o:p></span></p>
   <p class=MsoNormal style='text-align:justify;mso-pagination:none;mso-hyphenate:
   none'><span style='font-size:11.0pt;font-family:"Times New Roman","serif"'>ATTORNEY
   FOR DEFENDANT(S)</span><span style='font-size:11.0pt;font-family:"Times New Roman","serif";
   mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'><o:p></o:p></span></p>
   <p class=MsoNormal style='text-align:justify;mso-pagination:none;mso-hyphenate:
-  none'><span style='font-size:11.0pt;font-family:"Times New Roman","serif"'>DEFENDANT_ADDRESS<o:p></o:p></span></p>
+  none'><span style='font-size:11.0pt;font-family:"Times New Roman","serif"'>{DEFENDANT_ADDRESS}<o:p></o:p></span></p>
   <p class=MsoNormal style='text-align:justify;mso-pagination:none;mso-hyphenate:
-  none'><span style='font-size:11.0pt;font-family:"Times New Roman","serif"'>DEFENDANT_CITY,
-  DEFENDANT_STATE, DEFENDANT_ZIP<o:p></o:p></span></p>
+  none'><span style='font-size:11.0pt;font-family:"Times New Roman","serif"'>{DEFENDANT_CITY},
+  {DEFENDANT_STATE}, {DEFENDANT_ZIP}<o:p></o:p></span></p>
   <p class=MsoNormal style='text-align:justify;mso-pagination:none;mso-hyphenate:
   none'><span style='font-size:11.0pt;font-family:"Times New Roman","serif";
-  mso-fareast-font-family:Arial'>YOUR FILE#: ATTORNEY_FILENUMBER<o:p></o:p></span></p>
+  mso-fareast-font-family:Arial'>YOUR FILE#: {ATTORNEY_FILENUMBER}<o:p></o:p></span></p>
   <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
   </td>
  </tr>
@@ -1859,7 +1859,7 @@ display:none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
   </td>
   <td style='padding:.75pt .75pt .75pt .75pt'>
   <p class=MsoNormal align=center style='text-align:center'><span
-  style='font-size:9.0pt;font-family:"QuickType","sans-serif"'>Accident_Date<o:p></o:p></span></p>
+  style='font-size:9.0pt;font-family:"QuickType","sans-serif"'>{Accident_Date}<o:p></o:p></span></p>
   </td>
   <td style='padding:.75pt .75pt .75pt .75pt'>
   <p class=MsoNormal align=center style='text-align:center'><span
@@ -1924,9 +1924,9 @@ page-break-before:always'>
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
   <td width=426 valign=top style='width:319.5pt;padding:0in 5.4pt 0in 5.4pt'>
   <p class=MsoNormal style='tab-stops:445.5pt'><span style='font-size:11.0pt;
-  font-family:"Times New Roman","serif"'>COURT_VENUE<o:p></o:p></span></p>
+  font-family:"Times New Roman","serif"'>{COURT_VENUE}<o:p></o:p></span></p>
   <p class=MsoNormal style='tab-stops:445.5pt'><st1:place u4:st="on"><st1:PlaceType u4:st="on"><span
-  style='font-size:11.0pt;font-family:"Times New Roman","serif"'>COURT_NAME<br>
+  style='font-size:11.0pt;font-family:"Times New Roman","serif"'>{COURT_NAME}<br>
   </st1:PlaceType></st1:place>--------------------------------------------------------------------------X<o:p></o:p></span></p>
   </td>
   <td width=252 valign=top style='width:189.0pt;padding:0in 5.4pt 0in 5.4pt'>

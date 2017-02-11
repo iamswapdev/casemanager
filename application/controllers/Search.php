@@ -1160,6 +1160,7 @@ class Search extends CI_Controller{
 			$url = base_url()."assets/sign/";
 			$data['SCANNED_SIGNATURE'] = "<img src='".$url."sign.JPG'>";
 			$data['Scan_sign_ab'] = "<img src='".$url."signAB.JPG'>";
+			$data['SCAN_SIGN_AB'] = $data['Scan_sign_ab'];
 			$data['DateOfService_Start'] = date_format(date_create($data['DateOfService_Start']), 'm/d/Y');
 			$data['DateOfService_End'] = date_format(date_create($data['DateOfService_End']), 'm/d/Y');
 			$data['Provider_PERM_Address'] = $data['Provider_Perm_Address'];
@@ -1169,8 +1170,27 @@ class Search extends CI_Controller{
 			$data['INJUREDPARTY_NAME'] = $data['InjuredParty_FirstName']." ".$data['InjuredParty_LastName'];
 			$data['InjuredParty_Name'] = $data['INJUREDPARTY_NAME'];
 			$data['InsuredParty_Name'] = $data['InsuredParty_FirstName']." ".$data['InsuredParty_LastName'];
+			$data['Adjuster_Name'] = $data['Adjuster_FirstName']." ".$data['Adjuster_LastName'];
 			$data['ACCIDENT_DATE'] = date_format(date_create($data['Accident_Date']), 'm/d/Y');
-			//$data['Date_BillSent'] = date_format(date_create($data['Date_BillSent']), 'm/d/Y');
+			$data['Accident_Date'] = date_format(date_create($data['Accident_Date']), 'm/d/Y');
+			$data['Policy_number'] = $data['Policy_Number'];
+			$data['COURT_VENUE'] = $data['Court_Venue'];
+			$data['COURT_NAME'] = $data['Court_Name'];
+			$data['SETTLEMENT_AMOUNT'] = $data['Settlement_Amount'];
+			$data['SETTLEMENT_INT'] = $data['Settlement_Int'];
+			$data['SETTLEMENT_AF'] = $data['Settlement_Af'];
+			$data['SETTLEMENT_FF'] = $data['Settlement_Ff'];
+			
+			$data['DEFENDANT_NAME'] = $data['Defendant_Name'];
+			$data['DEFENDANT_ADDRESS'] = $data['Defendant_Address'];
+			$data['DEFENDANT_CITY'] = $data['Defendant_City'];
+			$data['DEFENDANT_STATE'] = $data['Defendant_State'];
+			$data['DEFENDANT_ZIP'] = $data['Defendant_Zip'];
+			$data['DEFENDANT_PHONE'] = $data['Defendant_Phone'];
+			$data['ATTORNEY_FILENUMBER'] = $data['Attorney_FileNumber'];
+			$data['INS_CLAIM_NUMBER'] = $data['Ins_Claim_Number'];
+			$data['CASE_ID'] = $data['Case_Id'];
+			$data['PROVIDER_PRESIDENT'] = $data['Provider_President'];
 			
 			//echo "<pre>";print_r($data);exit;
 			

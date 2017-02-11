@@ -523,8 +523,8 @@ ul
  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
   <td width=384 valign=top style='width:4.0in;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in'><span
-  style='color:black'>COURT_VENUE<br>
-  COURT_NAME<br>
+  style='color:black'>{COURT_VENUE}<br>
+  {COURT_NAME}<br>
   -----------------------------------------------------------X<br>
   {PROVIDER_NAME}<br>
   A/A/O {INJUREDPARTY_NAME}, <o:p></o:p></span></p>
@@ -550,7 +550,7 @@ ul
   DISCONTINUANCE WITHOUT PREJUDICE</span></b><span style='color:black'><o:p></o:p></span></p>
   <p class=MsoNormal style='mso-margin-top-alt:auto;margin-bottom:.1in'><span
   style='color:black'>&nbsp;<br>
-  Our file # CASE_ID<o:p></o:p></span></p>
+  Our file # {CASE_ID}<o:p></o:p></span></p>
   </td>
  </tr>
 </table>
@@ -572,7 +572,7 @@ action, the defendant shall pay the following sums:<o:p></o:p></span></p>
 <p style='margin-top:2.0pt;margin-right:0in;margin-bottom:0in;margin-left:.75in;
 margin-bottom:.0001pt;text-align:justify;text-indent:-27.0pt'><span
 style='font-size:11.0pt'>a)<span style='mso-tab-count:1'>      </span><b
-style='mso-bidi-font-weight:normal'>SETTLEMENT_AMOUNT</b> for payment of the
+style='mso-bidi-font-weight:normal'>{SETTLEMENT_AMOUNT}</b> for payment of the
 outstanding bill(s) made payable to <b style='mso-bidi-font-weight:normal'>{PROVIDER_NAME}</b>
 <b style='mso-bidi-font-weight:normal'>C/O <span class=GramE>The</span>
 Beynenson Law Firm, P.C.</b></span></p>
@@ -580,7 +580,7 @@ Beynenson Law Firm, P.C.</b></span></p>
 <p style='margin-top:2.0pt;margin-right:0in;margin-bottom:0in;margin-left:.75in;
 margin-bottom:.0001pt;text-align:justify;text-indent:-27.0pt'><span
 style='font-size:11.0pt'>b)<span style='mso-tab-count:1'>      </span><b
-style='mso-bidi-font-weight:normal'>SETTLEMENT_INT</b> for payment of the
+style='mso-bidi-font-weight:normal'>{SETTLEMENT_INT}</b> for payment of the
 outstanding interest made payable to <b style='mso-bidi-font-weight:normal'>{PROVIDER_NAME}</b>
 <b style='mso-bidi-font-weight:normal'>C/O <span class=GramE>The</span>
 Beynenson Law Firm, P.C.</b></span></p>
@@ -588,7 +588,7 @@ Beynenson Law Firm, P.C.</b></span></p>
 <p style='margin-top:2.0pt;margin-right:0in;margin-bottom:0in;margin-left:.75in;
 margin-bottom:.0001pt;text-align:justify;text-indent:-27.0pt'><span
 style='font-size:11.0pt'>c)<span style='mso-tab-count:1'>      </span><b
-style='mso-bidi-font-weight:normal'>SETTLEMENT_AF</b> for attorney’s fees made
+style='mso-bidi-font-weight:normal'>{SETTLEMENT_AF}</b> for attorney’s fees made
 payable to <b style='mso-bidi-font-weight:normal'>The Beynenson Law Firm, P.C.</b></span></p>
 
 <p style='margin-top:2.0pt;margin-right:0in;margin-bottom:0in;margin-left:.75in;
@@ -600,7 +600,7 @@ normal'>The Beynenson Law Firm, P.C.</b><o:p></o:p></span></p>
 <p style='margin-top:2.0pt;margin-right:0in;margin-bottom:0in;margin-left:.75in;
 margin-bottom:.0001pt;text-align:justify;text-indent:-27.0pt'><span
 style='font-size:11.0pt'>e)<span style='mso-tab-count:1'>      </span><b
-style='mso-bidi-font-weight:normal'>SETTLEMENT_FF</b> for reimbursement for the
+style='mso-bidi-font-weight:normal'>{SETTLEMENT_FF}</b> for reimbursement for the
 arbitration/litigation filing fee and disbursements made payable to <b
 style='mso-bidi-font-weight:normal'>The Beynenson Law Firm, P.C.</b><o:p></o:p></span></p>
 
@@ -651,39 +651,39 @@ margin-bottom:.0001pt'><span style='font-size:11.0pt'>Dated:&nbsp;&nbsp;&nbsp;
   </td>
   <td width="55%" valign=top style='width:55.46%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal><span style='mso-no-proof:yes'><span
-  style='mso-spacerun:yes'>    </span>Scan_sign_ab<o:p></o:p></span></p>
+  style='mso-spacerun:yes'>    </span>{Scan_sign_ab}<o:p></o:p></span></p>
   </td>
  </tr>
  <tr style='mso-yfti-irow:1;mso-yfti-lastrow:yes;height:76.9pt'>
   <td width="44%" valign=top style='width:44.54%;padding:0in 0in 0in 0in;
   height:76.9pt'>
   <p class=MsoNormal style='mso-margin-top-alt:auto'><span class=SpellE><span
-  style='font-size:11.0pt;color:black'>Adjuster_Name</span></span><span
+  style='font-size:11.0pt;color:black'>{Adjuster_Name}</span></span><span
   style='font-size:11.0pt;color:black'> <br>
   {INSURANCECOMPANY_NAME}<br>
-  Phone: <span class=SpellE>Adjuster_Phone</span><span
+  Phone: <span class=SpellE>{Adjuster_Phone}</span><span
   style='mso-spacerun:yes'>   </span><span class=SpellE>xt</span>: <span
   class=SpellE>Adj_Phone_Ext</span><br>
   Fax:<span style='mso-spacerun:yes'>     </span><span class=SpellE>Adjuster_Fax</span><o:p></o:p></span></p>
   <p class=MsoNormal><span style='font-size:11.0pt;color:black'>Email: <span
   class=SpellE>Adjuster_Email</span><br>
-  Claim # INS_CLAIM_NUMBER<o:p></o:p></span></p>
+  Claim # {INS_CLAIM_NUMBER}<o:p></o:p></span></p>
   <p class=MsoNormal><span style='font-size:11.0pt;color:black'>Cc:<span
-  style='mso-spacerun:yes'>  </span></span><span style='font-size:11.0pt'>DEFENDANT_NAME<span
+  style='mso-spacerun:yes'>  </span></span><span style='font-size:11.0pt'>{DEFENDANT_NAME}<span
   style='color:black'><o:p></o:p></span></span></p>
   <p class=MsoNormal style='margin-left:45.0pt;text-align:justify;text-indent:
   -45.0pt;mso-pagination:none;mso-hyphenate:none'><span style='font-size:9.0pt'>ATTORNEY
   FOR DEFENDANT(S)<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-left:45.0pt;text-align:justify;text-indent:
-  -45.0pt;mso-pagination:none;mso-hyphenate:none'><span style='font-size:11.0pt'>DEFENDANT_ADDRESS<o:p></o:p></span></p>
+  -45.0pt;mso-pagination:none;mso-hyphenate:none'><span style='font-size:11.0pt'>{DEFENDANT_ADDRESS}<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-left:45.0pt;text-indent:-45.0pt;mso-pagination:
-  none;mso-hyphenate:none'><span style='font-size:11.0pt'>DEFENDANT_CITY,
-  DEFENDANT_STATE DEFENDANT_ZIP<o:p></o:p></span></p>
+  none;mso-hyphenate:none'><span style='font-size:11.0pt'>{DEFENDANT_CITY},
+  {DEFENDANT_STATE} {DEFENDANT_ZIP}<o:p></o:p></span></p>
   <p class=MsoNormal style='margin-left:45.0pt;text-align:justify;text-indent:
   -45.0pt;mso-pagination:none;mso-hyphenate:none'><span style='font-size:11.0pt'>TEL:
-  DEFENDANT_PHONE<o:p></o:p></span></p>
+  {DEFENDANT_PHONE}<o:p></o:p></span></p>
   <p class=MsoNormal><span style='font-size:11.0pt;mso-fareast-font-family:
-  Arial'>YOUR FILE #: ATTORNEY_FILENUMBER<o:p></o:p></span></p>
+  Arial'>YOUR FILE #: {ATTORNEY_FILENUMBER}<o:p></o:p></span></p>
   <p class=MsoNormal><span style='font-size:11.0pt;color:black'><o:p>&nbsp;</o:p></span></p>
   </td>
   <td width="55%" valign=top style='width:55.46%;padding:0in 0in 0in 0in;
