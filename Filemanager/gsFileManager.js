@@ -282,7 +282,8 @@ if (jQuery) (function(jQuery){
 			if( o.collapseEasing == undefined ) o.collapseEasing = null;
 			if( o.loadMessage == undefined ) o.loadMessage = 'Loading...';
 			
-			var menuHtml = '<table class=\'gsHeadTable\' cellpadding=0 cellspacing=0><tr><td><span class=\'gsHeadText\'> ' + gs_getTranslation(o.language, 1)+ ': </span><span id=\'curDir\'>'+$("input[name=Case_Id]").val()+'</span></td><td><div style="text-align: right; padding-right: 20px;"><a href=\'javascript: void(0);\' onClick=\'return gs_showClipboardContent();\' class=\'gs_dir_content_button\'>&nbsp;' + gs_getTranslation(o.language, 2)+ '&nbsp;</a><span id=\'gsClipBoard\'>0 items</span></div></td></tr></table><br/>';
+			/*var menuHtml = '<table class=\'gsHeadTable\' cellpadding=0 cellspacing=0><tr><td><span class=\'gsHeadText\'> ' + gs_getTranslation(o.language, 1)+ ': </span><span id=\'curDir\'>'+$("input[name=Case_Id]").val()+'</span></td><td><div style="text-align: right; padding-right: 20px;"><a href=\'javascript: void(0);\' onClick=\'return gs_showClipboardContent();\' class=\'gs_dir_content_button\'>&nbsp;' + gs_getTranslation(o.language, 2)+ '&nbsp;</a><span id=\'gsClipBoard\'>0 items</span></div></td></tr></table><br/>';*/
+			var menuHtml = '<table class=\'gsHeadTable\' cellpadding=0 cellspacing=0><tr><td><span class=\'gsHeadText\'> ' + gs_getTranslation(o.language, 1)+ ': </span><span id=\'curDir\'>'+$("input[name=Case_Id]").val()+'</span></td><td width=500><span class=\'gsHeadText\'> Case Id: </span><span> '+$("input[name=Case_Id]").val()+'</span></td><td><div style="text-align: right; padding-right: 20px;"><a href=\'javascript: void(0);\' onClick=\'return gs_showClipboardContent();\' class=\'gs_dir_content_button\'>&nbsp;' + gs_getTranslation(o.language, 2)+ '&nbsp;</a><span id=\'gsClipBoard\'>0 items</span></div></td></tr></table><br/>';
 			/*menuHtml += '<a id="gs_itemmenubutton" class=\'gs_dir_content_button\'>&nbsp;' + gs_getTranslation(o.language, 50)+ '&nbsp;</a>';*/
 			
 			menuHtml += '<a id="gs_uploadbutton" class=\'gs_dir_content_button\'>&nbsp;' + gs_getTranslation(o.language, 3)+ '&nbsp;</a>';
@@ -631,7 +632,7 @@ if (jQuery) (function(jQuery){
 					success: function(data) {
 						
 						//remember current dir id
-						jQuery("#curDir").html($("input[name=Case_Id]").val()+decodeURIComponent(t));
+						jQuery("#curDir").html(decodeURIComponent(t));
 						jQuery("#curDir").attr('rel', jQuery('a', cObject).attr('id'));
 						
 						gs_cur_items = new Array();

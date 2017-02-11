@@ -518,7 +518,7 @@ mso-bidi-font-size:11.0pt;font-family:"Times New Roman","serif";mso-fareast-font
     mso-bidi-theme-font:minor-bidi'><o:p></o:p></span></b></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>A/A/O
-    <span class=defaulttext><b style='mso-bidi-font-weight:normal'>INJUREDPARTY_NAME</b></span></span><span
+    <span class=defaulttext><b style='mso-bidi-font-weight:normal'>{INJUREDPARTY_NAME}</b></span></span><span
     style='mso-bidi-font-family:"Times New Roman"'><o:p></o:p></span></p>
     </td>
    </tr>
@@ -555,7 +555,7 @@ mso-bidi-font-size:11.0pt;font-family:"Times New Roman","serif";mso-fareast-font
     <td colspan=3 valign=bottom style='padding:0in 0in 0in 0in;height:21.0pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=defaulttext><b style='mso-bidi-font-weight:
-    normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>INSURANCECOMPANY_NAME</span></b></span><span
+    normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>{INSURANCECOMPANY_NAME}</span></b></span><span
     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
     "Times New Roman"'><o:p></o:p></span></p>
     </td>
@@ -673,7 +673,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
   <td width="59%" style='width:59.86%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif";
-  mso-fareast-font-family:"Times New Roman"'>Dated: NOWDT<o:p></o:p></span></p>
+  mso-fareast-font-family:"Times New Roman"'>Dated: {NOWDT}<o:p></o:p></span></p>
   </td>
   <td width="40%" style='width:40.14%;padding:0in 0in 0in 0in'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
@@ -713,23 +713,23 @@ mso-fareast-font-family:"Times New Roman";display:none;mso-hide:all'><o:p>&nbsp;
   plaintiff </span><span class=defaulttext><span style='font-size:12.0pt;
   line-height:150%;font-family:"Times New Roman","serif"'>{PROVIDER_NAME} </span></span><span
   style='font-size:12.0pt;line-height:150%;font-family:"Times New Roman","serif"'>A/A/O
-  <span class=defaulttext>INJUREDPARTY_NAME</span></span><span
+  <span class=defaulttext>{INJUREDPARTY_NAME}</span></span><span
   style='font-size:12.0pt;line-height:150%;font-family:"Times New Roman","serif";
   mso-fareast-font-family:"Times New Roman"'>, residing at </span><span
-  class=SpellE><span style='font-size:12.0pt;line-height:150%;font-family:"Times New Roman","serif"'>Provider_PERM_Address</span></span><span
+  class=SpellE><span style='font-size:12.0pt;line-height:150%;font-family:"Times New Roman","serif"'>{Provider_PERM_Address}</span></span><span
   style='font-size:12.0pt;line-height:150%;font-family:"Times New Roman","serif"'>,</span><span
   style='font-size:12.0pt;line-height:150%'> </span><span class=SpellE><span
   style='font-size:12.0pt;line-height:150%;font-family:"Times New Roman","serif";
-  mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi'>Provider_PERM_City</span></span><span
+  mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi'>{Provider_PERM_City}</span></span><span
   style='font-size:12.0pt;line-height:150%;font-family:"Times New Roman","serif";
   mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi'>, <span
-  class=SpellE>Provider_PERM_State</span> <span class=SpellE>Provider_PERM_Zip</span></span><span
+  class=SpellE>{Provider_PERM_State}</span> <span class=SpellE>{Provider_PERM_Zip}</span></span><span
   style='font-size:12.0pt;line-height:150%;font-family:"Times New Roman","serif";
   mso-fareast-font-family:"Times New Roman"'> recover from defendant
-  INSURANCECOMPANY_NAME, residing at </span><span style='font-family:"Times New Roman","serif";
+  {INSURANCECOMPANY_NAME}, residing at </span><span style='font-family:"Times New Roman","serif";
   mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi;
-  mso-bidi-font-weight:bold'>INSURANCECOMPANY_LOCAL_ADDRESS,
-  INSURANCECOMPANY_LOCAL_CITY, INSURANCECOMPANY_LOCAL_STATE INSURANCECOMPANY_LOCAL_ZIP</span><span
+  mso-bidi-font-weight:bold'>{INSURANCECOMPANY_LOCAL_ADDRESS},
+  {INSURANCECOMPANY_LOCAL_CITY}, {INSURANCECOMPANY_LOCAL_STATE} {INSURANCECOMPANY_LOCAL_ZIP}</span><span
   style='font-size:12.0pt;line-height:150%;font-family:"Times New Roman","serif";
   mso-fareast-font-family:"Times New Roman"'> the sum of <span
   style='mso-spacerun:yes'> </span><span class=SpellE>balance_amount</span>,
@@ -778,7 +778,7 @@ mso-fareast-font-family:"Times New Roman";display:none;mso-hide:all'><o:p>&nbsp;
   normal'><span style='font-family:"Times New Roman","serif"'>Our</span><b><span
   style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman"'> File No.: </span></b><span class=SpellE><b
-  style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman","serif"'>Case_Id</span></b></span><b><span
+  style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman","serif"'>{Case_Id}</span></b></span><b><span
   style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman"'>, </span></b><span style='font-size:12.0pt;font-family:
   "Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
@@ -804,7 +804,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
   style='font-size:8.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman";mso-bidi-font-weight:bold'>No.:<span
   style='mso-spacerun:yes'>  </span></span><span class=SpellE><span
-  style='font-size:8.0pt;font-family:"Times New Roman","serif"'>Case_Id</span></span><b><span
+  style='font-size:8.0pt;font-family:"Times New Roman","serif"'>{Case_Id}</span></span><b><span
   style='font-size:10.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
   "Times New Roman"'><o:p></o:p></span></b></p>
   </td>
@@ -1092,7 +1092,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     mso-bidi-theme-font:minor-bidi'><o:p></o:p></span></b></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>A/A/O
-    <span class=defaulttext><b style='mso-bidi-font-weight:normal'>INJUREDPARTY_NAME</b></span></span><span
+    <span class=defaulttext><b style='mso-bidi-font-weight:normal'>{INJUREDPARTY_NAME}</b></span></span><span
     style='mso-bidi-font-family:"Times New Roman"'><o:p></o:p></span></p>
     </td>
    </tr>
@@ -1129,7 +1129,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
     <td colspan=3 valign=bottom style='padding:0in 0in 0in 0in;height:21.0pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=defaulttext><b style='mso-bidi-font-weight:
-    normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>INSURANCECOMPANY_NAME</span></b></span><span
+    normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>{INSURANCECOMPANY_NAME}</span></b></span><span
     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
     "Times New Roman"'><o:p></o:p></span></p>
     </td>
@@ -1261,7 +1261,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
   style='font-family:"Times New Roman","serif"'>{PROVIDER_NAME}</span></span><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'>'s
   application for a judgment against </span><span class=defaulttext><span
-  style='font-family:"Times New Roman","serif"'>INSURANCECOMPANY_NAME</span></span><span
+  style='font-family:"Times New Roman","serif"'>{INSURANCECOMPANY_NAME}</span></span><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'>.
   <o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:6.0pt;margin-right:0in;margin-bottom:
@@ -1292,7 +1292,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
   "Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'>With
   respect to the plaintiff's claims that are the subject of this lawsuit (FIRST
   cause of action, for assignor </span><span class=defaulttext><span
-  style='font-family:"Times New Roman","serif"'>INJUREDPARTY_NAME</span></span><span
+  style='font-family:"Times New Roman","serif"'>{INJUREDPARTY_NAME}</span></span><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'>
   in the amount of </span><span style='font-family:"Times New Roman","serif"'>BALANCE_AMOUNT</span><span
   style='font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'>.<span
@@ -1358,7 +1358,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
   style='mso-spacerun:yes'>                                       </span><span
   style='mso-spacerun:yes'> </span></span><span style='font-size:10.0pt;
   line-height:115%;font-family:"Times New Roman","serif";mso-fareast-font-family:
-  "Times New Roman"'>Our File No.: <span class=SpellE>Case_Id</span></span><span
+  "Times New Roman"'>Our File No.: <span class=SpellE>{Case_Id}</span></span><span
   style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif";
   mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></p>
   </td>
@@ -1421,7 +1421,7 @@ font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'
     mso-bidi-theme-font:minor-bidi'><o:p></o:p></span></b></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>A/A/O
-    <span class=defaulttext><b style='mso-bidi-font-weight:normal'>INJUREDPARTY_NAME</b></span></span><span
+    <span class=defaulttext><b style='mso-bidi-font-weight:normal'>{INJUREDPARTY_NAME}</b></span></span><span
     style='mso-bidi-font-family:"Times New Roman"'><o:p></o:p></span></p>
     </td>
    </tr>
@@ -1458,7 +1458,7 @@ font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'
     <td colspan=3 valign=bottom style='padding:0in 0in 0in 0in;height:21.0pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=defaulttext><b style='mso-bidi-font-weight:
-    normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>INSURANCECOMPANY_NAME</span></b></span><span
+    normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>{INSURANCECOMPANY_NAME}</span></b></span><span
     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
     "Times New Roman"'><o:p></o:p></span></p>
     </td>
@@ -1638,7 +1638,7 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
   height:16.65pt'>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif";
-  mso-fareast-font-family:"Times New Roman"'>Dated: NOWDT<o:p></o:p></span></p>
+  mso-fareast-font-family:"Times New Roman"'>Dated: {NOWDT}<o:p></o:p></span></p>
   </td>
  </tr>
 </table>
@@ -1736,7 +1736,7 @@ font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'
     mso-bidi-theme-font:minor-bidi'><o:p></o:p></span></b></span></p>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>A/A/O
-    <span class=defaulttext><b style='mso-bidi-font-weight:normal'>INJUREDPARTY_NAME</b></span></span><span
+    <span class=defaulttext><b style='mso-bidi-font-weight:normal'>{INJUREDPARTY_NAME}</b></span></span><span
     style='mso-bidi-font-family:"Times New Roman"'><o:p></o:p></span></p>
     </td>
    </tr>
@@ -1773,7 +1773,7 @@ font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman"'
     <td colspan=3 valign=bottom style='padding:0in 0in 0in 0in;height:21.0pt'>
     <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;
     line-height:normal'><span class=defaulttext><b style='mso-bidi-font-weight:
-    normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>INSURANCECOMPANY_NAME</span></b></span><span
+    normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif"'>{INSURANCECOMPANY_NAME}</span></b></span><span
     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
     "Times New Roman"'><o:p></o:p></span></p>
     </td>
@@ -1868,17 +1868,17 @@ mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
   mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi'><o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
   margin-left:3.0in;margin-bottom:.0001pt;text-indent:-3.0in;mso-outline-level:
-  1;tab-stops:445.5pt'><span class=defaulttext><span style='font-family:"Times New Roman","serif"'>INSURANCECOMPANY_NAME</span></span><span
+  1;tab-stops:445.5pt'><span class=defaulttext><span style='font-family:"Times New Roman","serif"'>{INSURANCECOMPANY_NAME}</span></span><span
   style='font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
   margin-left:3.0in;margin-bottom:.0001pt;text-indent:-3.0in;mso-outline-level:
   1;tab-stops:445.5pt'><span style='font-family:"Times New Roman","serif";
-  mso-bidi-font-weight:bold'><u1:p></u1:p>INSURANCECOMPANY_LOCAL_ADDRESS</span><span
+  mso-bidi-font-weight:bold'><u1:p></u1:p>{INSURANCECOMPANY_LOCAL_ADDRESS}</span><span
   style='font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
   <p class=MsoNormal style='margin-left:3.0in;text-indent:-3.0in;mso-outline-level:
   1;tab-stops:445.5pt'><span style='font-family:"Times New Roman","serif";
-  mso-bidi-font-weight:bold'>INSURANCECOMPANY_LOCAL_CITY, INSURANCECOMPANY_LOCAL_STATE
-  INSURANCECOMPANY_LOCAL_ZIP</span><span style='font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
+  mso-bidi-font-weight:bold'>{INSURANCECOMPANY_LOCAL_CITY}, {INSURANCECOMPANY_LOCAL_STATE}
+  {INSURANCECOMPANY_LOCAL_ZIP}</span><span style='font-family:"Times New Roman","serif"'><o:p></o:p></span></p>
   <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
   normal'><span style='font-size:10.0pt;font-family:"Times New Roman","serif";
   mso-fareast-font-family:"Times New Roman"'>Attorney for Defendant</span><span

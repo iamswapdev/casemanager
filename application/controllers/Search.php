@@ -1143,46 +1143,39 @@ class Search extends CI_Controller{
 		$this->search_model->add_Notes($data3);
 		$Case_AutoId = $this->input->post("Templates_Case_AutoId");
 		if(isset($this->session->userdata['logged_in'])){
-			$data['CaseInfo'] = $this->case_info_model->get_Case_Info($Case_AutoId);
-			/*$check = base_url()."application/views/templates/".$template.".htm";
-			/*echo "check:".$check;
-			if( file_exists($check)){echo "tt";exit;}else{ echo "ff";exit;}
-			$this->load->view('templates/'.$template.".htm", $data);
+			$originalArray = $this->case_info_model->get_Case_Info($Case_AutoId);
+			$data = array();
+			$data = $originalArray[0];
 			
-			$crl = curl_init("http://localhost:8771/casemanager/application/views/templates/AAA FORM AR.htm");
-curl_setopt($crl, CURLOPT_NOBODY, true);
-curl_exec($crl);
-
-$ret = curl_getinfo($crl, CURLINFO_HTTP_CODE);
-curl_close($crl);
-
-if ($ret == 200)
-    echo 'File exists';
-else
-    echo 'File does not exist';*/
-	
-	
-			//$this->load->view('templates/aaa.htm', $data);
+			$data['Balance_Amount'] = "$".number_format($data['Claim_Amount']-$data['Paid_Amount'], 2);
+			$data['Claim_Amount'] = "$".number_format($data['Claim_Amount'], 2);
+			$data['Paid_Amount'] = "$".number_format($data['Paid_Amount'], 2);
+			$data['NOWDT'] = date("m/d/Y");
+			$data['PROVIDER_NAME'] = $data['Provider_Name'];
+			$data['INSURANCECOMPANY_NAME'] = $data['InsuranceCompany_Name'];
+			$data['INSURANCECOMPANY_LOCAL_ADDRESS'] = $data['InsuranceCompany_Local_Address'];
+			$data['INSURANCECOMPANY_LOCAL_CITY'] = $data['InsuranceCompany_Local_City'];
+			$data['INSURANCECOMPANY_LOCAL_STATE'] = $data['InsuranceCompany_Local_State'];
+			$data['INSURANCECOMPANY_LOCAL_ZIP'] = $data['InsuranceCompany_Local_Zip'];
+			$url = base_url()."assets/sign/";
+			$data['SCANNED_SIGNATURE'] = "<img src='".$url."sign.JPG'>";
+			$data['Scan_sign_ab'] = "<img src='".$url."signAB.JPG'>";
+			$data['DateOfService_Start'] = date_format(date_create($data['DateOfService_Start']), 'm/d/Y');
+			$data['DateOfService_End'] = date_format(date_create($data['DateOfService_End']), 'm/d/Y');
+			$data['Provider_PERM_Address'] = $data['Provider_Perm_Address'];
+			$data['Provider_PERM_City'] = $data['Provider_Perm_City'];
+			$data['Provider_PERM_State'] = $data['Provider_Perm_State'];
+			$data['Provider_PERM_Zip'] = $data['Provider_Perm_Zip'];
+			$data['INJUREDPARTY_NAME'] = $data['InjuredParty_FirstName']." ".$data['InjuredParty_LastName'];
+			$data['InjuredParty_Name'] = $data['INJUREDPARTY_NAME'];
+			$data['InsuredParty_Name'] = $data['InsuredParty_FirstName']." ".$data['InsuredParty_LastName'];
+			$data['ACCIDENT_DATE'] = date_format(date_create($data['Accident_Date']), 'm/d/Y');
+			//$data['Date_BillSent'] = date_format(date_create($data['Date_BillSent']), 'm/d/Y');
+			
+			//echo "<pre>";print_r($data);exit;
+			
+			$this->parser->parse("templates/".$template.".htm", $data);
 			//$this->load->view('templates/'.$template.".htm", $data);
-			
-			
-			/*$this->view_data['page_content'] = "templates/".$template.".htm";    
-			if ($bool === TRUE){
-				$this->view_data['page_content'] = 'dash';
-			}
-			$this->load->view('main',$this->view_data);*/
-			//echo "<pre>";print_r($data);
-			$data1 = array(
-				'blog_title' => 'My Blog Title'
-			);
-			//echo "<pre>";print_r($data1);
-			$data['CaseInfo'][0]['PROVIDER_NAME'] = $data['CaseInfo'][0]['Provider_Name'];
-			unset($data['CaseInfo'][0]['Provider_Name']);
-			//echo "<pre>";print_r($data1);
-			
-			$this->parser->parse("templates/".$template.".htm", $data['CaseInfo'][0]);
-			
-			
 		}else{
 			$CurrentPage['CurrentUrl'] = "search/viewcase/1";
 			$this->load->view('pages/login', $CurrentPage);
