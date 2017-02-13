@@ -1918,7 +1918,7 @@ $(document).ready(function(e) {
 		});
 		request.done(function (response, textStatus, jqXHR) {
 			//console.log("Successssss :"+response);
-			/*$("#NotesTab1").dataTable().fnDestroy();
+			$("#NotesTab1").dataTable().fnDestroy();
 			$('#NotesTab1').dataTable( {
 				"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
 				"iDisplayLength": 5,
@@ -1932,7 +1932,7 @@ $(document).ready(function(e) {
 				"aLengthMenu": [5, 10, 20, 25, 50],
 				"bSort": false
 			});
-			callSuccess();*/
+			//callSuccess()
 		});
 		$(editHidden).css("display", "none");
 		$(Visible_Part).css("display", "block");
