@@ -160,7 +160,7 @@ for($i=0; $i<=13; $i++){
 								</tr>
                                 
 								<tr>  
-                                	<th><input type="hidden" name="recordNo" value="3"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save fa-save1" style="display:none"></i></th>
+                                	<th><input type="hidden" name="recordNo" value="3"><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save fa-save1" style="display:none"></i></th>
 									<th>INJURED NAME</th>
 									<td><div class="visible"><input type="hidden" id="Hidden_Case_AutoId"><a class="info-link Visible-Part wi-injuredpartyname" id="InjuredInfoLink"></a></div><div class="editHidden" style="display:none;"><label>Last Name: </label><input type="text" class="input-sm" name="InjuredParty_LastName" /><label>First Name: </label><input type="text" class="input-sm" name="InjuredParty_FirstName" /></div></td>
                                     <th><input type="hidden" name="recordNo" value="4"><input type="hidden" name="RecordType" value="select"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
@@ -169,7 +169,7 @@ for($i=0; $i<=13; $i++){
 								</tr>
                                 
                                 <tr> 
-                                	<th><input type="hidden" name="recordNo" value="5"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+                                	<th><input type="hidden" name="recordNo" value="5"><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 									<th>INSURED NAME</th>
 									<td><div class="visible"><a class="info-link Visible-Part wi-insuredpartyname" id="InsuredInfoLink"></a></div><div class="editHidden" style="display:none;"><label>Last Name: </label><input type="text" class="input-sm" name="InsuredParty_LastName" /><label>First Name: </label><input type="text" class="input-sm" name="InsuredParty_FirstName" /></div></td>
                                     <th><input type="hidden" name="recordNo" value="6"><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
@@ -190,24 +190,15 @@ for($i=0; $i<=13; $i++){
                                 	<th><input type="hidden" name="recordNo" value="9"><input type="hidden" name="RecordType" value="select"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 									<th>INSURANCE COMPANY</th>
 									<td><div class="visible"><input type="hidden" id="Hidden_InsuranceCompany_Id"><a class="info-link Visible-Part wi-InsuranceCompany_Name" id="InsuranceCompanyInfoLink"></a></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="InsuranceCompany_Id" name="InsuranceCompany_Id"><option selected="selected" value=""></option><?php foreach($InsuranceCompany_Name as $row){?><option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option><?php }?></select></div></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <th><input type="hidden" name="recordNo" value="11"><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+									<th>DEF ATTORNEY FILE #</th>
+									<td><div class="first Visible-Part wi-Attorney_FileNumber"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Attorney_FileNumber" /></div></td>
 								</tr>
                                 
                                 <tr> 
                                 	<th><input type="hidden" name="recordNo" name="recordNo" value="10"><input type="hidden" name="RecordType" value="select"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 									<th>DEF ATTORNEY NAME</th>
 									<td><div class="visible"><input type="hidden" id="Hidden_Defendant_Id"><a class="info-link Visible-Part wi-Defendant_Name" id="DefendantInfoLink"></a></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Defendant_Id" name="Defendant_Id" required><option selected="selected" value=""></option><?php foreach($Defendant_Name as $row){?><option value="<?php echo $row['Defendant_id']; ?>"><?php echo $row['Defendant_Name'];?></option><?php }?></select></div></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-								</tr>
-                                
-                                <tr> 
-                                	<th><input type="hidden" name="recordNo" value="11"><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
-									<th>DEF ATTORNEY FILE #</th>
-									<td><div class="first Visible-Part wi-Attorney_FileNumber"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Attorney_FileNumber" /></div></td>
                                     <th><input type="hidden" name="recordNo" value="12"><input type="hidden" name="RecordType" value="select"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 									<th>COURT NAME</th>
 									<td><div class="first Visible-Part wi-Court_Name"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Court_Id" name="Court_Id"><option selected="selected" value=""></option><?php foreach($Court as $row){?><option value="<?php echo $row['Court_Id']; ?>"> <?php echo $row['Court_Name']; ?> </option><?php }?></select></div></td>
@@ -1855,82 +1846,66 @@ $(document).ready(function(e) {
 		var string = "recordNo="+recordNo+"&Case_AutoId=<?php echo $Case_AutoId;?>"+"&Case_Id=<?php echo $Case_Id;?>";
 		
 		
-			if(RecordType == "input"){
+		if(RecordType == "input"){
+			if(recordNo ==3){
+				var InjuredParty_LastName = $(editHidden).find("input[name=InjuredParty_LastName]").val();
+				var InjuredParty_FirstName = $(editHidden).find("input[name=InjuredParty_FirstName]").val();
+				$("."+Update_class_name).html(InjuredParty_LastName+", "+InjuredParty_FirstName);
+				string += "&InjuredParty_LastName="+InjuredParty_LastName+"&InjuredParty_FirstName="+InjuredParty_FirstName;
+			}else if(recordNo ==5){
+				var InsuredParty_LastName = $(editHidden).find("input[name=InsuredParty_LastName]").val();
+				var InsuredParty_FirstName = $(editHidden).find("input[name=InsuredParty_FirstName]").val();
+				$("."+Update_class_name).html(InsuredParty_LastName+", "+InsuredParty_FirstName);
+				string += "&InsuredParty_LastName="+InsuredParty_LastName+"&InsuredParty_FirstName="+InsuredParty_FirstName;
+			}else{
 				var inputName = $(editHidden).find("input").attr("name");
 				var inputValue = $(editHidden).find("input[name="+inputName+"]").val();
 				string += "&inputName="+inputName+"&inputValue="+inputValue;
-				
-				/*if(recordNo == 14){
-					var balance = parseFloat($(".visible:eq(12)").text()) - inputValue;
-					//x[13].innerHTML = "PAID / $"+inputValue.toFixed(2) +" / BALANCE $"+balance.toFixed(2);
-					$("."+Update_class_name).html("PAID / $"+inputValue.toFixed(2) +" / BALANCE $"+balance.toFixed(2));
-				}
-				if(recordNo == 13){
-					var balance = parseFloat($(".visible:eq(12)").text()) - inputValue;
-					//x[recordNo-1].innerHTML = "$"+inputValue;
-					$("."+Update_class_name).html("$"+inputValue);
-				}
-				*/
 				$("."+Update_class_name).html(inputValue);
-			}else{
-				var selectId = $(editHidden).find("select").attr("id");
-				selectValue = $("#"+selectId+" option:selected").val();
-				selectText = $("#"+selectId+" option:selected").text();
-				
-				if(recordNo ==3){
-					var InjuredParty_LastName = $(editHidden).find("input[name=InjuredParty_LastName]").val();
-					var InjuredParty_FirstName = $(editHidden).find("input[name=InjuredParty_FirstName]").val();
-					$("."+Update_class_name).html(InjuredParty_LastName+", "+InjuredParty_FirstName);
-					string += "&InjuredParty_LastName="+InjuredParty_LastName+"&InjuredParty_FirstName="+InjuredParty_FirstName;
-				}else if(recordNo ==5){
-					var InsuredParty_LastName = $(editHidden).find("input[name=InsuredParty_LastName]").val();
-					var InsuredParty_FirstName = $(editHidden).find("input[name=InsuredParty_FirstName]").val();
-					$("."+Update_class_name).html(InsuredParty_LastName+", "+InsuredParty_FirstName;);
-					string += "&InsuredParty_LastName="+InsuredParty_LastName+"&InsuredParty_FirstName="+InsuredParty_FirstName;
-				}
-				if(recordNo == 2 || recordNo ==4){
-					//string += "&"+selectId+"="+selectText;
-					string += "&inputName="+selectId+"&inputValue="+selectText;
-				}else{
-					//string += "&"+selectId+"="+selectValue;
-					if(recordNo == 1 || recordNo ==9 || recordNo == 10 || recordNo ==18){
-						$("#Hidden_"+selectId).val(inputValue);
-					}
-					string += "&inputName="+selectId+"&inputValue="+selectValue;
-				}
-				if(recordNo == 1 || recordNo ==9 || recordNo == 10 || recordNo ==18){
-					$("#Hidden_"+selectId).val(selectValue);
-					
-					if(recordNo == 18){
-						$.ajax({
-							type:'POST',
-							url:"<?php echo base_url(); ?>search/getAdjuster_ById2/"+selectValue,
-							success:function(data){
-								results = JSON.parse(data);
-								var adjPhone = results.data[0][2];
-								var adjExt = results.data[0][3];
-								if(adjPhone == null){
-									adjPhone ="";
-								}
-								if(adjExt == null){
-									adjExt ="";
-								}
-									//info1[5].innerHTML = results.data[0][0]+ " "+results.data[0][1]+" / "+adjPhone+" ext."+adjExt;
-								$("."+Update_class_name).html(results.data[0][0]+ " "+results.data[0][1]+" / "+adjPhone+" ext."+adjExt);
-							},
-							error: function(result){ console.log("error"); }
-						});
-					}
-					$("."+Update_class_name).html($("#"+selectId+" option:selected").text());
-				}else{
-					$("."+Update_class_name).html($("#"+selectId+" option:selected").text());
-					/*if(recordNo >=22){
-						x[recordNo-2].innerHTML = $("#"+selectId+" option:selected").text();
-					}else{
-						x[recordNo-1].innerHTML = $("#"+selectId+" option:selected").text();
-					}*/
-				}
+			}
+			/*if(recordNo == 14){
+				var balance = parseFloat($(".visible:eq(12)").text()) - inputValue;
+				//x[13].innerHTML = "PAID / $"+inputValue.toFixed(2) +" / BALANCE $"+balance.toFixed(2);
+				$("."+Update_class_name).html("PAID / $"+inputValue.toFixed(2) +" / BALANCE $"+balance.toFixed(2));
+			}
+			if(recordNo == 13){
+				var balance = parseFloat($(".visible:eq(12)").text()) - inputValue;
+				//x[recordNo-1].innerHTML = "$"+inputValue;
+				$("."+Update_class_name).html("$"+inputValue);
+			}*/
+		}else{
+			var selectId = $(editHidden).find("select").attr("id");
+			selectValue = $("#"+selectId+" option:selected").val();
+			selectText = $("#"+selectId+" option:selected").text();
 			
+			if(recordNo == 2 || recordNo ==4){
+				string += "&inputName="+selectId+"&inputValue="+selectText;
+				$("."+Update_class_name).html($("#"+selectId+" option:selected").text());
+			}else if(recordNo == 1 || recordNo ==9 || recordNo == 10 || recordNo ==18){
+				$("#Hidden_"+selectId).val(selectValue);
+				if(recordNo == 18){
+					$.ajax({
+						type:'POST',
+						url:"<?php echo base_url(); ?>search/getAdjuster_ById2/"+selectValue,
+						success:function(data){
+							results = JSON.parse(data);
+							var adjPhone = results.data[0][2];
+							var adjExt = results.data[0][3];
+							if(adjPhone == null){ adjPhone =""; }
+							if(adjExt == null){ adjExt =""; }
+							$("."+Update_class_name).html(results.data[0][0]+ " "+results.data[0][1]+" / "+adjPhone+" ext."+adjExt);
+						},
+						error: function(result){ console.log("error"); }
+					});
+				}else{
+					$("."+Update_class_name).html($("#"+selectId+" option:selected").text());
+				}
+				string += "&inputName="+selectId+"&inputValue="+selectValue;
+				
+			}else{
+				string += "&inputName="+selectId+"&inputValue="+selectValue;
+				$("."+Update_class_name).html($("#"+selectId+" option:selected").text());
+			}
 		}
 		//console.log("Final string= "+string);
 		request = $.ajax({
@@ -3264,6 +3239,7 @@ daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndDat
 					//info[0].innerHTML = results.CaseInfo[$i].Provider_Name;
 					$(".ProviderInfoLink").html(results.CaseInfo[$i].Provider_Name);
 					$("#Hidden_Provider_Id").val(results.CaseInfo[$i].Provider_Id);
+					$("#Provider_Id").val(results.CaseInfo[$i].Provider_Id);
 					document.getElementById("ProviderName-tab-6").innerHTML = results.CaseInfo[$i].Provider_Name;
 					//x[1].innerHTML = results.CaseInfo[$i].Initial_Status;
 					$(".wi-initialstatus").html(results.CaseInfo[$i].Initial_Status);
@@ -3298,10 +3274,12 @@ daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndDat
 					//info[3].innerHTML = results.CaseInfo[$i].InsuranceCompany_Name;
 					$(".wi-InsuranceCompany_Name").html(results.CaseInfo[$i].InsuranceCompany_Name);
 					$("#Hidden_InsuranceCompany_Id").val(results.CaseInfo[$i].InsuranceCompany_Id);
+					$("#InsuranceCompany_Id").val(results.CaseInfo[$i].InsuranceCompany_Id);
 					//x[9].innerHTML = results.CaseInfo[$i].Defendant_Name;
 					//info[4].innerHTML = results.CaseInfo[$i].Defendant_Name;
 					$(".wi-Defendant_Name").html(results.CaseInfo[$i].Defendant_Name);
 					$("#Hidden_Defendant_Id").val(results.CaseInfo[$i].Defendant_Id);
+					$("#Defendant_Id").val(results.CaseInfo[$i].Defendant_Id);
 					
 					//x[10].innerHTML = results.CaseInfo[$i].Attorney_FileNumber;
 					$(".wi-Attorney_FileNumber").html(results.CaseInfo[$i].Attorney_FileNumber);
@@ -3360,6 +3338,7 @@ daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndDat
 					 //info[5].innerHTML = adjFirstName+ " "+adjLastName+" / "+adjPhone+" ext."+adjExt;
 					 $(".wi-Adjuster_Name").html(adjFirstName+ " "+adjLastName+" / "+adjPhone+" ext."+adjExt);
 					$("#Hidden_Adjuster_Id").val(results.CaseInfo[$i].Adjuster_Id);
+					$("#Adjuster_Id").val(results.CaseInfo[$i].Adjuster_Id);
 					//x[18].innerHTML = results.CaseInfo[$i].Attorney_Name;
 					$(".wi-Attorney_Name").html(results.CaseInfo[$i].Attorney_Name);
 
