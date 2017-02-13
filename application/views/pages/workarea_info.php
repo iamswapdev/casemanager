@@ -1854,46 +1854,40 @@ $(document).ready(function(e) {
 		console.log("RecordType:"+RecordType);
 		var string = "recordNo="+recordNo+"&Case_AutoId=<?php echo $Case_AutoId;?>"+"&Case_Id=<?php echo $Case_Id;?>";
 		
-		if(recordNo ==3){
-			var InjuredParty_LastName = $(editHidden).find("input[name=InjuredParty_LastName]").val();
-			var InjuredParty_FirstName = $(editHidden).find("input[name=InjuredParty_FirstName]").val();
-   			//x[2].innerHTML = InjuredParty_LastName+", "+InjuredParty_FirstName;
-			info1[1].innerHTML = InjuredParty_LastName+", "+InjuredParty_FirstName;
-			string += "&InjuredParty_LastName="+InjuredParty_LastName+"&InjuredParty_FirstName="+InjuredParty_FirstName;
-		}else if(recordNo ==5){
-			var InsuredParty_LastName = $(editHidden).find("input[name=InsuredParty_LastName]").val();
-			var InsuredParty_FirstName = $(editHidden).find("input[name=InsuredParty_FirstName]").val();
-			//x[4].innerHTML = InsuredParty_LastName+", "+InsuredParty_FirstName;
-			info1[2].innerHTML = InsuredParty_LastName+", "+InsuredParty_FirstName;
-			string += "&InsuredParty_LastName="+InsuredParty_LastName+"&InsuredParty_FirstName="+InsuredParty_FirstName;
-		}else{
+		
 			if(RecordType == "input"){
 				var inputName = $(editHidden).find("input").attr("name");
 				var inputValue = $(editHidden).find("input[name="+inputName+"]").val();
-				//console.log("recordNo: "+recordNo+" inputName= "+inputName+" inputValue: "+inputValue);
-				//string += "&"+inputName+"="+inputValue;
 				string += "&inputName="+inputName+"&inputValue="+inputValue;
-				if(recordNo >=22){
-					//x[recordNo-2].innerHTML = inputValue;
-					$("."+Update_class_name).html(inputValue);
-				}else if(recordNo == 14){
+				
+				/*if(recordNo == 14){
 					var balance = parseFloat($(".visible:eq(12)").text()) - inputValue;
 					//x[13].innerHTML = "PAID / $"+inputValue.toFixed(2) +" / BALANCE $"+balance.toFixed(2);
 					$("."+Update_class_name).html("PAID / $"+inputValue.toFixed(2) +" / BALANCE $"+balance.toFixed(2));
-				}else if(recordNo == 13){
+				}
+				if(recordNo == 13){
 					var balance = parseFloat($(".visible:eq(12)").text()) - inputValue;
 					//x[recordNo-1].innerHTML = "$"+inputValue;
 					$("."+Update_class_name).html("$"+inputValue);
-				}else{
-					//x[recordNo-1].innerHTML = inputValue;
-					$("."+Update_class_name).html(inputValue);
 				}
-				
+				*/
+				$("."+Update_class_name).html(inputValue);
 			}else{
 				var selectId = $(editHidden).find("select").attr("id");
 				selectValue = $("#"+selectId+" option:selected").val();
 				selectText = $("#"+selectId+" option:selected").text();
-				//console.log("recordNo:"+recordNo+" selectId:"+selectId+" selectValue:"+selectValue+" selectText:"+selectText);
+				
+				if(recordNo ==3){
+					var InjuredParty_LastName = $(editHidden).find("input[name=InjuredParty_LastName]").val();
+					var InjuredParty_FirstName = $(editHidden).find("input[name=InjuredParty_FirstName]").val();
+					$("."+Update_class_name).html(InjuredParty_LastName+", "+InjuredParty_FirstName);
+					string += "&InjuredParty_LastName="+InjuredParty_LastName+"&InjuredParty_FirstName="+InjuredParty_FirstName;
+				}else if(recordNo ==5){
+					var InsuredParty_LastName = $(editHidden).find("input[name=InsuredParty_LastName]").val();
+					var InsuredParty_FirstName = $(editHidden).find("input[name=InsuredParty_FirstName]").val();
+					$("."+Update_class_name).html(InsuredParty_LastName+", "+InsuredParty_FirstName;);
+					string += "&InsuredParty_LastName="+InsuredParty_LastName+"&InsuredParty_FirstName="+InsuredParty_FirstName;
+				}
 				if(recordNo == 2 || recordNo ==4){
 					//string += "&"+selectId+"="+selectText;
 					string += "&inputName="+selectId+"&inputValue="+selectText;
@@ -1905,16 +1899,9 @@ $(document).ready(function(e) {
 					string += "&inputName="+selectId+"&inputValue="+selectValue;
 				}
 				if(recordNo == 1 || recordNo ==9 || recordNo == 10 || recordNo ==18){
-					var hh ="Hidden_" + selectId;
-					//console.log("HH: "+hh);
 					$("#Hidden_"+selectId).val(selectValue);
-					if(recordNo == 1){
-						info1[0].innerHTML = $("#"+selectId+" option:selected").text();
-					}else if(recordNo == 9){
-						info1[3].innerHTML = $("#"+selectId+" option:selected").text();
-					}else if(recordNo == 10){
-						info1[4].innerHTML = $("#"+selectId+" option:selected").text();
-					}else if(recordNo == 18){
+					
+					if(recordNo == 18){
 						$.ajax({
 							type:'POST',
 							url:"<?php echo base_url(); ?>search/getAdjuster_ById2/"+selectValue,
@@ -1928,12 +1915,13 @@ $(document).ready(function(e) {
 								if(adjExt == null){
 									adjExt ="";
 								}
-									info1[5].innerHTML = results.data[0][0]+ " "+results.data[0][1]+" / "+adjPhone+" ext."+adjExt;
-								//info1[5].innerHTML = $("#"+selectId+" option:selected").text();
+									//info1[5].innerHTML = results.data[0][0]+ " "+results.data[0][1]+" / "+adjPhone+" ext."+adjExt;
+								$("."+Update_class_name).html(results.data[0][0]+ " "+results.data[0][1]+" / "+adjPhone+" ext."+adjExt);
 							},
 							error: function(result){ console.log("error"); }
 						});
 					}
+					$("."+Update_class_name).html($("#"+selectId+" option:selected").text());
 				}else{
 					$("."+Update_class_name).html($("#"+selectId+" option:selected").text());
 					/*if(recordNo >=22){
@@ -1942,8 +1930,7 @@ $(document).ready(function(e) {
 						x[recordNo-1].innerHTML = $("#"+selectId+" option:selected").text();
 					}*/
 				}
-				
-			}
+			
 		}
 		//console.log("Final string= "+string);
 		request = $.ajax({
