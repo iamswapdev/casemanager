@@ -151,99 +151,99 @@ for($i=0; $i<=13; $i++){
 							<table cellpadding="1" id="WorkAreaTable" cellspacing="1" class="table tdAlignLeft work-area-info">
 								<tbody>
 								<tr> 
-                                	<th><input type="hidden" name="selectRecordNo" value="1"><input type="hidden" name="recordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+                                	<th><input type="hidden" name="RecordType" value="select"><input type="hidden" name="recordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 									<th>PROVIDER</th>
-									<td><div class="visible"><input type="hidden" id="Hidden_Provider_Id"><a class="info-link VisibleInfo" id="ProviderInfoLink"></a></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Provider_Id" name="Provider_Id"><option selected="selected" value=""></option><?php foreach($Provider_Name1 as $row){?><option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option><?php }?></select></div></td>
-                                    <th><input type="hidden" name="recordNo" value="2"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save fa-save1" style="display:none"></i></th>
+									<td><div class="visible"><input type="hidden" id="Hidden_Provider_Id"><a class="info-link Visible-Part ProviderInfoLink" id="ProviderInfoLink"></a></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Provider_Id" name="Provider_Id"><option selected="selected" value=""></option><?php foreach($Provider_Name1 as $row){?><option value="<?php echo $row['Provider_Id']; ?>"> <?php echo $row['Provider_Name']; ?> </option><?php }?></select></div></td>
+                                    <th><input type="hidden" name="recordNo" value="2"><input type="hidden" name="RecordType" value="select"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save fa-save1" style="display:none"></i></th>
 									<th>CASE STATUS</th>
-									<td><div class="visible"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Initial_Status" name="Initial_Status"><option selected="selected" value=""></option><?php foreach($CaseStatus as $row){?><option value="<?php echo $row['id']; ?>"> <?php echo $row['name']; ?> </option><?php }?></select></div></td>
+									<td><div class="first Visible-Part wi-initialstatus"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Initial_Status" name="Initial_Status"><option selected="selected" value=""></option><?php foreach($CaseStatus as $row){?><option value="<?php echo $row['id']; ?>"> <?php echo $row['name']; ?> </option><?php }?></select></div></td>
 								</tr>
                                 
 								<tr>  
                                 	<th><input type="hidden" name="recordNo" value="3"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save fa-save1" style="display:none"></i></th>
 									<th>INJURED NAME</th>
-									<td><div class="visible"><input type="hidden" id="Hidden_Case_AutoId"><a class="info-link VisibleInfo" id="InjuredInfoLink"></a></div><div class="editHidden" style="display:none;"><label>Last Name: </label><input type="text" class="input-sm" name="InjuredParty_LastName" /><label>First Name: </label><input type="text" class="input-sm" name="InjuredParty_FirstName" /></div></td>
-                                    <th><input type="hidden" name="recordNo" value="4"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+									<td><div class="visible"><input type="hidden" id="Hidden_Case_AutoId"><a class="info-link Visible-Part wi-injuredpartyname" id="InjuredInfoLink"></a></div><div class="editHidden" style="display:none;"><label>Last Name: </label><input type="text" class="input-sm" name="InjuredParty_LastName" /><label>First Name: </label><input type="text" class="input-sm" name="InjuredParty_FirstName" /></div></td>
+                                    <th><input type="hidden" name="recordNo" value="4"><input type="hidden" name="RecordType" value="select"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 									<th>CURRENT STATUS</th>
-									<td><div class="visible"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Status" name="Status"><option selected="selected" value=""></option><?php foreach($Status as $row){?><option value="<?php echo $row['Status_Id']; ?>"> <?php echo $row['Status_Type']; ?> </option><?php }?></select></div></td>
+									<td><div class="first Visible-Part wi-status"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Status" name="Status"><option selected="selected" value=""></option><?php foreach($Status as $row){?><option value="<?php echo $row['Status_Id']; ?>"> <?php echo $row['Status_Type']; ?> </option><?php }?></select></div></td>
 								</tr>
                                 
                                 <tr> 
                                 	<th><input type="hidden" name="recordNo" value="5"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 									<th>INSURED NAME</th>
-									<td><div class="visible"><a class="info-link VisibleInfo" id="InsuredInfoLink"></a></div><div class="editHidden" style="display:none;"><label>Last Name: </label><input type="text" class="input-sm" name="InsuredParty_LastName" /><label>First Name: </label><input type="text" class="input-sm" name="InsuredParty_FirstName" /></div></td>
-                                    <th><input type="hidden" name="recordNo" value="6"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+									<td><div class="visible"><a class="info-link Visible-Part wi-insuredpartyname" id="InsuredInfoLink"></a></div><div class="editHidden" style="display:none;"><label>Last Name: </label><input type="text" class="input-sm" name="InsuredParty_LastName" /><label>First Name: </label><input type="text" class="input-sm" name="InsuredParty_FirstName" /></div></td>
+                                    <th><input type="hidden" name="recordNo" value="6"><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 									<th>INS. CLAIM #</th>
-									<td><div class="visible"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Ins_Claim_Number" /></div></td>
+									<td><div class="first Visible-Part wi-Ins_Claim_Number"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Ins_Claim_Number" /></div></td>
 								</tr>
                                 
                                 <tr> 
-                                	<th><input type="hidden" name="recordNo" value="7"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+                                	<th><input type="hidden" name="recordNo" value="7"><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 									<th>POLICY #</th>
-									<td><div class="visible"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Policy_Number" /></div></td>
-                                    <th><input type="hidden" name="recordNo" value="8"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+									<td><div class="first Visible-Part wi-Policy_Number"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Policy_Number" /></div></td>
+                                    <th><input type="hidden" name="recordNo" value="8"><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 									<th>INDEX / AAA #</th>
-									<td><div class="visible"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="IndexOrAAA_Number" /></div></td>
+									<td><div class="first Visible-Part wi-IndexOrAAA_Number"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="IndexOrAAA_Number" /></div></td>
 								</tr>
                                 
                                 <tr> 
-                                	<th><input type="hidden" name="recordNo" value="9"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+                                	<th><input type="hidden" name="recordNo" value="9"><input type="hidden" name="RecordType" value="select"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 									<th>INSURANCE COMPANY</th>
-									<td><div class="visible"><input type="hidden" id="Hidden_InsuranceCompany_Id"><a class="info-link VisibleInfo" id="InsuranceCompanyInfoLink"></a></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="InsuranceCompany_Id" name="InsuranceCompany_Id"><option selected="selected" value=""></option><?php foreach($InsuranceCompany_Name as $row){?><option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option><?php }?></select></div></td>
+									<td><div class="visible"><input type="hidden" id="Hidden_InsuranceCompany_Id"><a class="info-link Visible-Part wi-InsuranceCompany_Name" id="InsuranceCompanyInfoLink"></a></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="InsuranceCompany_Id" name="InsuranceCompany_Id"><option selected="selected" value=""></option><?php foreach($InsuranceCompany_Name as $row){?><option value="<?php echo $row['InsuranceCompany_Id']; ?>"><?php echo $row['InsuranceCompany_Name'];?></option><?php }?></select></div></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
 								</tr>
                                 
                                 <tr> 
-                                	<th><input type="hidden" name="recordNo" name="recordNo" value="10"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+                                	<th><input type="hidden" name="recordNo" name="recordNo" value="10"><input type="hidden" name="RecordType" value="select"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 									<th>DEF ATTORNEY NAME</th>
-									<td><div class="visible"><input type="hidden" id="Hidden_Defendant_Id"><a class="info-link VisibleInfo" id="DefendantInfoLink"></a></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Defendant_Id" name="Defendant_Id" required><option selected="selected" value=""></option><?php foreach($Defendant_Name as $row){?><option value="<?php echo $row['Defendant_id']; ?>"><?php echo $row['Defendant_Name'];?></option><?php }?></select></div></td>
+									<td><div class="visible"><input type="hidden" id="Hidden_Defendant_Id"><a class="info-link Visible-Part wi-Defendant_Name" id="DefendantInfoLink"></a></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Defendant_Id" name="Defendant_Id" required><option selected="selected" value=""></option><?php foreach($Defendant_Name as $row){?><option value="<?php echo $row['Defendant_id']; ?>"><?php echo $row['Defendant_Name'];?></option><?php }?></select></div></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
 								</tr>
                                 
                                 <tr> 
-                                	<th><input type="hidden" name="recordNo" value="11"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+                                	<th><input type="hidden" name="recordNo" value="11"><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 									<th>DEF ATTORNEY FILE #</th>
-									<td><div class="visible"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Attorney_FileNumber" /></div></td>
-                                    <th><input type="hidden" name="recordNo" value="12"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+									<td><div class="first Visible-Part wi-Attorney_FileNumber"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Attorney_FileNumber" /></div></td>
+                                    <th><input type="hidden" name="recordNo" value="12"><input type="hidden" name="RecordType" value="select"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 									<th>COURT NAME</th>
-									<td><div class="visible"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Court_Id" name="Court_Id"><option selected="selected" value=""></option><?php foreach($Court as $row){?><option value="<?php echo $row['Court_Id']; ?>"> <?php echo $row['Court_Name']; ?> </option><?php }?></select></div></td>
+									<td><div class="first Visible-Part wi-Court_Name"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Court_Id" name="Court_Id"><option selected="selected" value=""></option><?php foreach($Court as $row){?><option value="<?php echo $row['Court_Id']; ?>"> <?php echo $row['Court_Name']; ?> </option><?php }?></select></div></td>
 								</tr>
                                 
                                 <tr> 
-                                	<th><!--<input type="hidden" name="recordNo" value="13"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i>--></th>
+                                	<th><!--<input type="hidden" name="recordNo" value="13"><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i>--></th>
 									<th>CLAIM AMOUNT</th>
-									<td><div class="visible"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Claim_Amount" /></div></td>
-                                    <th><!--<input type="hidden" name="recordNo" value="14"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i>--></th>
+									<td><div class="first Visible-Part wi-Claim_Amount"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Claim_Amount" /></div></td>
+                                    <th><!--<input type="hidden" name="recordNo" value="14"><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i>--></th>
 									<th>PAID / Balance</th>
-									<td><div class="visible"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Paid_Amount" /></div></td>
+									<td><div class="first Visible-Part wi-Paid_Amount"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Paid_Amount" /></div></td>
 								</tr>
                                 
                                 <tr> 
-                                	<th><input type="hidden" name="recordNo" value="15"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+                                	<th><input type="hidden" name="recordNo" value="15"><input type="hidden" name="RecordType" value="select"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 									<th>ASSIGN TO WORK DESK</th>
 									<td><div class="visible"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="selectAssignUser" name="selectAssignUser"><option selected="selected" value="">Select User to Assign</option><?php foreach($User_List as $row){?><option value="<?php echo $row['UserName']; ?>"><?php echo $row['UserName'];?></option><?php  }?></select></div></td>
-                                    <th><input type="hidden" name="recordNo" value="16"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+                                    <th><input type="hidden" name="recordNo" value="16"><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 									<th>OLD CASE ID</th>
-									<td><div class="visible"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Old_Case_Id" /></div></td>
+									<td><div class="first Visible-Part wi-Old_Case_Id"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Old_Case_Id" /></div></td>
 								</tr>
                                 
                                 <tr> 
-                                	<th><input type="hidden" name="recordNo" value="17"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+                                	<th><input type="hidden" name="recordNo" value="17"><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 									<th>DATE OF ACCIDENT</th>
-									<td><div class="visible"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm datetimepicker_Dos_Doe" name="Accident_Date" /></div></td>
-                                    <th><input type="hidden" name="recordNo" value="18"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+									<td><div class="first Visible-Part wi-Accident_Date"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm datetimepicker_Dos_Doe" name="Accident_Date" /></div></td>
+                                    <th><input type="hidden" name="recordNo" value="18"><input type="hidden" name="RecordType" value="select"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 									<th>ADJUSTER</th>
-									<td><div class="visible"><input type="hidden" id="Hidden_Adjuster_Id"><a class="info-link VisibleInfo" id="AdjusterInfoLink"></a></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Adjuster_Id" name="Adjuster_Id"><?php foreach($Adjuster_Name as $row){?><option value="<?php echo $row['Adjuster_Id']; ?>"> <?php echo $row['Adjuster_FirstName']." ".$row['Adjuster_LastName']; ?> </option><?php }?></select></div></td>
+									<td><div class="visible"><input type="hidden" id="Hidden_Adjuster_Id"><a class="info-link Visible-Part wi-Adjuster_Name" id="AdjusterInfoLink"></a></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Adjuster_Id" name="Adjuster_Id"><?php foreach($Adjuster_Name as $row){?><option value="<?php echo $row['Adjuster_Id']; ?>"> <?php echo $row['Adjuster_FirstName']." ".$row['Adjuster_LastName']; ?> </option><?php }?></select></div></td>
 								</tr>
                                 
                                 <tr> 
-                                	<th><input type="hidden" name="recordNo" value="19"><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+                                	<th><input type="hidden" name="recordNo" value="19"><input type="hidden" name="RecordType" value="select"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 									<th>PLAINTIFF ATTORNEY CO.</th>
-									<td><div class="visible"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Plaintiff_Id" name="Plaintiff_Id"><option selected="selected" value=""></option><?php foreach($Plantiff as $row){?><option value="<?php echo $row['Attorney_id']; ?>"> <?php echo $row['Attorney_Name']; ?> </option><?php }?></select></div></td>
+									<td><div class="first Visible-Part wi-Attorney_Name"></div><div class="editHidden" style="display:none;"><select class="form-control input-sm" id="Plaintiff_Id" name="Plaintiff_Id"><option selected="selected" value=""></option><?php foreach($Plantiff as $row){?><option value="<?php echo $row['Attorney_id']; ?>"> <?php echo $row['Attorney_Name']; ?> </option><?php }?></select></div></td>
                                     <th></th>
 									<th></th>
 									<td></td>
@@ -392,9 +392,7 @@ for($i=0; $i<=13; $i++){
                                 
                             </div>
                         </div>
-                        
-
-						
+                      
 					</div><!-- End of panel-body tab-panel-->
 					</div><!-- End hpanel -->
 					</div><!-- End col-lg-12-->
@@ -415,111 +413,111 @@ for($i=0; $i<=13; $i++){
 										<tr>
 											<th></th>		
 											<th>DATE FILE OPENED</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Opened" /></div></td>
-											<th><input type="hidden" name="recordNo" value="22"><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+											<td><div class="visible wi-Date_Opened"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Opened" /></div></td>
+											<th><input type="hidden" name="recordNo" value="22"><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 											<th>PLAINTIFF DISCOVERY COMPLETED</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Plaintiff_Discovery_Due_Date" /></div></td>
+											<td><div class="first Visible-Part wi-Plaintiff_Discovery_Due_Date"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Plaintiff_Discovery_Due_Date" /></div></td>
 										</tr>
 										<tr>
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="23"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th> 
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="23"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th> 
 											<th>DATE OF ACCIDENT</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Accident_Date" /></div></td>
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="24"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+											<td><div class="first Visible-Part wi-Accident_Date"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Accident_Date" /></div></td>
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="24"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 											<th>DATE REPLY TO DISC CONF LETTER Recd</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Reply_To_Disc_Conf_Letter_Recd" /></div></td>
+											<td><div class="first Visible-Part wi-Date_Reply_To_Disc_Conf_Letter_Recd"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Reply_To_Disc_Conf_Letter_Recd" /></div></td>
 										</tr>
 										<tr> 
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="25"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>			
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="25"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>			
 											<th>DATE BILL SUBMITED</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Bill_Submitted" /></div></td>
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="26"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+											<td><div class="first Visible-Part wi-Date_Bill_Submitted"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Bill_Submitted" /></div></td>
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="26"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 											<th>DATE EXT OF TIME 1</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Ext_Of_Time" /></div></td>
+											<td><div class="first Visible-Part wi-Date_Ext_Of_Time"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Ext_Of_Time" /></div></td>
 										</tr>
 										<tr> 
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="27"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>	 			 
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="27"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>	 			 
 											<th>DATE STATUS CHANGED</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Status_Changed" /></div></td>
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="28"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+											<td><div class="first Visible-Part wi-Date_Status_Changed"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Status_Changed" /></div></td>
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="28"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 											<th>DATE EXT OF TIME 2</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Ext_Of_Time_2" /></div></td>
+											<td><div class="first Visible-Part wi-Date_Ext_Of_Time_2"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Ext_Of_Time_2" /></div></td>
 										</tr>
 										<tr>
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="29"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th> 			 
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="29"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th> 			 
 											<th>DATE SUMMONS PRINTED</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Summons_Printed" /></div></td>
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="30"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+											<td><div class="first Visible-Part wi-Date_Summons_Printed"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Summons_Printed" /></div></td>
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="30"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 											<th>DATE EXT OF TIME 3</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Ext_Of_Time_3" /></div></td>
+											<td><div class="first Visible-Part wi-Date_Ext_Of_Time_3"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Ext_Of_Time_3" /></div></td>
 										</tr>
 										<tr>
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="31"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>			
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="31"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>			
 											<th>DATE INDEX NUMBER PURCHASED </th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Index_Number_Purchased" /></div></td>
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="32"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+											<td><div class="first Visible-Part wi-Date_Index_Number_Purchased"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Index_Number_Purchased" /></div></td>
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="32"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 											<th>DEFENDANT'S DISCOVERY RECEIVED</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Defendant_Discovery_Due_Date" /></div></td>
+											<td><div class="first Visible-Part wi-Defendant_Discovery_Due_Date"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Defendant_Discovery_Due_Date" /></div></td>
 										</tr>
 										<tr> 
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="33"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>			
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="33"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>			
 											<th>DATE SUMMONS SENT TO COURT</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Summons_Sent_Court" /></div></td>
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="34"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+											<td><div class="first Visible-Part wi-Date_Summons_Sent_Court"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Summons_Sent_Court" /></div></td>
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="34"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 											<th>DATE DISCOVERY CONF LETTER PRINTED</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Disc_Conf_Letter_Printed" /></div></td>
+											<td><div class="first Visible-Part wi-Date_Disc_Conf_Letter_Printed"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Disc_Conf_Letter_Printed" /></div></td>
 										</tr>
 										<tr>
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="35"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th> 			
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="35"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th> 			
 											<th>DATE SUMMONS SERVED</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Served_On_Date" /></div></td>
-											<th><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="36"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+											<td><div class="first Visible-Part wi-Served_On_Date"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Served_On_Date" /></div></td>
+											<th><input type="hidden" name="RecordType" value="select"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="36"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 											<th>STIPS SIGNED & RETURNED 1</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><select name="stips_signed_and_returned" id="stips_signed_and_returned" class="form-control input-sm"><option selected="selected" value="0">No</option><option value="1">Yes</option></select></div></td>
+											<td><div class="first Visible-Part wi-stips_signed_and_returned"></div><div class="editHidden" style="display:none;"><select name="stips_signed_and_returned" id="stips_signed_and_returned" class="form-control input-sm"><option selected="selected" value="0">No</option><option value="1">Yes</option></select></div></td>
 										</tr>
 										<tr>
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="37"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th> 			
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="37"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th> 			
 											<th>SERVED TO</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Served_To" /></div></td>
-											<th><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="38"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+											<td><div class="first Visible-Part wi-Served_To"></div><div class="editHidden" style="display:none;"><input type="text" class="input-sm" name="Served_To" /></div></td>
+											<th><input type="hidden" name="RecordType" value="select"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="38"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 											<th>STIPS SIGNED & RETURNED 2</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><select name="stips_signed_and_returned_2" id="stips_signed_and_returned_2" class="form-control input-sm"><option selected="selected" value="0">No</option><option value="1">Yes</option></select></div></td>
+											<td><div class="first Visible-Part wi-stips_signed_and_returned_2"></div><div class="editHidden" style="display:none;"><select name="stips_signed_and_returned_2" id="stips_signed_and_returned_2" class="form-control input-sm"><option selected="selected" value="0">No</option><option value="1">Yes</option></select></div></td>
 										</tr>
 										<tr> 
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="39"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>			
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="39"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>			
 											<th>SUMMONS SERVE TIME</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_only_time" name="Served_On_Time" /></div></td>
-											<th><input type="hidden" name="selectRecordNo" value="1"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="40"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+											<td><div class="first Visible-Part wi-Served_On_Time"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_only_time" name="Served_On_Time" /></div></td>
+											<th><input type="hidden" name="RecordType" value="select"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="40"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 											<th>STIPS SIGNED & RETURNED 3</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><select name="stips_signed_and_returned_3" id="stips_signed_and_returned_3" class="form-control input-sm"><option selected="selected" value="0">No</option><option value="1">Yes</option></select></div></td>
+											<td><div class="first Visible-Part wi-stips_signed_and_returned_3"></div><div class="editHidden" style="display:none;"><select name="stips_signed_and_returned_3" id="stips_signed_and_returned_3" class="form-control input-sm"><option selected="selected" value="0">No</option><option value="1">Yes</option></select></div></td>
 										</tr>
 										<tr>
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="41"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th> 	 			
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="41"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th> 	 			
 											<th>DATE AFFIDAVIT FILED</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Afidavit_Filed" /></div></td>
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="42"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+											<td><div class="first Visible-Part wi-Date_Afidavit_Filed"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Afidavit_Filed" /></div></td>
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="42"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 											<th>DATE SUMMONS CLOSED</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Closed" /></div></td>
+											<td><div class="first Visible-Part wi-Date_Closed"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Closed" /></div></td>
 										</tr>
 										<tr>
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="43"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th> 	 			
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="43"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th> 	 			
 											<th>DATE ANSWER RCVD</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Answer_Received" /></div></td>
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="44"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+											<td><div class="first Visible-Part wi-Date_Answer_Received"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Answer_Received" /></div></td>
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="44"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 											<th>AAA CONCILIATION DATE</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="AAA_Conciliation_Date" /></div></td>
+											<td><div class="first Visible-Part wi-AAA_Conciliation_Date"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="AAA_Conciliation_Date" /></div></td>
 										</tr>
 										<tr>
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="45"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>			
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="45"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>			
 											<th>OUR DISCOVERY DEMAND</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Our_Discovery_Demands" /></div></td>
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="46"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
+											<td><div class="first Visible-Part wi-Our_Discovery_Demands"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Our_Discovery_Demands" /></div></td>
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="46"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>
 											<th>ARB AWARD DATE</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Arb_Award_Date" /></div></td>
+											<td><div class="first Visible-Part wi-Arb_Award_Date"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Arb_Award_Date" /></div></td>
 										</tr>
 										<tr>
-											<th><input type="hidden" name="selectRecordNo" value="0"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="47"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>			
+											<th><input type="hidden" name="RecordType" value="input"><i title="Edit" class="fa fa-edit"><input type="hidden" name="recordNo" value="47"></i><i title="Save" class="fa fa-save" style="display:none"></i><i title="Cancel" class="fa fa-times" style="display:none"></i></th>			
 											<th>DATE DEMAND PRINTED</th>
-											<td><div class="visible"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Demands_Printed" /></div></td>
+											<td><div class="first Visible-Part wi-Date_Demands_Printed"></div><div class="editHidden" style="display:none;"><input class="input-sm datetimepicker_Dos_Doe" name="Date_Demands_Printed" /></div></td>
 											<td></td>
 											<td></td>
 											<td></td>
@@ -1658,6 +1656,7 @@ for($i=0; $i<=13; $i++){
                             <tr> <th>State</th> <td></td> </tr>
                             <tr> <th>Zip</th> <td></td> </tr>
                             <tr> <th>Phone</th> <td></td> </tr>
+                            <tr> <th>Phone Ext</th> <td></td> </tr>
                             <tr> <th>Fax</th> <td></td> </tr>
                             <tr> <th>Email</th> <td></td> </tr>
                             <tr> <th>Type</th> <td></td> </tr>
@@ -1817,6 +1816,162 @@ $(document).ready(function(e) {
 /**************************** CASEINFORMATION TAB-1 ************************************************************************************/
 	var countForRows = 0;
 	var value = 0;
+/* Workarea Information */
+	$(".fa-edit").click(function(){
+		$(this).parent().find(".fa-save").css("display", "block");
+		$(this).parent().find(".fa-times").css("display", "block");
+		$(this).css("display", "none");
+		var parentTd = $(this).parent();
+		var divs = $(parentTd).next().next();
+		$(divs).find(".visible").css("display", "none");
+		$(divs).find(".editHidden").css("display", "block");
+	});
+	$(".fa-times").click(function(){
+		$(this).parent().find(".fa-save").css("display", "none");
+		$(this).parent().find(".fa-times").css("display", "none");
+		$(this).css("display", "none");
+		var parentTd = $(this).parent();
+		var divs = $(parentTd).next().next();
+		$(divs).find(".visible").css("display", "block");
+		$(divs).find(".editHidden").css("display", "none");
+		$(this).parent().find(".fa-edit").css("display", "block");
+	});
+	
+/*********** fa-save ***********/
+	var info1 = document.getElementsByClassName("Visible-Part");
+	$(".fa-save").click(function(){
+		var Update_class_name = $(this).parent().next().next().find('.Visible-Part').attr('class').split(' ')[2];
+		console.log("Update_class_name: "+Update_class_name);
+		$(this).parent().find(".fa-edit").css("display", "block");
+		$(this).parent().find(".fa-times").css("display", "none");
+		$(this).css("display", "none");
+		var editHidden = $(this).parent().next().next().find(".editHidden");
+		var visible = $(this).parent().next().next().find(".visible");
+		var x = document.getElementsByClassName("visible");
+		var recordNo = $(this).parent().find("input[name=recordNo]").val();
+		var RecordType = $(this).parent().find("input[name=RecordType]").val();
+		console.log("recordNo:"+recordNo);
+		console.log("RecordType:"+RecordType);
+		var string = "recordNo="+recordNo+"&Case_AutoId=<?php echo $Case_AutoId;?>"+"&Case_Id=<?php echo $Case_Id;?>";
+		
+		if(recordNo ==3){
+			var InjuredParty_LastName = $(editHidden).find("input[name=InjuredParty_LastName]").val();
+			var InjuredParty_FirstName = $(editHidden).find("input[name=InjuredParty_FirstName]").val();
+   			//x[2].innerHTML = InjuredParty_LastName+", "+InjuredParty_FirstName;
+			info1[1].innerHTML = InjuredParty_LastName+", "+InjuredParty_FirstName;
+			string += "&InjuredParty_LastName="+InjuredParty_LastName+"&InjuredParty_FirstName="+InjuredParty_FirstName;
+		}else if(recordNo ==5){
+			var InsuredParty_LastName = $(editHidden).find("input[name=InsuredParty_LastName]").val();
+			var InsuredParty_FirstName = $(editHidden).find("input[name=InsuredParty_FirstName]").val();
+			//x[4].innerHTML = InsuredParty_LastName+", "+InsuredParty_FirstName;
+			info1[2].innerHTML = InsuredParty_LastName+", "+InsuredParty_FirstName;
+			string += "&InsuredParty_LastName="+InsuredParty_LastName+"&InsuredParty_FirstName="+InsuredParty_FirstName;
+		}else{
+			if(RecordType == "input"){
+				var inputName = $(editHidden).find("input").attr("name");
+				var inputValue = $(editHidden).find("input[name="+inputName+"]").val();
+				//console.log("recordNo: "+recordNo+" inputName= "+inputName+" inputValue: "+inputValue);
+				//string += "&"+inputName+"="+inputValue;
+				string += "&inputName="+inputName+"&inputValue="+inputValue;
+				if(recordNo >=22){
+					//x[recordNo-2].innerHTML = inputValue;
+					$("."+Update_class_name).html(inputValue);
+				}else if(recordNo == 14){
+					var balance = parseFloat($(".visible:eq(12)").text()) - inputValue;
+					//x[13].innerHTML = "PAID / $"+inputValue.toFixed(2) +" / BALANCE $"+balance.toFixed(2);
+					$("."+Update_class_name).html("PAID / $"+inputValue.toFixed(2) +" / BALANCE $"+balance.toFixed(2));
+				}else if(recordNo == 13){
+					var balance = parseFloat($(".visible:eq(12)").text()) - inputValue;
+					//x[recordNo-1].innerHTML = "$"+inputValue;
+					$("."+Update_class_name).html("$"+inputValue);
+				}else{
+					//x[recordNo-1].innerHTML = inputValue;
+					$("."+Update_class_name).html(inputValue);
+				}
+				
+			}else{
+				var selectId = $(editHidden).find("select").attr("id");
+				selectValue = $("#"+selectId+" option:selected").val();
+				selectText = $("#"+selectId+" option:selected").text();
+				//console.log("recordNo:"+recordNo+" selectId:"+selectId+" selectValue:"+selectValue+" selectText:"+selectText);
+				if(recordNo == 2 || recordNo ==4){
+					//string += "&"+selectId+"="+selectText;
+					string += "&inputName="+selectId+"&inputValue="+selectText;
+				}else{
+					//string += "&"+selectId+"="+selectValue;
+					if(recordNo == 1 || recordNo ==9 || recordNo == 10 || recordNo ==18){
+						$("#Hidden_"+selectId).val(inputValue);
+					}
+					string += "&inputName="+selectId+"&inputValue="+selectValue;
+				}
+				if(recordNo == 1 || recordNo ==9 || recordNo == 10 || recordNo ==18){
+					var hh ="Hidden_" + selectId;
+					//console.log("HH: "+hh);
+					$("#Hidden_"+selectId).val(selectValue);
+					if(recordNo == 1){
+						info1[0].innerHTML = $("#"+selectId+" option:selected").text();
+					}else if(recordNo == 9){
+						info1[3].innerHTML = $("#"+selectId+" option:selected").text();
+					}else if(recordNo == 10){
+						info1[4].innerHTML = $("#"+selectId+" option:selected").text();
+					}else if(recordNo == 18){
+						$.ajax({
+							type:'POST',
+							url:"<?php echo base_url(); ?>search/getAdjuster_ById2/"+selectValue,
+							success:function(data){
+								results = JSON.parse(data);
+								var adjPhone = results.data[0][2];
+								var adjExt = results.data[0][3];
+								if(adjPhone == null){
+									adjPhone ="";
+								}
+								if(adjExt == null){
+									adjExt ="";
+								}
+									info1[5].innerHTML = results.data[0][0]+ " "+results.data[0][1]+" / "+adjPhone+" ext."+adjExt;
+								//info1[5].innerHTML = $("#"+selectId+" option:selected").text();
+							},
+							error: function(result){ console.log("error"); }
+						});
+					}
+				}else{
+					$("."+Update_class_name).html($("#"+selectId+" option:selected").text());
+					/*if(recordNo >=22){
+						x[recordNo-2].innerHTML = $("#"+selectId+" option:selected").text();
+					}else{
+						x[recordNo-1].innerHTML = $("#"+selectId+" option:selected").text();
+					}*/
+				}
+				
+			}
+		}
+		//console.log("Final string= "+string);
+		request = $.ajax({
+			url:"<?php echo base_url(); ?>search/updateCaseInfo",
+			type: "post",
+			data: string
+		});
+		request.done(function (response, textStatus, jqXHR) {
+			//console.log("Successssss :"+response);
+			/*$("#NotesTab1").dataTable().fnDestroy();
+			$('#NotesTab1').dataTable( {
+				"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
+				"iDisplayLength": 5,
+				"aLengthMenu": [5, 10, 20, 25, 50],
+				"bSort": false
+			});
+			$("#NotesTab3").dataTable().fnDestroy();
+			$('#NotesTab3').dataTable( {
+				"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
+				"iDisplayLength": 10,
+				"aLengthMenu": [5, 10, 20, 25, 50],
+				"bSort": false
+			});
+			callSuccess();*/
+		});
+		$(editHidden).css("display", "none");
+		$(visible).css("display", "block");
+	});
 /**** ADD TREATEMENT ROW**********/
 	$("#addOtherInfo").click(function(){
 		var parentR = $(this).parent().parent().parent();
@@ -2054,155 +2209,6 @@ $(document).ready(function(e) {
 	});
 	
 	
-	$(".fa-edit").click(function(){
-		$(this).parent().find(".fa-save").css("display", "block");
-		$(this).parent().find(".fa-times").css("display", "block");
-		$(this).css("display", "none");
-		var parentTd = $(this).parent();
-		var divs = $(parentTd).next().next();
-		$(divs).find(".visible").css("display", "none");
-		$(divs).find(".editHidden").css("display", "block");
-	});
-	$(".fa-times").click(function(){
-		$(this).parent().find(".fa-save").css("display", "none");
-		$(this).parent().find(".fa-times").css("display", "none");
-		$(this).css("display", "none");
-		var parentTd = $(this).parent();
-		var divs = $(parentTd).next().next();
-		$(divs).find(".visible").css("display", "block");
-		$(divs).find(".editHidden").css("display", "none");
-		$(this).parent().find(".fa-edit").css("display", "block");
-	});
-	
-/*********** fa-save ***********/
-	var info1 = document.getElementsByClassName("VisibleInfo");
-	$(".fa-save").click(function(){
-		$(this).parent().find(".fa-edit").css("display", "block");
-		$(this).parent().find(".fa-times").css("display", "none");
-		$(this).css("display", "none");
-		var editHidden = $(this).parent().next().next().find(".editHidden");
-		var visible = $(this).parent().next().next().find(".visible");
-		var x = document.getElementsByClassName("visible");
-		var recordNo = $(this).parent().find("input[name=recordNo]").val();
-		var selectRecordNo = $(this).parent().find("input[name=selectRecordNo]").val();
-		//console.log("selectRecordNo:"+selectRecordNo);
-		var string = "recordNo="+recordNo+"&Case_AutoId=<?php echo $Case_AutoId;?>"+"&Case_Id=<?php echo $Case_Id;?>";
-		
-		if(recordNo ==3){
-			var InjuredParty_LastName = $(editHidden).find("input[name=InjuredParty_LastName]").val();
-			var InjuredParty_FirstName = $(editHidden).find("input[name=InjuredParty_FirstName]").val();
-   			//x[2].innerHTML = InjuredParty_LastName+", "+InjuredParty_FirstName;
-			info1[1].innerHTML = InjuredParty_LastName+", "+InjuredParty_FirstName;
-			string += "&InjuredParty_LastName="+InjuredParty_LastName+"&InjuredParty_FirstName="+InjuredParty_FirstName;
-		}else if(recordNo ==5){
-			var InsuredParty_LastName = $(editHidden).find("input[name=InsuredParty_LastName]").val();
-			var InsuredParty_FirstName = $(editHidden).find("input[name=InsuredParty_FirstName]").val();
-			//x[4].innerHTML = InsuredParty_LastName+", "+InsuredParty_FirstName;
-			info1[2].innerHTML = InsuredParty_LastName+", "+InsuredParty_FirstName;
-			string += "&InsuredParty_LastName="+InsuredParty_LastName+"&InsuredParty_FirstName="+InsuredParty_FirstName;
-		}else{
-			if(selectRecordNo ==0){
-				var inputName = $(editHidden).find("input").attr("name");
-				var inputValue = $(editHidden).find("input[name="+inputName+"]").val();
-				//console.log("recordNo: "+recordNo+" inputName= "+inputName+" inputValue: "+inputValue);
-				//string += "&"+inputName+"="+inputValue;
-				string += "&inputName="+inputName+"&inputValue="+inputValue;
-				if(recordNo >=22){
-					x[recordNo-2].innerHTML = inputValue;
-				}else if(recordNo == 14){
-					var balance = parseFloat($(".visible:eq(12)").text()) - inputValue;
-					x[13].innerHTML = "PAID / $"+inputValue.toFixed(2) +" / BALANCE $"+balance.toFixed(2);
-				}else if(recordNo == 13){
-					var balance = parseFloat($(".visible:eq(12)").text()) - inputValue;
-					x[recordNo-1].innerHTML = "$"+inputValue;
-				}else{
-					x[recordNo-1].innerHTML = inputValue;
-				}
-				
-			}else{
-				var selectId = $(editHidden).find("select").attr("id");
-				selectValue = $("#"+selectId+" option:selected").val();
-				selectText = $("#"+selectId+" option:selected").text();
-				//console.log("recordNo:"+recordNo+" selectId:"+selectId+" selectValue:"+selectValue+" selectText:"+selectText);
-				if(recordNo == 2 || recordNo ==4){
-					//string += "&"+selectId+"="+selectText;
-					string += "&inputName="+selectId+"&inputValue="+selectText;
-				}else{
-					//string += "&"+selectId+"="+selectValue;
-					if(recordNo == 1 || recordNo ==9 || recordNo == 10 || recordNo ==18){
-						$("#Hidden_"+selectId).val(inputValue);
-					}
-					string += "&inputName="+selectId+"&inputValue="+selectValue;
-				}
-				if(recordNo == 1 || recordNo ==9 || recordNo == 10 || recordNo ==18){
-					var hh ="Hidden_" + selectId;
-					//console.log("HH: "+hh);
-					$("#Hidden_"+selectId).val(selectValue);
-					if(recordNo == 1){
-						info1[0].innerHTML = $("#"+selectId+" option:selected").text();
-					}else if(recordNo == 9){
-						info1[3].innerHTML = $("#"+selectId+" option:selected").text();
-					}else if(recordNo == 10){
-						info1[4].innerHTML = $("#"+selectId+" option:selected").text();
-					}else if(recordNo == 18){
-						$.ajax({
-							type:'POST',
-							url:"<?php echo base_url(); ?>search/getAdjuster_ById2/"+selectValue,
-							success:function(data){
-								results = JSON.parse(data);
-								var adjPhone = results.data[0][2];
-								var adjExt = results.data[0][3];
-								if(adjPhone == null){
-									adjPhone ="";
-								}
-								if(adjExt == null){
-									adjExt ="";
-								}
-									info1[5].innerHTML = results.data[0][0]+ " "+results.data[0][1]+" / "+adjPhone+" ext."+adjExt;
-								//info1[5].innerHTML = $("#"+selectId+" option:selected").text();
-							},
-							error: function(result){ console.log("error"); }
-						});
-					}
-				}else{
-					if(recordNo >=22){
-						x[recordNo-2].innerHTML = $("#"+selectId+" option:selected").text();
-					}else{
-						x[recordNo-1].innerHTML = $("#"+selectId+" option:selected").text();
-					}
-				}
-				
-			}
-		}
-		
-		
-		console.log("Final string= "+string);
-		request = $.ajax({
-			url:"<?php echo base_url(); ?>search/updateCaseInfo",
-			type: "post",
-			data: string
-		});
-		request.done(function (response, textStatus, jqXHR) {
-			//console.log("Successssss :"+response);
-			$("#NotesTab1").dataTable().fnDestroy();
-			$('#NotesTab1').dataTable( {
-				"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
-				"iDisplayLength": 5,
-				"aLengthMenu": [5, 10, 20, 25, 50],
-				"bSort": false
-			});
-			$("#NotesTab3").dataTable().fnDestroy();
-			$('#NotesTab3').dataTable( {
-				"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
-				"iDisplayLength": 10,
-				"aLengthMenu": [5, 10, 20, 25, 50],
-				"bSort": false
-			});
-			callSuccess();
-		});
-		$(editHidden).css("display", "none");
-		$(visible).css("display", "block");
-	});	
 	
 /**************************** NOTES TAB-3 ************************************************************************************/
 	//$(".notesAccidentDate").datepicker().datepicker("setDate", new Date());
@@ -3247,7 +3253,7 @@ daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndDat
 		var x = document.getElementsByClassName("visible");
 		var y = document.getElementsByClassName("case-id");
 		var y2 = document.getElementsByClassName("old-case-id");
-		var info = document.getElementsByClassName("VisibleInfo");
+		var info = document.getElementsByClassName("Visible-Part");
 		
 		$.ajax({
 			type:'POST',
@@ -3268,44 +3274,57 @@ daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndDat
 					//document.getElementsByClassName("old-case-id").innerHTML =  results.CaseInfo[$i].Old_Case_Id;
 					//x[0].innerHTML = results.CaseInfo[$i].Provider_Name;
 					
-					info[0].innerHTML = results.CaseInfo[$i].Provider_Name;
+					//info[0].innerHTML = results.CaseInfo[$i].Provider_Name;
+					$(".ProviderInfoLink").html(results.CaseInfo[$i].Provider_Name);
 					$("#Hidden_Provider_Id").val(results.CaseInfo[$i].Provider_Id);
 					document.getElementById("ProviderName-tab-6").innerHTML = results.CaseInfo[$i].Provider_Name;
-					x[1].innerHTML = results.CaseInfo[$i].Initial_Status;
+					//x[1].innerHTML = results.CaseInfo[$i].Initial_Status;
+					$(".wi-initialstatus").html(results.CaseInfo[$i].Initial_Status);
 					//x[2].innerHTML = results.CaseInfo[$i].InjuredParty_LastName +", "+results.CaseInfo[$i].InjuredParty_FirstName ;
-					info[1].innerHTML = results.CaseInfo[$i].InjuredParty_LastName +", "+results.CaseInfo[$i].InjuredParty_FirstName ;
+					//info[1].innerHTML = results.CaseInfo[$i].InjuredParty_LastName +", "+results.CaseInfo[$i].InjuredParty_FirstName;
+					$(".wi-injuredpartyname").html(results.CaseInfo[$i].InjuredParty_LastName +", "+results.CaseInfo[$i].InjuredParty_FirstName);
 					$("input[name=InjuredParty_LastName]").val(results.CaseInfo[$i].InjuredParty_LastName);
 					$("input[name=InjuredParty_FirstName]").val(results.CaseInfo[$i].InjuredParty_FirstName);
 					document.getElementById("InjuredPartyName-tab-6").innerHTML = results.CaseInfo[$i].InjuredParty_LastName  +" "+results.CaseInfo[$i].InjuredParty_FirstName
 					
-					x[3].innerHTML = results.CaseInfo[$i].Status;
+					//x[3].innerHTML = results.CaseInfo[$i].Status;
+					$(".wi-status").html(results.CaseInfo[$i].Status);
 					//x[4].innerHTML = results.CaseInfo[$i].InsuredParty_LastName +", "+results.CaseInfo[$i].InsuredParty_FirstName ;
-					info[2].innerHTML = results.CaseInfo[$i].InsuredParty_LastName +", "+results.CaseInfo[$i].InsuredParty_FirstName ;
+					//info[2].innerHTML = results.CaseInfo[$i].InsuredParty_LastName +", "+results.CaseInfo[$i].InsuredParty_FirstName;
+					$(".wi-insuredpartyname").html(results.CaseInfo[$i].InsuredParty_LastName +", "+results.CaseInfo[$i].InsuredParty_FirstName);
 					$("input[name=InsuredParty_LastName]").val(results.CaseInfo[$i].InsuredParty_LastName);
 					$("input[name=InsuredParty_FirstName]").val(results.CaseInfo[$i].InsuredParty_FirstName);
 					
-					x[5].innerHTML = results.CaseInfo[$i].Ins_Claim_Number;
+					//x[5].innerHTML = results.CaseInfo[$i].Ins_Claim_Number;
+					$(".wi-Ins_Claim_Number").html(results.CaseInfo[$i].Ins_Claim_Number);
 					$("input[name=Ins_Claim_Number]").val(results.CaseInfo[$i].Ins_Claim_Number);
 					
-					x[6].innerHTML = results.CaseInfo[$i].Policy_Number;
+					//x[6].innerHTML = results.CaseInfo[$i].Policy_Number;
+					$(".wi-Policy_Number").html(results.CaseInfo[$i].Policy_Number);
 					$("input[name=Policy_Number]").val(results.CaseInfo[$i].Policy_Number);
 					
-					x[7].innerHTML = results.CaseInfo[$i].IndexOrAAA_Number;
+					//x[7].innerHTML = results.CaseInfo[$i].IndexOrAAA_Number;
+					$(".wi-IndexOrAAA_Number").html(results.CaseInfo[$i].IndexOrAAA_Number);
 					$("input[name=IndexOrAAA_Number]").val(results.CaseInfo[$i].IndexOrAAA_Number);
 					
 					//x[8].innerHTML = results.CaseInfo[$i].InsuranceCompany_Name;
-					info[3].innerHTML = results.CaseInfo[$i].InsuranceCompany_Name;
+					//info[3].innerHTML = results.CaseInfo[$i].InsuranceCompany_Name;
+					$(".wi-InsuranceCompany_Name").html(results.CaseInfo[$i].InsuranceCompany_Name);
 					$("#Hidden_InsuranceCompany_Id").val(results.CaseInfo[$i].InsuranceCompany_Id);
 					//x[9].innerHTML = results.CaseInfo[$i].Defendant_Name;
-					info[4].innerHTML = results.CaseInfo[$i].Defendant_Name;
+					//info[4].innerHTML = results.CaseInfo[$i].Defendant_Name;
+					$(".wi-Defendant_Name").html(results.CaseInfo[$i].Defendant_Name);
 					$("#Hidden_Defendant_Id").val(results.CaseInfo[$i].Defendant_Id);
 					
-					x[10].innerHTML = results.CaseInfo[$i].Attorney_FileNumber;
+					//x[10].innerHTML = results.CaseInfo[$i].Attorney_FileNumber;
+					$(".wi-Attorney_FileNumber").html(results.CaseInfo[$i].Attorney_FileNumber);
 					$("input[name=Attorney_FileNumber]").val(results.CaseInfo[$i].Attorney_FileNumber);
 					
-					x[11].innerHTML = results.CaseInfo[$i].Court_Name;
+					//x[11].innerHTML = results.CaseInfo[$i].Court_Name;
+					$(".wi-Court_Name").html(results.CaseInfo[$i].Court_Name);
 					
-					x[12].innerHTML = '$'+results.CaseInfo[$i].Claim_Amount;
+					//x[12].innerHTML = '$'+results.CaseInfo[$i].Claim_Amount;
+					$(".wi-Claim_Amount").html('$'+results.CaseInfo[$i].Claim_Amount);
 					$("input[name=Claim_Amount]").val(results.CaseInfo[$i].Claim_Amount);
 					
 					$("#ClaimAmtTab6").val(parseFloat(results.CaseInfo[$i].Claim_Amount).toFixed(2));
@@ -3323,16 +3342,19 @@ daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndDat
 					$("#TotalAmount").val(TotalAmount.toFixed(2));*/
 					
 					
-					x[13].innerHTML = "PAID / $"+parseFloat(results.CaseInfo[$i].Paid_Amount).toFixed(2)+" / BALANCE $"+balance.toFixed(2);
+					//x[13].innerHTML = "PAID / $"+parseFloat(results.CaseInfo[$i].Paid_Amount).toFixed(2)+" / BALANCE $"+balance.toFixed(2);
+					$(".wi-Paid_Amount").html("PAID / $"+parseFloat(results.CaseInfo[$i].Paid_Amount).toFixed(2)+" / BALANCE $"+balance.toFixed(2));
 					$("input[name=Paid_Amount]").val(results.CaseInfo[$i].Paid_Amount);
 					
-					x[15].innerHTML = results.CaseInfo[$i].Old_Case_Id;
+					//x[15].innerHTML = results.CaseInfo[$i].Old_Case_Id;
+					$(".wi-Old_Case_Id").html(results.CaseInfo[$i].Old_Case_Id);
 					$("input[name=Old_Case_Id]").val(results.CaseInfo[$i].Old_Case_Id);
 					
 					//x[16].innerHTML = results.CaseInfo[$i].Accident_DateNoTimr;
 					//$("input[name=Accident_Date]").val(results.CaseInfo[$i].Accident_DateNoTimr);
 					
-					x[16].innerHTML = results.CaseInfo[$i].Accident_Date;
+					//x[16].innerHTML = results.CaseInfo[$i].Accident_Date;
+					$(".wi-Accident_Date").html(results.CaseInfo[$i].Accident_Date);
 					$("input[name=Accident_Date]").val(results.CaseInfo[$i].Accident_Date);
 					
 					//x[17].innerHTML = results.CaseInfo[$i].Adjuster_LastName+ ", "+results.CaseInfo[$i].Adjuster_FirstName;
@@ -3348,95 +3370,131 @@ daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndDat
 					}else{ adjPhone = results.CaseInfo[$i].Adjuster_Phone; }
 					if(results.CaseInfo[$i].Adjuster_Phone_Ext == null){ adjExt = "";
 					}else{ adjExt = results.CaseInfo[$i].Adjuster_Phone_Ext; }
-					info[5].innerHTML = adjFirstName+ " "+adjLastName+" / "+adjPhone+" ext."+adjExt;
+					 //info[5].innerHTML = adjFirstName+ " "+adjLastName+" / "+adjPhone+" ext."+adjExt;
+					 $(".wi-Adjuster_Name").html(adjFirstName+ " "+adjLastName+" / "+adjPhone+" ext."+adjExt);
 					$("#Hidden_Adjuster_Id").val(results.CaseInfo[$i].Adjuster_Id);
-					x[18].innerHTML = results.CaseInfo[$i].Attorney_Name;
-					
-					x[21].innerHTML = results.CaseInfo[$i].Date_Opened;
+					//x[18].innerHTML = results.CaseInfo[$i].Attorney_Name;
+					$(".wi-Attorney_Name").html(results.CaseInfo[$i].Attorney_Name);
+
+/****** Extended case info  */					
+					//x[21].innerHTML = results.CaseInfo[$i].Date_Opened;
+					$(".wi-Date_Opened").html(results.CaseInfo[$i].Date_Opened);
 					$("input[name=Date_Opened]").val(results.CaseInfo[$i].Date_Opened);
-					x[20].innerHTML = results.CaseInfo[$i].Plaintiff_Discovery_Due_Date;
+					//x[20].innerHTML = results.CaseInfo[$i].Plaintiff_Discovery_Due_Date;
+					$(".wi-Plaintiff_Discovery_Due_Date").html(results.CaseInfo[$i].Plaintiff_Discovery_Due_Date);
 					$("input[name=Plaintiff_Discovery_Due_Date]").val(results.CaseInfo[$i].Plaintiff_Discovery_Due_Date);
-					x[21].innerHTML = results.CaseInfo[$i].Accident_Date;
+					//x[21].innerHTML = results.CaseInfo[$i].Accident_Date;
+					$(".wi-Accident_Date").html(results.CaseInfo[$i].Accident_Date);
 					$("input[name=Accident_Date]").val(results.CaseInfo[$i].Accident_Date);
-					x[22].innerHTML = results.CaseInfo[$i].Date_Reply_To_Disc_Conf_Letter_Recd;
+					
+					//x[22].innerHTML = results.CaseInfo[$i].Date_Reply_To_Disc_Conf_Letter_Recd;
+					$(".wi-Date_Reply_To_Disc_Conf_Letter_Recd").html(results.CaseInfo[$i].Date_Reply_To_Disc_Conf_Letter_Recd);
 					$("input[name=Date_Reply_To_Disc_Conf_Letter_Recd]").val(results.CaseInfo[$i].Date_Reply_To_Disc_Conf_Letter_Recd);
-					x[23].innerHTML = results.CaseInfo[$i].Date_Bill_Submitted;
+					//x[23].innerHTML = results.CaseInfo[$i].Date_Bill_Submitted;
+					$(".wi-Date_Bill_Submitted").html(results.CaseInfo[$i].Date_Bill_Submitted);
 					$("input[name=Date_Bill_Submitted]").val(results.CaseInfo[$i].Date_Bill_Submitted);
-					x[24].innerHTML = results.CaseInfo[$i].Date_Ext_Of_Time;
+					
+					//x[24].innerHTML = results.CaseInfo[$i].Date_Ext_Of_Time;
+					$(".wi-Date_Ext_Of_Time").html(results.CaseInfo[$i].Date_Ext_Of_Time);
 					$("input[name=Date_Ext_Of_Time]").val(results.CaseInfo[$i].Date_Ext_Of_Time);
-					x[25].innerHTML = results.CaseInfo[$i].Date_Status_Changed;
+					//x[25].innerHTML = results.CaseInfo[$i].Date_Status_Changed;
+					$(".wi-Date_Status_Changed").html(results.CaseInfo[$i].Date_Status_Changed);
 					$("input[name=Date_Status_Changed]").val(results.CaseInfo[$i].Date_Status_Changed);
-					x[26].innerHTML = results.CaseInfo[$i].Date_Ext_Of_Time_2;
+					//x[26].innerHTML = results.CaseInfo[$i].Date_Ext_Of_Time_2;
+					$(".wi-Date_Ext_Of_Time_2").html(results.CaseInfo[$i].Date_Ext_Of_Time_2);
 					$("input[name=Date_Ext_Of_Time_2]").val(results.CaseInfo[$i].Date_Ext_Of_Time_2);
-					x[27].innerHTML = results.CaseInfo[$i].Date_Summons_Printed;
+					//x[27].innerHTML = results.CaseInfo[$i].Date_Summons_Printed;
+					$(".wi-Date_Summons_Printed").html(results.CaseInfo[$i].Date_Summons_Printed);
+					
 					$("input[name=Date_Summons_Printed]").val(results.CaseInfo[$i].Date_Summons_Printed);
-					x[28].innerHTML = results.CaseInfo[$i].Date_Ext_Of_Time_3;
+					//x[28].innerHTML = results.CaseInfo[$i].Date_Ext_Of_Time_3;
+					$(".wi-Date_Ext_Of_Time_3").html(results.CaseInfo[$i].Date_Ext_Of_Time_3);
 					$("input[name=Date_Ext_Of_Time_3]").val(results.CaseInfo[$i].Date_Ext_Of_Time_3);
 					
-					x[29].innerHTML = results.CaseInfo[$i].Date_Index_Number_Purchased;
+					//x[29].innerHTML = results.CaseInfo[$i].Date_Index_Number_Purchased;
+					$(".wi-Date_Index_Number_Purchased").html(results.CaseInfo[$i].Date_Index_Number_Purchased);
 					$("input[name=Date_Index_Number_Purchased]").val(results.CaseInfo[$i].Date_Index_Number_Purchased);
 					
-					x[30].innerHTML = results.CaseInfo[$i].Defendant_Discovery_Due_Date;
+					//x[30].innerHTML = results.CaseInfo[$i].Defendant_Discovery_Due_Date;
+					$(".wi-Defendant_Discovery_Due_Date").html(results.CaseInfo[$i].Defendant_Discovery_Due_Date);
 					$("input[name=Defendant_Discovery_Due_Date]").val(results.CaseInfo[$i].Defendant_Discovery_Due_Date);
 					
-					x[31].innerHTML = results.CaseInfo[$i].Date_Summons_Sent_Court;
+					//x[31].innerHTML = results.CaseInfo[$i].Date_Summons_Sent_Court;
+					$(".wi-Date_Summons_Sent_Court").html(results.CaseInfo[$i].Date_Summons_Sent_Court);
 					$("input[name=Date_Ext_Of_Time_3]").val(results.CaseInfo[$i].Date_Ext_Of_Time_3);
 					
-					x[32].innerHTML = results.CaseInfo[$i].Date_Disc_Conf_Letter_Printed;
+					//x[32].innerHTML = results.CaseInfo[$i].Date_Disc_Conf_Letter_Printed;
+					$(".wi-Date_Disc_Conf_Letter_Printed").html(results.CaseInfo[$i].Date_Disc_Conf_Letter_Printed);
 					$("input[name=Date_Ext_Of_Time_3]").val(results.CaseInfo[$i].Date_Ext_Of_Time_3);
 					
-					x[33].innerHTML = results.CaseInfo[$i].Served_On_Date;
+					//x[33].innerHTML = results.CaseInfo[$i].Served_On_Date;
+					$(".wi-Served_On_Date").html(results.CaseInfo[$i].Served_On_Date);
 					$("input[name=Served_On_Date]").val(results.CaseInfo[$i].Served_On_Date);
 					
 					$("#stips_signed_and_returned").val(results.CaseInfo[$i].stips_signed_and_returned);
 					if(results.CaseInfo[$i].stips_signed_and_returned == 1){
-						x[34].innerHTML = "Yes";
+						//x[34].innerHTML = "Yes";
+						$(".wi-stips_signed_and_returned").html("Yes");
 					}else{
-						x[34].innerHTML = "No";
+						//x[34].innerHTML = "No";
+						$(".wi-stips_signed_and_returned").html("No");
 					}
 					
-					x[35].innerHTML = results.CaseInfo[$i].Served_To;
+					//x[35].innerHTML = results.CaseInfo[$i].Served_To;
+					$(".wi-Served_To").html(results.CaseInfo[$i].Served_To);
 					$("input[name=Served_To]").val(results.CaseInfo[$i].Served_To);
 					
-					//x[36].innerHTML = results.CaseInfo[$i].stips_signed_and_returned_2;
+					////x[36].innerHTML = results.CaseInfo[$i].stips_signed_and_returned_2;
 					$("#stips_signed_and_returned_2").val(results.CaseInfo[$i].stips_signed_and_returned_2);
 					if(results.CaseInfo[$i].stips_signed_and_returned_2 == 1){
-						x[36].innerHTML = "Yes";
+						//x[36].innerHTML = "Yes";
+						$(".wi-stips_signed_and_returned_2").html("Yes");
 					}else{
-						x[36].innerHTML = "No";
+						//x[36].innerHTML = "No";
+						$(".wi-stips_signed_and_returned_2").html("No");
 					}
 					
 					
-					x[37].innerHTML = results.CaseInfo[$i].Served_On_Time;
+					//x[37].innerHTML = results.CaseInfo[$i].Served_On_Time;
+					$(".wi-Served_On_Time").html(results.CaseInfo[$i].Served_On_Time);
 					$("input[name=Served_On_Time]").val(results.CaseInfo[$i].Served_On_Time);
 					
-					//x[38].innerHTML = results.CaseInfo[$i].stips_signed_and_returned_3;
+					////x[38].innerHTML = results.CaseInfo[$i].stips_signed_and_returned_3;
 					$("#stips_signed_and_returned_3").val(results.CaseInfo[$i].stips_signed_and_returned_3);
 					if(results.CaseInfo[$i].stips_signed_and_returned_3 == 1){
-						x[38].innerHTML = "Yes";
+						//x[38].innerHTML = "Yes";
+						$(".wi-stips_signed_and_returned_3").html("Yes");
 					}else{
-						x[38].innerHTML = "No";
+						//x[38].innerHTML = "No";
+						$(".wi-stips_signed_and_returned_3").html("No");
 					}
 					
-					x[39].innerHTML = results.CaseInfo[$i].Date_Afidavit_Filed;
+					//x[39].innerHTML = results.CaseInfo[$i].Date_Afidavit_Filed;
+					$(".wi-Date_Afidavit_Filed").html(results.CaseInfo[$i].Date_Afidavit_Filed);
 					$("input[name=Date_Afidavit_Filed]").val(results.CaseInfo[$i].Date_Afidavit_Filed);
 					
-					x[40].innerHTML = results.CaseInfo[$i].Date_Closed;
+					//x[40].innerHTML = results.CaseInfo[$i].Date_Closed;
+					$(".wi-Date_Closed").html(results.CaseInfo[$i].Date_Closed);
 					$("input[name=Date_Closed]").val(results.CaseInfo[$i].Date_Closed);
 					 
-					x[41].innerHTML = results.CaseInfo[$i].Date_Answer_Received;
+					//x[41].innerHTML = results.CaseInfo[$i].Date_Answer_Received;
+					$(".wi-Date_Answer_Received").html(results.CaseInfo[$i].Date_Answer_Received);
 					$("input[name=Date_Answer_Received]").val(results.CaseInfo[$i].Date_Answer_Received);
 					
-					x[42].innerHTML = results.CaseInfo[$i].AAA_Conciliation_Date;
+					//x[42].innerHTML = results.CaseInfo[$i].AAA_Conciliation_Date;
+					$(".wi-AAA_Conciliation_Date").html(results.CaseInfo[$i].AAA_Conciliation_Date);
 					$("input[name=AAA_Conciliation_Date]").val(results.CaseInfo[$i].AAA_Conciliation_Date);
 					
-					x[43].innerHTML = results.CaseInfo[$i].Our_Discovery_Demands;
+					//x[43].innerHTML = results.CaseInfo[$i].Our_Discovery_Demands;
+					$(".wi-Our_Discovery_Demands").html(results.CaseInfo[$i].Our_Discovery_Demands);
 					$("input[name=Our_Discovery_Demands]").val(results.CaseInfo[$i].Our_Discovery_Demands);
 					
-					x[44].innerHTML = results.CaseInfo[$i].Arb_Award_Date;
+					//x[44].innerHTML = results.CaseInfo[$i].Arb_Award_Date;
+					$(".wi-Arb_Award_Date").html(results.CaseInfo[$i].Arb_Award_Date);
 					$("input[name=Arb_Award_Date]").val(results.CaseInfo[$i].Arb_Award_Date);
 					
-					x[45].innerHTML = results.CaseInfo[$i].Date_Demands_Printed;
+					//x[45].innerHTML = results.CaseInfo[$i].Date_Demands_Printed;
+					$(".wi-Date_Demands_Printed").html(results.CaseInfo[$i].Date_Demands_Printed);
 					$("input[name=Date_Demands_Printed]").val(results.CaseInfo[$i].Date_Demands_Printed);
 				}  
 			},
