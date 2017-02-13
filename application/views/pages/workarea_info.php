@@ -1815,6 +1815,7 @@ $(document).ready(function(e) {
 		var parentTd = $(this).parent();
 		var divs = $(parentTd).next().next();
 		$(divs).find(".visible").css("display", "none");
+		$(divs).find(".Visible-Part").css("display", "none");
 		$(divs).find(".editHidden").css("display", "block");
 	});
 	$(".fa-times").click(function(){
@@ -1824,6 +1825,7 @@ $(document).ready(function(e) {
 		var parentTd = $(this).parent();
 		var divs = $(parentTd).next().next();
 		$(divs).find(".visible").css("display", "block");
+		$(divs).find(".Visible-Part").css("display", "block");
 		$(divs).find(".editHidden").css("display", "none");
 		$(this).parent().find(".fa-edit").css("display", "block");
 	});
@@ -1838,6 +1840,7 @@ $(document).ready(function(e) {
 		$(this).css("display", "none");
 		var editHidden = $(this).parent().next().next().find(".editHidden");
 		var visible = $(this).parent().next().next().find(".visible");
+		var Visible_Part = $(this).parent().next().next().find(".Visible-Part");
 		var x = document.getElementsByClassName("visible");
 		var recordNo = $(this).parent().find("input[name=recordNo]").val();
 		var RecordType = $(this).parent().find("input[name=RecordType]").val();
@@ -1932,6 +1935,7 @@ $(document).ready(function(e) {
 			callSuccess();*/
 		});
 		$(editHidden).css("display", "none");
+		$(Visible_Part).css("display", "block");
 		$(visible).css("display", "block");
 	});
 /**** ADD TREATEMENT ROW**********/
