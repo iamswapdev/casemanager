@@ -3245,88 +3245,44 @@ daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndDat
 					$("#Hidden_Provider_Id").val(results.CaseInfo[$i].Provider_Id);
 					$("#Provider_Id").val(results.CaseInfo[$i].Provider_Id);
 					document.getElementById("ProviderName-tab-6").innerHTML = results.CaseInfo[$i].Provider_Name;
-					//x[1].innerHTML = results.CaseInfo[$i].Initial_Status;
 					$(".wi-initialstatus").html(results.CaseInfo[$i].Initial_Status);
-					//x[2].innerHTML = results.CaseInfo[$i].InjuredParty_LastName +", "+results.CaseInfo[$i].InjuredParty_FirstName ;
-					//info[1].innerHTML = results.CaseInfo[$i].InjuredParty_LastName +", "+results.CaseInfo[$i].InjuredParty_FirstName;
 					$(".wi-injuredpartyname").html(results.CaseInfo[$i].InjuredParty_LastName +", "+results.CaseInfo[$i].InjuredParty_FirstName);
 					$("input[name=InjuredParty_LastName]").val(results.CaseInfo[$i].InjuredParty_LastName);
 					$("input[name=InjuredParty_FirstName]").val(results.CaseInfo[$i].InjuredParty_FirstName);
 					document.getElementById("InjuredPartyName-tab-6").innerHTML = results.CaseInfo[$i].InjuredParty_LastName  +" "+results.CaseInfo[$i].InjuredParty_FirstName
-					
-					//x[3].innerHTML = results.CaseInfo[$i].Status;
 					$(".wi-status").html(results.CaseInfo[$i].Status);
-					//x[4].innerHTML = results.CaseInfo[$i].InsuredParty_LastName +", "+results.CaseInfo[$i].InsuredParty_FirstName ;
-					//info[2].innerHTML = results.CaseInfo[$i].InsuredParty_LastName +", "+results.CaseInfo[$i].InsuredParty_FirstName;
 					$(".wi-insuredpartyname").html(results.CaseInfo[$i].InsuredParty_LastName +", "+results.CaseInfo[$i].InsuredParty_FirstName);
 					$("input[name=InsuredParty_LastName]").val(results.CaseInfo[$i].InsuredParty_LastName);
 					$("input[name=InsuredParty_FirstName]").val(results.CaseInfo[$i].InsuredParty_FirstName);
-					
-					//x[5].innerHTML = results.CaseInfo[$i].Ins_Claim_Number;
 					$(".wi-Ins_Claim_Number").html(results.CaseInfo[$i].Ins_Claim_Number);
 					$("input[name=Ins_Claim_Number]").val(results.CaseInfo[$i].Ins_Claim_Number);
-					
-					//x[6].innerHTML = results.CaseInfo[$i].Policy_Number;
 					$(".wi-Policy_Number").html(results.CaseInfo[$i].Policy_Number);
 					$("input[name=Policy_Number]").val(results.CaseInfo[$i].Policy_Number);
-					
-					//x[7].innerHTML = results.CaseInfo[$i].IndexOrAAA_Number;
 					$(".wi-IndexOrAAA_Number").html(results.CaseInfo[$i].IndexOrAAA_Number);
 					$("input[name=IndexOrAAA_Number]").val(results.CaseInfo[$i].IndexOrAAA_Number);
-					
-					//x[8].innerHTML = results.CaseInfo[$i].InsuranceCompany_Name;
-					//info[3].innerHTML = results.CaseInfo[$i].InsuranceCompany_Name;
 					$(".wi-InsuranceCompany_Name").html(results.CaseInfo[$i].InsuranceCompany_Name);
 					$("#Hidden_InsuranceCompany_Id").val(results.CaseInfo[$i].InsuranceCompany_Id);
 					$("#InsuranceCompany_Id").val(results.CaseInfo[$i].InsuranceCompany_Id);
-					//x[9].innerHTML = results.CaseInfo[$i].Defendant_Name;
-					//info[4].innerHTML = results.CaseInfo[$i].Defendant_Name;
 					$(".wi-Defendant_Name").html(results.CaseInfo[$i].Defendant_Name);
 					$("#Hidden_Defendant_Id").val(results.CaseInfo[$i].Defendant_Id);
 					$("#Defendant_Id").val(results.CaseInfo[$i].Defendant_Id);
-					
-					//x[10].innerHTML = results.CaseInfo[$i].Attorney_FileNumber;
 					$(".wi-Attorney_FileNumber").html(results.CaseInfo[$i].Attorney_FileNumber);
 					$("input[name=Attorney_FileNumber]").val(results.CaseInfo[$i].Attorney_FileNumber);
-					
-					//x[11].innerHTML = results.CaseInfo[$i].Court_Name;
 					$(".wi-Court_Name").html(results.CaseInfo[$i].Court_Name);
-					
-					//x[12].innerHTML = '$'+results.CaseInfo[$i].Claim_Amount;
 					$(".wi-Claim_Amount").html('$'+results.CaseInfo[$i].Claim_Amount);
 					$("input[name=Claim_Amount]").val(results.CaseInfo[$i].Claim_Amount);
-					
 					$("#ClaimAmtTab6").val(parseFloat(results.CaseInfo[$i].Claim_Amount).toFixed(2));
 					$("#PaymentsTab6").val(parseFloat(results.CaseInfo[$i].Paid_Amount).toFixed(2));
 					var balance = results.CaseInfo[$i].Claim_Amount - results.CaseInfo[$i].Paid_Amount;
 					$("#BalanceTab6").val(balance.toFixed(2));
-					
-					/*$("#FltSettlement_AmountTab6").val(results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT.toFixed(2));
-					var settlementPercentage = (results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT * 100)/ balance;
-					$("#settlementPercentageTab6").val(settlementPercentage.toFixed(2));
-					$("#FltAttorneyFeeTab6").val(results.CaseInfo[$i].FLT_ATTORNEY_FEE);
-					//$("#FltInterestTab6").val(results.CaseInfo[$i].FLT_INTERATE_RATE);
-					$("#FltFillingFeeTab6").val(results.CaseInfo[$i].FLT_FILING_FEE);
-					var TotalAmount =  parseFloat(results.CaseInfo[$i].FLT_SETTLEMENT_AMOUNT) + parseFloat(results.CaseInfo[$i].FLT_INTERATE_RATE) + parseFloat(results.CaseInfo[$i].FLT_ATTORNEY_FEE) + parseFloat(results.CaseInfo[$i].FLT_FILING_FEE);
-					$("#TotalAmount").val(TotalAmount.toFixed(2));*/
-					
-					
-					//x[13].innerHTML = "PAID / $"+parseFloat(results.CaseInfo[$i].Paid_Amount).toFixed(2)+" / BALANCE $"+balance.toFixed(2);
 					$(".wi-Paid_Amount").html("PAID / $"+parseFloat(results.CaseInfo[$i].Paid_Amount).toFixed(2)+" / BALANCE $"+balance.toFixed(2));
 					$("input[name=Paid_Amount]").val(results.CaseInfo[$i].Paid_Amount);
 					
 					//x[15].innerHTML = results.CaseInfo[$i].Old_Case_Id;
 					$(".wi-Old_Case_Id").html(results.CaseInfo[$i].Old_Case_Id);
 					$("input[name=Old_Case_Id]").val(results.CaseInfo[$i].Old_Case_Id);
-					
-					//x[16].innerHTML = results.CaseInfo[$i].Accident_DateNoTimr;
-					//$("input[name=Accident_Date]").val(results.CaseInfo[$i].Accident_DateNoTimr);
-					
-					//x[16].innerHTML = results.CaseInfo[$i].Accident_Date;
 					$(".wi-Accident_Date").html(results.CaseInfo[$i].Accident_Date);
 					$("input[name=Accident_Date]").val(results.CaseInfo[$i].Accident_Date);
-					
-					//x[17].innerHTML = results.CaseInfo[$i].Adjuster_LastName+ ", "+results.CaseInfo[$i].Adjuster_FirstName;
 					var adjFirstName = "";
 					var adjLastName = "";
 					var adjPhone = "";
@@ -3339,131 +3295,76 @@ daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndDat
 					}else{ adjPhone = results.CaseInfo[$i].Adjuster_Phone; }
 					if(results.CaseInfo[$i].Adjuster_Phone_Ext == null){ adjExt = "";
 					}else{ adjExt = results.CaseInfo[$i].Adjuster_Phone_Ext; }
-					 //info[5].innerHTML = adjFirstName+ " "+adjLastName+" / "+adjPhone+" ext."+adjExt;
-					 $(".wi-Adjuster_Name").html(adjFirstName+ " "+adjLastName+" / "+adjPhone+" ext."+adjExt);
+					$(".wi-Adjuster_Name").html(adjFirstName+ " "+adjLastName+" / "+adjPhone+" ext."+adjExt);
 					$("#Hidden_Adjuster_Id").val(results.CaseInfo[$i].Adjuster_Id);
 					$("#Adjuster_Id").val(results.CaseInfo[$i].Adjuster_Id);
-					//x[18].innerHTML = results.CaseInfo[$i].Attorney_Name;
 					$(".wi-Attorney_Name").html(results.CaseInfo[$i].Attorney_Name);
 
 /****** Extended case info  */					
-					//x[21].innerHTML = results.CaseInfo[$i].Date_Opened;
 					$(".wi-Date_Opened").html(results.CaseInfo[$i].Date_Opened);
 					$("input[name=Date_Opened]").val(results.CaseInfo[$i].Date_Opened);
-					//x[20].innerHTML = results.CaseInfo[$i].Plaintiff_Discovery_Due_Date;
 					$(".wi-Plaintiff_Discovery_Due_Date").html(results.CaseInfo[$i].Plaintiff_Discovery_Due_Date);
 					$("input[name=Plaintiff_Discovery_Due_Date]").val(results.CaseInfo[$i].Plaintiff_Discovery_Due_Date);
-					//x[21].innerHTML = results.CaseInfo[$i].Accident_Date;
 					$(".wi-Accident_Date").html(results.CaseInfo[$i].Accident_Date);
 					$("input[name=Accident_Date]").val(results.CaseInfo[$i].Accident_Date);
-					
-					//x[22].innerHTML = results.CaseInfo[$i].Date_Reply_To_Disc_Conf_Letter_Recd;
 					$(".wi-Date_Reply_To_Disc_Conf_Letter_Recd").html(results.CaseInfo[$i].Date_Reply_To_Disc_Conf_Letter_Recd);
 					$("input[name=Date_Reply_To_Disc_Conf_Letter_Recd]").val(results.CaseInfo[$i].Date_Reply_To_Disc_Conf_Letter_Recd);
-					//x[23].innerHTML = results.CaseInfo[$i].Date_Bill_Submitted;
 					$(".wi-Date_Bill_Submitted").html(results.CaseInfo[$i].Date_Bill_Submitted);
 					$("input[name=Date_Bill_Submitted]").val(results.CaseInfo[$i].Date_Bill_Submitted);
-					
-					//x[24].innerHTML = results.CaseInfo[$i].Date_Ext_Of_Time;
 					$(".wi-Date_Ext_Of_Time").html(results.CaseInfo[$i].Date_Ext_Of_Time);
 					$("input[name=Date_Ext_Of_Time]").val(results.CaseInfo[$i].Date_Ext_Of_Time);
-					//x[25].innerHTML = results.CaseInfo[$i].Date_Status_Changed;
 					$(".wi-Date_Status_Changed").html(results.CaseInfo[$i].Date_Status_Changed);
 					$("input[name=Date_Status_Changed]").val(results.CaseInfo[$i].Date_Status_Changed);
-					//x[26].innerHTML = results.CaseInfo[$i].Date_Ext_Of_Time_2;
 					$(".wi-Date_Ext_Of_Time_2").html(results.CaseInfo[$i].Date_Ext_Of_Time_2);
 					$("input[name=Date_Ext_Of_Time_2]").val(results.CaseInfo[$i].Date_Ext_Of_Time_2);
-					//x[27].innerHTML = results.CaseInfo[$i].Date_Summons_Printed;
 					$(".wi-Date_Summons_Printed").html(results.CaseInfo[$i].Date_Summons_Printed);
-					
 					$("input[name=Date_Summons_Printed]").val(results.CaseInfo[$i].Date_Summons_Printed);
-					//x[28].innerHTML = results.CaseInfo[$i].Date_Ext_Of_Time_3;
 					$(".wi-Date_Ext_Of_Time_3").html(results.CaseInfo[$i].Date_Ext_Of_Time_3);
 					$("input[name=Date_Ext_Of_Time_3]").val(results.CaseInfo[$i].Date_Ext_Of_Time_3);
-					
-					//x[29].innerHTML = results.CaseInfo[$i].Date_Index_Number_Purchased;
 					$(".wi-Date_Index_Number_Purchased").html(results.CaseInfo[$i].Date_Index_Number_Purchased);
 					$("input[name=Date_Index_Number_Purchased]").val(results.CaseInfo[$i].Date_Index_Number_Purchased);
-					
-					//x[30].innerHTML = results.CaseInfo[$i].Defendant_Discovery_Due_Date;
 					$(".wi-Defendant_Discovery_Due_Date").html(results.CaseInfo[$i].Defendant_Discovery_Due_Date);
 					$("input[name=Defendant_Discovery_Due_Date]").val(results.CaseInfo[$i].Defendant_Discovery_Due_Date);
-					
-					//x[31].innerHTML = results.CaseInfo[$i].Date_Summons_Sent_Court;
 					$(".wi-Date_Summons_Sent_Court").html(results.CaseInfo[$i].Date_Summons_Sent_Court);
 					$("input[name=Date_Ext_Of_Time_3]").val(results.CaseInfo[$i].Date_Ext_Of_Time_3);
-					
-					//x[32].innerHTML = results.CaseInfo[$i].Date_Disc_Conf_Letter_Printed;
 					$(".wi-Date_Disc_Conf_Letter_Printed").html(results.CaseInfo[$i].Date_Disc_Conf_Letter_Printed);
 					$("input[name=Date_Ext_Of_Time_3]").val(results.CaseInfo[$i].Date_Ext_Of_Time_3);
-					
-					//x[33].innerHTML = results.CaseInfo[$i].Served_On_Date;
 					$(".wi-Served_On_Date").html(results.CaseInfo[$i].Served_On_Date);
 					$("input[name=Served_On_Date]").val(results.CaseInfo[$i].Served_On_Date);
-					
 					$("#stips_signed_and_returned").val(results.CaseInfo[$i].stips_signed_and_returned);
 					if(results.CaseInfo[$i].stips_signed_and_returned == 1){
-						//x[34].innerHTML = "Yes";
 						$(".wi-stips_signed_and_returned").html("Yes");
 					}else{
-						//x[34].innerHTML = "No";
 						$(".wi-stips_signed_and_returned").html("No");
 					}
-					
-					//x[35].innerHTML = results.CaseInfo[$i].Served_To;
 					$(".wi-Served_To").html(results.CaseInfo[$i].Served_To);
 					$("input[name=Served_To]").val(results.CaseInfo[$i].Served_To);
-					
-					////x[36].innerHTML = results.CaseInfo[$i].stips_signed_and_returned_2;
 					$("#stips_signed_and_returned_2").val(results.CaseInfo[$i].stips_signed_and_returned_2);
 					if(results.CaseInfo[$i].stips_signed_and_returned_2 == 1){
-						//x[36].innerHTML = "Yes";
 						$(".wi-stips_signed_and_returned_2").html("Yes");
 					}else{
-						//x[36].innerHTML = "No";
 						$(".wi-stips_signed_and_returned_2").html("No");
 					}
-					
-					
-					//x[37].innerHTML = results.CaseInfo[$i].Served_On_Time;
 					$(".wi-Served_On_Time").html(results.CaseInfo[$i].Served_On_Time);
 					$("input[name=Served_On_Time]").val(results.CaseInfo[$i].Served_On_Time);
-					
-					////x[38].innerHTML = results.CaseInfo[$i].stips_signed_and_returned_3;
 					$("#stips_signed_and_returned_3").val(results.CaseInfo[$i].stips_signed_and_returned_3);
 					if(results.CaseInfo[$i].stips_signed_and_returned_3 == 1){
-						//x[38].innerHTML = "Yes";
 						$(".wi-stips_signed_and_returned_3").html("Yes");
 					}else{
-						//x[38].innerHTML = "No";
 						$(".wi-stips_signed_and_returned_3").html("No");
 					}
-					
-					//x[39].innerHTML = results.CaseInfo[$i].Date_Afidavit_Filed;
 					$(".wi-Date_Afidavit_Filed").html(results.CaseInfo[$i].Date_Afidavit_Filed);
 					$("input[name=Date_Afidavit_Filed]").val(results.CaseInfo[$i].Date_Afidavit_Filed);
-					
-					//x[40].innerHTML = results.CaseInfo[$i].Date_Closed;
 					$(".wi-Date_Closed").html(results.CaseInfo[$i].Date_Closed);
 					$("input[name=Date_Closed]").val(results.CaseInfo[$i].Date_Closed);
-					 
-					//x[41].innerHTML = results.CaseInfo[$i].Date_Answer_Received;
 					$(".wi-Date_Answer_Received").html(results.CaseInfo[$i].Date_Answer_Received);
 					$("input[name=Date_Answer_Received]").val(results.CaseInfo[$i].Date_Answer_Received);
-					
-					//x[42].innerHTML = results.CaseInfo[$i].AAA_Conciliation_Date;
 					$(".wi-AAA_Conciliation_Date").html(results.CaseInfo[$i].AAA_Conciliation_Date);
 					$("input[name=AAA_Conciliation_Date]").val(results.CaseInfo[$i].AAA_Conciliation_Date);
-					
-					//x[43].innerHTML = results.CaseInfo[$i].Our_Discovery_Demands;
 					$(".wi-Our_Discovery_Demands").html(results.CaseInfo[$i].Our_Discovery_Demands);
 					$("input[name=Our_Discovery_Demands]").val(results.CaseInfo[$i].Our_Discovery_Demands);
-					
-					//x[44].innerHTML = results.CaseInfo[$i].Arb_Award_Date;
 					$(".wi-Arb_Award_Date").html(results.CaseInfo[$i].Arb_Award_Date);
 					$("input[name=Arb_Award_Date]").val(results.CaseInfo[$i].Arb_Award_Date);
-					
-					//x[45].innerHTML = results.CaseInfo[$i].Date_Demands_Printed;
 					$(".wi-Date_Demands_Printed").html(results.CaseInfo[$i].Date_Demands_Printed);
 					$("input[name=Date_Demands_Printed]").val(results.CaseInfo[$i].Date_Demands_Printed);
 				}  
