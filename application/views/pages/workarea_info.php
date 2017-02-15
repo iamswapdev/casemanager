@@ -3236,11 +3236,6 @@ daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndDat
 					$("#9CaseId").val(results.CaseInfo[$i].Case_Id);
 					$("#9CaseIdHidden").val(results.CaseInfo[$i].Case_Id);
 					document.getElementById("CaseId-tab-6").innerHTML = results.CaseInfo[$i].Case_Id;
-					//y2[0].innerHTML =  results.CaseInfo[$i].Old_Case_Id;
-					//document.getElementsByClassName("old-case-id").innerHTML =  results.CaseInfo[$i].Old_Case_Id;
-					//x[0].innerHTML = results.CaseInfo[$i].Provider_Name;
-					
-					//info[0].innerHTML = results.CaseInfo[$i].Provider_Name;
 					$(".ProviderInfoLink").html(results.CaseInfo[$i].Provider_Name);
 					$("#Hidden_Provider_Id").val(results.CaseInfo[$i].Provider_Id);
 					$("#Provider_Id").val(results.CaseInfo[$i].Provider_Id);
@@ -3277,8 +3272,6 @@ daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndDat
 					$("#BalanceTab6").val(balance.toFixed(2));
 					$(".wi-Paid_Amount").html("PAID / $"+parseFloat(results.CaseInfo[$i].Paid_Amount).toFixed(2)+" / BALANCE $"+balance.toFixed(2));
 					$("input[name=Paid_Amount]").val(results.CaseInfo[$i].Paid_Amount);
-					
-					//x[15].innerHTML = results.CaseInfo[$i].Old_Case_Id;
 					$(".wi-Old_Case_Id").html(results.CaseInfo[$i].Old_Case_Id);
 					$("input[name=Old_Case_Id]").val(results.CaseInfo[$i].Old_Case_Id);
 					$(".wi-Accident_Date").html(results.CaseInfo[$i].Accident_Date);
@@ -3412,17 +3405,6 @@ daydiff(parseDate($('#CopundIntStartData').val()), parseDate($('#CopundIntEndDat
 					},
 					error: function(result){ console.log("error"); }
 				});
-				/*$("#Provider_Info_table").dataTable().fnDestroy();
-				$('#Provider_Info_table').dataTable( {
-					"ajax": "<?php //echo base_url();?>search/getProvider_ById/"+hiddenField,
-					"iDisplayLength": 10,
-					"aLengthMenu": [5, 10, 20, 25, 50],
-					"bSort": false,
-					"searching": false,
-					"lengthChange": false,
-					"bInfo": false,
-					"bPaginate": false
-				});*/
 			}else if($(this).attr("id") == "InsuranceCompanyInfoLink"){
 				console.log("InsuranceCompanyInfoLink:");
 				$.ajax({

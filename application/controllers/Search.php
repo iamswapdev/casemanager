@@ -14,6 +14,7 @@ class Search extends CI_Controller{
 		$this->load->model('workarea_model');
 		$this->load->model('admin_privilege_model');
 		$this->load->model("case_info_model");
+		$this->load->helper('date');
 		$this->session->all_userdata();
 		
 	}
@@ -1108,7 +1109,8 @@ class Search extends CI_Controller{
 					break;
 				}
 			}
-			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$DateOfService_Start." - ".$DateOfService_End."</a>";
+			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".nice_date($result->DateOfService_Start, 'm/d/Y')." - ".nice_date($result->DateOfService_End, 'm/d/Y')."</a>";
+			//$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$DateOfService_Start." - ".$DateOfService_End."</a>";
 			//$row[] = date_format(date_create($result->DateOfService_Start),"m/d/Y")." - ".date_format(date_create($result->DateOfService_End),"m/d/Y");
 			//$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".date_format(date_create($result->DateOfService_Start),"m/d/Y")." - ".date_format(date_create($result->DateOfService_End),"m/d/Y")."</a>";
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Status."</a>";
@@ -1318,6 +1320,10 @@ class Search extends CI_Controller{
 		echo "<br>date and time concate.....";
 		$date=date_create("2013-03-15");
 		echo "<br>1st Date:".date_format($date,"m/d/Y H:i");
+		echo "<br><h2>search page date issue.....</h2><br>";
+		$d1 = date_create("jan 1 2010");
+		$d2 = date_create("jan 10 2010");
+		echo "<a href='viewcase/1'>".date_format($d1, 'm/d/Y')." - ".date_format($d2, 'm/d/Y')."</a>";
 	}
 	
 /*****************************************************************************************************************************************/
