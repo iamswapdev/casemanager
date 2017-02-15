@@ -57,62 +57,9 @@
 <!-- Main Wrapper -->
 <div id="wrapper"> 
 <div class="content">
-<?php $months = array("Just", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "jan");
+<?php get_instance()->load->helper('date');?>
+<?php
 foreach($CaseInfo as $row){$Case_AutoId = $row['Case_AutoId']; $Case_Id = $row['Case_Id']; $Claim_Amount = $row['Claim_Amount']; $Paid_Amount = $row['Paid_Amount']; $DateOfService_Start = $row['DateOfService_Start']; $DateOfService_End = $row['DateOfService_End']; $Date_BillSent = $row['Date_BillSent']; $Provider_Name_fix = $row['Provider_Name']; $Provider_Id_fix = $row['Provider_Id']; $Check_Status=$row['Status']; }
-
-for($i=0; $i<=13; $i++){
-	if(substr($DateOfService_Start, 0, 3) == $months[$i]){
-		if($i<10){
-			if(substr($DateOfService_Start, 4, 1) == " "){
-				$DateOfService_Start7 = substr_replace($DateOfService_Start,"0",4,1);
-				if($i == 13){
-					$DateOfService_Start2 = str_replace($months[$i]." ","01/",$DateOfService_Start7);
-				}else{
-					$DateOfService_Start2 = str_replace($months[$i]." ","0".$i."/",$DateOfService_Start7);
-				}
-				
-			}else{
-				if($i == 13){
-					$DateOfService_Start2 = str_replace($months[$i]." ","01/",$DateOfService_Start);
-				}else{
-					$DateOfService_Start2 = str_replace($months[$i]." ","0".$i."/",$DateOfService_Start);
-				}
-				
-			}
-		}else{
-			$DateOfService_Start2 = str_replace($months[$i]." ",$i."/",$DateOfService_Start);
-		}
-		$DateOfService_Start3 = substr_replace($DateOfService_Start2,"/",strpos($DateOfService_Start2," "),1);
-		$DateOfService_Start = $DateOfService_Start3;
-		break;
-	}
-}
-
-for($i=0; $i<=13; $i++){
-	if(substr($DateOfService_End, 0, 3) == $months[$i]){
-		if($i<10){
-			if(substr($DateOfService_End, 4, 1) == " "){
-				$DateOfService_End7 = substr_replace($DateOfService_End,"0",4,1);
-				if($i == 13){
-					$DateOfService_End2 = str_replace($months[$i]." ","01/",$DateOfService_End7);
-				}else{
-					$DateOfService_End2 = str_replace($months[$i]." ","0".$i."/",$DateOfService_End7);
-				}
-			}else{
-				if($i == 13){
-					$DateOfService_End2 = str_replace($months[$i]." ","01/",$DateOfService_End);
-				}else{
-					$DateOfService_End2 = str_replace($months[$i]." ","0".$i."/",$DateOfService_End);
-				}
-			}
-		}else{
-			$DateOfService_End2 = str_replace($months[$i]." ",$i."/",$DateOfService_End);
-		}
-		$DateOfService_End3 = substr_replace($DateOfService_End2,"/",strpos($DateOfService_End2," "),1);
-		$DateOfService_End = $DateOfService_End3;
-		break;
-	}
-}
 
 ?>
 
@@ -314,8 +261,8 @@ for($i=0; $i<=13; $i++){
                                     </thead>
                                       <tr class="first-row">
                                             <td></td>
-                                            <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datetimepicker_Dos_Doe dos-input" value="<?php echo substr($DateOfService_Start, 0, 10);?>"></td>
-                                            <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datetimepicker_Dos_Doe dos-input" value="<?php echo substr($DateOfService_End,0, 10);?>"></td>
+                                            <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datetimepicker_Dos_Doe dos-input" value="<?php echo nice_date($DateOfService_Start, 'm/d/Y')?>"></td>
+                                            <td><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datetimepicker_Dos_Doe dos-input" value="<?php echo nice_date($DateOfService_End, 'm/d/Y');?>"></td>
                                             <td><input type="text" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm amt-input" value="<?php echo "$".number_format($Claim_Amount, 2);?>"></td>
                                             <td><input type="text" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm amt-input" value="<?php echo "$".number_format($Paid_Amount, 2);?>"></td>
                                             <td><input type="text" step="0.01" id="balance" name="balance" class="form-control input-sm amt-input" value="<?php echo "$".number_format($Claim_Amount-$Paid_Amount, 2);?>"></td>
@@ -1140,8 +1087,8 @@ for($i=0; $i<=13; $i++){
                                         <tbody>
                                         <tr class="first-row">
                                         	<td><input type="checkbox" /></td>
-                                            <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start" value="<?php echo $DateOfService_Start;?>"></td>
-                                            <th><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start" value="<?php echo $DateOfService_End;?>"></th>
+                                            <td><input id="dateOfServiceStart" name="dateOfServiceStart" class="form-control input-sm datepicker_recurring_start" value="<?php echo nice_date($DateOfService_Start, 'm/d/Y');?>"></td>
+                                            <th><input id="dateOfServiceEnd"  name="dateOfServiceEnd" class="form-control input-sm datepicker_recurring_start" value="<?php echo nice_date($DateOfService_End, 'm/d/Y');?>"></th>
                                             <td><input type="number" step="0.01" id="claimAmt" name="claimAmt" class="form-control input-sm" value="<?php echo $Claim_Amount;?>"></td>
                                             <td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm" value="<?php echo $Paid_Amount;?>"></td>
                                             <td><input type="number" step="0.01" id="paidAmt" name="paidAmt" class="form-control input-sm" value="<?php echo $Paid_Amount;?>"></td>

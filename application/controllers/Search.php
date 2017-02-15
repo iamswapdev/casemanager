@@ -1053,62 +1053,7 @@ class Search extends CI_Controller{
 			$row[] = "<a href='".base_url()."search/viewcase/".$result->Case_AutoId."'>".$result->Provider_Name."</a>";
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->InsuranceCompany_Name."</a>";
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$result->Accident_Date."</a>";
-			$DateOfService_Start = substr_replace($result->DateOfService_Start,"",11,8);
-			$DateOfService_End = substr_replace($result->DateOfService_End,"",11,8);
 			
-			
-			for($i=0; $i<=13; $i++){
-				if(substr($DateOfService_Start, 0, 3) == $months[$i]){
-					if($i<10){
-						if(substr($DateOfService_Start, 4, 1) == " "){
-							$DateOfService_Start7 = substr_replace($DateOfService_Start,"0",4,1);
-							if($i == 13){
-								$DateOfService_Start2 = str_replace($months[$i]." ","01/",$DateOfService_Start7);
-							}else{
-								$DateOfService_Start2 = str_replace($months[$i]." ","0".$i."/",$DateOfService_Start7);
-							}
-							
-						}else{
-							if($i == 13){
-								$DateOfService_Start2 = str_replace($months[$i]." ","01/",$DateOfService_Start);
-							}else{
-								$DateOfService_Start2 = str_replace($months[$i]." ","0".$i."/",$DateOfService_Start);
-							}
-							
-						}
-					}else{
-						$DateOfService_Start2 = str_replace($months[$i]." ",$i."/",$DateOfService_Start);
-					}
-					$DateOfService_Start3 = substr_replace($DateOfService_Start2,"/",strpos($DateOfService_Start2," "),1);
-					$DateOfService_Start = $DateOfService_Start3;
-					break;
-				}
-			}
-			for($i=0; $i<=13; $i++){
-				if(substr($DateOfService_End, 0, 3) == $months[$i]){
-					if($i<10){
-						if(substr($DateOfService_End, 4, 1) == " "){
-							$DateOfService_End7 = substr_replace($DateOfService_End,"0",4,1);
-							if($i == 13){
-								$DateOfService_End2 = str_replace($months[$i]." ","01/",$DateOfService_End7);
-							}else{
-								$DateOfService_End2 = str_replace($months[$i]." ","0".$i."/",$DateOfService_End7);
-							}
-						}else{
-							if($i == 13){
-								$DateOfService_End2 = str_replace($months[$i]." ","01/",$DateOfService_End);
-							}else{
-								$DateOfService_End2 = str_replace($months[$i]." ","0".$i."/",$DateOfService_End);
-							}
-						}
-					}else{
-						$DateOfService_End2 = str_replace($months[$i]." ",$i."/",$DateOfService_End);
-					}
-					$DateOfService_End3 = substr_replace($DateOfService_End2,"/",strpos($DateOfService_End2," "),1);
-					$DateOfService_End = $DateOfService_End3;
-					break;
-				}
-			}
 			$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".nice_date($result->DateOfService_Start, 'm/d/Y')." - ".nice_date($result->DateOfService_End, 'm/d/Y')."</a>";
 			//$row[] = "<a href='viewcase/".$result->Case_AutoId."'>".$DateOfService_Start." - ".$DateOfService_End."</a>";
 			//$row[] = date_format(date_create($result->DateOfService_Start),"m/d/Y")." - ".date_format(date_create($result->DateOfService_End),"m/d/Y");

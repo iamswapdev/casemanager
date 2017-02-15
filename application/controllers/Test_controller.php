@@ -6,6 +6,9 @@ class Test_controller extends CI_Controller{
 		$this->load->helper('string');
 		$this->load->helper('captcha');
 		$this->load->helper('date');
+		$this->load->helper('email');
+		$this->load->helper('file');
+		$this->load->helper('case');
 	}
 	public function index(){
 		echo "Test_controller Index";
@@ -31,5 +34,20 @@ class Test_controller extends CI_Controller{
 		// Should Produce: 2001-09-11
 		$better_date = nice_date($bad_date, 'Y-m-d');
 		echo "<br>Date 1:".$better_date;
+		
+		echo "<br>Email helper......<br>";
+		if (valid_email('email@somesite.com')){
+			echo 'email is valid';
+		}
+		else{
+			echo 'email is not valid';
+		}
+		$Path = '../controllers/Test_controller.php';
+		echo "path= ".$Path;
+		echo "<br>File helper........<br>";
+		$string = read_file($Path);
+		echo $string;
+		echo "<br>Case helper........<br>";
+		echo "<br>now:".get_Case_Id();
 	}
 }
