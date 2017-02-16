@@ -569,7 +569,7 @@ if (jQuery) (function(jQuery){
 				var fileshtml = '';
 				var gs_lastparent = jQuery('#' + jQuery("#curDir").attr('rel')).parent().parent().parent().children('a');
 				if (gs_lastparent.length > 0) {
-				    fileshtml += "<tr><td></td><td><div class='directory directory_info gsItem' rel=\'up\'><a href='javascript:void(0)' onclick=\"jQuery('#" + jQuery("#curDir").attr('rel')+ "').parent().parent().parent().children('a').trigger('click'); return false\"> ..up</a></div></td><td>Dir</td></tr>";
+				    fileshtml += "<tr><td></td><td><div class='directory directory_info gsItem' rel=\'up\'><a href='javascript:void(0)' onclick=\"jQuery('#" + jQuery("#curDir").attr('rel')+ "').parent().parent().parent().children('a').trigger('click'); return false\"> ..Back</a></div></td><td>Dir</td></tr>";
 				}
 				if (gsfiless.length > 0) {
 					for (var numf in gsfiless) {

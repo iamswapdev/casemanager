@@ -1087,16 +1087,16 @@ class Search extends CI_Controller{
 	public function EditTemplate(){
 		$template = $this->input->post("TemplateName");
 		$Case_Id = $this->input->post("Templates_Case_Id");
-		$data3 = array(
-			"Notes_Type" => "General",
-			"Notes_Desc" => "Document ".$template." Printed",
-			"Notes_Date" => $date = date('Y-m-d H:i:s'),
-			"Case_Id" => $Case_Id,
-			"User_Id" => $this->session->userdata['username']
-		);
-		$this->search_model->add_Notes($data3);
-		$Case_AutoId = $this->input->post("Templates_Case_AutoId");
 		if(isset($this->session->userdata['logged_in'])){
+			$data3 = array(
+				"Notes_Type" => "General",
+				"Notes_Desc" => "Document ".$template." Printed",
+				"Notes_Date" => $date = date('Y-m-d H:i:s'),
+				"Case_Id" => $Case_Id,
+				"User_Id" => $this->session->userdata['username']
+			);
+			$this->search_model->add_Notes($data3);
+			$Case_AutoId = $this->input->post("Templates_Case_AutoId");
 			$originalArray = $this->case_info_model->get_Case_Info($Case_AutoId);
 			$data = array();
 			$data = $originalArray[0];
@@ -1160,7 +1160,7 @@ class Search extends CI_Controller{
 			$this->parser->parse("templates/".$template.".htm", $data);
 			//$this->load->view('templates/'.$template.".htm", $data);
 		}else{
-			$CurrentPage['CurrentUrl'] = "search/viewcase/1";
+			$CurrentPage['CurrentUrl'] = "search/viewcase/".get_Case_AutoId($Case_Id);
 			$this->load->view('pages/login', $CurrentPage);
 		}
 	}
