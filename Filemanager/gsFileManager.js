@@ -445,7 +445,6 @@ if (jQuery) (function(jQuery){
 				return false;
 			});
 			jQuery("#gs_showAllDir").click(function(){
-				console.log("sas"+counter_dir);
 				if(counter_dir % 2 == 0){
 					jQuery("#gs_showAllDir").html("  Hide All Directories");
 				}else{
@@ -570,7 +569,7 @@ if (jQuery) (function(jQuery){
 				var fileshtml = '';
 				var gs_lastparent = jQuery('#' + jQuery("#curDir").attr('rel')).parent().parent().parent().children('a');
 				if (gs_lastparent.length > 0) {
-				    fileshtml += "<tr><td></td><td><div class='directory directory_info gsItem' rel=\'up\'><a href='javascript:void(0)' ondblclick=\"jQuery('#" + jQuery("#curDir").attr('rel')+ "').parent().parent().parent().children('a').trigger('click'); return false\"> ..up</a></div></td><td>Dir</td></tr>";
+				    fileshtml += "<tr><td></td><td><div class='directory directory_info gsItem' rel=\'up\'><a href='javascript:void(0)' onclick=\"jQuery('#" + jQuery("#curDir").attr('rel')+ "').parent().parent().parent().children('a').trigger('click'); return false\"> ..up</a></div></td><td>Dir</td></tr>";
 				}
 				if (gsfiless.length > 0) {
 					for (var numf in gsfiless) {
@@ -585,7 +584,7 @@ if (jQuery) (function(jQuery){
 						}else{
 							fileshtml += "<tr>";
 						}
-						fileshtml += "<td><a href='#' class='item_menu_link_holder' rel='" + curItem.id + "'><img src='/casemanager/Filemanager/images/menu_icon.png'></a></td><td><div class='directory directory_info gsItem' id='gs_div_holder_" + curItem.id + "' rel=\'" + curItem.id + "\'><a href='javascript:void(0)' ondblclick=\"jQuery('#"+curItem.id+"').trigger('click'); return false\">" + curItem.name + "</a></div></td><td>Dir</td><td>"+curItem.size+" MB</td><td>"+curItem.getLastMod()+"</td></tr>";
+						fileshtml += "<td><a href='#' class='item_menu_link_holder' rel='" + curItem.id + "'><img src='/casemanager/Filemanager/images/menu_icon.png'></a></td><td><div class='directory directory_info gsItem' id='gs_div_holder_" + curItem.id + "' rel=\'" + curItem.id + "\'><a href='javascript:void(0)' onclick=\"jQuery('#"+curItem.id+"').trigger('click'); return false\">" + curItem.name + "</a></div></td><td>Dir</td><td>"+curItem.size+" MB</td><td>"+curItem.getLastMod()+"</td></tr>";
 					}
 				}
                 return fileshtml;
