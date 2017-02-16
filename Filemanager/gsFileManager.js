@@ -257,6 +257,7 @@ gs_ext_pictures['jpeg'] = '1';
 gs_ext_pictures['gif'] = '1';
 gs_ext_pictures['pdf'] = '1';
 gs_ext_pictures['ico'] = '1';
+gs_ext_editables['doc'] = '1';
 
 var gs_ext_arhives = new Array();
 gs_ext_arhives['zip'] = '1';
@@ -364,7 +365,7 @@ if (jQuery) (function(jQuery){
 			
 			//hiddenElements += '<embed id="gspdf" src="/RIS PACS Manual 2016.pdf#page=2" type="application/pdf" width="100%" height="100%">';
 			
-			hiddenElements += '<embed id="gspdf" src="/" width="600" height="500" alt="pdf" style="display:none;" >';
+			hiddenElements += '<embed id="gspdf" src="/" width="600" height="500" style="display:none;" >';
 			
 			hiddenElements += '<div id=\'gsnotepadedit\' style=\'display: none\'></div>';
 			hiddenElements += '<div id=\'gsckeditor\' style=\'display: none\'><div id="gs_ckeditor_content"></div></div>';
@@ -913,7 +914,7 @@ if (jQuery) (function(jQuery){
 				var height = 800;
 				var width = 1000;
 				//Cases/AR17-8483
-				console.log("O:"+o+" curDir:"+curDir+" gsitem:"+gsitem.name);
+				//console.log("O:"+o+" curDir:"+curDir+" gsitem:"+gsitem.name);
 				$("#gspdf").css("display", "block");
 				$("#gspdf").attr("src", "/casemanager/Cases/"+$("input[name=Case_Id]").val()+curDir+gsitem.name);
 				jQuery('#gspdf').dialog({
@@ -924,7 +925,7 @@ if (jQuery) (function(jQuery){
 				});
 			}
 			function showNotePad(o, curDir, gsitem){
-				console.log("O:"+o+" curDir:"+curDir+" gsitem:"+gsitem.name);
+				//console.log("O:"+o+" curDir:"+curDir+" gsitem:"+gsitem.name);
 				var height = parseInt(jQuery(window).height()) - 100;
 				var width = parseInt(jQuery(window).width()) - 100;
 				var rows = parseInt(height / 30);
@@ -1258,6 +1259,7 @@ if(jQuery)( function() {
 							// Hide context menus that may be showing
 							jQuery(".contextMenu").hide();
 							// Get this context menu
+							console.log("id:"+o.menu)
 							var menu = jQuery('#' + o.menu);
 							menu.enableContextMenuItems();
 							if (onShowMenu) {
