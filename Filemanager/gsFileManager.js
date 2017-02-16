@@ -10,6 +10,7 @@
  * George Sarafov
  * http://freewebfilemanager.com
  */
+var counter_dir = 0;
 var gsItem = function (type, name, path, size, id, exta, lastMod) {
 	this.path = path;
 	this.type = type;
@@ -295,6 +296,8 @@ if (jQuery) (function(jQuery){
 			menuHtml += '<a id="gs_invertselectbutton" class=\'gs_dir_content_button\'>&nbsp;' + gs_getTranslation(o.language, 25)+ '&nbsp;</a>';*/
 			menuHtml += '<a id="gs_refreshbutton" class=\'gs_dir_content_button\'>&nbsp;' + gs_getTranslation(o.language, 49)+ '&nbsp;</a>';
 			
+			menuHtml += '<a id="gs_showAllDir" class=\'gs_dir_content_button\'>&nbsp;&nbsp;Show All Directories</a>';
+			
 			var wrapperHtml = '<div id=\'gs_dir_list\' class=\'gs_dir_list\' onClick="jQuery(this).doGSAction({action: 21}) style="display:none;"></div>';
 			wrapperHtml    += '<div class=\'gs_dir_content\' onClick="jQuery(this).doGSAction({action: 21})">' 
 				                 + '<div class=\'gs_dir_content_menu\'>';
@@ -357,9 +360,11 @@ if (jQuery) (function(jQuery){
 			
 			//hiddenElements += '<?php <iframe id=\'gspdf\' src="/RIS PACS Manual 2016.pdf" width=\"100%\" height\"100%\" ></iframe> ?>';
 			
-			hiddenElements += '<iframe id=\"gspdf\" src=\"/"  style=\"height:100%; width:100% !important;\"></iframe>" ';
+			//hiddenElements += '<iframe id=\"gspdf\" src=\"/"  style=\"height:100%; width:100% !important;\"></iframe>" ';
 			
 			//hiddenElements += '<embed id="gspdf" src="/RIS PACS Manual 2016.pdf#page=2" type="application/pdf" width="100%" height="100%">';
+			
+			hiddenElements += '<embed id="gspdf" src="/" width="600" height="500" alt="pdf" style="display:none;" >';
 			
 			hiddenElements += '<div id=\'gsnotepadedit\' style=\'display: none\'></div>';
 			hiddenElements += '<div id=\'gsckeditor\' style=\'display: none\'><div id="gs_ckeditor_content"></div></div>';
@@ -438,6 +443,16 @@ if (jQuery) (function(jQuery){
 				e.stopPropagation();
 				jQuery('#'+jQuery("#curDir").attr('rel')).trigger('click');
 				return false;
+			});
+			jQuery("#gs_showAllDir").click(function(){
+				console.log("sas"+counter_dir);
+				if(counter_dir % 2 == 0){
+					jQuery("#gs_showAllDir").html("  Hide All Directories");
+				}else{
+					jQuery("#gs_showAllDir").html("  Show All Directories");
+				}
+				jQuery(".size-zero-tr").toggle();
+				counter_dir++;
 			});
 			
 			jQuery('#gs_itemmenubutton').click(function (e){
@@ -563,8 +578,14 @@ if (jQuery) (function(jQuery){
 						/*$.each(curItem, function(k, v) {
 							console.log(k+" is "+v);
 						});*/
+						//console.log("size:"+curItem.size);
 						gs_cur_items[curItem.id] = curItem;
-						fileshtml += "<tr><td><a href='#' class='item_menu_link_holder' rel='" + curItem.id + "'><img src='/casemanager/Filemanager/images/menu_icon.png'></a></td><td><div class='directory directory_info gsItem' id='gs_div_holder_" + curItem.id + "' rel=\'" + curItem.id + "\'><a href='javascript:void(0)' ondblclick=\"jQuery('#"+curItem.id+"').trigger('click'); return false\">" + curItem.name + "</a></div></td><td>Dir</td><td>"+curItem.size+" MB</td><td>"+curItem.getLastMod()+"</td></tr>";
+						if(curItem.size <= 0){
+							fileshtml += "<tr class='size-zero-tr' style='display:none;'>";
+						}else{
+							fileshtml += "<tr>";
+						}
+						fileshtml += "<td><a href='#' class='item_menu_link_holder' rel='" + curItem.id + "'><img src='/casemanager/Filemanager/images/menu_icon.png'></a></td><td><div class='directory directory_info gsItem' id='gs_div_holder_" + curItem.id + "' rel=\'" + curItem.id + "\'><a href='javascript:void(0)' ondblclick=\"jQuery('#"+curItem.id+"').trigger('click'); return false\">" + curItem.name + "</a></div></td><td>Dir</td><td>"+curItem.size+" MB</td><td>"+curItem.getLastMod()+"</td></tr>";
 					}
 				}
                 return fileshtml;
@@ -894,6 +915,7 @@ if (jQuery) (function(jQuery){
 				var width = 1000;
 				//Cases/AR17-8483
 				console.log("O:"+o+" curDir:"+curDir+" gsitem:"+gsitem.name);
+				$("#gspdf").css("display", "block");
 				$("#gspdf").attr("src", "/casemanager/Cases/"+$("input[name=Case_Id]").val()+curDir+gsitem.name);
 				jQuery('#gspdf').dialog({
 					title: 'Pdf viewer', 
@@ -1403,4 +1425,5 @@ if(jQuery)( function() {
 		}
 		
 	});
+	
 })(jQuery);

@@ -9,6 +9,8 @@ class Test_controller extends CI_Controller{
 		$this->load->helper('email');
 		$this->load->helper('file');
 		$this->load->helper('case');
+		$this->load->helper('url');
+		$this->load->library('encrypt');
 	}
 	public function index(){
 		echo "Test_controller Index";
@@ -49,5 +51,15 @@ class Test_controller extends CI_Controller{
 		echo $string;
 		echo "<br>Case helper........<br>";
 		echo "<br>now:".get_Case_Id();
+		echo "<br>Url helper........<br>";
+		echo "<br>current url:".current_url();
+		echo "<br>Encrypt library........<br>";
+		$msg = 'My secret message';
+		echo "<br> Ecrypted msg: ".$this->encrypt->encode($msg);
+		echo "<br>Encryption key...";
+		$msg = 'My secret message';
+		$key = 'super-secret-key';
+		
+		echo "Encrypted msg: ".$this->encrypt->encode($msg, $key);
 	}
 }

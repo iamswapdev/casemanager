@@ -22,6 +22,26 @@ Class Case_Info_model extends CI_Model{
 		//echo "<pre>"; print_r($data); exit;
 		return $data;
 	}
+	public function get_Last_Case_Id()
+	{
+		$this->db->order_by("Case_AutoId", "desc");
+		$this->db->select("Case_Id");
+		$this->db->limit('1');
+		$query = $this->db->get("dbo_tblcase");
+		$Case_Id = $query->result_array();
+		$Case_Id1 = $Case_Id[0]['Case_Id'];
+		return $Case_Id1;
+	}
+	public function get_Case_AutoId($Case_Id)
+	{
+		$this->db->select("Case_AutoId");
+		$this->db->where("Case_Id", $Case_Id);
+		$this->db->limit('1');
+		$query = $this->db->get("dbo_tblcase");
+		$Case_AutoId = $query->result_array();
+		
+		return $Case_AutoId[0]['Case_AutoId'];
+	}
 
 }
 ?>

@@ -2,20 +2,29 @@
 if ( ! function_exists('get_Case_Id'))
 {
 	/**
-	 * Get "now" time
-	 *
-	 * Returns time() based on the timezone parameter or on the
-	 * "time_reference" setting
-	 *
+	 * Get "Last inserted Case_Id"
 	 * @param	string
-	 * @return	int
+	 * @return	string
 	 */
 	function get_Case_Id()
 	{
 		$CI =& get_instance();
-		$CI->load->model('dataentry_model');
-		
-		return $CI->dataentry_model->get_Last_Case_Id();
+		$CI->load->model('Case_Info_model');
+		return $CI->Case_Info_model->get_Last_Case_Id();
+	}
+}
+if ( ! function_exists('get_Case_AutoId'))
+{
+	/**
+	 * Get "Case_AutoId" from "Case_Id"
+	 * @param	string
+	 * @return	string
+	 */
+	function get_Case_AutoId($Case_Id)
+	{
+		$CI =& get_instance();
+		$CI->load->model('Case_Info_model');
+		return $CI->Case_Info_model->get_Case_AutoId($Case_Id);
 	}
 }
 

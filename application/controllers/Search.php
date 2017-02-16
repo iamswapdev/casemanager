@@ -15,6 +15,7 @@ class Search extends CI_Controller{
 		$this->load->model('admin_privilege_model');
 		$this->load->model("case_info_model");
 		$this->load->helper('date');
+		$this->load->helper('case_helper');//get_Case_AutoId($Case_Id);
 		$this->session->all_userdata();
 		
 	}
@@ -31,9 +32,15 @@ class Search extends CI_Controller{
 		}
 	}
 	public function Document_Manager($Case_Id){
-		$data['Case_Id'] = $Case_Id;
-		$data['User_Name'] = $this->session->userdata['username'];
-		$this->load->view('pages/Document_Manager', $data);
+		if(isset($this->session->userdata['logged_in'])){
+			$data['Case_Id'] = $Case_Id;
+			$data['User_Name'] = $this->session->userdata['username'];
+			$this->load->view('pages/Document_Manager', $data);
+		}else{
+			$CurrentPage['CurrentUrl'] = "search/viewcase/".get_Case_AutoId($Case_Id);
+			$this->load->view('pages/login', $CurrentPage);
+		}
+		
 	}
 	public function searchs(){
 		//$this->session->all_userdata();
