@@ -365,7 +365,7 @@ if (jQuery) (function(jQuery){
 			
 			//hiddenElements += '<embed id="gspdf" src="/RIS PACS Manual 2016.pdf#page=2" type="application/pdf" width="100%" height="100%">';
 			
-			hiddenElements += '<embed id="gspdf" src="/" width="600" height="500" style="display:none;" >';
+			hiddenElements += '<embed id="gspdf" width="600" height="500" style="display:none;" >';
 			
 			hiddenElements += '<div id=\'gsnotepadedit\' style=\'display: none\'></div>';
 			hiddenElements += '<div id=\'gsckeditor\' style=\'display: none\'><div id="gs_ckeditor_content"></div></div>';
@@ -784,7 +784,7 @@ if (jQuery) (function(jQuery){
 				showNotePad(o, curDir, gsitem);
 				return;
 			}
-			if (o.action == '121') { // show notepad
+			if (o.action == '121') { // show pdf viewer
 				showPdf(o, curDir, gsitem);
 				return;
 			}
