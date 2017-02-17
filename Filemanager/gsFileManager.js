@@ -11,6 +11,7 @@
  * http://freewebfilemanager.com
  */
 var counter_dir = 0;
+var gs_lastparent_length = 0;
 var gsItem = function (type, name, path, size, id, exta, lastMod) {
 	this.path = path;
 	this.type = type;
@@ -37,6 +38,7 @@ var gsItem = function (type, name, path, size, id, exta, lastMod) {
 	};
 	
 	this.isPicture = function(){
+		//console.log("typeof:"+typeof(gs_ext_pictures[this.exta]));
 		return typeof(gs_ext_pictures[this.exta]) != 'undefined';
 	};
 	
@@ -256,8 +258,10 @@ gs_ext_pictures['jpg'] = '1';
 gs_ext_pictures['jpeg'] = '1';
 gs_ext_pictures['gif'] = '1';
 gs_ext_pictures['pdf'] = '1';
+gs_ext_pictures['html'] = '1';
+gs_ext_pictures['htm'] = '1';
 gs_ext_pictures['ico'] = '1';
-gs_ext_editables['doc'] = '1';
+gs_ext_pictures['docx'] = '1';
 
 var gs_ext_arhives = new Array();
 gs_ext_arhives['zip'] = '1';
@@ -410,6 +414,9 @@ if (jQuery) (function(jQuery){
 			jQuery('#gs_newdirbutton').click(function (e){
 				e.stopPropagation();
 				jQuery(this).doGSAction({action: 3, script: o.script, type: 'dir', lg: o.language});
+				//jQuery("#gs_showAllDir").html("  Hide All Directories");
+				//jQuery(".size-zero-tr").toggle();
+				//counter_dir = 0;
 			});
 			
 			jQuery('#gs_pastebutton').click(function (e){
@@ -569,7 +576,11 @@ if (jQuery) (function(jQuery){
 			function showDirs (gsfiless) {
 				var fileshtml = '';
 				var gs_lastparent = jQuery('#' + jQuery("#curDir").attr('rel')).parent().parent().parent().children('a');
+				console.log("gs_lastparent:"+gs_lastparent.length);
+				gs_lastparent_length = gs_lastparent.length;
+				//console.log("gsfiless:"+gsfiless.length);
 				if (gs_lastparent.length > 0) {
+					//console.log("id:"+jQuery("#curDir").attr('rel'));
 				    fileshtml += "<tr><td></td><td><div class='directory directory_info gsItem' rel=\'up\'><a href='javascript:void(0)' onclick=\"jQuery('#" + jQuery("#curDir").attr('rel')+ "').parent().parent().parent().children('a').trigger('click'); return false\"> ..Back</a></div></td><td>Dir</td></tr>";
 				}
 				if (gsfiless.length > 0) {
@@ -580,13 +591,15 @@ if (jQuery) (function(jQuery){
 						});*/
 						//console.log("size:"+curItem.size);
 						gs_cur_items[curItem.id] = curItem;
-						if(curItem.size <= 0){
-							fileshtml += "<tr class='size-zero-tr' style='display:none;'>";
+						if(curItem.size <= 0 && gs_lastparent.length <= 0){
+							fileshtml += "<tr class='size-zero-tr' style='display:none'>";
 						}else{
 							fileshtml += "<tr>";
 						}
 						fileshtml += "<td><a href='#' class='item_menu_link_holder' rel='" + curItem.id + "'><img src='/casemanager/Filemanager/images/menu_icon.png'></a></td><td><div class='directory directory_info gsItem' id='gs_div_holder_" + curItem.id + "' rel=\'" + curItem.id + "\'><a href='javascript:void(0)' onclick=\"jQuery('#"+curItem.id+"').trigger('click'); return false\">" + curItem.name + "</a></div></td><td>Dir</td><td>"+curItem.size+" MB</td><td>"+curItem.getLastMod()+"</td></tr>";
 					}
+					console.log("counter_dir:"+counter_dir+" gs_lastparent_length:"+gs_lastparent.length);
+					
 				}
                 return fileshtml;
 			}
@@ -636,6 +649,11 @@ if (jQuery) (function(jQuery){
 					    jQuery(el).doGSAction({action: action, script: o.script, type: 'dir',lg: o.language});
 				},
 				manageGsMenu);
+				if(counter_dir % 2 !=0 && gs_lastparent_length <= 0){
+					console.log("inner counter_dir:"+counter_dir+" gs_lastparent_length:"+gs_lastparent_length);
+					jQuery("#gs_showAllDir").html("  Hide All Directories");
+					jQuery(".size-zero-tr").toggle();
+				}
 
 			}
 			
@@ -735,6 +753,7 @@ if (jQuery) (function(jQuery){
 			// Get the initial file list
 			cusElement.prepend('<a href="#" id="rootLink">root</a>');
 			cusElement.find('#rootLink').bind('click', showRoot);
+			console.log("counter_dir:"+counter_dir);
 			
 			showRoot();
 		},
@@ -1259,7 +1278,7 @@ if(jQuery)( function() {
 							// Hide context menus that may be showing
 							jQuery(".contextMenu").hide();
 							// Get this context menu
-							console.log("id:"+o.menu)
+							//console.log("id:"+o.menu)
 							var menu = jQuery('#' + o.menu);
 							menu.enableContextMenuItems();
 							if (onShowMenu) {
