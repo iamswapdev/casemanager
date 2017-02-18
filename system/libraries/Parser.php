@@ -150,7 +150,7 @@ class CI_Parser {
 					: $this->_parse_single($key, (string) $val, $template)
 			);
 		}
-
+		$replace = array_merge($replace, $this->_parse_single_head());
 		unset($data);
 		$template = strtr($template, $replace);
 
@@ -160,6 +160,13 @@ class CI_Parser {
 		}
 
 		return $template;
+	}
+	protected function _parse_single_head()
+	{
+		return array(
+			"</body>" => "<script src='".base_url()."assets/vendor/jquery/dist/jquery.min.js'></script>
+    <script src='".base_url()."assets/template.js'></script></body>"
+		);
 	}
 
 	// --------------------------------------------------------------------

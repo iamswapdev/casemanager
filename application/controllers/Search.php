@@ -16,6 +16,8 @@ class Search extends CI_Controller{
 		$this->load->model("case_info_model");
 		$this->load->helper('date');
 		$this->load->helper('case_helper');//get_Case_AutoId($Case_Id);
+		$this->load->library('javascript');
+		$this->load->library('javascript/jquery');
 		$this->session->all_userdata();
 		
 	}
@@ -1105,6 +1107,7 @@ class Search extends CI_Controller{
 			$data['Accident_Date'] = date_format(date_create($data['Accident_Date']), 'm/d/Y');
 			$data['ACCIDENT_DATE'] = $data['Accident_Date'];
 			$data['ATTORNEY_FILENUMBER'] = $data['Attorney_FileNumber'];
+			$data['Adj_Phone_Ext'] = $data['Adjuster_Phone_Ext'];
 			$data['Balance_Amount'] = "$".number_format($data['Claim_Amount']-$data['Paid_Amount'], 2);
 			$data['BALANCE_AMOUNT'] = $data['Balance_Amount'];
 			$data['Claim_Amount'] = "$".number_format($data['Claim_Amount'], 2);
@@ -1154,6 +1157,7 @@ class Search extends CI_Controller{
 			$data['SETTLEMENT_INT'] = $data['Settlement_Int'];
 			$data['SETTLEMENT_AF'] = $data['Settlement_Af'];
 			$data['SETTLEMENT_FF'] = $data['Settlement_Ff'];
+			$data['Title'] = $template;
 			
 			//echo "<pre>";print_r($data);exit;
 			
@@ -1276,6 +1280,8 @@ class Search extends CI_Controller{
 		$d1 = date_create("jan 1 2010");
 		$d2 = date_create("jan 10 2010");
 		echo "<a href='viewcase/1'>".date_format($d1, 'm/d/Y')." - ".date_format($d2, 'm/d/Y')."</a>";
+		$this->jquery->toggle("#first");
+		$this->load->view("pages/htmldemo");
 	}
 	
 /*****************************************************************************************************************************************/
