@@ -154,6 +154,9 @@ class CI_Parser {
 			);
 		}
 		$replace = array_merge($replace, $this->_parse_single_head($Template_Title));
+		//$replace = array_merge($replace, array("’s" => "'s"));
+		
+		//echo "Data:<pre>";print_r($replace);echo "</pre>";
 		unset($data);
 		$template = strtr($template, $replace);
 

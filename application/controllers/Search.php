@@ -1113,6 +1113,7 @@ class Search extends CI_Controller{
 			$data['Claim_Amount'] = "$".number_format($data['Claim_Amount'], 2);
 			$data['CLAIM_AMOUNT'] = $data['Claim_Amount'];
 			$data['CASE_ID'] = $data['Case_Id'];
+			$data['Case_ID'] = $data['Case_Id'];
 			$data['COURT_VENUE'] = $data['Court_Venue'];
 			$data['COURT_NAME'] = $data['Court_Name'];
 			$data['COURT_ADDRESS'] = $data['Court_Address'];
