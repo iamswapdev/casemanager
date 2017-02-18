@@ -139,10 +139,13 @@ class CI_Parser {
 		{
 			return FALSE;
 		}
-
+		$Template_Title = "";
 		$replace = array();
 		foreach ($data as $key => $val)
 		{
+			if($key == "Title"){
+				$Template_Title = $val;
+			}
 			$replace = array_merge(
 				$replace,
 				is_array($val)
@@ -150,7 +153,7 @@ class CI_Parser {
 					: $this->_parse_single($key, (string) $val, $template)
 			);
 		}
-		$replace = array_merge($replace, $this->_parse_single_head());
+		$replace = array_merge($replace, $this->_parse_single_head($Template_Title));
 		unset($data);
 		$template = strtr($template, $replace);
 
@@ -161,10 +164,10 @@ class CI_Parser {
 
 		return $template;
 	}
-	protected function _parse_single_head()
+	protected function _parse_single_head($Template_Title)
 	{
 		return array(
-			"</body>" => "<script src='".base_url()."assets/vendor/jquery/dist/jquery.min.js'></script>
+			"</body>" => "<input type='hidden' name='Template_Title' value='".$Template_Title."'><script src='".base_url()."assets/vendor/jquery/dist/jquery.min.js'></script>
     <script src='".base_url()."assets/template.js'></script></body>"
 		);
 	}
