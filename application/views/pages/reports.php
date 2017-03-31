@@ -41,9 +41,9 @@
 <![endif]-->
 
 <!-- Header -->
-<?php include 'header.php';?>
+<?php include '/header.php';?>
 <!-- Navigation -->
-<?php include 'sidebar.php';?>
+<?php include '/sidebar.php';?>
 <!-- Main Wrapper -->
 <div id="wrapper">
 <?php include 'header_financials.php';?>

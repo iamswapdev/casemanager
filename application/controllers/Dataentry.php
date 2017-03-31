@@ -118,7 +118,7 @@ session_cache_limiter('private_no_expire');
 		//echo json_encode($success);
 		if($success){
 			echo json_encode($data);
-			//$this->load->view('pages/submitted');
+			
 		}
 	}
 /**ADD NEW AND SETTLEMENT TO OPEN STATUS*/
@@ -241,7 +241,7 @@ session_cache_limiter('private_no_expire');
 			if($success){
 				$data['Provider_Name']= $this->dataentry_model->get_Provider();
 				return true;
-				//$this->load->view('pages/submitted');
+				
 			}
 		}
 		public function getPro(){
@@ -316,7 +316,7 @@ session_cache_limiter('private_no_expire');
 			if($success){
 				$data['InsuranceCompany_Name']= $this->dataentry_model->get_Insurance();
 				return true;
-				//$this->load->view('pages/submitted');
+				
 			}
 		}
 		public function getIns(){
@@ -381,7 +381,7 @@ session_cache_limiter('private_no_expire');
 			$success = $this->dataentry_model->insert_DefendantInfo($data);
 			if($success){
 				return true;
-				//$this->load->view('pages/submitted');
+				
 			}
 		}
 		public function getDef(){
@@ -442,7 +442,7 @@ session_cache_limiter('private_no_expire');
 			if($success){
 				$data['Adjuster_Name']= $this->dataentry_model->get_Adjuster();
 				return true;
-				//$this->load->view('pages/submitted');
+				
 			}
 		}
 		public function getAdj(){
@@ -503,7 +503,7 @@ session_cache_limiter('private_no_expire');
 			if($success){
 				$data['Attorney_Name']= $this->dataentry_model->get_Attorney();
 				return true;
-				//$this->load->view('pages/submitted');
+				
 			}
 		}
 		public function getAtt(){
@@ -562,7 +562,7 @@ session_cache_limiter('private_no_expire');
 			if($success){
 				$data['Attorney_Name']= $this->dataentry_model->get_Plantiff();
 				return true;
-				//$this->load->view('pages/submitted');
+				
 			}
 		}
 		public function getPla(){

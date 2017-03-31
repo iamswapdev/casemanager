@@ -85,7 +85,7 @@ class Workarea extends CI_Controller{
 			//echo "<pre> "; print_r($data); exit();
 			if($success){
 				return true;
-				//$this->load->view('pages/submitted');
+				
 			}
 		}else{
 			$this->load->view('pages/login');
