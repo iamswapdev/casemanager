@@ -283,12 +283,16 @@ class Financials extends CI_Controller{
 		$Tot_Case_Count = 0;
 		$Tot_Balance = 0;
 		$Tot_Sett_Amount = 0;
+		$Tot_Principle_Amount = 0;
+		$Tot_Intrest_Amount = 0;
 		$Tot_FF = 0;
 		$Tot_AF = 0;
 		
 		$Fin_Case_Count = 0;
 		$Fin_Balance = 0;
 		$Fin_Sett_Amount = 0;
+		$Fin_Principle_Amount = 0;
+		$Fin_Intrest_Amount = 0;
 		$Fin_FF = 0;
 		$Fin_AF = 0;
 		foreach($list as $result){
@@ -314,8 +318,14 @@ class Financials extends CI_Controller{
 						$Fin_Case_Count = $Fin_Case_Count + $Tot_Case_Count;
 						$row[] = "$".number_format($Tot_Balance, 2);
 						$Fin_Balance = $Fin_Balance + $Tot_Balance;
-						$row[] = "$".number_format($Tot_Sett_Amount, 2);
-						$Fin_Sett_Amount = $Fin_Sett_Amount + $Tot_Sett_Amount;
+						//$row[] = "$".number_format($Tot_Sett_Amount, 2);
+						$row[] = "$".number_format($Tot_Principle_Amount, 2);
+						$row[] = "$".number_format($Tot_Intrest_Amount, 2);
+						
+						//$Fin_Sett_Amount = $Fin_Sett_Amount + $Tot_Sett_Amount;
+						$Fin_Principle_Amount = $Fin_Principle_Amount + $Tot_Principle_Amount;
+						$Fin_Intrest_Amount = $Fin_Intrest_Amount + $Tot_Intrest_Amount;
+						
 						$row[] = "$".number_format($Tot_FF, 2);
 						$Fin_FF = $Fin_FF + $Tot_FF;
 						$row[] = "$".number_format($Tot_AF, 2);
@@ -333,6 +343,8 @@ class Financials extends CI_Controller{
 					$Tot_Case_Count = 0;
 					$Tot_Balance = 0;
 					$Tot_Sett_Amount = 0;
+					$Tot_Principle_Amount = 0;
+					$Tot_Intrest_Amount = 0;
 					$Tot_FF = 0;
 					$Tot_AF = 0;
 				}else{
@@ -342,13 +354,19 @@ class Financials extends CI_Controller{
 				$Tot_Case_Count = $Tot_Case_Count + $result->No_Of_Case;
 				$Tot_Balance = $Tot_Balance + $result->Balance;
 				$Tot_Sett_Amount = $Tot_Sett_Amount + $result->Settlement_Amount + $result->Settlement_Int;
+		
+				$Tot_Principle_Amount = $Tot_Principle_Amount + $result->Settlement_Amount;
+				$Tot_Intrest_Amount = $Tot_Intrest_Amount + $result->Settlement_Int;
+				
 				$Tot_FF = $Tot_FF + $result->Settlement_Ff;
 				$Tot_AF = $Tot_AF + $result->Settlement_Af;
 					
 				$row[] = "<a target='_blank' class='info-link' href='Daily_Settlement?InsuranceCompany_Id=".$result->InsuranceCompany_Id."&SD=".$Start_Date."&ED=".$End_Date."&User_Id=".$result->User_Id."'>".$result->InsuranceCompany_Name."</a>";
 				$row[] = $result->No_Of_Case;
 				$row[] = "$".number_format($result->Balance, 2);
-				$row[] = "$".number_format($result->Settlement_Amount, 2)." & "."$".number_format($result->Settlement_Int, 2);
+				//$row[] = "$".number_format($result->Settlement_Amount, 2)." & "."$".number_format($result->Settlement_Int, 2);
+				$row[] = "$".number_format($result->Settlement_Amount, 2);
+				$row[] = "$".number_format($result->Settlement_Int, 2);
 				$row[] = "$".number_format($result->Settlement_Ff, 2);
 				$row[] = "$".number_format($result->Settlement_Af, 2);
 				$row[] = number_format($result->Settlement_Per, 2)."%";
@@ -364,8 +382,17 @@ class Financials extends CI_Controller{
 		$Fin_Case_Count = $Fin_Case_Count + $Tot_Case_Count;
 		$row[] = "$".number_format($Tot_Balance, 2);
 		$Fin_Balance = $Fin_Balance + $Tot_Balance;
-		$row[] = "$".number_format($Tot_Sett_Amount, 2);
-		$Fin_Sett_Amount = $Fin_Sett_Amount + $Tot_Sett_Amount;
+		//$row[] = "$".number_format($Tot_Sett_Amount, 2);
+		$row[] = "$".number_format($Tot_Principle_Amount, 2);
+		$row[] = "$".number_format($Tot_Intrest_Amount, 2);
+		
+		
+		//$Fin_Sett_Amount = $Fin_Sett_Amount + $Tot_Sett_Amount;
+		
+		$Fin_Principle_Amount = $Fin_Principle_Amount + $Tot_Principle_Amount;
+		$Fin_Intrest_Amount = $Fin_Intrest_Amount + $Tot_Intrest_Amount;
+		
+		
 		$row[] = "$".number_format($Tot_FF, 2);
 		$Fin_FF = $Fin_FF + $Tot_FF;
 		$row[] = "$".number_format($Tot_AF, 2);
@@ -379,7 +406,11 @@ class Financials extends CI_Controller{
 				//$row[] = $result->No_Of_Case;
 		$row[] = $Fin_Case_Count;
 		$row[] = "$".number_format($Fin_Balance, 2);
-		$row[] = "$".number_format($Fin_Sett_Amount, 2);
+		//$row[] = "$".number_format($Fin_Sett_Amount, 2);
+		$row[] = "$".number_format($Fin_Principle_Amount, 2);
+		$row[] = "$".number_format($Fin_Intrest_Amount, 2);
+		
+		
 		$row[] = "$".number_format($Fin_FF, 2);
 		$row[] = "$".number_format($Fin_AF, 2);
 		$row[] = number_format(($Fin_Sett_Amount*100)/$Fin_Balance, 2)."%";
@@ -515,7 +546,7 @@ class Financials extends CI_Controller{
 		echo json_encode($output);
 	}
 /*Client Settlements for last few months*/
-	public function  get_Client_Settlement(){
+	public function get_Client_Settlement(){
 		$Provider_Id = $this->input->post("Provider_Id");
 		$No_Months = $this->input->post("No_Months");
 		$TableId = $this->input->post("TableId");
@@ -570,7 +601,7 @@ class Financials extends CI_Controller{
 		echo json_encode($output);
 	}
 /*get_Client_New_Settlement for last few months*/
-	public function  get_Client_New_Settlement(){
+	public function get_Client_New_Settlement(){
 		$Provider_Id = $this->input->post("Provider_Id");
 		$No_Months = $this->input->post("No_Months");
 		$TableId = $this->input->post("TableId");

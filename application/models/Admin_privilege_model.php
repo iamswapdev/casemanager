@@ -7,7 +7,7 @@ Class Admin_privilege_model extends CI_Model{
 	public function get_provider()
 	{
 		//echo "get_providerergrt";
-		$query = $this->db->get('dbo_tblprovider'); 
+		$query = $this->db->get('tblprovider'); 
 		$data=$query->result_array();
 		return $data;
 		//($row!=0)? $data: false;
@@ -15,21 +15,21 @@ Class Admin_privilege_model extends CI_Model{
 	public function get_user()
 	{
 		//echo "get_providerergrt";
-		$query = $this->db->get('dbo_issuetracker_users'); 
+		$query = $this->db->get('issuetracker_users'); 
 		$data=$query->result_array();
 		return $data;
 	}
 	public function get_company()
 	{
 		//echo "get_providerergrt";
-		$query = $this->db->get('dbo_tblinsurancecompany'); 
+		$query = $this->db->get('tblinsurancecompany'); 
 		$data=$query->result_array();
 		return $data;
 	}
 	public function get_StatusType()
 	{
 		$this->db->select('Status_Type');
-		$query = $this->db->get('dbo_tblstatus'); 
+		$query = $this->db->get('tblstatus'); 
 		$data=$query->result_array();
 		return $data;
 	}
@@ -37,40 +37,40 @@ Class Admin_privilege_model extends CI_Model{
 	{
 		$this->db->select('t1.*, t2.*');
 		$this->db->order_by("t1.UserName", "asc");
-		$this->db->from('dbo_issuetracker_users as t1');
-		$this->db->join('dbo_issuetracker_roles as t2', 't1.RoleId = t2.RoleId', 'LEFT');
+		$this->db->from('issuetracker_users as t1');
+		$this->db->join('issuetracker_roles as t2', 't1.RoleId = t2.RoleId', 'LEFT');
 		$query= $this->db->get();
 		$data=$query->result();
 		return $data;
 	}
 	public function get_User_Info_By_Id($UserId){
 		$this->db->where("UserId", $UserId);
-		$query = $this->db->get("dbo_issuetracker_users");
+		$query = $this->db->get("issuetracker_users");
 		return $query->result_array();
 	}
 	public function delete_Users($CheckedUsers){
 		foreach($CheckedUsers as $row){
 			$this->db->where("UserId", $row);
-			$this->db->delete('dbo_issuetracker_users');
+			$this->db->delete('issuetracker_users');
 		}
 	}
 	public function add_Users($data){
-		$this->db->insert("dbo_issuetracker_users", $data);
+		$this->db->insert("issuetracker_users", $data);
 	}
 	public function update_Users($data){
 		$this->db->set($data);
 		$this->db->where("UserId", $data['UserId']);
-		$this->db->update("dbo_issuetracker_users", $data);
+		$this->db->update("issuetracker_users", $data);
 	}
 	public function get_Role_Table()
 	{
-		$query=$this->db->get('dbo_issuetracker_roles');	
+		$query=$this->db->get('issuetracker_roles');	
 		$data=$query->result();
 		return $data;
 	}
 	public function get_AllRoles()
 	{
-		$query=$this->db->get('dbo_issuetracker_roles');	
+		$query=$this->db->get('issuetracker_roles');	
 		$data=$query->result_array();
 		return $data;
 	}
@@ -78,26 +78,26 @@ Class Admin_privilege_model extends CI_Model{
 	{
 		foreach($roleId_array as $id){
 			$this->db->where('RoleId', $id);
-			$this->db->delete('dbo_issuetracker_roles');
+			$this->db->delete('issuetracker_roles');
 		}
 		return true;
 	}
 	public function get_SingleRoles()
 	{
-		$query ="select * from dbo_issuetracker_roles order by RoleId DESC limit 1";
+		$query ="select * from issuetracker_roles order by RoleId DESC limit 1";
 		$res = $this->db->query($query);
 		$data=$res->result_array();
 		return $data;
 	}
 	public function insert_Roles($data)
 	{
-		$check = $this->db->insert("dbo_issuetracker_roles", $data);
+		$check = $this->db->insert("issuetracker_roles", $data);
 		if($check){ return true;} else{ return false;}
 	}
 	public function get_Allocated_Main_Menus($RoleId){
 		$this->db->select('t1.*, t2.*');
-		$this->db->from('dbo_tblmenu_access as t1');
-		$this->db->join('dbo_tblmenu as t2', 't1.MenuId = t2.MenuID', 'LEFT');
+		$this->db->from('tblmenu_access as t1');
+		$this->db->join('tblmenu as t2', 't1.MenuId = t2.MenuID', 'LEFT');
 		$this->db->where('t1.MenuId <=', 6);
 		$this->db->where('t1.RoleId', $RoleId);
 		$query= $this->db->get();
@@ -110,7 +110,7 @@ Class Admin_privilege_model extends CI_Model{
 		$result = array_diff($MainMenuId, $AllocatedMenuId);
 		if(count($result) !=0){
 			$this->db->where_in('MenuID',$result);
-			$query= $this->db->get("dbo_tblmenu");
+			$query= $this->db->get("tblmenu");
 			$data=$query->result_array();
 		}else{
 			$data = "";
@@ -120,8 +120,8 @@ Class Admin_privilege_model extends CI_Model{
 	}
 	public function get_Allocated_SubMenus($RoleId, $MainMenuId){
 		$this->db->select('t1.*, t2.*');
-		$this->db->from('dbo_tblmenu_access as t1');
-		$this->db->join('dbo_tblmenu as t2', 't1.MenuId = t2.MenuID', 'LEFT');
+		$this->db->from('tblmenu_access as t1');
+		$this->db->join('tblmenu as t2', 't1.MenuId = t2.MenuID', 'LEFT');
 		$this->db->where('t2.MenuID >', 6);
 		$this->db->where('t1.RoleId', $RoleId);
 		
@@ -135,8 +135,8 @@ Class Admin_privilege_model extends CI_Model{
 		//echo "<pre>Allocated_SubMenuId model:"; print_r($Allocated_SubMenuId);
 		//echo "RoleId:".$RoleId." MainMenuId:".$MainMenuId." Allocated_SubMenuId:";print_r($Allocated_SubMenuId);
 		$this->db->select('t1.*, t2.*');
-		$this->db->from('dbo_tblmenu_access as t1');
-		$this->db->join('dbo_tblmenu as t2', 't1.MenuId = t2.ParentID');
+		$this->db->from('tblmenu_access as t1');
+		$this->db->join('tblmenu as t2', 't1.MenuId = t2.ParentID');
 		$this->db->where('t2.MenuID >', 6);
 		$this->db->where('t1.RoleId', $RoleId);
 		$this->db->where('t1.MenuId', $MainMenuId);
@@ -149,7 +149,7 @@ Class Admin_privilege_model extends CI_Model{
 	public function get_DeAllocated_SubMenus_MM($MainMenuId){
 		//echo "RoleId:".$RoleId." MainMenuId:".$MainMenuId;
 		$this->db->where('ParentID', $MainMenuId);
-		$query= $this->db->get("dbo_tblmenu");
+		$query= $this->db->get("tblmenu");
 		$data=$query->result_array();
 		//echo "<pre>get_DeAllocated_SubMenus_MM:"; print_r($data); exit();
 		return $data;
@@ -172,7 +172,7 @@ Class Admin_privilege_model extends CI_Model{
 					"RoleId" => $RoleId,
 					"MenuId" => $val
 				);
-				$this->db->insert("dbo_tblmenu_access", $MenuId);
+				$this->db->insert("tblmenu_access", $MenuId);
 				if($val == 8){
 					$flag = 1;
 				}
@@ -196,14 +196,14 @@ Class Admin_privilege_model extends CI_Model{
 						"RoleId" => $RoleId,
 						"MenuId" => 8
 					);
-					$this->db->insert("dbo_tblmenu_access", $MenuId);
+					$this->db->insert("tblmenu_access", $MenuId);
 				}
 				if($val == 2){
 					$MenuId = array(
 						"RoleId" => $RoleId,
 						"MenuId" => 9
 					);
-					$this->db->insert("dbo_tblmenu_access", $MenuId);
+					$this->db->insert("tblmenu_access", $MenuId);
 				}
 				if($val == 3){
 					for($j=19; $j<=21; $j++){
@@ -213,7 +213,7 @@ Class Admin_privilege_model extends CI_Model{
 						);
 						$j++;
 						echo "<pre>MenuId flag:"; print_r($MenuId);
-						$this->db->insert("dbo_tblmenu_access", $MenuId);
+						$this->db->insert("tblmenu_access", $MenuId);
 					}
 				}
 				if($val == 4){
@@ -224,7 +224,7 @@ Class Admin_privilege_model extends CI_Model{
 							"MenuId" => $j
 						);
 						echo "<pre>MenuId flag:"; print_r($MenuId);
-						$this->db->insert("dbo_tblmenu_access", $MenuId);
+						$this->db->insert("tblmenu_access", $MenuId);
 					}
 				}
 				if($val == 5){
@@ -232,7 +232,7 @@ Class Admin_privilege_model extends CI_Model{
 						"RoleId" => $RoleId,
 						"MenuId" => 20
 					);
-					$this->db->insert("dbo_tblmenu_access", $MenuId);
+					$this->db->insert("tblmenu_access", $MenuId);
 				}
 				if($val == 6){
 					for($j=16; $j<=18; $j++){
@@ -241,7 +241,7 @@ Class Admin_privilege_model extends CI_Model{
 							"MenuId" => $j
 						);
 						echo "<pre>MenuId flag:"; print_r($MenuId);
-						$this->db->insert("dbo_tblmenu_access", $MenuId);
+						$this->db->insert("tblmenu_access", $MenuId);
 					}
 				}
 				echo "<pre>MenuId:"; print_r($MenuId);
@@ -253,7 +253,7 @@ Class Admin_privilege_model extends CI_Model{
 					"MenuId" => 1
 				);
 				echo "<pre>MenuId flag:"; print_r($MenuId);
-				$this->db->insert("dbo_tblmenu_access", $MenuId);
+				$this->db->insert("tblmenu_access", $MenuId);
 			}
 			if($flag == 2 && count($OriginalAllocated) == 0){	
 				$MenuId = array(
@@ -261,7 +261,7 @@ Class Admin_privilege_model extends CI_Model{
 					"MenuId" => 2
 				);
 				echo "<pre>MenuId flag:"; print_r($MenuId);
-				$this->db->insert("dbo_tblmenu_access", $MenuId);
+				$this->db->insert("tblmenu_access", $MenuId);
 			}
 			if($flag == 3 && count($OriginalAllocated) == 0){	
 				$MenuId = array(
@@ -269,7 +269,7 @@ Class Admin_privilege_model extends CI_Model{
 					"MenuId" => 3
 				);
 				echo "<pre>MenuId flag:"; print_r($MenuId);
-				$this->db->insert("dbo_tblmenu_access", $MenuId);
+				$this->db->insert("tblmenu_access", $MenuId);
 			}
 			if($flag == 4 && count($OriginalAllocated) == 0){	
 				$MenuId = array(
@@ -277,7 +277,7 @@ Class Admin_privilege_model extends CI_Model{
 					"MenuId" => 4
 				);
 				echo "<pre>MenuId flag:"; print_r($MenuId);
-				$this->db->insert("dbo_tblmenu_access", $MenuId);
+				$this->db->insert("tblmenu_access", $MenuId);
 			}
 			if($flag == 5 && count($OriginalAllocated) == 0){	
 				$MenuId = array(
@@ -285,7 +285,7 @@ Class Admin_privilege_model extends CI_Model{
 					"MenuId" => 5
 				);
 				echo "<pre>MenuId flag:"; print_r($MenuId);
-				$this->db->insert("dbo_tblmenu_access", $MenuId);
+				$this->db->insert("tblmenu_access", $MenuId);
 			}
 			if($flag == 6 && count($OriginalAllocated) == 0){
 				$MenuId = array(
@@ -293,28 +293,28 @@ Class Admin_privilege_model extends CI_Model{
 					"MenuId" => 6
 				);
 				echo "<pre>MenuId flag:"; print_r($MenuId);
-				$this->db->insert("dbo_tblmenu_access", $MenuId);
+				$this->db->insert("tblmenu_access", $MenuId);
 			}
 		}
 		if(count($Deleted_Menu_Id) != 0){
 			foreach($Deleted_Menu_Id as $val){
 				$this->db->where('RoleId', $RoleId);
 				$this->db->where('MenuId', $val);
-				$this->db->delete('dbo_tblmenu_access');
+				$this->db->delete('tblmenu_access');
 				echo "Delete Id val:".$val;
 				if($val == 1){
 					$this->db->where('RoleId', $RoleId);
 					$this->db->where('MenuId', 8);
-					$this->db->delete('dbo_tblmenu_access');
+					$this->db->delete('tblmenu_access');
 				}else if($val == 2){
 					$this->db->where('RoleId', $RoleId);
 					$this->db->where('MenuId', 9);
-					$this->db->delete('dbo_tblmenu_access');
+					$this->db->delete('tblmenu_access');
 				}else if($val == 3){
 					for($j=19; $j<=21; $j++){
 						$this->db->where('RoleId', $RoleId);
 						$this->db->where('MenuId', $j);
-						$this->db->delete('dbo_tblmenu_access');
+						$this->db->delete('tblmenu_access');
 						$j++;
 					}
 				}else if($val == 4){
@@ -322,74 +322,74 @@ Class Admin_privilege_model extends CI_Model{
 						if($j==11){$j++;}
 						$this->db->where('RoleId', $RoleId);
 						$this->db->where('MenuId', $j);
-						$this->db->delete('dbo_tblmenu_access');
+						$this->db->delete('tblmenu_access');
 					}
 				}else if($val == 5){
 					$this->db->where('RoleId', $RoleId);
 					$this->db->where('MenuId', 20);
-					$this->db->delete('dbo_tblmenu_access');
+					$this->db->delete('tblmenu_access');
 				}else if($val == 6){
 					for($j=16; $j<=18; $j++){
 						$this->db->where('RoleId', $RoleId);
 						$this->db->where('MenuId', $j);
-						$this->db->delete('dbo_tblmenu_access');
+						$this->db->delete('tblmenu_access');
 					}
 				}
 				if($val == 8){
 					$this->db->where('RoleId', $RoleId);
 					$this->db->where('MenuId', $val);
-					$this->db->delete('dbo_tblmenu_access');
+					$this->db->delete('tblmenu_access');
 					$this->db->where('RoleId', $RoleId);
 					$this->db->where('MenuId', 1);
-					$this->db->delete('dbo_tblmenu_access');
+					$this->db->delete('tblmenu_access');
 				}
 				if($val == 9){
 					$this->db->where('RoleId', $RoleId);
 					$this->db->where('MenuId', $val);
-					$this->db->delete('dbo_tblmenu_access');
+					$this->db->delete('tblmenu_access');
 					$this->db->where('RoleId', $RoleId);
 					$this->db->where('MenuId', 2);
-					$this->db->delete('dbo_tblmenu_access');
+					$this->db->delete('tblmenu_access');
 				}
 				if($val == 19 || $val == 21){
 					$this->db->where('RoleId', $RoleId);
 					$this->db->where('MenuId', $val);
-					$this->db->delete('dbo_tblmenu_access');
+					$this->db->delete('tblmenu_access');
 					$Remaining_Records = $this->Check_Submenus($RoleId, $Main_MenuId);
 					if($Remaining_Records == 0){
 						$this->db->where('RoleId', $RoleId);
 						$this->db->where('MenuId', 3);
-						$this->db->delete('dbo_tblmenu_access');
+						$this->db->delete('tblmenu_access');
 					}
 				}
 				if($val == 10 || $val == 12 || $val == 13 || $val == 14 || $val == 15){
 					$this->db->where('RoleId', $RoleId);
 					$this->db->where('MenuId', $val);
-					$this->db->delete('dbo_tblmenu_access');
+					$this->db->delete('tblmenu_access');
 					$Remaining_Records = $this->Check_Submenus($RoleId, $Main_MenuId);
 					if($Remaining_Records == 0){
 						$this->db->where('RoleId', $RoleId);
 						$this->db->where('MenuId', 4);
-						$this->db->delete('dbo_tblmenu_access');
+						$this->db->delete('tblmenu_access');
 					}
 				}
 				if($val == 20){
 					$this->db->where('RoleId', $RoleId);
 					$this->db->where('MenuId', $val);
-					$this->db->delete('dbo_tblmenu_access');
+					$this->db->delete('tblmenu_access');
 					$this->db->where('RoleId', $RoleId);
 					$this->db->where('MenuId', 5);
-					$this->db->delete('dbo_tblmenu_access');
+					$this->db->delete('tblmenu_access');
 				}
 				if($val == 16 || $val == 17 || $val == 18){
 					$this->db->where('RoleId', $RoleId);
 					$this->db->where('MenuId', $val);
-					$this->db->delete('dbo_tblmenu_access');
+					$this->db->delete('tblmenu_access');
 					$Remaining_Records = $this->Check_Submenus($RoleId, $Main_MenuId);
 					if($Remaining_Records == 0){
 						$this->db->where('RoleId', $RoleId);
 						$this->db->where('MenuId', 6);
-						$this->db->delete('dbo_tblmenu_access');
+						$this->db->delete('tblmenu_access');
 					}
 				}
 				
@@ -400,8 +400,8 @@ Class Admin_privilege_model extends CI_Model{
 	public function Check_Submenus($RoleId, $Main_MenuId){
 		if($Main_MenuId != 0){
 			$this->db->select('t1.*, t2.*');
-			$this->db->from('dbo_tblmenu_access as t1');
-			$this->db->join('dbo_tblmenu as t2', 't1.MenuId= t2.MenuID', 'LEFT');
+			$this->db->from('tblmenu_access as t1');
+			$this->db->join('tblmenu as t2', 't1.MenuId= t2.MenuID', 'LEFT');
 			$this->db->where('t1.RoleId', $RoleId);
 			$this->db->where('t2.ParentID', $Main_MenuId);
 			$query= $this->db->get();
@@ -413,7 +413,7 @@ Class Admin_privilege_model extends CI_Model{
 	public function get_Assigned_Menus($User_Role){
 		$this->db->select("MenuId");
 		$this->db->where("RoleId", $User_Role);
-		$query = $this->db->get("dbo_tblmenu_access");
+		$query = $this->db->get("tblmenu_access");
 		return $query->result_array();
 	}
 }

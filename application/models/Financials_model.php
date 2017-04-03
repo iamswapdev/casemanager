@@ -8,22 +8,22 @@ Class Financials_model extends CI_Model{
 	
 	public function get_Provider()
 	{
-		$query = $this->db->get('dbo_tblprovider'); 
+		$query = $this->db->get('tblprovider'); 
 		$data=$query->result_array();
 		return $data;
 	}
 	
 	public function get_Insurance()
 	{
-		$query=$this->db->get('dbo_tblinsurancecompany');
+		$query=$this->db->get('tblinsurancecompany');
 		$data=$query->result_array();
 		return $data;
 	}
 /* get privious posting reports Financials-tab 1*/
 	public function get_Privious_Posting_Reports($Start_Date, $End_Date){
 		$this->db->select("t1.Provider_Id, t2.Provider_Name, t1.Gross_Amount, t1.Firm_Fees, t1.Final_Remit, ((t1.Firm_Fees + t1.Applied_Cost)) as Firm_Remit_Amount, t1.Account_Id, t1.Account_Date, t1.Last_Printed");
-		$this->db->from("dbo_tblclientaccount as t1");
-		$this->db->join("dbo_tblprovider as t2", "t1.Provider_Id = t2.Provider_Id", "LEFT");
+		$this->db->from("tblclientaccount as t1");
+		$this->db->join("tblprovider as t2", "t1.Provider_Id = t2.Provider_Id", "LEFT");
 		$this->db->where("t1.Account_Date >=", $Start_Date);
 		$this->db->where("t1.Account_Date <=", $End_Date);
 		$query = $this->db->get();
@@ -32,20 +32,20 @@ Class Financials_model extends CI_Model{
 /* get Generate Daily Client Invoices Financials-tab 2*/
 	public function get_Generate_Daily_Client_Invoices(){
 		$this->db->select("t1.Provider_Id, t2.Provider_Name, COUNT(t1.Provider_Id) as No_of_Checks, SUM(t1.Gross_Amount) as Total_Amount, t1.Account_Id");
-		$this->db->from("dbo_tblclientaccount as t1");
+		$this->db->from("tblclientaccount as t1");
 		$this->db->group_by("t1.Provider_Id");
-		$this->db->join("dbo_tblprovider as t2", "t1.Provider_Id = t2.Provider_Id");
+		$this->db->join("tblprovider as t2", "t1.Provider_Id = t2.Provider_Id");
 		$query = $this->db->get();
 		return $query->result();
 	}
 /* get firm account balance Financials-tab 3*/
 	public function get_Firm_Fees($Start_Date, $End_Date){
 		$this->db->select("t1.Provider_Id, t2.Provider_Name, t3.Case_Id, t3.IndexOrAAA_Number, t4.Settlement_Ff, t4.Settlement_Af, t4.Settlement_Date, t4.Settlement_Notes");
-		$this->db->from("dbo_tblclientaccount as t1");
-		$this->db->join("dbo_tblprovider as t2", "t2.Provider_Id = t1.Provider_Id");
-		$this->db->join("dbo_tblcase as t3", "t3.Provider_Id = t1.Provider_Id" );
+		$this->db->from("tblclientaccount as t1");
+		$this->db->join("tblprovider as t2", "t2.Provider_Id = t1.Provider_Id");
+		$this->db->join("tblcase as t3", "t3.Provider_Id = t1.Provider_Id" );
 		$this->db->group_by('t3.Case_Id');
-		$this->db->join("dbo_tblsettlements as t4", "t4.Case_Id = t3.Case_Id");
+		$this->db->join("tblsettlements as t4", "t4.Case_Id = t3.Case_Id");
 		$this->db->where('t4.Settlement_Date >=', $Start_Date);
 		$this->db->where('t4.Settlement_Date <=', $End_Date);
 		
@@ -55,9 +55,9 @@ Class Financials_model extends CI_Model{
 /* get cost balance Financials- tab 4*/
 	public function get_Cost_Balance(){
 		$this->db->select("t1.Provider_Id, t2.Provider_Name, SUM(t1.Cost_Balance) as Tot_Cost_Balance");
-		$this->db->from("dbo_tblclientaccount as t1");
+		$this->db->from("tblclientaccount as t1");
 		$this->db->group_by('t1.Provider_Id');
-		$this->db->join("dbo_tblprovider as t2", "t2.Provider_Id = t1.Provider_Id", "LEFT");
+		$this->db->join("tblprovider as t2", "t2.Provider_Id = t1.Provider_Id", "LEFT");
 		
 		$query = $this->db->get();
 		return $query->result();
@@ -65,10 +65,10 @@ Class Financials_model extends CI_Model{
 /* get exp cost balance Financials- tab 5 */
 	public function get_Exp_Cost_Balance(){
 		$this->db->select("t3.Provider_Name, t4.InsuranceCompany_Name, t1.Case_Id, t1.Transactions_Type, SUM(Transactions_Amount)as TotalAmount, t1.Transactions_Amount");
-		$this->db->from("dbo_tbltransactions as t1");
-		$this->db->join("dbo_tblcase as t2", "t2.Case_Id = t1.Case_Id", "LEFT");
-		$this->db->join("dbo_tblprovider as t3", "t3.Provider_Id = t1.Provider_Id", "LEFT");
-		$this->db->join("dbo_tblinsurancecompany as t4", "t4.InsuranceCompany_Id = t2.InsuranceCompany_Id", "LEFT");
+		$this->db->from("tbltransactions as t1");
+		$this->db->join("tblcase as t2", "t2.Case_Id = t1.Case_Id", "LEFT");
+		$this->db->join("tblprovider as t3", "t3.Provider_Id = t1.Provider_Id", "LEFT");
+		$this->db->join("tblinsurancecompany as t4", "t4.InsuranceCompany_Id = t2.InsuranceCompany_Id", "LEFT");
 		$this->db->where("t1.Transactions_Type !=", "AF");
 		$this->db->where("t1.Transactions_Type !=", "C");
 		$this->db->where("t1.Transactions_Type !=", "I");
@@ -85,16 +85,16 @@ Class Financials_model extends CI_Model{
 		$this->db->select(" t1.User_Id, t3.InsuranceCompany_Id, t3.InsuranceCompany_Name, COUNT(t3.InsuranceCompany_Id) as No_Of_Case, SUM((t2.Claim_Amount - t2.Paid_Amount)) as Balance, SUM(t1.Settlement_Amount) as Settlement_Amount, SUM(t1.Settlement_Ff) as Settlement_Ff, SUM(t1.Settlement_Af) as Settlement_Af, (SUM(t1.Settlement_Amount) * 100)/SUM((t2.Claim_Amount - t2.Paid_Amount)) as Settlement_Per, SUM(t1.Settlement_Int) as Settlement_Int, t1.Case_Id");
 		//$this->db->select("t1.Case_Id, t1.User_Id, t2.InsuranceCompany_Id, t3.InsuranceCompany_Name, COUNT(t2.InsuranceCompany_Id)");
 		 
-		$this->db->from("dbo_tblsettlements as t1");
-		$this->db->join("dbo_tblcase as t2", "t2.Case_Id = t1.Case_Id", "LEFT");
-		$this->db->join("dbo_tblinsurancecompany as t3", "t3.InsuranceCompany_Id = t2.InsuranceCompany_Id", "LEFT");
+		$this->db->from("tblsettlements as t1");
+		$this->db->join("tblcase as t2", "t2.Case_Id = t1.Case_Id", "LEFT");
+		$this->db->join("tblinsurancecompany as t3", "t3.InsuranceCompany_Id = t2.InsuranceCompany_Id", "LEFT");
 		$this->db->group_by(array("t1.User_Id", "t2.InsuranceCompany_Id"));
 		$this->db->order_by("t1.User_Id", "asc");
 	//	$this->db->group_by('t1.User_Id');
 	//	$this->db->group_by('t2.InsuranceCompany_Id');
 		
 		
-		//$this->db->join("dbo_tblsettlements as t4", "t4.Case_Id = t2.Case_Id");
+		//$this->db->join("tblsettlements as t4", "t4.Case_Id = t2.Case_Id");
 		$this->db->where('t1.Settlement_Date >=', $Start_Date);
 		$this->db->where('t1.Settlement_Date <=', $End_Date);
 		
@@ -104,10 +104,10 @@ Class Financials_model extends CI_Model{
 	public function get_DailySettlement_Cases($input_data){
 		$this->db->select("t1.Case_Id, t2.InjuredParty_FirstName, t2.InjuredParty_LastName, t2.InsuranceCompany_Id, t4.Provider_Name, t3.InsuranceCompany_Name, (t2.Claim_Amount - t2.Paid_Amount) as Initial_Balance, ((t1.Settlement_Amount + t1.Settlement_Int)*100/ (t2.Claim_Amount-t2.Paid_Amount))  as Settlement_Percentage, t1.*");
 		 
-		$this->db->from("dbo_tblsettlements as t1");
-		$this->db->join("dbo_tblcase as t2", "t2.Case_Id = t1.Case_Id", "LEFT");
-		$this->db->join("dbo_tblinsurancecompany as t3", "t3.InsuranceCompany_Id = t2.InsuranceCompany_Id", "LEFT");
-		$this->db->join("dbo_tblprovider as t4", "t4.Provider_Id = t2.Provider_Id", "LEFT");
+		$this->db->from("tblsettlements as t1");
+		$this->db->join("tblcase as t2", "t2.Case_Id = t1.Case_Id", "LEFT");
+		$this->db->join("tblinsurancecompany as t3", "t3.InsuranceCompany_Id = t2.InsuranceCompany_Id", "LEFT");
+		$this->db->join("tblprovider as t4", "t4.Provider_Id = t2.Provider_Id", "LEFT");
 		
 		if($input_data['InsuranceCompany_Id'] != ""){
 			$this->db->where('t2.InsuranceCompany_Id', $input_data['InsuranceCompany_Id']);
@@ -124,15 +124,15 @@ Class Financials_model extends CI_Model{
 /* get 0 Settlement Amount and overdue settlement Repots- tab 2*/
 	public function get_Zero_Settlement($Start_Date, $End_Date, $name){
 		$this->db->select("t1.*, t2.InjuredParty_FirstName, t2.InjuredParty_LastName, t2.Status, t2.Claim_Amount, t2.Paid_Amount, t3.Provider_Name, t4.InsuranceCompany_Name");
-		$this->db->from("dbo_tblsettlements as t1");
+		$this->db->from("tblsettlements as t1");
 		$this->db->where('t1.Settlement_Date >=', $Start_Date);
 		$this->db->where('t1.Settlement_Date <=', $End_Date);
 		if($name == "Cases0Settlement"){
 			$this->db->where("t1.Settlement_Amount", "0.0");
 		}
-		$this->db->join("dbo_tblcase as t2", "t2.Case_Id = t1.Case_Id", "LEFT");
-		$this->db->join("dbo_tblprovider as t3", "t3.Provider_Id = t2.Provider_Id", "LEFT");
-		$this->db->join("dbo_tblinsurancecompany as t4", "t4.InsuranceCompany_Id = t2.InsuranceCompany_Id", "LEFT");
+		$this->db->join("tblcase as t2", "t2.Case_Id = t1.Case_Id", "LEFT");
+		$this->db->join("tblprovider as t3", "t3.Provider_Id = t2.Provider_Id", "LEFT");
+		$this->db->join("tblinsurancecompany as t4", "t4.InsuranceCompany_Id = t2.InsuranceCompany_Id", "LEFT");
 		
 		$query = $this->db->get();
 		return $query->result();
@@ -140,23 +140,23 @@ Class Financials_model extends CI_Model{
 /*Load Client_Information table*/
 	public function get_Client_Information($Provider_Id){
 		$this->db->where("Provider_Id", $Provider_Id);
-		$query = $this->db->get("dbo_tblprovider");
+		$query = $this->db->get("tblprovider");
 		return $query->result();
 	}
 	
 /* get_Client_Settlement*/
 	public function get_Client_Settlement($Provider_Id, $No_Months, $TableId){
 		if($TableId == "ClientSettlements"){
-			$this->db->select("DATE_FORMAT(Settlement_Date,'%Y/%m') as Month_Year, DATE_FORMAT(Settlement_Date,'%Y/%m/%d') as Current_Month_Date, COUNT(t1.Case_Id) as Case_Count, SUM(t2.Claim_Amount) as Sum_of_Billed_Amount, SUM(t2.Claim_Amount-t2.Paid_Amount) as Sum_of_Suit_Amount, SUM(t1.Settlement_Amount) as Sum_of_Principal_Settlement, SUM(t1.Settlement_Int) as Sum_of_Interest_Settlement, (((SUM(t1.Settlement_Amount)) + (SUM(t1.Settlement_Int)))*100)/ SUM(t2.Claim_Amount-t2.Paid_Amount) as Percentage ");
+			$this->db->select("DATE_FORMAT(Settlement_Date,'%m/%Y') as Month_Year, DATE_FORMAT(Settlement_Date,'%Y/%m/%d') as Current_Month_Date, COUNT(t1.Case_Id) as Case_Count, SUM(t2.Claim_Amount) as Sum_of_Billed_Amount, SUM(t2.Claim_Amount-t2.Paid_Amount) as Sum_of_Suit_Amount, SUM(t1.Settlement_Amount) as Sum_of_Principal_Settlement, SUM(t1.Settlement_Int) as Sum_of_Interest_Settlement, (((SUM(t1.Settlement_Amount)) + (SUM(t1.Settlement_Int)))*100)/ SUM(t2.Claim_Amount-t2.Paid_Amount) as Percentage ");
 		}else if($TableId == "WithdrawnCases"){
-			$this->db->select("DATE_FORMAT(Settlement_Date,'%Y/%m') as Month_Year, DATE_FORMAT(Settlement_Date,'%Y/%m/%d') as Current_Month_Date, COUNT(t1.Case_Id) as Case_Count, SUM(t2.Claim_Amount) as Sum_of_Billed_Amount, SUM(t2.Claim_Amount-t2.Paid_Amount) as Sum_of_Suit_Amount, SUM(t1.Settlement_Amount) as Sum_of_Principal_Settlement, (SUM(t1.Settlement_Amount)*100/SUM(t2.Claim_Amount-t2.Paid_Amount)) as Percentage ");
+			$this->db->select("DATE_FORMAT(Settlement_Date,'%m/%Y') as Month_Year, DATE_FORMAT(Settlement_Date,'%Y/%m/%d') as Current_Month_Date, COUNT(t1.Case_Id) as Case_Count, SUM(t2.Claim_Amount) as Sum_of_Billed_Amount, SUM(t2.Claim_Amount-t2.Paid_Amount) as Sum_of_Suit_Amount, SUM(t1.Settlement_Amount) as Sum_of_Principal_Settlement, (SUM(t1.Settlement_Amount)*100/SUM(t2.Claim_Amount-t2.Paid_Amount)) as Percentage ");
 			$this->db->where("t1.Settlement_Amount <=", 0);
 		}
 		
 		
 		$this->db->where("t2.Provider_Id", $Provider_Id);
-		$this->db->from("dbo_tblsettlements as t1");
-		$this->db->join("dbo_tblcase as t2", "t2.Case_Id = t1.Case_Id" );
+		$this->db->from("tblsettlements as t1");
+		$this->db->join("tblcase as t2", "t2.Case_Id = t1.Case_Id" );
 		
 		$End_Date = date("Y/m/d");
 		$Curent_month_first_Date = date_format(date_sub(date_create($End_Date),date_interval_create_from_date_string((date("d")-1)." days")), "Y/m/d");
@@ -184,7 +184,7 @@ Class Financials_model extends CI_Model{
 		$this->db->select("DATE_FORMAT(Date_Opened,'%Y/%m') as Month_Year, DATE_FORMAT(Date_Opened,'%Y/%m/%d') as Current_Month_Date, COUNT(t1.Case_Id) as Case_Count, SUM(t1.Claim_Amount) as Sum_of_Billed_Amount, SUM(t1.Claim_Amount-t1.Paid_Amount) as Sum_of_Suit_Amount");
 		
 		
-		$this->db->from("dbo_tblcase as t1");
+		$this->db->from("tblcase as t1");
 		$this->db->where("t1.Provider_Id", $Provider_Id);
 		$End_Date = date("Y/m/d");
 		$Curent_month_first_Date = date_format(date_sub(date_create($End_Date),date_interval_create_from_date_string((date("d")-1)." days")), "Y/m/d");
@@ -211,7 +211,7 @@ Class Financials_model extends CI_Model{
 /*get_Client_Invoices*/
 	public function get_Client_Invoices($Provider_Id, $No_Months){
 		$this->db->where("Provider_Id", $Provider_Id);
-		$this->db->from("dbo_tblclientaccount as t1");
+		$this->db->from("tblclientaccount as t1");
 		
 		$End_Date = date("Y/m/d");
 		$Curent_month_first_Date = date_format(date_sub(date_create($End_Date),date_interval_create_from_date_string((date("d")-1)." days")), "Y/m/d");
@@ -240,7 +240,7 @@ Class Financials_model extends CI_Model{
 		
 		$this->db->where("Provider_Id", $Provider_Id);
 		$this->db->group_by("Status");
-		$this->db->from("dbo_tblcase");
+		$this->db->from("tblcase");
 		
 		$Current_Date = date("Y/m/d");
 		$End_Date = date_format(date_sub(date_create($Current_Date),date_interval_create_from_date_string((date("d")-1)." days")), "Y/m/d");
@@ -267,9 +267,9 @@ Class Financials_model extends CI_Model{
 		
 		
 		if($data['TableId'] == "ClientSettlements" || $data['TableId'] == "WithdrawnCases"){
-			$this->db->from("dbo_tblsettlements as t1");
-			$this->db->join("dbo_tblcase as t2", "t2.Case_Id = t1.Case_Id" );
-			$this->db->join("dbo_tblinsurancecompany as t3", "t3.InsuranceCompany_Id = t2.InsuranceCompany_Id" );
+			$this->db->from("tblsettlements as t1");
+			$this->db->join("tblcase as t2", "t2.Case_Id = t1.Case_Id" );
+			$this->db->join("tblinsurancecompany as t3", "t3.InsuranceCompany_Id = t2.InsuranceCompany_Id" );
 			$this->db->where("t2.Provider_Id", $data['Provider_Id']);
 			$this->db->where('t1.Settlement_Date >=', $data['SD']);
 			$this->db->where('t1.Settlement_Date <=', $data['ED']);
@@ -277,14 +277,14 @@ Class Financials_model extends CI_Model{
 				$this->db->where("t1.Settlement_Amount <=", 0);
 			}
 		}else if($data['TableId'] == "ClientNewCases"){
-			$this->db->from("dbo_tblcase as t1");
-			$this->db->join("dbo_tblinsurancecompany as t2", "t1.InsuranceCompany_Id = t2.InsuranceCompany_Id" );
+			$this->db->from("tblcase as t1");
+			$this->db->join("tblinsurancecompany as t2", "t1.InsuranceCompany_Id = t2.InsuranceCompany_Id" );
 			$this->db->where("t1.Provider_Id", $data['Provider_Id']);
 			$this->db->where('t1.Date_Opened >=', $data['SD']);
 			$this->db->where('t1.Date_Opened <=', $data['ED']);
 		}else if($data['TableId'] == "StatusBreakdown"){
-			$this->db->from("dbo_tblcase as t1");
-			$this->db->join("dbo_tblinsurancecompany as t2", "t1.InsuranceCompany_Id = t2.InsuranceCompany_Id" );
+			$this->db->from("tblcase as t1");
+			$this->db->join("tblinsurancecompany as t2", "t1.InsuranceCompany_Id = t2.InsuranceCompany_Id" );
 			$this->db->where("t1.Provider_Id", $data['Provider_Id']);
 			$this->db->where("t1.Status", $data['Status']);
 			$this->db->where('t1.Date_Opened >=', $data['SD']);
@@ -301,9 +301,9 @@ Class Financials_model extends CI_Model{
 /* get client invoices all tables when clicked on account id*/
 	public function get_Collections($input_data){
 		$this->db->select("t1.Case_Id, t2.InjuredParty_FirstName, t2.InjuredParty_LastName, t2.Accident_Date, DATE_FORMAT(t2.DateOfService_End,'%m-%d-%Y') as DOS_E, t2.DateOfService_Start, t2.DateOfService_End, t2.Claim_Amount, t1.Transactions_Type, t1.Transactions_Description, t1.Transactions_Date, t1.Transactions_Amount, t2.IndexOrAAA_Number, t3.Provider_Billing, t3.Provider_IntBilling");
-		$this->db->from("dbo_tbltransactions as t1");
-		$this->db->join("dbo_tblcase as t2", "t1.Case_Id = t2.Case_Id" );
-		$this->db->join("dbo_tblprovider as t3", "t3.Provider_Id = t1.Provider_Id" );
+		$this->db->from("tbltransactions as t1");
+		$this->db->join("tblcase as t2", "t1.Case_Id = t2.Case_Id" );
+		$this->db->join("tblprovider as t3", "t3.Provider_Id = t1.Provider_Id" );
 		
 		if($input_data['Account_Id'] != ""){
 			$this->db->where('t1.Invoice_Id', $input_data['Account_Id']);
@@ -324,8 +324,8 @@ Class Financials_model extends CI_Model{
 	}
 	public function get_Provider_Details($input_data){
 		$this->db->select("t2.*, t1.Prev_Cost_Balance");
-		$this->db->from("dbo_tblclientaccount as t1");
-		$this->db->join("dbo_tblprovider as t2", "t1.Provider_Id = t2.Provider_Id");
+		$this->db->from("tblclientaccount as t1");
+		$this->db->join("tblprovider as t2", "t1.Provider_Id = t2.Provider_Id");
 		$this->db->where("t1.Account_Id", $input_data['Account_Id']);
 		$query = $this->db->get(); 
 		$data=$query->result();
@@ -341,7 +341,7 @@ Class Financials_model extends CI_Model{
 			$this->db->select("SUM(t1.Transactions_Amount) as Gross_Amount_Collected, ");
 		}
 		
-		$this->db->from("dbo_tbltransactions as t1");
+		$this->db->from("tbltransactions as t1");
 		if($input_data['Account_Id'] !=""){
 			$this->db->where('t1.Invoice_Id', $input_data['Account_Id']);
 		}
@@ -351,7 +351,7 @@ Class Financials_model extends CI_Model{
 		}else if($Type == "CRED"){
 			$this->db->where('t1.Transactions_Type', "CRED");
 		}else{
-			$this->db->join("dbo_tblprovider as t2", "t2.Provider_Id = t1.Provider_Id" );
+			$this->db->join("tblprovider as t2", "t2.Provider_Id = t1.Provider_Id" );
 			$this->db->where("(t1.Transactions_Type='C' OR t1.Transactions_Type='I')", NULL, FALSE);
 		}
 		$query = $this->db->get();
@@ -360,7 +360,7 @@ Class Financials_model extends CI_Model{
 	public function get_Prev_Cost_Balance($input_data){
 		$this->db->select("Prev_Cost_Balance");
 		$this->db->where("Account_Id", $input_data['Account_Id']);
-		$query = $this->db->get("dbo_tblclientaccount");
+		$query = $this->db->get("tblclientaccount");
 		return $query->result();
 	}
 /*get final client invoice legal fees total table*/
@@ -370,8 +370,8 @@ Class Financials_model extends CI_Model{
 		}else if($Type == "I"){
 			$this->db->select("SUM(t1.Transactions_Amount * t2.Provider_IntBilling / 100) as Legal_Fees_I, ");
 		}
-		$this->db->from("dbo_tbltransactions as t1");
-		$this->db->join("dbo_tblprovider as t2", "t2.Provider_Id = t1.Provider_Id" );
+		$this->db->from("tbltransactions as t1");
+		$this->db->join("tblprovider as t2", "t2.Provider_Id = t1.Provider_Id" );
 		
 		
 		if($input_data['Account_Id'] !=""){
@@ -389,7 +389,7 @@ Class Financials_model extends CI_Model{
 	public function get_Provider_Info($Provider_Id){
 		$this->db->select("Provider_Name, Provider_Local_Address");
 		$this->db->where("Provider_Id", $Provider_Id);
-		$query = $this->db->get("dbo_tblprovider");
+		$query = $this->db->get("tblprovider");
 		return $query->result_array();
 	}
 }

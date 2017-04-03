@@ -56,6 +56,7 @@ class Search extends CI_Controller{
 	}
 	public function advancedsearch(){
 		if(isset($this->session->userdata['logged_in'])){
+			
 			//echo "<br><pre>:";print_r($this->session->all_userdata());
 			//echo "<br>Role ID:".$this->session->userdata['RoleId'];exit;
 			$data['Provider_Name']= $this->search_model->get_Provider();

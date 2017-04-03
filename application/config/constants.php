@@ -1,4 +1,8 @@
 <?php
+/*Base Server Path*/
+define('BASE_ROOT_PATH', 'C:/xampp/htdocs/casemanager/');
+
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
@@ -11,6 +15,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | of this setting
 |
 */
+
+
 defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
 
 /*

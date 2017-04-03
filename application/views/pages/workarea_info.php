@@ -561,7 +561,7 @@ foreach($CaseInfo as $row){$Case_AutoId = $row['Case_AutoId']; $Case_Id = $row['
 						<div class="hpanel">
 						<div class="panel-heading"></div>
 						<div class="panel-body tab-panel">
-                        	<form action="<?php echo base_url();?>search/EditTemplate" method="post">
+                        	<form target="_blank" action="<?php echo base_url();?>search/EditTemplate" method="post">
 							<div class="form-group form-horizontal col-md-12">
 								<br><h5 class="h4-title">Template Manager </h5>
 								<div class="col-sm-2"></div>

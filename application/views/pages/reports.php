@@ -110,7 +110,9 @@
                                                 <th>INSURER</th>
                                                 <th>#OF CASES</th>
                                                 <th>BALANCE</th>
-                                                <th>STLMT AMOUNT</th>
+                                                <!--<th>STLMT AMOUNT</th>-->
+                                                <th>Principle Amt.</th>
+                                                <th>Interest</th>
                                                 <th>FF</th>
                                                 <th>AF</th>
                                                 <th>STLMT %AGE</th>
