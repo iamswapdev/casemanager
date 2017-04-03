@@ -413,7 +413,8 @@ class Financials extends CI_Controller{
 		
 		$row[] = "$".number_format($Fin_FF, 2);
 		$row[] = "$".number_format($Fin_AF, 2);
-		$row[] = number_format(($Fin_Sett_Amount*100)/$Fin_Balance, 2)."%";
+		$Fin_Sett_Amount = $Fin_Principle_Amount + $Fin_Intrest_Amount;
+		$row[] = number_format(($Fin_Sett_Amount * 100)/$Fin_Balance, 2)."%";
 		$data[] = $row;
 		
 		$output = array( "data" => $data );
