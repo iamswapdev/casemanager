@@ -62,7 +62,7 @@
                             </div>
                             <?php //if($CurrentUrl != ""){echo base_url(); echo $CurrentUrl;} ?>
                             <button class="btn btn-success btn-block login-form-btn">Login</button>
-                            <a class="btn btn-primary btn-block forgot-btn" href="<?php echo base_url();?>admin/forgotPassword">Forgot Password</a>
+                            <?php /*?><a class="btn btn-primary btn-block forgot-btn" href="<?php echo base_url();?>admin/forgotPassword">Forgot Password</a><?php */?>
                         </form>
                 </div>
             </div>

@@ -5,6 +5,7 @@ session_cache_limiter('private_no_expire');
 class Search extends CI_Controller{
 	public $username = "";
 	protected $Case_Id = "";
+	var $Global_Case_AutoId = 0;
 	Public function __construct(){
 		parent::__construct();
 		$this->load->library('parser');
@@ -24,7 +25,7 @@ class Search extends CI_Controller{
 	
 	public function index(){
 		//$this->session->all_userdata();
-		$this->$username = $this->session->userdata['username'];
+		$this->username = $this->session->userdata['username'];
 		if(isset($this->session->userdata['logged_in'])){
 			$data['SearchResult']=$this->search_model->get_SearchResult(1,1);
 			$this->load->view('pages/search',$data);
@@ -78,64 +79,64 @@ class Search extends CI_Controller{
 	}
 /* get Search table data - viewcase page*/
 	public function getSearchTable(){  
-		$UserId = $this->input->post("UserId");
-		$RoleId = $this->input->post("RoleId");
-		
-		$list=$this->search_model->get_SearchResult($UserId, $RoleId);
-		$this->Search_Table_Data($list);
+			$UserId = $this->input->post("UserId");
+			$RoleId = $this->input->post("RoleId");
+			
+			$list=$this->search_model->get_SearchResult($UserId, $RoleId);
+			$this->Search_Table_Data($list);
 	}
 	public function getSearchTable_2(){
-		$UserId = $this->input->post("UserId");
-		$RoleId = $this->input->post("RoleId");
-		$Recieveddata = array(
-			"Case_Id" => $this->input->post("sCaseId"),
-			"InjuredParty_LastName" => $this->input->post("InjuredParty_LastName"),
-			"InjuredParty_FirstName" => $this->input->post("InjuredParty_FirstName"),
-			"InsuredParty_LastName" => $this->input->post("InsuredParty_LastName"),
-			"InsuredParty_FirstName" => $this->input->post("InsuredParty_FirstName"),
-			"Policy_Number" => $this->input->post("spolicyNumber"),
-			"Ins_Claim_Number" => $this->input->post("sInsuranceClaimNo"),
-			"IndexOrAAA_Number" => $this->input->post("sIndexaaa"),
-			"Status" => $this->input->post("sStatus"),
-			"InsuranceCompany_Id" => $this->input->post("sInsuranceCompanyId"),
-			"Court_Id" => $this->input->post("sCourtId"),
-			"Initial_Status" => $this->input->post("sCaseStatus"),
-			"Provider_Id" => $this->input->post("sProviderId"),
-			"Defendant_Id" => $this->input->post("sDefendantId"),
-			"Adjuster_Id" => $this->input->post("sAdjusterId"),
-			"AccidentDate" => $this->input->post("AccidentDate"),
-			"FirstId" => $this->input->post("FirstId"),
-			"LastId" => $this->input->post("LastId")
-		);
-		$list= $this->search_model->get_CaseInfo_ById1($Recieveddata, $UserId, $RoleId);
-		$this->Search_Table_Data($list);
+			$UserId = $this->input->post("UserId");
+			$RoleId = $this->input->post("RoleId");
+			$Recieveddata = array(
+				"Case_Id" => $this->input->post("sCaseId"),
+				"InjuredParty_LastName" => $this->input->post("InjuredParty_LastName"),
+				"InjuredParty_FirstName" => $this->input->post("InjuredParty_FirstName"),
+				"InsuredParty_LastName" => $this->input->post("InsuredParty_LastName"),
+				"InsuredParty_FirstName" => $this->input->post("InsuredParty_FirstName"),
+				"Policy_Number" => $this->input->post("spolicyNumber"),
+				"Ins_Claim_Number" => $this->input->post("sInsuranceClaimNo"),
+				"IndexOrAAA_Number" => $this->input->post("sIndexaaa"),
+				"Status" => $this->input->post("sStatus"),
+				"InsuranceCompany_Id" => $this->input->post("sInsuranceCompanyId"),
+				"Court_Id" => $this->input->post("sCourtId"),
+				"Initial_Status" => $this->input->post("sCaseStatus"),
+				"Provider_Id" => $this->input->post("sProviderId"),
+				"Defendant_Id" => $this->input->post("sDefendantId"),
+				"Adjuster_Id" => $this->input->post("sAdjusterId"),
+				"AccidentDate" => $this->input->post("AccidentDate"),
+				"FirstId" => $this->input->post("FirstId"),
+				"LastId" => $this->input->post("LastId")
+			);
+			$list= $this->search_model->get_CaseInfo_ById1($Recieveddata, $UserId, $RoleId);
+			$this->Search_Table_Data($list);
 	}
 	public function editcase($Case_AutoId){
-			//$this->session->all_userdata();
-			if(isset($this->session->userdata['logged_in'])){
-				$Case_AutoIdData = array(
-					"Case_AutoId" => $Case_AutoId
-				);
-				$data['Provider_Name']= $this->search_model->get_Provider();
-				$data['InsuranceCompany_Name']= $this->search_model->get_Insurance();
-				$data['Status']= $this->search_model->get_StatusArray();
-				$data['Court']= $this->search_model->get_CourtArray();
-				$data['Service']= $this->search_model->get_ServiceArray();
-				$data['DenialReasons']= $this->search_model->get_DenialReasonsArray();
-				$data['CaseStatus']= $this->search_model->get_CaseStatus();
-				$data['State_Name']= $this->dataentry_model->get_States();
-				$data['Adjuster_Name']= $this->dataentry_model->get_Adjuster();
-				
-				$data['CaseInfo']= $this->search_model->get_CaseInfo_ById($Case_AutoId);
-				$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
-				//echo "<pre>"; print_r($data['CaseInfo']); exit();
-				$this->load->view('pages/editcase',$data);
-				
-			}else{
-				$CurrentPage['CurrentUrl'] = "search/editcase";
-				$this->load->view('pages/login', $CurrentPage);
-			}
+		//$this->session->all_userdata();
+		if(isset($this->session->userdata['logged_in'])){
+			$Case_AutoIdData = array(
+				"Case_AutoId" => $Case_AutoId
+			);
+			$data['Provider_Name']= $this->search_model->get_Provider();
+			$data['InsuranceCompany_Name']= $this->search_model->get_Insurance();
+			$data['Status']= $this->search_model->get_StatusArray();
+			$data['Court']= $this->search_model->get_CourtArray();
+			$data['Service']= $this->search_model->get_ServiceArray();
+			$data['DenialReasons']= $this->search_model->get_DenialReasonsArray();
+			$data['CaseStatus']= $this->search_model->get_CaseStatus();
+			$data['State_Name']= $this->dataentry_model->get_States();
+			$data['Adjuster_Name']= $this->dataentry_model->get_Adjuster();
+			
+			$data['CaseInfo']= $this->search_model->get_CaseInfo_ById($Case_AutoId);
+			$data['Assigned_Menus'] = $this->get_Assigned_Menus($this->session->userdata['RoleId']);
+			//echo "<pre>"; print_r($data['CaseInfo']); exit();
+			$this->load->view('pages/editcase',$data);
+			
+		}else{
+			$CurrentPage['CurrentUrl'] = "search/editcase";
+			$this->load->view('pages/login', $CurrentPage);
 		}
+	}
 	public function get_Assigned_Menus($User_Role){
 		$data = $this->admin_privilege_model->get_Assigned_Menus($User_Role);
 		return $data;
@@ -146,6 +147,7 @@ class Search extends CI_Controller{
 		//echo "Case_AutoId:".$Case_AutoId;
 		//exit;
 		if(isset($this->session->userdata['logged_in'])){
+			$this->Global_Case_AutoId = $Case_AutoId;
 			if($Case_AutoId == -1){
 				$data = array(
 					"SearchValue" => $this->input->post("Case_AutoId"),
@@ -245,40 +247,40 @@ class Search extends CI_Controller{
 	}
 /*UPDATE TREATEMENT RECORDS*/
 	public function update_Treatement(){
-		$Treatment_Id = $this->input->post("Treatment_Id");
-		$data = array(
-			"DateOfService_Start" => $this->input->post('DateOfService_Start'),
-			"DateOfService_End" => $this->input->post('DateOfService_End'),
-			"Claim_Amount" => str_replace('$', '', $this->input->post('Claim_Amount')),
-			"Paid_Amount" => str_replace('$', '', $this->input->post('Paid_Amount')),
-			"Date_BillSent" => $this->input->post('Date_BillSent'),
-			"SERVICE_TYPE" => $this->input->post('currentServiceType'),
-			"DENIALREASONS_TYPE" => $this->input->post('currentDenialReasonType')
-		);
-		$this->search_model->updateTreatement($data, $Treatment_Id);
-		$this->update_Claim_Paid_Dates($this->input->post("Case_Id"));
-		echo json_encode($data);
+			$Treatment_Id = $this->input->post("Treatment_Id");
+			$data = array(
+				"DateOfService_Start" => $this->input->post('DateOfService_Start'),
+				"DateOfService_End" => $this->input->post('DateOfService_End'),
+				"Claim_Amount" => str_replace('$', '', $this->input->post('Claim_Amount')),
+				"Paid_Amount" => str_replace('$', '', $this->input->post('Paid_Amount')),
+				"Date_BillSent" => $this->input->post('Date_BillSent'),
+				"SERVICE_TYPE" => $this->input->post('currentServiceType'),
+				"DENIALREASONS_TYPE" => $this->input->post('currentDenialReasonType')
+			);
+			$this->search_model->updateTreatement($data, $Treatment_Id);
+			$this->update_Claim_Paid_Dates($this->input->post("Case_Id"));
+			echo json_encode($data);
 	}
 /*ADD TREATEMENT RECORDS*/
 	public function add_Treatement(){
-		$data = array(
-			"DateOfService_Start" => $this->input->post('DateOfService_Start'),
-			"DateOfService_End" => $this->input->post('DateOfService_End'),
-			"Claim_Amount" => $this->input->post('Claim_Amount'),
-			"Paid_Amount" => $this->input->post('Paid_Amount'),
-			"Date_BillSent" => $this->input->post('Date_BillSent'),
-			"Case_Id" => $this->input->post("Case_Id"),
-			"DENIALREASONS_TYPE" =>$this->input->post("denialReasons"),
-			"SERVICE_TYPE" => $this->input->post("serviceType")
-		);
-		$this->search_model->addTreatement($data);
-		$this->update_Claim_Paid_Dates($this->input->post("Case_Id"));
+			$data = array(
+				"DateOfService_Start" => $this->input->post('DateOfService_Start'),
+				"DateOfService_End" => $this->input->post('DateOfService_End'),
+				"Claim_Amount" => $this->input->post('Claim_Amount'),
+				"Paid_Amount" => $this->input->post('Paid_Amount'),
+				"Date_BillSent" => $this->input->post('Date_BillSent'),
+				"Case_Id" => $this->input->post("Case_Id"),
+				"DENIALREASONS_TYPE" =>$this->input->post("denialReasons"),
+				"SERVICE_TYPE" => $this->input->post("serviceType")
+			);
+			$this->search_model->addTreatement($data);
+			$this->update_Claim_Paid_Dates($this->input->post("Case_Id"));
 	}
 /*ADD TREATEMENT RECORDS*/
 	public function deleteTreatement(){
-		$data = $this->input->post('DeletedTreatementId');
-		$this->search_model->delete_Treatement($data);
-		$this->update_Claim_Paid_Dates($this->input->post("Case_Id"));
+			$data = $this->input->post('DeletedTreatementId');
+			$this->search_model->delete_Treatement($data);
+			$this->update_Claim_Paid_Dates($this->input->post("Case_Id"));
 	}
 /*Update claim paid DOS start and end*/
 	public function update_Claim_Paid_Dates($Case_Id){
@@ -399,22 +401,22 @@ class Search extends CI_Controller{
 		echo json_encode($data);
 	}
 	public function getAdjuster_ById2($Adjuster_Id){
-		$list=$this->search_model->get_Adjuster_ById2($Adjuster_Id);
-		$data = array();
-		$no=0;
-		foreach ($list as $result) {
-			$row = array();
-			$no++;
-			$row[] = $result->Adjuster_FirstName;
-			$row[] = $result->Adjuster_LastName;
-			$row[] = $result->Adjuster_Phone;
-			$row[] = $result->Adjuster_Phone_Ext;
-			
-			$data[] = $row;
-		}
-		$output = array( "data" => $data );
-		//echo "<pre>:";print_r($output);
-		echo json_encode($output);
+			$list=$this->search_model->get_Adjuster_ById2($Adjuster_Id);
+			$data = array();
+			$no=0;
+			foreach ($list as $result) {
+				$row = array();
+				$no++;
+				$row[] = $result->Adjuster_FirstName;
+				$row[] = $result->Adjuster_LastName;
+				$row[] = $result->Adjuster_Phone;
+				$row[] = $result->Adjuster_Phone_Ext;
+				
+				$data[] = $row;
+			}
+			$output = array( "data" => $data );
+			//echo "<pre>:";print_r($output);
+			echo json_encode($output);
 	}
 /* get injured by id - viewcase page*/
 	public function getInjured_ById($Case_AutoId){
@@ -478,16 +480,16 @@ class Search extends CI_Controller{
 	}
 /**** ADD NOTES ***********/
 	public function addNotes(){
-		$data = array(
-			"Notes_Type" => $this->input->post("notesType"),
-			"Notes_Desc" => $this->input->post("notesDescription"),
-			"Notes_Date" => $this->input->post("notesAccidentDate"),
-			"Case_Id" => $this->input->post("caseId"),
-			"User_Id" => $this->session->userdata['username']
-		);
-		$this->search_model->add_Notes($data);
-		echo json_encode($data);
-		//return true;
+			$data = array(
+				"Notes_Type" => $this->input->post("notesType"),
+				"Notes_Desc" => $this->input->post("notesDescription"),
+				"Notes_Date" => $this->input->post("notesAccidentDate"),
+				"Case_Id" => $this->input->post("caseId"),
+				"User_Id" => $this->session->userdata['username']
+			);
+			$this->search_model->add_Notes($data);
+			echo json_encode($data);
+			//return true;
 	}
 /* get Case info by id - viewcase page*/
 	public function getCaseInfo($Case_AutoId){
@@ -567,73 +569,78 @@ class Search extends CI_Controller{
 		echo json_encode($data);
 	}
 	public function updateCaseInfo(){
-		$recordNo = $this->input->post("recordNo");
-		$Case_AutoId = $this->input->post("Case_AutoId");
-		$Case_Id = $this->input->post("Case_Id");
-		if($recordNo == 3){
-			$data = array(
-				"InjuredParty_LastName" => $this->input->post("InjuredParty_LastName"),
-				"InjuredParty_FirstName" => $this->input->post("InjuredParty_FirstName")
-			);
-		}else if($recordNo ==5){
-			$data = array(
-				"InsuredParty_LastName" => $this->input->post("InsuredParty_LastName"),
-				"InsuredParty_FirstName" => $this->input->post("InsuredParty_FirstName")
-			);
-		}else{
-			$data = array(
-				$this->input->post("inputName") => $this->input->post("inputValue")
-			);
-		}
-		
-		if($recordNo ==3){
-			$PreviousValue1 = $this->get_Changed_Value("InjuredParty_LastName", $Case_AutoId);
-			$PreviousValue2 = $this->get_Changed_Value("InjuredParty_FirstName", $Case_AutoId);
-		}else if($recordNo ==5){
-			$PreviousValue1 = $this->get_Changed_Value("InsuredParty_LastName", $Case_AutoId);
-			$PreviousValue2 = $this->get_Changed_Value("InsuredParty_FirstName", $Case_AutoId);
-		}else{
-			$PreviousValue = $this->get_Changed_Value($this->input->post("inputName"), $Case_AutoId);
-		}
-		
-		$success = $this->search_model->update_CaseInfo($data, $Case_AutoId);
-
-		if($recordNo ==3){
-			$NewValue1 = $this->get_Changed_Value("InjuredParty_LastName", $Case_AutoId);
-			$NewValue2 = $this->get_Changed_Value("InjuredParty_FirstName", $Case_AutoId);
-		}else if($recordNo ==5){
-			$NewValue1 = $this->get_Changed_Value("InsuredParty_LastName", $Case_AutoId);
-			$NewValue2 = $this->get_Changed_Value("InsuredParty_FirstName", $Case_AutoId);
-		}else{
-			$NewValue = $this->get_Changed_Value($this->input->post("inputName"), $Case_AutoId);
-		}
-		$data3 = array(
-			"Notes_Type" => "ACTIVITY",
-			"Notes_Desc" => $this->input->post("inputName")." Changed from ".$PreviousValue." To ".$NewValue,
-			"Notes_Date" => $date = date('Y-m-d H:i:s'),
-			"Case_Id" => $Case_Id,
-			"User_Id" => $this->session->userdata['username']
-		);
-		if($recordNo == 3){
-			$data3['Notes_Desc'] = "InjuredParty Name Changed from ".$PreviousValue1." ".$PreviousValue2." To ".$NewValue1." ".$NewValue2;
-		}else if($recordNo ==5){
-			$data3['Notes_Desc'] = "InsuredParty Name Changed from ".$PreviousValue1." ".$PreviousValue2." To ".$NewValue1." ".$NewValue2;
-		}else if($recordNo ==36 || $recordNo ==38 || $recordNo ==40){
-			if($PreviousValue == 1){
-				$PreviousValue = "Yes";
+		if(isset($this->session->userdata['logged_in'])){
+			$recordNo = $this->input->post("recordNo");
+			$Case_AutoId = $this->input->post("Case_AutoId");
+			$Case_Id = $this->input->post("Case_Id");
+			if($recordNo == 3){
+				$data = array(
+					"InjuredParty_LastName" => $this->input->post("InjuredParty_LastName"),
+					"InjuredParty_FirstName" => $this->input->post("InjuredParty_FirstName")
+				);
+			}else if($recordNo ==5){
+				$data = array(
+					"InsuredParty_LastName" => $this->input->post("InsuredParty_LastName"),
+					"InsuredParty_FirstName" => $this->input->post("InsuredParty_FirstName")
+				);
 			}else{
-				$PreviousValue ="No";
+				$data = array(
+					$this->input->post("inputName") => $this->input->post("inputValue")
+				);
 			}
-			if($NewValue == 1){
-				$NewValue = "Yes";
+			
+			if($recordNo ==3){
+				$PreviousValue1 = $this->get_Changed_Value("InjuredParty_LastName", $Case_AutoId);
+				$PreviousValue2 = $this->get_Changed_Value("InjuredParty_FirstName", $Case_AutoId);
+			}else if($recordNo ==5){
+				$PreviousValue1 = $this->get_Changed_Value("InsuredParty_LastName", $Case_AutoId);
+				$PreviousValue2 = $this->get_Changed_Value("InsuredParty_FirstName", $Case_AutoId);
 			}else{
-				$NewValue ="No";
+				$PreviousValue = $this->get_Changed_Value($this->input->post("inputName"), $Case_AutoId);
 			}
-			$data3['Notes_Desc'] = $this->input->post("inputName")." Changed from ".$PreviousValue." To ".$NewValue;
+			
+			$success = $this->search_model->update_CaseInfo($data, $Case_AutoId);
+	
+			if($recordNo ==3){
+				$NewValue1 = $this->get_Changed_Value("InjuredParty_LastName", $Case_AutoId);
+				$NewValue2 = $this->get_Changed_Value("InjuredParty_FirstName", $Case_AutoId);
+			}else if($recordNo ==5){
+				$NewValue1 = $this->get_Changed_Value("InsuredParty_LastName", $Case_AutoId);
+				$NewValue2 = $this->get_Changed_Value("InsuredParty_FirstName", $Case_AutoId);
+			}else{
+				$NewValue = $this->get_Changed_Value($this->input->post("inputName"), $Case_AutoId);
+			}
+			$data3 = array(
+				"Notes_Type" => "ACTIVITY",
+				"Notes_Desc" => $this->input->post("inputName")." Changed from ".$PreviousValue." To ".$NewValue,
+				"Notes_Date" => $date = date('Y-m-d H:i:s'),
+				"Case_Id" => $Case_Id,
+				"User_Id" => $this->session->userdata['username']
+			);
+			if($recordNo == 3){
+				$data3['Notes_Desc'] = "InjuredParty Name Changed from ".$PreviousValue1." ".$PreviousValue2." To ".$NewValue1." ".$NewValue2;
+			}else if($recordNo ==5){
+				$data3['Notes_Desc'] = "InsuredParty Name Changed from ".$PreviousValue1." ".$PreviousValue2." To ".$NewValue1." ".$NewValue2;
+			}else if($recordNo ==36 || $recordNo ==38 || $recordNo ==40){
+				if($PreviousValue == 1){
+					$PreviousValue = "Yes";
+				}else{
+					$PreviousValue ="No";
+				}
+				if($NewValue == 1){
+					$NewValue = "Yes";
+				}else{
+					$NewValue ="No";
+				}
+				$data3['Notes_Desc'] = $this->input->post("inputName")." Changed from ".$PreviousValue." To ".$NewValue;
+			}else{
+				$data3['Notes_Desc'] = $this->input->post("inputName")." Changed from ".$PreviousValue." To ".$NewValue;
+			}
+			$this->search_model->add_Notes($data3);
 		}else{
-			$data3['Notes_Desc'] = $this->input->post("inputName")." Changed from ".$PreviousValue." To ".$NewValue;
+			$CurrentPage['CurrentUrl'] = "search/viewcase/".get_Case_AutoId($this->input->post("Case_Id"));
+			$this->load->view('pages/login', $CurrentPage);
 		}
-		$this->search_model->add_Notes($data3);
 	}
 	public function get_Changed_Value($Field_Name, $Case_AutoId){
 		$list= $this->search_model->get_CaseInfo_ById($Case_AutoId);

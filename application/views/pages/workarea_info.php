@@ -1719,6 +1719,24 @@ if (!file_exists('Cases/'.$Case_Id)) {
 
 <script>
 $(document).ready(function(e) {
+	function update_Notes_Tables(){
+		$("#NotesTab1").dataTable().fnDestroy();
+		$('#NotesTab1').dataTable( {
+			"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
+			"iDisplayLength": 5,
+			"aLengthMenu": [5, 10, 20, 25, 50],
+			"bSort": false
+		});
+		$("#NotesTab3").dataTable().fnDestroy();
+		$('#NotesTab3').dataTable( {
+			"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
+			"iDisplayLength": 10,
+			"aLengthMenu": [5, 10, 20, 25, 50],
+			"bSort": false
+		});
+	}
+	
+		
 	//var replaced = $("body").html().replace('Case Id','The new string');
 //$("body").html(replaced);
 	//$(".info-link-popup tr:nth-child(2) td:nth-child(2)").css("color", "blue");
@@ -1865,20 +1883,8 @@ $(document).ready(function(e) {
 		});
 		request.done(function (response, textStatus, jqXHR) {
 			//console.log("Successssss :"+response);
-			$("#NotesTab1").dataTable().fnDestroy();
-			$('#NotesTab1').dataTable( {
-				"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
-				"iDisplayLength": 5,
-				"aLengthMenu": [5, 10, 20, 25, 50],
-				"bSort": false
-			});
-			$("#NotesTab3").dataTable().fnDestroy();
-			$('#NotesTab3').dataTable( {
-				"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
-				"iDisplayLength": 10,
-				"aLengthMenu": [5, 10, 20, 25, 50],
-				"bSort": false
-			});
+			update_Notes_Tables();
+			
 			//callSuccess()
 		});
 		$(editHidden).css("display", "none");
@@ -2101,20 +2107,7 @@ $(document).ready(function(e) {
 				$('input[type=text]').val('');
 				$('textarea').val('');
 				$("select").val('');
-				$("#NotesTab1").dataTable().fnDestroy();
-				$('#NotesTab1').dataTable( {
-					"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
-					"iDisplayLength": 5,
-					"aLengthMenu": [5, 10, 20, 25, 50],
-					"bSort": false
-				});
-				$("#NotesTab3").dataTable().fnDestroy();
-				$('#NotesTab3').dataTable( {
-					"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
-					"iDisplayLength": 10,
-					"aLengthMenu": [5, 10, 20, 25, 50],
-					"bSort": false
-				});
+				update_Notes_Tables();
 				//$("#myModal").modal("show");
 				callSuccess();
 			});
@@ -2125,23 +2118,12 @@ $(document).ready(function(e) {
 	
 /**************************** NOTES TAB-3 ************************************************************************************/
 	//$(".notesAccidentDate").datepicker().datepicker("setDate", new Date());
-	$('#NotesTab3').dataTable( {
-		"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
-		"iDisplayLength": 10,
-    	"aLengthMenu": [5, 10, 20, 25, 50],
-		"bSort": false
-	});
+	update_Notes_Tables();
 	var dateNow = new Date();
         $('.notesAccidentDate').datetimepicker({
             defaultDate:dateNow,
 			format:'YYYY/MM/DD HH:mm:ss'
         });
-	$('#NotesTab1').dataTable( {
-		"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
-		"iDisplayLength": 5,
-    	"aLengthMenu": [5, 10, 20, 25, 50],
-		"bSort": false,
-	});
 
 /**** ADD NOTES INFO *********/
 	$("#addNotes_form2").submit(function(e){
@@ -2166,20 +2148,7 @@ $(document).ready(function(e) {
 				$('textarea').val('');
 				$("select").val('');
 				//$("#myModal").modal("show");
-				$("#NotesTab1").dataTable().fnDestroy();
-				$('#NotesTab1').dataTable( {
-					"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
-					"iDisplayLength": 5,
-					"aLengthMenu": [5, 10, 20, 25, 50],
-					"bSort": false,
-				});
-				$("#NotesTab3").dataTable().fnDestroy();
-				$('#NotesTab3').dataTable( {
-					"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
-					"iDisplayLength": 10,
-					"aLengthMenu": [5, 10, 20, 25, 50],
-					"bSort": false
-				});
+				update_Notes_Tables();
 				callSuccess();
 			});
 			e.preventDefault();	//STOP default action
@@ -2237,21 +2206,7 @@ $(document).ready(function(e) {
 						var row = $(".DeleteNotes"+values).parent().parent();
 						$(row).remove();
 					});
-					$("#NotesTab1").dataTable().fnDestroy();
-					$('#NotesTab1').dataTable( {
-						"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
-						"iDisplayLength": 5,
-						"aLengthMenu": [5, 10, 20, 25, 50],
-						"bSort": false
-					});
-					$("#NotesTab3").dataTable().fnDestroy();
-					$('#NotesTab3').dataTable( {
-						"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
-						"iDisplayLength": 10,
-						"aLengthMenu": [5, 10, 20, 25, 50],
-						"bSort": false
-					});
-					console.log("suuuuu:"+response);
+					update_Notes_Tables();
 				});
 				swal("Deleted!", "Your records has been deleted.", "success");
 			} else {
@@ -2274,20 +2229,7 @@ $(document).ready(function(e) {
 			success:function(data){
 				//results = JSON.parse(data);	
 				//callSuccess();
-				$("#NotesTab1").dataTable().fnDestroy();
-				$('#NotesTab1').dataTable( {
-					"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
-					"iDisplayLength": 5,
-					"aLengthMenu": [5, 10, 20, 25, 50],
-					"bSort": false
-				});
-				$("#NotesTab3").dataTable().fnDestroy();
-				$('#NotesTab3').dataTable( {
-					"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
-					"iDisplayLength": 10,
-					"aLengthMenu": [5, 10, 20, 25, 50],
-					"bSort": false
-				});
+				update_Notes_Tables();
 			},
 			error: function(result){ console.log("error"); }
 		});
@@ -2557,19 +2499,7 @@ $(document).ready(function(e) {
 					Update_Settlement();
 					checkstatus_open();
 					$(".settled-by-show").css("display","block");
-					$("#NotesTab3").dataTable().fnDestroy();
-					$('#NotesTab3').dataTable( {
-						"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
-						"iDisplayLength": 10,
-						"aLengthMenu": [5, 10, 20, 25, 50]
-					});
-					$("#NotesTab1").dataTable().fnDestroy();
-					$('#NotesTab1').dataTable( {
-						"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
-						"iDisplayLength": 5,
-						"aLengthMenu": [5, 10, 20, 25, 50],
-						"bSort": false
-					});
+					update_Notes_Tables();
 					load_sett_data();
 					callSuccess();
 					$("#finalizeButton").prop('disabled', true);
@@ -2598,19 +2528,7 @@ $(document).ready(function(e) {
 					type:'POST',
 					url: "<?php echo base_url();?>search/reset_Settlement/<?php echo $Case_AutoId;?>/<?php echo $Case_Id;?>", 
 					success: function(data){
-						$("#NotesTab3").dataTable().fnDestroy();
-						$('#NotesTab3').dataTable( {
-							"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
-							"iDisplayLength": 10,
-							"aLengthMenu": [5, 10, 20, 25, 50]
-						});
-						$("#NotesTab1").dataTable().fnDestroy();
-						$('#NotesTab1').dataTable( {
-							"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
-							"iDisplayLength": 5,
-							"aLengthMenu": [5, 10, 20, 25, 50],
-							"bSort": false
-						});
+						update_Notes_Tables();
 						Update_Settlement();
 						checkstatus_open();
 						$("#finalizeButton").prop('disabled', false);
@@ -2698,19 +2616,7 @@ $(document).ready(function(e) {
 							var row = $(".deleteCheckedTransactions"+values).parent().parent();
 							$(row).remove();
 						});
-						$("#NotesTab3").dataTable().fnDestroy();
-						$('#NotesTab3').dataTable( {
-							"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
-							"iDisplayLength": 10,
-							"aLengthMenu": [5, 10, 20, 25, 50]
-						});
-						$("#NotesTab1").dataTable().fnDestroy();
-						$('#NotesTab1').dataTable( {
-							"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
-							"iDisplayLength": 5,
-							"aLengthMenu": [5, 10, 20, 25, 50],
-							"bSort": false
-						});
+						update_Notes_Tables();
 						load_sett_data();
 					});
 					swal("Deleted!", "Your records has been deleted.", "success");
@@ -2758,19 +2664,7 @@ $(document).ready(function(e) {
 					"iDisplayLength": 10,
 					"aLengthMenu": [5, 10, 20, 25, 50]
 				});
-				$("#NotesTab3").dataTable().fnDestroy();
-				$('#NotesTab3').dataTable( {
-					"ajax": "<?php echo base_url();?>search/getNotes2/<?php echo $Case_Id;?>",
-					"iDisplayLength": 10,
-					"aLengthMenu": [5, 10, 20, 25, 50]
-				});
-				$("#NotesTab1").dataTable().fnDestroy();
-				$('#NotesTab1').dataTable( {
-					"ajax": "<?php echo base_url();?>search/getNotes/<?php echo $Case_Id;?>",
-					"iDisplayLength": 5,
-					"aLengthMenu": [5, 10, 20, 25, 50],
-					"bSort": false
-				});
+				update_Notes_Tables();
 				load_sett_data();
 				callSuccess();
 			});
