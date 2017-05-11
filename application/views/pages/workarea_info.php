@@ -563,17 +563,17 @@ foreach($CaseInfo as $row){$Case_AutoId = $row['Case_AutoId']; $Case_Id = $row['
 						<div class="panel-body tab-panel">
                         	<form target="_blank" action="<?php echo base_url();?>search/EditTemplate" method="post">
 							<div class="form-group form-horizontal col-md-12">
-								<br><h5 class="h4-title">Template Manager </h5>
+								<br><h5 class="h4-title">Template Manager</h5>
 								<div class="col-sm-2"></div>
 								<div class="col-sm-4">List of available templates
                                 	<input type="hidden" name="Templates_Case_AutoId" value="<?php echo $Case_AutoId;?>" />
                                     <input type="hidden" name="Templates_Case_Id" value="<?php echo $Case_Id;?>" />
                                 	<select size="4" name="TemplateName" id="TemplateName" class="form-control input-sm input-rows" style="height:520px;width:900px;">
 										<?php
-                                        $dir = "C:/xampp/htdocs/casemanager/application/views/templates/*.htm*";
-                                        $images = glob($dir);   
-                                        foreach($images as $image) {?>
-                                        	<option value="<?php echo str_replace(".htm", "", basename($image));?>"><?php echo str_replace(".htm", "", basename($image));?></option>
+                                        $dir = TEMPLATE_PATH."*.htm*";
+                                        $files = glob($dir);   
+                                        foreach($files as $row) {?>
+                                        	<option value="<?php echo str_replace(".htm", "", basename($row));?>"><?php echo str_replace(".htm", "", basename($row));?></option>
                                         
                                         <?php } ?>
                                     </select>

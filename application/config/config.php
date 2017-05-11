@@ -38,6 +38,8 @@ $config['base_url'] = 'http://localhost:8771/casemanager';
 */
 $config['index_page'] = 'index.php';
 
+$config['base_case_path'] = 'C:/xampp/htdocs/casemanager/';
+
 /*
 |--------------------------------------------------------------------------
 | URI PROTOCOL

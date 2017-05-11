@@ -8,7 +8,7 @@ class Search extends CI_Controller{
 	var $Global_Case_AutoId = 0;
 	Public function __construct(){
 		parent::__construct();
-		$this->load->library('parser');
+		$this->load->library('template_parser');
 		$this->load->library('session');
 		$this->load->model('search_model');
 		$this->load->model('dataentry_model');
@@ -512,7 +512,7 @@ class Search extends CI_Controller{
 			$data['CaseInfo'][0]['Date_Ext_Of_Time_2'] = date_format(date_create(substr($data['CaseInfo'][0]['Date_Ext_Of_Time_2'],0,19)),"m/d/Y");
 		}
 		if($data['CaseInfo'][0]['DateOfService_Start'] !=""){
-			$data['CaseInfo'][0]['DateOfService_Start'] = date_format(date_create(substr($data['CaseInfo'][0]['DateOfService_Start'],0,19)),"m/d/Y");
+			$data['CaseInfo'][0]['DateOfService_Start'] = date_format(date_create($data['CaseInfo'][0]['DateOfService_Start']),"m/d/Y");
 		}
 		if($data['CaseInfo'][0]['DateOfService_End'] !=""){
 			$data['CaseInfo'][0]['DateOfService_End'] = date_format(date_create(substr($data['CaseInfo'][0]['DateOfService_End'],0,19)),"m/d/Y");
@@ -1110,7 +1110,7 @@ class Search extends CI_Controller{
 			$originalArray = $this->case_info_model->get_Case_Info($Case_AutoId);
 			$data = array();
 			$data = $originalArray[0];
-			
+			//echo "<pre>Data:";print_r($originalArray[0]); echo "</pre>";exit;
 			$data['Adjuster_Name'] = $data['Adjuster_FirstName']." ".$data['Adjuster_LastName'];
 			$data['Accident_Date'] = date_format(date_create($data['Accident_Date']), 'm/d/Y');
 			$data['ACCIDENT_DATE'] = $data['Accident_Date'];
@@ -1120,20 +1120,22 @@ class Search extends CI_Controller{
 			$data['BALANCE_AMOUNT'] = $data['Balance_Amount'];
 			$data['Claim_Amount'] = "$".number_format($data['Claim_Amount'], 2);
 			$data['CLAIM_AMOUNT'] = $data['Claim_Amount'];
-			$data['CASE_ID'] = $data['Case_Id'];
-			$data['Case_ID'] = $data['Case_Id'];
+			$data['CASE_ID'] = $data['Case_ID'];
+			$data['Case_ID'] = $data['Case_ID'];
+			$data['Case_Id'] = $data['Case_ID'];
+			
 			$data['COURT_VENUE'] = $data['Court_Venue'];
 			$data['COURT_NAME'] = $data['Court_Name'];
 			$data['COURT_ADDRESS'] = $data['Court_Address'];
-			
-			$data['DateOfService_Start'] = date_format(date_create($data['DateOfService_Start']), 'm/d/Y');
+			//$data['DateOfService_Start'] = date_format(date_create($data['DateOfService_Start']), 'm/d/Y');
 			$data['DateOfService_End'] = date_format(date_create($data['DateOfService_End']), 'm/d/Y');
+			
 			$data['DATEOFSERVICE_START'] = $data['DateOfService_Start'];
 			$data['DATEOFSERVICE_END'] = $data['DateOfService_End'];
 			$data['DateOfService_START'] = $data['DateOfService_Start'];
 			$data['DateOfService_END'] = $data['DateOfService_End'];
 			$data['DEFENDANT_NAME'] = $data['Defendant_Name'];
-			$data['DEFENDANT_ADDRESS'] = $data['Defendant_Address'];
+			$data['DEFENDANT/_ADDRESS'] = $data['Defendant_Address'];
 			$data['DEFENDANT_CITY'] = $data['Defendant_City'];
 			$data['DEFENDANT_STATE'] = $data['Defendant_State'];
 			$data['DEFENDANT_ZIP'] = $data['Defendant_Zip'];
@@ -1168,11 +1170,15 @@ class Search extends CI_Controller{
 			$data['SETTLEMENT_AF'] = $data['Settlement_Af'];
 			$data['SETTLEMENT_FF'] = $data['Settlement_Ff'];
 			$data['Title'] = $template;
+			$Title_data['Title'] = $template;
+					
+					
 			
-			//echo "<pre>";print_r($data);exit;
+			$Replace['Replace_array'] = $data;
 			
-			$this->parser->parse("templates/".$template.".htm", $data);
-			//$this->load->view('templates/'.$template.".htm", $data);
+			$this->template_parser->parse('templates/'.$template.'.htm', $data);
+			$this->load->view("pages/replace_template_fieldnames", $Replace);
+			//$this->load->view('templates/'.$template.".htm", $data);	
 		}else{
 			$CurrentPage['CurrentUrl'] = "search/viewcase/".get_Case_AutoId($Case_Id);
 			$this->load->view('pages/login', $CurrentPage);

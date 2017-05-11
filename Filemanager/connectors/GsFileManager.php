@@ -1,5 +1,11 @@
 <?php
+//define('__ROOT__', dirname(dirname(__FILE__))); 
+//require_once(__ROOT__.'/config.php');
+
+//require_once(__ROOT__."application/config/config.php");
+//require_once "/../../application/config/config.php";
 //echo "DATA:".$_GET['Case_Id'];exit;
+//echo "<br>Path:".$config['base_case_path'];
 
 
 

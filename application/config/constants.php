@@ -2,6 +2,9 @@
 /*Base Server Path*/
 define('BASE_ROOT_PATH', 'C:/xampp/htdocs/casemanager/');
 
+//Display all Templates in Case info
+define('TEMPLATE_PATH', 'C:/xampp/htdocs/casemanager/application/views/templates/');
+
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 

@@ -5,7 +5,8 @@ Class Case_Info_model extends CI_Model{
 		$this->load->database();
 	}
 	public function get_Case_Info($Case_AutoId){
-		$this->db->select("t1.*, t2.*, t3.*, t4.*, t5.*, t6.*, t7.*, t8.*");
+		//$this->db->select("t1.*, t2.*, t3.*, t4.*, t5.*, t6.*, t7.*, t8.*");
+		$this->db->select("t1.Case_Id as Case_ID, t1.*, t2.*, t3.*, t4.*, t5.*, t6.*, t7.*, t8.*");
 		$this->db->from("tblcase as t1");
 		$this->db->where("Case_AutoId", $Case_AutoId);
 		
@@ -19,7 +20,7 @@ Class Case_Info_model extends CI_Model{
 		
 		$query=$this->db->get();
 		$data=$query->result_array();
-		//echo "<pre>"; print_r($data); exit;
+		//echo "<pre>Model"; print_r($data); exit;
 		return $data;
 	}
 	public function get_Last_Case_Id()
